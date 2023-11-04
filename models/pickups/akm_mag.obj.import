@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://drt5qeap5hbgq"
+path="res://.godot/imported/akm_mag.obj-aa6c6703dd2fa44eb7e282c86cfe1ded.mesh"
+
+[deps]
+
+files=["res://.godot/imported/akm_mag.obj-aa6c6703dd2fa44eb7e282c86cfe1ded.mesh"]
+
+source_file="res://models/pickups/akm_mag.obj"
+dest_files=["res://.godot/imported/akm_mag.obj-aa6c6703dd2fa44eb7e282c86cfe1ded.mesh", "res://.godot/imported/akm_mag.obj-aa6c6703dd2fa44eb7e282c86cfe1ded.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

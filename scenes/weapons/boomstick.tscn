@@ -1,0 +1,160 @@
+[gd_scene load_steps=17 format=3 uid="uid://crvf6qiekfqex"]
+
+[ext_resource type="ArrayMesh" uid="uid://cjx7th4qqdgak" path="res://models/weapons/boomstick.obj" id="1_7e58d"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon_alt_fire.gd" id="2_nf3wy"]
+[ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_ac8cs"]
+[ext_resource type="AnimationLibrary" uid="uid://d0670lbytf8uc" path="res://scenes/weapons/boomstick_anims.res" id="4_a2xtk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_astgw"]
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
+metallic = 1.0
+roughness = 0.25
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mrnkp"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noy7b"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l85rr"]
+animation = &"boomstick_anims/boomstick_fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2yivl"]
+animation = &"boomstick_anims/boomstick_deploy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t3q3t"]
+animation = &"boomstick_anims/boomstick_fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cc42y"]
+animation = &"boomstick_anims/boomstick_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l75k0"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e6tb1"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xfgup"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_40edl"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_b1n13"]
+states/alt_firing/node = SubResource("AnimationNodeAnimation_l85rr")
+states/alt_firing/position = Vector2(477, 205)
+states/deploy/node = SubResource("AnimationNodeAnimation_2yivl")
+states/deploy/position = Vector2(199.444, 205)
+states/firing/node = SubResource("AnimationNodeAnimation_t3q3t")
+states/firing/position = Vector2(342.481, 204.111)
+states/idle/node = SubResource("AnimationNodeAnimation_cc42y")
+states/idle/position = Vector2(343, 100.111)
+transitions = ["deploy", "idle", SubResource("AnimationNodeStateMachineTransition_l75k0"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_e6tb1"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_xfgup"), "Start", "deploy", SubResource("AnimationNodeStateMachineTransition_40edl")]
+graph_offset = Vector2(-104, 71)
+
+[node name="Boomstick" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.35, 0)
+
+[node name="Boomstick" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00747909, 0)
+material_override = SubResource("StandardMaterial3D_astgw")
+cast_shadow = 0
+mesh = ExtResource("1_7e58d")
+script = ExtResource("2_nf3wy")
+alt_bullet = "res://scenes/bullets/hitscan_bullet.tscn"
+alt_shot_cooldown = 2.0
+alt_volley = 36
+alt_spread = 30.0
+alt_ammo_type = "shells"
+alt_ammo_cost = 2
+category = 1
+index = 1
+bullet = "res://scenes/bullets/test_bullet.tscn"
+shot_cooldown = 2.0
+volley = 36
+spread = 30.0
+recoil = 7.5
+ammo_type = "shells"
+ammo_cost = 2
+
+[node name="Spawner" type="Marker3D" parent="Boomstick"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="MuzzleFlashL" type="MeshInstance3D" parent="Boomstick/Spawner"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.05, 0, 0)
+visible = false
+cast_shadow = 0
+mesh = ExtResource("3_ac8cs")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_mrnkp")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Boomstick/Spawner/MuzzleFlashL"]
+light_color = Color(1, 1, 0, 1)
+light_energy = 0.0
+shadow_enabled = true
+omni_range = 10.0
+omni_shadow_mode = 0
+
+[node name="MuzzleFlashR" type="MeshInstance3D" parent="Boomstick/Spawner"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.05, 0, 0)
+visible = false
+cast_shadow = 0
+mesh = ExtResource("3_ac8cs")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_noy7b")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Boomstick/Spawner/MuzzleFlashR"]
+light_color = Color(1, 1, 0, 1)
+light_energy = 0.0
+shadow_enabled = true
+omni_range = 10.0
+omni_shadow_mode = 0
+
+[node name="AltSpawner" type="Marker3D" parent="Boomstick"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="MuzzleFlashL" type="MeshInstance3D" parent="Boomstick/AltSpawner"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.05, 0, 0)
+visible = false
+mesh = ExtResource("3_ac8cs")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_mrnkp")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Boomstick/AltSpawner/MuzzleFlashL"]
+light_color = Color(1, 1, 0, 1)
+light_energy = 0.0
+shadow_enabled = true
+omni_range = 10.0
+omni_shadow_mode = 0
+
+[node name="MuzzleFlashR" type="MeshInstance3D" parent="Boomstick/AltSpawner"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.05, 0, 0)
+visible = false
+mesh = ExtResource("3_ac8cs")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_noy7b")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Boomstick/AltSpawner/MuzzleFlashR"]
+light_color = Color(1, 1, 0, 1)
+light_energy = 0.0
+shadow_enabled = true
+omni_range = 10.0
+omni_shadow_mode = 0
+
+[node name="AnimationTree" type="AnimationTree" parent="Boomstick"]
+tree_root = SubResource("AnimationNodeStateMachine_b1n13")
+anim_player = NodePath("../../AnimationPlayer")
+active = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"boomstick_anims": ExtResource("4_a2xtk")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

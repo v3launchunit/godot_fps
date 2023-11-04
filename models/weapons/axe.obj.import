@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cdgo2jvrkn5bc"
+path="res://.godot/imported/axe.obj-2bc33f743a99ae1d8c60e2607914c668.mesh"
+
+[deps]
+
+files=["res://.godot/imported/axe.obj-2bc33f743a99ae1d8c60e2607914c668.mesh"]
+
+source_file="res://models/weapons/axe.obj"
+dest_files=["res://.godot/imported/axe.obj-2bc33f743a99ae1d8c60e2607914c668.mesh", "res://.godot/imported/axe.obj-2bc33f743a99ae1d8c60e2607914c668.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(0.05, 0.05, 0.05)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

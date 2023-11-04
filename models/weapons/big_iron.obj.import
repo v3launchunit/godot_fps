@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://vfuqffuqwocv"
+path="res://.godot/imported/big_iron.obj-5fb98513fca2c08952ba757870ae59fe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/big_iron.obj-5fb98513fca2c08952ba757870ae59fe.mesh"]
+
+source_file="res://models/weapons/big_iron.obj"
+dest_files=["res://.godot/imported/big_iron.obj-5fb98513fca2c08952ba757870ae59fe.mesh", "res://.godot/imported/big_iron.obj-5fb98513fca2c08952ba757870ae59fe.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(0.5, 0.5, 0.5)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

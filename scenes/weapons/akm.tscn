@@ -1,0 +1,98 @@
+[gd_scene load_steps=17 format=3 uid="uid://xpo774l18flk"]
+
+[ext_resource type="ArrayMesh" uid="uid://53jffpg6vhkj" path="res://models/weapons/akm.obj" id="1_srb21"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon_base.gd" id="2_aqwyy"]
+[ext_resource type="ArrayMesh" uid="uid://bblg4t73miejx" path="res://models/weapons/muzzle_flash_alt.obj" id="3_s7ev5"]
+[ext_resource type="Script" path="res://scripts/weapons/scope.gd" id="4_uav1m"]
+[ext_resource type="AnimationLibrary" uid="uid://dvna0xeatmq0y" path="res://scenes/weapons/anims.res" id="5_q7x1e"]
+[ext_resource type="AnimationLibrary" uid="uid://pyw3ltt10q24" path="res://scenes/weapons/akm_anims.res" id="6_w4nrh"]
+[ext_resource type="AnimationLibrary" uid="uid://byhlw1uu73dbf" path="res://scenes/weapons/shotgun_anims.res" id="7_bs841"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bhoy"]
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
+metallic = 1.0
+roughness = 0.25
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i11ey"]
+shading_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gw64d"]
+animation = &"akm/akm_deploy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l6221"]
+animation = &"akm/akm_fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pquo6"]
+animation = &"akm/akm_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g4vsb"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bbrhg"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hgofs"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hbp1m"]
+states/deploy/node = SubResource("AnimationNodeAnimation_gw64d")
+states/deploy/position = Vector2(200.111, 226.136)
+states/firing/node = SubResource("AnimationNodeAnimation_l6221")
+states/firing/position = Vector2(437.432, 224.519)
+states/idle/node = SubResource("AnimationNodeAnimation_pquo6")
+states/idle/position = Vector2(437.482, 100.222)
+transitions = ["firing", "idle", SubResource("AnimationNodeStateMachineTransition_g4vsb"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_bbrhg"), "Start", "deploy", SubResource("AnimationNodeStateMachineTransition_hgofs")]
+graph_offset = Vector2(-83, 64)
+
+[node name="AKM" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.15, -0.5, -0.15)
+
+[node name="AKM" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.31213e-05, 0)
+material_override = SubResource("StandardMaterial3D_2bhoy")
+cast_shadow = 0
+mesh = ExtResource("1_srb21")
+script = ExtResource("2_aqwyy")
+category = 2
+bullet = "res://scenes/bullets/hitscan_bullet.tscn"
+shot_cooldown = 0.05
+spread = 2.5
+ammo_type = "akm_bullets"
+
+[node name="Spawner" type="Marker3D" parent="AKM"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23, 1.15)
+
+[node name="MuzzleFlash" type="MeshInstance3D" parent="AKM/Spawner"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 3.02185e-09, 0, 0.0345659)
+visible = false
+cast_shadow = 0
+mesh = ExtResource("3_s7ev5")
+surface_material_override/0 = SubResource("StandardMaterial3D_i11ey")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="AKM/Spawner/MuzzleFlash"]
+light_energy = 0.0
+shadow_enabled = true
+omni_range = 10.0
+omni_shadow_mode = 0
+
+[node name="AnimationTree" type="AnimationTree" parent="AKM"]
+tree_root = SubResource("AnimationNodeStateMachine_hbp1m")
+anim_player = NodePath("../../AnimationPlayer")
+active = true
+
+[node name="Scope" type="Node3D" parent="AKM"]
+script = ExtResource("4_uav1m")
+scope_strength = 2.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("5_q7x1e"),
+"akm": ExtResource("6_w4nrh"),
+"shotgun": ExtResource("7_bs841")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0

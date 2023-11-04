@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cjx7th4qqdgak"
+path="res://.godot/imported/boomstick.obj-28a2a81a49fdb316a683eda4f9433cbd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/boomstick.obj-28a2a81a49fdb316a683eda4f9433cbd.mesh"]
+
+source_file="res://models/weapons/boomstick.obj"
+dest_files=["res://.godot/imported/boomstick.obj-28a2a81a49fdb316a683eda4f9433cbd.mesh", "res://.godot/imported/boomstick.obj-28a2a81a49fdb316a683eda4f9433cbd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

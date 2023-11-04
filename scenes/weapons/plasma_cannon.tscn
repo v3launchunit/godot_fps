@@ -1,0 +1,120 @@
+[gd_scene load_steps=16 format=3 uid="uid://gabucpajtywv"]
+
+[ext_resource type="ArrayMesh" uid="uid://ceibhbi3vm1n0" path="res://models/weapons/plasma_cannon.obj" id="1_rqd6x"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon_alt_fire.gd" id="2_ehb67"]
+[ext_resource type="ArrayMesh" uid="uid://bq2ld7p1te64i" path="res://models/weapons/muzzle_flash_plasma.obj" id="3_8rdg8"]
+[ext_resource type="AnimationLibrary" uid="uid://c3tiox0a0fs23" path="res://scenes/weapons/plasma_cannon_anims.res" id="4_bijp4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6fv8"]
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
+metallic = 1.0
+roughness = 0.25
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvsw5"]
+shading_mode = 0
+albedo_color = Color(0.501961, 0, 1, 1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bxab6"]
+animation = &"plasma_cannon_anims/plasma_cannon_fire_alt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f5jmi"]
+animation = &"plasma_cannon_anims/plasma_cannon_deploy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1kkqo"]
+animation = &"plasma_cannon_anims/plasma_cannon_fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wfswt"]
+animation = &"plasma_cannon_anims/plasma_cannon_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m2fko"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vjpgy"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k0cjf"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_up5bw"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cf4wg"]
+states/alt_firing/node = SubResource("AnimationNodeAnimation_bxab6")
+states/alt_firing/position = Vector2(682.667, 217.144)
+states/deploy/node = SubResource("AnimationNodeAnimation_f5jmi")
+states/deploy/position = Vector2(373.333, 95.9259)
+states/firing/node = SubResource("AnimationNodeAnimation_1kkqo")
+states/firing/position = Vector2(486.667, 216.815)
+states/idle/node = SubResource("AnimationNodeAnimation_wfswt")
+states/idle/position = Vector2(581.333, 96.4197)
+transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_m2fko"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_vjpgy"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_k0cjf"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_up5bw")]
+graph_offset = Vector2(4, 60)
+
+[node name="PlasmaCannon" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.35, -0.35)
+
+[node name="PlasmaCannon" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00238383, 0)
+material_override = SubResource("StandardMaterial3D_g6fv8")
+cast_shadow = 0
+mesh = ExtResource("1_rqd6x")
+script = ExtResource("2_ehb67")
+alt_bullet = "res://scenes/bullets/plasma_rocket.tscn"
+alt_ammo_type = "cells"
+alt_ammo_cost = 4
+category = 2
+index = 2
+bullet = "res://scenes/bullets/plasma_bullet.tscn"
+shot_cooldown = 0.1
+ammo_type = "cells"
+
+[node name="Spawner" type="Marker3D" parent="PlasmaCannon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.475)
+
+[node name="MuzzleFlash" type="MeshInstance3D" parent="PlasmaCannon/Spawner"]
+transform = Transform3D(1, -1.50996e-07, 1.50996e-07, -1.50996e-07, -1, -5.92923e-19, 1.50996e-07, -2.27991e-14, -1, -8.71226e-10, 0, 0.0250344)
+visible = false
+material_override = SubResource("StandardMaterial3D_tvsw5")
+cast_shadow = 0
+mesh = ExtResource("3_8rdg8")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="PlasmaCannon/Spawner/MuzzleFlash"]
+light_color = Color(0.501961, 0, 1, 1)
+light_energy = 0.0
+shadow_enabled = true
+omni_range = 10.0
+omni_shadow_mode = 0
+
+[node name="AltSpawner" type="Marker3D" parent="PlasmaCannon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.475)
+
+[node name="MuzzleFlash" type="MeshInstance3D" parent="PlasmaCannon/AltSpawner"]
+transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, -9.31736e-20, -1.50996e-07, -2.27996e-14, -1, -8.71226e-10, 0, 0.0250344)
+visible = false
+material_override = SubResource("StandardMaterial3D_tvsw5")
+cast_shadow = 0
+mesh = ExtResource("3_8rdg8")
+skeleton = NodePath("../../Spawner")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="PlasmaCannon/AltSpawner/MuzzleFlash"]
+light_color = Color(0.501961, 0, 1, 1)
+light_energy = 0.0
+shadow_enabled = true
+omni_range = 10.0
+omni_shadow_mode = 0
+
+[node name="AnimationTree" type="AnimationTree" parent="PlasmaCannon"]
+tree_root = SubResource("AnimationNodeStateMachine_cf4wg")
+anim_player = NodePath("../../AnimationPlayer")
+active = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"plasma_cannon_anims": ExtResource("4_bijp4")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

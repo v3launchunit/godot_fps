@@ -1,0 +1,88 @@
+
+Weapons
+	Slot 1: Melee
+		Axe
+			Primary: Swing
+		Syringe
+			Primary: Stab
+			Secondary: Heal
+	
+	Slot 2: Shotguns
+		Shotgun
+			Primary: Shot
+			Secondary: Grenade
+		Boomstick
+			Primary: Super Shot
+			Secondary: Sawblade Launcher
+	
+	Slot 3: Automatics
+		AKM
+			Primary: Spray
+			Secondary: Sights
+		Nailgun
+			Primary: Nails
+			Secondary: Detonate
+		Plasma Cannon
+			Primary: Plasma Bullets
+			Secondary: Plasma Rockets
+	
+	Slot 4: Snipers
+		Big Iron
+			Primary: Big Shot
+			Secondary: Scope
+		Crossbow
+			Primary: Electric Beam
+			Secondary: Charge Beam
+	
+	Slot 5: Explosives
+		RPG
+			Primary: Guided Missile
+			Secondary: Lock On
+
+Enemies
+	Locals
+		Infight with: Locals, Guards, Machines
+		
+		Canary
+			Tough
+			Slow
+			Dumb
+			Melee only (pickaxe)
+			Undead miners
+		
+	
+	Guards
+		Infight with: Locals, Guards
+		
+		Hound
+			Weak
+			Fast
+			Melee Only (lunge, jaws)
+		
+		Hell Hound
+			Weak
+			Fast
+			Alert nearby Hell Hounds upon spotting player
+			Melee Only (lunge, jaws)
+		
+		Pinkerton
+			Weak
+			Medium
+			Ranged (shotgun)
+		
+		Enforcer
+			Tough
+			Medium
+			Has a shield
+			
+		
+		
+	
+	Machines
+		Infight with: Locals
+		
+		Camera
+			Stationary
+			Aggros all connected enemies upon spotting player
+			Alerts all connected enemies upon death
+		

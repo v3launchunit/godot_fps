@@ -1,0 +1,217 @@
+[gd_scene load_steps=19 format=3 uid="uid://bfxuay7qxu7lj"]
+
+[ext_resource type="ArrayMesh" uid="uid://vfuqffuqwocv" path="res://models/weapons/big_iron.obj" id="1_ampqd"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon_base.gd" id="2_o12ys"]
+[ext_resource type="ArrayMesh" uid="uid://bblg4t73miejx" path="res://models/weapons/muzzle_flash_alt.obj" id="3_7l0wc"]
+[ext_resource type="Script" path="res://scripts/weapons/scope.gd" id="4_p5y4d"]
+[ext_resource type="AudioStream" uid="uid://cfhhlt7csg7u7" path="res://sounds/weapons/firing/shotgun_fire.wav" id="5_esomu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bhoy"]
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
+metallic = 1.0
+roughness = 0.25
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ury1m"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_32yj2"]
+animation = &"big_iron_deploy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_th2b6"]
+animation = &"big_iron_fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3yhfp"]
+animation = &"big_iron_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g8bpy"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xcnjc"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_owka3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_75ikx"]
+states/deploy/node = SubResource("AnimationNodeAnimation_32yj2")
+states/deploy/position = Vector2(382.815, 174)
+states/firing/node = SubResource("AnimationNodeAnimation_th2b6")
+states/firing/position = Vector2(545.333, 100.222)
+states/idle/node = SubResource("AnimationNodeAnimation_3yhfp")
+states/idle/position = Vector2(383.259, 100.667)
+transitions = ["deploy", "idle", SubResource("AnimationNodeStateMachineTransition_g8bpy"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_xcnjc"), "Start", "deploy", SubResource("AnimationNodeStateMachineTransition_owka3")]
+graph_offset = Vector2(-8, 39)
+
+[sub_resource type="Animation" id="Animation_y0xky"]
+resource_name = "big_iron_deploy"
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BigIron")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.35, -0.25, 0, 0.8, 1, 0.35, 0.25, 0, 1, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BigIron")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 1, 0, 0, 0, 0.15, 1, 0.707107, 0, 0, 0.707107, 0.3, 1, 0, 0, 0, 1, 0.45, 1, -0.707, 0, 0, 0.707, 0.6, 1, 1, 0, 0, 0, 0.8, 1, 0.707, 0, 0, 0.707, 0.95, 1, -0.087, 0, 0, 0.996, 1, 1, 0, 0, 0, 1)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spawner/MuzzleFlash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7x05r"]
+resource_name = "big_iron_fire"
+length = 1.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BigIron/Spawner/MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "scale_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BigIron/Spawner/MuzzleFlash")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.05, 1, 3, 3, 3, 0.2, 1, 0, 0, 0)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../BigIron/Spawner/MuzzleFlash/OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../BigIron")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.05, 1, 0, 0, -0.25, 0.25, 1, 0, 0, 0, 0.4, 1, 0.25, 0, 0, 0.95, 1, 0.25, 0, 0, 1.1, 1, 0, 0, 0)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../BigIron")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.05, 1, -0.131, 0, 0, 0.991, 0.25, 1, 0, 0, 0, 1, 0.4, 1, 0.707, 0, 0, 0.707, 0.55, 1, 1, 0, 0, 0, 0.7, 1, -0.707, 0, 0, 0.707, 0.85, 1, 0.131, 0, 0, 0.991, 1.1, 1, 0, 0, 0, 1)
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_esomu")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
+
+[sub_resource type="Animation" id="Animation_3l6t5"]
+resource_name = "big_iron_idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BigIron")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, 0.01, 0, 2, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BigIron")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c7bdy"]
+_data = {
+"big_iron_deploy": SubResource("Animation_y0xky"),
+"big_iron_fire": SubResource("Animation_7x05r"),
+"big_iron_idle": SubResource("Animation_3l6t5")
+}
+
+[node name="BigIron" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.5, -0.35)
+
+[node name="BigIron" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62568e-07, 0)
+material_override = SubResource("StandardMaterial3D_2bhoy")
+cast_shadow = 0
+mesh = ExtResource("1_ampqd")
+script = ExtResource("2_o12ys")
+category = 3
+bullet = "res://scenes/bullets/big_iron_bullet.tscn"
+shot_cooldown = 1.25
+ammo_type = "big_iron_bullets"
+
+[node name="Spawner" type="Marker3D" parent="BigIron"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0774074, 1.65)
+
+[node name="MuzzleFlash" type="MeshInstance3D" parent="BigIron/Spawner"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 4.23193e-06, -0.000249945, 0.000486732)
+visible = false
+cast_shadow = 0
+mesh = ExtResource("3_7l0wc")
+surface_material_override/0 = SubResource("StandardMaterial3D_ury1m")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="BigIron/Spawner/MuzzleFlash"]
+light_color = Color(1, 1, 0, 1)
+light_energy = 0.0
+shadow_enabled = true
+omni_range = 10.0
+omni_shadow_mode = 0
+
+[node name="AnimationTree" type="AnimationTree" parent="BigIron"]
+tree_root = SubResource("AnimationNodeStateMachine_75ikx")
+anim_player = NodePath("../../AnimationPlayer")
+active = true
+
+[node name="Scope" type="Node3D" parent="BigIron"]
+script = ExtResource("4_p5y4d")
+scope_strength = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../BigIron")
+libraries = {
+"": SubResource("AnimationLibrary_c7bdy")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

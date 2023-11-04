@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bynbdpv50o6q2"]
+
+[ext_resource type="Texture2D" uid="uid://bs7borhko72ul" path="res://textures/objects/crate/crate_normals.png" id="1_3va2u"]
+[ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="2_xsa72"]
+
+[sub_resource type="Gradient" id="Gradient_qqwon"]
+offsets = PackedFloat32Array(0.9, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qlv50"]
+gradient = SubResource("Gradient_qqwon")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ss8t6"]
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 0.5, 0.5)
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angle_min = -720.0
+angle_max = 720.0
+color_ramp = SubResource("GradientTexture1D_qlv50")
+collision_mode = 1
+collision_friction = 0.5
+collision_bounce = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1j6xd"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.341176, 0.207843, 0.0784314, 1)
+roughness = 0.75
+normal_texture = ExtResource("1_3va2u")
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_orj6w"]
+material = SubResource("StandardMaterial3D_1j6xd")
+size = Vector3(0.125, 1, 0.25)
+
+[node name="WoodShards" type="GPUParticles3D"]
+lifetime = 15.0
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.25
+process_material = SubResource("ParticleProcessMaterial_ss8t6")
+draw_pass_1 = SubResource("BoxMesh_orj6w")
+script = ExtResource("2_xsa72")
+lifetime = 15.0

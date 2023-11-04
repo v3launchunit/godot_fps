@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cgahp1theduxt"
+path="res://.godot/imported/pump_shotgun.obj-f085de4be5d1c20a6540195add2baaba.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pump_shotgun.obj-f085de4be5d1c20a6540195add2baaba.mesh"]
+
+source_file="res://models/weapons/pump_shotgun.obj"
+dest_files=["res://.godot/imported/pump_shotgun.obj-f085de4be5d1c20a6540195add2baaba.mesh", "res://.godot/imported/pump_shotgun.obj-f085de4be5d1c20a6540195add2baaba.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

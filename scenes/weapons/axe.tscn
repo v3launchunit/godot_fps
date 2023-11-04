@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=3 uid="uid://bjpo451a0eupa"]
+
+[ext_resource type="ArrayMesh" uid="uid://cdgo2jvrkn5bc" path="res://models/weapons/axe.obj" id="1_sq7xt"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon_base.gd" id="2_jn0d0"]
+[ext_resource type="AnimationLibrary" uid="uid://b7bfeeqv2plqj" path="res://scenes/weapons/axe_anims.res" id="3_t18wh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsrvi"]
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
+metallic = 1.0
+roughness = 0.25
+texture_filter = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ikk8f"]
+animation = &"axe_anims/axe_deploy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a63jw"]
+animation = &"axe_anims/axe_swing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r3rf8"]
+animation = &"axe_anims/axe_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mfm4b"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3p3cv"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h2iuc"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_o311l"]
+states/deploy/node = SubResource("AnimationNodeAnimation_ikk8f")
+states/deploy/position = Vector2(356.333, 100.444)
+states/firing/node = SubResource("AnimationNodeAnimation_a63jw")
+states/firing/position = Vector2(471.444, 198.667)
+states/idle/node = SubResource("AnimationNodeAnimation_r3rf8")
+states/idle/position = Vector2(472.333, 100)
+transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_mfm4b"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_3p3cv"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_h2iuc")]
+graph_offset = Vector2(-136, 58)
+
+[node name="Axe" type="Node3D"]
+
+[node name="Axe" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.499978, -0.866038, 0, 0.866038, 0.499978, 0, 0, 0, 1, 0, 0.0066539, 0)
+cast_shadow = 0
+mesh = ExtResource("1_sq7xt")
+surface_material_override/0 = SubResource("StandardMaterial3D_nsrvi")
+script = ExtResource("2_jn0d0")
+bullet = "res://scenes/bullets/melee_scan.tscn"
+
+[node name="Spawner" type="Marker3D" parent="Axe"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="Axe"]
+tree_root = SubResource("AnimationNodeStateMachine_o311l")
+anim_player = NodePath("../../AnimationPlayer")
+active = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Axe/AnimationTree")
+libraries = {
+"axe_anims": ExtResource("3_t18wh")
+}
