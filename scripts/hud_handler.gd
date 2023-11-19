@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	health_counter.text = "%s/%s%%" % [ceili(status.armor), ceili(status.health)]
 	if status.health < 50:
 		blood_rect.visible = true
-		blood_rect.modulate.a = 1 - (status.health / 50)
+		blood_rect.modulate.a = clamp(1 - (status.health / 50), 0, 2)
 	else:
 		blood_rect.visible = false
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://gabucpajtywv"]
+[gd_scene load_steps=23 format=3 uid="uid://gabucpajtywv"]
 
 [ext_resource type="ArrayMesh" uid="uid://ceibhbi3vm1n0" path="res://models/weapons/plasma_cannon.obj" id="1_rqd6x"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_alt_fire.gd" id="2_ehb67"]
@@ -6,14 +6,38 @@
 [ext_resource type="AnimationLibrary" uid="uid://c3tiox0a0fs23" path="res://scenes/weapons/plasma_cannon_anims.res" id="4_bijp4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6fv8"]
-albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
 metallic = 1.0
 roughness = 0.25
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvsw5"]
 shading_mode = 0
-albedo_color = Color(0.501961, 0, 1, 1)
+albedo_color = Color(1, 0, 2, 1)
+
+[sub_resource type="Gradient" id="Gradient_fenrg"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v15st"]
+gradient = SubResource("Gradient_fenrg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s4w8t"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(0, 0, 1)
+gravity = Vector3(0, 0.25, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.5
+color_ramp = SubResource("GradientTexture1D_v15st")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8q8yo"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pde2p"]
+material = SubResource("StandardMaterial3D_8q8yo")
+size = Vector3(0.063, 0.063, 0.063)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bxab6"]
 animation = &"plasma_cannon_anims/plasma_cannon_fire_alt"
@@ -54,11 +78,20 @@ states/idle/position = Vector2(581.333, 96.4197)
 transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_m2fko"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_vjpgy"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_k0cjf"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_up5bw")]
 graph_offset = Vector2(4, 60)
 
+[sub_resource type="Animation" id="Animation_2r1p7"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2hect"]
+_data = {
+"RESET": SubResource("Animation_2r1p7")
+}
+
 [node name="PlasmaCannon" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.35, -0.35)
 
 [node name="PlasmaCannon" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00238383, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00120491, 0)
+layers = 2
 material_override = SubResource("StandardMaterial3D_g6fv8")
 cast_shadow = 0
 mesh = ExtResource("1_rqd6x")
@@ -76,32 +109,40 @@ ammo_type = "cells"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.475)
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="PlasmaCannon/Spawner"]
-transform = Transform3D(1, -1.50996e-07, 1.50996e-07, -1.50996e-07, -1, -5.92923e-19, 1.50996e-07, -2.27991e-14, -1, -8.71226e-10, 0, 0.0250344)
+transform = Transform3D(1, -1.50996e-07, 1.50996e-07, -1.50996e-07, -1, -9.92723e-19, 1.50996e-07, -2.27987e-14, -1, -8.71226e-10, 0, 0.0250344)
 visible = false
+layers = 2
 material_override = SubResource("StandardMaterial3D_tvsw5")
 cast_shadow = 0
 mesh = ExtResource("3_8rdg8")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="PlasmaCannon/Spawner/MuzzleFlash"]
-light_color = Color(0.501961, 0, 1, 1)
+light_color = Color(1, 0, 2, 1)
 light_energy = 0.0
 shadow_enabled = true
 omni_range = 10.0
 omni_shadow_mode = 0
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="PlasmaCannon/Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.025)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_s4w8t")
+draw_pass_1 = SubResource("BoxMesh_pde2p")
+
 [node name="AltSpawner" type="Marker3D" parent="PlasmaCannon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.475)
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="PlasmaCannon/AltSpawner"]
-transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, -9.31736e-20, -1.50996e-07, -2.27996e-14, -1, -8.71226e-10, 0, 0.0250344)
+transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, -4.92973e-19, -1.50996e-07, -2.27992e-14, -1, -8.71226e-10, 0, 0.0250344)
 visible = false
+layers = 2
 material_override = SubResource("StandardMaterial3D_tvsw5")
 cast_shadow = 0
 mesh = ExtResource("3_8rdg8")
 skeleton = NodePath("../../Spawner")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="PlasmaCannon/AltSpawner/MuzzleFlash"]
-light_color = Color(0.501961, 0, 1, 1)
+light_color = Color(1, 0, 2, 1)
 light_energy = 0.0
 shadow_enabled = true
 omni_range = 10.0
@@ -114,6 +155,7 @@ active = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
+"": SubResource("AnimationLibrary_2hect"),
 "plasma_cannon_anims": ExtResource("4_bijp4")
 }
 

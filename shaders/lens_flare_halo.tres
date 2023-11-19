@@ -1,0 +1,53 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://dyecxfl8r46aq"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_asp1w"]
+parameter_name = "BaseColor"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeVectorDistance" id="VisualShaderNodeVectorDistance_482o2"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_8pi5o"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_s42v1"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform vec4 BaseColor : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+
+void fragment() {
+// ColorParameter:2
+	vec4 n_out2p0 = BaseColor;
+
+
+// Input:4
+	vec3 n_out4p0 = VERTEX;
+
+
+// Distance:3
+	vec2 n_in3p0 = vec2(0.00000, 0.00000);
+	float n_out3p0 = distance(n_in3p0, vec2(n_out4p0.xy));
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	ALPHA = n_out3p0;
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_asp1w")
+nodes/fragment/2/position = Vector2(20, 140)
+nodes/fragment/3/node = SubResource("VisualShaderNodeVectorDistance_482o2")
+nodes/fragment/3/position = Vector2(100, 280)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_8pi5o")
+nodes/fragment/4/position = Vector2(-140, 340)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_s42v1")
+nodes/fragment/6/position = Vector2(-100, 400)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 1, 4, 0, 3, 1)

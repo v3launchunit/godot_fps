@@ -1,9 +1,85 @@
-[gd_scene load_steps=16 format=3 uid="uid://bimc4ufk5hicg"]
+[gd_scene load_steps=36 format=3 uid="uid://bimc4ufk5hicg"]
 
 [ext_resource type="ArrayMesh" uid="uid://cgahp1theduxt" path="res://models/weapons/pump_shotgun.obj" id="1_ejui6"]
+[ext_resource type="Texture2D" uid="uid://crih0rgk10al6" path="res://textures/weapons/pump_shotgun/shotgun_detail_mask.png" id="2_1omhy"]
+[ext_resource type="Texture2D" uid="uid://bsnabwad52kba" path="res://textures/terrain/log/log_heights.png" id="2_nbiq6"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_alt_fire.gd" id="2_rkwad"]
+[ext_resource type="Texture2D" uid="uid://c2ubhgqhrxtiu" path="res://textures/weapons/pump_shotgun/shotgun_metallic.png" id="3_4s02n"]
 [ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_8b28n"]
+[ext_resource type="Texture2D" uid="uid://blae7355fr3lo" path="res://textures/weapons/pump_shotgun/shotgun_roughness.png" id="4_vaanv"]
 [ext_resource type="AnimationLibrary" uid="uid://byhlw1uu73dbf" path="res://scenes/weapons/shotgun_anims.res" id="5_eekxh"]
+[ext_resource type="Texture2D" uid="uid://dbnasmfycrfat" path="res://textures/objects/shotgun_shell/shotgun_shell.png" id="8_xoaa3"]
+[ext_resource type="Texture2D" uid="uid://cxhsqnpu78e2q" path="res://textures/objects/shotgun_shell/shotgun_shell_metallic.png" id="9_2ordl"]
+[ext_resource type="Texture2D" uid="uid://dao3wvs485yhb" path="res://textures/objects/shotgun_shell/shotgun_shell_roughness.png" id="10_iuq6n"]
+
+[sub_resource type="Gradient" id="Gradient_v5jf5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.7)
+colors = PackedColorArray(0.278431, 0.172549, 0.0470588, 1, 0.341176, 0.207843, 0.0784314, 1, 0.447059, 0.298039, 0.14902, 1, 0.415686, 0.313726, 0.145098, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q3vr3"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fagd6"]
+width = 48
+height = 192
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7duje"]
+width = 48
+height = 192
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3o3vs"]
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
+metallic = 1.0
+metallic_texture = ExtResource("3_4s02n")
+roughness_texture = ExtResource("4_vaanv")
+clearcoat_enabled = true
+clearcoat_roughness = 0.25
+clearcoat_texture = ExtResource("2_1omhy")
+detail_enabled = true
+detail_mask = ExtResource("2_1omhy")
+detail_albedo = SubResource("NoiseTexture2D_fagd6")
+detail_normal = SubResource("NoiseTexture2D_7duje")
+texture_filter = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ti8ho"]
+width = 128
+height = 128
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ifyxs"]
+width = 128
+height = 128
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2aqma"]
+albedo_texture = SubResource("NoiseTexture2D_ti8ho")
+roughness = 0.75
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_ifyxs")
+clearcoat_enabled = true
+clearcoat_roughness = 0.25
+heightmap_scale = 8.0
+heightmap_texture = ExtResource("2_nbiq6")
+uv1_scale = Vector3(0.25, 1, 0.25)
+uv1_world_triplanar = true
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6fv8"]
 albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
@@ -13,6 +89,29 @@ texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_823ln"]
 shading_mode = 0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_psgfd"]
+direction = Vector3(-1, 0, 0)
+spread = 30.0
+flatness = 1.0
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+scale_min = 0.5
+scale_max = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3bjd"]
+albedo_texture = ExtResource("8_xoaa3")
+metallic = 1.0
+metallic_texture = ExtResource("9_2ordl")
+roughness_texture = ExtResource("10_iuq6n")
+texture_filter = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ps8yr"]
+material = SubResource("StandardMaterial3D_h3bjd")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.175
+radial_segments = 6
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gw5kj"]
 animation = &"shotgun_anims/shotgun_alt_fire"
@@ -53,14 +152,73 @@ states/idle/position = Vector2(565.667, 95.4445)
 transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_b3vqj"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_5ju1q"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_e8rcd"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_004om")]
 graph_offset = Vector2(-100, -27)
 
+[sub_resource type="Animation" id="Animation_yqihf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PumpShotgun/AltSpawner/MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PumpShotgun/Spawner/MuzzleFlash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vx23l"]
+_data = {
+"RESET": SubResource("Animation_yqihf")
+}
+
 [node name="Shotgun" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.15, -0.25, -0.35)
 
 [node name="PumpShotgun" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00391465, 0)
-material_override = SubResource("StandardMaterial3D_g6fv8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0053777, 0)
+layers = 2
 cast_shadow = 0
 mesh = ExtResource("1_ejui6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3o3vs")
+surface_material_override/1 = SubResource("StandardMaterial3D_2aqma")
+surface_material_override/2 = SubResource("StandardMaterial3D_g6fv8")
 script = ExtResource("2_rkwad")
 alt_bullet = "res://scenes/bullets/grenade.tscn"
 alt_shot_cooldown = 1.25
@@ -78,6 +236,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10543e-15, 0.135, 0.65)
 [node name="MuzzleFlash" type="MeshInstance3D" parent="PumpShotgun/Spawner"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0.035)
 visible = false
+layers = 2
 cast_shadow = 0
 mesh = ExtResource("3_8b28n")
 surface_material_override/0 = SubResource("StandardMaterial3D_823ln")
@@ -94,6 +253,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.65)
 [node name="MuzzleFlash" type="MeshInstance3D" parent="PumpShotgun/AltSpawner"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -8.71226e-10, 0, 0.0250344)
 visible = false
+layers = 2
 cast_shadow = 0
 mesh = ExtResource("3_8b28n")
 skeleton = NodePath("../../Spawner")
@@ -105,6 +265,15 @@ shadow_enabled = true
 omni_range = 10.0
 omni_shadow_mode = 0
 
+[node name="ShellEject" type="GPUParticles3D" parent="PumpShotgun"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.125, 0)
+emitting = false
+amount = 5
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_psgfd")
+draw_pass_1 = SubResource("CylinderMesh_ps8yr")
+
 [node name="AnimationTree" type="AnimationTree" parent="PumpShotgun"]
 tree_root = SubResource("AnimationNodeStateMachine_pb0tv")
 anim_player = NodePath("../../AnimationPlayer")
@@ -112,6 +281,7 @@ active = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
+"": SubResource("AnimationLibrary_vx23l"),
 "shotgun_anims": ExtResource("5_eekxh")
 }
 

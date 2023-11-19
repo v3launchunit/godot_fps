@@ -1,8 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://du780rqis8eqo"]
+[gd_scene load_steps=26 format=3 uid="uid://du780rqis8eqo"]
 
 [ext_resource type="Script" path="res://scripts/pickups/weapon_pickup.gd" id="1_dciki"]
 [ext_resource type="AudioStream" uid="uid://dxscywpf2ven0" path="res://sounds/pickups/pickup_weapon.wav" id="2_1sh8p"]
 [ext_resource type="ArrayMesh" uid="uid://cjx7th4qqdgak" path="res://models/weapons/boomstick.obj" id="3_uposn"]
+[ext_resource type="Texture2D" uid="uid://bbbk8k7whvl1m" path="res://textures/weapons/boomstick/boomstick_detail_mask.png" id="4_lpgj7"]
+[ext_resource type="Texture2D" uid="uid://b84lximnqxpsk" path="res://textures/weapons/boomstick/boomstick_metallic.png" id="5_mfxo6"]
+[ext_resource type="Texture2D" uid="uid://bswjthncpsxna" path="res://textures/weapons/boomstick/boomstick_roughness.png" id="6_5ky6y"]
+[ext_resource type="Texture2D" uid="uid://ct1gr7br07rn4" path="res://textures/weapons/boomstick/boomstick_stock_detail_mask.png" id="7_hndj5"]
+[ext_resource type="Texture2D" uid="uid://whh5ds0hp7ug" path="res://textures/weapons/boomstick/boomstick_stock_metallic.png" id="8_l6wnu"]
+[ext_resource type="Texture2D" uid="uid://iboxykf07oin" path="res://textures/weapons/boomstick/boomstick_stock_roughness.png" id="9_p2moh"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uc2sx"]
 height = 1.0
@@ -36,10 +42,74 @@ distance_fade_mode = 1
 material = SubResource("StandardMaterial3D_hv0iq")
 size = Vector2(0.1, 0.1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f47pi"]
+[sub_resource type="Gradient" id="Gradient_v5jf5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.7)
+colors = PackedColorArray(0.278431, 0.172549, 0.0470588, 1, 0.341176, 0.207843, 0.0784314, 1, 0.447059, 0.298039, 0.14902, 1, 0.415686, 0.313726, 0.145098, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q3vr3"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ul6i2"]
+width = 128
+height = 192
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t2ny3"]
+width = 128
+height = 192
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhyyb"]
 albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
 metallic = 1.0
-roughness = 0.25
+metallic_texture = ExtResource("5_mfxo6")
+roughness_texture = ExtResource("6_5ky6y")
+clearcoat_enabled = true
+clearcoat_roughness = 0.25
+clearcoat_texture = ExtResource("4_lpgj7")
+detail_enabled = true
+detail_mask = ExtResource("4_lpgj7")
+detail_albedo = SubResource("NoiseTexture2D_ul6i2")
+detail_normal = SubResource("NoiseTexture2D_t2ny3")
+texture_filter = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vqneo"]
+width = 64
+height = 64
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rp7ad"]
+width = 64
+height = 64
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u14mp"]
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
+metallic = 1.0
+metallic_texture = ExtResource("8_l6wnu")
+roughness_texture = ExtResource("9_p2moh")
+clearcoat_enabled = true
+clearcoat_roughness = 0.25
+clearcoat_texture = ExtResource("7_hndj5")
+detail_enabled = true
+detail_mask = ExtResource("7_hndj5")
+detail_albedo = SubResource("NoiseTexture2D_vqneo")
+detail_normal = SubResource("NoiseTexture2D_rp7ad")
 texture_filter = 0
 
 [sub_resource type="Animation" id="Animation_wivti"]
@@ -91,8 +161,9 @@ mesh = SubResource("QuadMesh_e6p1o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(0.75, 1.11759e-08, 1.93572e-08, -4.44089e-16, 0.649519, -0.375, -2.23517e-08, 0.375, 0.649519, 0, 0.45, -0.3)
-material_override = SubResource("StandardMaterial3D_f47pi")
 mesh = ExtResource("3_uposn")
+surface_material_override/0 = SubResource("StandardMaterial3D_vhyyb")
+surface_material_override/1 = SubResource("StandardMaterial3D_u14mp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Area3D")

@@ -18,9 +18,9 @@ func _ready() -> void:
 			get_node(item).material = get_node(item).material.duplicate()
 		get_node(item).global_position = get_parent().global_position
 	
-	var particles: GPUParticles3D = find_child("GPUParticles3D")
-	particles.emitting = true
-	particles.global_position = get_parent().global_position
+#	var particles: GPUParticles3D = find_child("GPUParticles3D")
+#	particles.emitting = true
+#	particles.global_position = get_parent().global_position
 	
 	play("anim")
 

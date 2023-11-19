@@ -16,13 +16,13 @@ radial_segments = 6
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lktph"]
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.501961, 0, 1, 1)
+albedo_color = Color(1, 0, 2, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fr6x1"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.501961, 0, 1, 1)
+albedo_color = Color(1, 0, 2, 1)
 
 [sub_resource type="Gradient" id="Gradient_0qvjn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -61,7 +61,7 @@ transparency = 1
 blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.501961, 0, 1, 1)
+albedo_color = Color(1, 0, 2, 1)
 albedo_texture = SubResource("CompressedTexture2D_11nj7")
 billboard_mode = 1
 fixed_size = true
@@ -80,7 +80,7 @@ lock_rotation = true
 script = ExtResource("1_ynftt")
 speed = 50.0
 damage = 120.0
-explosion = "res://scenes/effects/explosion.tscn"
+explosion = "res://scenes/effects/plasma_explosion.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
@@ -116,6 +116,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qiosb")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_axjn6")
 autoplay = true
+bus = &"Combat"
 doppler_tracking = 2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

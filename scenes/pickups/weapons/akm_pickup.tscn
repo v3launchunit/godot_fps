@@ -1,8 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://lt47oncbceb2"]
+[gd_scene load_steps=21 format=3 uid="uid://lt47oncbceb2"]
 
 [ext_resource type="Script" path="res://scripts/pickups/weapon_pickup.gd" id="1_bxpsa"]
 [ext_resource type="AudioStream" uid="uid://dxscywpf2ven0" path="res://sounds/pickups/pickup_weapon.wav" id="2_dmkcn"]
 [ext_resource type="ArrayMesh" uid="uid://53jffpg6vhkj" path="res://models/weapons/akm.obj" id="2_l81mn"]
+[ext_resource type="Texture2D" uid="uid://broweqdhl5i4r" path="res://textures/weapons/akm/akm_detail_mask.png" id="4_txauj"]
+[ext_resource type="Texture2D" uid="uid://bav8pkl55om5n" path="res://textures/weapons/akm/akm_metallic.png" id="5_nmgn0"]
+[ext_resource type="Texture2D" uid="uid://dre07gr8t1lp2" path="res://textures/weapons/akm/akm_roughness.png" id="6_yvhjn"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uc2sx"]
 height = 1.0
@@ -35,6 +38,45 @@ distance_fade_mode = 1
 [sub_resource type="QuadMesh" id="QuadMesh_e6p1o"]
 material = SubResource("StandardMaterial3D_hv0iq")
 size = Vector2(0.1, 0.1)
+
+[sub_resource type="Gradient" id="Gradient_v5jf5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.7)
+colors = PackedColorArray(0.278431, 0.172549, 0.0470588, 1, 0.341176, 0.207843, 0.0784314, 1, 0.447059, 0.298039, 0.14902, 1, 0.415686, 0.313726, 0.145098, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q3vr3"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dyb1y"]
+width = 196
+height = 48
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dbe1r"]
+width = 196
+height = 48
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_opnw4"]
+albedo_color = Color(0.3, 0.3, 0.3, 1)
+metallic = 1.0
+metallic_texture = ExtResource("5_nmgn0")
+roughness_texture = ExtResource("6_yvhjn")
+clearcoat_enabled = true
+clearcoat_roughness = 0.25
+clearcoat_texture = ExtResource("4_txauj")
+detail_enabled = true
+detail_mask = ExtResource("4_txauj")
+detail_albedo = SubResource("NoiseTexture2D_dyb1y")
+detail_normal = SubResource("NoiseTexture2D_dbe1r")
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f47pi"]
 albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
@@ -91,8 +133,9 @@ mesh = SubResource("QuadMesh_e6p1o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(0.75, 1.11759e-08, 1.93572e-08, -4.44089e-16, 0.649519, -0.375, -2.23517e-08, 0.375, 0.649519, 0, 0.25, 0)
-material_override = SubResource("StandardMaterial3D_f47pi")
 mesh = ExtResource("2_l81mn")
+surface_material_override/0 = SubResource("StandardMaterial3D_opnw4")
+surface_material_override/1 = SubResource("StandardMaterial3D_f47pi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Area3D")

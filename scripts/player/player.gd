@@ -1,14 +1,18 @@
 class_name Player extends CharacterBody3D
 
 @export_category("Player")
-@export_range(1, 35, 1) var speed: float = 10 # m/s
-@export_range(10, 400, 1) var acceleration: float = 100 # m/s^2
-@export var knockback_drag: float = 10
+@export_range(0, 35, 0.1, "or_greater") var speed: float = 10 # m/s
+@export_range(0, 100, 0.1) var acceleration: float = 100 # m/s^2
+@export var max_speed := Vector3(100, 100, 100)
+@export_range(0, 100, 0.1) var knockback_drag: float = 10
 
-@export_range(0.1, 3.0, 0.1) var jump_height: float = 1 # m
+@export_range(0.1, 3.0, 0.1, "or_greater") var jump_height: float = 1
 @export_range(0.1, 10.0, 0.1, "or_greater") var camera_sens: float = 3
-@export_range(0.0, 15.0, 0.1) var roll_intensity: float = 3
-@export var roll_speed: float = 0.5
+@export_range(0.0, 15.0, 0.1, "or_greater") var roll_intensity: float = 3
+@export_range(0.0, 1.0) var roll_speed: float = 0.5
+@export var sway_speed: float = 5.0
+@export var sway_height: float = 0.3
+@export var jump_sway: float = 0.01
 
 var jumping: bool = false
 var mouse_captured: bool = false
@@ -25,8 +29,10 @@ var knockback_vel: Vector3 # Knockback velocity
 
 var camera_zoom_sens: float = 1.0
 var reorienting: bool = false
+var sway_timer: float = 0.0
 
 @onready var camera: Camera3D = $PlayerCam
+
 
 func _ready() -> void:
 	capture_mouse()
@@ -58,6 +64,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if mouse_captured: _handle_joypad_camera_rotation(delta)
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta) + _knockback(delta)
+	velocity.clamp(-max_speed, max_speed)
 	move_and_slide()
 
 
@@ -101,10 +108,26 @@ func apply_knockback(amount: Vector3) -> void:
 func _walk(delta: float) -> Vector3:
 	move_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
 	var _forward: Vector3 = transform.basis * Vector3(move_dir.x, 0, move_dir.y)
+	# Roll camera while strafing
 	camera.rotation.z = move_toward(camera.rotation.z, deg_to_rad(move_dir.x * -roll_intensity), 
 			delta * roll_speed)
 	var walk_dir: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
 	walk_vel = walk_vel.move_toward(walk_dir * speed * move_dir.length(), acceleration * delta)
+	
+	if move_dir.length() == 0:
+		sway_timer = PI/2
+	else:
+		sway_timer += delta
+	
+	# Handle camera & weapon sway/jump lag
+	camera.position = Vector3(move_dir.length() * sway_height * cos(sway_speed * \
+			sway_timer), 0.5 + (move_dir.length() * sway_height/3 * sin(2 * \
+			sway_speed * sway_timer)), 0) if is_on_floor() else Vector3(0, 0.5 - \
+			clampf((grav_vel.y + jump_vel.y) * jump_sway, -0.1, 0.1), 0)
+	# Manipulating the v_offset like this makes it look like the weapon is moving relative to the camera
+	camera.v_offset = move_dir.length() * -sway_height/6 * sin(10 * sway_timer) if \
+			is_on_floor() else clampf((grav_vel.y + jump_vel.y) * jump_sway, -0.1, 0.1)
+	
 	return walk_vel
 
 

@@ -1,88 +1,297 @@
 
-Weapons
-	Slot 1: Melee
-		Axe
+Weapons:
+	Slot 1 (Melee):
+		Axe:
 			Primary: Swing
-		Syringe
+		Syringe:
 			Primary: Stab
 			Secondary: Heal
 	
-	Slot 2: Shotguns
-		Shotgun
+	Slot 2 (Shotguns):
+		Shotgun:
 			Primary: Shot
 			Secondary: Grenade
-		Boomstick
+		Boomstick:
 			Primary: Super Shot
 			Secondary: Sawblade Launcher
 	
-	Slot 3: Automatics
-		AKM
+	Slot 3 (Automatics):
+		AKM:
 			Primary: Spray
 			Secondary: Sights
-		Nailgun
+		Nailgun:
 			Primary: Nails
 			Secondary: Detonate
-		Plasma Cannon
+		Plasma Cannon:
 			Primary: Plasma Bullets
 			Secondary: Plasma Rockets
 	
-	Slot 4: Snipers
-		Big Iron
+	Slot 4 (Snipers):
+		Big Iron:
 			Primary: Big Shot
 			Secondary: Scope
 		Crossbow
 			Primary: Electric Beam
 			Secondary: Charge Beam
 	
-	Slot 5: Explosives
-		RPG
+	Slot 5 (Explosives):
+		RPG:
 			Primary: Guided Missile
 			Secondary: Lock On
 
-Enemies
-	Locals
-		Infight with: Locals, Guards, Machines
+Enemies:
+	Locals:
+		Infight with: Locals, Military, Machines
 		
-		Canary
+		Canary:
 			Tough
 			Slow
 			Dumb
 			Melee only (pickaxe)
 			Undead miners
+			Voice Lines:
+				Detecting Player:
+					[various forlorn moans] *2
+					"Forsaken..." *1
+					"Help..." *1
+				Dying:
+					[various haunted moans] *3
+					"Release..." *1
+				Voice Effects:
+					Reverse
+					Flanger
+					[Scrapped fx]:
+						[Duplicate track]
+						[Pitch shift second track +8 semitones]
+						[Duplicate original track]
+						[Pitch shift third track +16 semitones]
+						[Offset third track slightly]
+						[Offset second track slightly more]
 		
+		[zombie]:
+			Weak
+			Slow
+			Ranged (fireball)
+			Melee (claws)
+			Voice Lines:
+				Detecting Player:
+					
+				Dying:
+					
+				Voice Effects:
+					
+		
+		Flux Beast:
+			Tough
+			Medium
+			Teleporter
+			Melee (teeth)
+		
+		Eyeball:
+			Weak
+			Fast
+			Flying
+			Ranged (fireball)
+		
+		Wraith:
+			Weak
+			Medium
+			Flying
+			Can turn intangible
+			Melee (claws)
+		
+		[name pending]:
+			Weak
+			Medium
+			Ranged (homing orbs)
 	
-	Guards
-		Infight with: Locals, Guards
+	
+	Military:
+		Infight with: Locals, Military
 		
-		Hound
+		Hound:
 			Weak
 			Fast
 			Melee Only (lunge, jaws)
 		
-		Hell Hound
+		Hell Hound:
 			Weak
 			Fast
 			Alert nearby Hell Hounds upon spotting player
 			Melee Only (lunge, jaws)
 		
-		Pinkerton
+		Pinkerton:
 			Weak
 			Medium
 			Ranged (shotgun)
+			Voice Lines:
+				Detecting Player:
+					"Halt!" *2
+					"Get her!" *2
+					"Stop her!" *1
+					"Kill her!" *3
+					"Intruder spotted." *1
+					"Tresspasser!" *3
+				Dying:
+					[pained grunt] *4
+				Vocal Effects:
+					Amplify (-25)
+					Amplify (+50)
+					Compressor
+					Filter Curve EQ (radio preset)
+					Vinyl (1930, lofi)
+					Amplify (-25)
+					Amplify (+50)
+					Bitcrush (4 bits/sample, crush only)
 		
-		Enforcer
+		Enforcer:
 			Tough
 			Medium
 			Has a shield
-			
+			Melee Only (baton)
+			Voice Lines:
+				Detecting Player:
+					"Stand Down!"
+					"Do not resist!"
+					"Remain silent!"
+					"Stop resisting!"
+				Dying:
+					[pained moan]
 		
+		Rocketeer:
+			Medium
+			Medium
+			Ranged (rockets)
+			Voice Lines:
+				Detecting Player:
+					"Enemy spotted."
+					"Target acquired."
+					"Intruder detected."
+				Dying:
+					"Man down!"
+					"Help!"
+					[various pained screams]
+				Vocal Effects:
+					Pitch (-12.5%)
+					Compression
+					Filter Curve EQ (radio preset)
+					Vinyl (1930, lofi)
 		
+		Flux Trooper:
+			Medium
+			Fast
+			Teleporter
+			Ranged (plasma cannon)
+			Voice Lines:
+				Detecting Player:
+					
+				Dying:
+					
+				Vocal Effects:
+					
+		
+		Hammer:
+			Medium
+			Fast
+			Ranged (akm)
+			Melee (hammer)
+			Voice Lines:
+				Detecting Player:
+					"Vermin!"
+					"Filth!"
+					"Scum!"
+					"Maggot!"
+					[evil laughter]
+					[evil growl]
+				Dying:
+					"Damn you!"
+					"How--"
+					[pained scream]
 	
-	Machines
+	
+	Machines:
 		Infight with: Locals
 		
-		Camera
+		Camera:
 			Stationary
 			Aggros all connected enemies upon spotting player
 			Alerts all connected enemies upon death
 		
+		Survey Drone:
+			Aggros all connected enemies upon spotting player
+			Alerts all connected enemies upon death
+		
+		Plasma Droid:
+			Tough
+			Slow
+			Ranged (Plasma Cannon: 4 round burst; 1 round secondary)
+		
+		Crossbow Drone:
+			Tough
+			Medium
+			Ranged (Crossbow Blast)
+			Deploys third leg when aiming
+
+Level Concepts:
+	Abandoned/overrun mining town ("16 Tons")
+	Network of bridges spanning a chasm
+
+Campaign:
+	E1:
+		E1M1 ("In the Flesh?"):
+		E1M2 ("The Color out of Space"):
+		E1M3 (""):
+		E1M4 (""):
+		E1M5 (""):
+		E1M6 (""):
+		E1M7 (""):
+		E1M8 (""):
+		E1M9 (""):
+		E1M10 (""):
+		E1S1 ("Doomed from the Start"):
+			Recreation of DOOM's E1M1.
+	
+	E2:
+		E2M1 (""):
+		E2M2 (""):
+		E2M3 (""):
+		E2M4 (""):
+		E2M5 (""):
+		E2M6 (""):
+		E2M7 (""):
+		E2M8 (""):
+		E2M9 (""):
+		E2M10 ("Whalefall"):
+		E2S1 ("The Derelict"):
+	
+	E3:
+		E3M1 (""):
+		E3M2 (""):
+		E3M3 (""):
+		E3M4 (""):
+		E3M5 (""):
+		E3M6 (""):
+		E3M7 (""):
+		E3M8 (""):
+		E3M9 (""):
+		E3M10 ("The Grapes of Wrath"):
+		E3S1 ("One Hell of a Time"):
+			Recreation of 1-1 from ULTRAKILL.
+	
+	E4:
+		E4M1 ("In the Flesh"):
+		E4M2 ("Silent Spring"):
+		E4M3 (""):
+		E4M4 (""):
+		E4M5 (""):
+		E4M6 (""):
+		E4M7 (""):
+		E4M8 (""):
+		E4M9 (""):
+			Make your final approach towards THE MACHINE.
+		E4M10 ("WELCOME"):
+			Destroy THE MACHINE from within.
+		E4S1 ("Echoes"):
+			Obscenely long slaughter level.
+
+

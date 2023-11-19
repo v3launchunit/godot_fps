@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://blrtnnu61g5s"]
+[gd_scene load_steps=12 format=3 uid="uid://blrtnnu61g5s"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_5litf"]
 [ext_resource type="ArrayMesh" uid="uid://cqf6v4gaperkn" path="res://models/bullets/bullet.obj" id="2_afg0c"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="3_o658m"]
+[ext_resource type="AudioStream" uid="uid://crtqyq64m3wm1" path="res://sounds/ambient/bullet_ambient.wav" id="4_0y1a2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h48e4"]
 size = Vector3(0.05, 0.05, 0.5)
@@ -54,6 +55,7 @@ lock_rotation = true
 script = ExtResource("1_5litf")
 speed = -25.0
 explosion = "res://scenes/effects/bullet_impact_yellow.tscn"
+knockback_force = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
@@ -73,6 +75,14 @@ amount = 25
 process_material = SubResource("ParticleProcessMaterial_0vas0")
 draw_pass_1 = SubResource("BoxMesh_wwmxc")
 script = ExtResource("3_o658m")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_0y1a2")
+pitch_scale = 1.5
+autoplay = true
+max_distance = 50.0
+bus = &"Combat"
+doppler_tracking = 2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="GPUParticles3D" method="_on_bullet_body_entered"]

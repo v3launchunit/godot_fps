@@ -33,7 +33,7 @@ func _ready():
 
 func damage(amount: float) -> float:
 	health -= amount
-#	print(health)
+	print(health)
 	if health <= -gib_threshold:
 		if not is_dead:
 			kill()
@@ -50,7 +50,7 @@ func damage(amount: float) -> float:
 		return 0 # corpses cannot stop piercers
 	if health <= 0:
 		kill()
-		return amount + health # health will be negative
+		return min(amount + health, 0) # health will be negative
 	injured.emit()
 	return amount # return value is amount of damage recieved, for piercers
 

@@ -172,7 +172,8 @@ _data = {
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.5, -0.35)
 
 [node name="BigIron" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62568e-07, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0008313, 0)
+layers = 2
 material_override = SubResource("StandardMaterial3D_2bhoy")
 cast_shadow = 0
 mesh = ExtResource("1_ampqd")
@@ -188,6 +189,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0774074, 1.65)
 [node name="MuzzleFlash" type="MeshInstance3D" parent="BigIron/Spawner"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 4.23193e-06, -0.000249945, 0.000486732)
 visible = false
+layers = 2
 cast_shadow = 0
 mesh = ExtResource("3_7l0wc")
 surface_material_override/0 = SubResource("StandardMaterial3D_ury1m")

@@ -1,13 +1,46 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjpo451a0eupa"]
+[gd_scene load_steps=19 format=3 uid="uid://bjpo451a0eupa"]
 
 [ext_resource type="ArrayMesh" uid="uid://cdgo2jvrkn5bc" path="res://models/weapons/axe.obj" id="1_sq7xt"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_base.gd" id="2_jn0d0"]
+[ext_resource type="Texture2D" uid="uid://ccv4wnujh6dk" path="res://textures/weapons/axe/axe_detail_mask.png" id="2_yqvpt"]
+[ext_resource type="Texture2D" uid="uid://c3shivoy5d35f" path="res://textures/weapons/axe/axe_metallic.png" id="3_5xb37"]
 [ext_resource type="AnimationLibrary" uid="uid://b7bfeeqv2plqj" path="res://scenes/weapons/axe_anims.res" id="3_t18wh"]
+[ext_resource type="Texture2D" uid="uid://bxx7weftifjpm" path="res://textures/weapons/axe/axe_roughness.png" id="4_bycow"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsrvi"]
+[sub_resource type="Gradient" id="Gradient_v5jf5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.7)
+colors = PackedColorArray(0.278431, 0.172549, 0.0470588, 1, 0.341176, 0.207843, 0.0784314, 1, 0.447059, 0.298039, 0.14902, 1, 0.415686, 0.313726, 0.145098, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q3vr3"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tpyvc"]
+width = 64
+height = 64
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eu08m"]
+width = 64
+height = 64
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 4.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ndtl"]
 albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
 metallic = 1.0
-roughness = 0.25
+metallic_texture = ExtResource("3_5xb37")
+roughness_texture = ExtResource("4_bycow")
+detail_enabled = true
+detail_mask = ExtResource("2_yqvpt")
+detail_albedo = SubResource("NoiseTexture2D_tpyvc")
+detail_normal = SubResource("NoiseTexture2D_eu08m")
 texture_filter = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ikk8f"]
@@ -43,12 +76,14 @@ graph_offset = Vector2(-136, 58)
 [node name="Axe" type="Node3D"]
 
 [node name="Axe" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.499978, -0.866038, 0, 0.866038, 0.499978, 0, 0, 0, 1, 0, 0.0066539, 0)
+transform = Transform3D(0.499978, -0.866038, 0, 0.866038, 0.499978, 0, 0, 0, 1, 0, 0.000559849, 0)
+layers = 2
 cast_shadow = 0
 mesh = ExtResource("1_sq7xt")
-surface_material_override/0 = SubResource("StandardMaterial3D_nsrvi")
+surface_material_override/0 = SubResource("StandardMaterial3D_3ndtl")
 script = ExtResource("2_jn0d0")
 bullet = "res://scenes/bullets/melee_scan.tscn"
+shot_cooldown = 0.75
 
 [node name="Spawner" type="Marker3D" parent="Axe"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

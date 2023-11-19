@@ -30,6 +30,10 @@ project/assembly_name="VolumetricsTest"
 
 enabled=PackedStringArray("res://addons/qodot/plugin.cfg")
 
+[gui]
+
+theme/default_font_antialiasing=0
+
 [input]
 
 move_left={
@@ -181,4 +185,8 @@ debug_give_max_ammo={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+anti_aliasing/screen_space_roughness_limiter/enabled=false
 scaling_3d/fsr_sharpness=0.2
+textures/decals/filter=0
+textures/light_projectors/filter=0
+environment/glow/upscale_mode=0

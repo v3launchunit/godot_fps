@@ -15,6 +15,7 @@ class_name WeaponManager extends Camera3D
 var fov_desired
 
 @onready var ammo_amounts: Dictionary = ammo_types.duplicate() # Created right before _ready
+#@onready var gun_cam: Camera3D = find_child("GunCam")
 
 signal switched_weapons(category: int, index: int)
 
@@ -22,6 +23,8 @@ signal switched_weapons(category: int, index: int)
 func _ready():
 	for key in ammo_amounts:
 		ammo_amounts[key] = 0
+	
+	ammo_amounts["shells"] = 15
 	
 #	weapons[current_weapon].deploy
 #	switched_weapons.connect(find_child("HUD")._on_player_cam_switched_weapons)
@@ -31,6 +34,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+#	gun_cam.global_transform = global_transform
+	
 	if Input.is_action_just_pressed("next_weapon"):
 		_next_weapon()
 	if Input.is_action_just_pressed("previous_weapon"):

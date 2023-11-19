@@ -1,14 +1,84 @@
-[gd_scene load_steps=17 format=3 uid="uid://crvf6qiekfqex"]
+[gd_scene load_steps=30 format=3 uid="uid://crvf6qiekfqex"]
 
 [ext_resource type="ArrayMesh" uid="uid://cjx7th4qqdgak" path="res://models/weapons/boomstick.obj" id="1_7e58d"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_alt_fire.gd" id="2_nf3wy"]
 [ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_ac8cs"]
+[ext_resource type="Texture2D" uid="uid://b84lximnqxpsk" path="res://textures/weapons/boomstick/boomstick_metallic.png" id="3_d1ne8"]
+[ext_resource type="Texture2D" uid="uid://bbbk8k7whvl1m" path="res://textures/weapons/boomstick/boomstick_detail_mask.png" id="3_gtom8"]
 [ext_resource type="AnimationLibrary" uid="uid://d0670lbytf8uc" path="res://scenes/weapons/boomstick_anims.res" id="4_a2xtk"]
+[ext_resource type="Texture2D" uid="uid://bswjthncpsxna" path="res://textures/weapons/boomstick/boomstick_roughness.png" id="4_vilpv"]
+[ext_resource type="Texture2D" uid="uid://ct1gr7br07rn4" path="res://textures/weapons/boomstick/boomstick_stock_detail_mask.png" id="5_e71qv"]
+[ext_resource type="Texture2D" uid="uid://whh5ds0hp7ug" path="res://textures/weapons/boomstick/boomstick_stock_metallic.png" id="6_sagf4"]
+[ext_resource type="Texture2D" uid="uid://iboxykf07oin" path="res://textures/weapons/boomstick/boomstick_stock_roughness.png" id="7_q40ik"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_astgw"]
+[sub_resource type="Gradient" id="Gradient_v5jf5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.7)
+colors = PackedColorArray(0.278431, 0.172549, 0.0470588, 1, 0.341176, 0.207843, 0.0784314, 1, 0.447059, 0.298039, 0.14902, 1, 0.415686, 0.313726, 0.145098, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q3vr3"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fagd6"]
+width = 48
+height = 192
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7duje"]
+width = 48
+height = 192
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jc54w"]
 albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
 metallic = 1.0
-roughness = 0.25
+metallic_texture = ExtResource("3_d1ne8")
+roughness_texture = ExtResource("4_vilpv")
+clearcoat_enabled = true
+clearcoat_roughness = 0.25
+clearcoat_texture = ExtResource("3_gtom8")
+detail_enabled = true
+detail_mask = ExtResource("3_gtom8")
+detail_albedo = SubResource("NoiseTexture2D_fagd6")
+detail_normal = SubResource("NoiseTexture2D_7duje")
+texture_filter = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vqneo"]
+width = 64
+height = 64
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rp7ad"]
+width = 64
+height = 64
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kqga"]
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
+metallic = 1.0
+metallic_texture = ExtResource("6_sagf4")
+roughness_texture = ExtResource("7_q40ik")
+clearcoat_enabled = true
+clearcoat_roughness = 0.25
+clearcoat_texture = ExtResource("5_e71qv")
+detail_enabled = true
+detail_mask = ExtResource("5_e71qv")
+detail_albedo = SubResource("NoiseTexture2D_vqneo")
+detail_normal = SubResource("NoiseTexture2D_rp7ad")
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mrnkp"]
@@ -62,10 +132,12 @@ graph_offset = Vector2(-104, 71)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.35, 0)
 
 [node name="Boomstick" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00747909, 0)
-material_override = SubResource("StandardMaterial3D_astgw")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00484874, 0)
+layers = 2
 cast_shadow = 0
 mesh = ExtResource("1_7e58d")
+surface_material_override/0 = SubResource("StandardMaterial3D_jc54w")
+surface_material_override/1 = SubResource("StandardMaterial3D_5kqga")
 script = ExtResource("2_nf3wy")
 alt_bullet = "res://scenes/bullets/hitscan_bullet.tscn"
 alt_shot_cooldown = 2.0
@@ -89,6 +161,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 [node name="MuzzleFlashL" type="MeshInstance3D" parent="Boomstick/Spawner"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.05, 0, 0)
 visible = false
+layers = 2
 cast_shadow = 0
 mesh = ExtResource("3_ac8cs")
 skeleton = NodePath("../../..")
@@ -104,6 +177,7 @@ omni_shadow_mode = 0
 [node name="MuzzleFlashR" type="MeshInstance3D" parent="Boomstick/Spawner"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.05, 0, 0)
 visible = false
+layers = 2
 cast_shadow = 0
 mesh = ExtResource("3_ac8cs")
 skeleton = NodePath("../../..")
@@ -122,6 +196,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 [node name="MuzzleFlashL" type="MeshInstance3D" parent="Boomstick/AltSpawner"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.05, 0, 0)
 visible = false
+layers = 2
 mesh = ExtResource("3_ac8cs")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_mrnkp")
@@ -136,6 +211,7 @@ omni_shadow_mode = 0
 [node name="MuzzleFlashR" type="MeshInstance3D" parent="Boomstick/AltSpawner"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.05, 0, 0)
 visible = false
+layers = 2
 mesh = ExtResource("3_ac8cs")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_noy7b")

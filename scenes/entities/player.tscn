@@ -25,14 +25,14 @@ script = ExtResource("1_7iuqc")
 speed = 15.0
 acceleration = 50.0
 jump_height = 2.2
-camera_sens = 6.0
+camera_sens = 12.0
 
 [node name="PlayerHitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_2aq05")
 
 [node name="PlayerCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-doppler_tracking = 1
+doppler_tracking = 2
 current = true
 fov = 90.0
 script = ExtResource("2_dkt8i")
@@ -43,11 +43,13 @@ ammo_types = {
 "big_iron_bullets": 15,
 "cells": 100,
 "grenades": 25,
+"nails": 100,
 "shells": 50
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerCam"]
 stream = ExtResource("10_xpl8r")
+bus = &"Player"
 
 [node name="HUD" parent="PlayerCam" instance=ExtResource("6_tw0uv")]
 
@@ -56,6 +58,7 @@ transform = Transform3D(0.996117, 0.0145506, 0.0868242, -0.00695469, 0.99617, -0
 visible = false
 light_color = Color(1, 0.833333, 0.5, 1)
 light_energy = 3.0
+light_volumetric_fog_energy = 10.0
 light_bake_mode = 0
 spot_range = 10.0
 spot_angle = 30.0

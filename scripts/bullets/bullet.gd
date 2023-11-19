@@ -7,6 +7,7 @@ extends RigidBody3D
 @export_file("*.tscn") var explosion: String
 @export var sticky: bool = false
 @export var piercer: bool = true
+@export var knockback_force: float = 1.0
 
 var invoker: Node3D
 
@@ -32,14 +33,19 @@ func _on_body_entered(body: Node):
 	if explosion_scene != null:
 		exp = explosion_scene.instantiate()
 		add_child(exp)
-		exp.reparent(get_tree().root)
-#	if sticky:
-#		exp.reparent(body)
+		exp.reparent(body if sticky else get_tree().root)
+		if exp is LodgedNail:
+			exp.invoker = invoker
+		for child in exp.get_children():
+			if child is AreaDamage:
+				child.invoker = invoker
 	
 	if body.has_node("Status"):
 		damage -= body.find_child("Status").damage(damage)
 		if body is EnemyBase:
-			body.current_target = invoker
+			body.detect_target(invoker)
+			body.apply_knockback(knockback_force * (body.global_position - \
+				global_position).normalized())
 		if not piercer or damage <= 0:
 			queue_free()
 		else:

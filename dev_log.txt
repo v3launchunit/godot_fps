@@ -9,7 +9,6 @@
 	Going to work on animating it after school, hopefully.
 	Also tweaked the glowy eyes to look eviler/angrier.
 	This current test enemy is probably going to end up as the Pinkerton.
-
 	After school:
 		implemented Pinkerton idle animation.
 		
@@ -17,3 +16,28 @@
 
 2023/10/31:
 	More work on animations. Laid out some things in the Bible.
+
+2023/11/04:
+	Created second enemy, the Canary.
+
+2023/11/05:
+	Animation work on Canary.
+
+2023/11/06:
+	Voice work on Pinkerton.
+
+2023/11/08:
+	Added voice lines for the Canary.
+
+2023/11/08:
+	Tweaked Canary lines. Fixed enemy behavior to stop attacking corpses.
+
+2023/11/18:
+	Created Eyeball. Began work on Nailgun.
+
+2023/11/19:
+	Completed Nailgun.
+
+
+
+

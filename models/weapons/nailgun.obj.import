@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cjga113urrwo3"
+path="res://.godot/imported/nailgun.obj-b400778f21fd1eb5256cd2470565233b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/nailgun.obj-b400778f21fd1eb5256cd2470565233b.mesh"]
+
+source_file="res://models/weapons/nailgun.obj"
+dest_files=["res://.godot/imported/nailgun.obj-b400778f21fd1eb5256cd2470565233b.mesh", "res://.godot/imported/nailgun.obj-b400778f21fd1eb5256cd2470565233b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

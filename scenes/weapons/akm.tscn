@@ -1,12 +1,54 @@
-[gd_scene load_steps=17 format=3 uid="uid://xpo774l18flk"]
+[gd_scene load_steps=25 format=3 uid="uid://xpo774l18flk"]
 
 [ext_resource type="ArrayMesh" uid="uid://53jffpg6vhkj" path="res://models/weapons/akm.obj" id="1_srb21"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_base.gd" id="2_aqwyy"]
+[ext_resource type="Texture2D" uid="uid://broweqdhl5i4r" path="res://textures/weapons/akm/akm_detail_mask.png" id="2_crool"]
+[ext_resource type="Texture2D" uid="uid://bav8pkl55om5n" path="res://textures/weapons/akm/akm_metallic.png" id="3_cc8vw"]
 [ext_resource type="ArrayMesh" uid="uid://bblg4t73miejx" path="res://models/weapons/muzzle_flash_alt.obj" id="3_s7ev5"]
+[ext_resource type="Texture2D" uid="uid://dre07gr8t1lp2" path="res://textures/weapons/akm/akm_roughness.png" id="4_7ifif"]
 [ext_resource type="Script" path="res://scripts/weapons/scope.gd" id="4_uav1m"]
 [ext_resource type="AnimationLibrary" uid="uid://dvna0xeatmq0y" path="res://scenes/weapons/anims.res" id="5_q7x1e"]
 [ext_resource type="AnimationLibrary" uid="uid://pyw3ltt10q24" path="res://scenes/weapons/akm_anims.res" id="6_w4nrh"]
 [ext_resource type="AnimationLibrary" uid="uid://byhlw1uu73dbf" path="res://scenes/weapons/shotgun_anims.res" id="7_bs841"]
+
+[sub_resource type="Gradient" id="Gradient_v5jf5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.7)
+colors = PackedColorArray(0.278431, 0.172549, 0.0470588, 1, 0.341176, 0.207843, 0.0784314, 1, 0.447059, 0.298039, 0.14902, 1, 0.415686, 0.313726, 0.145098, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q3vr3"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dyb1y"]
+width = 196
+height = 48
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dbe1r"]
+width = 196
+height = 48
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ooi1w"]
+albedo_color = Color(0.3, 0.3, 0.3, 1)
+metallic = 1.0
+metallic_texture = ExtResource("3_cc8vw")
+roughness_texture = ExtResource("4_7ifif")
+clearcoat_enabled = true
+clearcoat_roughness = 0.25
+clearcoat_texture = ExtResource("2_crool")
+detail_enabled = true
+detail_mask = ExtResource("2_crool")
+detail_albedo = SubResource("NoiseTexture2D_dyb1y")
+detail_normal = SubResource("NoiseTexture2D_dbe1r")
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bhoy"]
 albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
@@ -51,13 +93,15 @@ graph_offset = Vector2(-83, 64)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.15, -0.5, -0.15)
 
 [node name="AKM" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.31213e-05, 0)
-material_override = SubResource("StandardMaterial3D_2bhoy")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00391371, 0)
+layers = 2
 cast_shadow = 0
 mesh = ExtResource("1_srb21")
+surface_material_override/0 = SubResource("StandardMaterial3D_ooi1w")
+surface_material_override/1 = SubResource("StandardMaterial3D_2bhoy")
 script = ExtResource("2_aqwyy")
 category = 2
-bullet = "res://scenes/bullets/hitscan_bullet.tscn"
+bullet = "res://scenes/bullets/player/akm_bullet.tscn"
 shot_cooldown = 0.05
 spread = 2.5
 ammo_type = "akm_bullets"
@@ -68,6 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23, 1.15)
 [node name="MuzzleFlash" type="MeshInstance3D" parent="AKM/Spawner"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 3.02185e-09, 0, 0.0345659)
 visible = false
+layers = 2
 cast_shadow = 0
 mesh = ExtResource("3_s7ev5")
 surface_material_override/0 = SubResource("StandardMaterial3D_i11ey")

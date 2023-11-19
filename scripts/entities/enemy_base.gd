@@ -11,15 +11,18 @@ enum State {
 }
 
 @export_category("EnemyBase")
-@export_range(1, 35, 1) var speed: float = 10 # walk speed, in meters/second
-@export var turning_speed: float = 10
-@export_range(10, 400, 1) var acceleration: float = 100
-@export var knockback_drag: float = 10 # How much my knockback velocity decreases each second
+@export_range(1, 35, 1) var speed: float = 10.0 # walk speed, in meters/second
+@export var turning_speed: float = 10.0
+@export_range(10, 400, 1) var acceleration: float = 100.0
+@export_range(0, 1, 0.001, "or_greater") var knockback_multiplier: float = 1.0
+@export var knockback_drag: float = 10.0 # How much my knockback velocity decreases each second
 
 @export_range(0.1, 3.0, 0.1) var jump_height: float = 1
 
 @export_range(0, 360, 1, "radians") var sight_line_sweep_angle: float = PI / 2
-@export_range(0, 10) var sight_line_sweep_speed: float = 3 # how many sweeps I do in PI seconds
+@export_range(0, 10, 0.1, "or_greater") var sight_line_sweep_speed: float = 3 # how many sweeps I do in PI seconds
+#@export var enemies: Array[String] = ["Player"]
+@export var detection_stream: AudioStream
 
 @export var attack_interval: float = 3.0 # How many seconds I spend moving between attacks
 @export var attack_range: float = 32.0 # Max distance at which I will attack
@@ -27,10 +30,11 @@ enum State {
 @export var attack_recovery_time: float = 0.25 # How long do I wait after firing before I go back to moving
 @export_file("*.tscn") var bullet: String
 @export var volley: int = 1
-@export var spread: float = 0
+@export var spread: float = 0.0
 
 @export_range(0, 1) var flinch_chance: float = 0.1
 @export var flinch_time: float = 1.0
+@export var death_stream: AudioStream
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -38,10 +42,11 @@ var current_state: State = State.IDLE
 var current_target: PhysicsBody3D
 var current_destination: Vector3
 
-var walk_vel: Vector3 # Walking velocity 
-var grav_vel: Vector3 # Gravity velocity 
-var jump_vel: Vector3 # Jumping velocity
-var knockback_vel: Vector3 # Knockback velocity
+var walk_vel: Vector3 = Vector3.ZERO # Walking velocity 
+var safe_walk_vel: Vector3 = Vector3.ZERO
+var grav_vel: Vector3 = Vector3.ZERO # Gravity velocity 
+var jump_vel: Vector3 = Vector3.ZERO # Jumping velocity
+var knockback_vel: Vector3 = Vector3.ZERO # Knockback velocity
 
 var state_timer: float = 0 # How long I've been in my current state, in seconds
 
@@ -53,10 +58,13 @@ var state_timer: float = 0 # How long I've been in my current state, in seconds
 @onready var bullet_scene: PackedScene = load(bullet)
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 
+@onready var audio_player: AudioStreamPlayer3D = find_child("AudioStreamPlayer3D")
+
 func _ready() -> void:
 	state_machine.start("idle", true)
 	status.injured.connect(_on_status_injured)
 	status.died.connect(_on_status_died)
+	nav_agent.velocity_computed.connect(_on_navigation_agent_3d_velocity_computed)
 
 
 func _process(delta: float) -> void:
@@ -67,16 +75,16 @@ func _physics_process(delta: float) -> void:
 
 	match current_state:
 		State.IDLE:
-			_scan()
+			_scan(delta)
 		State.SEARCHING:
 			_investigate(delta)
-			_scan()
+			_scan(delta)
 		State.PURSUING:
 			_pursue(delta)
 		State.ATTACKING:
-			_attack()
+			_attack(delta)
 		State.POST_ATTACKING:
-			_post_attack()
+			_post_attack(delta)
 		State.FLINCHING:
 			_flinch()
 		State.DEAD:
@@ -88,6 +96,9 @@ func _physics_process(delta: float) -> void:
 # In case I need/want to do stuff with state transitions 
 # (probably where I'll handle animations & shit)
 func change_state(to: State):
+	if current_state == State.DEAD:
+		return # no changing states if you're dead
+	
 	match current_state:
 		State.IDLE:
 			sight_line.rotation.y = 0
@@ -120,18 +131,31 @@ func change_state(to: State):
 		State.FLINCHING:
 			state_machine.travel("flinching", true)
 		State.DEAD:
+			audio_player.stream = death_stream
+			audio_player.play()
 			state_machine.travel("dead", true)
 	
+	walk_vel = Vector3.ZERO
+	nav_agent.set_velocity(Vector3.ZERO)
 	current_state = to
 	state_timer = 0
 
 
-func _scan() -> void:
+func detect_target(target: PhysicsBody3D) -> void:
+	if current_target == null:
+		audio_player.stream = detection_stream
+		audio_player.play()
+	
+	current_target = target
+
+
+func _scan(_delta) -> void:
 	sight_line.rotation.y = sin(state_timer * sight_line_sweep_speed / 
 			sight_line_sweep_angle * 2) * sight_line_sweep_angle / 2
 	if sight_line.is_colliding() and sight_line.get_collider() is Player:
-		current_target = sight_line.get_collider()
+		detect_target(sight_line.get_collider())
 		change_state(State.PURSUING)
+	nav_agent.set_velocity(Vector3.ZERO)
 
 
 func _investigate(delta) -> void:
@@ -141,71 +165,88 @@ func _investigate(delta) -> void:
 	global_rotation.y = lerp_angle(global_rotation.y, 
 			sight_line.global_rotation.y, delta * turning_speed)
 	walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
-	velocity += walk_vel
+#	velocity += walk_vel
+	nav_agent.set_velocity(walk_vel)
+	velocity += safe_walk_vel
 	if nav_agent.is_target_reached():
 		change_state(State.IDLE)
 
 
 func _pursue(delta) -> void:
-#	# Check if I can actually still see my target, otherwise go to its last known position
-#	# (Basically, this is to prevent omniscient AI in the laziest way possible)
+	# [Removed because it makes them look stupid]
+	# Check if I can actually still see my target, otherwise go to its last known position
+	# (Basically, this is to prevent omniscient AI in the laziest way possible)
 #	sight_line.look_at(current_target.global_position)
 #	if sight_line.get_collider() != current_target:
 #		current_destination = current_target.global_position
 #		change_state(State.SEARCHING)
 #		return
 	
-	# Actually approach target
-	nav_agent.target_position = current_target.global_position
-	var next_pos := nav_agent.get_next_path_position()
-	sight_line.look_at(next_pos)
-	global_rotation.y = lerp_angle(global_rotation.y, 
-			sight_line.global_rotation.y, delta * turning_speed)
-	walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
-	velocity += walk_vel
-	
-	# Decide if it's time to attack my target
-	if state_timer >= attack_interval and \
-			current_target.global_position.distance_to(global_position) < attack_range: #and sight_line.get_collider() == current_target:
-		look_at(current_target.position)
-		rotation.x = 0
-		change_state(State.ATTACKING)
+	# Casually approach target
+	if current_target != null: # Make sure I actually have a target first
+		nav_agent.target_position = current_target.global_position
+		var next_pos := nav_agent.get_next_path_position()
+		sight_line.look_at(next_pos)
+		global_rotation.y = lerp_angle(global_rotation.y, 
+				sight_line.global_rotation.y, delta * turning_speed)
+		walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
+		nav_agent.set_velocity(walk_vel)
+#		velocity += safe_walk_vel
+		
+		# Decide if it's time to attack my target
+		if current_target.global_position.distance_to(global_position) < 2 or \
+				state_timer >= attack_interval + randf() and \
+				current_target.global_position.distance_to(global_position) < attack_range: #and sight_line.get_collider() == current_target:
+			look_at(current_target.position)
+			rotation.x = 0
+			change_state(State.ATTACKING)
+	else: # Can't pursue a target that doesn't exist
+		change_state(State.IDLE)
 
 
-func _attack() -> void:
+func _attack(_delta) -> void:
 	if state_timer >= attack_delay:
-#		var base_rotation = global_rotation
+		do_attack()
+	nav_agent.set_velocity(Vector3.ZERO)
+
+
+func do_attack() -> void:
+#	var base_rotation = global_rotation
+	if current_target != null:
 		spawner.look_at(current_target.global_position)
-#		spawner.rotate_y(-PI)
-#		spawner.rotate_x(PI)
-		var spawner_base_rotation = spawner.global_rotation
-		for v in volley:
-			spawner.global_rotation = spawner_base_rotation
-			spawner.rotate_z(deg_to_rad(randf_range(-spread/2, spread/2)))
-			spawner.rotate_y(deg_to_rad(randf_range(-spread/4, spread/4)))
-			
-			var instance = bullet_scene.instantiate()
-			spawner.add_child(instance)
-			instance.reparent(get_tree().root)
-			if instance is PhysicsBody3D:
-				instance.add_collision_exception_with(self)
-				add_collision_exception_with(instance)
-			
-			instance.invoker = self
-			
-#		global_rotation = spawner_base_rotation
+#	spawner.rotate_y(-PI)
+#	spawner.rotate_x(PI)
+	var spawner_base_rotation = spawner.global_rotation
+	for v in volley:
 		spawner.global_rotation = spawner_base_rotation
-		change_state(State.POST_ATTACKING)
+		spawner.rotate_z(deg_to_rad(randf_range(-spread/2, spread/2)))
+		spawner.rotate_y(deg_to_rad(randf_range(-spread/4, spread/4)))
+		
+		var instance = bullet_scene.instantiate()
+		spawner.add_child(instance)
+		instance.reparent(get_tree().root)
+		if instance is PhysicsBody3D:
+			instance.add_collision_exception_with(self)
+			add_collision_exception_with(instance)
+		
+		instance.invoker = self
+		
+#	global_rotation = spawner_base_rotation
+	spawner.global_rotation = spawner_base_rotation
+	change_state(State.POST_ATTACKING)
 
 
-func _post_attack() -> void:
+func _post_attack(_delta) -> void:
 	if state_timer >= attack_recovery_time:
-		change_state(State.IDLE if current_target == null else State.PURSUING)
+		change_state(State.IDLE if current_target == null or \
+				current_target.find_child("Status").health <= 0 else State.PURSUING)
+	nav_agent.set_velocity(Vector3.ZERO)
 
 
 func _flinch() -> void:
 	if state_timer >= flinch_time:
 		change_state(State.PURSUING)
+	nav_agent.set_velocity(Vector3.ZERO)
 
 
 func _do_jump() -> void:
@@ -218,7 +259,7 @@ func apply_knockback(amount: Vector3) -> void:
 		jump_vel = Vector3.ZERO
 		grav_vel = Vector3.ZERO
 #		jumping = false
-	knockback_vel += amount
+	knockback_vel += amount * knockback_multiplier
 
 
 func _gravity(delta: float) -> Vector3:
@@ -235,9 +276,14 @@ func _knockback(delta: float) -> Vector3:
 func _on_status_injured() -> void:
 	if randf() < flinch_chance:
 		change_state(State.FLINCHING)
-	else:
+	elif current_state == State.IDLE:
 		change_state(State.PURSUING)
 
 
 func _on_status_died() -> void:
 	change_state(State.DEAD)
+
+
+func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
+	velocity += safe_velocity
+	move_and_slide()

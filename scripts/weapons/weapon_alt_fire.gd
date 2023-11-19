@@ -3,7 +3,7 @@ extends WeaponBase
 @export_category("AltFire")
 
 @export_file("*.tscn") var alt_bullet: String
-@export_range(0, 3, 0.05) var alt_shot_cooldown: float = 1.0 # seconds
+@export_range(0, 3, 0.01) var alt_shot_cooldown: float = 1.0 # seconds
 @export_range(1, 50, 1) var alt_volley: int = 1
 @export_range(0, 90, 1) var alt_spread: float = 0.0
 

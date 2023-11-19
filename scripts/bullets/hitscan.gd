@@ -3,10 +3,12 @@ extends Node3D
 @export_category("Hitscan")
 
 @export_flags_3d_physics var layer_mask: int = 1
-@export_range(0.0, 1000.0, 1.0) var range: float = 1000.0
+@export_range(-1000.0, 1000.0, 0.1) var range: float = 1000.0
 @export_range(0.0, 100.0, 1.0) var fade_speed: float = 50.0
 @export var damage: float = 10.0
 @export_file("*.tscn") var explosion: String
+@export var knockback_force: float = 1.0
+@export var from_camera: bool = true
 
 var handled: bool = false
 var exceptions: Array = []
@@ -16,7 +18,7 @@ var invoker: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	exceptions.append(invoker)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,10 +34,11 @@ func _physics_process(delta):
 	if not handled:
 		handled = true
 		var space = get_world_3d().direct_space_state
+		var query_origin = get_viewport().get_camera_3d().global_position if \
+				from_camera else global_position
 		var query = PhysicsRayQueryParameters3D.create(
-				get_viewport().get_camera_3d().global_position, 
-				get_viewport().get_camera_3d().global_position + range
-						 * get_global_transform().basis.z, 
+				query_origin, 
+				query_origin + range * get_global_transform().basis.z, 
 				layer_mask)
 		query.set_exclude(exceptions)
 		var result = space.intersect_ray(query)
@@ -48,16 +51,20 @@ func _physics_process(delta):
 			
 			if result.collider.has_node("Status"):
 				if result.collider is EnemyBase:
-					result.collider.current_target = invoker
+					result.collider.detect_target(invoker)
+					result.collider.apply_knockback(knockback_force * \
+							(result.collider.global_position - global_position).normalized())
 				
 				damage -= result.collider.find_child("Status").damage(damage)
 				if damage > 0:
 					exceptions.append(result.collider)
-					handled = false
+#					handled = false
 			
 			var exp: Node3D = explosion_scene.instantiate()
 			get_tree().root.add_child(exp)
 			exp.global_position = result.position
+			if exp.find_child("Area3D") is AreaDamage:
+				exp.find_child("Area3D").invoker = invoker
 		else:
 			mesh.global_position = global_position \
 					+ range * get_global_transform().basis.z

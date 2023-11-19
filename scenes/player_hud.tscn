@@ -7,14 +7,14 @@
 offsets = PackedFloat32Array(0.6, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.501961)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7oab2"]
-gradient = SubResource("Gradient_ljioa")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_isuaa"]
 gradient = SubResource("Gradient_ljioa")
 fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7oab2"]
+gradient = SubResource("Gradient_ljioa")
+fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="HUD" type="Control"]
@@ -29,6 +29,30 @@ mouse_filter = 2
 script = ExtResource("1_bhmqe")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Player"
+
+[node name="Blood" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 1)
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_isuaa")
+
+[node name="Flash" type="TextureRect" parent="."]
+visible = false
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_7oab2")
 
 [node name="AmmoCounter" type="Label" parent="."]
 layout_mode = 1
@@ -81,26 +105,3 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_jp3nx")
 stretch_mode = 3
-
-[node name="Flash" type="TextureRect" parent="."]
-visible = false
-texture_filter = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_7oab2")
-
-[node name="Blood" type="TextureRect" parent="."]
-visible = false
-modulate = Color(1, 0, 0, 1)
-texture_filter = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_isuaa")

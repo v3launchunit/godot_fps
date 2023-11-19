@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cxvh7r0207hqv"
+path="res://.godot/imported/pickaxe.obj-5fe51b4bcf6cb61c64d02a717aa44beb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pickaxe.obj-5fe51b4bcf6cb61c64d02a717aa44beb.mesh"]
+
+source_file="res://models/weapons/pickaxe.obj"
+dest_files=["res://.godot/imported/pickaxe.obj-5fe51b4bcf6cb61c64d02a717aa44beb.mesh", "res://.godot/imported/pickaxe.obj-5fe51b4bcf6cb61c64d02a717aa44beb.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

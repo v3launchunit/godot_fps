@@ -66,7 +66,7 @@ radius = 1.0
 
 [node name="Status" type="Node" parent="."]
 script = ExtResource("2_ov4oo")
-max_health = 50.0
+max_health = 25.0
 gib_threshold = 0.0
 gibs = "res://scenes/effects/wood_shards.tscn"
 loot = Array[PackedScene]([ExtResource("5_tj7fj"), ExtResource("6_5g75f"), ExtResource("6_g1hjl"), ExtResource("7_x0qh2"), ExtResource("8_07pij"), ExtResource("9_cxlom"), ExtResource("10_6jjff")])

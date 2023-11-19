@@ -9,7 +9,7 @@ signal hud_connected(ammo_type: String, alt_ammo_type: String)
 @export var index: int = 0
 
 @export_file("*.tscn") var bullet: String
-@export_range(0, 3, 0.05) var shot_cooldown: float = 1.0 # seconds
+@export_range(0, 3, 0.01) var shot_cooldown: float = 1.0 # seconds
 @export_range(1, 50, 1) var volley: int = 1
 @export_range(0, 90, 0.5) var spread: float = 0.0
 @export var recoil: float = 0.0
@@ -20,10 +20,11 @@ signal hud_connected(ammo_type: String, alt_ammo_type: String)
 var active: bool = true
 var cooldown_timer: float = 0.0 # seconds
 
-@onready var spawner = get_node("Spawner")
+@onready var spawner = find_child("Spawner")
 @onready var bullet_scene: PackedScene = load(bullet)
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 @onready var manager: WeaponManager = get_parent().get_parent()
+@onready var eject_sys: GPUParticles3D = find_child("ShellEject")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -94,5 +95,8 @@ func _fire() -> void:
 		p.apply_knockback(recoil * get_global_transform().basis.z * -1)
 	
 	cooldown_timer = shot_cooldown
+	if eject_sys != null:
+		eject_sys.emit_particle(eject_sys.transform, transform.basis.z * Vector3.LEFT, \
+				Color.WHITE, Color.WHITE, 0)
 	state_machine.start("firing", true)
 	#instance.AddCollisionExceptionWith(get_parent().get_parent())

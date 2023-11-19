@@ -22,26 +22,27 @@ func _ready() -> void:
 
 
 func damage(amount: float) -> float: # returns damage dealt, for piercers
+	if is_dead:
+		return 0 # corpses cannot stop piercers
+	get_parent().find_child("HUD").flash(Color(1, 0, 0, clamp(amount / 10, 0.1, 1)))
 	health -= amount * (1 - armor_absorption)
 	armor  -= amount * armor_absorption
 	if armor <= 0:
 		health += armor # armor will be negative
 		armor = 0
 #	print(health)
-	if health <= -gib_threshold:
-		if not is_dead:
-			kill()
-		
-#		get_parent().queue_free()
-		var exp: Node
-		if gibs_scene != null:
-			exp = gibs_scene.instantiate()
-			get_parent().add_child(exp)
-			exp.reparent(get_tree().root)
-			gibs_scene = null
-		return 0
-	if is_dead:
-		return 0 # corpses cannot stop piercers
+#	if health <= -gib_threshold:
+#		if not is_dead:
+#			kill()
+#
+##		get_parent().queue_free()
+#		var exp: Node
+#		if gibs_scene != null:
+#			exp = gibs_scene.instantiate()
+#			get_parent().add_child(exp)
+#			exp.reparent(get_tree().root)
+#			gibs_scene = null
+#		return 0
 	if health <= 0:
 		kill()
 		return amount + health # health will be negative
