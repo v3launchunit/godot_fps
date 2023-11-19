@@ -518,6 +518,18 @@ tracks/31/keys = {
 "update": 0,
 "values": [2.0]
 }
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath(".:collision_layer")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rb0vb"]
 _data = {
@@ -646,7 +658,7 @@ bones/20/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/21/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.124142, -0.36087, 0.924317, 0.95285, -0.303291, 0.00956409, 0.276886, 0.881922, 0.381506, -0.0347144, 0.333268, 0.202823)
+transform = Transform3D(-0.151832, -0.988383, -0.00677797, 0.987949, -0.15155, -0.0314712, 0.0300784, -0.0114746, 0.999482, -0.171782, 0.362936, 0.0331076)
 bone_idx = 4
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="0"]
@@ -677,14 +689,14 @@ light_color = Color(1, 0, 0, 1)
 distance_fade_enabled = true
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.186213, -0.36087, 1.38648, 1.42927, -0.303292, 0.0143458, 0.415329, 0.881923, 0.572259, -0.0527584, 0.318103, 0.24692)
+transform = Transform3D(-0.227748, -0.988383, -0.0101669, 1.48192, -0.15155, -0.0472073, 0.0451179, -0.0114745, 1.49922, -0.221203, 0.355358, 0.0325339)
 bone_idx = 5
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D/Cylinder_001" index="0"]
 material_override = SubResource("StandardMaterial3D_cxecq")
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.986642, 0.1289, 0.0996087, -0.159737, 0.885479, 0.436361, -0.0319546, -0.446443, 0.894241, -0.230812, 0.396017, 0.0643324)
+transform = Transform3D(0.986603, 0.14055, 0.082822, -0.162165, 0.900278, 0.403984, -0.017783, -0.412002, 0.911009, -0.231421, 0.395234, 0.0597285)
 bone_idx = 10
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D/Shotgun" index="0"]
@@ -704,7 +716,7 @@ omni_range = 10.0
 transform = Transform3D(-1.95578e-08, -1, 7.45058e-09, -3.72529e-08, 2.23517e-08, 1, -1, 2.04891e-08, -3.72529e-08, 0, 0.675, -0.135)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.986642, 0.1289, 0.0996087, -0.159737, 0.885479, 0.436361, -0.0319546, -0.446443, 0.894241, -0.230812, 0.396017, 0.0643324)
+transform = Transform3D(0.986603, 0.14055, 0.082822, -0.162165, 0.900278, 0.403984, -0.017783, -0.412002, 0.911009, -0.231421, 0.395234, 0.0597285)
 bone_idx = 11
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D/Pump" index="0"]

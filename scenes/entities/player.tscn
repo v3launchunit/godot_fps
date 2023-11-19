@@ -73,7 +73,6 @@ target_position = Vector3(0, 0, -1000)
 collision_mask = 5
 
 [node name="Axe" parent="PlayerCam" instance=ExtResource("7_wdg6b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, -0.25, -0.35)
 
 [node name="PumpShotgun" parent="PlayerCam" instance=ExtResource("2_w8f7c")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.15, -0.25, -0.35)

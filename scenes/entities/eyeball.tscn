@@ -507,14 +507,23 @@ graph_offset = Vector2(-51, 6)
 
 [node name="Eyeball" type="CharacterBody3D"]
 script = ExtResource("1_pxyj5")
+target_distance = null
+speed = null
 turning_speed = 3.0
 acceleration = 10.0
 knockback_multiplier = 3.0
+knockback_drag = null
+jump_height = null
 sight_line_sweep_angle = 0.785398
 sight_line_sweep_speed = 30.0
 detection_stream = SubResource("AudioStreamGenerator_xh0sx")
+attack_interval = null
+attack_range = null
+attack_delay = null
 attack_recovery_time = 0.5
 bullet = "res://scenes/bullets/enemy/enemy_fireball.tscn"
+volley = null
+spread = null
 flinch_chance = 0.0
 flinch_time = 0.0
 death_stream = SubResource("AudioStreamGenerator_ypnq1")

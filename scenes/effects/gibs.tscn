@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://c5pbs8t6p7ogl"]
 
 [ext_resource type="ArrayMesh" uid="uid://bssx7wfjh7rbq" path="res://models/gib.obj" id="1_v6f6j"]
-[ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="1_ywlr7"]
+[ext_resource type="Script" path="res://scripts/effects/particle_lifetime.gd" id="2_08tqy"]
 
 [sub_resource type="Gradient" id="Gradient_ut1tc"]
 interpolation_mode = 1
@@ -39,12 +39,12 @@ normal_scale = 2.0
 normal_texture = SubResource("NoiseTexture2D_ju8tl")
 texture_filter = 0
 
-[sub_resource type="Gradient" id="Gradient_ngtbo"]
+[sub_resource type="Gradient" id="Gradient_1m3vq"]
 offsets = PackedFloat32Array(0.8, 0.9)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_f3ljp"]
-gradient = SubResource("Gradient_ngtbo")
+gradient = SubResource("Gradient_1m3vq")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_htmtp"]
 particle_flag_align_y = true
@@ -64,11 +64,11 @@ emission_sphere_radius = 0.35
 direction = Vector3(0, 1, 0)
 gravity = Vector3(0, -0.98, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_su17a"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pncd7"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rdhk4"]
-material = SubResource("StandardMaterial3D_su17a")
+material = SubResource("StandardMaterial3D_pncd7")
 size = Vector3(0.063, 0.063, 0.063)
 
 [sub_resource type="FogMaterial" id="FogMaterial_uwmev"]
@@ -145,8 +145,7 @@ fixed_fps = 60
 collision_base_size = 0.25
 process_material = SubResource("ParticleProcessMaterial_htmtp")
 draw_pass_1 = ExtResource("1_v6f6j")
-script = ExtResource("1_ywlr7")
-lifetime = 15.0
+script = ExtResource("2_08tqy")
 
 [node name="BloodSys" type="GPUParticles3D" parent="."]
 emitting = false

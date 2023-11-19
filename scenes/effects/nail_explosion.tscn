@@ -172,7 +172,7 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("AnimationPlayer/FogVolume:material:density")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6, 1.1, 10),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
@@ -184,7 +184,7 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("AnimationPlayer/FogVolume:size")
 tracks/1/interp = 1
-tracks/1/loop_wrap = true
+tracks/1/loop_wrap = false
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.6, 10),
 "transitions": PackedFloat32Array(0.25, 1.75, 1),
@@ -196,7 +196,7 @@ tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("OmniLight3D:light_energy")
 tracks/2/interp = 1
-tracks/2/loop_wrap = true
+tracks/2/loop_wrap = false
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.6, 10),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
@@ -208,14 +208,14 @@ tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath("AnimationPlayer/MeshInstance3D")
 tracks/3/interp = 1
-tracks/3/loop_wrap = true
+tracks/3/loop_wrap = false
 tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.3, 1, 5, 5, 5)
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/path = NodePath("AnimationPlayer/MeshInstance3D:mesh:material:albedo_color")
 tracks/4/interp = 1
-tracks/4/loop_wrap = true
+tracks/4/loop_wrap = false
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
@@ -227,7 +227,7 @@ tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/path = NodePath("Area3D:monitoring")
 tracks/5/interp = 1
-tracks/5/loop_wrap = true
+tracks/5/loop_wrap = false
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
@@ -239,7 +239,7 @@ tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/path = NodePath("ShrapnelSys:emitting")
 tracks/6/interp = 1
-tracks/6/loop_wrap = true
+tracks/6/loop_wrap = false
 tracks/6/keys = {
 "times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
@@ -251,7 +251,7 @@ tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/path = NodePath("ExplosionSys:emitting")
 tracks/7/interp = 1
-tracks/7/loop_wrap = true
+tracks/7/loop_wrap = false
 tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
@@ -316,7 +316,6 @@ process_material = SubResource("ParticleProcessMaterial_f47xk")
 draw_pass_1 = SubResource("SphereMesh_tmnfx")
 
 [node name="ShrapnelSys" type="GPUParticles3D" parent="."]
-visible = false
 amount = 32
 lifetime = 5.0
 one_shot = true
@@ -332,7 +331,7 @@ script = ExtResource("2_5aj6f")
 animated_materials = [NodePath("MeshInstance3D"), NodePath("FogVolume")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AnimationPlayer"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 mesh = SubResource("SphereMesh_cpldg")
 
 [node name="FogVolume" type="FogVolume" parent="AnimationPlayer"]
@@ -341,7 +340,7 @@ shape = 0
 material = SubResource("FogMaterial_hi1pk")
 
 [node name="Area3D" type="Area3D" parent="."]
-collision_mask = 7
+collision_mask = 39
 script = ExtResource("3_qqn2f")
 damage = 30.0
 player_damage_override = 10.0

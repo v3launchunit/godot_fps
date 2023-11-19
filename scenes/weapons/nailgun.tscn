@@ -56,10 +56,10 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_605m1"]
-xfade_time = 0.5
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ytkg"]
-xfade_time = 0.5
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_84u0q"]
 states/alt_firing/node = SubResource("AnimationNodeAnimation_pa5f1")
@@ -91,7 +91,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.05, 0, 0.5)]
+"values": [Vector3(0.05, 0, 0.25)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -139,7 +139,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.05, 0, 0.5)]
+"values": [Vector3(-0.05, 0, 0.25)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -187,7 +187,7 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
 [node name="Nailgun" parent="." instance=ExtResource("1_e18ie")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.00027814, 0)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.00342892, 0)
 script = ExtResource("2_3wn8a")
 category = 2
 index = 1
@@ -199,7 +199,7 @@ ammo_type = "nails"
 material_override = SubResource("StandardMaterial3D_1xft5")
 
 [node name="BarrelL" parent="Nailgun" index="1"]
-transform = Transform3D(-0.025, -1.09278e-08, -1.09278e-09, 1.09278e-09, 0, -0.025, 1.09278e-09, -0.25, 0, 0.05, 0, 0.5)
+transform = Transform3D(-0.025, -1.09278e-08, -1.09278e-09, 1.09278e-09, 0, -0.025, 1.09278e-09, -0.25, 0, 0.05, 0, 0.25)
 material_override = SubResource("StandardMaterial3D_y7gkb")
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Nailgun/BarrelL" index="0"]
@@ -218,7 +218,7 @@ omni_range = 10.0
 omni_shadow_mode = 0
 
 [node name="Spawner" type="Marker3D" parent="Nailgun"]
-transform = Transform3D(1, 4.33126e-07, 4.37112e-08, -4.33126e-07, 1, -4.37114e-07, -4.37114e-08, 4.37114e-07, 1, 0.05, 0, 0.8)
+transform = Transform3D(1, 4.33126e-07, 4.37112e-08, -4.33126e-07, 1, -4.37114e-07, -4.37114e-08, 4.37114e-07, 1, 0.05, 0, 0.55)
 
 [node name="Magazine" parent="Nailgun" index="3"]
 material_override = SubResource("StandardMaterial3D_6406h")
@@ -227,7 +227,7 @@ material_override = SubResource("StandardMaterial3D_6406h")
 visible = false
 
 [node name="BarrelR" parent="Nailgun" index="5"]
-transform = Transform3D(-0.025, -1.09278e-08, -1.09278e-09, 1.09278e-09, 0, -0.025, 1.09278e-09, -0.25, 0, -0.05, 0, 0.5)
+transform = Transform3D(-0.025, -1.09278e-08, -1.09278e-09, 1.09278e-09, 0, -0.025, 1.09278e-09, -0.25, 0, -0.05, 0, 0.25)
 material_override = SubResource("StandardMaterial3D_bvft7")
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Nailgun/BarrelR" index="0"]
@@ -246,7 +246,7 @@ omni_range = 10.0
 omni_shadow_mode = 0
 
 [node name="AltSpawner" type="Marker3D" parent="Nailgun"]
-transform = Transform3D(1, 4.33126e-07, 4.37112e-08, -4.33126e-07, 1, -4.37114e-07, -4.37114e-08, 4.37114e-07, 1, -0.05, 0, 0.8)
+transform = Transform3D(1, 4.33126e-07, 4.37112e-08, -4.33126e-07, 1, -4.37114e-07, -4.37114e-08, 4.37114e-07, 1, -0.05, 0, 0.55)
 
 [node name="AnimationTree" type="AnimationTree" parent="Nailgun"]
 tree_root = SubResource("AnimationNodeStateMachine_84u0q")

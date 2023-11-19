@@ -58,7 +58,7 @@ func _physics_process(delta):
 				damage -= result.collider.find_child("Status").damage(damage)
 				if damage > 0:
 					exceptions.append(result.collider)
-#					handled = false
+					handled = false
 			
 			var exp: Node3D = explosion_scene.instantiate()
 			get_tree().root.add_child(exp)
