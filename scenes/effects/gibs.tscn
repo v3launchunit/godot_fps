@@ -140,6 +140,7 @@ _data = {
 material_override = SubResource("StandardMaterial3D_ba1bl")
 sub_emitter = NodePath("BloodSys")
 lifetime = 15.0
+one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 collision_base_size = 0.25

@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dyruil3vrf658"]
+[gd_scene load_steps=63 format=3 uid="uid://dyruil3vrf658"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_base.gd" id="1_xpg4m"]
 [ext_resource type="AudioStream" uid="uid://kvksscy35kso" path="res://sounds/voices/canary/detect_moan_1.wav" id="2_l2o0a"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cy3r0y8ibu285" path="res://textures/entities/enemies/canary/canary_detail_mask.png" id="12_0nc5f"]
 [ext_resource type="Texture2D" uid="uid://gymwav7tohi8" path="res://textures/entities/enemies/canary/canary_metallic.png" id="12_0ovrm"]
 [ext_resource type="Texture2D" uid="uid://dhw68mcg5ahye" path="res://textures/entities/enemies/canary/canary_roughness.png" id="13_ks6xw"]
+[ext_resource type="PackedScene" uid="uid://cqctw8dd0ar4n" path="res://scenes/effects/damage_sys.tscn" id="18_onedp"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cyl10"]
 streams_count = 4
@@ -508,28 +509,28 @@ bones/21/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/22/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder_001" parent="Canary/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1.22972, -0.566009, -0.130237, -0.854942, -0.791939, -0.328557, 0.0828268, 0.229057, -1.45777, -0.102903, 0.0682061, 0.342163)
+transform = Transform3D(1.22972, -0.566009, -0.130237, -0.857574, -0.800481, -0.269877, 0.0485005, 0.197138, -1.46976, -0.102903, 0.0646719, 0.322255)
 bone_idx = 4
 
 [node name="Cylinder_001" parent="Canary/Armature/Skeleton3D/Cylinder_001" index="0"]
 material_override = SubResource("StandardMaterial3D_7ynex")
 
 [node name="Cylinder_002" parent="Canary/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1.22972, 0.566009, 0.130236, 0.854942, -0.791939, -0.328558, -0.0828281, 0.229057, -1.45777, 0.102904, 0.068206, 0.342162)
+transform = Transform3D(1.22972, 0.566009, 0.130236, 0.857574, -0.800481, -0.269877, -0.0485017, 0.197138, -1.46976, 0.102904, 0.0646719, 0.322254)
 bone_idx = 5
 
 [node name="Cylinder_002" parent="Canary/Armature/Skeleton3D/Cylinder_002" index="0"]
 material_override = SubResource("StandardMaterial3D_tnmui")
 
 [node name="Helmet" parent="Canary/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 3.41847e-07, 2.50658e-08, 1.21308e-08, 0.0700891, -0.997541, -3.30406e-07, 0.997541, 0.0700892, 1.9634e-07, 0.336375, 0.555149)
+transform = Transform3D(1, 3.42565e-07, 1.07498e-08, 1.10302e-08, 0.0300587, -0.999548, -3.29942e-07, 0.999548, 0.0300587, 1.93003e-07, 0.324091, 0.545817)
 bone_idx = 6
 
 [node name="Helmet" parent="Canary/Armature/Skeleton3D/Helmet" index="0"]
 material_override = SubResource("StandardMaterial3D_ehbbl")
 
 [node name="Cylinder" parent="Canary/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 8.40462e-08, -3.32301e-07, 1.21308e-08, -0.970215, -0.242246, -3.30406e-07, 0.242246, -0.970215, 1.92196e-07, 0.093141, 0.542318)
+transform = Transform3D(1, 7.00724e-08, -3.35494e-07, 1.10302e-08, -0.979143, -0.203172, -3.29942e-07, 0.203172, -0.979143, 1.85376e-07, 0.081566, 0.523248)
 bone_idx = 7
 
 [node name="Cylinder" parent="Canary/Armature/Skeleton3D/Cylinder" index="0"]
@@ -541,7 +542,7 @@ light_color = Color(1, 0.501961, 0, 1)
 distance_fade_enabled = true
 
 [node name="Pickaxe" parent="Canary/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.149225, -0.014825, 0.00349932, -0.015195, 0.14729, -0.0239754, -0.00106652, -0.024206, -0.14803, -0.287542, -0.648926, 0.395686)
+transform = Transform3D(-0.149047, -0.0145556, 0.00854833, -0.0157664, 0.147178, -0.0242934, -0.00603012, -0.0250375, -0.147773, -0.293629, -0.644246, 0.380477)
 bone_idx = 12
 
 [node name="Pickaxe" parent="Canary/Armature/Skeleton3D/Pickaxe" index="0"]
@@ -588,6 +589,7 @@ doppler_tracking = 2
 script = ExtResource("5_3hbwc")
 max_health = 225.0
 gib_threshold = 100.0
+damage_sys = ExtResource("18_onedp")
 gibs = "res://scenes/effects/gibs.tscn"
 loot = Array[PackedScene]([ExtResource("6_yegnx"), ExtResource("7_uj2tf")])
 

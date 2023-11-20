@@ -7,7 +7,7 @@ signal died
 
 @export var max_health: float = 100.0
 @export var gib_threshold: float = 50.0
-#@export var damage_sys: PackedScene
+@export var damage_sys: PackedScene
 @export_file("*.tscn") var gibs: String
 @export var loot: Array[PackedScene] = []
 
@@ -35,6 +35,9 @@ func _ready():
 func damage(amount: float) -> float:
 	health -= amount
 #	print(health)
+	if damage_sys != null:
+		var instance := damage_sys.instantiate()
+		get_parent().add_child(instance)
 	if health <= -gib_threshold:
 		if not is_dead:
 			kill()
@@ -53,9 +56,6 @@ func damage(amount: float) -> float:
 	if health <= 0:
 		kill()
 		return maxf(amount + health, 0) # health will be negative
-#	if damage_sys != null:
-#		var instance := damage_sys.instantiate()
-#		get_parent().add_child(instance)
 	injured.emit()
 	
 	return amount # return value is amount of damage recieved, for piercers

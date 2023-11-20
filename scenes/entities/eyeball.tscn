@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://cxqut1h5yt3nk"]
+[gd_scene load_steps=66 format=3 uid="uid://cxqut1h5yt3nk"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_flying.gd" id="1_pxyj5"]
 [ext_resource type="PackedScene" uid="uid://cr0slxppts0pq" path="res://models/entities/eyeball.glb" id="2_3mulw"]
@@ -6,6 +6,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://ccdixrnqbenik" path="res://scenes/entities/eyeball_anims.res" id="3_h6fvy"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="4_cn2w1"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="5_kvfir"]
+[ext_resource type="PackedScene" uid="uid://cqctw8dd0ar4n" path="res://scenes/effects/damage_sys.tscn" id="5_ur2rf"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_xh0sx"]
 
@@ -507,23 +508,14 @@ graph_offset = Vector2(-51, 6)
 
 [node name="Eyeball" type="CharacterBody3D"]
 script = ExtResource("1_pxyj5")
-target_distance = null
-speed = null
 turning_speed = 3.0
 acceleration = 10.0
 knockback_multiplier = 3.0
-knockback_drag = null
-jump_height = null
 sight_line_sweep_angle = 0.785398
 sight_line_sweep_speed = 30.0
 detection_stream = SubResource("AudioStreamGenerator_xh0sx")
-attack_interval = null
-attack_range = null
-attack_delay = null
 attack_recovery_time = 0.5
 bullet = "res://scenes/bullets/enemy/enemy_fireball.tscn"
-volley = null
-spread = null
 flinch_chance = 0.0
 flinch_time = 0.0
 death_stream = SubResource("AudioStreamGenerator_ypnq1")
@@ -609,6 +601,7 @@ bus = &"Speech"
 [node name="Status" type="Node" parent="."]
 script = ExtResource("3_67ny2")
 gib_threshold = 0.0
+damage_sys = ExtResource("5_ur2rf")
 gibs = "res://scenes/effects/gibs.tscn"
 loot = Array[PackedScene]([ExtResource("4_cn2w1"), ExtResource("5_kvfir")])
 

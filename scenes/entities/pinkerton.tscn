@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://cc7snvg1qg4i4"]
+[gd_scene load_steps=86 format=3 uid="uid://cc7snvg1qg4i4"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_base.gd" id="1_1yhno"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="2_p7cng"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://exkw0wktl54p" path="res://textures/entities/enemies/pinkerton/pinkerton_metallic.png" id="21_tvmks"]
 [ext_resource type="Texture2D" uid="uid://blae7355fr3lo" path="res://textures/weapons/pump_shotgun/shotgun_roughness.png" id="21_xf3tc"]
 [ext_resource type="Texture2D" uid="uid://bw7v4h5hychul" path="res://textures/entities/enemies/pinkerton/pinkerton_roughness.png" id="22_758q5"]
+[ext_resource type="PackedScene" uid="uid://cqctw8dd0ar4n" path="res://scenes/effects/damage_sys.tscn" id="31_1ui32"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hdxer"]
 streams_count = 12
@@ -658,7 +659,7 @@ bones/20/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/21/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.151832, -0.988383, -0.00677797, 0.987949, -0.15155, -0.0314712, 0.0300784, -0.0114746, 0.999482, -0.171782, 0.362936, 0.0331076)
+transform = Transform3D(-0.166011, -0.835741, 0.523428, 0.958729, -0.261029, -0.112706, 0.230823, 0.483115, 0.844583, -0.127808, 0.330965, 0.178234)
 bone_idx = 4
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="0"]
@@ -689,14 +690,14 @@ light_color = Color(1, 0, 0, 1)
 distance_fade_enabled = true
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.227748, -0.988383, -0.0101669, 1.48192, -0.15155, -0.0472073, 0.0451179, -0.0114745, 1.49922, -0.221203, 0.355358, 0.0325339)
+transform = Transform3D(-0.249017, -0.835741, 0.785142, 1.43809, -0.261029, -0.169059, 0.346234, 0.483115, 1.26688, -0.169596, 0.317913, 0.20239)
 bone_idx = 5
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D/Cylinder_001" index="0"]
 material_override = SubResource("StandardMaterial3D_cxecq")
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.986603, 0.14055, 0.082822, -0.162165, 0.900278, 0.403984, -0.017783, -0.412002, 0.911009, -0.231421, 0.395234, 0.0597285)
+transform = Transform3D(0.986641, 0.120748, 0.109359, -0.15775, 0.875741, 0.456281, -0.0406749, -0.467437, 0.88309, -0.230838, 0.395653, 0.0670369)
 bone_idx = 10
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D/Shotgun" index="0"]
@@ -716,7 +717,7 @@ omni_range = 10.0
 transform = Transform3D(-1.95578e-08, -1, 7.45058e-09, -3.72529e-08, 2.23517e-08, 1, -1, 2.04891e-08, -3.72529e-08, 0, 0.675, -0.135)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.986603, 0.14055, 0.082822, -0.162165, 0.900278, 0.403984, -0.017783, -0.412002, 0.911009, -0.231421, 0.395234, 0.0597285)
+transform = Transform3D(0.986641, 0.120748, 0.109359, -0.15775, 0.875741, 0.456281, -0.0406749, -0.467437, 0.88309, -0.230838, 0.395653, 0.0670369)
 bone_idx = 11
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D/Pump" index="0"]
@@ -761,6 +762,7 @@ doppler_tracking = 2
 script = ExtResource("2_p7cng")
 max_health = 70.0
 gib_threshold = 140.0
+damage_sys = ExtResource("31_1ui32")
 gibs = "res://scenes/effects/gibs.tscn"
 loot = Array[PackedScene]([ExtResource("3_5ywnf"), ExtResource("7_d0her"), ExtResource("8_slj13")])
 

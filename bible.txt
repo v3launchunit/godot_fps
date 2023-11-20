@@ -104,6 +104,12 @@ Enemies:
 			Weak
 			Medium
 			Ranged (homing orbs)
+		
+		Flux Beast:
+			Medium
+			Fast
+			Teleporter
+			Melee Only (teeth)
 	
 	
 	Military:
@@ -112,13 +118,13 @@ Enemies:
 		Hound:
 			Weak
 			Fast
-			Melee Only (lunge, jaws)
+			Melee Only (lunge, teeth)
 		
 		Hell Hound:
 			Weak
 			Fast
 			Alert nearby Hell Hounds upon spotting player
-			Melee Only (lunge, jaws)
+			Melee Only (lunge, teeth)
 		
 		Pinkerton:
 			Weak
@@ -240,8 +246,19 @@ Campaign:
 	E1:
 		E1M1 ("In the Flesh?"):
 		E1M2 ("The Color out of Space"):
-		E1M3 (""):
+		E1M3 ("Sixteen Tons"):
+			An abandoned mining town, crawling with extradimensional monstrosities.
+			Weapons:
+				
+			Enemies:
+				
 		E1M4 (""):
+			An old mine network, composed of a network of caves and tunnels 
+			connected by a bridge network spanning the central ravine chasm.
+			Weapons:
+				
+			Enemies:
+				
 		E1M5 (""):
 		E1M6 (""):
 		E1M7 (""):
@@ -249,7 +266,7 @@ Campaign:
 		E1M9 (""):
 		E1M10 (""):
 		E1S1 ("Doomed from the Start"):
-			Recreation of DOOM's E1M1.
+			A recreation of DOOM's E1M1.
 	
 	E2:
 		E2M1 (""):

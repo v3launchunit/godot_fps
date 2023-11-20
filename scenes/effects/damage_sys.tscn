@@ -35,6 +35,7 @@ direction = Vector3(0, 1, 0)
 gravity = Vector3(0, -0.98, 0)
 
 [node name="DamageSys" type="GPUParticles3D"]
+amount = 3
 sub_emitter = NodePath("BloodSys")
 lifetime = 5.0
 one_shot = true

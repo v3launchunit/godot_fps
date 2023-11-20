@@ -203,7 +203,7 @@ transform = Transform3D(-0.025, -1.09278e-08, -1.09278e-09, 1.09278e-09, 0, -0.0
 material_override = SubResource("StandardMaterial3D_y7gkb")
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Nailgun/BarrelL" index="0"]
-transform = Transform3D(50, -1.94707e-05, -8.51092e-14, 0, -2.18557e-06, 5, -1.94707e-05, -50, -2.18557e-07, -1.19209e-07, -1.4, 0)
+transform = Transform3D(50, -1.94707e-05, -8.51091e-14, 0, -2.18557e-06, 5, -1.94707e-05, -50, -2.18557e-07, -1.19209e-07, -1.4, 0)
 visible = false
 layers = 2
 cast_shadow = 0
@@ -217,21 +217,18 @@ shadow_enabled = true
 omni_range = 10.0
 omni_shadow_mode = 0
 
-[node name="Spawner" type="Marker3D" parent="Nailgun"]
-transform = Transform3D(1, 4.33126e-07, 4.37112e-08, -4.33126e-07, 1, -4.37114e-07, -4.37114e-08, 4.37114e-07, 1, 0.05, 0, 0.55)
-
-[node name="Magazine" parent="Nailgun" index="3"]
+[node name="Magazine" parent="Nailgun" index="2"]
 material_override = SubResource("StandardMaterial3D_6406h")
 
-[node name="SpikeLauncher" parent="Nailgun" index="4"]
+[node name="SpikeLauncher" parent="Nailgun" index="3"]
 visible = false
 
-[node name="BarrelR" parent="Nailgun" index="5"]
+[node name="BarrelR" parent="Nailgun" index="4"]
 transform = Transform3D(-0.025, -1.09278e-08, -1.09278e-09, 1.09278e-09, 0, -0.025, 1.09278e-09, -0.25, 0, -0.05, 0, 0.25)
 material_override = SubResource("StandardMaterial3D_bvft7")
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Nailgun/BarrelR" index="0"]
-transform = Transform3D(50, -1.94707e-05, -8.51092e-14, 0, -2.18557e-06, 5, -1.94707e-05, -50, -2.18557e-07, -2.38419e-07, -1.4, 0)
+transform = Transform3D(50, -1.94707e-05, -8.51091e-14, 0, -2.18557e-06, 5, -1.94707e-05, -50, -2.18557e-07, -2.38419e-07, -1.4, 0)
 visible = false
 layers = 2
 cast_shadow = 0
@@ -244,6 +241,9 @@ light_energy = 0.0
 shadow_enabled = true
 omni_range = 10.0
 omni_shadow_mode = 0
+
+[node name="Spawner" type="Marker3D" parent="Nailgun"]
+transform = Transform3D(1, 4.33126e-07, 4.37112e-08, -4.33126e-07, 1, -4.37114e-07, -4.37114e-08, 4.37114e-07, 1, 0.05, 0, 0.55)
 
 [node name="AltSpawner" type="Marker3D" parent="Nailgun"]
 transform = Transform3D(1, 4.33126e-07, 4.37112e-08, -4.33126e-07, 1, -4.37114e-07, -4.37114e-08, 4.37114e-07, 1, -0.05, 0, 0.55)

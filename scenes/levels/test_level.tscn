@@ -861,39 +861,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -23)
 
 [node name="Eyeball" parent="Entities" instance=ExtResource("22_rq1ip")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 9, 1, 9)
-target_distance = null
-speed = null
-knockback_drag = null
-jump_height = null
-attack_interval = null
-attack_range = null
-attack_delay = null
-volley = null
-spread = null
+target_distance = 5.0
+speed = 10.0
+knockback_drag = 10.0
+jump_height = 1.0
+attack_interval = 3.0
+attack_range = 32.0
+attack_delay = 0.5
+volley = 1
+spread = 0.0
 
 [node name="Eyeball2" parent="Entities" instance=ExtResource("22_rq1ip")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 9, 1, 11)
-target_distance = null
-speed = null
-knockback_drag = null
-jump_height = null
-attack_interval = null
-attack_range = null
-attack_delay = null
-volley = null
-spread = null
+target_distance = 5.0
+speed = 10.0
+knockback_drag = 10.0
+jump_height = 1.0
+attack_interval = 3.0
+attack_range = 32.0
+attack_delay = 0.5
+volley = 1
+spread = 0.0
 
 [node name="Eyeball3" parent="Entities" instance=ExtResource("22_rq1ip")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 9, 1, 13)
-target_distance = null
-speed = null
-knockback_drag = null
-jump_height = null
-attack_interval = null
-attack_range = null
-attack_delay = null
-volley = null
-spread = null
+target_distance = 5.0
+speed = 10.0
+knockback_drag = 10.0
+jump_height = 1.0
+attack_interval = 3.0
+attack_range = 32.0
+attack_delay = 0.5
+volley = 1
+spread = 0.0
 
 [node name="Pickups" type="Node" parent="."]
 
