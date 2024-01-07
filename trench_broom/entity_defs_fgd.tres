@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=7 format=3 uid="uid://b42lledbeltgc"]
+
+[ext_resource type="Resource" uid="uid://doihcea8tl120" path="res://trench_broom/entity_defs/enemies/canary.tres" id="1_6siya"]
+[ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="1_bdtjl"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="1_lbn24"]
+[ext_resource type="Resource" uid="uid://clthu8ys2m5fs" path="res://trench_broom/entity_defs/enemies/eyeball.tres" id="2_qoc8p"]
+[ext_resource type="Resource" uid="uid://cx7iw2027nyv7" path="res://trench_broom/entity_defs/enemies/pinkerton.tres" id="3_q1704"]
+[ext_resource type="Resource" uid="uid://brcfv7amkpov1" path="res://trench_broom/entity_defs/enemies/vortigaunt.tres" id="4_rptr0"]
+
+[resource]
+script = ExtResource("1_lbn24")
+export_file = false
+target_folder = "C:/Users/lengl/Desktop/Miscellaneous Apps/TrenchBroom/games/VolumetricsTest"
+fgd_name = "Entity Defs"
+base_fgd_files = Array[Resource]([ExtResource("1_bdtjl")])
+entity_definitions = Array[Resource]([ExtResource("1_6siya"), ExtResource("2_qoc8p"), ExtResource("3_q1704"), ExtResource("4_rptr0")])

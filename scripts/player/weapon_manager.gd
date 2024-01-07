@@ -12,12 +12,17 @@ class_name WeaponManager extends Camera3D
 	"shells": 50
 }
 
-var fov_desired
+@export var anti_clip_speed: float = 7.5
+
+var fov_desired: float
+var anti_clip_collisions: int = 0
+var current_weapon_pos: float
 
 @onready var ammo_amounts: Dictionary = ammo_types.duplicate() # Created right before _ready
-#@onready var gun_cam: Camera3D = find_child("GunCam")
+@onready var anti_clip_box: Area3D = find_child("ViewmodelAntiClip")
+#@onready var weapon_cam: Camera3D = find_child("WeaponCam")
 
-signal switched_weapons(category: int, index: int)
+signal switched_weapons(category: int, index: int, with_safety_catch: bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,13 +33,20 @@ func _ready():
 	
 #	weapons[current_weapon].deploy
 #	switched_weapons.connect(find_child("HUD")._on_player_cam_switched_weapons)
-	switched_weapons.emit(current_category, current_index[current_category])
+	switched_weapons.emit(current_category, current_index[current_category], true)
+	current_weapon_pos = get_node(weapons[current_category][current_index\
+			[current_category]]).position.z
 	fov_desired = fov
+	
+	anti_clip_box.body_entered.connect(on_viewmodel_anti_clip_body_entered)
+	anti_clip_box.body_exited.connect(on_viewmodel_anti_clip_body_exited)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-#	gun_cam.global_transform = global_transform
+#	weapon_cam.global_transform = global_transform
+#	weapon_cam.h_offset = h_offset
+#	weapon_cam.v_offset = v_offset
 	
 	if Input.is_action_just_pressed("next_weapon"):
 		_next_weapon()
@@ -59,14 +71,24 @@ func _process(delta):
 	if Input.is_action_just_pressed("debug_give_max_ammo"):
 		for key in ammo_amounts:
 			ammo_amounts[key] = ammo_types[key]
+	
+	get_selected_weapon_node().position.z = move_toward(get_selected_weapon_node().position.z, \
+			get_selected_weapon_node().get_child(0).anti_clip_distance if \
+			anti_clip_collisions > 0 else current_weapon_pos, delta * anti_clip_speed)
+
+
+func _physics_process(delta: float) -> void:
+	pass
 
 
 func _next_weapon():
 #	weapons[current_weapon].holster
 #	current_weapon += 1
+	get_selected_weapon_node().position.z \
+			= current_weapon_pos
 	current_index[current_category] += 1
 	while (not current_index[current_category] >= weapons[current_category].size()
-			and weapons[current_category][current_index[current_category]] == null):
+			and get_selected_weapon_path() == null):
 		current_index[current_category] += 1
 	while current_index[current_category] >= weapons[current_category].size():
 		current_index[current_category] -= 1
@@ -81,10 +103,11 @@ func _next_weapon():
 		
 		current_index[current_category] = 0
 		
-		while weapons[current_category][current_index[current_category]] == null:
+		while get_selected_weapon_path() == null:
 			current_index[current_category] += 1
 	
-	switched_weapons.emit(current_category, current_index[current_category])
+	switched_weapons.emit(current_category, current_index[current_category], false)
+	current_weapon_pos = get_selected_weapon_node().position.z
 	find_child("AudioStreamPlayer").playing = true
 #	emit_signal("switched_weapons", 0, current_weapon)
 #	weapons[current_weapon].deploy
@@ -95,9 +118,10 @@ func _previous_weapon():
 #	current_weapon -= 1
 #	if current_weapon < 0:
 #		current_weapon = weapons.size() - 1
+	get_selected_weapon_node().position.z = current_weapon_pos
 	current_index[current_category] -= 1
-	while (not current_index[current_category] < 0 and
-			weapons[current_category][current_index[current_category]] == null):
+	while not current_index[current_category] < 0 and \
+			get_selected_weapon_path() == null:
 		current_index[current_category] -= 1
 	while current_index[current_category] < 0:
 		current_index[current_category] += 1
@@ -112,14 +136,16 @@ func _previous_weapon():
 		
 		current_index[current_category] = weapons[current_category].size() - 1
 		
-		while weapons[current_category][current_index[current_category]] == null:
+		while get_selected_weapon_path() == null:
 			current_index[current_category] -= 1
 	
-	switched_weapons.emit(current_category, current_index[current_category])
+	switched_weapons.emit(current_category, current_index[current_category], false)
+	current_weapon_pos = get_selected_weapon_node().position.z
 	find_child("AudioStreamPlayer").play()
 
 
 func _select_category(category: int):
+	get_selected_weapon_node().position.z = current_weapon_pos
 	if current_category == category:
 		current_index[category] += 1
 		while (not current_index[category] >= weapons[category].size() and
@@ -129,7 +155,8 @@ func _select_category(category: int):
 			current_index[category] = 0
 	else:
 		current_category = category
-	switched_weapons.emit(category, current_index[category])
+	switched_weapons.emit(category, current_index[category], false)
+	current_weapon_pos = get_selected_weapon_node().position.z
 	find_child("AudioStreamPlayer").play()
 
 
@@ -153,11 +180,13 @@ func add_weapon(weapon: Node, starting_ammo: int = 0) -> bool:
 		if weapons[weap.category].size() <= weap.index:
 			weapons[weap.category].resize(weap.index + 1)
 		weapons[weap.category][weap.index] = weapon
+		get_selected_weapon_node().position.z = current_weapon_pos
 #		weapons[weap.category].pop_at(weap.index)
 #		weapons[weap.category].insert(weap.index, weapon)
 		current_category = weap.category
 		current_index[weap.category] = weap.index
-		switched_weapons.emit(weap.category, weap.index)
+		switched_weapons.emit(weap.category, weap.index, true)
+		current_weapon_pos = get_selected_weapon_node().position.z
 		find_child("AudioStreamPlayer").play()
 		return true
 	return false
@@ -175,6 +204,29 @@ func force_add_ammo(type: String, amount: int = 1) -> void:
 		ammo_amounts[type] += amount
 
 
+func get_selected_weapon_node() -> Node3D:
+	return get_node(get_selected_weapon_path())
+
+
+func get_selected_weapon_path() -> NodePath:
+	if weapons[current_category].is_empty() or \
+			weapons[current_category][current_index[current_category]] == null:
+		return ^"Axe"
+	if weapons[current_category][current_index[current_category]] is NodePath:
+		return weapons[current_category][current_index[current_category]]
+	return weapons[current_category][current_index[current_category]].get_path()
+
+
 func scope_changed(amount: float):
 	fov = fov_desired / amount
 	get_parent().camera_zoom_sens = 1 / amount
+
+
+func on_viewmodel_anti_clip_body_entered(_body: Node3D):
+	anti_clip_collisions += 1
+	print("new body entered")
+
+
+func on_viewmodel_anti_clip_body_exited(_body: Node3D):
+	anti_clip_collisions -= 1
+	print("new body exited")

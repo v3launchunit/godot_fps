@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://doj0aysg6oqh2"]
+[gd_scene load_steps=20 format=3 uid="uid://doj0aysg6oqh2"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_ymvu6"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="3_c45im"]
-[ext_resource type="AudioStream" uid="uid://bhhnxh2cjbiuq" path="res://sounds/ambient/fire_ball_ambient.wav" id="3_ghwt3"]
+[ext_resource type="AudioStream" uid="uid://bhhnxh2cjbiuq" path="res://audio/streams/ambient/fire_ball_ambient.wav" id="3_ghwt3"]
+[ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="4_hhht4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6fgvk"]
 radius = 0.25
@@ -10,6 +11,8 @@ radius = 0.25
 [sub_resource type="SphereMesh" id="SphereMesh_cvdvc"]
 radius = 0.25
 height = 0.5
+radial_segments = 8
+rings = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1j4p"]
 blend_mode = 1
@@ -48,7 +51,41 @@ vertex_color_use_as_albedo = true
 material = SubResource("StandardMaterial3D_6ruwr")
 size = Vector3(0.063, 0.063, 0.063)
 
-[node name="Bullet" type="RigidBody3D"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vqe2o"]
+load_path = "res://.godot/imported/halo.png-88068247d44276e09ca924d46b3606d1.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs0w4"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.501961, 0, 1)
+albedo_texture = SubResource("CompressedTexture2D_vqe2o")
+billboard_mode = 1
+fixed_size = true
+proximity_fade_distance = 3.0
+distance_fade_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_tgqma"]
+material = SubResource("StandardMaterial3D_fs0w4")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0qhau"]
+load_path = "res://.godot/imported/halo.png-88068247d44276e09ca924d46b3606d1.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_24bqr"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.501961, 0, 1)
+albedo_texture = SubResource("CompressedTexture2D_0qhau")
+billboard_mode = 1
+fixed_size = true
+proximity_fade_distance = 3.0
+distance_fade_mode = 1
+
+[node name="Fireball" type="RigidBody3D"]
 collision_layer = 16
 collision_mask = 7
 input_ray_pickable = false
@@ -59,7 +96,7 @@ contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_ymvu6")
 speed = -25.0
-damage = 45.0
+damage = 35.0
 explosion = "res://scenes/effects/bullet_impact_yellow.tscn"
 knockback_force = 0.0
 
@@ -68,11 +105,13 @@ shape = SubResource("SphereShape3D_6fgvk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, -1.74846e-07, -7.64276e-15, 0, -4.37114e-08, 1, -1.74846e-07, -1, -4.37114e-08, 0, 0, 0)
+layers = 2
 cast_shadow = 0
 mesh = SubResource("SphereMesh_cvdvc")
 surface_material_override/0 = SubResource("StandardMaterial3D_m1j4p")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+layers = 2
 cast_shadow = 0
 amount = 64
 fixed_fps = 60
@@ -85,6 +124,26 @@ stream = ExtResource("3_ghwt3")
 autoplay = true
 bus = &"Combat"
 doppler_tracking = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+layers = 2
+light_color = Color(1, 0.501961, 0, 1)
+distance_fade_enabled = true
+
+[node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
+layers = 2
+cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
+mesh = SubResource("QuadMesh_tgqma")
+surface_material_override/0 = SubResource("StandardMaterial3D_24bqr")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+script = ExtResource("4_hhht4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="GPUParticles3D" method="_on_bullet_body_entered"]

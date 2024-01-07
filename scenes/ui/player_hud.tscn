@@ -1,0 +1,362 @@
+[gd_scene load_steps=27 format=3 uid="uid://dh4rwigqkk6va"]
+
+[ext_resource type="Script" path="res://scripts/ui/hud_handler.gd" id="1_prp1p"]
+[ext_resource type="Texture2D" uid="uid://co2ho6yh415d6" path="res://textures/ui/hud_bar.png" id="2_77nrq"]
+[ext_resource type="Shader" path="res://shaders/cross_bloom.gdshader" id="2_hw7s3"]
+[ext_resource type="Texture2D" uid="uid://cbl2184sxvg3f" path="res://textures/ui/crosshairs_atlas.png" id="3_ejr72"]
+[ext_resource type="Texture2D" uid="uid://dm7hg6gel5eeu" path="res://textures/ui/keys_atlas.png" id="4_3g4p3"]
+[ext_resource type="Texture2D" uid="uid://cywpqd2oi8p3r" path="res://textures/ui/weapons_atlas.png" id="5_rr2yr"]
+[ext_resource type="Texture2D" uid="uid://bf3n3tgu6akfw" path="res://textures/ui/weapon_frames_atlas.png" id="6_xihl4"]
+[ext_resource type="PackedScene" uid="uid://cyh67pqghsn3n" path="res://scenes/ui/game_menu.tscn" id="7_8wm7j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvsq7"]
+shader = ExtResource("2_hw7s3")
+shader_parameter/intensity = 4.0
+shader_parameter/threshold = 0.9
+shader_parameter/spread = 16
+
+[sub_resource type="Gradient" id="Gradient_ljioa"]
+offsets = PackedFloat32Array(0.6, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.501961)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_isuaa"]
+gradient = SubResource("Gradient_ljioa")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7oab2"]
+gradient = SubResource("Gradient_ljioa")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dcnq"]
+atlas = ExtResource("3_ejr72")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mab5h"]
+atlas = ExtResource("4_3g4p3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwsqw"]
+atlas = ExtResource("4_3g4p3")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kep41"]
+atlas = ExtResource("4_3g4p3")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tiso"]
+atlas = ExtResource("5_rr2yr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2lr2"]
+atlas = ExtResource("6_xihl4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dbyc"]
+atlas = ExtResource("5_rr2yr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y4ls"]
+atlas = ExtResource("6_xihl4")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o00qo"]
+atlas = ExtResource("5_rr2yr")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayrss"]
+atlas = ExtResource("6_xihl4")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qflcx"]
+atlas = ExtResource("5_rr2yr")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g556c"]
+atlas = ExtResource("6_xihl4")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wwlc"]
+atlas = ExtResource("5_rr2yr")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1htvs"]
+atlas = ExtResource("6_xihl4")
+region = Rect2(0, 128, 32, 32)
+
+[node name="HUD" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+mouse_filter = 2
+script = ExtResource("1_prp1p")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 5
+bus = &"Player"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+process_mode = 4
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4294967264
+size = Vector2i(1366, 736)
+render_target_update_mode = 0
+
+[node name="WeaponCam" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+visible = false
+cull_mask = 1048572
+far = 10.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_qvsq7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blood" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 1)
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_isuaa")
+
+[node name="Flash" type="TextureRect" parent="."]
+visible = false
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_7oab2")
+
+[node name="HUDPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, 48)
+texture = ExtResource("2_77nrq")
+patch_margin_left = 352
+patch_margin_right = 96
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="AmmoCounter" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -28.0
+offset_right = -8.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+text = "200/200"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HealthCounter" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -44.0
+offset_right = -8.0
+offset_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+text = "100%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Crosshairs" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(16, 16)
+texture = SubResource("AtlasTexture_6dcnq")
+stretch_mode = 3
+
+[node name="KeysContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 96.0
+grow_vertical = 0
+pivot_offset = Vector2(0, 32)
+theme_override_constants/separation = 0
+
+[node name="Red" type="TextureRect" parent="KeysContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_mab5h")
+stretch_mode = 2
+
+[node name="Green" type="TextureRect" parent="KeysContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_fwsqw")
+stretch_mode = 2
+
+[node name="Blue" type="TextureRect" parent="KeysContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_kep41")
+stretch_mode = 2
+
+[node name="WeaponsContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 112.0
+offset_top = -32.0
+offset_right = 336.0
+grow_vertical = 0
+
+[node name="Category0" type="TextureRect" parent="WeaponsContainer"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_6tiso")
+stretch_mode = 2
+
+[node name="Frame" type="TextureRect" parent="WeaponsContainer/Category0"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_y2lr2")
+stretch_mode = 2
+
+[node name="Category1" type="TextureRect" parent="WeaponsContainer"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+layout_mode = 2
+offset_left = 32.0
+offset_right = 64.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_6dbyc")
+stretch_mode = 2
+
+[node name="Frame" type="TextureRect" parent="WeaponsContainer/Category1"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_0y4ls")
+stretch_mode = 2
+
+[node name="Category2" type="TextureRect" parent="WeaponsContainer"]
+visible = false
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+layout_mode = 2
+offset_left = 64.0
+offset_right = 96.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_o00qo")
+stretch_mode = 2
+
+[node name="Frame" type="TextureRect" parent="WeaponsContainer/Category2"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_ayrss")
+stretch_mode = 2
+
+[node name="Category3" type="TextureRect" parent="WeaponsContainer"]
+visible = false
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+layout_mode = 2
+offset_left = 96.0
+offset_right = 128.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_qflcx")
+stretch_mode = 2
+
+[node name="Frame" type="TextureRect" parent="WeaponsContainer/Category3"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_g556c")
+stretch_mode = 2
+
+[node name="Category4" type="TextureRect" parent="WeaponsContainer"]
+visible = false
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+layout_mode = 2
+offset_left = 128.0
+offset_right = 160.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_2wwlc")
+stretch_mode = 2
+
+[node name="Frame" type="TextureRect" parent="WeaponsContainer/Category4"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_1htvs")
+stretch_mode = 2
+
+[node name="Menu" parent="." instance=ExtResource("7_8wm7j")]
+visible = false
+layout_mode = 1
+
+[connection signal="menu_closed" from="." to="Menu/Settings" method="_on_hud_menu_closed"]
+
+[editable path="Menu"]

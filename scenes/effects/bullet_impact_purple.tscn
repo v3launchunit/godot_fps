@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://d2uhwn8vwve4r"]
 
-[ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="1_7fams"]
+[ext_resource type="Script" path="res://scripts/effects/particle_lifetime.gd" id="1_eq3gn"]
 
 [sub_resource type="Gradient" id="Gradient_l122e"]
 offsets = PackedFloat32Array(0.5, 1)
@@ -23,7 +23,7 @@ alpha_hash_scale = 1.0
 alpha_antialiasing_mode = 0
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.501961, 0, 1, 1)
+albedo_color = Color(1, 0, 2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vhxfw"]
 material = SubResource("StandardMaterial3D_1y342")
@@ -33,14 +33,17 @@ size = Vector3(0.063, 0.063, 0.063)
 albedo = Color(0.5, 0.5, 0.5, 1)
 
 [node name="BulletImpact" type="GPUParticles3D"]
+layers = 2
+emitting = false
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_h3mrf")
 draw_pass_1 = SubResource("BoxMesh_vhxfw")
-script = ExtResource("1_7fams")
+script = ExtResource("1_eq3gn")
 
 [node name="FogVolume" type="FogVolume" parent="."]
 visible = false
+layers = 2
 size = Vector3(5, 5, 5)
 shape = 0
 material = SubResource("FogMaterial_l68gr")

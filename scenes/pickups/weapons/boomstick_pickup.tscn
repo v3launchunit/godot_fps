@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://du780rqis8eqo"]
+[gd_scene load_steps=25 format=3 uid="uid://du780rqis8eqo"]
 
 [ext_resource type="Script" path="res://scripts/pickups/weapon_pickup.gd" id="1_dciki"]
-[ext_resource type="AudioStream" uid="uid://dxscywpf2ven0" path="res://sounds/pickups/pickup_weapon.wav" id="2_1sh8p"]
+[ext_resource type="AudioStream" uid="uid://dxscywpf2ven0" path="res://audio/streams/pickups/pickup_weapon.wav" id="2_1sh8p"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="3_o60x8"]
 [ext_resource type="ArrayMesh" uid="uid://cjx7th4qqdgak" path="res://models/weapons/boomstick.obj" id="3_uposn"]
 [ext_resource type="Texture2D" uid="uid://bbbk8k7whvl1m" path="res://textures/weapons/boomstick/boomstick_detail_mask.png" id="4_lpgj7"]
 [ext_resource type="Texture2D" uid="uid://b84lximnqxpsk" path="res://textures/weapons/boomstick/boomstick_metallic.png" id="5_mfxo6"]
@@ -17,22 +18,13 @@ radius = 0.25
 [sub_resource type="SphereShape3D" id="SphereShape3D_0epo4"]
 radius = 1.0
 
-[sub_resource type="Gradient" id="Gradient_4h0ey"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_b1ivu"]
-gradient = SubResource("Gradient_4h0ey")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hv0iq"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 1, 0, 0.501961)
-albedo_texture = SubResource("GradientTexture2D_b1ivu")
+albedo_texture = ExtResource("3_o60x8")
 billboard_mode = 1
 fixed_size = true
 proximity_fade_distance = 3.0
@@ -157,10 +149,12 @@ shape = SubResource("SphereShape3D_0epo4")
 
 [node name="LensFlare" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+layers = 2
 mesh = SubResource("QuadMesh_e6p1o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(0.75, 1.11759e-08, 1.93572e-08, -4.44089e-16, 0.649519, -0.375, -2.23517e-08, 0.375, 0.649519, 0, 0.45, -0.3)
+layers = 2
 mesh = ExtResource("3_uposn")
 surface_material_override/0 = SubResource("StandardMaterial3D_vhyyb")
 surface_material_override/1 = SubResource("StandardMaterial3D_u14mp")

@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://rchnjnxfhuga"]
+[gd_scene load_steps=14 format=3 uid="uid://rchnjnxfhuga"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_ltu1h"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="2_qm8eu"]
+[ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="3_lnkux"]
+[ext_resource type="PackedScene" uid="uid://dco7xp2cwuyge" path="res://scenes/effects/explosion.tscn" id="4_67f8y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s6itv"]
 radius = 0.063
@@ -71,11 +73,13 @@ shape = SubResource("CapsuleShape3D_s6itv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+layers = 2
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_ajr70")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+layers = 2
 cast_shadow = 0
 amount = 16
 lifetime = 0.25
@@ -85,12 +89,23 @@ draw_pass_1 = SubResource("CapsuleMesh_ajr70")
 script = ExtResource("2_qm8eu")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+layers = 2
 light_color = Color(1, 0.501961, 0, 1)
 shadow_enabled = true
+distance_fade_enabled = true
+omni_shadow_mode = 0
 
 [node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
+layers = 2
 cast_shadow = 0
 mesh = SubResource("QuadMesh_j7ack")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+script = ExtResource("3_lnkux")
+decay_explosion = ExtResource("4_67f8y")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="GPUParticles3D" method="_on_bullet_body_entered"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_j72ds"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="2_jmmva"]
 [ext_resource type="ArrayMesh" uid="uid://cqf6v4gaperkn" path="res://models/bullets/bullet.obj" id="2_m6y8l"]
-[ext_resource type="AudioStream" uid="uid://crtqyq64m3wm1" path="res://sounds/ambient/bullet_ambient.wav" id="4_ldvif"]
+[ext_resource type="AudioStream" uid="uid://crtqyq64m3wm1" path="res://audio/streams/ambient/bullet_ambient.wav" id="4_ldvif"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h48e4"]
 size = Vector3(0.05, 0.05, 2)
@@ -61,6 +61,7 @@ shape = SubResource("BoxShape3D_h48e4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 4.37114e-07, 0, 3.82137e-15, 2.18557e-07, 1, 8.74228e-08, 5, -4.37114e-08, 0, 0, 0.35)
+layers = 2
 cast_shadow = 0
 mesh = ExtResource("2_m6y8l")
 surface_material_override/0 = SubResource("StandardMaterial3D_lktph")
@@ -68,6 +69,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lktph")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 visible = false
+layers = 2
 cast_shadow = 0
 amount = 25
 process_material = SubResource("ParticleProcessMaterial_0vas0")
@@ -81,6 +83,12 @@ autoplay = true
 max_distance = 50.0
 bus = &"Combat"
 doppler_tracking = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
+visible = false
+light_color = Color(1, 1, 0, 1)
+distance_fade_enabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="GPUParticles3D" method="_on_bullet_body_entered"]

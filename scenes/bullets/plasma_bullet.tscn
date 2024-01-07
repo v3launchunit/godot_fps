@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://ddrh730si0u6x"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_y0jrv"]
-[ext_resource type="AudioStream" uid="uid://bsv250k61o40r" path="res://sounds/ambient/plasma_shot_ambient.wav" id="3_81shg"]
+[ext_resource type="AudioStream" uid="uid://bsv250k61o40r" path="res://audio/streams/ambient/plasma_shot_ambient.wav" id="3_81shg"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="3_wrin4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h48e4"]
@@ -51,7 +51,7 @@ size = Vector3(0.063, 0.063, 0.063)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_11nj7"]
 load_path = "res://.godot/imported/halo.png-88068247d44276e09ca924d46b3606d1.s3tc.ctex"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs0w4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewv2n"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
@@ -64,10 +64,10 @@ proximity_fade_distance = 3.0
 distance_fade_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_7khmj"]
-material = SubResource("StandardMaterial3D_fs0w4")
+material = SubResource("StandardMaterial3D_ewv2n")
 size = Vector2(0.1, 0.1)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0qhau"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h1dex"]
 load_path = "res://.godot/imported/halo.png-88068247d44276e09ca924d46b3606d1.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qiosb"]
@@ -76,7 +76,7 @@ blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.501961, 0, 1, 1)
-albedo_texture = SubResource("CompressedTexture2D_0qhau")
+albedo_texture = SubResource("CompressedTexture2D_h1dex")
 billboard_mode = 1
 fixed_size = true
 proximity_fade_distance = 3.0
@@ -102,6 +102,7 @@ shape = SubResource("BoxShape3D_h48e4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, 0, 0, 0.5)
+layers = 2
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_3dr6j")
 surface_material_override/0 = SubResource("StandardMaterial3D_lktph")
@@ -109,6 +110,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lktph")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 visible = false
+layers = 2
 cast_shadow = 0
 amount = 25
 process_material = SubResource("ParticleProcessMaterial_0vas0")
@@ -117,11 +119,13 @@ script = ExtResource("3_wrin4")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, 0, 0, 1)
+layers = 2
 light_color = Color(0.501961, 0, 1, 1)
-shadow_enabled = true
+distance_fade_enabled = true
 
 [node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
 visible = false
+layers = 2
 cast_shadow = 0
 mesh = SubResource("QuadMesh_7khmj")
 surface_material_override/0 = SubResource("StandardMaterial3D_qiosb")

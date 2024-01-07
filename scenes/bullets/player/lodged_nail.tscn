@@ -17,6 +17,7 @@ explosion = ExtResource("2_663ij")
 
 [node name="Nail" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125)
+layers = 2
 material_override = SubResource("StandardMaterial3D_xnbio")
 mesh = ExtResource("1_ae5t7")
 

@@ -29,10 +29,11 @@ var knockback_vel: Vector3 # Knockback velocity
 
 var camera_zoom_sens: float = 1.0
 var reorienting: bool = false
-var sway_timer: float = 0.0
+var sway_timer: float = PI/2
 
 @onready var camera: Camera3D = $PlayerCam
-
+@onready var interact_scan: RayCast3D = $PlayerCam/Interact
+@onready var interact_stream_player: AudioStreamPlayer = find_child("AudioStreamPlayer", false)
 
 func _ready() -> void:
 	capture_mouse()
@@ -50,15 +51,17 @@ func _process(_delta) -> void:
 			camera.rotation.x > 1.5) and not reorienting:
 		reorienting = true
 	
-	if Input.is_action_just_pressed("debug_give_max_health"):
-		find_child("Status").health = 100
-	
-	
+	if Input.is_action_just_pressed("interact") and interact_scan.is_colliding() \
+			and interact_scan.get_collider().has_method("interact"):
+		interact_stream_player.play()
+		interact_scan.get_collider().interact(self)
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		look_dir = event.relative * 0.001
-		if mouse_captured: _rotate_camera(camera_zoom_sens)
-	if Input.is_action_just_pressed("exit"): get_tree().quit()
+		if mouse_captured: 
+			_rotate_camera(camera_zoom_sens)
 
 
 func _physics_process(delta: float) -> void:
@@ -108,22 +111,32 @@ func apply_knockback(amount: Vector3) -> void:
 func _walk(delta: float) -> Vector3:
 	move_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
 	var _forward: Vector3 = transform.basis * Vector3(move_dir.x, 0, move_dir.y)
-	# Roll camera while strafing
-	camera.rotation.z = move_toward(camera.rotation.z, deg_to_rad(move_dir.x * -roll_intensity), 
-			delta * roll_speed)
 	var walk_dir: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
+	
+	# Roll camera while strafing
+	camera.rotation.z = move_toward(
+			camera.rotation.z, 
+			deg_to_rad(move_dir.x * -roll_intensity), 
+			delta * roll_speed
+	)
+	
 	walk_vel = walk_vel.move_toward(walk_dir * speed * move_dir.length(), acceleration * delta)
 	
 	if move_dir.length() == 0:
-		sway_timer = PI/2
+		sway_timer = PI/2 #smoothstep(sway_timer, PI/2, delta)
 	else:
 		sway_timer += delta
 	
 	# Handle camera & weapon sway/jump lag
-	camera.position = Vector3(move_dir.length() * sway_height * cos(sway_speed * \
-			sway_timer), 0.5 + (move_dir.length() * sway_height/3 * sin(2 * \
-			sway_speed * sway_timer)), 0) if is_on_floor() else Vector3(0, 0.5 - \
-			clampf((grav_vel.y + jump_vel.y) * jump_sway, -0.1, 0.1), 0)
+	camera.position = Vector3(
+			move_dir.length() * sway_height * cos(sway_speed * sway_timer), 
+			0.5 + (move_dir.length() * sway_height/3 * sin(2 * sway_speed * sway_timer)), 
+			0
+	) if is_on_floor() else Vector3(
+			0, 
+			0.5 - clampf((grav_vel.y + jump_vel.y) * jump_sway, -0.1, 0.1),
+			0
+	)
 	# Manipulating the v_offset like this makes it look like the weapon is moving relative to the camera
 	camera.v_offset = move_dir.length() * -sway_height/6 * sin(10 * sway_timer) if \
 			is_on_floor() else clampf((grav_vel.y + jump_vel.y) * jump_sway, -0.1, 0.1)

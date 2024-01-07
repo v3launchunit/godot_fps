@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://cxqut1h5yt3nk"]
+[gd_scene load_steps=64 format=3 uid="uid://cxqut1h5yt3nk"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_flying.gd" id="1_pxyj5"]
 [ext_resource type="PackedScene" uid="uid://cr0slxppts0pq" path="res://models/entities/eyeball.glb" id="2_3mulw"]
@@ -66,7 +66,7 @@ noise = SubResource("FastNoiseLite_4y3ql")
 resource_local_to_scene = true
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.829787, 0.950355)
-colors = PackedColorArray(0, 0, 0, 1, 1, 0.5, 0, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 0.5, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_t2ac1"]
 resource_local_to_scene = true
@@ -145,29 +145,20 @@ normal_scale = 2.0
 normal_texture = SubResource("NoiseTexture2D_8wq4g")
 texture_filter = 0
 
-[sub_resource type="Gradient" id="Gradient_7emgu"]
-resource_local_to_scene = true
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.829787, 0.950355)
-colors = PackedColorArray(0, 0, 0, 0, 1, 0.5, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_pn7e6"]
-resource_local_to_scene = true
-gradient = SubResource("Gradient_7emgu")
-use_hdr = true
-fill_to = Vector2(0, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1qp74"]
 resource_local_to_scene = true
 transparency = 1
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = SubResource("GradientTexture2D_pn7e6")
+albedo_color = Color(4, 4, 4, 1)
+albedo_texture = SubResource("GradientTexture2D_t2ac1")
 detail_mask = SubResource("GradientTexture2D_kymkb")
 detail_albedo = SubResource("NoiseTexture2D_sdsj8")
 detail_normal = SubResource("NoiseTexture2D_gbnyt")
 texture_filter = 0
+grow = true
+grow_amount = 0.001
 
 [sub_resource type="Gradient" id="Gradient_3xk18"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -493,6 +484,8 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_63caw"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_de3dd"]
+states/End/position = Vector2(832, 96.2085)
+states/Start/position = Vector2(164, 95.4659)
 states/attacking/node = SubResource("AnimationNodeAnimation_uyjsu")
 states/attacking/position = Vector2(317.185, 227.333)
 states/dead/node = SubResource("AnimationNodeAnimation_jtyhk")
@@ -507,6 +500,8 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-51, 6)
 
 [node name="Eyeball" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 23
 script = ExtResource("1_pxyj5")
 turning_speed = 3.0
 acceleration = 10.0
@@ -515,7 +510,7 @@ sight_line_sweep_angle = 0.785398
 sight_line_sweep_speed = 30.0
 detection_stream = SubResource("AudioStreamGenerator_xh0sx")
 attack_recovery_time = 0.5
-bullet = "res://scenes/bullets/enemy/enemy_fireball.tscn"
+bullet = "res://scenes/bullets/enemy/enemy_blood_bullet.tscn"
 flinch_chance = 0.0
 flinch_time = 0.0
 death_stream = SubResource("AudioStreamGenerator_ypnq1")
@@ -527,39 +522,57 @@ shape = SubResource("SphereShape3D_ynliv")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Eyeball" parent="Eyeball" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_4bp2b")
 
 [node name="Skeleton3D" parent="Eyeball/Eyeball/TendrilBottom" index="0"]
 bones/0/rotation = Quaternion(0.707107, 0, -0.707107, 0)
 
 [node name="TendrilMesh_003" parent="Eyeball/Eyeball/TendrilBottom/Skeleton3D" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_dnjet")
 
 [node name="Skeleton3D" parent="Eyeball/Eyeball/TendrilCenter" index="0"]
 bones/0/rotation = Quaternion(0.707107, 0, -0.707107, 0)
 
 [node name="TendrilMesh" parent="Eyeball/Eyeball/TendrilCenter/Skeleton3D" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_dnjet")
 
 [node name="TendrilMesh_002" parent="Eyeball/Eyeball/TendrilLeft/Skeleton3D" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_dnjet")
 
 [node name="Skeleton3D" parent="Eyeball/Eyeball/TendrilRight" index="0"]
 bones/0/rotation = Quaternion(0.707107, 0, -0.707107, 0)
 
 [node name="TendrilMesh_001" parent="Eyeball/Eyeball/TendrilRight/Skeleton3D" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_0s43w")
 
 [node name="TendrilMesh_004" parent="Eyeball/Eyeball/TendrilTop/Skeleton3D" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_dnjet")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Eyeball/Eyeball" index="5"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_1qp74")
 amount = 16
 lifetime = 0.25
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_ntdls")
 draw_pass_1 = SubResource("ArrayMesh_jdo1f")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Eyeball/Eyeball" index="6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.75188e-09, 0.429961, 0)
+visible = false
+light_color = Color(1, 0.501961, 0, 1)
+light_energy = 4.0
+shadow_enabled = true
+distance_fade_enabled = true
+spot_range = 10.0
+spot_angle = 80.0
+spot_angle_attenuation = 5.13242e-05
 
 [node name="Spawner" type="Marker3D" parent="Eyeball"]
 

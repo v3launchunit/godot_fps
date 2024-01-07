@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://c5pbs8t6p7ogl"]
+[gd_scene load_steps=21 format=3 uid="uid://c5pbs8t6p7ogl"]
 
 [ext_resource type="ArrayMesh" uid="uid://bssx7wfjh7rbq" path="res://models/gib.obj" id="1_v6f6j"]
 [ext_resource type="Script" path="res://scripts/effects/particle_lifetime.gd" id="2_08tqy"]
+[ext_resource type="AudioStream" uid="uid://cf47ey2v3phbu" path="res://audio/streams/effects/mutilation.wav" id="3_ir11u"]
 
 [sub_resource type="Gradient" id="Gradient_ut1tc"]
 interpolation_mode = 1
@@ -136,27 +137,38 @@ _data = {
 "anim": SubResource("Animation_gltkd")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_awnvj"]
+streams_count = 1
+random_pitch = 1.15
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("3_ir11u")
+stream_0/weight = 1.0
+
 [node name="GibsSys" type="GPUParticles3D"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_ba1bl")
 sub_emitter = NodePath("BloodSys")
 lifetime = 15.0
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
-collision_base_size = 0.25
+visibility_aabb = AABB(-8, -28, -8, 16, 32, 16)
 process_material = SubResource("ParticleProcessMaterial_htmtp")
 draw_pass_1 = ExtResource("1_v6f6j")
 script = ExtResource("2_08tqy")
 
 [node name="BloodSys" type="GPUParticles3D" parent="."]
+layers = 2
 emitting = false
 amount = 1024
 lifetime = 3.0
 fixed_fps = 60
+visibility_aabb = AABB(-8, -28, -8, 16, 32, 16)
 process_material = SubResource("ParticleProcessMaterial_romqw")
 draw_pass_1 = SubResource("BoxMesh_rdhk4")
 
 [node name="FogVolume" type="FogVolume" parent="."]
+layers = 2
 size = Vector3(0, 0, 0)
 shape = 0
 material = SubResource("FogMaterial_uwmev")
@@ -167,3 +179,10 @@ autoplay = "anim"
 libraries = {
 "": SubResource("AnimationLibrary_523pv")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_awnvj")
+volume_db = 6.0
+max_db = 6.0
+autoplay = true
+bus = &"Combat"

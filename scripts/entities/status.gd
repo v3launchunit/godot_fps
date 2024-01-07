@@ -10,9 +10,11 @@ signal died
 @export var damage_sys: PackedScene
 @export_file("*.tscn") var gibs: String
 @export var loot: Array[PackedScene] = []
+@export var ripple_distance: int = 1
 
 var health: float
 var is_dead: bool = false
+var target_parent: Node
 #var overheal_decay_rate: float = 1 # hp/second
 
 @onready var gibs_scene: PackedScene = load(gibs)
@@ -20,6 +22,9 @@ var is_dead: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = max_health
+	target_parent = get_parent()
+	for i in (ripple_distance - 1):
+		target_parent = target_parent.get_parent()
 #	if get_parent().has_signal("body_entered"):
 #		get_parent().body_entered.connect(damage)
 
@@ -37,20 +42,20 @@ func damage(amount: float) -> float:
 #	print(health)
 	if damage_sys != null:
 		var instance := damage_sys.instantiate()
-		get_parent().add_child(instance)
+		target_parent.add_child(instance)
 	if health <= -gib_threshold:
 		if not is_dead:
 			kill()
 		
-		get_parent().queue_free()
+		target_parent.queue_free()
 		var exp: Node
 		if gibs_scene != null:
 			print("gibbed")
 			exp = gibs_scene.instantiate()
-			get_parent().add_child(exp)
+			target_parent.add_child(exp)
 			exp.reparent(get_tree().root)
 			gibs_scene = null
-		return 0	
+		return 0
 	if is_dead:
 		return 0 # corpses cannot stop piercers
 	if health <= 0:
@@ -74,7 +79,7 @@ func kill():
 #	print("this thing is fucking dead!")
 	if not loot.is_empty():
 		var loot_spawn: RigidBody3D = loot.pick_random().instantiate()
-		get_parent().add_child(loot_spawn)
+		target_parent.add_child(loot_spawn)
 		loot_spawn.reparent(get_tree().root)
 		loot_spawn.rotation = Vector3(0, 0, 0)
 		loot_spawn.linear_velocity = Vector3(randf_range(-3, 3), 10, randf_range(-3, 3))

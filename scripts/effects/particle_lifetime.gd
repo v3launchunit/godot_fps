@@ -1,6 +1,6 @@
 extends GPUParticles3D
 
-var timer: float = 0
+var timer: float = 0 # seconds
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

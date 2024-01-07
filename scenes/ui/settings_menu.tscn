@@ -1,0 +1,153 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccwu3rknnn1jt"]
+
+[ext_resource type="Script" path="res://scripts/ui/settings_menu.gd" id="1_mubvd"]
+[ext_resource type="Texture2D" uid="uid://cmq3arf61ax4f" path="res://textures/ui/menu_panel.png" id="2_kuegr"]
+[ext_resource type="Theme" uid="uid://dwof7m2ye3tjh" path="res://scenes/default_theme.tres" id="3_sxm1b"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_dsoc6"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_mifg4"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_4gql4"]
+
+[node name="Settings" type="Control"]
+process_mode = 4
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mubvd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="MenuPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 134.0
+grow_vertical = 2
+texture = ExtResource("2_kuegr")
+patch_margin_left = 4
+patch_margin_top = 16
+patch_margin_right = 4
+patch_margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 18.0
+offset_right = 126.0
+offset_bottom = -10.0
+grow_vertical = 2
+
+[node name="Video" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Back")
+focus_neighbor_top = NodePath("../Back")
+focus_neighbor_right = NodePath("../Audio")
+focus_previous = NodePath("../Back")
+theme = ExtResource("3_sxm1b")
+toggle_mode = true
+keep_pressed_outside = true
+text = "VIDEO"
+
+[node name="Audio" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Video")
+focus_neighbor_right = NodePath("../Gameplay")
+theme = ExtResource("3_sxm1b")
+toggle_mode = true
+keep_pressed_outside = true
+button_group = SubResource("ButtonGroup_dsoc6")
+text = "AUDIO"
+
+[node name="Gameplay" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Audio")
+focus_neighbor_right = NodePath("../Other")
+theme = ExtResource("3_sxm1b")
+toggle_mode = true
+keep_pressed_outside = true
+button_group = SubResource("ButtonGroup_mifg4")
+text = "GAMEPLAY	"
+
+[node name="Input" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Audio")
+focus_neighbor_right = NodePath("../Other")
+theme = ExtResource("3_sxm1b")
+toggle_mode = true
+keep_pressed_outside = true
+button_group = SubResource("ButtonGroup_mifg4")
+text = "INPUT"
+
+[node name="Accessibility" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Gameplay")
+focus_neighbor_right = NodePath("../Back")
+focus_next = NodePath("../Back")
+theme = ExtResource("3_sxm1b")
+toggle_mode = true
+keep_pressed_outside = true
+button_group = SubResource("ButtonGroup_4gql4")
+text = "ACCESSIBILITY"
+
+[node name="Other" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Gameplay")
+focus_neighbor_right = NodePath("../Back")
+focus_next = NodePath("../Back")
+theme = ExtResource("3_sxm1b")
+toggle_mode = true
+keep_pressed_outside = true
+button_group = SubResource("ButtonGroup_4gql4")
+text = "OTHER"
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+focus_neighbor_left = NodePath("../Other")
+focus_neighbor_top = NodePath("../Other")
+focus_neighbor_right = NodePath("../Video")
+focus_neighbor_bottom = NodePath("../Video")
+focus_next = NodePath("../Video")
+focus_previous = NodePath("../Other")
+theme = ExtResource("3_sxm1b")
+keep_pressed_outside = true
+text = "BACK"
+
+[node name="SettingsPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kuegr")
+patch_margin_left = 4
+patch_margin_top = 16
+patch_margin_right = 4
+patch_margin_bottom = 8
+
+[connection signal="pressed" from="VBoxContainer/Video" to="." method="_on_campaign_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Audio" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Gameplay" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Input" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Accessibility" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Other" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_quit_button_pressed"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://blrtnnu61g5s"]
+[gd_scene load_steps=13 format=3 uid="uid://blrtnnu61g5s"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_5litf"]
 [ext_resource type="ArrayMesh" uid="uid://cqf6v4gaperkn" path="res://models/bullets/bullet.obj" id="2_afg0c"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="3_o658m"]
-[ext_resource type="AudioStream" uid="uid://crtqyq64m3wm1" path="res://sounds/ambient/bullet_ambient.wav" id="4_0y1a2"]
+[ext_resource type="AudioStream" uid="uid://crtqyq64m3wm1" path="res://audio/streams/ambient/bullet_ambient.wav" id="4_0y1a2"]
+[ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="5_fvl37"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h48e4"]
 size = Vector3(0.05, 0.05, 0.5)
@@ -63,6 +64,7 @@ shape = SubResource("BoxShape3D_h48e4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, -8.74228e-07, 0, -7.64275e-15, -2.18557e-07, 1, -1.74846e-07, -5, -4.37114e-08, 0, 0, 0.35)
+layers = 2
 cast_shadow = 0
 mesh = ExtResource("2_afg0c")
 surface_material_override/0 = SubResource("StandardMaterial3D_lktph")
@@ -70,6 +72,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lktph")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 visible = false
+layers = 2
 cast_shadow = 0
 amount = 25
 process_material = SubResource("ParticleProcessMaterial_0vas0")
@@ -83,6 +86,12 @@ autoplay = true
 max_distance = 50.0
 bus = &"Combat"
 doppler_tracking = 2
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+script = ExtResource("5_fvl37")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="GPUParticles3D" method="_on_bullet_body_entered"]

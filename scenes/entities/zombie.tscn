@@ -1,15 +1,15 @@
 [gd_scene load_steps=47 format=3 uid="uid://dw2d5fbdkdf6f"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_base.gd" id="1_hhhfd"]
-[ext_resource type="AudioStream" uid="uid://kvksscy35kso" path="res://sounds/voices/canary/detect_moan_1.wav" id="2_tjox4"]
-[ext_resource type="AudioStream" uid="uid://cxmy0py34q134" path="res://sounds/voices/canary/detect_moan_2.wav" id="3_3sjub"]
-[ext_resource type="AudioStream" uid="uid://cl44ukycugok" path="res://sounds/voices/canary/detect_moan_3.wav" id="4_dut5g"]
-[ext_resource type="AudioStream" uid="uid://ci3c0uultgsgr" path="res://sounds/voices/canary/detect_moan_4.wav" id="5_h3on7"]
-[ext_resource type="AudioStream" uid="uid://g7tloh7a7rc8" path="res://sounds/voices/canary/release_1.wav" id="6_ofy0l"]
-[ext_resource type="AudioStream" uid="uid://hvj8aonxc7fe" path="res://sounds/voices/canary/death_moan_1.wav" id="7_v0hh3"]
-[ext_resource type="AudioStream" uid="uid://byxqomb23gysj" path="res://sounds/voices/canary/death_moan_2.wav" id="8_803hd"]
-[ext_resource type="AudioStream" uid="uid://1k3tiy342e76" path="res://sounds/voices/canary/death_moan_3.wav" id="9_edxqe"]
-[ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://sounds/voices/wilhelm_scream.ogg" id="10_r1wo5"]
+[ext_resource type="AudioStream" uid="uid://kvksscy35kso" path="res://audio/streams/voices/canary/detect_moan_1.wav" id="2_tjox4"]
+[ext_resource type="AudioStream" uid="uid://cxmy0py34q134" path="res://audio/streams/voices/canary/detect_moan_2.wav" id="3_3sjub"]
+[ext_resource type="AudioStream" uid="uid://cl44ukycugok" path="res://audio/streams/voices/canary/detect_moan_3.wav" id="4_dut5g"]
+[ext_resource type="AudioStream" uid="uid://ci3c0uultgsgr" path="res://audio/streams/voices/canary/detect_moan_4.wav" id="5_h3on7"]
+[ext_resource type="AudioStream" uid="uid://g7tloh7a7rc8" path="res://audio/streams/voices/canary/release_1.wav" id="6_ofy0l"]
+[ext_resource type="AudioStream" uid="uid://hvj8aonxc7fe" path="res://audio/streams/voices/canary/death_moan_1.wav" id="7_v0hh3"]
+[ext_resource type="AudioStream" uid="uid://byxqomb23gysj" path="res://audio/streams/voices/canary/death_moan_2.wav" id="8_803hd"]
+[ext_resource type="AudioStream" uid="uid://1k3tiy342e76" path="res://audio/streams/voices/canary/death_moan_3.wav" id="9_edxqe"]
+[ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://audio/streams/voices/wilhelm_scream.ogg" id="10_r1wo5"]
 [ext_resource type="PackedScene" uid="uid://fmof3asd7vir" path="res://models/entities/zombie.glb" id="10_srtgb"]
 [ext_resource type="AnimationLibrary" uid="uid://bfcwcy8o6awrr" path="res://scenes/entities/zombie_anims.res" id="11_bwev3"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="12_vljf1"]
@@ -391,6 +391,7 @@ shape = SubResource("CapsuleShape3D_bp4ct")
 
 [node name="PlaceholderMesh" type="MeshInstance3D" parent="."]
 visible = false
+layers = 2
 mesh = SubResource("CapsuleMesh_q1a72")
 
 [node name="zombie" parent="." instance=ExtResource("10_srtgb")]
@@ -415,7 +416,7 @@ bones/17/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/18/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder_002" parent="zombie/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.658593, 0.0207861, -0.752213, 0.177538, 0.967107, 0.182166, 0.731257, -0.253519, 0.633239, -0.371927, -0.847288, 0.167233)
+transform = Transform3D(0.671029, 0.000102237, -0.741432, 0.186706, 0.967752, 0.16911, 0.717539, -0.251907, 0.64937, -0.355237, -0.871718, 0.202152)
 bone_idx = 8
 
 [node name="Spawner" type="Marker3D" parent="zombie/Armature/Skeleton3D/Cylinder_002/Cylinder_002" index="0"]
@@ -441,6 +442,7 @@ collision_mask = 3
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SightLine"]
 transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, -0.3, -1)
 visible = false
+layers = 2
 mesh = SubResource("CylinderMesh_t04gt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

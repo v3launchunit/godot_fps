@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="1_6sl8e"]
 [ext_resource type="Script" path="res://scripts/auto_play.gd" id="2_etkcd"]
 [ext_resource type="Script" path="res://scripts/effects/area_damage.gd" id="3_e2vgx"]
-[ext_resource type="AudioStream" uid="uid://tv57kig5mcoh" path="res://sounds/effects/kaboom.wav" id="4_22yul"]
-[ext_resource type="AudioStream" uid="uid://b4em0t5e3pb8a" path="res://sounds/effects/vine_boom.mp3" id="5_vgmmu"]
+[ext_resource type="AudioStream" uid="uid://tv57kig5mcoh" path="res://audio/streams/effects/kaboom.wav" id="4_22yul"]
+[ext_resource type="AudioStream" uid="uid://b4em0t5e3pb8a" path="res://audio/streams/effects/vine_boom.mp3" id="5_vgmmu"]
 
 [sub_resource type="Gradient" id="Gradient_jpqdd"]
 interpolation_mode = 2
@@ -324,15 +324,17 @@ stream_1/stream = ExtResource("5_vgmmu")
 stream_1/weight = 0.001
 
 [node name="Explosion" type="Node3D"]
-script = ExtResource("1_6sl8e")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+layers = 2
 light_color = Color(0.501961, 0, 1, 1)
 shadow_enabled = true
+distance_fade_enabled = true
 omni_range = 10.0
 omni_shadow_mode = 0
 
 [node name="ExplosionSys" type="GPUParticles3D" parent="."]
+layers = 2
 amount = 32
 lifetime = 0.5
 one_shot = true
@@ -341,6 +343,7 @@ process_material = SubResource("ParticleProcessMaterial_dnm5v")
 draw_pass_1 = SubResource("SphereMesh_k0b3g")
 
 [node name="ShrapnelSys" type="GPUParticles3D" parent="."]
+layers = 2
 amount = 32
 lifetime = 5.0
 one_shot = true
@@ -357,9 +360,11 @@ animated_materials = [NodePath("MeshInstance3D"), NodePath("FogVolume")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AnimationPlayer"]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+layers = 2
 mesh = SubResource("SphereMesh_cpldg")
 
 [node name="FogVolume" type="FogVolume" parent="AnimationPlayer"]
+layers = 2
 shape = 0
 material = SubResource("FogMaterial_hi1pk")
 
@@ -367,6 +372,7 @@ material = SubResource("FogMaterial_hi1pk")
 collision_mask = 7
 script = ExtResource("3_e2vgx")
 damage = 60.0
+knockback_force = 7.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_er5bi")
@@ -376,7 +382,7 @@ collision_mask = 7
 script = ExtResource("3_e2vgx")
 damage = 60.0
 player_damage_override = 0.0
-knockback_force = 7.5
+knockback_force = 3.75
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
 shape = SubResource("SphereShape3D_n73ay")
@@ -385,3 +391,9 @@ shape = SubResource("SphereShape3D_n73ay")
 stream = SubResource("AudioStreamRandomizer_4pgkn")
 autoplay = true
 doppler_tracking = 1
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+script = ExtResource("1_6sl8e")

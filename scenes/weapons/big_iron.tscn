@@ -1,15 +1,58 @@
-[gd_scene load_steps=19 format=3 uid="uid://bfxuay7qxu7lj"]
+[gd_scene load_steps=31 format=3 uid="uid://bfxuay7qxu7lj"]
 
 [ext_resource type="ArrayMesh" uid="uid://vfuqffuqwocv" path="res://models/weapons/big_iron.obj" id="1_ampqd"]
+[ext_resource type="Texture2D" uid="uid://c23vayn4doala" path="res://textures/weapons/big_iron/big_iron_detail_mask.png" id="2_6oara"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_base.gd" id="2_o12ys"]
+[ext_resource type="Texture2D" uid="uid://ss8r0up4rgsx" path="res://textures/weapons/big_iron/big_iron_metallic.png" id="3_3nv2w"]
 [ext_resource type="ArrayMesh" uid="uid://bblg4t73miejx" path="res://models/weapons/muzzle_flash_alt.obj" id="3_7l0wc"]
+[ext_resource type="Texture2D" uid="uid://br5tgbkka8rp7" path="res://textures/weapons/big_iron/big_iron_roughness.png" id="4_g758g"]
 [ext_resource type="Script" path="res://scripts/weapons/scope.gd" id="4_p5y4d"]
-[ext_resource type="AudioStream" uid="uid://cfhhlt7csg7u7" path="res://sounds/weapons/firing/shotgun_fire.wav" id="5_esomu"]
+[ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="8_ibv0x"]
+[ext_resource type="AudioStream" uid="uid://cs34y7mvho53h" path="res://audio/streams/weapons/firing/boomstick_fire.wav" id="9_i8lc1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bhoy"]
 albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
 metallic = 1.0
 roughness = 0.25
+texture_filter = 0
+
+[sub_resource type="Gradient" id="Gradient_v5jf5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.7)
+colors = PackedColorArray(0.278431, 0.172549, 0.0470588, 1, 0.341176, 0.207843, 0.0784314, 1, 0.447059, 0.298039, 0.14902, 1, 0.415686, 0.313726, 0.145098, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q3vr3"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p0187"]
+width = 128
+height = 32
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1wj7s"]
+width = 128
+height = 32
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_canfa"]
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
+metallic = 1.0
+metallic_texture = ExtResource("3_3nv2w")
+roughness_texture = ExtResource("4_g758g")
+clearcoat_enabled = true
+clearcoat_roughness = 0.25
+clearcoat_texture = ExtResource("2_6oara")
+detail_enabled = true
+detail_mask = ExtResource("2_6oara")
+detail_albedo = SubResource("NoiseTexture2D_p0187")
+detail_normal = SubResource("NoiseTexture2D_1wj7s")
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ury1m"]
@@ -47,6 +90,24 @@ states/idle/position = Vector2(383.259, 100.667)
 transitions = ["deploy", "idle", SubResource("AnimationNodeStateMachineTransition_g8bpy"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_xcnjc"), "Start", "deploy", SubResource("AnimationNodeStateMachineTransition_owka3")]
 graph_offset = Vector2(-8, 39)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_kip30"]
+radius = 16.0
+
+[sub_resource type="Animation" id="Animation_4yi83"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AlertRadius:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_y0xky"]
 resource_name = "big_iron_deploy"
 step = 0.05
@@ -76,6 +137,12 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5orhs"]
+streams_count = 1
+random_pitch = 1.25
+stream_0/stream = ExtResource("9_i8lc1")
+stream_0/weight = 1.0
 
 [sub_resource type="Animation" id="Animation_7x05r"]
 resource_name = "big_iron_fire"
@@ -136,11 +203,23 @@ tracks/5/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("5_esomu")
+"stream": SubResource("AudioStreamRandomizer_5orhs")
 }],
 "times": PackedFloat32Array(0)
 }
 tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AlertRadius:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_3l6t5"]
 resource_name = "big_iron_idle"
@@ -163,6 +242,7 @@ tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c7bdy"]
 _data = {
+"RESET": SubResource("Animation_4yi83"),
 "big_iron_deploy": SubResource("Animation_y0xky"),
 "big_iron_fire": SubResource("Animation_7x05r"),
 "big_iron_idle": SubResource("Animation_3l6t5")
@@ -172,16 +252,20 @@ _data = {
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.5, -0.35)
 
 [node name="BigIron" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0008313, 0)
-layers = 2
-material_override = SubResource("StandardMaterial3D_2bhoy")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00187644, 0)
+layers = 4
 cast_shadow = 0
 mesh = ExtResource("1_ampqd")
+surface_material_override/0 = SubResource("StandardMaterial3D_2bhoy")
+surface_material_override/1 = SubResource("StandardMaterial3D_canfa")
+surface_material_override/2 = SubResource("StandardMaterial3D_2bhoy")
+surface_material_override/3 = SubResource("StandardMaterial3D_2bhoy")
 script = ExtResource("2_o12ys")
 category = 3
 bullet = "res://scenes/bullets/big_iron_bullet.tscn"
 shot_cooldown = 1.25
 ammo_type = "big_iron_bullets"
+anti_clip_distance = 1.5
 
 [node name="Spawner" type="Marker3D" parent="BigIron"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0774074, 1.65)
@@ -189,12 +273,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0774074, 1.65)
 [node name="MuzzleFlash" type="MeshInstance3D" parent="BigIron/Spawner"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 4.23193e-06, -0.000249945, 0.000486732)
 visible = false
-layers = 2
+layers = 4
 cast_shadow = 0
 mesh = ExtResource("3_7l0wc")
 surface_material_override/0 = SubResource("StandardMaterial3D_ury1m")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="BigIron/Spawner/MuzzleFlash"]
+layers = 4
 light_color = Color(1, 1, 0, 1)
 light_energy = 0.0
 shadow_enabled = true
@@ -209,6 +294,15 @@ active = true
 [node name="Scope" type="Node3D" parent="BigIron"]
 script = ExtResource("4_p5y4d")
 scope_strength = 5.0
+
+[node name="AlertRadius" type="Area3D" parent="BigIron"]
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+script = ExtResource("8_ibv0x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BigIron/AlertRadius"]
+shape = SubResource("SphereShape3D_kip30")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../BigIron")

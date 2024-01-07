@@ -11,7 +11,7 @@ extends RigidBody3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	area.body_entered.connect(_pickup)
+	area.body_entered.connect(interact)
 	find_child("AnimationPlayer").play("anim")
 
 
@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _pickup(body: Node3D) -> void:
+func interact(body: Node3D) -> void:
 	if body.name == "Player" and body.find_child("PlayerCam").add_ammo(ammo_type, ammo_amount):
 		if pickup_sound != null:
 			body.find_child("HUD").flash_with_sound(flash_color, pickup_sound)

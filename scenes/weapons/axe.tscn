@@ -97,8 +97,8 @@ graph_offset = Vector2(-136, 58)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.35)
 
 [node name="Axe" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.499978, -0.866038, 0, 0.866038, 0.499978, 0, 0, 0, 1, -0.15, 0.00521209, 0)
-layers = 2
+transform = Transform3D(0.499978, -0.866038, 0, 0.866038, 0.499978, 0, 0, 0, 1, -0.15, 0.00557211, 0)
+layers = 4
 material_override = SubResource("StandardMaterial3D_3ndtl")
 cast_shadow = 0
 mesh = ExtResource("1_sq7xt")
@@ -122,3 +122,6 @@ root_node = NodePath("../Axe/AnimationTree")
 libraries = {
 "axe_anims": ExtResource("3_t18wh")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -3.0

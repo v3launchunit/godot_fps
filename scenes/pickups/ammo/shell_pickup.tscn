@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://dl7fuv4wdxtjx"]
+[gd_scene load_steps=15 format=3 uid="uid://dl7fuv4wdxtjx"]
 
 [ext_resource type="Script" path="res://scripts/pickups/ammo_pickup.gd" id="1_c0jw1"]
-[ext_resource type="AudioStream" uid="uid://g7unocdbdokw" path="res://sounds/pickups/pickup_ammo.wav" id="2_m87dd"]
+[ext_resource type="AudioStream" uid="uid://g7unocdbdokw" path="res://audio/streams/pickups/pickup_ammo.wav" id="2_m87dd"]
 [ext_resource type="Texture2D" uid="uid://dbnasmfycrfat" path="res://textures/objects/shotgun_shell/shotgun_shell.png" id="3_o475v"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="3_ujirm"]
 [ext_resource type="Texture2D" uid="uid://cxhsqnpu78e2q" path="res://textures/objects/shotgun_shell/shotgun_shell_metallic.png" id="4_nmgqc"]
 [ext_resource type="Texture2D" uid="uid://dao3wvs485yhb" path="res://textures/objects/shotgun_shell/shotgun_shell_roughness.png" id="5_abm1o"]
 
@@ -13,22 +14,13 @@ radius = 0.25
 [sub_resource type="SphereShape3D" id="SphereShape3D_0epo4"]
 radius = 1.0
 
-[sub_resource type="Gradient" id="Gradient_4h0ey"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_b1ivu"]
-gradient = SubResource("Gradient_4h0ey")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hv0iq"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 1, 0, 0.501961)
-albedo_texture = SubResource("GradientTexture2D_b1ivu")
+albedo_texture = ExtResource("3_ujirm")
 billboard_mode = 1
 fixed_size = true
 proximity_fade_distance = 3.0
@@ -94,10 +86,12 @@ collision_mask = 2
 shape = SubResource("SphereShape3D_0epo4")
 
 [node name="LensFlare" type="MeshInstance3D" parent="Area3D"]
+layers = 2
 mesh = SubResource("QuadMesh_3goi8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+layers = 2
 visibility_range_end = 20.0
 mesh = SubResource("CylinderMesh_t85r6")
 

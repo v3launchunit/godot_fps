@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://crvf6qiekfqex"]
+[gd_scene load_steps=34 format=3 uid="uid://crvf6qiekfqex"]
 
 [ext_resource type="ArrayMesh" uid="uid://cjx7th4qqdgak" path="res://models/weapons/boomstick.obj" id="1_7e58d"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_alt_fire.gd" id="2_nf3wy"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ct1gr7br07rn4" path="res://textures/weapons/boomstick/boomstick_stock_detail_mask.png" id="5_e71qv"]
 [ext_resource type="Texture2D" uid="uid://whh5ds0hp7ug" path="res://textures/weapons/boomstick/boomstick_stock_metallic.png" id="6_sagf4"]
 [ext_resource type="Texture2D" uid="uid://iboxykf07oin" path="res://textures/weapons/boomstick/boomstick_stock_roughness.png" id="7_q40ik"]
+[ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="10_khxxt"]
 
 [sub_resource type="Gradient" id="Gradient_v5jf5"]
 interpolation_mode = 1
@@ -128,12 +129,35 @@ states/idle/position = Vector2(343, 100.111)
 transitions = ["deploy", "idle", SubResource("AnimationNodeStateMachineTransition_l75k0"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_e6tb1"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_xfgup"), "Start", "deploy", SubResource("AnimationNodeStateMachineTransition_40edl")]
 graph_offset = Vector2(-104, 71)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_iuds5"]
+radius = 16.0
+
+[sub_resource type="Animation" id="Animation_khffd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boomstick/AlertRadius:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_udr0n"]
+_data = {
+"RESET": SubResource("Animation_khffd")
+}
+
 [node name="Boomstick" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.35, 0)
 
 [node name="Boomstick" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00484874, 0)
-layers = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00883527, 0)
+layers = 4
 cast_shadow = 0
 mesh = ExtResource("1_7e58d")
 surface_material_override/0 = SubResource("StandardMaterial3D_jc54w")
@@ -147,13 +171,14 @@ alt_ammo_type = "shells"
 alt_ammo_cost = 2
 category = 1
 index = 1
-bullet = "res://scenes/bullets/test_bullet.tscn"
+bullet = "res://scenes/bullets/hitscan_bullet.tscn"
 shot_cooldown = 2.0
 volley = 36
 spread = 30.0
 recoil = 7.5
 ammo_type = "shells"
 ammo_cost = 2
+anti_clip_distance = 1.25
 
 [node name="Spawner" type="Marker3D" parent="Boomstick"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
@@ -161,13 +186,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 [node name="MuzzleFlashL" type="MeshInstance3D" parent="Boomstick/Spawner"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.05, 0, 0)
 visible = false
-layers = 2
+layers = 4
 cast_shadow = 0
 mesh = ExtResource("3_ac8cs")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_mrnkp")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Boomstick/Spawner/MuzzleFlashL"]
+layers = 4
 light_color = Color(1, 1, 0, 1)
 light_energy = 0.0
 shadow_enabled = true
@@ -177,13 +203,14 @@ omni_shadow_mode = 0
 [node name="MuzzleFlashR" type="MeshInstance3D" parent="Boomstick/Spawner"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.05, 0, 0)
 visible = false
-layers = 2
+layers = 4
 cast_shadow = 0
 mesh = ExtResource("3_ac8cs")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_noy7b")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Boomstick/Spawner/MuzzleFlashR"]
+layers = 4
 light_color = Color(1, 1, 0, 1)
 light_energy = 0.0
 shadow_enabled = true
@@ -196,12 +223,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 [node name="MuzzleFlashL" type="MeshInstance3D" parent="Boomstick/AltSpawner"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.05, 0, 0)
 visible = false
-layers = 2
+layers = 4
 mesh = ExtResource("3_ac8cs")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_mrnkp")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Boomstick/AltSpawner/MuzzleFlashL"]
+layers = 4
 light_color = Color(1, 1, 0, 1)
 light_energy = 0.0
 shadow_enabled = true
@@ -211,12 +239,13 @@ omni_shadow_mode = 0
 [node name="MuzzleFlashR" type="MeshInstance3D" parent="Boomstick/AltSpawner"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.05, 0, 0)
 visible = false
-layers = 2
+layers = 4
 mesh = ExtResource("3_ac8cs")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_noy7b")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Boomstick/AltSpawner/MuzzleFlashR"]
+layers = 4
 light_color = Color(1, 1, 0, 1)
 light_energy = 0.0
 shadow_enabled = true
@@ -228,8 +257,18 @@ tree_root = SubResource("AnimationNodeStateMachine_b1n13")
 anim_player = NodePath("../../AnimationPlayer")
 active = true
 
+[node name="AlertRadius" type="Area3D" parent="Boomstick"]
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+script = ExtResource("10_khxxt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boomstick/AlertRadius"]
+shape = SubResource("SphereShape3D_iuds5")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
+"": SubResource("AnimationLibrary_udr0n"),
 "boomstick_anims": ExtResource("4_a2xtk")
 }
 

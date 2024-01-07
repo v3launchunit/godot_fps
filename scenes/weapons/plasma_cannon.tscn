@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://gabucpajtywv"]
+[gd_scene load_steps=25 format=3 uid="uid://gabucpajtywv"]
 
 [ext_resource type="ArrayMesh" uid="uid://ceibhbi3vm1n0" path="res://models/weapons/plasma_cannon.obj" id="1_rqd6x"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_alt_fire.gd" id="2_ehb67"]
 [ext_resource type="ArrayMesh" uid="uid://bq2ld7p1te64i" path="res://models/weapons/muzzle_flash_plasma.obj" id="3_8rdg8"]
+[ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="4_0bwio"]
 [ext_resource type="AnimationLibrary" uid="uid://c3tiox0a0fs23" path="res://scenes/weapons/plasma_cannon_anims.res" id="4_bijp4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6fv8"]
@@ -78,8 +79,47 @@ states/idle/position = Vector2(581.333, 96.4197)
 transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_m2fko"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_vjpgy"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_k0cjf"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_up5bw")]
 graph_offset = Vector2(4, 60)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_0tb5o"]
+radius = 16.0
+
 [sub_resource type="Animation" id="Animation_2r1p7"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlasmaCannon/AlertRadius:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlasmaCannon/Spawner/MuzzleFlash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlasmaCannon/AltSpawner/MuzzleFlash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2hect"]
 _data = {
@@ -90,8 +130,8 @@ _data = {
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.35, -0.35)
 
 [node name="PlasmaCannon" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00120491, 0)
-layers = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00214622, 0)
+layers = 4
 material_override = SubResource("StandardMaterial3D_g6fv8")
 cast_shadow = 0
 mesh = ExtResource("1_rqd6x")
@@ -104,14 +144,15 @@ index = 2
 bullet = "res://scenes/bullets/plasma_bullet.tscn"
 shot_cooldown = 0.1
 ammo_type = "cells"
+anti_clip_distance = 0.1
 
 [node name="Spawner" type="Marker3D" parent="PlasmaCannon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.475)
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="PlasmaCannon/Spawner"]
-transform = Transform3D(1, -1.50996e-07, 1.50996e-07, -1.50996e-07, -1, -9.92723e-19, 1.50996e-07, -2.27987e-14, -1, -8.71226e-10, 0, 0.0250344)
+transform = Transform3D(1, -1.50996e-07, 1.50996e-07, -1.50996e-07, -1, -1.49247e-18, 1.50996e-07, -2.27982e-14, -1, -8.71226e-10, 0, 0.0250344)
 visible = false
-layers = 2
+layers = 4
 material_override = SubResource("StandardMaterial3D_tvsw5")
 cast_shadow = 0
 mesh = ExtResource("3_8rdg8")
@@ -125,6 +166,7 @@ omni_shadow_mode = 0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="PlasmaCannon/Spawner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.025)
+layers = 4
 amount = 64
 process_material = SubResource("ParticleProcessMaterial_s4w8t")
 draw_pass_1 = SubResource("BoxMesh_pde2p")
@@ -133,7 +175,7 @@ draw_pass_1 = SubResource("BoxMesh_pde2p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.475)
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="PlasmaCannon/AltSpawner"]
-transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, -4.92973e-19, -1.50996e-07, -2.27992e-14, -1, -8.71226e-10, 0, 0.0250344)
+transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, -9.92723e-19, -1.50996e-07, -2.27987e-14, -1, -8.71226e-10, 0, 0.0250344)
 visible = false
 layers = 2
 material_override = SubResource("StandardMaterial3D_tvsw5")
@@ -152,6 +194,15 @@ omni_shadow_mode = 0
 tree_root = SubResource("AnimationNodeStateMachine_cf4wg")
 anim_player = NodePath("../../AnimationPlayer")
 active = true
+
+[node name="AlertRadius" type="Area3D" parent="PlasmaCannon"]
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+script = ExtResource("4_0bwio")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlasmaCannon/AlertRadius"]
+shape = SubResource("SphereShape3D_0tb5o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

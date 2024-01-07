@@ -1,0 +1,257 @@
+[gd_scene load_steps=26 format=3 uid="uid://dah6eunyfmnqh"]
+
+[ext_resource type="PackedScene" uid="uid://bfpoyydd4y6gc" path="res://models/weapons/crossbow.glb" id="1_cxeg4"]
+[ext_resource type="AnimationLibrary" uid="uid://doq8kttqg86x7" path="res://scenes/weapons/crossbow_anims.res" id="2_exmv2"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon_crossbow.gd" id="2_vadfq"]
+[ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="3_2m668"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a88c4"]
+metallic = 1.0
+roughness = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4kf14"]
+shading_mode = 0
+albedo_color = Color(0, 1.5, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_die74"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 1.5, 1.5, 1)
+
+[sub_resource type="Gradient" id="Gradient_gw7lj"]
+offsets = PackedFloat32Array(0, 0.1, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.25098, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e5rv8"]
+gradient = SubResource("Gradient_gw7lj")
+use_hdr = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yrew0"]
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_e5rv8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elhhj"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2iu2i"]
+_surfaces = [{
+"aabb": AABB(-0.0216506, -0.4, -0.025, 0.0433013, 0.4, 0.05),
+"format": 4097,
+"index_count": 60,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 2, 0, 5, 0, 3, 0, 2, 0, 4, 0, 5, 0, 4, 0, 7, 0, 5, 0, 4, 0, 6, 0, 7, 0, 6, 0, 9, 0, 7, 0, 6, 0, 8, 0, 9, 0, 8, 0, 11, 0, 9, 0, 8, 0, 10, 0, 11, 0, 10, 0, 1, 0, 11, 0, 10, 0, 0, 0, 1, 0, 0, 0, 4, 0, 2, 0, 4, 0, 8, 0, 6, 0, 8, 0, 0, 0, 10, 0, 4, 0, 0, 0, 8, 0, 3, 0, 11, 0, 1, 0, 11, 0, 7, 0, 9, 0, 7, 0, 3, 0, 5, 0, 11, 0, 3, 0, 7, 0),
+"lods": [0.0158481, PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 2, 0, 7, 0, 3, 0, 2, 0, 6, 0, 7, 0, 6, 0, 11, 0, 7, 0, 6, 0, 10, 0, 11, 0, 10, 0, 1, 0, 11, 0, 10, 0, 0, 0, 1, 0, 2, 0, 10, 0, 6, 0, 2, 0, 0, 0, 10, 0, 3, 0, 11, 0, 1, 0, 11, 0, 3, 0, 7, 0)],
+"primitive": 3,
+"vertex_count": 12,
+"vertex_data": PackedByteArray(242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 188, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 188, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 188, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 188, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 60, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 60, 242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 60, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 60, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 60, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 60, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 188, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 188)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8aypm"]
+resource_name = "crossbow_Cylinder_002"
+_surfaces = [{
+"aabb": AABB(-0.0216506, -0.4, -0.025, 0.0433013, 0.4, 0.05),
+"attribute_data": PackedByteArray(0, 0, 192, 179, 0, 0, 128, 63, 0, 0, 192, 179, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 192, 179, 0, 0, 0, 0, 0, 0, 192, 179, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 85, 85, 85, 63, 0, 0, 128, 63, 85, 85, 85, 63, 0, 0, 128, 63, 85, 85, 85, 63, 0, 0, 128, 63, 85, 85, 85, 63, 0, 0, 0, 0, 85, 85, 85, 63, 0, 0, 0, 0, 85, 85, 85, 63, 0, 0, 0, 0, 170, 170, 42, 63, 0, 0, 128, 63, 170, 170, 42, 63, 0, 0, 128, 63, 170, 170, 42, 63, 0, 0, 128, 63, 170, 170, 42, 63, 0, 0, 0, 0, 170, 170, 42, 63, 0, 0, 0, 0, 170, 170, 42, 63, 0, 0, 0, 0, 254, 255, 255, 62, 0, 0, 128, 63, 254, 255, 255, 62, 0, 0, 128, 63, 254, 255, 255, 62, 0, 0, 128, 63, 254, 255, 255, 62, 0, 0, 0, 0, 254, 255, 255, 62, 0, 0, 0, 0, 254, 255, 255, 62, 0, 0, 0, 0, 168, 170, 170, 62, 0, 0, 128, 63, 168, 170, 170, 62, 0, 0, 128, 63, 168, 170, 170, 62, 0, 0, 128, 63, 168, 170, 170, 62, 0, 0, 0, 0, 168, 170, 170, 62, 0, 0, 0, 0, 168, 170, 170, 62, 0, 0, 0, 0, 165, 170, 42, 62, 0, 0, 128, 63, 165, 170, 42, 62, 0, 0, 128, 63, 165, 170, 42, 62, 0, 0, 128, 63, 165, 170, 42, 62, 0, 0, 0, 0, 165, 170, 42, 62, 0, 0, 0, 0, 165, 170, 42, 62, 0, 0, 0, 0),
+"format": 4119,
+"index_count": 60,
+"index_data": PackedByteArray(2, 0, 10, 0, 5, 0, 2, 0, 7, 0, 10, 0, 8, 0, 17, 0, 11, 0, 8, 0, 14, 0, 17, 0, 13, 0, 23, 0, 16, 0, 13, 0, 20, 0, 23, 0, 18, 0, 28, 0, 21, 0, 18, 0, 25, 0, 28, 0, 24, 0, 33, 0, 27, 0, 24, 0, 30, 0, 33, 0, 31, 0, 3, 0, 34, 0, 31, 0, 0, 0, 3, 0, 1, 0, 12, 0, 6, 0, 12, 0, 26, 0, 19, 0, 26, 0, 1, 0, 32, 0, 12, 0, 1, 0, 26, 0, 9, 0, 35, 0, 4, 0, 35, 0, 22, 0, 29, 0, 22, 0, 9, 0, 15, 0, 35, 0, 9, 0, 22, 0),
+"lods": [0.0158481, PackedByteArray(2, 0, 10, 0, 5, 0, 2, 0, 7, 0, 10, 0, 7, 0, 23, 0, 10, 0, 7, 0, 20, 0, 23, 0, 18, 0, 33, 0, 21, 0, 18, 0, 30, 0, 33, 0, 30, 0, 3, 0, 33, 0, 30, 0, 0, 0, 3, 0, 6, 0, 32, 0, 19, 0, 6, 0, 1, 0, 32, 0, 9, 0, 35, 0, 4, 0, 35, 0, 9, 0, 22, 0)],
+"material": SubResource("StandardMaterial3D_elhhj"),
+"primitive": 3,
+"vertex_count": 36,
+"vertex_data": PackedByteArray(242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 188, 0, 0, 37, 209, 217, 46, 255, 191, 242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 188, 255, 127, 0, 0, 255, 255, 255, 191, 242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 188, 255, 255, 37, 209, 0, 0, 108, 215, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 188, 0, 0, 37, 209, 217, 46, 255, 191, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 188, 255, 127, 255, 255, 255, 255, 255, 191, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 188, 255, 255, 37, 209, 0, 0, 108, 215, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 188, 255, 127, 0, 0, 255, 255, 255, 191, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 188, 255, 255, 37, 209, 0, 0, 108, 215, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 188, 255, 255, 255, 127, 255, 255, 255, 255, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 188, 255, 127, 255, 255, 255, 255, 255, 191, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 188, 255, 255, 37, 209, 0, 0, 108, 215, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 188, 255, 255, 255, 127, 255, 255, 255, 255, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 60, 255, 127, 0, 0, 255, 255, 255, 191, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 60, 217, 174, 255, 127, 255, 255, 108, 215, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 60, 255, 255, 255, 127, 255, 255, 255, 255, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 60, 255, 127, 255, 255, 255, 255, 255, 191, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 60, 217, 174, 255, 127, 255, 255, 108, 215, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 60, 255, 255, 255, 127, 255, 255, 255, 255, 242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 60, 37, 81, 255, 127, 37, 209, 255, 191, 242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 60, 255, 127, 0, 0, 255, 255, 255, 191, 242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 60, 217, 174, 255, 127, 255, 255, 108, 215, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 60, 37, 81, 255, 127, 37, 209, 255, 191, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 60, 255, 127, 255, 255, 255, 255, 255, 191, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 60, 217, 174, 255, 127, 255, 255, 108, 215, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 60, 0, 0, 255, 127, 255, 127, 255, 191, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 60, 37, 81, 255, 127, 37, 209, 255, 191, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 60, 255, 127, 0, 0, 255, 255, 255, 191, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 60, 0, 0, 255, 127, 255, 127, 255, 191, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 60, 37, 81, 255, 127, 37, 209, 255, 191, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 60, 255, 127, 255, 255, 255, 255, 255, 191, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 188, 0, 0, 255, 127, 255, 127, 255, 191, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 188, 0, 0, 37, 209, 217, 46, 255, 191, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 188, 255, 127, 0, 0, 255, 255, 255, 191, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 188, 0, 0, 255, 127, 255, 127, 255, 191, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 188, 0, 0, 37, 209, 217, 46, 255, 191, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 188, 255, 127, 255, 255, 255, 255, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2iu2i")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_avxgk"]
+resource_name = "crossbow_Cylinder_002"
+_surfaces = [{
+"aabb": AABB(-0.0216506, -0.4, -0.025, 0.0433013, 0.4, 0.05),
+"attribute_data": PackedByteArray(0, 0, 192, 179, 0, 0, 128, 63, 0, 0, 192, 179, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 192, 179, 0, 0, 0, 0, 0, 0, 192, 179, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 85, 85, 85, 63, 0, 0, 128, 63, 85, 85, 85, 63, 0, 0, 128, 63, 85, 85, 85, 63, 0, 0, 128, 63, 85, 85, 85, 63, 0, 0, 0, 0, 85, 85, 85, 63, 0, 0, 0, 0, 85, 85, 85, 63, 0, 0, 0, 0, 170, 170, 42, 63, 0, 0, 128, 63, 170, 170, 42, 63, 0, 0, 128, 63, 170, 170, 42, 63, 0, 0, 128, 63, 170, 170, 42, 63, 0, 0, 0, 0, 170, 170, 42, 63, 0, 0, 0, 0, 170, 170, 42, 63, 0, 0, 0, 0, 254, 255, 255, 62, 0, 0, 128, 63, 254, 255, 255, 62, 0, 0, 128, 63, 254, 255, 255, 62, 0, 0, 128, 63, 254, 255, 255, 62, 0, 0, 0, 0, 254, 255, 255, 62, 0, 0, 0, 0, 254, 255, 255, 62, 0, 0, 0, 0, 168, 170, 170, 62, 0, 0, 128, 63, 168, 170, 170, 62, 0, 0, 128, 63, 168, 170, 170, 62, 0, 0, 128, 63, 168, 170, 170, 62, 0, 0, 0, 0, 168, 170, 170, 62, 0, 0, 0, 0, 168, 170, 170, 62, 0, 0, 0, 0, 165, 170, 42, 62, 0, 0, 128, 63, 165, 170, 42, 62, 0, 0, 128, 63, 165, 170, 42, 62, 0, 0, 128, 63, 165, 170, 42, 62, 0, 0, 0, 0, 165, 170, 42, 62, 0, 0, 0, 0, 165, 170, 42, 62, 0, 0, 0, 0),
+"format": 4119,
+"index_count": 60,
+"index_data": PackedByteArray(2, 0, 10, 0, 5, 0, 2, 0, 7, 0, 10, 0, 8, 0, 17, 0, 11, 0, 8, 0, 14, 0, 17, 0, 13, 0, 23, 0, 16, 0, 13, 0, 20, 0, 23, 0, 18, 0, 28, 0, 21, 0, 18, 0, 25, 0, 28, 0, 24, 0, 33, 0, 27, 0, 24, 0, 30, 0, 33, 0, 31, 0, 3, 0, 34, 0, 31, 0, 0, 0, 3, 0, 1, 0, 12, 0, 6, 0, 12, 0, 26, 0, 19, 0, 26, 0, 1, 0, 32, 0, 12, 0, 1, 0, 26, 0, 9, 0, 35, 0, 4, 0, 35, 0, 22, 0, 29, 0, 22, 0, 9, 0, 15, 0, 35, 0, 9, 0, 22, 0),
+"lods": [0.0158481, PackedByteArray(2, 0, 10, 0, 5, 0, 2, 0, 7, 0, 10, 0, 7, 0, 23, 0, 10, 0, 7, 0, 20, 0, 23, 0, 18, 0, 33, 0, 21, 0, 18, 0, 30, 0, 33, 0, 30, 0, 3, 0, 33, 0, 30, 0, 0, 0, 3, 0, 6, 0, 32, 0, 19, 0, 6, 0, 1, 0, 32, 0, 9, 0, 35, 0, 4, 0, 35, 0, 9, 0, 22, 0)],
+"material": SubResource("StandardMaterial3D_elhhj"),
+"primitive": 3,
+"vertex_count": 36,
+"vertex_data": PackedByteArray(242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 188, 0, 0, 37, 209, 217, 46, 255, 191, 242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 188, 255, 127, 0, 0, 255, 255, 255, 191, 242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 188, 255, 255, 37, 209, 0, 0, 108, 215, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 188, 0, 0, 37, 209, 217, 46, 255, 191, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 188, 255, 127, 255, 255, 255, 255, 255, 191, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 188, 255, 255, 37, 209, 0, 0, 108, 215, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 188, 255, 127, 0, 0, 255, 255, 255, 191, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 188, 255, 255, 37, 209, 0, 0, 108, 215, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 188, 255, 255, 255, 127, 255, 255, 255, 255, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 188, 255, 127, 255, 255, 255, 255, 255, 191, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 188, 255, 255, 37, 209, 0, 0, 108, 215, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 188, 255, 255, 255, 127, 255, 255, 255, 255, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 60, 255, 127, 0, 0, 255, 255, 255, 191, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 60, 217, 174, 255, 127, 255, 255, 108, 215, 177, 92, 177, 60, 205, 204, 204, 190, 205, 204, 76, 60, 255, 255, 255, 127, 255, 255, 255, 255, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 60, 255, 127, 255, 255, 255, 255, 255, 191, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 60, 217, 174, 255, 127, 255, 255, 108, 215, 177, 92, 177, 60, 0, 0, 0, 0, 205, 204, 76, 60, 255, 255, 255, 127, 255, 255, 255, 255, 242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 60, 37, 81, 255, 127, 37, 209, 255, 191, 242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 60, 255, 127, 0, 0, 255, 255, 255, 191, 242, 48, 22, 50, 205, 204, 204, 190, 205, 204, 204, 60, 217, 174, 255, 127, 255, 255, 108, 215, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 60, 37, 81, 255, 127, 37, 209, 255, 191, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 60, 255, 127, 255, 255, 255, 255, 255, 191, 242, 48, 22, 50, 0, 0, 0, 0, 205, 204, 204, 60, 217, 174, 255, 127, 255, 255, 108, 215, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 60, 0, 0, 255, 127, 255, 127, 255, 191, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 60, 37, 81, 255, 127, 37, 209, 255, 191, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 60, 255, 127, 0, 0, 255, 255, 255, 191, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 60, 0, 0, 255, 127, 255, 127, 255, 191, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 60, 37, 81, 255, 127, 37, 209, 255, 191, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 60, 255, 127, 255, 255, 255, 255, 255, 191, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 188, 0, 0, 255, 127, 255, 127, 255, 191, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 188, 0, 0, 37, 209, 217, 46, 255, 191, 167, 92, 177, 188, 205, 204, 204, 190, 205, 204, 76, 188, 255, 127, 0, 0, 255, 255, 255, 191, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 188, 0, 0, 255, 127, 255, 127, 255, 191, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 188, 0, 0, 37, 209, 217, 46, 255, 191, 167, 92, 177, 188, 0, 0, 0, 0, 205, 204, 76, 188, 255, 127, 255, 255, 255, 255, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2iu2i")
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3q5q1"]
+animation = &"crossbow_anims/crossbow_charging"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nhy4f"]
+animation = &"crossbow_anims/crossbow_deploy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x1u8f"]
+animation = &"crossbow_anims/crossbow_firing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xok30"]
+animation = &"crossbow_anims/crossbow_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ouq8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f826a"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7cw0m"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_d86tq"]
+states/charging/node = SubResource("AnimationNodeAnimation_3q5q1")
+states/charging/position = Vector2(348, 184.667)
+states/deploy/node = SubResource("AnimationNodeAnimation_nhy4f")
+states/deploy/position = Vector2(345.333, 100.222)
+states/firing/node = SubResource("AnimationNodeAnimation_x1u8f")
+states/firing/position = Vector2(492.444, 185.556)
+states/idle/node = SubResource("AnimationNodeAnimation_xok30")
+states/idle/position = Vector2(492, 99.1852)
+transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_3ouq8"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_f826a"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_7cw0m")]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_55wpv"]
+radius = 16.0
+
+[sub_resource type="Animation" id="Animation_q1nis"]
+resource_name = "RESET"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crossbow")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crossbow/LeftString")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, -0.707, 0.707)
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crossbow/LeftString")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Crossbow/RightString")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0.707, 0.707)
+tracks/4/type = "scale_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Crossbow/RightString")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Crossbow")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array()
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Crossbow/AlertRadius:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2b3ff"]
+_data = {
+"RESET": SubResource("Animation_q1nis")
+}
+
+[node name="Crossbow" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.35, 0)
+
+[node name="Crossbow" parent="." instance=ExtResource("1_cxeg4")]
+script = ExtResource("2_vadfq")
+category = 3
+index = 1
+bullet = "res://scenes/bullets/player/crossbow_bolt.tscn"
+shot_cooldown = 1.7
+ammo_type = "cells"
+anti_clip_distance = 0.75
+
+[node name="Crossbow" parent="Crossbow" index="0"]
+layers = 4
+material_override = SubResource("StandardMaterial3D_a88c4")
+cast_shadow = 0
+
+[node name="LeftString" parent="Crossbow" index="1"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.425, 0, 0.5)
+layers = 4
+material_override = SubResource("StandardMaterial3D_4kf14")
+cast_shadow = 0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Crossbow/LeftString" index="0"]
+layers = 4
+material_override = SubResource("StandardMaterial3D_die74")
+cast_shadow = 0
+amount = 16
+lifetime = 0.25
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_yrew0")
+draw_pass_1 = SubResource("ArrayMesh_8aypm")
+
+[node name="RightString" parent="Crossbow" index="2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.425, 0, 0.5)
+layers = 4
+material_override = SubResource("StandardMaterial3D_die74")
+cast_shadow = 0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Crossbow/RightString" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00143878, 0, 0)
+layers = 4
+material_override = SubResource("StandardMaterial3D_die74")
+cast_shadow = 0
+amount = 16
+lifetime = 0.25
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_yrew0")
+draw_pass_1 = SubResource("ArrayMesh_avxgk")
+
+[node name="Spawner" type="Marker3D" parent="Crossbow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.95)
+
+[node name="AnimationTree" type="AnimationTree" parent="Crossbow"]
+tree_root = SubResource("AnimationNodeStateMachine_d86tq")
+anim_player = NodePath("../../AnimationPlayer")
+active = true
+
+[node name="AlertRadius" type="Area3D" parent="Crossbow"]
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+script = ExtResource("3_2m668")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crossbow/AlertRadius"]
+shape = SubResource("SphereShape3D_55wpv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2b3ff"),
+"crossbow_anims": ExtResource("2_exmv2")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[editable path="Crossbow"]

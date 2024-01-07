@@ -1,16 +1,20 @@
-extends Node
+class_name Lifetime extends Timer
 
 @export_category("Lifetime")
 
-@export var lifetime: float = 10
+#@export var lifetime: float = 10
+@export var decay_explosion: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	timeout.connect(_on_timeout)
+	start()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	lifetime -= delta
-	if lifetime <= 0:
-		queue_free()
+func _on_timeout(delta):
+	if decay_explosion != null:
+		var e = decay_explosion.instantiate()
+		get_parent().add_child(e)
+		e.reparent(get_tree().root)
+	
+	get_parent().queue_free()

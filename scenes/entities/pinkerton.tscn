@@ -1,30 +1,30 @@
-[gd_scene load_steps=86 format=3 uid="uid://cc7snvg1qg4i4"]
+[gd_scene load_steps=84 format=3 uid="uid://cc7snvg1qg4i4"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_base.gd" id="1_1yhno"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="2_p7cng"]
-[ext_resource type="AudioStream" uid="uid://k1hmkq07use5" path="res://sounds/voices/pinkerton/get_her_1.wav" id="2_ttu8i"]
+[ext_resource type="AudioStream" uid="uid://k1hmkq07use5" path="res://audio/streams/voices/pinkerton/detect/get_her_1.wav" id="2_ttu8i"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="3_5ywnf"]
 [ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_np25i"]
-[ext_resource type="AudioStream" uid="uid://bcbenycltm5pg" path="res://sounds/voices/pinkerton/get_her_2.wav" id="3_s6toq"]
-[ext_resource type="AudioStream" uid="uid://cd7ytakwg5sgo" path="res://sounds/voices/pinkerton/halt_1.wav" id="4_5hrar"]
+[ext_resource type="AudioStream" uid="uid://bcbenycltm5pg" path="res://audio/streams/voices/pinkerton/detect/get_her_2.wav" id="3_s6toq"]
+[ext_resource type="AudioStream" uid="uid://cd7ytakwg5sgo" path="res://audio/streams/voices/pinkerton/detect/halt_1.wav" id="4_5hrar"]
 [ext_resource type="AnimationLibrary" uid="uid://dhxang8l8iyqp" path="res://scenes/entities/pinkerton_anims.res" id="5_bdfiq"]
 [ext_resource type="PackedScene" uid="uid://sgwxe7sgcert" path="res://models/entities/pinkerton.glb" id="5_v6q8l"]
-[ext_resource type="AudioStream" uid="uid://bw30qs54ire0" path="res://sounds/voices/pinkerton/halt_2.wav" id="5_xke6e"]
-[ext_resource type="AudioStream" uid="uid://cix5xh517bnj4" path="res://sounds/voices/pinkerton/intruder_spotted_1.wav" id="6_2o32y"]
-[ext_resource type="AudioStream" uid="uid://fimyb2r1ra54" path="res://sounds/voices/pinkerton/kill_her_1.wav" id="7_c1q5u"]
+[ext_resource type="AudioStream" uid="uid://bw30qs54ire0" path="res://audio/streams/voices/pinkerton/detect/halt_2.wav" id="5_xke6e"]
+[ext_resource type="AudioStream" uid="uid://cix5xh517bnj4" path="res://audio/streams/voices/pinkerton/detect/intruder_spotted_1.wav" id="6_2o32y"]
+[ext_resource type="AudioStream" uid="uid://fimyb2r1ra54" path="res://audio/streams/voices/pinkerton/detect/kill_her_1.wav" id="7_c1q5u"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="7_d0her"]
 [ext_resource type="PackedScene" uid="uid://dl7fuv4wdxtjx" path="res://scenes/pickups/ammo/shell_pickup.tscn" id="8_slj13"]
-[ext_resource type="AudioStream" uid="uid://2i1oefv2d7uf" path="res://sounds/voices/pinkerton/kill_her_2.wav" id="8_y2otn"]
-[ext_resource type="AudioStream" uid="uid://cvhddpbrl73h7" path="res://sounds/voices/pinkerton/kill_her_3.wav" id="9_vl76a"]
-[ext_resource type="AudioStream" uid="uid://dlc4tyjayi4sv" path="res://sounds/voices/pinkerton/stop_her_1.wav" id="10_mrux3"]
-[ext_resource type="AudioStream" uid="uid://cqcaj4cjjb1ip" path="res://sounds/voices/pinkerton/tresspasser_1.wav" id="11_pncib"]
-[ext_resource type="AudioStream" uid="uid://djru6dnc2lnrv" path="res://sounds/voices/pinkerton/tresspasser_2.wav" id="12_nosob"]
-[ext_resource type="AudioStream" uid="uid://bty85t0ut8oro" path="res://sounds/voices/pinkerton/tresspasser_3.wav" id="13_eblm2"]
-[ext_resource type="AudioStream" uid="uid://bxlkhiwffdgdt" path="res://sounds/voices/pinkerton/scream_1.wav" id="14_ftlx6"]
-[ext_resource type="AudioStream" uid="uid://472lwhnuv0ad" path="res://sounds/voices/pinkerton/scream_2.wav" id="15_dxsxu"]
-[ext_resource type="AudioStream" uid="uid://db7ebp6630xbh" path="res://sounds/voices/pinkerton/scream_3.wav" id="16_0rah0"]
-[ext_resource type="AudioStream" uid="uid://b5ay00lvhbvmm" path="res://sounds/voices/pinkerton/scream_4.wav" id="17_1ljih"]
-[ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://sounds/voices/wilhelm_scream.ogg" id="18_d25a8"]
+[ext_resource type="AudioStream" uid="uid://2i1oefv2d7uf" path="res://audio/streams/voices/pinkerton/detect/kill_her_2.wav" id="8_y2otn"]
+[ext_resource type="AudioStream" uid="uid://cvhddpbrl73h7" path="res://audio/streams/voices/pinkerton/detect/kill_her_3.wav" id="9_vl76a"]
+[ext_resource type="AudioStream" uid="uid://dlc4tyjayi4sv" path="res://audio/streams/voices/pinkerton/detect/stop_her_1.wav" id="10_mrux3"]
+[ext_resource type="AudioStream" uid="uid://cqcaj4cjjb1ip" path="res://audio/streams/voices/pinkerton/detect/tresspasser_1.wav" id="11_pncib"]
+[ext_resource type="AudioStream" uid="uid://djru6dnc2lnrv" path="res://audio/streams/voices/pinkerton/detect/tresspasser_2.wav" id="12_nosob"]
+[ext_resource type="AudioStream" uid="uid://bty85t0ut8oro" path="res://audio/streams/voices/pinkerton/detect/tresspasser_3.wav" id="13_eblm2"]
+[ext_resource type="AudioStream" uid="uid://bxlkhiwffdgdt" path="res://audio/streams/voices/pinkerton/death/scream_1.wav" id="14_ftlx6"]
+[ext_resource type="AudioStream" uid="uid://472lwhnuv0ad" path="res://audio/streams/voices/pinkerton/death/scream_2.wav" id="15_dxsxu"]
+[ext_resource type="AudioStream" uid="uid://db7ebp6630xbh" path="res://audio/streams/voices/pinkerton/death/scream_3.wav" id="16_0rah0"]
+[ext_resource type="AudioStream" uid="uid://b5ay00lvhbvmm" path="res://audio/streams/voices/pinkerton/death/scream_4.wav" id="17_1ljih"]
+[ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://audio/streams/voices/wilhelm_scream.ogg" id="18_d25a8"]
 [ext_resource type="Texture2D" uid="uid://crih0rgk10al6" path="res://textures/weapons/pump_shotgun/shotgun_detail_mask.png" id="19_qblbc"]
 [ext_resource type="Texture2D" uid="uid://co8o24o1hnvyl" path="res://textures/entities/enemies/pinkerton/pinkerton_albedo.png" id="20_0syyy"]
 [ext_resource type="Texture2D" uid="uid://bsnabwad52kba" path="res://textures/terrain/log/log_heights.png" id="20_s44er"]
@@ -88,14 +88,6 @@ stream_1/weight = 0.001
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bp4ct"]
 resource_local_to_scene = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8rvo"]
-albedo_color = Color(1, 0.501961, 0.501961, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_q1a72"]
-material = SubResource("StandardMaterial3D_t8rvo")
-radial_segments = 8
-rings = 2
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxecq"]
 albedo_color = Color(0.75, 0.75, 0.75, 1)
 metallic = 1.0
@@ -104,21 +96,21 @@ roughness = 0.25
 [sub_resource type="Gradient" id="Gradient_rrp2w"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_fvg33"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_28pn6"]
 gradient = SubResource("Gradient_rrp2w")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xg1er"]
 gravity = Vector3(0, 0, 0)
-color_ramp = SubResource("GradientTexture1D_fvg33")
+color_ramp = SubResource("GradientTexture1D_28pn6")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_niape"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f53jo"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_sc0xe"]
-material = SubResource("StandardMaterial3D_niape")
+material = SubResource("StandardMaterial3D_f53jo")
 radius = 0.06
 height = 0.05
 radial_segments = 8
@@ -621,6 +613,7 @@ script = ExtResource("1_1yhno")
 speed = 5.0
 sight_line_sweep_speed = 10.0
 detection_stream = SubResource("AudioStreamRandomizer_hdxer")
+wake_up_time = 0.0
 bullet = "res://scenes/bullets/enemy/enemy_test_bullet.tscn"
 volley = 5
 spread = 5.0
@@ -630,10 +623,6 @@ death_stream = SubResource("AudioStreamRandomizer_a1m1h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_bp4ct")
-
-[node name="PlaceholderMesh" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("CapsuleMesh_q1a72")
 
 [node name="Pinkerton" parent="." instance=ExtResource("5_v6q8l")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 0)
@@ -659,14 +648,16 @@ bones/20/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/21/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.166011, -0.835741, 0.523428, 0.958729, -0.261029, -0.112706, 0.230823, 0.483115, 0.844583, -0.127808, 0.330965, 0.178234)
+transform = Transform3D(-0.0743793, 0.0114565, 0.997164, 0.929726, -0.360843, 0.0734947, 0.360662, 0.932556, 0.0161878, 0.0300002, 0.319952, 0.228136)
 bone_idx = 4
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_cxecq")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="1"]
 transform = Transform3D(0.771988, 0.557152, -0.305968, 0.274462, -0.726349, -0.630149, -0.573329, 0.402491, -0.713649, 0.145451, -0.0821093, -0.00993064)
+layers = 2
 amount = 16
 lifetime = 0.25
 fixed_fps = 60
@@ -674,11 +665,15 @@ process_material = SubResource("ParticleProcessMaterial_xg1er")
 draw_pass_1 = SubResource("SphereMesh_sc0xe")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Pinkerton/Armature/Skeleton3D/Cylinder/GPUParticles3D"]
+visible = false
+layers = 2
 light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="2"]
 transform = Transform3D(-0.557152, 0.771988, -0.305968, 0.726349, 0.274462, -0.630149, -0.402491, -0.573329, -0.713649, 0.125702, -0.174108, 0.0797706)
+layers = 2
 amount = 16
 lifetime = 0.25
 fixed_fps = 60
@@ -686,30 +681,37 @@ process_material = SubResource("ParticleProcessMaterial_xg1er")
 draw_pass_1 = SubResource("SphereMesh_sc0xe")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Pinkerton/Armature/Skeleton3D/Cylinder/GPUParticles3D2"]
+visible = false
+layers = 2
 light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.249017, -0.835741, 0.785142, 1.43809, -0.261029, -0.169059, 0.346234, 0.483115, 1.26688, -0.169596, 0.317913, 0.20239)
+transform = Transform3D(-0.111569, 0.0114566, 1.49575, 1.39459, -0.360843, 0.110242, 0.540993, 0.932556, 0.0242815, 0.030573, 0.301909, 0.274765)
 bone_idx = 5
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D/Cylinder_001" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_cxecq")
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.986641, 0.120748, 0.109359, -0.15775, 0.875741, 0.456281, -0.0406749, -0.467437, 0.88309, -0.230838, 0.395653, 0.0670369)
+transform = Transform3D(0.986639, 0.119545, 0.110688, -0.15744, 0.874334, 0.459078, -0.0418981, -0.470371, 0.881474, -0.230866, 0.39555, 0.0674076)
 bone_idx = 10
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D/Shotgun" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_u47u4")
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Pinkerton/Armature/Skeleton3D/Shotgun/Shotgun" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.675, -0.135)
 visible = false
+layers = 2
 mesh = ExtResource("3_np25i")
 surface_material_override/0 = SubResource("StandardMaterial3D_udm4r")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Pinkerton/Armature/Skeleton3D/Shotgun/Shotgun/MuzzleFlash"]
+layers = 2
 light_color = Color(1, 1, 0, 1)
 omni_range = 10.0
 
@@ -717,13 +719,15 @@ omni_range = 10.0
 transform = Transform3D(-1.95578e-08, -1, 7.45058e-09, -3.72529e-08, 2.23517e-08, 1, -1, 2.04891e-08, -3.72529e-08, 0, 0.675, -0.135)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.986641, 0.120748, 0.109359, -0.15775, 0.875741, 0.456281, -0.0406749, -0.467437, 0.88309, -0.230838, 0.395653, 0.0670369)
+transform = Transform3D(0.986639, 0.119545, 0.110688, -0.15744, 0.874334, 0.459078, -0.0418981, -0.470371, 0.881474, -0.230866, 0.39555, 0.0674076)
 bone_idx = 11
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D/Pump" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_y7l6u")
 
 [node name="Body" parent="Pinkerton/Armature/Skeleton3D" index="4"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_osars")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -741,6 +745,7 @@ collision_mask = 3
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SightLine"]
 transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, -0.3, -1)
 visible = false
+layers = 2
 mesh = SubResource("CylinderMesh_t04gt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

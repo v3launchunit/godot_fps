@@ -5,9 +5,9 @@ extends EnemyBase
 @onready var floor_line: RayCast3D = find_child("FloorLine")
 
 func _scan(delta) -> void:
-	sight_line.rotation.y = sin(state_timer * sight_line_sweep_speed / 
+	sight_line.rotation.y = sin(state_timer * sight_line_sweep_speed + randf() / 
 			sight_line_sweep_angle * 2) * sight_line_sweep_angle / 2
-	sight_line.rotation.x = cos(state_timer * sight_line_sweep_speed / 
+	sight_line.rotation.x = cos(state_timer * sight_line_sweep_speed + randf() / 
 			sight_line_sweep_angle * PI) * sight_line_sweep_angle / 2
 	
 	if sight_line.is_colliding() and sight_line.get_collider() is Player:
@@ -20,10 +20,16 @@ func _scan(delta) -> void:
 
 func _pursue(delta) -> void:
 	# Casually approach target
-	if current_target != null: # Make sure I actually have a target first
-		nav_agent.target_position = current_target.global_position
+	if check_target_validity(): # Make sure I actually have a target first
+		if (
+				randf() < Globals.C_PATH_RE_EVAL_CHANCE 
+				and nav_agent.target_position.distance_squared_to(
+				current_targets[-1].global_position) > path_re_eval_distance_squared
+		):
+			nav_agent.target_position = current_targets[-1].global_position
 		var next_pos := nav_agent.get_next_path_position()
-		sight_line.look_at(next_pos)
+		sight_line.look_at(next_pos) #if nav_agent.is_target_reachable() else \
+#				current_targets[-1].position)
 		global_rotation = lerp(global_rotation, 
 				sight_line.global_rotation, delta * turning_speed)
 		walk_vel = walk_vel.move_toward(-speed * sight_line.global_transform.basis.z, \
@@ -32,23 +38,26 @@ func _pursue(delta) -> void:
 		if floor_line.is_colliding():
 			walk_vel.y += jump_height
 		
-		if global_position.distance_to(current_target.global_position) < target_distance:
+		if global_position.distance_to(current_targets[-1].global_position) < target_distance:
 			walk_vel += jump_height * sight_line.global_transform.basis.z
 		
 		nav_agent.set_velocity(walk_vel)
 #		velocity += walk_vel
 		
 		# Decide if it's time to attack my target
-		if current_target.global_position.distance_to(global_position) < 2 or \
-				state_timer >= attack_interval + randf() and \
-				current_target.global_position.distance_to(global_position) < attack_range: #and sight_line.get_collider() == current_target:
+		if check_attack_readiness(): #and sight_line.get_collider() == current_target:
 			change_state(State.ATTACKING)
 	else: # Can't pursue a target that doesn't exist
 		change_state(State.IDLE)
 
 
 func _attack(delta) -> void:
-	look_at(current_target.global_position)
+	# Make sure my target still exists
+	if current_targets.is_empty() or current_targets[-1] == null:
+		change_state(State.IDLE)
+		return
+	
+	look_at(current_targets[-1].global_position)
 	walk_vel = walk_vel.move_toward(Vector3.ZERO, acceleration * delta)
 	nav_agent.set_velocity(walk_vel)
 	if state_timer >= attack_delay:

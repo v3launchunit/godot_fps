@@ -1,0 +1,55 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dwof7m2ye3tjh"]
+
+[ext_resource type="Texture2D" uid="uid://b58io17r5p4d8" path="res://textures/ui/button.png" id="1_oglcn"]
+[ext_resource type="Texture2D" uid="uid://cgjc0g2mfb3u3" path="res://textures/ui/button_focus.png" id="2_ptkv8"]
+[ext_resource type="Texture2D" uid="uid://6adawwi6dujf" path="res://textures/ui/button_hover.png" id="3_rb4ib"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hsdar"]
+texture = ExtResource("1_oglcn")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ct6t"]
+texture = ExtResource("2_ptkv8")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ilqc7"]
+texture = ExtResource("3_rb4ib")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j4uhn"]
+texture = ExtResource("1_oglcn")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fn1w6"]
+texture = ExtResource("1_oglcn")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[resource]
+BoxContainer/constants/separation = 4
+Button/colors/font_color = Color(0.74902, 0.74902, 0.74902, 1)
+Button/colors/font_disabled_color = Color(0.75, 0.75, 0.75, 0.25098)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(0.5, 0.5, 0.5, 1)
+Button/colors/font_pressed_color = Color(0.5, 0.5, 0.5, 1)
+Button/styles/disabled = SubResource("StyleBoxTexture_hsdar")
+Button/styles/focus = SubResource("StyleBoxTexture_0ct6t")
+Button/styles/hover = SubResource("StyleBoxTexture_ilqc7")
+Button/styles/normal = SubResource("StyleBoxTexture_j4uhn")
+Button/styles/pressed = SubResource("StyleBoxTexture_fn1w6")

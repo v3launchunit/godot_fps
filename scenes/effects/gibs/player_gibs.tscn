@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://wfllsui4k1if"]
+
+[ext_resource type="Script" path="res://scripts/auto_play.gd" id="1_x8wn6"]
+
+[sub_resource type="Animation" id="Animation_5qn3g"]
+resource_name = "anim"
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.5, 0, 0.3, 1, 0, 0, 0, 0.4, 1, 0, 0, 0, 0.75, 1, 0, -0.5, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.5, 1, 0, 0, 0, 1, 0.75, 1, -0.383, 0, 0, 0.924)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2wku6"]
+_data = {
+"anim": SubResource("Animation_5qn3g")
+}
+
+[node name="PlayerGibs" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.706758, 0.707455, 0, -0.707455, 0.706758, 0, -0.5, 0)
+doppler_tracking = 2
+current = true
+fov = 120.0
+far = 1000.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2wku6")
+}
+script = ExtResource("1_x8wn6")

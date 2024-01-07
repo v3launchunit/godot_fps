@@ -40,9 +40,9 @@ func _on_body_entered(body: Node):
 			if child is AreaDamage:
 				child.invoker = invoker
 	
-	if body.has_node("Status"):
+	if body.name != "Shield" and body.has_node("Status"):
 		damage -= body.find_child("Status").damage(damage)
-		if body is EnemyBase:
+		if body is EnemyBase and invoker != null:
 			body.detect_target(invoker)
 			body.apply_knockback(knockback_force * (body.global_position - \
 				global_position).normalized())

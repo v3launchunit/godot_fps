@@ -1,0 +1,142 @@
+[gd_scene load_steps=20 format=3 uid="uid://erys0skiq3pe"]
+
+[ext_resource type="PackedScene" uid="uid://uhlasvutim3e" path="res://models/objects/floodlight.glb" id="1_xylaw"]
+[ext_resource type="Texture2D" uid="uid://vnoituiw2r36" path="res://models/objects/floodlight_flood_lamp_emissions.png" id="2_lw5of"]
+[ext_resource type="Texture2D" uid="uid://cjarcv7edo6ue" path="res://textures/objects/floodlight/floodlight_projector.png" id="3_gcdu4"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="4_k3p2m"]
+[ext_resource type="Script" path="res://scripts/entities/status.gd" id="4_ttjty"]
+[ext_resource type="PackedScene" uid="uid://cu70msbgu2ysm" path="res://scenes/effects/metal_damage_sys.tscn" id="6_1a880"]
+[ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="6_k2gu1"]
+[ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="7_44sqi"]
+[ext_resource type="PackedScene" uid="uid://dl7fuv4wdxtjx" path="res://scenes/pickups/ammo/shell_pickup.tscn" id="8_t7pem"]
+[ext_resource type="PackedScene" uid="uid://bqors63m1ug05" path="res://scenes/pickups/ammo/nail_pickup.tscn" id="9_7q55x"]
+[ext_resource type="PackedScene" uid="uid://l50jb3i7j7q7" path="res://scenes/pickups/ammo/small_cell_pickup.tscn" id="10_cvm0a"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yhdyy"]
+radius = 0.25
+
+[sub_resource type="Gradient" id="Gradient_svjht"]
+interpolation_mode = 1
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mv8o2"]
+gradient = SubResource("Gradient_svjht")
+fill = 2
+fill_from = Vector2(0.5, 0.125)
+fill_to = Vector2(0.5, 0.03125)
+metadata/_snap_enabled = true
+metadata/_snap_count = 32
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0re8"]
+albedo_texture = SubResource("GradientTexture2D_mv8o2")
+metallic = 1.0
+roughness = 0.25
+emission_enabled = true
+emission_energy_multiplier = 5.0
+emission_texture = ExtResource("2_lw5of")
+texture_filter = 0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cnma4"]
+load_path = "res://.godot/imported/halo.png-88068247d44276e09ca924d46b3606d1.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2kd2"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.501961, 0, 1)
+albedo_texture = SubResource("CompressedTexture2D_cnma4")
+billboard_mode = 1
+fixed_size = true
+proximity_fade_distance = 3.0
+distance_fade_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_eitei"]
+material = SubResource("StandardMaterial3D_w2kd2")
+size = Vector2(0.25, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_heyjg"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.752941, 0.501961, 1)
+albedo_texture = ExtResource("4_k3p2m")
+billboard_mode = 1
+fixed_size = true
+proximity_fade_distance = 3.0
+distance_fade_mode = 1
+
+[node name="Floodlight" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_yhdyy")
+
+[node name="floodlight" parent="." instance=ExtResource("1_xylaw")]
+
+[node name="Stand" parent="floodlight" index="0"]
+layers = 2
+
+[node name="Neck_L" parent="floodlight/Stand" index="0"]
+layers = 2
+
+[node name="Lamp_L" parent="floodlight/Stand/Neck_L" index="0"]
+layers = 2
+material_override = SubResource("StandardMaterial3D_v0re8")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="floodlight/Stand/Neck_L/Lamp_L" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+layers = 2
+light_color = Color(1, 0.752941, 0.501961, 1)
+light_energy = 5.0
+light_projector = ExtResource("3_gcdu4")
+shadow_enabled = true
+distance_fade_enabled = true
+spot_range = 25.0
+
+[node name="LensFlare" type="MeshInstance3D" parent="floodlight/Stand/Neck_L/Lamp_L/SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+layers = 2
+cast_shadow = 0
+visibility_range_end = 100.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
+mesh = SubResource("QuadMesh_eitei")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_heyjg")
+
+[node name="Neck_R" parent="floodlight/Stand" index="1"]
+layers = 2
+
+[node name="Lamp_R" parent="floodlight/Stand/Neck_R" index="0"]
+layers = 2
+material_override = SubResource("StandardMaterial3D_v0re8")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="floodlight/Stand/Neck_R/Lamp_R" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+layers = 2
+light_color = Color(1, 0.752941, 0.501961, 1)
+light_energy = 5.0
+light_projector = ExtResource("3_gcdu4")
+shadow_enabled = true
+distance_fade_enabled = true
+spot_range = 25.0
+
+[node name="LensFlare" type="MeshInstance3D" parent="floodlight/Stand/Neck_R/Lamp_R/SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+layers = 2
+cast_shadow = 0
+visibility_range_end = 100.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
+mesh = SubResource("QuadMesh_eitei")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_heyjg")
+
+[node name="Status" type="Node" parent="."]
+script = ExtResource("4_ttjty")
+gib_threshold = 0.0
+damage_sys = ExtResource("6_1a880")
+gibs = "res://scenes/effects/metal_shards.tscn"
+loot = Array[PackedScene]([ExtResource("6_k2gu1"), ExtResource("7_44sqi"), ExtResource("8_t7pem"), ExtResource("9_7q55x"), ExtResource("10_cvm0a")])
+
+[editable path="floodlight"]

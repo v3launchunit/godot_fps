@@ -5,12 +5,12 @@ extends WeaponBase
 @export_file("*.tscn") var alt_bullet: String
 @export_range(0, 3, 0.01) var alt_shot_cooldown: float = 1.0 # seconds
 @export_range(1, 50, 1) var alt_volley: int = 1
-@export_range(0, 90, 1) var alt_spread: float = 0.0
+@export_range(0, 90) var alt_spread: float = 0.0
 
 @export var alt_ammo_type: String = "none"
 @export var alt_ammo_cost: int = 1
 
-@onready var alt_spawner = get_node("AltSpawner")
+@onready var alt_spawner: Node3D = get_node("AltSpawner")
 @onready var alt_bullet_scene: PackedScene = load(alt_bullet)
 
 # Called when the node enters the scene tree for the first time.
@@ -27,19 +27,24 @@ func _process(delta):
 	if cooldown_timer > 0:
 		cooldown_timer -= delta
 	
-	if (active and Input.is_action_pressed("fire_main") and cooldown_timer <= 0
-			and manager.has_ammo(ammo_type, ammo_cost)):
+	if active and (not safety_catch_active) and Input.is_action_pressed("fire_main") \
+			and cooldown_timer <= 0 and manager.has_ammo(ammo_type, ammo_cost):
 		_fire()
 		
-	if (active and Input.is_action_pressed("fire_alt") and cooldown_timer <= 0
-			and manager.has_ammo(alt_ammo_type, alt_ammo_cost)):
+	if active and (not safety_catch_active) and Input.is_action_pressed("fire_alt") \
+			and cooldown_timer <= 0 and manager.has_ammo(alt_ammo_type, alt_ammo_cost):
 		_fire_alt()
+	
+	if safety_catch_active and not (Input.is_action_pressed("fire_main") or \
+			Input.is_action_pressed("fire_alt")):
+		safety_catch_active = false
 
 
-func _deploy() -> void:
+func _deploy(with_safety_catch: bool = true) -> void:
 	visible = true
 	active = true
-	hud_connected.emit(ammo_type, alt_ammo_type)
+	safety_catch_active = use_safety_catch if with_safety_catch else false
+	hud_connected.emit(category, index, ammo_type, alt_ammo_type)
 	state_machine.start("deploy", true)
 
 

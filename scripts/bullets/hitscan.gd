@@ -9,6 +9,7 @@ extends Node3D
 @export_file("*.tscn") var explosion: String
 @export var knockback_force: float = 1.0
 @export var from_camera: bool = true
+@export var piercer: bool = false
 
 var handled: bool = false
 var exceptions: Array = []
@@ -49,15 +50,16 @@ func _physics_process(delta):
 			mesh.scale.z = result.position.distance_to(global_position)
 			mesh.look_at(global_position)
 			
-			if result.collider.has_node("Status"):
+			if result.collider.name != "Shield" and result.collider.has_node("Status"):
+				var status: Status = result.collider.find_child("Status")
 				if result.collider is EnemyBase:
 					result.collider.detect_target(invoker)
 					result.collider.apply_knockback(knockback_force * \
 							(result.collider.global_position - global_position).normalized())
 				
-				damage -= result.collider.find_child("Status").damage(damage)
-				if damage > 0:
-					exceptions.append(result.collider)
+				damage -= status.damage(damage)
+				exceptions.append(result.collider)
+				if damage > 0 and piercer:
 					handled = false
 			
 			var exp: Node3D = explosion_scene.instantiate()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_ynftt"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="2_t8frq"]
-[ext_resource type="AudioStream" uid="uid://bsv250k61o40r" path="res://sounds/ambient/plasma_shot_ambient.wav" id="3_axjn6"]
+[ext_resource type="AudioStream" uid="uid://bsv250k61o40r" path="res://audio/streams/ambient/plasma_shot_ambient.wav" id="3_axjn6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h48e4"]
 size = Vector3(0.15, 0.15, 1)
@@ -88,12 +88,14 @@ shape = SubResource("BoxShape3D_h48e4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, 0, 0, 0.5)
+layers = 2
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_3dr6j")
 surface_material_override/0 = SubResource("StandardMaterial3D_lktph")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.5)
+layers = 2
 material_override = SubResource("StandardMaterial3D_fr6x1")
 cast_shadow = 0
 amount = 16
@@ -105,11 +107,16 @@ script = ExtResource("2_t8frq")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, 0, 0, 1)
+layers = 2
 light_color = Color(0.501961, 0, 1, 1)
-shadow_enabled = true
+distance_fade_enabled = true
 
 [node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
+layers = 2
 cast_shadow = 0
+visibility_range_end = 90.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
 mesh = SubResource("QuadMesh_7khmj")
 surface_material_override/0 = SubResource("StandardMaterial3D_qiosb")
 

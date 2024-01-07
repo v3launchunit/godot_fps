@@ -1,20 +1,20 @@
-[gd_scene load_steps=63 format=3 uid="uid://dyruil3vrf658"]
+[gd_scene load_steps=67 format=3 uid="uid://dyruil3vrf658"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_base.gd" id="1_xpg4m"]
-[ext_resource type="AudioStream" uid="uid://kvksscy35kso" path="res://sounds/voices/canary/detect_moan_1.wav" id="2_l2o0a"]
 [ext_resource type="PackedScene" uid="uid://d88it1ka8q05" path="res://models/entities/canary.glb" id="2_n8knu"]
-[ext_resource type="AudioStream" uid="uid://cxmy0py34q134" path="res://sounds/voices/canary/detect_moan_2.wav" id="3_ynkoe"]
-[ext_resource type="AudioStream" uid="uid://cl44ukycugok" path="res://sounds/voices/canary/detect_moan_3.wav" id="4_vk5pb"]
+[ext_resource type="AudioStream" uid="uid://kvksscy35kso" path="res://audio/streams/voices/canary/detect_moan_1.wav" id="2_sybod"]
+[ext_resource type="AudioStream" uid="uid://cxmy0py34q134" path="res://audio/streams/voices/canary/detect_moan_2.wav" id="3_xu1ly"]
+[ext_resource type="AudioStream" uid="uid://cl44ukycugok" path="res://audio/streams/voices/canary/detect_moan_3.wav" id="4_u2vh3"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="5_3hbwc"]
 [ext_resource type="AnimationLibrary" uid="uid://ci7iptmlbm84k" path="res://scenes/entities/canary_anims.res" id="5_7exts"]
-[ext_resource type="AudioStream" uid="uid://ci3c0uultgsgr" path="res://sounds/voices/canary/detect_moan_4.wav" id="5_cwhgu"]
-[ext_resource type="AudioStream" uid="uid://g7tloh7a7rc8" path="res://sounds/voices/canary/release_1.wav" id="6_1ergo"]
+[ext_resource type="AudioStream" uid="uid://ci3c0uultgsgr" path="res://audio/streams/voices/canary/detect_moan_4.wav" id="5_51qrl"]
+[ext_resource type="AudioStream" uid="uid://g7tloh7a7rc8" path="res://audio/streams/voices/canary/release_1.wav" id="6_j8oek"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="6_yegnx"]
-[ext_resource type="AudioStream" uid="uid://hvj8aonxc7fe" path="res://sounds/voices/canary/death_moan_1.wav" id="7_gxvo1"]
+[ext_resource type="AudioStream" uid="uid://hvj8aonxc7fe" path="res://audio/streams/voices/canary/death_moan_1.wav" id="7_e2r5o"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="7_uj2tf"]
-[ext_resource type="AudioStream" uid="uid://byxqomb23gysj" path="res://sounds/voices/canary/death_moan_2.wav" id="8_hq6hi"]
-[ext_resource type="AudioStream" uid="uid://1k3tiy342e76" path="res://sounds/voices/canary/death_moan_3.wav" id="9_034n2"]
-[ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://sounds/voices/wilhelm_scream.ogg" id="10_408c3"]
+[ext_resource type="AudioStream" uid="uid://byxqomb23gysj" path="res://audio/streams/voices/canary/death_moan_2.wav" id="8_ypj68"]
+[ext_resource type="AudioStream" uid="uid://1k3tiy342e76" path="res://audio/streams/voices/canary/death_moan_3.wav" id="9_ornrs"]
+[ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://audio/streams/voices/wilhelm_scream.ogg" id="10_j8lce"]
 [ext_resource type="Texture2D" uid="uid://cm5d7ht8vu1jv" path="res://textures/entities/enemies/canary/canary_albedo.png" id="11_yhbt5"]
 [ext_resource type="Texture2D" uid="uid://cy3r0y8ibu285" path="res://textures/entities/enemies/canary/canary_detail_mask.png" id="12_0nc5f"]
 [ext_resource type="Texture2D" uid="uid://gymwav7tohi8" path="res://textures/entities/enemies/canary/canary_metallic.png" id="12_0ovrm"]
@@ -24,25 +24,25 @@
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cyl10"]
 streams_count = 4
 random_pitch = 1.15
-stream_0/stream = ExtResource("2_l2o0a")
+stream_0/stream = ExtResource("2_sybod")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("3_ynkoe")
+stream_1/stream = ExtResource("3_xu1ly")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("4_vk5pb")
+stream_2/stream = ExtResource("4_u2vh3")
 stream_2/weight = 1.0
-stream_3/stream = ExtResource("5_cwhgu")
+stream_3/stream = ExtResource("5_51qrl")
 stream_3/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bs3u7"]
 streams_count = 4
 random_pitch = 1.15
-stream_0/stream = ExtResource("6_1ergo")
+stream_0/stream = ExtResource("6_j8oek")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("7_gxvo1")
+stream_1/stream = ExtResource("7_e2r5o")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("8_hq6hi")
+stream_2/stream = ExtResource("8_ypj68")
 stream_2/weight = 1.0
-stream_3/stream = ExtResource("9_034n2")
+stream_3/stream = ExtResource("9_ornrs")
 stream_3/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o5m72"]
@@ -52,7 +52,7 @@ random_pitch = 1.0
 random_volume_offset_db = 0.0
 stream_0/stream = SubResource("AudioStreamRandomizer_bs3u7")
 stream_0/weight = 100.0
-stream_1/stream = ExtResource("10_408c3")
+stream_1/stream = ExtResource("10_j8lce")
 stream_1/weight = 0.001
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bp4ct"]
@@ -151,21 +151,21 @@ tracks/0/enabled = true
 tracks/0/path = NodePath("Canary/Armature/Skeleton3D:Spine")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.707107, 0, 0.707107)
+tracks/0/keys = PackedFloat32Array(0, 1, -0.031, -0.706, 0.031, 0.707)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Canary/Armature/Skeleton3D:Spine.001")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, -0.216, 0.976)
 tracks/2/type = "rotation_3d"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("Canary/Armature/Skeleton3D:Neck")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, -0.301, 0.954)
 tracks/3/type = "rotation_3d"
 tracks/3/imported = false
 tracks/3/enabled = true
@@ -207,7 +207,7 @@ tracks/8/enabled = true
 tracks/8/path = NodePath("Canary/Armature/Skeleton3D:Right")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
-tracks/8/keys = PackedFloat32Array(0, 1, 0.857969, -2.50254e-07, -1.11133e-07, 0.513702)
+tracks/8/keys = PackedFloat32Array(0, 1, 0.86, 0.199, 0.077, 0.463)
 tracks/9/type = "rotation_3d"
 tracks/9/imported = false
 tracks/9/enabled = true
@@ -221,7 +221,7 @@ tracks/10/enabled = true
 tracks/10/path = NodePath("Canary/Armature/Skeleton3D:Right.002")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
-tracks/10/keys = PackedFloat32Array(0, 1, 0.00533787, -2.35573e-08, -4.08353e-09, 0.999986)
+tracks/10/keys = PackedFloat32Array(0, 1, 0.005, 0, -0.087, 0.996)
 tracks/11/type = "rotation_3d"
 tracks/11/imported = false
 tracks/11/enabled = true
@@ -242,7 +242,7 @@ tracks/13/enabled = true
 tracks/13/path = NodePath("Canary/Armature/Skeleton3D:Left")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
-tracks/13/keys = PackedFloat32Array(0, 1, -0.857969, -2.57908e-07, 1.23917e-07, 0.513702)
+tracks/13/keys = PackedFloat32Array(0, 1, -0.86, -0.196, 0.081, 0.464)
 tracks/14/type = "rotation_3d"
 tracks/14/imported = false
 tracks/14/enabled = true
@@ -256,7 +256,7 @@ tracks/15/enabled = true
 tracks/15/path = NodePath("Canary/Armature/Skeleton3D:Left.002")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
-tracks/15/keys = PackedFloat32Array(0, 1, -0.00533782, -1.65725e-08, 2.76612e-09, 0.999986)
+tracks/15/keys = PackedFloat32Array(0, 1, -0.005, -0.001, -0.131, 0.991)
 tracks/16/type = "rotation_3d"
 tracks/16/imported = false
 tracks/16/enabled = true
@@ -270,42 +270,42 @@ tracks/17/enabled = true
 tracks/17/path = NodePath("Canary/Armature/Skeleton3D:LeftLeg")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
-tracks/17/keys = PackedFloat32Array(0, 1, -0.706586, -0.0271363, -0.706586, 0.0271363)
+tracks/17/keys = PackedFloat32Array(0, 1, 0.691, 0.149, 0.701, 0.096)
 tracks/18/type = "rotation_3d"
 tracks/18/imported = false
 tracks/18/enabled = true
 tracks/18/path = NodePath("Canary/Armature/Skeleton3D:LeftLeg.001")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
-tracks/18/keys = PackedFloat32Array(0, 1, -0.0383765, 1.76396e-08, 2.72799e-09, 0.999263)
+tracks/18/keys = PackedFloat32Array(0, 1, -0.037, 0.01, 0.259, 0.965)
 tracks/19/type = "rotation_3d"
 tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/path = NodePath("Canary/Armature/Skeleton3D:LeftLeg.002")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
-tracks/19/keys = PackedFloat32Array(0, 1, 0.0824805, 1.47129e-08, 1.21768e-09, 0.996593)
+tracks/19/keys = PackedFloat32Array(0, 1, 0.082, 0.007, -0.087, 0.993)
 tracks/20/type = "rotation_3d"
 tracks/20/imported = false
 tracks/20/enabled = true
 tracks/20/path = NodePath("Canary/Armature/Skeleton3D:RightLeg")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
-tracks/20/keys = PackedFloat32Array(0, 1, 0.706586, -0.0271363, 0.706586, 0.0271363)
+tracks/20/keys = PackedFloat32Array(0, 1, 0.701, 0.096, 0.691, 0.149)
 tracks/21/type = "rotation_3d"
 tracks/21/imported = false
 tracks/21/enabled = true
 tracks/21/path = NodePath("Canary/Armature/Skeleton3D:RightLeg.001")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
-tracks/21/keys = PackedFloat32Array(0, 1, 0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
+tracks/21/keys = PackedFloat32Array(0, 1, 0.037, -0.01, 0.259, 0.965)
 tracks/22/type = "rotation_3d"
 tracks/22/imported = false
 tracks/22/enabled = true
 tracks/22/path = NodePath("Canary/Armature/Skeleton3D:RightLeg.002")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
-tracks/22/keys = PackedFloat32Array(0, 1, -0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
+tracks/22/keys = PackedFloat32Array(0, 1, -0.082, -0.007, -0.087, 0.993)
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
@@ -316,7 +316,7 @@ tracks/23/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.5, 0)]
+"values": [Vector3(0, 0.5, 0.15)]
 }
 tracks/24/type = "value"
 tracks/24/imported = false
@@ -384,6 +384,12 @@ _data = {
 "RESET": SubResource("Animation_o8lpw")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fkyut"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gy1b5"]
+animation = &"canary_anims/canary_ambush"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nfb3s"]
 animation = &"canary_anims/canary_attack"
 
@@ -398,9 +404,6 @@ animation = &"canary_anims/canary_idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_imbdi"]
 animation = &"canary_anims/canary_move"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2prg3"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7oomp"]
 xfade_time = 0.25
@@ -446,8 +449,19 @@ xfade_time = 0.25
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mr23i"]
 xfade_time = 0.1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uocbj"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8412e"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l00kp"]
-states/Start/position = Vector2(148, 100.889)
+states/RESET/node = SubResource("AnimationNodeAnimation_fkyut")
+states/RESET/position = Vector2(132.556, 16.9466)
+states/Start/position = Vector2(-26.6667, 100.593)
+states/ambush/node = SubResource("AnimationNodeAnimation_gy1b5")
+states/ambush/position = Vector2(131.667, 100.222)
 states/attacking/node = SubResource("AnimationNodeAnimation_nfb3s")
 states/attacking/position = Vector2(306.889, 225)
 states/dead/node = SubResource("AnimationNodeAnimation_whrfc")
@@ -455,11 +469,13 @@ states/dead/position = Vector2(448.093, 17.8766)
 states/flinching/node = SubResource("AnimationNodeAnimation_8bms8")
 states/flinching/position = Vector2(598.261, 224.617)
 states/idle/node = SubResource("AnimationNodeAnimation_oyciw")
-states/idle/position = Vector2(306.716, 100.047)
+states/idle/position = Vector2(306.947, 100.008)
 states/moving/node = SubResource("AnimationNodeAnimation_imbdi")
 states/moving/position = Vector2(598.57, 100.065)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2prg3"), "idle", "moving", SubResource("AnimationNodeStateMachineTransition_7oomp"), "moving", "idle", SubResource("AnimationNodeStateMachineTransition_dbccw"), "moving", "attacking", SubResource("AnimationNodeStateMachineTransition_4xupg"), "idle", "attacking", SubResource("AnimationNodeStateMachineTransition_majfp"), "attacking", "moving", SubResource("AnimationNodeStateMachineTransition_2nn25"), "attacking", "idle", SubResource("AnimationNodeStateMachineTransition_w5vit"), "attacking", "dead", SubResource("AnimationNodeStateMachineTransition_se8tw"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_bj5l4"), "moving", "dead", SubResource("AnimationNodeStateMachineTransition_x017w"), "idle", "flinching", SubResource("AnimationNodeStateMachineTransition_goefx"), "attacking", "flinching", SubResource("AnimationNodeStateMachineTransition_3fks7"), "moving", "flinching", SubResource("AnimationNodeStateMachineTransition_stoq6"), "flinching", "moving", SubResource("AnimationNodeStateMachineTransition_wpkvg"), "flinching", "dead", SubResource("AnimationNodeStateMachineTransition_mr23i")]
+transitions = ["idle", "moving", SubResource("AnimationNodeStateMachineTransition_7oomp"), "moving", "idle", SubResource("AnimationNodeStateMachineTransition_dbccw"), "moving", "attacking", SubResource("AnimationNodeStateMachineTransition_4xupg"), "idle", "attacking", SubResource("AnimationNodeStateMachineTransition_majfp"), "attacking", "moving", SubResource("AnimationNodeStateMachineTransition_2nn25"), "attacking", "idle", SubResource("AnimationNodeStateMachineTransition_w5vit"), "attacking", "dead", SubResource("AnimationNodeStateMachineTransition_se8tw"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_bj5l4"), "moving", "dead", SubResource("AnimationNodeStateMachineTransition_x017w"), "idle", "flinching", SubResource("AnimationNodeStateMachineTransition_goefx"), "attacking", "flinching", SubResource("AnimationNodeStateMachineTransition_3fks7"), "moving", "flinching", SubResource("AnimationNodeStateMachineTransition_stoq6"), "flinching", "moving", SubResource("AnimationNodeStateMachineTransition_wpkvg"), "flinching", "dead", SubResource("AnimationNodeStateMachineTransition_mr23i"), "Start", "ambush", SubResource("AnimationNodeStateMachineTransition_uocbj"), "ambush", "idle", SubResource("AnimationNodeStateMachineTransition_8412e")]
 graph_offset = Vector2(-151, 0)
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_il8dv"]
 
 [node name="Canary" type="CharacterBody3D"]
 collision_layer = 4
@@ -481,81 +497,92 @@ shape = SubResource("CapsuleShape3D_bp4ct")
 
 [node name="PlaceholderMesh" type="MeshInstance3D" parent="."]
 visible = false
+layers = 2
 mesh = SubResource("CapsuleMesh_q1a72")
 
 [node name="Canary" parent="." instance=ExtResource("2_n8knu")]
-transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 0, 0.5, 0)
+transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 0, 0.5, 0.15)
 
 [node name="Skeleton3D" parent="Canary/Armature" index="0"]
-bones/0/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/0/rotation = Quaternion(-0.031, -0.706, 0.031, 0.707)
+bones/1/rotation = Quaternion(0, 0, -0.216, 0.976)
+bones/2/rotation = Quaternion(0, 0, -0.301, 0.954)
 bones/4/rotation = Quaternion(0.626376, 0.253458, -0.405237, 0.615788)
 bones/5/rotation = Quaternion(0.405237, 0.615788, -0.626376, 0.253458)
 bones/6/rotation = Quaternion(0.122788, 0.696364, -0.122788, 0.696364)
 bones/7/rotation = Quaternion(0.642788, 0, 0, 0.766044)
-bones/8/rotation = Quaternion(0.857969, -2.50254e-07, -1.11133e-07, 0.513702)
+bones/8/rotation = Quaternion(0.86, 0.199, 0.077, 0.463)
 bones/9/rotation = Quaternion(0.4321, -5.6259e-08, -2.93426e-07, 0.901826)
-bones/10/rotation = Quaternion(0.00533787, -2.35573e-08, -4.08353e-09, 0.999986)
+bones/10/rotation = Quaternion(0.005, 0, -0.087, 0.996)
 bones/11/rotation = Quaternion(0.0872251, 3.65174e-08, -6.55857e-08, 0.996189)
 bones/12/rotation = Quaternion(0.707107, 2.66925e-08, -0.707107, 2.66925e-08)
-bones/13/rotation = Quaternion(-0.857969, -2.57908e-07, 1.23917e-07, 0.513702)
+bones/13/rotation = Quaternion(-0.86, -0.196, 0.081, 0.464)
 bones/14/rotation = Quaternion(-0.4321, 6.53152e-08, 2.48053e-07, 0.901826)
-bones/15/rotation = Quaternion(-0.00533782, -1.65725e-08, 2.76612e-09, 0.999986)
+bones/15/rotation = Quaternion(-0.005, -0.001, -0.131, 0.991)
 bones/16/rotation = Quaternion(-0.0872251, -8.98916e-08, 5.45175e-08, 0.996189)
-bones/17/rotation = Quaternion(-0.706586, -0.0271363, -0.706586, 0.0271363)
-bones/18/rotation = Quaternion(-0.0383765, 1.76396e-08, 2.72799e-09, 0.999263)
-bones/19/rotation = Quaternion(0.0824805, 1.47129e-08, 1.21768e-09, 0.996593)
-bones/20/rotation = Quaternion(0.706586, -0.0271363, 0.706586, 0.0271363)
-bones/21/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
-bones/22/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
+bones/17/rotation = Quaternion(0.691, 0.149, 0.701, 0.096)
+bones/18/rotation = Quaternion(-0.037, 0.01, 0.259, 0.965)
+bones/19/rotation = Quaternion(0.082, 0.007, -0.087, 0.993)
+bones/20/rotation = Quaternion(0.701, 0.096, 0.691, 0.149)
+bones/21/rotation = Quaternion(0.037, -0.01, 0.259, 0.965)
+bones/22/rotation = Quaternion(-0.082, -0.007, -0.087, 0.993)
 
 [node name="Cylinder_001" parent="Canary/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1.22972, -0.566009, -0.130237, -0.857574, -0.800481, -0.269877, 0.0485005, 0.197138, -1.46976, -0.102903, 0.0646719, 0.322255)
+transform = Transform3D(1.23, -0.565532, -0.132213, -0.82559, -0.736871, -0.588811, 0.235568, 0.370397, -1.37325, -0.102395, 0.106591, 0.331329)
 bone_idx = 4
 
 [node name="Cylinder_001" parent="Canary/Armature/Skeleton3D/Cylinder_001" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_7ynex")
 
 [node name="Cylinder_002" parent="Canary/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1.22972, 0.566009, 0.130236, 0.857574, -0.800481, -0.269877, -0.0485017, 0.197138, -1.46976, 0.102904, 0.0646719, 0.322254)
+transform = Transform3D(1.22944, 0.566485, 0.128259, 0.825437, -0.736942, -0.588827, -0.239042, 0.368798, -1.37362, 0.103412, 0.106578, 0.331038)
 bone_idx = 5
 
 [node name="Cylinder_002" parent="Canary/Armature/Skeleton3D/Cylinder_002" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_tnmui")
 
 [node name="Helmet" parent="Canary/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 3.42565e-07, 1.07498e-08, 1.10302e-08, 0.0300587, -0.999548, -3.29942e-07, 0.999548, 0.0300587, 1.93003e-07, 0.324091, 0.545817)
+transform = Transform3D(0.999999, 0.00138308, 0.000294268, -6.19719e-05, 0.250778, -0.968045, -0.00141267, 0.968044, 0.250778, 0.000754081, 0.409089, 0.491711)
 bone_idx = 6
 
 [node name="Helmet" parent="Canary/Armature/Skeleton3D/Helmet" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_ehbbl")
 
 [node name="Cylinder" parent="Canary/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 7.00724e-08, -3.35494e-07, 1.10302e-08, -0.979143, -0.203172, -3.29942e-07, 0.203172, -0.979143, 1.85376e-07, 0.081566, 0.523248)
+transform = Transform3D(0.999999, 0.000529966, -0.00131097, -6.19719e-05, -0.909791, -0.415067, -0.00141267, 0.415067, -0.90979, 0.000783934, 0.167592, 0.523438)
 bone_idx = 7
 
 [node name="Cylinder" parent="Canary/Armature/Skeleton3D/Cylinder" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_1xwwq")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Canary/Armature/Skeleton3D/Cylinder/Cylinder" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+layers = 2
 light_color = Color(1, 0.501961, 0, 1)
+shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="Pickaxe" parent="Canary/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.149047, -0.0145556, 0.00854833, -0.0157664, 0.147178, -0.0242934, -0.00603012, -0.0250375, -0.147773, -0.293629, -0.644246, 0.380477)
+transform = Transform3D(-0.14884, -0.0164706, -0.00867873, -0.0139098, 0.14486, -0.0363625, 0.0123741, -0.0352765, -0.145267, -0.267239, -0.625227, 0.43963)
 bone_idx = 12
 
 [node name="Pickaxe" parent="Canary/Armature/Skeleton3D/Pickaxe" index="0"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_tr01u")
 
 [node name="Body" parent="Canary/Armature/Skeleton3D" index="5"]
+layers = 2
 material_override = SubResource("StandardMaterial3D_msjgk")
 
 [node name="Spawner" type="Marker3D" parent="."]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 1.5
-target_desired_distance = 3.0
+target_desired_distance = 2.0
 avoidance_enabled = true
 height = 2.0
 max_speed = 100.0
@@ -582,6 +609,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamPolyphonic_il8dv")
 bus = &"Speech"
 doppler_tracking = 2
 

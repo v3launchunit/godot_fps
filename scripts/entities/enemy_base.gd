@@ -1,6 +1,7 @@
 class_name EnemyBase extends CharacterBody3D
 
 enum State {
+	AMBUSHING, # Busy spawning in and can't do anything
 	IDLE, # Does not have a target
 	SEARCHING, # Moving towards detected sound and does not have a target
 	PURSUING, # Pursuing target
@@ -11,7 +12,7 @@ enum State {
 }
 
 @export_category("EnemyBase")
-@export_range(1, 35, 1) var speed: float = 10.0 # walk speed, in meters/second
+@export_range(1, 35, 0.1) var speed: float = 10.0 # walk speed, in meters/second
 @export var turning_speed: float = 10.0
 @export_range(10, 400, 1) var acceleration: float = 100.0
 @export_range(0, 1, 0.001, "or_greater") var knockback_multiplier: float = 1.0
@@ -24,8 +25,10 @@ enum State {
 #@export var enemies: Array[String] = ["Player"]
 @export var detection_stream: AudioStream
 
+@export var wake_up_time: float = 3.0 # How many seconds does it take for me to spawn in
 @export var attack_interval: float = 3.0 # How many seconds I spend moving between attacks
 @export var attack_range: float = 32.0 # Max distance at which I will attack
+@export var melee_range: float = 2.0 # Distance at which I don't need to move between attacks
 @export var attack_delay: float = 0.5 # How many seconds into my attack animation do I actually fire
 @export var attack_recovery_time: float = 0.25 # How long do I wait after firing before I go back to moving
 @export_file("*.tscn") var bullet: String
@@ -36,10 +39,11 @@ enum State {
 @export var flinch_time: float = 1.0
 @export var death_stream: AudioStream
 
+@export var current_targets: Array[PhysicsBody3D]
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-var current_state: State = State.IDLE
-var current_target: PhysicsBody3D
+var current_state: State = State.AMBUSHING
 var current_destination: Vector3
 
 var walk_vel: Vector3 = Vector3.ZERO # Walking velocity 
@@ -57,11 +61,15 @@ var state_timer: float = 0 # How long I've been in my current state, in seconds
 @onready var spawner: Node3D = find_child("Spawner")
 @onready var bullet_scene: PackedScene = load(bullet)
 @onready var state_machine = $AnimationTree.get("parameters/playback")
+@onready var attack_range_squared = attack_range * attack_range
+@onready var melee_range_squared = melee_range * melee_range
+@onready var path_re_eval_distance_squared = $NavigationAgent3D.target_desired_distance \
+		* $NavigationAgent3D.target_desired_distance
 
 @onready var audio_player: AudioStreamPlayer3D = find_child("AudioStreamPlayer3D")
 
 func _ready() -> void:
-	state_machine.start("idle", true)
+	state_machine.start("ambush", true)
 	status.injured.connect(_on_status_injured)
 	status.died.connect(_on_status_died)
 	nav_agent.velocity_computed.connect(_on_navigation_agent_3d_velocity_computed)
@@ -70,10 +78,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	state_timer += delta
 
+
 func _physics_process(delta: float) -> void:
 	velocity = _gravity(delta) + _knockback(delta)
 
 	match current_state:
+		State.AMBUSHING:
+			if state_timer >= wake_up_time:
+				change_state(State.IDLE)
 		State.IDLE:
 			_scan(delta)
 		State.SEARCHING:
@@ -90,16 +102,21 @@ func _physics_process(delta: float) -> void:
 		State.DEAD:
 			pass
 	
+	if check_target_validity() and current_targets[-1].get_node("Status").health <= 0:
+		current_targets.pop_back()
+	
 	move_and_slide()
 
 
 # In case I need/want to do stuff with state transitions 
 # (probably where I'll handle animations & shit)
 func change_state(to: State):
-	if current_state == State.DEAD:
-		return # no changing states if you're dead
+	if current_state == State.DEAD or to == current_state:
+		return
 	
 	match current_state:
+		State.AMBUSHING:
+			pass
 		State.IDLE:
 			sight_line.rotation.y = 0
 		State.SEARCHING:
@@ -116,6 +133,8 @@ func change_state(to: State):
 			pass
 	
 	match to:
+		State.AMBUSHING:
+			pass
 		State.IDLE:
 			sight_line.rotation.x = 0
 			state_machine.travel("idle", true)
@@ -123,9 +142,11 @@ func change_state(to: State):
 			sight_line.rotation.x = 0
 			state_machine.travel("moving", true)
 		State.PURSUING:
+			if check_target_validity():
+				nav_agent.target_position = current_targets[-1].global_position
 			state_machine.travel("moving", true)
 		State.ATTACKING:
-			state_machine.travel("attacking", true)
+			pass
 		State.POST_ATTACKING:
 			pass
 		State.FLINCHING:
@@ -142,15 +163,22 @@ func change_state(to: State):
 
 
 func detect_target(target: PhysicsBody3D) -> void:
-	if current_target == null:
-		audio_player.stream = detection_stream
-		audio_player.play()
-	
-	current_target = target
+	if not (
+			current_state == State.AMBUSHING 
+			or current_state == State.FLINCHING 
+			or current_state == State.DEAD
+	):
+		if current_targets.is_empty():
+			audio_player.stream = detection_stream
+			audio_player.play()
+		current_targets.append(target)
+#	print("target detected")
+		if current_state == State.IDLE or current_state == State.SEARCHING:
+			change_state(State.PURSUING)
 
 
 func _scan(_delta) -> void:
-	sight_line.rotation.y = sin(state_timer * sight_line_sweep_speed / 
+	sight_line.rotation.y = sin(state_timer * sight_line_sweep_speed + randf() / 
 			sight_line_sweep_angle * 2) * sight_line_sweep_angle / 2
 	if sight_line.is_colliding() and sight_line.get_collider() is Player:
 		detect_target(sight_line.get_collider())
@@ -159,7 +187,8 @@ func _scan(_delta) -> void:
 
 
 func _investigate(delta) -> void:
-	nav_agent.target_position = current_destination
+	if randf() < Globals.C_PATH_RE_EVAL_CHANCE:
+		nav_agent.target_position = current_destination
 #	look_at(nav_agent.get_next_path_position())
 #	rotation.x = 0
 	global_rotation.y = lerp_angle(global_rotation.y, 
@@ -183,25 +212,60 @@ func _pursue(delta) -> void:
 #		return
 	
 	# Casually approach target
-	if current_target != null: # Make sure I actually have a target first
-		nav_agent.target_position = current_target.global_position
+	if check_target_validity(): # Make sure I actually have a target first
+		if check_path_staleness():
+			nav_agent.target_position = current_targets[-1].global_position
 		var next_pos := nav_agent.get_next_path_position()
 		sight_line.look_at(next_pos)
-		global_rotation.y = lerp_angle(global_rotation.y, 
+		global_rotation.y = (
+				lerp_angle(global_rotation.y, 
 				sight_line.global_rotation.y, delta * turning_speed)
+		)
 		walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
 		nav_agent.set_velocity(walk_vel)
 #		velocity += safe_walk_vel
 		
 		# Decide if it's time to attack my target
-		if current_target.global_position.distance_to(global_position) < 2 or \
-				state_timer >= attack_interval + randf() and \
-				current_target.global_position.distance_to(global_position) < attack_range: #and sight_line.get_collider() == current_target:
-			look_at(current_target.position)
-			rotation.x = 0
-			change_state(State.ATTACKING)
+		if check_attack_readiness():
+			_begin_attack()
+		
 	else: # Can't pursue a target that doesn't exist
 		change_state(State.IDLE)
+		# Scrapped conditionals to try and make enemies breach obstacles 
+		# (might reimplement later idk)
+# 				\
+#				or (sight_line.get_collider().global_position.distance_to(global_position) < 2 \
+#				and sight_line.get_collider().find_child("Status") != null) 
+
+
+func check_target_validity() -> bool:
+	return not (current_targets.is_empty() or current_targets[-1] == null)
+
+
+func check_path_staleness() -> bool:
+	return (
+			randf() < Globals.C_PATH_RE_EVAL_CHANCE 
+			and nav_agent.target_position.distance_squared_to(
+			current_targets[-1].global_position) > path_re_eval_distance_squared
+		)
+
+
+func check_attack_readiness() -> bool:
+	return (
+			current_targets[-1].global_position.distance_squared_to(global_position) 
+			< melee_range_squared or (
+					state_timer >= attack_interval + randf() 
+					and current_targets[-1].global_position.distance_squared_to(global_position)
+					< attack_range_squared
+			)
+		) #and sight_line.get_collider() == current_target:
+
+
+func _begin_attack() -> void:
+	look_at(current_targets[-1].position)
+	rotation.x = 0
+	state_machine.travel("attacking", true)
+	change_state(State.ATTACKING)
 
 
 func _attack(_delta) -> void:
@@ -212,8 +276,8 @@ func _attack(_delta) -> void:
 
 func do_attack() -> void:
 #	var base_rotation = global_rotation
-	if current_target != null:
-		spawner.look_at(current_target.global_position)
+	if (not current_targets.is_empty()) and current_targets[-1] != null:
+		spawner.look_at(current_targets[-1].global_position)
 #	spawner.rotate_y(-PI)
 #	spawner.rotate_x(PI)
 	var spawner_base_rotation = spawner.global_rotation
@@ -238,8 +302,11 @@ func do_attack() -> void:
 
 func _post_attack(_delta) -> void:
 	if state_timer >= attack_recovery_time:
-		change_state(State.IDLE if current_target == null or \
-				current_target.find_child("Status").health <= 0 else State.PURSUING)
+		change_state(
+				State.IDLE if current_targets.is_empty() or 
+				current_targets[-1] == null or 
+				current_targets[-1].find_child("Status").health <= 0 else State.PURSUING
+		)
 	nav_agent.set_velocity(Vector3.ZERO)
 
 
@@ -264,7 +331,8 @@ func apply_knockback(amount: Vector3) -> void:
 
 func _gravity(delta: float) -> Vector3:
 	grav_vel = Vector3.ZERO if is_on_floor() else grav_vel.move_toward(
-			Vector3(0, velocity.y - gravity, 0), gravity * delta)
+			Vector3(0, velocity.y - gravity, 0), gravity * delta
+	)
 	return grav_vel
 
 

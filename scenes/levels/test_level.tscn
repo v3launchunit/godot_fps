@@ -1,12 +1,13 @@
-[gd_scene load_steps=121 format=3 uid="uid://bccg57mkum2ii"]
+[gd_scene load_steps=146 format=3 uid="uid://ddybwy4hdo2q3"]
 
 [ext_resource type="PackedScene" uid="uid://c63k27ek72d3d" path="res://scenes/entities/player.tscn" id="1_y76j7"]
 [ext_resource type="Texture2D" uid="uid://c8k3lo0nolynw" path="res://textures/terrain/trench_broom/bricks.png" id="2_7jjft"]
+[ext_resource type="ArrayOccluder3D" uid="uid://de24am4sbu2ce" path="res://scenes/levels/test_level/test_level.occ" id="3_3m5x1"]
 [ext_resource type="Texture2D" uid="uid://cwfs3yd67cdxg" path="res://textures/terrain/bricks/bricks_heights.png" id="3_h0mpp"]
 [ext_resource type="Texture2D" uid="uid://d0airnxbjud3t" path="res://textures/terrain/bricks/bricks_normals.png" id="4_l7ysy"]
 [ext_resource type="ArrayMesh" uid="uid://dfdtn05qg82p4" path="res://models/lamp_post.obj" id="4_xwsej"]
 [ext_resource type="Material" uid="uid://b0rku0cd06ewb" path="res://materials/terrain/trench_broom/metal.tres" id="5_8y8hw"]
-[ext_resource type="PackedScene" uid="uid://bxdu412yk2ut8" path="res://scenes/entities/crate.tscn" id="7_o51n8"]
+[ext_resource type="PackedScene" uid="uid://bxdu412yk2ut8" path="res://scenes/objects/crate.tscn" id="7_o51n8"]
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="8_y3vma"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="9_5wy7v"]
 [ext_resource type="Material" uid="uid://o08npuo7facf" path="res://materials/terrain/trench_broom/bricks.tres" id="9_slujc"]
@@ -18,16 +19,24 @@
 [ext_resource type="PackedScene" uid="uid://dl7fuv4wdxtjx" path="res://scenes/pickups/ammo/shell_pickup.tscn" id="14_wnn8m"]
 [ext_resource type="Material" uid="uid://l745c7k3ok8n" path="res://materials/terrain/trench_broom/big_cobble_stone.tres" id="15_lkgbx"]
 [ext_resource type="Material" uid="uid://d218bxpld0xoe" path="res://materials/terrain/trench_broom/dirt.tres" id="16_ytcb8"]
-[ext_resource type="Texture2D" uid="uid://cu58hb7h0r68v" path="res://textures/effects/look_up_tables/1d_lut_16_color.png" id="17_3kdv4"]
+[ext_resource type="Environment" uid="uid://dl1gdmak2dt30" path="res://scenes/default_environment.tres" id="17_74lb7"]
 [ext_resource type="PackedScene" uid="uid://lt47oncbceb2" path="res://scenes/pickups/weapons/akm_pickup.tscn" id="19_1op0n"]
 [ext_resource type="PackedScene" uid="uid://b2q7xucggusys" path="res://scenes/pickups/weapons/plasma_cannon_pickup.tscn" id="20_j626k"]
-[ext_resource type="PackedScene" uid="uid://dw2d5fbdkdf6f" path="res://scenes/entities/zombie.tscn" id="20_v7fiu"]
 [ext_resource type="PackedScene" uid="uid://du780rqis8eqo" path="res://scenes/pickups/weapons/boomstick_pickup.tscn" id="21_n0mci"]
 [ext_resource type="PackedScene" uid="uid://b2ceyvvn2j4nq" path="res://scenes/pickups/weapons/big_iron_pickup.tscn" id="22_ih4aa"]
-[ext_resource type="PackedScene" uid="uid://cxqut1h5yt3nk" path="res://scenes/entities/eyeball.tscn" id="22_rq1ip"]
+[ext_resource type="PackedScene" uid="uid://dbqaoeg23gpbh" path="res://scenes/entities/lizard.tscn" id="22_y1v5w"]
 [ext_resource type="PackedScene" uid="uid://cc7snvg1qg4i4" path="res://scenes/entities/pinkerton.tscn" id="23_cjkah"]
-[ext_resource type="PackedScene" uid="uid://dyruil3vrf658" path="res://scenes/entities/canary.tscn" id="24_wbtal"]
+[ext_resource type="PackedScene" uid="uid://cjsg2kgch70w2" path="res://scenes/entities/enforcer.tscn" id="23_gta54"]
 [ext_resource type="PackedScene" uid="uid://ce2yor24rivr3" path="res://scenes/pickups/weapons/nailgun_pickup.tscn" id="28_xbcgv"]
+[ext_resource type="PackedScene" uid="uid://dakry3wmqjckc" path="res://scenes/pickups/weapons/crossbow_pickup.tscn" id="30_o7cbw"]
+[ext_resource type="CompressedTexture3D" uid="uid://cbk1h1yxquuv1" path="res://scenes/levels/test_level/test_level.GPUParticlesCollisionSDF3D_data.exr" id="31_rvbgk"]
+[ext_resource type="Shader" uid="uid://dyecxfl8r46aq" path="res://shaders/lens_flare_halo.tres" id="32_3d00j"]
+[ext_resource type="PackedScene" uid="uid://7e6nf0ho2ltr" path="res://scenes/objects/teleporter.tscn" id="32_ww2oq"]
+[ext_resource type="Script" path="res://scripts/entities/ambush.gd" id="33_2reti"]
+[ext_resource type="Shader" path="res://shaders/depth_test.gdshader" id="33_eelvg"]
+[ext_resource type="PackedScene" uid="uid://bonaseme7rn5f" path="res://scenes/entities/vortigaunt.tscn" id="34_138mm"]
+[ext_resource type="Shader" path="res://shaders/psx_test.gdshader" id="34_rr40p"]
+[ext_resource type="PackedScene" uid="uid://cxqut1h5yt3nk" path="res://scenes/entities/eyeball.tscn" id="35_qtyg3"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ecv47"]
 vertices = PackedVector3Array(-9.75, 0, -37.0618, -8.75, 0, -37.0618, -8.75, 0, -47.0618, -9.75, 0, -47.5618, 9.5, 0, -37.0618, 9.5, 0, -47.5618, 8.5, 0, -47.0618, 8.5, 0, -37.0618, -9.75, 0, -47.5618, -8.75, 0, -47.0618, -8.5, 0, -57.0618, -9.75, 0, -58.0618, 8.5, 0, -56.8118, 8.5, 0, -47.0618, 9.5, 0, -47.5618, 9.5, 0, -58.0618, -0.25, 0, -58.0618, -9.75, 0, -58.0618, -8.5, 0, -57.0618, 0, 0, -57.0618, -0.25, 0, -58.0618, 0, 0, -57.0618, 8.5, 0, -56.8118, 9.5, 0, -58.0618, -8.75, 9, -45.0618, -8.75, 9, -33.0618, -0.25, 10, -33.0618, -0.25, 10, -57.0618, -8.75, 9, -57.0618, -8.75, 9, -45.0618, -0.25, 10, -33.0618, 8.5, 9, -33.0618, 8.5, 9, -45.0618, -2.51936, 9.75, -45.0545, 1.98568, 9.75, -45.0715, 8.5, 9, -45.0618, 8.5, 9, -57.0618, -0.25, 10, -57.0618, -5.5, 0, -50.8118, -5.75, 0, -54.8118, -6.5, 0, -54.8118, -6.5, 0, -46.0618, 6.25, 0, -37.0618, 6.25, 0, -47.0618, 5.5, 0.25, -47.0618, 2.25, 0, -47.0618, 2.25, 0, -50.8118, -5.5, 0, -50.8118, -6.5, 0, -46.0618, 6.25, 0, -37.0618, 5.5, 0.25, -47.0618, 3.25, 0.25, -47.0618, -0.25, 0, -37.0618, 3.25, 0.25, -47.0618, 2.25, 0, -47.0618, -6.5, 0, -46.0618, -6.5, 0, -37.0618, -0.25, 0, -37.0618, -4.5, 5, -33.8118, -2.75, 5, -33.8118, -2.75, 5, -34.8118, -4.5, 5, -34.8118, -2.5, 5, -51.8118, -4.75, 5, -54.0618, -4.75, 5, -44.3118, -2.5, 5, -43.3118, -5, 5, -35.0618, -4.5, 5, -34.8118, -2.75, 5, -34.8118, -2.25, 5, -35.0618, -2.5, 5, -43.3118, -4.75, 5, -44.3118, 3, 2.5, -52.0618, 5.5, 2.5, -54.0618, -4.75, 5, -54.0618, -2.5, 5, -51.8118, 2.57143, 2.5, -54.0618, -1.82143, 4.75, -54.0618, 3, 2.5, -52.0618, 3.25, 0.25, -47.0618, 5.5, 0.25, -47.0618, 5.5, 2.5, -54.0618, 5.5, 2.25, -51.2618, -4.5, 0, -53.8118, -4.5, 0, -52.0618, -2.75, 0, -52.0618, -2.75, 0, -53.8118, -1.5, 0, -53.8118, -1.5, 0, -52.0618, 2.25, 0, -52.0618, 2.25, 0, -53.8118, 3.5, 0, -53.8118, 3.5, 0, -52.0618, 5.25, 0, -52.0618, 5.25, 0, -53.8118, 0.25, 1, -36.0618, 0.5, 1, -35.0618, 1.25, 1, -34.8118, 6.25, 1, -34.8118, 6.25, 1, -36.0618, 0.5, 1, -24.0618, 0, 1.25, -24.0618, 0, 1, -21.0618, 6.25, 1, -20.8118, 9.5, -0.5, -35.8118, 8.5, 0.5, -36.0618, 8.25, 0.75, -32.8118, 9.25, 0, -24.5618, 9.28125, -0.5, -25.968, 9.08333, -0.25, -25.9368, 0.5, 1, -24.0618, 6.25, 1, -20.8118, 9.25, 0, -24.5618, 8.25, 0.75, -32.8118, 0.5, 1, -32.8118, 7.75, 1, -22.6868, 9.08333, -0.25, -25.9368, 6.95833, 1, -32.8118, 6.47524, 1, -25.5671, 7.98519, 0.75, -27.061, 8.01025, 0.75, -25.5561, -6.5, 1, -34.8118, -6.5, 1, -27.5618, -0.75, 1, -27.5618, -0.75, 1, -34.8118, -7.75, 1, -20.8118, -6.5, 1.25, -20.5618, -6.5, 1, -21.0618, -6.75, 1.25, -24.0618, -7.75, 1, -24.0618, -2.5, 5, -32.8118, -2.75, 5, -33.8118, -4.5, 5, -33.8118, -4.75, 5, -32.8118, -4.75, 5, -32.8118, -6.75, 5, -32.8118, -6.75, 1.25, -24.0618, -5.08333, 5, -31.3535, -6.75, 5, -31.3535, 0, 1, -21.0618, 0, 1.25, -24.0618, -0.5, 1.25, -24.0618, -6.75, 1.25, -24.0618, -6.5, 1, -21.0618, 0, 1, -21.0618, -0.5, 1.25, -24.0618, -2.5, 5, -32.8118, -4.75, 5, -32.8118, -5.08333, 5, -31.3535, -2.16667, 5, -31.3535, -0.5, 1.25, -24.0618, -0.5, 5, -32.8118, -2.5, 5, -32.8118, -2.16667, 5, -31.3535, -0.5, 5, -31.3535, -2, 1.25, -16.0618, -2, 1.25, -16.3118, -2.75, 1.5, -16.5618, -3.75, 1.25, -15.8118, -4.5, 1.75, -18.8118, -8, 1, -20.0618, -9.25, 0, -20.3118, -6, 0.25, -12.0618, -5.75, 0.75, -12.8118, -8.70833, 0.5, -18.9368, -6.54167, 0.5, -13.4368, -6.5, 1.25, -20.0618, -6.5, 1.25, -20.5618, -7.75, 1, -20.8118, -6.5, 1.25, -20.0618, -7.75, 1, -20.8118, -8, 1, -20.0618, -4.5, 1.75, -18.8118, -3.75, 1, -12.5618, -3, 1, -13.8118, -3.75, 1, -14.3118, -5.75, 0.75, -12.8118, -4.5, 1.75, -18.8118, -4.75, 1.75, -20.0618, -6.5, 1.25, -20.0618, -17, 0, -24.5618, -24.5, 0, -18.3118, -24.5, 0, -12.0618, -6, 0.25, -12.0618, -9.25, 0, -20.3118, -6.54167, 0.5, -13.4368, -8.70833, 0.5, -18.9368, -9.98483, 0, -19.583, -9.98435, 0, -13.5435, -2.75, 1.5, -18.3118, -0.25, 1.75, -18.5618, -0.25, 1.75, -18.8118, -4.5, 1.75, -18.8118, -17, 0, -24.5618, -24.5, 0, -24.5618, -24.5, 0, -18.3118, -3.75, 1.25, -15.8118, -2.75, 1.5, -16.5618, -2.75, 1.5, -18.3118, -4.5, 1.75, -18.8118, -9.25, 0, -20.3118, -9.25, 0, -24.5618, -17, 0, -24.5618, -5.75, 0.75, -12.8118, -3.75, 1, -14.3118, -3.75, 1.25, -15.8118, -4.5, 1.75, -18.8118, 2.5, 1.5, -16.5618, 1.75, 1.25, -16.3118, 1.75, 1.25, -16.0618, 3.5, 1.25, -15.8118, 24.5, 0, -18.3118, 24.5, 0, -24.5618, 16.75, 0, -24.5618, 3.5, 1, -14.0618, 3, 1, -13.8118, 3.5, 1, -12.5618, 5.5, 0.75, -12.8118, 6.25, 1.25, -20.0618, 4.5, 1.75, -20.0618, 4.25, 1.75, -18.8118, 9.25, 0, -24.5618, 6.25, 1, -20.8118, 6.25, 1.25, -20.0618, 7.75, 1, -22.3118, 7.75, 1, -22.6868, 2.5, 1.5, -18.3118, 2.5, 1.5, -16.5618, 3.5, 1.25, -15.8118, 4.25, 1.75, -18.8118, -0.25, 1.75, -18.8118, -0.25, 1.75, -18.5618, 2.5, 1.5, -18.3118, 4.25, 1.75, -18.8118, 6.25, 1.25, -20.0618, 5.5, 0.75, -12.8118, 5.75, 0.25, -12.0618, 5.83333, 0.75, -13.3951, 16.75, 0, -24.5618, 9.25, 0, -24.5618, 6.25, 1.25, -20.0618, 5.75, 0.25, -12.0618, 24.5, 0, -12.0618, 24.5, 0, -18.3118, 7.75, 1, -22.3118, 5.83333, 0.75, -13.3951, 8.01517, 0.75, -19.583, 9.50018, 0, -19.572, 8.00042, 0.5, -16.5522, 9.48544, 0, -16.5413, 3.5, 1.25, -15.8118, 3.5, 1, -14.0618, 5.5, 0.75, -12.8118, 6.25, 1.25, -20.0618, 4.25, 1.75, -18.8118, -1.5, 1.25, -15.8118, 1.25, 1.25, -15.8118, 1.75, 1.25, -16.0618, 1.75, 1.25, -16.3118, -2, 1.25, -16.3118, -2, 1.25, -16.0618, 16, 0, 24.4382, 24.5, 0, 24.4382, 24.5, 0, 15.1882, 3.75, 0, -11.5618, 3.5, 1, -12.5618, 3, 1, -13.8118, 1.25, 1, -14.0618, 2.91667, 0.75, -12.3951, -3, 1, -13.8118, -3.75, 1, -12.5618, -4, 0, -11.5618, -3.5, 1, -12.6868, -4, 0, -11.5618, -5.5, 0, -11.5618, -7.75, 0, 1.4382, 5.5, 0, -11.5618, 3.75, 0, -11.5618, -7.75, 0, 1.4382, -7.75, 0, 6.9382, 1.25, 1.25, -15.8118, -1.5, 1.25, -15.8118, -1.5, 1, -14.3118, 1.25, 1, -14.0618, -7.75, 0, 6.9382, -8.75, 0, 7.1882, -8.75, 0, 24.4382, -0.5, 0, 24.4382, 7.75, 0, 24.4382, 16, 0, 24.4382, 24.5, 0, 15.1882, 24.5, 0, 6.1882, -1.5, 1, -14.3118, -3, 1, -13.8118, -4, 0, -11.5618, -7.75, 0, 1.4382, 3.75, 0, -11.5618, 1.25, 1, -14.0618, -3.5, 1, -12.6868, 2.91667, 0.75, -12.3951, -7.75, 0, 6.9382, -0.5, 0, 24.4382, 7.75, 0, 24.4382, 24.5, 0, 6.1882, 24.5, 0, -3.0618, 5.5, 0, -11.5618, 24.5, 0, -12.0618, 5.75, 0.25, -12.0618, 5.5, 0, -11.5618, 24.5, 0, -3.0618, -8, 0, 0.938202, -7.75, 0, 1.4382, -5.5, 0, -11.5618, -8, 0, 0.938202, -5.5, 0, -11.5618, -6, 0.25, -12.0618, -24.5, 0, -12.0618, -24.5, 0, -3.5618, -10, 0, 1.1882, -24.5, 0, 4.9382, -10, 0, 4.9382, -10, 0, 1.1882, -24.5, 0, -3.5618, -12, 19, 5.9382, -12, 19, 12.1882, 0, 19, 12.1882, 0, 19, 12.1882, 12, 19, 12.1882, 12, 19, 5.9382, 12, 19, -0.0617981, 12, 19, -12.0618, 0, 19, -12.0618, 0, 19, -12.0618, -12, 19, -12.0618, -12, 19, -0.0617981, 12, 19, -0.0617981, 0, 19, -12.0618, -12, 19, -0.0617981, -12, 19, 5.9382, 0, 19, 12.1882, 12, 19, 5.9382, -24.5, 0, 14.6882, -24.5, 0, 24.4382, -16.75, 0, 24.4382, -10, 0, 6.9382, -10, 0, 4.9382, -24.5, 0, 4.9382, -8.75, 0, 7.1882, -10, 0, 6.9382, -24.5, 0, 4.9382, -24.5, 0, 14.6882, -16.75, 0, 24.4382, -8.75, 0, 24.4382)
@@ -41,19 +50,99 @@ size = Vector3(50, 1, 50)
 [sub_resource type="BoxMesh" id="BoxMesh_ufs5o"]
 size = Vector3(25, 1, 25)
 
+[sub_resource type="Shader" id="Shader_wvlbm"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_normal : hint_roughness_normal,filter_nearest,repeat_enable;
+uniform float normal_scale : hint_range(-16,16);
+uniform sampler2D texture_heightmap : hint_default_black,filter_linear,repeat_enable;
+uniform float heightmap_scale;
+uniform int heightmap_min_layers;
+uniform int heightmap_max_layers;
+uniform vec2 heightmap_flip;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	{
+		vec3 view_dir = normalize(normalize(-VERTEX + EYE_OFFSET) * mat3(TANGENT * heightmap_flip.x, -BINORMAL * heightmap_flip.y, NORMAL));
+		float depth = 1.0 - texture(texture_heightmap, base_uv).r;
+		vec2 ofs = base_uv - view_dir.xy * depth * heightmap_scale * 0.01;
+		base_uv=ofs;
+	}
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lk5t3"]
+render_priority = 0
+shader = SubResource("Shader_wvlbm")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.75
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/heightmap_scale = 1.0
+shader_parameter/heightmap_min_layers = 8
+shader_parameter/heightmap_max_layers = 32
+shader_parameter/heightmap_flip = Vector2(1, 1)
+shader_parameter/uv1_scale = Vector3(6.25, 6.25, 6.25)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("2_7jjft")
+shader_parameter/texture_normal = ExtResource("4_l7ysy")
+shader_parameter/texture_heightmap = ExtResource("3_h0mpp")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pjpoy"]
+size = Vector3(25, 1, 25)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ei4gk"]
 albedo_texture = ExtResource("2_7jjft")
 roughness = 0.75
 normal_enabled = true
 normal_texture = ExtResource("4_l7ysy")
-heightmap_scale = 3.0
+heightmap_enabled = true
+heightmap_scale = 1.0
 heightmap_texture = ExtResource("3_h0mpp")
 uv1_scale = Vector3(6.25, 6.25, 6.25)
 uv1_world_triplanar = true
 texture_filter = 0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pjpoy"]
-size = Vector3(25, 1, 25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w58hg"]
 size = Vector3(1, 10, 5)
@@ -83,7 +172,9 @@ roughness = 0.25
 texture_filter = 0
 
 [sub_resource type="Gradient" id="Gradient_4uds8"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.4, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.502719, 0.502719, 0.502719, 0.5, 0.3, 0.3, 0.3, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_t00ph"]
 gradient = SubResource("Gradient_4uds8")
@@ -94,6 +185,7 @@ fill_to = Vector2(1, 0.5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efmho"]
 transparency = 1
 blend_mode = 1
+depth_draw_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("GradientTexture2D_t00ph")
@@ -326,33 +418,6 @@ points = PackedVector3Array(35, 1.5, 3, 30, -1, 3, 35, -1, 3, 35, 1.5, 6, 30, -1
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jnkul"]
 points = PackedVector3Array(39, 8, -8, 39, -1, -8, 40, -1, -8, 40, 8, -8, 39, 8, 8, 39, -1, 8, 40, -1, 8, 40, 8, 8)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2jtk7"]
-
-[sub_resource type="Sky" id="Sky_udgag"]
-sky_material = SubResource("ProceduralSkyMaterial_2jtk7")
-
-[sub_resource type="Environment" id="Environment_m2fln"]
-background_mode = 2
-sky = SubResource("Sky_udgag")
-tonemap_mode = 3
-ssr_enabled = true
-glow_enabled = true
-glow_levels/1 = 4.0
-glow_levels/5 = 0.0
-glow_normalized = true
-glow_intensity = 2.0
-glow_blend_mode = 1
-glow_hdr_threshold = 0.0
-glow_hdr_scale = 1.0
-volumetric_fog_enabled = true
-volumetric_fog_length = 128.0
-volumetric_fog_ambient_inject = 0.25
-volumetric_fog_temporal_reprojection_enabled = false
-adjustment_enabled = true
-adjustment_color_correction = ExtResource("17_3kdv4")
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_e7w8y"]
-
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7qtod"]
 noise_type = 3
 
@@ -382,22 +447,40 @@ noise = SubResource("FastNoiseLite_cj6j5")
 [sub_resource type="FogMaterial" id="FogMaterial_fwf4j"]
 density_texture = SubResource("NoiseTexture3D_f8v7f")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_06t0d"]
-emission_shape = 3
-emission_box_extents = Vector3(10, 1, 10)
+[sub_resource type="FogMaterial" id="FogMaterial_swvkd"]
+height_falloff = 5.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmm16"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a6dyf"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1oli5"]
+width = 64
+height = 16
+as_normal_map = true
+noise = SubResource("FastNoiseLite_a6dyf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5sopx"]
 albedo_color = Color(1, 1, 1, 0)
 roughness = 0.0
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_1oli5")
 refraction_enabled = true
+use_particle_trails = true
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_3wx62"]
-material = SubResource("StandardMaterial3D_hmm16")
-custom_aabb = AABB(0, -12.5, 0, 10, 25, 10)
-top_radius = 0.05
-bottom_radius = 0.05
-height = 1.0
-radial_segments = 6
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rt1fo"]
+emission_shape = 3
+emission_box_extents = Vector3(25, 0, 50)
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_k0d6r"]
+radius = 0.063
+radial_steps = 6
 
 [sub_resource type="Gradient" id="Gradient_uom44"]
 colors = PackedColorArray(1, 1, 1, 1, 0.5, 0.5, 0.5, 0)
@@ -464,13 +547,42 @@ billboard_mode = 1
 [sub_resource type="QuadMesh" id="QuadMesh_n5fmy"]
 material = SubResource("StandardMaterial3D_rhj3h")
 
-[sub_resource type="Gradient" id="Gradient_l81fm"]
+[sub_resource type="Gradient" id="Gradient_0n68d"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.1, 0.4, 0.7)
+offsets = PackedFloat32Array(0, 0.3, 0.6, 0.9)
+colors = PackedColorArray(0, 0, 0, 0, 0, 1, 0, 1, 0, 0.752941, 0, 1, 0, 0.501961, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4oyr3"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_56xf6"]
+width = 128
+height = 128
+seamless = true
+seamless_blend_skirt = 0.25
+color_ramp = SubResource("Gradient_0n68d")
+noise = SubResource("FastNoiseLite_4oyr3")
+
+[sub_resource type="Gradient" id="Gradient_bp8ef"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.8)
 colors = PackedColorArray(0, 0, 0, 0, 0, 1, 0, 1, 0, 0.752941, 0, 1, 0, 0.501961, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_jfewy"]
 frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i317r"]
+width = 128
+height = 128
+seamless = true
+seamless_blend_skirt = 0.25
+color_ramp = SubResource("Gradient_bp8ef")
+noise = SubResource("FastNoiseLite_jfewy")
+
+[sub_resource type="Gradient" id="Gradient_l81fm"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.1, 0.4, 0.7)
+colors = PackedColorArray(0, 0, 0, 0, 0, 1, 0, 1, 0, 0.752941, 0, 1, 0, 0.501961, 0, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oryu8"]
 width = 128
@@ -520,72 +632,141 @@ normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_n0au5")
 texture_filter = 0
 grow = true
-grow_amount = 0.1
+grow_amount = 0.025
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0so4"]
+next_pass = SubResource("StandardMaterial3D_aqlr5")
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = SubResource("NoiseTexture2D_i317r")
+roughness = 0.75
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_n0au5")
+texture_filter = 0
+grow = true
+grow_amount = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ii3s5"]
+next_pass = SubResource("StandardMaterial3D_x0so4")
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = SubResource("NoiseTexture2D_56xf6")
+roughness = 0.75
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_n0au5")
+texture_filter = 0
+grow = true
+grow_amount = 0.075
 
 [sub_resource type="BoxMesh" id="BoxMesh_whbis"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nvkfr"]
+render_priority = 0
+shader = ExtResource("32_3d00j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4y1om"]
+render_priority = 0
+shader = ExtResource("33_eelvg")
+
+[sub_resource type="BoxMesh" id="BoxMesh_mfm58"]
+size = Vector3(-5, 10, 20)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tuhld"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jor0j"]
+noise = SubResource("FastNoiseLite_tuhld")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5abgc"]
+render_priority = 0
+shader = ExtResource("34_rr40p")
+shader_parameter/affine_mapping = true
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(683, 384)
+shader_parameter/albedo = SubResource("NoiseTexture2D_jor0j")
+
+[sub_resource type="BoxMesh" id="BoxMesh_l4wb7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7x4x7"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_y76j7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Level" type="NavigationRegion3D" parent="."]
+[node name="ParticleCollider" type="GPUParticlesCollisionSDF3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -16)
+size = Vector3(50, 32, 100)
+resolution = 3
+bake_mask = 4293918721
+texture = ExtResource("31_rvbgk")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="ParticleCollider"]
+occluder = ExtResource("3_3m5x1")
+bake_mask = 4294967289
+
+[node name="NavMesh" type="NavigationRegion3D" parent="ParticleCollider/OccluderInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 16)
 navigation_mesh = SubResource("NavigationMesh_ecv47")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Level"]
+[node name="StaticBody3D" type="StaticBody3D" parent="ParticleCollider/OccluderInstance3D/NavMesh"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_y437j")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/StaticBody3D/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/StaticBody3D/CollisionShape3D"]
 mesh = SubResource("BoxMesh_ufs5o")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_ei4gk")
+surface_material_override/0 = SubResource("ShaderMaterial_lk5t3")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Level/StaticBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0)
 shape = SubResource("BoxShape3D_pjpoy")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Level/StaticBody3D/CollisionShape3D2"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/StaticBody3D/CollisionShape3D2"]
 mesh = SubResource("BoxMesh_ufs5o")
 skeleton = NodePath("../../CollisionShape3D/MeshInstance3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_ei4gk")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Level/StaticBody3D"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.5, 4)
 shape = SubResource("BoxShape3D_w58hg")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Level/StaticBody3D/CollisionShape3D3"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/StaticBody3D/CollisionShape3D3"]
 mesh = SubResource("BoxMesh_mywcg")
 skeleton = NodePath("../../CollisionShape3D/MeshInstance3D")
 surface_material_override/0 = ExtResource("5_8y8hw")
 
-[node name="LampPost" type="MeshInstance3D" parent="Level/StaticBody3D"]
+[node name="LampPost" type="MeshInstance3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.96941, -0.5, 7.33488)
 mesh = ExtResource("4_xwsej")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_44bsv")
 surface_material_override/1 = SubResource("StandardMaterial3D_eebl7")
 surface_material_override/2 = SubResource("StandardMaterial3D_nqub2")
 surface_material_override/3 = SubResource("StandardMaterial3D_iv3hh")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Level/StaticBody3D/LampPost"]
+[node name="SpotLight3D" type="SpotLight3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/StaticBody3D/LampPost"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, -2)
 light_energy = 10.0
 shadow_enabled = true
+distance_fade_enabled = true
 spot_range = 15.0
 spot_angle = 25.0
 
-[node name="LensFlare" type="MeshInstance3D" parent="Level/StaticBody3D/LampPost/SpotLight3D"]
+[node name="LensFlare" type="MeshInstance3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/StaticBody3D/LampPost/SpotLight3D"]
 cast_shadow = 0
+custom_aabb = AABB(0.001, 0.001, 0.001, 0.002, 0.002, 0.002)
 mesh = SubResource("QuadMesh_y6wxx")
 
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Level/StaticBody3D"]
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 size = Vector3(50, 1, 50)
 
-[node name="QodotMap" type="Node3D" parent="Level"]
+[node name="QodotMap" type="Node3D" parent="ParticleCollider/OccluderInstance3D/NavMesh"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00107436, 0.500001, -16.5618)
 script = ExtResource("8_y3vma")
 map_file = "res://maps/qodot_test.map"
@@ -594,149 +775,132 @@ base_texture_dir = "res://materials"
 texture_file_extensions = PackedStringArray("png", "jpg", "jpeg", "bmp")
 default_material = SubResource("StandardMaterial3D_dqicn")
 
-[node name="entity_0_worldspawn" type="StaticBody3D" parent="Level/QodotMap"]
+[node name="entity_0_worldspawn" type="StaticBody3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap"]
 
-[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 mesh = SubResource("ArrayMesh_4o8ge")
 
-[node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_ktgp0")
 
-[node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_qwiwy")
 
-[node name="entity_0_brush_2_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_2_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_fq524")
 
-[node name="entity_0_brush_3_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_3_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_itofq")
 
-[node name="entity_0_brush_4_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_4_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_mnld5")
 
-[node name="entity_0_brush_5_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_5_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_383px")
 
-[node name="entity_0_brush_6_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_6_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_rthvn")
 
-[node name="entity_0_brush_7_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_7_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_347q5")
 
-[node name="entity_0_brush_8_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_8_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_05srb")
 
-[node name="entity_0_brush_9_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_9_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_utpw7")
 
-[node name="entity_0_brush_10_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_10_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_57lny")
 
-[node name="entity_0_brush_11_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_11_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_b6rhp")
 
-[node name="entity_0_brush_12_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_12_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_uw541")
 
-[node name="entity_0_brush_13_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_13_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_i3dan")
 
-[node name="entity_0_brush_14_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_14_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_ep0xg")
 
-[node name="entity_0_brush_15_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_15_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_46nfh")
 
-[node name="entity_0_brush_16_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_16_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_q4wb8")
 
-[node name="entity_0_brush_17_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_17_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_qk7ay")
 
-[node name="entity_0_brush_18_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_18_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_qvf53")
 
-[node name="entity_0_brush_19_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_19_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_qx5ce")
 
-[node name="entity_0_brush_20_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_20_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_gd2mt")
 
-[node name="entity_0_brush_21_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_21_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_846dm")
 
-[node name="entity_0_brush_22_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_22_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_7mrhk")
 
-[node name="entity_0_brush_23_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_23_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_blf1s")
 
-[node name="entity_0_brush_24_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_24_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_jiwq0")
 
-[node name="entity_0_brush_25_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_25_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_iuuyj")
 
-[node name="entity_0_brush_26_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_26_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_8aepr")
 
-[node name="entity_0_brush_27_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_27_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_gorfd")
 
-[node name="entity_0_brush_28_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_28_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_sklay")
 
-[node name="entity_0_brush_29_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_29_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_5out5")
 
-[node name="entity_0_brush_30_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_30_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_v5apc")
 
-[node name="entity_0_brush_31_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_31_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_cy1ju")
 
-[node name="entity_0_brush_32_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_32_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_ogm6t")
 
-[node name="entity_0_brush_33_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_33_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_kvy73")
 
-[node name="entity_0_brush_34_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_34_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_fwxkq")
 
-[node name="entity_0_brush_35_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_35_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_xmrw4")
 
-[node name="entity_0_brush_36_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_36_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_g56ft")
 
-[node name="entity_0_brush_37_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_37_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_mhjuj")
 
-[node name="entity_0_brush_38_collision_shape" type="CollisionShape3D" parent="Level/QodotMap/entity_0_worldspawn"]
+[node name="entity_0_brush_38_collision_shape" type="CollisionShape3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/QodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_jnkul")
 
 [node name="Rendering" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Rendering"]
-environment = SubResource("Environment_m2fln")
-camera_attributes = SubResource("CameraAttributesPractical_e7w8y")
-
-[node name="FogVolume" type="FogVolume" parent="Rendering"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 10)
-size = Vector3(5, 5, 5)
-material = SubResource("FogMaterial_ybp2o")
-
-[node name="FogVolume2" type="FogVolume" parent="Rendering"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -45)
-size = Vector3(14, 8, 21)
-material = SubResource("FogMaterial_qrve1")
-
-[node name="FogVolume3" type="FogVolume" parent="Rendering"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-visible = false
-size = Vector3(64, 8, 64)
-material = SubResource("FogMaterial_fwf4j")
+environment = ExtResource("17_74lb7")
 
 [node name="Lights" type="Node" parent="Rendering"]
 
@@ -773,30 +937,59 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 size = Vector3(30, 25, 30)
 box_projection = true
 enable_shadows = true
+cull_mask = 7
 
 [node name="ReflectionProbe2" type="ReflectionProbe" parent="Rendering/Probes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, -15)
 size = Vector3(25, 12, 10)
 box_projection = true
 enable_shadows = true
+cull_mask = 7
 
 [node name="ReflectionProbe4" type="ReflectionProbe" parent="Rendering/Probes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 5, -27)
 size = Vector3(25, 12, 15)
 box_projection = true
 enable_shadows = true
+cull_mask = 7
 
 [node name="ReflectionProbe3" type="ReflectionProbe" parent="Rendering/Probes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -47)
 size = Vector3(20, 15, 25)
 box_projection = true
 enable_shadows = true
+cull_mask = 7
 
 [node name="ReflectionProbe5" type="ReflectionProbe" parent="Rendering/Probes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21, 0)
 size = Vector3(30, 6, 30)
 box_projection = true
 enable_shadows = true
+cull_mask = 7
+
+[node name="Fogs" type="Node" parent="Rendering"]
+
+[node name="FogVolume" type="FogVolume" parent="Rendering/Fogs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 10)
+size = Vector3(5, 5, 5)
+material = SubResource("FogMaterial_ybp2o")
+
+[node name="FogVolume2" type="FogVolume" parent="Rendering/Fogs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -45)
+size = Vector3(14, 8, 21)
+material = SubResource("FogMaterial_qrve1")
+
+[node name="FogVolume3" type="FogVolume" parent="Rendering/Fogs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+visible = false
+size = Vector3(64, 8, 64)
+material = SubResource("FogMaterial_fwf4j")
+
+[node name="FogVolume4" type="FogVolume" parent="Rendering/Fogs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+visible = false
+shape = 4
+material = SubResource("FogMaterial_swvkd")
 
 [node name="Objects" type="Node" parent="."]
 
@@ -832,12 +1025,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1, 0, -2.2)
 
 [node name="Entities" type="Node" parent="."]
 
-[node name="Pinkerton" parent="Entities" instance=ExtResource("23_cjkah")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -7, 0, -10)
-
-[node name="Pinkerton2" parent="Entities" instance=ExtResource("23_cjkah")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -10)
-
 [node name="Pinkerton3" parent="Entities" instance=ExtResource("23_cjkah")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -39)
 
@@ -847,53 +1034,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -39)
 [node name="Pinkerton5" parent="Entities" instance=ExtResource("23_cjkah")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, -39)
 
-[node name="Canary" parent="Entities" instance=ExtResource("24_wbtal")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -3)
+[node name="Lizard" parent="Entities" instance=ExtResource("22_y1v5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -25)
+wake_up_time = 1.0
 
-[node name="Canary2" parent="Entities" instance=ExtResource("24_wbtal")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.5, -3)
-
-[node name="Canary3" parent="Entities" instance=ExtResource("24_wbtal")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5, -3)
-
-[node name="Zombie" parent="Entities" instance=ExtResource("20_v7fiu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -23)
-
-[node name="Eyeball" parent="Entities" instance=ExtResource("22_rq1ip")]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 9, 1, 9)
-target_distance = 5.0
-speed = 10.0
-knockback_drag = 10.0
-jump_height = 1.0
-attack_interval = 3.0
-attack_range = 32.0
-attack_delay = 0.5
-volley = 1
-spread = 0.0
-
-[node name="Eyeball2" parent="Entities" instance=ExtResource("22_rq1ip")]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 9, 1, 11)
-target_distance = 5.0
-speed = 10.0
-knockback_drag = 10.0
-jump_height = 1.0
-attack_interval = 3.0
-attack_range = 32.0
-attack_delay = 0.5
-volley = 1
-spread = 0.0
-
-[node name="Eyeball3" parent="Entities" instance=ExtResource("22_rq1ip")]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 9, 1, 13)
-target_distance = 5.0
-speed = 10.0
-knockback_drag = 10.0
-jump_height = 1.0
-attack_interval = 3.0
-attack_range = 32.0
-attack_delay = 0.5
-volley = 1
-spread = 0.0
+[node name="Enforcer" parent="Entities" instance=ExtResource("23_gta54")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 2, -20)
 
 [node name="Pickups" type="Node" parent="."]
 
@@ -930,16 +1076,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -10)
 [node name="BigIronPickup" parent="Pickups" instance=ExtResource("22_ih4aa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -6)
 
-[node name="RainSys" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, -22.5)
-visible = false
-amount = 128
-lifetime = 5.0
-visibility_aabb = AABB(-4, -21, -4, 8, 25, 8)
-process_material = SubResource("ParticleProcessMaterial_06t0d")
-draw_pass_1 = SubResource("CylinderMesh_3wx62")
+[node name="NailgunPickup" parent="Pickups" instance=ExtResource("28_xbcgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -5)
 
-[node name="SmokeSys" type="GPUParticles3D" parent="."]
+[node name="CrossbowPickup" parent="Pickups" instance=ExtResource("30_o7cbw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3)
+
+[node name="Particles" type="Node" parent="."]
+
+[node name="Colliders" type="Node" parent="Particles"]
+
+[node name="RainSys3" type="GPUParticles3D" parent="Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, -20)
+visible = false
+sorting_use_aabb_center = false
+material_override = SubResource("StandardMaterial3D_5sopx")
+custom_aabb = AABB(-20, -50, -20, 40, 55, 40)
+amount = 512
+collision_base_size = 1.0
+visibility_aabb = AABB(-20, -50, -20, 40, 55, 40)
+trail_enabled = true
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_rt1fo")
+draw_pass_1 = SubResource("TubeTrailMesh_k0d6r")
+
+[node name="SmokeSys" type="GPUParticles3D" parent="Particles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, -11.5)
 visible = false
 amount = 60
@@ -947,17 +1108,55 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_v4bqh")
 draw_pass_1 = SubResource("SphereMesh_g714l")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Particles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
 visible = false
 process_material = SubResource("ParticleProcessMaterial_eqhva")
 draw_pass_1 = SubResource("QuadMesh_n5fmy")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="GrassShellTest" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 5)
 visible = false
-material_override = SubResource("StandardMaterial3D_aqlr5")
+material_override = SubResource("StandardMaterial3D_ii3s5")
 mesh = SubResource("BoxMesh_whbis")
 
-[node name="NailgunPickup" parent="." instance=ExtResource("28_xbcgv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -5)
+[node name="LensFlareShaderTest" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_nvkfr")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_y6wxx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 3)
+visible = false
+material_override = SubResource("ShaderMaterial_4y1om")
+mesh = SubResource("BoxMesh_mfm58")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.96499, 2, 3.94706)
+visible = false
+material_override = SubResource("ShaderMaterial_5abgc")
+mesh = SubResource("BoxMesh_l4wb7")
+
+[node name="Teleporter" parent="." instance=ExtResource("32_ww2oq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
+
+[node name="AmbushPoint3D" type="Marker3D" parent="." node_paths=PackedStringArray("trigger")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 10)
+script = ExtResource("33_2reti")
+ambusher = ExtResource("34_138mm")
+trigger = NodePath("../Area3D")
+
+[node name="AmbushPoint3D2" type="Marker3D" parent="." node_paths=PackedStringArray("trigger")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.5, 10)
+script = ExtResource("33_2reti")
+ambusher = ExtResource("35_qtyg3")
+trigger = NodePath("../Area3D")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_7x4x7")

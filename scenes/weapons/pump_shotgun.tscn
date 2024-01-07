@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bimc4ufk5hicg"]
+[gd_scene load_steps=38 format=3 uid="uid://bimc4ufk5hicg"]
 
 [ext_resource type="ArrayMesh" uid="uid://cgahp1theduxt" path="res://models/weapons/pump_shotgun.obj" id="1_ejui6"]
 [ext_resource type="Texture2D" uid="uid://crih0rgk10al6" path="res://textures/weapons/pump_shotgun/shotgun_detail_mask.png" id="2_1omhy"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dbnasmfycrfat" path="res://textures/objects/shotgun_shell/shotgun_shell.png" id="8_xoaa3"]
 [ext_resource type="Texture2D" uid="uid://cxhsqnpu78e2q" path="res://textures/objects/shotgun_shell/shotgun_shell_metallic.png" id="9_2ordl"]
 [ext_resource type="Texture2D" uid="uid://dao3wvs485yhb" path="res://textures/objects/shotgun_shell/shotgun_shell_roughness.png" id="10_iuq6n"]
+[ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="11_gubn0"]
 
 [sub_resource type="Gradient" id="Gradient_v5jf5"]
 interpolation_mode = 1
@@ -89,6 +90,7 @@ texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_823ln"]
 shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_psgfd"]
 direction = Vector3(-1, 0, 0)
@@ -152,6 +154,9 @@ states/idle/position = Vector2(565.667, 95.4445)
 transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_b3vqj"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_5ju1q"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_e8rcd"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_004om")]
 graph_offset = Vector2(-91, 17)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_qjdy1"]
+radius = 16.0
+
 [sub_resource type="Animation" id="Animation_yqihf"]
 length = 0.001
 tracks/0/type = "value"
@@ -202,6 +207,18 @@ tracks/3/keys = {
 "update": 0,
 "values": []
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PumpShotgun/AlertRadius:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vx23l"]
 _data = {
@@ -212,8 +229,8 @@ _data = {
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.15, -0.25, -0.35)
 
 [node name="PumpShotgun" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00239015, 0)
-layers = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00643148, 0)
+layers = 4
 cast_shadow = 0
 mesh = ExtResource("1_ejui6")
 surface_material_override/0 = SubResource("StandardMaterial3D_3o3vs")
@@ -229,6 +246,7 @@ shot_cooldown = 0.85
 volley = 9
 spread = 5.0
 ammo_type = "shells"
+anti_clip_distance = 0.5
 
 [node name="Spawner" type="Marker3D" parent="PumpShotgun"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10543e-15, 0.135, 0.65)
@@ -236,12 +254,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10543e-15, 0.135, 0.65)
 [node name="MuzzleFlash" type="MeshInstance3D" parent="PumpShotgun/Spawner"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0.035)
 visible = false
-layers = 2
+layers = 4
 cast_shadow = 0
 mesh = ExtResource("3_8b28n")
 surface_material_override/0 = SubResource("StandardMaterial3D_823ln")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="PumpShotgun/Spawner/MuzzleFlash"]
+layers = 4
+light_color = Color(1, 1, 0, 1)
 light_energy = 0.0
 shadow_enabled = true
 omni_range = 10.0
@@ -253,13 +273,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.65)
 [node name="MuzzleFlash" type="MeshInstance3D" parent="PumpShotgun/AltSpawner"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -8.71226e-10, 0, 0.0250344)
 visible = false
-layers = 2
+layers = 4
 cast_shadow = 0
 mesh = ExtResource("3_8b28n")
 skeleton = NodePath("../../Spawner")
 surface_material_override/0 = SubResource("StandardMaterial3D_823ln")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="PumpShotgun/AltSpawner/MuzzleFlash"]
+layers = 4
+light_color = Color(1, 1, 0, 1)
 light_energy = 0.0
 shadow_enabled = true
 omni_range = 10.0
@@ -267,6 +289,7 @@ omni_shadow_mode = 0
 
 [node name="ShellEject" type="GPUParticles3D" parent="PumpShotgun"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.125, 0)
+layers = 4
 emitting = false
 amount = 5
 one_shot = true
@@ -278,6 +301,15 @@ draw_pass_1 = SubResource("CylinderMesh_ps8yr")
 tree_root = SubResource("AnimationNodeStateMachine_pb0tv")
 anim_player = NodePath("../../AnimationPlayer")
 active = true
+
+[node name="AlertRadius" type="Area3D" parent="PumpShotgun"]
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+script = ExtResource("11_gubn0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PumpShotgun/AlertRadius"]
+shape = SubResource("SphereShape3D_qjdy1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://bosuaqplx64vr"]
+
+[ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_omamu"]
+[ext_resource type="ArrayMesh" uid="uid://cqf6v4gaperkn" path="res://models/bullets/bullet.obj" id="2_hv2vv"]
+[ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="3_yv8xl"]
+[ext_resource type="AudioStream" uid="uid://crtqyq64m3wm1" path="res://audio/streams/ambient/bullet_ambient.wav" id="4_efove"]
+[ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="5_anj2i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h48e4"]
+size = Vector3(0.05, 0.05, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hp741"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rccta"]
+emission_shape = 3
+emission_box_extents = Vector3(0.1, 0.1, 1)
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -0.98, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrmib"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ciky2"]
+material = SubResource("StandardMaterial3D_lrmib")
+size = Vector3(0.063, 0.063, 0.063)
+
+[node name="Bullet" type="RigidBody3D"]
+collision_layer = 16
+collision_mask = 7
+input_ray_pickable = false
+gravity_scale = 0.0
+continuous_cd = true
+max_contacts_reported = 5
+contact_monitor = true
+lock_rotation = true
+script = ExtResource("1_omamu")
+speed = -25.0
+damage = 35.0
+explosion = "res://scenes/effects/damage_sys.tscn"
+knockback_force = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+shape = SubResource("BoxShape3D_h48e4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, -8.74228e-07, 0, -7.64275e-15, -2.18557e-07, 1, -1.74846e-07, -5, -4.37114e-08, 0, 0, 0.35)
+layers = 2
+material_override = SubResource("StandardMaterial3D_hp741")
+cast_shadow = 0
+mesh = ExtResource("2_hv2vv")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+layers = 2
+cast_shadow = 0
+amount = 64
+fixed_fps = 60
+visibility_aabb = AABB(-4, -4, -16, 8, 8, 32)
+process_material = SubResource("ParticleProcessMaterial_rccta")
+draw_pass_1 = SubResource("BoxMesh_ciky2")
+script = ExtResource("3_yv8xl")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_efove")
+pitch_scale = 1.5
+autoplay = true
+max_distance = 50.0
+bus = &"Combat"
+doppler_tracking = 2
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+script = ExtResource("5_anj2i")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="GPUParticles3D" method="_on_bullet_body_entered"]

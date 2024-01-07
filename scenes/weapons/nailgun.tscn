@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://cprbuapjccc8b"]
+[gd_scene load_steps=25 format=3 uid="uid://cprbuapjccc8b"]
 
 [ext_resource type="PackedScene" uid="uid://b4rf5i4ramo71" path="res://models/weapons/nailgun.glb" id="1_e18ie"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_double_barrel.gd" id="2_3wn8a"]
 [ext_resource type="AnimationLibrary" uid="uid://clbhlm2virvf0" path="res://models/weapons/nailgun_anims.res" id="3_8tsnk"]
 [ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_kb333"]
+[ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="4_xgkgl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xft5"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
@@ -29,13 +30,13 @@ metallic = 1.0
 roughness = 0.25
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pa5f1"]
-animation = &"nailgun_anims/nailgun_fire_left"
+animation = &"nailgun_anims/nailgun_fire_right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_74tso"]
 animation = &"nailgun_anims/nailgun_deploy"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q8vi5"]
-animation = &"nailgun_anims/nailgun_fire_right"
+animation = &"nailgun_anims/nailgun_fire_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_05c6l"]
 animation = &"nailgun_anims/nailgun_idle"
@@ -71,6 +72,9 @@ states/firing/position = Vector2(556.889, 59.3333)
 states/idle/node = SubResource("AnimationNodeAnimation_05c6l")
 states/idle/position = Vector2(436, 98.8889)
 transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_nqngg"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_743v3"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_2r1s8"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_j2gog"), "firing", "alt_firing", SubResource("AnimationNodeStateMachineTransition_605m1"), "alt_firing", "firing", SubResource("AnimationNodeStateMachineTransition_8ytkg")]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4k1jv"]
+radius = 16.0
 
 [sub_resource type="Animation" id="Animation_2afvw"]
 resource_name = "RESET"
@@ -177,6 +181,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Nailgun/AlertRadius:monitoring")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_df57y"]
 _data = {
@@ -187,56 +203,69 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
 [node name="Nailgun" parent="." instance=ExtResource("1_e18ie")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.00342892, 0)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.000147071, 0)
 script = ExtResource("2_3wn8a")
 category = 2
 index = 1
 bullet = "res://scenes/bullets/player/nail.tscn"
 shot_cooldown = 0.15
 ammo_type = "nails"
+anti_clip_distance = 0.25
 
 [node name="Body" parent="Nailgun" index="0"]
+layers = 4
 material_override = SubResource("StandardMaterial3D_1xft5")
+cast_shadow = 0
 
 [node name="BarrelL" parent="Nailgun" index="1"]
 transform = Transform3D(-0.025, -1.09278e-08, -1.09278e-09, 1.09278e-09, 0, -0.025, 1.09278e-09, -0.25, 0, 0.05, 0, 0.25)
+layers = 4
 material_override = SubResource("StandardMaterial3D_y7gkb")
+cast_shadow = 0
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Nailgun/BarrelL" index="0"]
 transform = Transform3D(50, -1.94707e-05, -8.51091e-14, 0, -2.18557e-06, 5, -1.94707e-05, -50, -2.18557e-07, -1.19209e-07, -1.4, 0)
 visible = false
-layers = 2
+layers = 4
 cast_shadow = 0
 mesh = ExtResource("3_kb333")
 skeleton = NodePath("../../Spawner")
 surface_material_override/0 = SubResource("StandardMaterial3D_2ynip")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Nailgun/BarrelL/MuzzleFlash"]
+layers = 4
 light_energy = 0.0
 shadow_enabled = true
 omni_range = 10.0
 omni_shadow_mode = 0
 
 [node name="Magazine" parent="Nailgun" index="2"]
+layers = 4
 material_override = SubResource("StandardMaterial3D_6406h")
+cast_shadow = 0
 
 [node name="SpikeLauncher" parent="Nailgun" index="3"]
 visible = false
+layers = 4
+cast_shadow = 0
 
 [node name="BarrelR" parent="Nailgun" index="4"]
 transform = Transform3D(-0.025, -1.09278e-08, -1.09278e-09, 1.09278e-09, 0, -0.025, 1.09278e-09, -0.25, 0, -0.05, 0, 0.25)
+layers = 4
 material_override = SubResource("StandardMaterial3D_bvft7")
+cast_shadow = 0
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Nailgun/BarrelR" index="0"]
 transform = Transform3D(50, -1.94707e-05, -8.51091e-14, 0, -2.18557e-06, 5, -1.94707e-05, -50, -2.18557e-07, -2.38419e-07, -1.4, 0)
 visible = false
-layers = 2
+layers = 4
 cast_shadow = 0
 mesh = ExtResource("3_kb333")
 skeleton = NodePath("../../AltSpawner")
 surface_material_override/0 = SubResource("StandardMaterial3D_2ynip")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Nailgun/BarrelR/MuzzleFlash"]
+layers = 4
 light_energy = 0.0
 shadow_enabled = true
 omni_range = 10.0
@@ -252,6 +281,15 @@ transform = Transform3D(1, 4.33126e-07, 4.37112e-08, -4.33126e-07, 1, -4.37114e-
 tree_root = SubResource("AnimationNodeStateMachine_84u0q")
 anim_player = NodePath("../../AnimationPlayer")
 active = true
+
+[node name="AlertRadius" type="Area3D" parent="Nailgun"]
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+script = ExtResource("4_xgkgl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nailgun/AlertRadius"]
+shape = SubResource("SphereShape3D_4k1jv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://clthu8ys2m5fs"]
+
+[ext_resource type="PackedScene" uid="uid://cxqut1h5yt3nk" path="res://scenes/entities/eyeball.tscn" id="1_ytxw4"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_d20uf"]
+
+[resource]
+script = ExtResource("2_d20uf")
+scene_file = ExtResource("1_ytxw4")
+classname = ""
+description = ""
+qodot_internal = false
+base_classes = Array[Resource]([])
+class_properties = {}
+class_property_descriptions = {}
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
+node_class = ""
+transient_node = false

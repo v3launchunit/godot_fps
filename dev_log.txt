@@ -38,6 +38,8 @@
 2023/11/19:
 	Completed Nailgun.
 
+2023/11/22:
+	Started work on Crossbow.
 
-
-
+2023/11/14:
+	Created a new enemy.
