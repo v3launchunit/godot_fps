@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=3 uid="uid://ddybwy4hdo2q3"]
+[gd_scene load_steps=147 format=3 uid="uid://ddybwy4hdo2q3"]
 
 [ext_resource type="PackedScene" uid="uid://c63k27ek72d3d" path="res://scenes/entities/player.tscn" id="1_y76j7"]
 [ext_resource type="Texture2D" uid="uid://c8k3lo0nolynw" path="res://textures/terrain/trench_broom/bricks.png" id="2_7jjft"]
@@ -10,7 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://bxdu412yk2ut8" path="res://scenes/objects/crate.tscn" id="7_o51n8"]
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="8_y3vma"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="9_5wy7v"]
+[ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="9_g1sjv"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="9_gru3p"]
 [ext_resource type="Material" uid="uid://o08npuo7facf" path="res://materials/terrain/trench_broom/bricks.tres" id="9_slujc"]
+[ext_resource type="Script" path="res://scripts/effects/halo.gd" id="10_5tus1"]
 [ext_resource type="Material" uid="uid://b47mcsimh3vki" path="res://materials/terrain/trench_broom/planks.tres" id="10_pl836"]
 [ext_resource type="Material" uid="uid://yggak3jcef1b" path="res://materials/terrain/trench_broom/log.tres" id="11_7fdv4"]
 [ext_resource type="Material" uid="uid://ytcbf12dyaaj" path="res://materials/terrain/trench_broom/log_end.tres" id="12_jydl3"]
@@ -171,31 +174,20 @@ metallic = 1.0
 roughness = 0.25
 texture_filter = 0
 
-[sub_resource type="Gradient" id="Gradient_4uds8"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.4, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.502719, 0.502719, 0.502719, 0.5, 0.3, 0.3, 0.3, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_t00ph"]
-gradient = SubResource("Gradient_4uds8")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efmho"]
 transparency = 1
 blend_mode = 1
 depth_draw_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = SubResource("GradientTexture2D_t00ph")
+albedo_texture = ExtResource("9_gru3p")
 billboard_mode = 1
 fixed_size = true
 proximity_fade_distance = 3.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_y6wxx"]
 material = SubResource("StandardMaterial3D_efmho")
-size = Vector2(0.1, 0.1)
+size = Vector2(0.25, 0.25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dqicn"]
 
@@ -696,6 +688,9 @@ shader_parameter/albedo = SubResource("NoiseTexture2D_jor0j")
 [node name="Player" parent="." instance=ExtResource("1_y76j7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("17_74lb7")
+
 [node name="ParticleCollider" type="GPUParticlesCollisionSDF3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -16)
 size = Vector3(50, 32, 100)
@@ -758,9 +753,12 @@ spot_range = 15.0
 spot_angle = 25.0
 
 [node name="LensFlare" type="MeshInstance3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/StaticBody3D/LampPost/SpotLight3D"]
+material_override = ExtResource("9_g1sjv")
 cast_shadow = 0
 custom_aabb = AABB(0.001, 0.001, 0.001, 0.002, 0.002, 0.002)
+ignore_occlusion_culling = true
 mesh = SubResource("QuadMesh_y6wxx")
+script = ExtResource("10_5tus1")
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="ParticleCollider/OccluderInstance3D/NavMesh/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -898,9 +896,6 @@ shape = SubResource("ConvexPolygonShape3D_mhjuj")
 shape = SubResource("ConvexPolygonShape3D_jnkul")
 
 [node name="Rendering" type="Node" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Rendering"]
-environment = ExtResource("17_74lb7")
 
 [node name="Lights" type="Node" parent="Rendering"]
 

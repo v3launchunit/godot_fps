@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://c63k27ek72d3d"]
+[gd_scene load_steps=16 format=3 uid="uid://c63k27ek72d3d"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_7iuqc"]
 [ext_resource type="Script" path="res://scripts/player/weapon_manager.gd" id="2_dkt8i"]
 [ext_resource type="PackedScene" uid="uid://bimc4ufk5hicg" path="res://scenes/weapons/pump_shotgun.tscn" id="2_w8f7c"]
 [ext_resource type="AudioStream" uid="uid://dyub7yfblkj1f" path="res://audio/streams/typewriter.wav" id="3_esyxp"]
 [ext_resource type="AudioStream" uid="uid://bmlxxe8maevqb" path="res://audio/streams/click.wav" id="6_3oqj4"]
+[ext_resource type="Texture2D" uid="uid://c0bhiisq4qel1" path="res://textures/flashlight_projector.png" id="6_eocyj"]
 [ext_resource type="PackedScene" uid="uid://dh4rwigqkk6va" path="res://scenes/ui/player_hud.tscn" id="6_tw0uv"]
 [ext_resource type="PackedScene" uid="uid://bjpo451a0eupa" path="res://scenes/weapons/axe.tscn" id="7_wdg6b"]
 [ext_resource type="Script" path="res://scripts/player/flashlight.gd" id="9_wc8gg"]
@@ -50,7 +51,6 @@ bus = &"Player"
 
 [node name="PlayerCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-cull_mask = 1048571
 doppler_tracking = 2
 current = true
 fov = 120.0
@@ -78,9 +78,13 @@ transform = Transform3D(0.996117, 0.0145506, 0.0868242, -0.00695469, 0.99617, -0
 visible = false
 layers = 2
 light_color = Color(1, 0.833333, 0.5, 1)
+light_energy = 5.0
+light_projector = ExtResource("6_eocyj")
 light_bake_mode = 0
-spot_range = 10.0
-spot_angle = 30.0
+shadow_enabled = true
+spot_range = 30.0
+spot_attenuation = 0.5
+spot_angle = 35.0
 script = ExtResource("9_wc8gg")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerCam/SpotLight3D"]
@@ -99,6 +103,8 @@ collide_with_bodies = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.75)
 collision_layer = 2
 collision_mask = 13
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCam/ViewmodelAntiClip"]
 shape = SubResource("BoxShape3D_jf2a8")

@@ -1,11 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://erys0skiq3pe"]
+[gd_scene load_steps=22 format=3 uid="uid://erys0skiq3pe"]
 
 [ext_resource type="PackedScene" uid="uid://uhlasvutim3e" path="res://models/objects/floodlight.glb" id="1_xylaw"]
 [ext_resource type="Texture2D" uid="uid://vnoituiw2r36" path="res://models/objects/floodlight_flood_lamp_emissions.png" id="2_lw5of"]
 [ext_resource type="Texture2D" uid="uid://cjarcv7edo6ue" path="res://textures/objects/floodlight/floodlight_projector.png" id="3_gcdu4"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="4_k3p2m"]
+[ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="4_kijhn"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="4_ttjty"]
 [ext_resource type="PackedScene" uid="uid://cu70msbgu2ysm" path="res://scenes/effects/metal_damage_sys.tscn" id="6_1a880"]
+[ext_resource type="Script" path="res://scripts/effects/halo.gd" id="6_7uru3"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="6_k2gu1"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="7_44sqi"]
 [ext_resource type="PackedScene" uid="uid://dl7fuv4wdxtjx" path="res://scenes/pickups/ammo/shell_pickup.tscn" id="8_t7pem"]
@@ -35,26 +37,26 @@ emission_energy_multiplier = 5.0
 emission_texture = ExtResource("2_lw5of")
 texture_filter = 0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cnma4"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_70trk"]
 load_path = "res://.godot/imported/halo.png-88068247d44276e09ca924d46b3606d1.s3tc.ctex"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2kd2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efe04"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.501961, 0, 1)
-albedo_texture = SubResource("CompressedTexture2D_cnma4")
+albedo_texture = SubResource("CompressedTexture2D_70trk")
 billboard_mode = 1
 fixed_size = true
 proximity_fade_distance = 3.0
 distance_fade_mode = 1
 
-[sub_resource type="QuadMesh" id="QuadMesh_eitei"]
-material = SubResource("StandardMaterial3D_w2kd2")
+[sub_resource type="QuadMesh" id="QuadMesh_x6dbl"]
+material = SubResource("StandardMaterial3D_efe04")
 size = Vector2(0.25, 0.25)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_heyjg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkmya"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
@@ -94,15 +96,18 @@ distance_fade_enabled = true
 spot_range = 25.0
 
 [node name="LensFlare" type="MeshInstance3D" parent="floodlight/Stand/Neck_L/Lamp_L/SpotLight3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.14)
 layers = 2
+material_override = ExtResource("4_kijhn")
 cast_shadow = 0
 visibility_range_end = 100.0
 visibility_range_end_margin = 10.0
 visibility_range_fade_mode = 1
-mesh = SubResource("QuadMesh_eitei")
-skeleton = NodePath("../../../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_heyjg")
+mesh = SubResource("QuadMesh_x6dbl")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_dkmya")
+script = ExtResource("6_7uru3")
+color = Color(1, 0.752941, 0.501961, 1)
 
 [node name="Neck_R" parent="floodlight/Stand" index="1"]
 layers = 2
@@ -122,15 +127,18 @@ distance_fade_enabled = true
 spot_range = 25.0
 
 [node name="LensFlare" type="MeshInstance3D" parent="floodlight/Stand/Neck_R/Lamp_R/SpotLight3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15)
 layers = 2
+material_override = ExtResource("4_kijhn")
 cast_shadow = 0
 visibility_range_end = 100.0
 visibility_range_end_margin = 10.0
 visibility_range_fade_mode = 1
-mesh = SubResource("QuadMesh_eitei")
-skeleton = NodePath("../../../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_heyjg")
+mesh = SubResource("QuadMesh_x6dbl")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_dkmya")
+script = ExtResource("6_7uru3")
+color = Color(1, 0.752941, 0.501961, 1)
 
 [node name="Status" type="Node" parent="."]
 script = ExtResource("4_ttjty")

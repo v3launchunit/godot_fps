@@ -43,12 +43,14 @@ func _process(_delta) -> void:
 	if Input.is_action_pressed("jump") and is_on_floor(): jumping = true
 	if reorienting:
 		camera.rotation.x -= 0.1
-		if camera.rotation.x < -3:
-			camera.rotation.x += 6
+		if camera.rotation.x < -PI:
+			camera.rotation.x += 2 * PI
+		if camera.rotation.x > PI:
+			camera.rotation.x -= 2 * PI
 		if camera.rotation.x < 0.1 and camera.rotation.x > -0.1:
 			reorienting = false
-	if is_on_floor() and (camera.rotation.x < -1.5 or 
-			camera.rotation.x > 1.5) and not reorienting:
+	if is_on_floor() and (camera.rotation.x < -PI / 2 or 
+			camera.rotation.x > PI / 2) and not reorienting:
 		reorienting = true
 	
 	if Input.is_action_just_pressed("interact") and interact_scan.is_colliding() \

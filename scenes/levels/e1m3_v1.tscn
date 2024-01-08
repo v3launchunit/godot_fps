@@ -77,7 +77,6 @@ sky = SubResource("Sky_84n1v")
 ambient_light_source = 1
 ambient_light_sky_contribution = 0.0
 reflected_light_source = 1
-tonemap_mode = 2
 glow_normalized = true
 glow_hdr_threshold = 0.9
 glow_map = ExtResource("2_r81qj")
