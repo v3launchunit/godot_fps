@@ -1,17 +1,137 @@
-[gd_scene load_steps=26 format=3 uid="uid://dah6eunyfmnqh"]
+[gd_scene load_steps=28 format=3 uid="uid://dah6eunyfmnqh"]
 
 [ext_resource type="PackedScene" uid="uid://bfpoyydd4y6gc" path="res://models/weapons/crossbow.glb" id="1_cxeg4"]
 [ext_resource type="AnimationLibrary" uid="uid://doq8kttqg86x7" path="res://scenes/weapons/crossbow_anims.res" id="2_exmv2"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_crossbow.gd" id="2_vadfq"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="3_2m668"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a88c4"]
-metallic = 1.0
-roughness = 0.25
+[sub_resource type="Shader" id="Shader_wcwhh"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4kf14"]
-shading_mode = 0
-albedo_color = Color(0, 1.5, 1.5, 1)
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+global uniform float viewmodel_fov;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	
+	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
+	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
+	// modify projection matrix
+	PROJECTION_MATRIX[1][1] = -onetanfov;
+	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
+	
+	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
+	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION.z = mix(POSITION.z, 0, 0.99);
+}
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_haiyi"]
+render_priority = 0
+shader = SubResource("Shader_wcwhh")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Shader" id="Shader_mcjj2"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_add,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+global uniform float viewmodel_fov;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	
+	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
+	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
+	// modify projection matrix
+	PROJECTION_MATRIX[1][1] = -onetanfov;
+	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
+	
+	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
+	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION.z = mix(POSITION.z, 0, 0.99);
+}
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_07vbn"]
+render_priority = 0
+shader = SubResource("Shader_mcjj2")
+shader_parameter/albedo = Color(0, 1.5, 1.5, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_die74"]
 transparency = 1
@@ -193,16 +313,17 @@ anti_clip_distance = 0.75
 
 [node name="Crossbow" parent="Crossbow" index="0"]
 layers = 4
-material_override = SubResource("StandardMaterial3D_a88c4")
+material_override = SubResource("ShaderMaterial_haiyi")
 cast_shadow = 0
 
 [node name="LeftString" parent="Crossbow" index="1"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.425, 0, 0.5)
 layers = 4
-material_override = SubResource("StandardMaterial3D_4kf14")
+material_override = SubResource("ShaderMaterial_07vbn")
 cast_shadow = 0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Crossbow/LeftString" index="0"]
+visible = false
 layers = 4
 material_override = SubResource("StandardMaterial3D_die74")
 cast_shadow = 0
@@ -215,11 +336,12 @@ draw_pass_1 = SubResource("ArrayMesh_8aypm")
 [node name="RightString" parent="Crossbow" index="2"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.425, 0, 0.5)
 layers = 4
-material_override = SubResource("StandardMaterial3D_die74")
+material_override = SubResource("ShaderMaterial_07vbn")
 cast_shadow = 0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Crossbow/RightString" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00143878, 0, 0)
+visible = false
 layers = 4
 material_override = SubResource("StandardMaterial3D_die74")
 cast_shadow = 0

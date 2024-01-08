@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2q7xucggusys"]
+[gd_scene load_steps=17 format=3 uid="uid://b2q7xucggusys"]
 
 [ext_resource type="Script" path="res://scripts/pickups/weapon_pickup.gd" id="1_po7tn"]
 [ext_resource type="AudioStream" uid="uid://dxscywpf2ven0" path="res://audio/streams/pickups/pickup_weapon.wav" id="2_d0qa4"]
 [ext_resource type="ArrayMesh" uid="uid://ceibhbi3vm1n0" path="res://models/weapons/plasma_cannon.obj" id="2_i1dks"]
+[ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_5xv1i"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="3_imcfa"]
+[ext_resource type="Script" path="res://scripts/effects/halo.gd" id="5_s6pa8"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uc2sx"]
 height = 1.0
@@ -35,7 +37,7 @@ distance_fade_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_e6p1o"]
 material = SubResource("StandardMaterial3D_hv0iq")
-size = Vector2(0.1, 0.1)
+size = Vector2(0.15, 0.15)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48bv8"]
 transparency = 1
@@ -101,8 +103,12 @@ shape = SubResource("SphereShape3D_0epo4")
 [node name="LensFlare" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 layers = 2
+material_override = ExtResource("3_5xv1i")
+ignore_occlusion_culling = true
 mesh = SubResource("QuadMesh_e6p1o")
 surface_material_override/0 = SubResource("StandardMaterial3D_48bv8")
+script = ExtResource("5_s6pa8")
+color = Color(0.501961, 0, 1, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(1, -2.98023e-08, -1.3027e-15, 0, -4.37114e-08, 1, -2.98023e-08, -1, -4.37114e-08, 0, 0.25, 0)

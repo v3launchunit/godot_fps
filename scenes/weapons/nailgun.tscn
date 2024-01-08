@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cprbuapjccc8b"]
+[gd_scene load_steps=24 format=3 uid="uid://cprbuapjccc8b"]
 
 [ext_resource type="PackedScene" uid="uid://b4rf5i4ramo71" path="res://models/weapons/nailgun.glb" id="1_e18ie"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_double_barrel.gd" id="2_3wn8a"]
@@ -6,28 +6,133 @@
 [ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_kb333"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="4_xgkgl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xft5"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
-metallic = 1.0
-roughness = 0.25
+[sub_resource type="Shader" id="Shader_wcwhh"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7gkb"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
-metallic = 1.0
-roughness = 0.25
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ynip"]
-shading_mode = 0
+global uniform float viewmodel_fov;
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6406h"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
-metallic = 1.0
-roughness = 0.25
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvft7"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
-metallic = 1.0
-roughness = 0.25
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	
+	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
+	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
+	// modify projection matrix
+	PROJECTION_MATRIX[1][1] = -onetanfov;
+	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
+	
+	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
+	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION.z = mix(POSITION.z, 0, 0.99);
+}
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n0cpt"]
+render_priority = 0
+shader = SubResource("Shader_wcwhh")
+shader_parameter/albedo = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Shader" id="Shader_mcad4"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_add,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+global uniform float viewmodel_fov;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	
+	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
+	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
+	// modify projection matrix
+	PROJECTION_MATRIX[1][1] = -onetanfov;
+	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
+	
+	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
+	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION.z = mix(POSITION.z, 0, 0.99);
+}
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tu87l"]
+render_priority = 0
+shader = SubResource("Shader_mcad4")
+shader_parameter/albedo = Color(1, 1, 0, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pa5f1"]
 animation = &"nailgun_anims/nailgun_fire_right"
@@ -203,7 +308,7 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
 [node name="Nailgun" parent="." instance=ExtResource("1_e18ie")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.000147071, 0)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 3.61861e-06, 0)
 script = ExtResource("2_3wn8a")
 category = 2
 index = 1
@@ -214,23 +319,23 @@ anti_clip_distance = 0.25
 
 [node name="Body" parent="Nailgun" index="0"]
 layers = 4
-material_override = SubResource("StandardMaterial3D_1xft5")
+material_override = SubResource("ShaderMaterial_n0cpt")
 cast_shadow = 0
 
 [node name="BarrelL" parent="Nailgun" index="1"]
 transform = Transform3D(-0.025, -1.09278e-08, -1.09278e-09, 1.09278e-09, 0, -0.025, 1.09278e-09, -0.25, 0, 0.05, 0, 0.25)
 layers = 4
-material_override = SubResource("StandardMaterial3D_y7gkb")
+material_override = SubResource("ShaderMaterial_n0cpt")
 cast_shadow = 0
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Nailgun/BarrelL" index="0"]
 transform = Transform3D(50, -1.94707e-05, -8.51091e-14, 0, -2.18557e-06, 5, -1.94707e-05, -50, -2.18557e-07, -1.19209e-07, -1.4, 0)
 visible = false
 layers = 4
+material_override = SubResource("ShaderMaterial_tu87l")
 cast_shadow = 0
 mesh = ExtResource("3_kb333")
 skeleton = NodePath("../../Spawner")
-surface_material_override/0 = SubResource("StandardMaterial3D_2ynip")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Nailgun/BarrelL/MuzzleFlash"]
 layers = 4
@@ -241,7 +346,7 @@ omni_shadow_mode = 0
 
 [node name="Magazine" parent="Nailgun" index="2"]
 layers = 4
-material_override = SubResource("StandardMaterial3D_6406h")
+material_override = SubResource("ShaderMaterial_n0cpt")
 cast_shadow = 0
 
 [node name="SpikeLauncher" parent="Nailgun" index="3"]
@@ -252,17 +357,17 @@ cast_shadow = 0
 [node name="BarrelR" parent="Nailgun" index="4"]
 transform = Transform3D(-0.025, -1.09278e-08, -1.09278e-09, 1.09278e-09, 0, -0.025, 1.09278e-09, -0.25, 0, -0.05, 0, 0.25)
 layers = 4
-material_override = SubResource("StandardMaterial3D_bvft7")
+material_override = SubResource("ShaderMaterial_n0cpt")
 cast_shadow = 0
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Nailgun/BarrelR" index="0"]
 transform = Transform3D(50, -1.94707e-05, -8.51091e-14, 0, -2.18557e-06, 5, -1.94707e-05, -50, -2.18557e-07, -2.38419e-07, -1.4, 0)
 visible = false
 layers = 4
+material_override = SubResource("ShaderMaterial_tu87l")
 cast_shadow = 0
 mesh = ExtResource("3_kb333")
 skeleton = NodePath("../../AltSpawner")
-surface_material_override/0 = SubResource("StandardMaterial3D_2ynip")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Nailgun/BarrelR/MuzzleFlash"]
 layers = 4

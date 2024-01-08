@@ -1,4 +1,4 @@
-class_name AreaTripwire3D extends Area3D
+class_name AreaTripwire extends Area3D
 
 
 # Called when the node enters the scene tree for the first time.

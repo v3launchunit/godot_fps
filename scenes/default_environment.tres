@@ -11,7 +11,6 @@ sky_material = SubResource("ProceduralSkyMaterial_2jtk7")
 [resource]
 background_mode = 2
 sky = SubResource("Sky_udgag")
-tonemap_mode = 2
 glow_levels/2 = 4.0
 glow_levels/3 = 8.0
 glow_levels/5 = 0.0
