@@ -55,6 +55,7 @@ contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_5litf")
 speed = -25.0
+damage = 8.0
 explosion = "res://scenes/effects/bullet_impact_yellow.tscn"
 knockback_force = 0.0
 

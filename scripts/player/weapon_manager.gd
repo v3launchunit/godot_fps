@@ -18,9 +18,12 @@ var fov_desired: float
 var anti_clip_collisions: int = 0
 var current_weapon_pos: float
 
+var prior_category: int = 0
+var prior_index: int = 0
+
 @onready var ammo_amounts: Dictionary = ammo_types.duplicate() # Created right before _ready
-@onready var anti_clip_box: Area3D = find_child("ViewmodelAntiClip")
-#@onready var weapon_cam: Camera3D = find_child("WeaponCam")
+@onready var anti_clip_box: Area3D = $ViewmodelAntiClip
+@onready var rummage_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 signal switched_weapons(category: int, index: int, with_safety_catch: bool)
 
@@ -48,11 +51,14 @@ func _process(delta):
 #	weapon_cam.h_offset = h_offset
 #	weapon_cam.v_offset = v_offset
 	
-	if Input.is_action_just_pressed("next_weapon"):
+	if Input.is_action_just_pressed("weapon_next"):
 		_next_weapon()
-	if Input.is_action_just_pressed("previous_weapon"):
+	if Input.is_action_just_pressed("weapon_previous"):
 		_previous_weapon()
-		
+	
+	if Input.is_action_just_pressed("weapon_prior"):
+		_select_weapon(prior_category, prior_index)
+	
 	if Input.is_action_just_pressed("weapon_1"):
 		_select_category(0)
 	if Input.is_action_just_pressed("weapon_2"):
@@ -72,18 +78,18 @@ func _process(delta):
 		for key in ammo_amounts:
 			ammo_amounts[key] = ammo_types[key]
 	
-	get_selected_weapon_node().position.z = move_toward(get_selected_weapon_node().position.z, \
-			get_selected_weapon_node().get_child(0).anti_clip_distance if \
-			anti_clip_collisions > 0 else current_weapon_pos, delta * anti_clip_speed)
-
-
-func _physics_process(delta: float) -> void:
-	pass
+	get_selected_weapon_node().position.z = move_toward(
+			get_selected_weapon_node().position.z, 
+			get_selected_weapon_node().get_child(0).anti_clip_distance 
+					if anti_clip_collisions > 0 
+					else current_weapon_pos, 
+			delta * anti_clip_speed)
 
 
 func _next_weapon():
-#	weapons[current_weapon].holster
-#	current_weapon += 1
+	prior_category = current_category
+	prior_index = current_index[current_category]
+	
 	get_selected_weapon_node().position.z \
 			= current_weapon_pos
 	current_index[current_category] += 1
@@ -108,16 +114,13 @@ func _next_weapon():
 	
 	switched_weapons.emit(current_category, current_index[current_category], false)
 	current_weapon_pos = get_selected_weapon_node().position.z
-	find_child("AudioStreamPlayer").playing = true
-#	emit_signal("switched_weapons", 0, current_weapon)
-#	weapons[current_weapon].deploy
+	rummage_stream_player.play()
 
 
 func _previous_weapon():
-#	weapons[current_weapon].holster
-#	current_weapon -= 1
-#	if current_weapon < 0:
-#		current_weapon = weapons.size() - 1
+	prior_category = current_category
+	prior_index = current_index[current_category]
+	
 	get_selected_weapon_node().position.z = current_weapon_pos
 	current_index[current_category] -= 1
 	while not current_index[current_category] < 0 and \
@@ -141,10 +144,25 @@ func _previous_weapon():
 	
 	switched_weapons.emit(current_category, current_index[current_category], false)
 	current_weapon_pos = get_selected_weapon_node().position.z
-	find_child("AudioStreamPlayer").play()
+	rummage_stream_player.play()
 
 
-func _select_category(category: int):
+func _select_weapon(category: int, index: int) -> void:
+	prior_category = current_category
+	prior_index = current_index[current_category]
+	
+	get_selected_weapon_node().position.z = current_weapon_pos
+	current_category = category
+	current_index[category] = index
+	switched_weapons.emit(category, index, true)
+	current_weapon_pos = get_selected_weapon_node().position.z
+	rummage_stream_player.play()
+
+
+func _select_category(category: int) -> void:
+	prior_category = current_category
+	prior_index = current_index[current_category]
+	
 	get_selected_weapon_node().position.z = current_weapon_pos
 	if current_category == category:
 		current_index[category] += 1
@@ -157,7 +175,7 @@ func _select_category(category: int):
 		current_category = category
 	switched_weapons.emit(category, current_index[category], false)
 	current_weapon_pos = get_selected_weapon_node().position.z
-	find_child("AudioStreamPlayer").play()
+	rummage_stream_player.play()
 
 
 func has_ammo(type: String, amount: int = 1, virtual_charge: bool = false) -> bool:
@@ -173,21 +191,18 @@ func has_ammo(type: String, amount: int = 1, virtual_charge: bool = false) -> bo
 
 func add_weapon(weapon: Node, starting_ammo: int = 0) -> bool:
 	var weap: WeaponBase = weapon.get_child(0)
-	if weapons[weap.category].is_empty() or weapons[weap.category].size() <= weap.index or (
-			weapons[weap.category][weap.index] == null):
-#			weapons[weap.category][weap.index] and not get_node(
-#			weapons[weap.category][weap.index]).name == weapon.name):
+	if (
+			weapons[weap.category].is_empty() or 
+			weapons[weap.category].size() <= weap.index or 
+			weapons[weap.category][weap.index] == null
+	):
 		if weapons[weap.category].size() <= weap.index:
 			weapons[weap.category].resize(weap.index + 1)
 		weapons[weap.category][weap.index] = weapon
-		get_selected_weapon_node().position.z = current_weapon_pos
 #		weapons[weap.category].pop_at(weap.index)
 #		weapons[weap.category].insert(weap.index, weapon)
-		current_category = weap.category
-		current_index[weap.category] = weap.index
-		switched_weapons.emit(weap.category, weap.index, true)
-		current_weapon_pos = get_selected_weapon_node().position.z
-		find_child("AudioStreamPlayer").play()
+
+		_select_weapon(weap.category, weap.index)
 		return true
 	return false
 

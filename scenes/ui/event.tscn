@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv0a4feruvg2r"]
+
+[ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="1_mlvnr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_21cnm"]
+font_size = 8
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.12549)
+shadow_offset = Vector2(0, 1)
+
+[node name="Event" type="Label"]
+text = "aaaaaaaa"
+label_settings = SubResource("LabelSettings_21cnm")
+uppercase = true
+
+[node name="Lifetime" type="Timer" parent="."]
+process_mode = 3
+wait_time = 3.0
+autostart = true
+script = ExtResource("1_mlvnr")

@@ -44,8 +44,12 @@ func _on_body_entered(body: Node):
 		damage -= body.find_child("Status").damage(damage)
 		if body is EnemyBase and invoker != null:
 			body.detect_target(invoker)
-			body.apply_knockback(knockback_force * (body.global_position - \
-				global_position).normalized())
+			body.apply_knockback(
+					knockback_force * (
+							body.global_position - 
+							global_position
+					).normalized()
+			)
 		if not piercer or damage <= 0:
 			queue_free()
 		else:

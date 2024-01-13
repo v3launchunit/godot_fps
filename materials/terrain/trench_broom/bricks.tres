@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=8 format=3 uid="uid://o08npuo7facf"]
 
-[ext_resource type="Texture2D" uid="uid://c8k3lo0nolynw" path="res://textures/terrain/trench_broom/bricks.png" id="1_s4ck7"]
+[ext_resource type="Texture2D" uid="uid://dobuk1wr32hlg" path="res://textures/terrain/bricks/bricks_albedo.png" id="1_uvqw8"]
 [ext_resource type="Texture2D" uid="uid://cwfs3yd67cdxg" path="res://textures/terrain/bricks/bricks_heights.png" id="2_fpq24"]
 [ext_resource type="Texture2D" uid="uid://ca1runwpb3teo" path="res://textures/terrain/bricks/bricks_detail_mask.png" id="2_ftx1e"]
 [ext_resource type="Texture2D" uid="uid://d0airnxbjud3t" path="res://textures/terrain/bricks/bricks_normals.png" id="3_xxw4c"]
@@ -26,7 +26,7 @@ color_ramp = SubResource("Gradient_vc2yx")
 noise = SubResource("FastNoiseLite_3bki3")
 
 [resource]
-albedo_texture = ExtResource("1_s4ck7")
+albedo_texture = ExtResource("1_uvqw8")
 roughness = 0.75
 normal_enabled = true
 normal_texture = ExtResource("3_xxw4c")

@@ -44,6 +44,9 @@ Weapons:
 		RPG:
 			Primary: Guided Missile
 			Secondary: Lock On
+	
+	Slot 6 (Misc.):
+		
 
 
 Enemies:
@@ -68,7 +71,7 @@ Enemies:
 					Reverse
 					Flanger
 		
-		[zombie]:
+		["zombie"]:
 			Weak
 			Slow
 			Ranged (fireball)
@@ -81,7 +84,7 @@ Enemies:
 				Voice Effects:
 					none
 		
-		Tarantula
+		Tarantula ["vortigaunt"]:
 			Tough
 			Medium
 			Ranged (lightning bolt)
@@ -292,8 +295,9 @@ Bosses:
 
 
 Level Concepts:
-	Abandoned/overrun mining town ("16 Tons")
-	Network of bridges spanning a chasm
+	Abandoned/overrun mining town (E1M3 "16 Tons")
+	Network of bridges spanning a chasm (E1M4)
+	Floating islands
 	Train level
 
 
@@ -314,6 +318,7 @@ Campaign:
 			Enemies:
 				Pinkerton
 				Canary
+				*Lizard
 		E1M3 ("Sixteen Tons"):
 			An abandoned mining town, crawling with unfathomable monstrosities
 			of pure evil. Also canaries and tarantulas.
@@ -323,10 +328,11 @@ Campaign:
 			Enemies:
 				Pinkerton
 				Canary
+				Lizard
 				*Tarantula
 		E1M4 (""):
-			An old mine network, composed of a network of caves and tunnels 
-			connected by a bridge network spanning the central ravine chasm.
+			An old mine system, composed of a maze of caves and tunnels 
+			connected by a bridge network spanning the central chasm.
 			Weapons:
 				AKM
 				Boomstick
@@ -334,9 +340,10 @@ Campaign:
 			Enemies:
 				Pinkerton
 				Canary
+				Lizard
 				*Eyeball
 		E1M5 (""):
-			A mountainside lookout facility, patrolled by Pinkertons and Enforcers.
+			A cliffside lookout facility, patrolled by Pinkertons and Enforcers.
 			Weapons:
 				AKM
 				Boomstick
@@ -345,37 +352,48 @@ Campaign:
 			Enemies:
 				Pinkerton
 				Canary
+				Lizard
 				Eyeball
+				Tarantula
 				*Enforcer
 		E1M6 (""):
-			
+			A secret laboratory, buried deep within the earth and harboring
+			all manner of strange and terrible things.
 			Weapons:
 				AKM
 				Boomstick
 				BigIron
+				Nailgun
+				*PlasmaCannon
 			Enemies:
 				Pinkerton
 				Canary
+				Lizard
 				Eyeball
 				Tarantula
 				Enforcer
+				*PlasmaDroid (boss)
 		E1M7 (""):
 			
 			Weapons:
 				AKM
 				Boomstick
 				BigIron
-				*PlasmaCannon
+				Nailgun
+				PlasmaCannon
 			Enemies:
 				Pinkerton
 				Canary
+				Lizard
 				Eyeball
 				Tarantula
 				Enforcer
+				PlasmaDroid
 		E1M8 (""):
-		E1M9 (""):
-		E1M10 (""):
 			Boss level. A mysterious facility, housing some sort of portal.
+			Weapons:
+				Boomstick
+				PlasmaCannon
 			Enemies:
 				Pinkerton
 				
@@ -387,17 +405,15 @@ Campaign:
 	
 	E2:
 		Eldritch otherworld outskirts, lots of Locals, Neuron-type keyes
-		E2M1 (""):
+		E2M1 ("Brave New World"):
 		E2M2 (""):
 		E2M3 (""):
 		E2M4 (""):
 		E2M5 (""):
 		E2M6 (""):
-		E2M7 (""):
-		E2M8 (""):
-		E2M9 ("Heart Lungs Liver Nerves"):
+		E2M7 ("Heart Lungs Liver Nerves"):
 			The living interior of some great old one's body.
-		E2M10 ("The White Whale"):
+		E2M8 ("The White Whale"):
 			Boss level.
 		E2S1 ("SUSK" [formatted like DUSK's title text]):
 			Recreation of E1M3 of DUSK.
@@ -406,21 +422,19 @@ Campaign:
 	
 	
 	E3:
-		Eldritch otherworld industrial region, lots of Military, Keycard-type keys
+		Eldritch otherworld industrial park, lots of Military, Keycard-type keys
 		E3M1 (""):
 		E3M2 (""):
 		E3M3 (""):
 		E3M4 (""):
 		E3M5 (""):
-		E3M6 (""):
-		E3M7 (""):
 			Where gods go to die.
-		E3M8 ("Whalefall"):
+		E3M6 ("Whalefall"):
 			The interior of some great old one's corpse.
-		E3M9 ("The Grapes of Wrath"):
+		E3M7 ("The Grapes of Wrath"):
 			The hellish bowels of a great one corpse processing facility.
 			Featuring blood sewers.
-		E3M10 (""):
+		E3M8 (""):
 			Boss level.
 		E3S1 ("ULTRAKICK" [formatted like ULTRAKILL's title text]):
 			Recreation of 1-1 from ULTRAKILL.
@@ -448,10 +462,8 @@ Campaign:
 		E4M5 (""):
 		E4M6 (""):
 		E4M7 (""):
-		E4M8 (""):
-		E4M9 (""):
 			Make your final approach towards THE MACHINE.
-		E4M10 ("WELCOME"):
+		E4M8 ("WELCOME"):
 			Destroy THE MACHINE from within.
 		E4S1 ("Echoes"):
 			Obscenely long slaughter level.

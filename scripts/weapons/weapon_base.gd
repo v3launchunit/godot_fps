@@ -22,6 +22,7 @@ signal hud_connected(category: int, index: int, ammo_type: String, alt_ammo_type
 
 var active: bool = true
 var cooldown_timer: float = 0.0 # seconds
+var refire_penalty: float = 0.0
 var safety_catch_active: bool = false
 
 @onready var spawner = find_child("Spawner")
@@ -46,11 +47,19 @@ func _process(delta) -> void:
 	if cooldown_timer > 0:
 		cooldown_timer -= delta
 	
-	if active and (not safety_catch_active) and Input.is_action_pressed("fire_main") \
-			and cooldown_timer <= 0 and manager.has_ammo(ammo_type, ammo_cost):
+	if refire_penalty > 0:
+		refire_penalty -= delta
+	
+	if (
+			active and 
+			(not safety_catch_active) and 
+			Input.is_action_pressed("weapon_fire_main") and 
+			cooldown_timer <= 0 and 
+			manager.has_ammo(ammo_type, ammo_cost)
+	):
 		_fire()
 	
-	if safety_catch_active and not Input.is_action_pressed("fire_main"):
+	if safety_catch_active and not Input.is_action_pressed("weapon_fire_main"):
 		safety_catch_active = false
 
 
@@ -87,8 +96,9 @@ func _fire() -> void:
 #		else:
 		global_rotation = base_rotation
 		spawner.global_rotation = spawner_base_rotation
-		rotate_y(deg_to_rad(randf_range(-spread/2, spread/2)))
-		rotate_x(deg_to_rad(randf_range(-spread/4, spread/4)))
+		rotate_y(deg_to_rad(randf_range(-spread/2, spread/2) * refire_penalty))
+		rotate_x(deg_to_rad(randf_range(-spread/4, spread/4) * refire_penalty))
+		refire_penalty = 1.0
 		
 		var instance = bullet_scene.instantiate()
 		spawner.add_child(instance)

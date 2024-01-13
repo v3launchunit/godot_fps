@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://doihcea8tl120"]
 
-[ext_resource type="PackedScene" uid="uid://dyruil3vrf658" path="res://scenes/entities/canary.tscn" id="1_jospk"]
+[ext_resource type="PackedScene" uid="uid://dyruil3vrf658" path="res://scenes/entities/locals/canary.tscn" id="1_jospk"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_5yk27"]
 
 [resource]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://bmemasxt00ky2"]
+[gd_scene load_steps=28 format=3 uid="uid://bmemasxt00ky2"]
 
 [ext_resource type="Script" path="res://scripts/objects/button.gd" id="1_e4t6u"]
 [ext_resource type="Texture2D" uid="uid://bsnabwad52kba" path="res://textures/terrain/log/log_heights.png" id="2_mjgbv"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="3_lkcyn"]
-[ext_resource type="PackedScene" uid="uid://cgot11wwdrtbh" path="res://scenes/effects/wood_damage_sys.tscn" id="4_xfysd"]
+[ext_resource type="PackedScene" uid="uid://cgot11wwdrtbh" path="res://scenes/effects/damage/wood_damage_sys.tscn" id="4_xfysd"]
+[ext_resource type="PackedScene" uid="uid://bynbdpv50o6q2" path="res://scenes/effects/gibs/wood_shards.tscn" id="5_83qgn"]
 [ext_resource type="AudioStream" uid="uid://ql1ep2md8c3u" path="res://audio/streams/effects/creak.wav" id="5_qtxkj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iyjgf"]
@@ -150,6 +151,8 @@ states/on/node = SubResource("AnimationNodeAnimation_5kq1t")
 states/on/position = Vector2(513.333, 52.5674)
 transitions = ["Start", "off", SubResource("AnimationNodeStateMachineTransition_kw522"), "off", "on", SubResource("AnimationNodeStateMachineTransition_v3mup"), "on", "off", SubResource("AnimationNodeStateMachineTransition_soecw")]
 
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_5hvhr"]
+
 [node name="DoorWooden" type="Area3D" node_paths=PackedStringArray("targets")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.75, -0.5, 6.5)
 script = ExtResource("1_e4t6u")
@@ -176,7 +179,7 @@ mesh = SubResource("BoxMesh_pbebj")
 script = ExtResource("3_lkcyn")
 gib_threshold = 0.0
 damage_sys = ExtResource("4_xfysd")
-gibs = "res://scenes/effects/wood_shards.tscn"
+gibs = ExtResource("5_83qgn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -189,4 +192,5 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamPolyphonic_5hvhr")
 bus = &"World"

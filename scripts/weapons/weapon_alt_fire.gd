@@ -27,16 +27,31 @@ func _process(delta):
 	if cooldown_timer > 0:
 		cooldown_timer -= delta
 	
-	if active and (not safety_catch_active) and Input.is_action_pressed("fire_main") \
-			and cooldown_timer <= 0 and manager.has_ammo(ammo_type, ammo_cost):
+	if refire_penalty > 0:
+		refire_penalty -= delta
+	
+	if (
+			active and 
+			(not safety_catch_active) and 
+			Input.is_action_pressed("weapon_fire_main") and 
+			cooldown_timer <= 0 and 
+			manager.has_ammo(ammo_type, ammo_cost)
+	):
 		_fire()
 		
-	if active and (not safety_catch_active) and Input.is_action_pressed("fire_alt") \
-			and cooldown_timer <= 0 and manager.has_ammo(alt_ammo_type, alt_ammo_cost):
+	if (
+			active and
+			(not safety_catch_active) and 
+			Input.is_action_pressed("weapon_fire_alt") and
+			cooldown_timer <= 0 and
+			manager.has_ammo(alt_ammo_type, alt_ammo_cost)
+	):
 		_fire_alt()
 	
-	if safety_catch_active and not (Input.is_action_pressed("fire_main") or \
-			Input.is_action_pressed("fire_alt")):
+	if safety_catch_active and not (
+			Input.is_action_pressed("weapon_fire_main") or 
+			Input.is_action_pressed("weapon_fire_alt")
+	):
 		safety_catch_active = false
 
 
@@ -49,22 +64,26 @@ func _deploy(with_safety_catch: bool = true) -> void:
 
 
 func _fire_alt():
-	var base_rotation = alt_spawner.rotation
+	var base_rotation = global_rotation
+	var spawner_base_rotation = alt_spawner.global_rotation
 	for v in alt_volley:
 #		if manager.find_child("RayCast3D").is_colliding():
 #			alt_spawner.look_at(manager.find_child("RayCast3D").get_collision_point())
 #			alt_spawner.rotate_y(PI)
 #		else:
-		alt_spawner.rotation = base_rotation
-		alt_spawner.rotate_y(deg_to_rad(randf_range(-alt_spread/2, alt_spread/2)))
-		alt_spawner.rotate_x(deg_to_rad(randf_range(-alt_spread/4, alt_spread/4)))
+		global_rotation = base_rotation
+		alt_spawner.global_rotation = base_rotation
+		rotate_y(deg_to_rad(randf_range(-spread/2, spread/2) * refire_penalty))
+		rotate_x(deg_to_rad(randf_range(-spread/4, spread/4) * refire_penalty))
+		refire_penalty = 1.0
 		
 		var instance = alt_bullet_scene.instantiate()
 		alt_spawner.add_child(instance)
 		instance.reparent(get_tree().root)
 		instance.invoker = manager.get_parent_node_3d()
 	
-	alt_spawner.rotation = base_rotation
+	global_rotation = base_rotation
+	alt_spawner.global_rotation = base_rotation
 	
 	cooldown_timer = alt_shot_cooldown
 	state_machine.start("alt_firing", true)

@@ -11,11 +11,11 @@ frequency = 0.0755
 offset = Vector3(40, 35, 0)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f7jpv"]
-width = 64
-height = 64
+width = 128
+height = 128
 generate_mipmaps = false
 seamless = true
-seamless_blend_skirt = 1.0
+seamless_blend_skirt = 0.25
 color_ramp = SubResource("Gradient_6ane3")
 noise = SubResource("FastNoiseLite_lictq")
 
@@ -28,11 +28,11 @@ color_ramp = SubResource("Gradient_6ane3")
 noise = SubResource("FastNoiseLite_lictq")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0v0gs"]
-width = 64
-height = 64
+width = 128
+height = 128
 generate_mipmaps = false
 seamless = true
-seamless_blend_skirt = 1.0
+seamless_blend_skirt = 0.25
 as_normal_map = true
 bump_strength = 16.0
 noise = SubResource("FastNoiseLite_lictq")
@@ -43,6 +43,6 @@ roughness = 0.75
 normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_0v0gs")
 heightmap_texture = SubResource("NoiseTexture2D_wac71")
-uv1_scale = Vector3(0.016, 0.016, 0.016)
+uv1_scale = Vector3(0.008, 0.008, 0.008)
 uv1_world_triplanar = true
 texture_filter = 0

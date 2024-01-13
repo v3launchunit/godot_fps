@@ -1,4 +1,4 @@
-[gd_scene load_steps=584 format=3 uid="uid://3bt45n8rxvq5"]
+[gd_scene load_steps=590 format=3 uid="uid://3bt45n8rxvq5"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="1_1p56v"]
 [ext_resource type="Texture2D" uid="uid://cu58hb7h0r68v" path="res://textures/effects/look_up_tables/1d_lut_16_color.png" id="1_i0icx"]
@@ -13,8 +13,8 @@
 [ext_resource type="Material" uid="uid://yggak3jcef1b" path="res://materials/terrain/trench_broom/log.tres" id="7_pijhi"]
 [ext_resource type="PackedScene" uid="uid://c63k27ek72d3d" path="res://scenes/entities/player.tscn" id="9_6tvam"]
 [ext_resource type="Material" uid="uid://cj5hh0jqt71gs" path="res://materials/terrain/trench_broom/rock.tres" id="9_vpbnl"]
-[ext_resource type="PackedScene" uid="uid://dyruil3vrf658" path="res://scenes/entities/canary.tscn" id="10_gebbd"]
-[ext_resource type="PackedScene" uid="uid://cc7snvg1qg4i4" path="res://scenes/entities/pinkerton.tscn" id="10_l2ko5"]
+[ext_resource type="PackedScene" uid="uid://dyruil3vrf658" path="res://scenes/entities/locals/canary.tscn" id="10_gebbd"]
+[ext_resource type="PackedScene" uid="uid://cc7snvg1qg4i4" path="res://scenes/entities/military/pinkerton.tscn" id="10_l2ko5"]
 [ext_resource type="Material" uid="uid://ytcbf12dyaaj" path="res://materials/terrain/trench_broom/log_end.tres" id="11_agas8"]
 [ext_resource type="Material" uid="uid://cn3rb2y71k55w" path="res://materials/terrain/trench_broom/glass.tres" id="11_pvhu8"]
 [ext_resource type="Material" uid="uid://b0rku0cd06ewb" path="res://materials/terrain/trench_broom/metal.tres" id="12_4sqpx"]
@@ -24,27 +24,29 @@
 [ext_resource type="Material" uid="uid://sqngy46urd4y" path="res://materials/terrain/trench_broom/key_metal_blue.tres" id="16_863no"]
 [ext_resource type="Material" uid="uid://cmskxhfj2hn3u" path="res://materials/terrain/trench_broom/key_metal_red.tres" id="16_ghcfc"]
 [ext_resource type="Material" uid="uid://cvufhgyoq6fq8" path="res://materials/terrain/trench_broom/key_metal_green.tres" id="17_k3hcs"]
-[ext_resource type="PackedScene" uid="uid://cbaxllkky8gfe" path="res://scenes/objects/lamp.tscn" id="18_34a4h"]
+[ext_resource type="PackedScene" uid="uid://cbaxllkky8gfe" path="res://scenes/objects/lights/lamp.tscn" id="18_34a4h"]
 [ext_resource type="PackedScene" uid="uid://lt47oncbceb2" path="res://scenes/pickups/weapons/akm_pickup.tscn" id="18_xi64x"]
 [ext_resource type="PackedScene" uid="uid://d2oe770gjlkup" path="res://scenes/pickups/ammo/akm_mag_pickup.tscn" id="19_bs4gd"]
 [ext_resource type="PackedScene" uid="uid://bsijt0cxd1cch" path="res://scenes/objects/chair.tscn" id="19_c7yow"]
 [ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://scenes/pickups/health/health_pack_pickup.tscn" id="20_n5io7"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="21_3vxwd"]
-[ext_resource type="PackedScene" uid="uid://bybrfm1881qnv" path="res://scenes/objects/hanging_lamp.tscn" id="23_syexn"]
+[ext_resource type="PackedScene" uid="uid://bybrfm1881qnv" path="res://scenes/objects/lights/hanging_lamp.tscn" id="23_syexn"]
 [ext_resource type="PackedScene" uid="uid://bxdu412yk2ut8" path="res://scenes/objects/crate.tscn" id="25_4xvsi"]
 [ext_resource type="PackedScene" uid="uid://dvn5p4bun8kju" path="res://scenes/objects/table.tscn" id="26_xor7y"]
 [ext_resource type="PackedScene" uid="uid://b5msw3470sol" path="res://scenes/pickups/keys/keys/key_blue_pickup.tscn" id="31_juwjs"]
 [ext_resource type="Script" path="res://scripts/objects/button.gd" id="31_nf5eu"]
 [ext_resource type="PackedScene" uid="uid://bmemasxt00ky2" path="res://scenes/objects/door_wooden.tscn" id="31_xxo5e"]
 [ext_resource type="Script" path="res://scripts/entities/tripwire.gd" id="35_d50xn"]
-[ext_resource type="PackedScene" uid="uid://bonaseme7rn5f" path="res://scenes/entities/vortigaunt.tscn" id="35_o385u"]
+[ext_resource type="PackedScene" uid="uid://bonaseme7rn5f" path="res://scenes/entities/locals/vortigaunt.tscn" id="35_o385u"]
 [ext_resource type="Script" path="res://scripts/entities/ambush.gd" id="35_xy078"]
 [ext_resource type="PackedScene" uid="uid://7e6nf0ho2ltr" path="res://scenes/objects/teleporter.tscn" id="36_16st2"]
 [ext_resource type="PackedScene" uid="uid://d62xcu27rha1" path="res://scenes/pickups/keys/keys/key_red_pickup.tscn" id="37_6eohl"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="37_v46es"]
 [ext_resource type="AudioStream" uid="uid://ckncf1p1v8lhi" path="res://audio/streams/effects/metal_door_move.wav" id="38_8fvnb"]
-[ext_resource type="PackedScene" uid="uid://bt72j2kw0f6dm" path="res://scenes/objects/lever.tscn" id="39_oi315"]
-[ext_resource type="PackedScene" uid="uid://erys0skiq3pe" path="res://scenes/objects/floodlight.tscn" id="40_dil3s"]
+[ext_resource type="PackedScene" uid="uid://bt72j2kw0f6dm" path="res://scenes/objects/buttons/lever.tscn" id="39_oi315"]
+[ext_resource type="PackedScene" uid="uid://erys0skiq3pe" path="res://scenes/objects/lights/floodlight.tscn" id="40_dil3s"]
 [ext_resource type="PackedScene" uid="uid://bu80vkpoj8bpq" path="res://scenes/pickups/keys/keys/key_green_pickup.tscn" id="42_72qlo"]
+[ext_resource type="PackedScene" uid="uid://dbqaoeg23gpbh" path="res://scenes/entities/locals/lizard.tscn" id="42_qcriw"]
 [ext_resource type="Texture2D" uid="uid://8o8ethxdlnu6" path="res://textures/level_end.png" id="45_kfnwn"]
 [ext_resource type="PackedScene" uid="uid://du780rqis8eqo" path="res://scenes/pickups/weapons/boomstick_pickup.tscn" id="46_qgtdk"]
 
@@ -77,9 +79,9 @@ sky = SubResource("Sky_84n1v")
 ambient_light_source = 1
 ambient_light_sky_contribution = 0.0
 reflected_light_source = 1
-tonemap_mode = 2
+glow_enabled = true
 glow_normalized = true
-glow_hdr_threshold = 0.9
+glow_blend_mode = 0
 glow_map = ExtResource("2_r81qj")
 volumetric_fog_enabled = true
 volumetric_fog_ambient_inject = 0.25
@@ -2219,6 +2221,22 @@ points = PackedVector3Array(-29, 17.3333, -73, -28, 18, -74, -28, 19, -74, -29, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ji2d"]
 size = Vector3(5, 5, 5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sa6gm"]
+resource_local_to_scene = true
+render_priority = 100
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 2
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("37_v46es")
+billboard_mode = 1
+fixed_size = true
+proximity_fade_distance = 3.0
+distance_fade_mode = 1
+distance_fade_min_distance = 2.5
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_sri4d"]
 size = Vector3(3, 4, 2)
 
@@ -2334,11 +2352,59 @@ size = Vector3(2, 4, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_j6syn"]
 size = Vector3(4, 6, 0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ipcpe"]
+resource_local_to_scene = true
+render_priority = 100
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 2
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("37_v46es")
+billboard_mode = 1
+fixed_size = true
+proximity_fade_distance = 3.0
+distance_fade_mode = 1
+distance_fade_min_distance = 2.5
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_6lksa"]
 size = Vector3(13, 8, 28)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03mu0"]
+resource_local_to_scene = true
+render_priority = 100
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 2
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("37_v46es")
+billboard_mode = 1
+fixed_size = true
+proximity_fade_distance = 3.0
+distance_fade_mode = 1
+distance_fade_min_distance = 2.5
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_aopfd"]
 size = Vector3(30, 30, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0fq5"]
+resource_local_to_scene = true
+render_priority = 100
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 2
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("37_v46es")
+billboard_mode = 1
+fixed_size = true
+proximity_fade_distance = 3.0
+distance_fade_mode = 1
+distance_fade_min_distance = 2.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rdv1b"]
 size = Vector3(3, 3, 0.5)
@@ -2369,7 +2435,6 @@ shadow_enabled = true
 
 [node name="EditorLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
-visible = false
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 0
 editor_only = true
@@ -3988,6 +4053,7 @@ enable_shadows = true
 ambient_mode = 0
 
 [node name="Lamp" parent="Things/Outside1/House1" instance=ExtResource("18_34a4h")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.5, 0)
 
 [node name="Chair" parent="Things/Outside1/House1" instance=ExtResource("19_c7yow")]
 transform = Transform3D(-0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 4, -2, -4)
@@ -4094,6 +4160,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, -1
 
 [node name="BlueKeyPickup" parent="Things/Outside1/House2/Floor2" instance=ExtResource("31_juwjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -2, 3.5)
+
+[node name="LensFlare" parent="Things/Outside1/House2/Floor2/BlueKeyPickup/Area3D" index="2"]
+material_override = SubResource("StandardMaterial3D_sa6gm")
 
 [node name="ShellBoxPickup" parent="Things/Outside1/House2/Floor2" instance=ExtResource("12_8td41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, -2, -3.5)
@@ -4441,6 +4510,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.5, 3.25)
 [node name="Canary3" parent="Things/Outside2/House6" instance=ExtResource("10_gebbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, 3.25)
 
+[node name="Lizard" parent="Things/Outside2" instance=ExtResource("42_qcriw")]
+transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 10.7767, 2, -14.7571)
+
 [node name="Underground1" type="Node3D" parent="Things"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5, -28.5, -46)
 
@@ -4459,7 +4531,7 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3.4
 [node name="Teleporter" parent="Things/Underground1" instance=ExtResource("36_16st2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 10)
 
-[node name="Destination" parent="Things/Underground1/Teleporter" index="4"]
+[node name="Destination" parent="Things/Underground1/Teleporter" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.5, 32.5, -12)
 
 [node name="AkmMagPickup" parent="Things/Underground1" instance=ExtResource("19_bs4gd")]
@@ -4470,6 +4542,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -3, 2.5)
 
 [node name="RedKeyPickup" parent="Things/Underground1" instance=ExtResource("37_6eohl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 7.5)
+
+[node name="LensFlare" parent="Things/Underground1/RedKeyPickup/Area3D" index="2"]
+material_override = SubResource("StandardMaterial3D_ipcpe")
 
 [node name="HealthPackPickup" parent="Things/Underground1" instance=ExtResource("20_n5io7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -3, 12)
@@ -4542,8 +4617,17 @@ transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819
 [node name="Neck_L" parent="Things/Underground2/Floodlight/floodlight/Stand" index="0"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.400009, 0.375, 3.8147e-06)
 
+[node name="LensFlare" parent="Things/Underground2/Floodlight/floodlight/Stand/Neck_L/Lamp_L/SpotLight3D" index="0"]
+material_override = SubResource("StandardMaterial3D_03mu0")
+
 [node name="Neck_R" parent="Things/Underground2/Floodlight/floodlight/Stand" index="1"]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0.399986, 0.375, 7.62939e-06)
+
+[node name="LensFlare" parent="Things/Underground2/Floodlight/floodlight/Stand/Neck_R/Lamp_R/SpotLight3D" index="0"]
+material_override = SubResource("StandardMaterial3D_03mu0")
+
+[node name="Status" parent="Things/Underground2/Floodlight" index="2"]
+gibs = null
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Things/Underground2/Floodlight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01476, 0.7, 1.36808)
@@ -4659,11 +4743,20 @@ transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 
 [node name="Lamp_L" parent="Things/Underground2/CaveArena/Floodlight/floodlight/Stand/Neck_L" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0.225, 0)
 
+[node name="LensFlare" parent="Things/Underground2/CaveArena/Floodlight/floodlight/Stand/Neck_L/Lamp_L/SpotLight3D" index="0"]
+material_override = SubResource("StandardMaterial3D_v0fq5")
+
 [node name="Neck_R" parent="Things/Underground2/CaveArena/Floodlight/floodlight/Stand" index="1"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.399998, 0.375, 3.8147e-06)
 
 [node name="Lamp_R" parent="Things/Underground2/CaveArena/Floodlight/floodlight/Stand/Neck_R" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, 0.225, 0)
+
+[node name="LensFlare" parent="Things/Underground2/CaveArena/Floodlight/floodlight/Stand/Neck_R/Lamp_R/SpotLight3D" index="0"]
+material_override = SubResource("StandardMaterial3D_v0fq5")
+
+[node name="Status" parent="Things/Underground2/CaveArena/Floodlight" index="2"]
+gibs = null
 
 [node name="Door" type="Area3D" parent="Things/Underground2/CaveArena" node_paths=PackedStringArray("targets")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27, -8.5, -1)

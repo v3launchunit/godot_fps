@@ -21,10 +21,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if attached_weapon.active and Input.is_action_just_pressed("fire_alt"):
+	if attached_weapon.active and Input.is_action_just_pressed("weapon_fire_alt"):
 		scope_changed.emit(scope_strength)
 	
-	if (was_active and not attached_weapon.active) or Input.is_action_just_released("fire_alt"):
+	if (
+			was_active and 
+			not attached_weapon.active
+	) or Input.is_action_just_released("weapon_fire_alt"):
 		scope_changed.emit(1)
 	
 	was_active = attached_weapon.active

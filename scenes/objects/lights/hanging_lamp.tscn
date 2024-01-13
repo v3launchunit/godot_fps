@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://bybrfm1881qnv"]
+
+[ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="1_7jha3"]
+[ext_resource type="Material" uid="uid://b0rku0cd06ewb" path="res://materials/terrain/trench_broom/metal.tres" id="1_e3xrp"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="1_wy4yp"]
+[ext_resource type="Script" path="res://scripts/effects/halo.gd" id="3_nf31k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrb5n"]
+shading_mode = 0
+albedo_color = Color(1, 2.01, 1.05, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_l8rac"]
+material = SubResource("StandardMaterial3D_wrb5n")
+radius = 0.25
+height = 0.5
+radial_segments = 8
+rings = 3
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tbul1"]
+load_path = "res://.godot/imported/halo.png-88068247d44276e09ca924d46b3606d1.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2kd2"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.501961, 0, 1)
+albedo_texture = SubResource("CompressedTexture2D_tbul1")
+billboard_mode = 1
+fixed_size = true
+proximity_fade_distance = 3.0
+distance_fade_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_nej0e"]
+material = SubResource("StandardMaterial3D_w2kd2")
+size = Vector2(0.25, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_am777"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.752941, 0.501961, 1)
+albedo_texture = ExtResource("1_wy4yp")
+billboard_mode = 1
+fixed_size = true
+proximity_fade_distance = 3.0
+distance_fade_mode = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_40sxu"]
+top_radius = 0.063
+bottom_radius = 0.063
+height = 1.0
+
+[node name="HangingLamp" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+mesh = SubResource("SphereMesh_l8rac")
+skeleton = NodePath("OmniLight3D")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.67451, 0.34902, 1)
+light_energy = 3.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
+layers = 2
+material_override = ExtResource("1_7jha3")
+cast_shadow = 0
+visibility_range_end = 100.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
+mesh = SubResource("QuadMesh_nej0e")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_am777")
+script = ExtResource("3_nf31k")
+color = Color(1, 0.67451, 0.34902, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+material_override = ExtResource("1_e3xrp")
+mesh = SubResource("CylinderMesh_40sxu")

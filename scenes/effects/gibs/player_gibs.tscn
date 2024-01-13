@@ -1,34 +1,101 @@
-[gd_scene load_steps=4 format=3 uid="uid://wfllsui4k1if"]
+[gd_scene load_steps=8 format=3 uid="uid://wfllsui4k1if"]
 
 [ext_resource type="Script" path="res://scripts/auto_play.gd" id="1_x8wn6"]
+[ext_resource type="Texture2D" uid="uid://cmq3arf61ax4f" path="res://textures/ui/menu_panel.png" id="2_t0aun"]
+
+[sub_resource type="GDScript" id="GDScript_1rvy2"]
+script/source = "extends Node3D
+
+@export_range(0.1, 30.0, 0.1, \"or_greater\") var camera_sens: float = 12
+
+var look_dir: Vector2 # Input direction for look/aim
+
+@onready var body: Node3D = $Node3D
+@onready var camera: Camera3D = $Node3D/Camera3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	Engine.time_scale = move_toward(Engine.time_scale, 0.0, delta * 0.05)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		look_dir = event.relative * 0.001
+		_rotate_camera(camera_sens)
+	else:
+		get_tree().reload_current_scene()
+		Engine.time_scale = 1.0
+		queue_free()
+
+
+func _rotate_camera(sens_mod: float = 1.0) -> void:
+#	print(camera.rotation)
+	body.rotation.y -= look_dir.x * camera_sens * sens_mod
+	camera.rotation.x -= look_dir.y * camera_sens * sens_mod
+"
 
 [sub_resource type="Animation" id="Animation_5qn3g"]
 resource_name = "anim"
+length = 19.0
 step = 0.05
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D")
+tracks/0/path = NodePath("Node3D")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.5, 0, 0.3, 1, 0, 0, 0, 0.4, 1, 0, 0, 0, 0.75, 1, 0, -0.5, 0)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D")
+tracks/1/path = NodePath("Node3D")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.5, 1, 0, 0, 0, 1, 0.75, 1, -0.383, 0, 0, 0.924)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/ColorRect:color")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 10, 19),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 0.25098), Color(0, 0, 0, 0.627451), Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2wku6"]
 _data = {
 "anim": SubResource("Animation_5qn3g")
 }
 
-[node name="PlayerGibs" type="Node3D"]
+[sub_resource type="LabelSettings" id="LabelSettings_tivwu"]
+resource_local_to_scene = true
+font_size = 48
+font_color = Color(1, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.25098)
+shadow_offset = Vector2(2, 3)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.706758, 0.707455, 0, -0.707455, 0.706758, 0, -0.5, 0)
+[sub_resource type="LabelSettings" id="LabelSettings_bp74a"]
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.12549)
+shadow_offset = Vector2(0, 1)
+
+[node name="PlayerGibs" type="Node3D"]
+script = SubResource("GDScript_1rvy2")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 doppler_tracking = 2
 current = true
 fov = 120.0
@@ -39,3 +106,72 @@ libraries = {
 "": SubResource("AnimationLibrary_2wku6")
 }
 script = ExtResource("1_x8wn6")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="DeathPanel" type="NinePatchRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.0
+offset_top = -137.0
+offset_right = 193.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_t0aun")
+patch_margin_left = 4
+patch_margin_top = 16
+patch_margin_right = 4
+patch_margin_bottom = 8
+
+[node name="DeathLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.5
+offset_top = -124.0
+offset_right = 120.5
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU ARE DEAD"
+label_settings = SubResource("LabelSettings_tivwu")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -13.0
+offset_right = 29.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shame."
+label_settings = SubResource("LabelSettings_bp74a")

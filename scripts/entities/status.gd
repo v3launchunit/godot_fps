@@ -8,7 +8,7 @@ signal died
 @export var max_health: float = 100.0
 @export var gib_threshold: float = 50.0
 @export var damage_sys: PackedScene
-@export_file("*.tscn") var gibs: String
+@export var gibs: PackedScene
 @export var loot: Array[PackedScene] = []
 @export var ripple_distance: int = 1
 
@@ -17,7 +17,7 @@ var is_dead: bool = false
 var target_parent: Node
 #var overheal_decay_rate: float = 1 # hp/second
 
-@onready var gibs_scene: PackedScene = load(gibs)
+#@onready var gibs_scene: PackedScene = load(gibs)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,12 +49,12 @@ func damage(amount: float) -> float:
 		
 		target_parent.queue_free()
 		var exp: Node
-		if gibs_scene != null:
+		if gibs != null:
 			print("gibbed")
-			exp = gibs_scene.instantiate()
+			exp = gibs.instantiate()
 			target_parent.add_child(exp)
 			exp.reparent(get_tree().root)
-			gibs_scene = null
+			gibs = null
 		return 0
 	if is_dead:
 		return 0 # corpses cannot stop piercers

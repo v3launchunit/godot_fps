@@ -20,9 +20,12 @@ func _process(delta: float) -> void:
 
 func _on_area_body_entered(body: Node3D) -> void:
 	if body.has_node("Status"):
-		body.find_child("Status").damage(player_damage_override if \
-				body.find_child("Status") is PlayerStatus else damage)
-		if body is EnemyBase:
+		body.find_child("Status").damage(
+				player_damage_override 
+				if body.find_child("Status") is PlayerStatus 
+				else damage
+		)
+		if body != null and body is EnemyBase:
 			body.detect_target(invoker)
 	if body.has_method("apply_knockback"):
 		body.apply_knockback(knockback_force * (body.global_position - \

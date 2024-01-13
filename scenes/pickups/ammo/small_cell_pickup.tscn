@@ -86,6 +86,7 @@ ammo_type = "cells"
 ammo_amount = 10
 flash_color = Color(0, 1, 1, 1)
 pickup_sound = ExtResource("2_qwyew")
+pickup_text = "+1% cell charge"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_uc2sx")

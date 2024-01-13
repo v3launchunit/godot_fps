@@ -1,6 +1,6 @@
 class_name PlayerStatus extends Status
 
-@export_category("Player Status")
+@export_category("PlayerStatus")
 
 @export var max_armor: float = 100
 @export_range(0, 1, 0.01) var armor_absorption := 0.5
@@ -54,12 +54,14 @@ func kill():
 	is_dead = true
 	died.emit()
 	get_parent().process_mode = Node.PROCESS_MODE_DISABLED
-	if gibs_scene != null:
-		var exp: Node = gibs_scene.instantiate()
+	if gibs != null:
+		var exp: Node = gibs.instantiate()
 		target_parent.add_child(exp)
 		exp.reparent(get_tree().root)
+		move_child(exp, 0)
+		get_parent().find_child("PlayerCam").switched_weapons.emit(-1, -1, false)
 		get_parent().find_child("PlayerCam").current = false
-		gibs_scene = null
+		gibs = null
 
 
 func heal(amount: float, can_overheal: bool = false, heal_armor: bool = false) -> bool:

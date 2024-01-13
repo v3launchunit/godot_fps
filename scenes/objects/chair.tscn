@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bsijt0cxd1cch"]
+[gd_scene load_steps=16 format=3 uid="uid://bsijt0cxd1cch"]
 
 [ext_resource type="Texture2D" uid="uid://crih0rgk10al6" path="res://textures/weapons/pump_shotgun/shotgun_detail_mask.png" id="1_bfdwv"]
 [ext_resource type="ArrayMesh" uid="uid://ogv7qwoxjkgc" path="res://models/objects/chair.obj" id="2_e163t"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="3_5wb7k"]
+[ext_resource type="PackedScene" uid="uid://bynbdpv50o6q2" path="res://scenes/effects/gibs/wood_shards.tscn" id="4_042e2"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="4_karhn"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="5_76q0s"]
 [ext_resource type="PackedScene" uid="uid://bqors63m1ug05" path="res://scenes/pickups/ammo/nail_pickup.tscn" id="6_x17wv"]
@@ -63,7 +64,8 @@ mesh = ExtResource("2_e163t")
 script = ExtResource("3_5wb7k")
 max_health = 10.0
 gib_threshold = 0.0
-gibs = "res://scenes/effects/wood_shards.tscn"
+damage_sys = ExtResource("4_042e2")
+gibs = ExtResource("4_042e2")
 loot = Array[PackedScene]([ExtResource("4_karhn"), ExtResource("5_76q0s"), ExtResource("7_cgj52"), ExtResource("6_x17wv"), ExtResource("8_f2llf")])
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://doj0aysg6oqh2"]
+[gd_scene load_steps=22 format=3 uid="uid://doj0aysg6oqh2"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_ymvu6"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="3_c45im"]
 [ext_resource type="AudioStream" uid="uid://bhhnxh2cjbiuq" path="res://audio/streams/ambient/fire_ball_ambient.wav" id="3_ghwt3"]
 [ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="4_hhht4"]
+[ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="4_p5pbv"]
+[ext_resource type="Script" path="res://scripts/effects/halo.gd" id="5_qgig2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6fgvk"]
 radius = 0.25
@@ -68,7 +70,7 @@ distance_fade_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_tgqma"]
 material = SubResource("StandardMaterial3D_fs0w4")
-size = Vector2(0.1, 0.1)
+size = Vector2(0.15, 0.14)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0qhau"]
 load_path = "res://.godot/imported/halo.png-88068247d44276e09ca924d46b3606d1.s3tc.ctex"
@@ -132,12 +134,15 @@ distance_fade_enabled = true
 
 [node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
 layers = 2
+material_override = ExtResource("4_p5pbv")
 cast_shadow = 0
 visibility_range_end = 90.0
 visibility_range_end_margin = 10.0
 visibility_range_fade_mode = 1
 mesh = SubResource("QuadMesh_tgqma")
 surface_material_override/0 = SubResource("StandardMaterial3D_24bqr")
+script = ExtResource("5_qgig2")
+color = Color(1, 0.501961, 0, 1)
 
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 30.0

@@ -1,13 +1,13 @@
 [gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://l745c7k3ok8n"]
 
-[ext_resource type="Texture2D" uid="uid://g3a6kijf6sy1" path="res://textures/terrain/trench_broom/big_cobble_stone.png" id="1_hq15w"]
+[ext_resource type="Texture2D" uid="uid://ddnx6ltesmaw2" path="res://textures/terrain/cobble_stone/big_cobble_stone_albedo.png" id="1_ftyyp"]
 [ext_resource type="Texture2D" uid="uid://bl0tpj5u6xoop" path="res://textures/terrain/cliff_rocks/cliff_rocks_heights.png" id="2_svxyf"]
 [ext_resource type="Texture2D" uid="uid://dx0ifcoiq3qaj" path="res://textures/terrain/cobble_stone/big_cobble_stone_normals.png" id="3_pbxa0"]
 [ext_resource type="Texture2D" uid="uid://dxbesqb8wiess" path="res://textures/terrain/cobble_stone/big_cobble_stone_roughness.png" id="4_bvl86"]
 
 [resource]
 albedo_color = Color(0.75, 0.75, 0.75, 1)
-albedo_texture = ExtResource("1_hq15w")
+albedo_texture = ExtResource("1_ftyyp")
 roughness_texture = ExtResource("4_bvl86")
 normal_enabled = true
 normal_texture = ExtResource("3_pbxa0")

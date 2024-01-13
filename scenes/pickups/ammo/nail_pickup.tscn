@@ -63,6 +63,7 @@ lock_rotation = true
 script = ExtResource("1_pfxll")
 ammo_type = "nails"
 pickup_sound = ExtResource("2_o5jiy")
+pickup_text = "+1 nails"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_uc2sx")

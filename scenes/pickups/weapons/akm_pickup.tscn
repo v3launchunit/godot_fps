@@ -1,10 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://lt47oncbceb2"]
+[gd_scene load_steps=22 format=3 uid="uid://lt47oncbceb2"]
 
 [ext_resource type="Script" path="res://scripts/pickups/weapon_pickup.gd" id="1_bxpsa"]
 [ext_resource type="AudioStream" uid="uid://dxscywpf2ven0" path="res://audio/streams/pickups/pickup_weapon.wav" id="2_dmkcn"]
 [ext_resource type="ArrayMesh" uid="uid://53jffpg6vhkj" path="res://models/weapons/akm.obj" id="2_l81mn"]
+[ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_b58ik"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="3_q1kpb"]
 [ext_resource type="Texture2D" uid="uid://broweqdhl5i4r" path="res://textures/weapons/akm/akm_detail_mask.png" id="4_txauj"]
+[ext_resource type="Script" path="res://scripts/effects/halo.gd" id="5_l718t"]
 [ext_resource type="Texture2D" uid="uid://bav8pkl55om5n" path="res://textures/weapons/akm/akm_metallic.png" id="5_nmgn0"]
 [ext_resource type="Texture2D" uid="uid://dre07gr8t1lp2" path="res://textures/weapons/akm/akm_roughness.png" id="6_yvhjn"]
 
@@ -29,7 +31,7 @@ distance_fade_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_e6p1o"]
 material = SubResource("StandardMaterial3D_hv0iq")
-size = Vector2(0.1, 0.1)
+size = Vector2(0.2, 0.2)
 
 [sub_resource type="Gradient" id="Gradient_v5jf5"]
 interpolation_mode = 1
@@ -108,6 +110,7 @@ weapon = "res://scenes/weapons/akm.tscn"
 starting_ammo = 45
 flash_color = Color(1, 1, 0, 1)
 pickup_sound = ExtResource("2_dmkcn")
+pickup_text = "Acquired an AKM (and 45 rounds)"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_uc2sx")
@@ -122,10 +125,13 @@ shape = SubResource("SphereShape3D_0epo4")
 [node name="LensFlare" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 layers = 2
+material_override = ExtResource("3_b58ik")
 visibility_range_end = 100.0
 visibility_range_end_margin = 10.0
 visibility_range_fade_mode = 1
 mesh = SubResource("QuadMesh_e6p1o")
+script = ExtResource("5_l718t")
+color = Color(1, 1, 0, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(0.75, 1.11759e-08, 1.93572e-08, -4.44089e-16, 0.649519, -0.375, -2.23517e-08, 0.375, 0.649519, 0, 0.25, 0)

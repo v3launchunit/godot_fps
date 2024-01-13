@@ -70,6 +70,7 @@ script = ExtResource("1_0s2ma")
 ammo_type = "nails"
 ammo_amount = 20
 pickup_sound = ExtResource("2_xspqa")
+pickup_text = "+20 nails"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_uc2sx")

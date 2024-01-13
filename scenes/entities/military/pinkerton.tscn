@@ -1,0 +1,776 @@
+[gd_scene load_steps=86 format=3 uid="uid://cc7snvg1qg4i4"]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_base.gd" id="1_1yhno"]
+[ext_resource type="Script" path="res://scripts/entities/status.gd" id="2_p7cng"]
+[ext_resource type="AudioStream" uid="uid://k1hmkq07use5" path="res://audio/streams/voices/pinkerton/detect/get_her_1.wav" id="2_ttu8i"]
+[ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="3_5ywnf"]
+[ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_np25i"]
+[ext_resource type="AudioStream" uid="uid://bcbenycltm5pg" path="res://audio/streams/voices/pinkerton/detect/get_her_2.wav" id="3_s6toq"]
+[ext_resource type="AudioStream" uid="uid://cd7ytakwg5sgo" path="res://audio/streams/voices/pinkerton/detect/halt_1.wav" id="4_5hrar"]
+[ext_resource type="AnimationLibrary" uid="uid://dhxang8l8iyqp" path="res://scenes/entities/military/pinkerton_anims.res" id="5_bdfiq"]
+[ext_resource type="PackedScene" uid="uid://sgwxe7sgcert" path="res://models/entities/pinkerton.glb" id="5_v6q8l"]
+[ext_resource type="AudioStream" uid="uid://bw30qs54ire0" path="res://audio/streams/voices/pinkerton/detect/halt_2.wav" id="5_xke6e"]
+[ext_resource type="AudioStream" uid="uid://cix5xh517bnj4" path="res://audio/streams/voices/pinkerton/detect/intruder_spotted_1.wav" id="6_2o32y"]
+[ext_resource type="AudioStream" uid="uid://fimyb2r1ra54" path="res://audio/streams/voices/pinkerton/detect/kill_her_1.wav" id="7_c1q5u"]
+[ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="7_d0her"]
+[ext_resource type="PackedScene" uid="uid://dl7fuv4wdxtjx" path="res://scenes/pickups/ammo/shell_pickup.tscn" id="8_slj13"]
+[ext_resource type="AudioStream" uid="uid://2i1oefv2d7uf" path="res://audio/streams/voices/pinkerton/detect/kill_her_2.wav" id="8_y2otn"]
+[ext_resource type="AudioStream" uid="uid://cvhddpbrl73h7" path="res://audio/streams/voices/pinkerton/detect/kill_her_3.wav" id="9_vl76a"]
+[ext_resource type="AudioStream" uid="uid://dlc4tyjayi4sv" path="res://audio/streams/voices/pinkerton/detect/stop_her_1.wav" id="10_mrux3"]
+[ext_resource type="AudioStream" uid="uid://cqcaj4cjjb1ip" path="res://audio/streams/voices/pinkerton/detect/tresspasser_1.wav" id="11_pncib"]
+[ext_resource type="AudioStream" uid="uid://djru6dnc2lnrv" path="res://audio/streams/voices/pinkerton/detect/tresspasser_2.wav" id="12_nosob"]
+[ext_resource type="AudioStream" uid="uid://bty85t0ut8oro" path="res://audio/streams/voices/pinkerton/detect/tresspasser_3.wav" id="13_eblm2"]
+[ext_resource type="PackedScene" uid="uid://blrtnnu61g5s" path="res://scenes/bullets/enemy/enemy_test_bullet.tscn" id="14_0v8ti"]
+[ext_resource type="AudioStream" uid="uid://bxlkhiwffdgdt" path="res://audio/streams/voices/pinkerton/death/scream_1.wav" id="14_ftlx6"]
+[ext_resource type="AudioStream" uid="uid://472lwhnuv0ad" path="res://audio/streams/voices/pinkerton/death/scream_2.wav" id="15_dxsxu"]
+[ext_resource type="AudioStream" uid="uid://db7ebp6630xbh" path="res://audio/streams/voices/pinkerton/death/scream_3.wav" id="16_0rah0"]
+[ext_resource type="AudioStream" uid="uid://b5ay00lvhbvmm" path="res://audio/streams/voices/pinkerton/death/scream_4.wav" id="17_1ljih"]
+[ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://audio/streams/voices/wilhelm_scream.ogg" id="18_d25a8"]
+[ext_resource type="Texture2D" uid="uid://crih0rgk10al6" path="res://textures/weapons/pump_shotgun/shotgun_detail_mask.png" id="19_qblbc"]
+[ext_resource type="Texture2D" uid="uid://co8o24o1hnvyl" path="res://textures/entities/enemies/pinkerton/pinkerton_albedo.png" id="20_0syyy"]
+[ext_resource type="Texture2D" uid="uid://bsnabwad52kba" path="res://textures/terrain/log/log_heights.png" id="20_s44er"]
+[ext_resource type="Texture2D" uid="uid://c2ubhgqhrxtiu" path="res://textures/weapons/pump_shotgun/shotgun_metallic.png" id="20_w745n"]
+[ext_resource type="Texture2D" uid="uid://cxcypi06wwlum" path="res://textures/entities/enemies/pinkerton/pinkerton_detail_mask.png" id="21_d5v6x"]
+[ext_resource type="Texture2D" uid="uid://exkw0wktl54p" path="res://textures/entities/enemies/pinkerton/pinkerton_metallic.png" id="21_tvmks"]
+[ext_resource type="Texture2D" uid="uid://blae7355fr3lo" path="res://textures/weapons/pump_shotgun/shotgun_roughness.png" id="21_xf3tc"]
+[ext_resource type="Texture2D" uid="uid://bw7v4h5hychul" path="res://textures/entities/enemies/pinkerton/pinkerton_roughness.png" id="22_758q5"]
+[ext_resource type="PackedScene" uid="uid://cqctw8dd0ar4n" path="res://scenes/effects/damage/damage_sys.tscn" id="31_7r0oy"]
+[ext_resource type="PackedScene" uid="uid://c5pbs8t6p7ogl" path="res://scenes/effects/gibs/gibs.tscn" id="32_l26si"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hdxer"]
+streams_count = 12
+random_pitch = 1.15
+stream_0/stream = ExtResource("2_ttu8i")
+stream_0/weight = 3.0
+stream_1/stream = ExtResource("3_s6toq")
+stream_1/weight = 3.0
+stream_2/stream = ExtResource("4_5hrar")
+stream_2/weight = 3.0
+stream_3/stream = ExtResource("5_xke6e")
+stream_3/weight = 3.0
+stream_4/stream = ExtResource("6_2o32y")
+stream_4/weight = 6.0
+stream_5/stream = ExtResource("7_c1q5u")
+stream_5/weight = 2.0
+stream_6/stream = ExtResource("8_y2otn")
+stream_6/weight = 2.0
+stream_7/stream = ExtResource("9_vl76a")
+stream_7/weight = 2.0
+stream_8/stream = ExtResource("10_mrux3")
+stream_8/weight = 6.0
+stream_9/stream = ExtResource("11_pncib")
+stream_9/weight = 2.0
+stream_10/stream = ExtResource("12_nosob")
+stream_10/weight = 2.0
+stream_11/stream = ExtResource("13_eblm2")
+stream_11/weight = 2.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w5kcn"]
+streams_count = 4
+random_pitch = 1.15
+stream_0/stream = ExtResource("14_ftlx6")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("15_dxsxu")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("16_0rah0")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("17_1ljih")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a1m1h"]
+streams_count = 2
+playback_mode = 1
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = SubResource("AudioStreamRandomizer_w5kcn")
+stream_0/weight = 100.0
+stream_1/stream = ExtResource("18_d25a8")
+stream_1/weight = 0.001
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bp4ct"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxecq"]
+albedo_color = Color(0.75, 0.75, 0.75, 1)
+metallic = 1.0
+roughness = 0.25
+
+[sub_resource type="Gradient" id="Gradient_rrp2w"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_28pn6"]
+gradient = SubResource("Gradient_rrp2w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xg1er"]
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_28pn6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f53jo"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_sc0xe"]
+material = SubResource("StandardMaterial3D_f53jo")
+radius = 0.06
+height = 0.05
+radial_segments = 8
+rings = 3
+
+[sub_resource type="Gradient" id="Gradient_v5jf5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.7)
+colors = PackedColorArray(0.278431, 0.172549, 0.0470588, 1, 0.341176, 0.207843, 0.0784314, 1, 0.447059, 0.298039, 0.14902, 1, 0.415686, 0.313726, 0.145098, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q3vr3"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fagd6"]
+width = 48
+height = 192
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7duje"]
+width = 48
+height = 192
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u47u4"]
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
+metallic = 1.0
+metallic_texture = ExtResource("20_w745n")
+roughness_texture = ExtResource("21_xf3tc")
+clearcoat_enabled = true
+clearcoat_roughness = 0.25
+clearcoat_texture = ExtResource("19_qblbc")
+detail_enabled = true
+detail_mask = ExtResource("19_qblbc")
+detail_albedo = SubResource("NoiseTexture2D_fagd6")
+detail_normal = SubResource("NoiseTexture2D_7duje")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udm4r"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ti8ho"]
+width = 128
+height = 128
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ifyxs"]
+width = 128
+height = 128
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7l6u"]
+albedo_texture = SubResource("NoiseTexture2D_ti8ho")
+roughness = 0.75
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_ifyxs")
+clearcoat_enabled = true
+clearcoat_roughness = 0.25
+heightmap_scale = 8.0
+heightmap_texture = ExtResource("20_s44er")
+uv1_scale = Vector3(0.25, 1, 0.25)
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="Gradient" id="Gradient_842kq"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.3, 0.7)
+colors = PackedColorArray(0.75, 0.75, 0.75, 1, 0.85, 0.85, 0.85, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dtqry"]
+frequency = 0.1
+offset = Vector3(60, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vdgww"]
+width = 128
+height = 128
+generate_mipmaps = false
+color_ramp = SubResource("Gradient_842kq")
+noise = SubResource("FastNoiseLite_dtqry")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hiytb"]
+width = 128
+height = 128
+generate_mipmaps = false
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_dtqry")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_osars"]
+albedo_texture = ExtResource("20_0syyy")
+metallic = 1.0
+metallic_texture = ExtResource("21_tvmks")
+roughness_texture = ExtResource("22_758q5")
+detail_enabled = true
+detail_mask = ExtResource("21_d5v6x")
+detail_blend_mode = 3
+detail_albedo = SubResource("NoiseTexture2D_vdgww")
+detail_normal = SubResource("NoiseTexture2D_hiytb")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3sdgy"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.25098)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t04gt"]
+material = SubResource("StandardMaterial3D_3sdgy")
+bottom_radius = 0.0
+radial_segments = 8
+
+[sub_resource type="Animation" id="Animation_o8lpw"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pinkerton/Armature/Skeleton3D:Spine")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.707107, 0, 0.707107)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pinkerton/Armature/Skeleton3D:Spine.001")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pinkerton/Armature/Skeleton3D:Neck")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pinkerton/Armature/Skeleton3D:Head")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pinkerton/Armature/Skeleton3D:Cylinder")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.76084, 0.515875, 0.28441, 0.272226)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pinkerton/Armature/Skeleton3D:Cylinder.001")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.76084, 0.515875, 0.28441, 0.272226)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pinkerton/Armature/Skeleton3D:Right")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.857969, -2.50254e-07, -1.11133e-07, 0.513702)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pinkerton/Armature/Skeleton3D:Right.001")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.4321, -5.6259e-08, -2.93426e-07, 0.901826)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pinkerton/Armature/Skeleton3D:Right.002")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 0.00533787, -2.35573e-08, -4.08353e-09, 0.999986)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pinkerton/Armature/Skeleton3D:Right.003")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0.0872251, 3.65174e-08, -6.55857e-08, 0.996189)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Pinkerton/Armature/Skeleton3D:Left")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, -0.857969, -2.57908e-07, 1.23917e-07, 0.513702)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Pinkerton/Armature/Skeleton3D:Left.001")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -0.4321, 6.53152e-08, 2.48053e-07, 0.901826)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Pinkerton/Armature/Skeleton3D:Left.002")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, -0.00533782, -1.65725e-08, 2.76612e-09, 0.999986)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Pinkerton/Armature/Skeleton3D:Left.003")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, -0.0872251, -8.98916e-08, 5.45175e-08, 0.996189)
+tracks/14/type = "rotation_3d"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Pinkerton/Armature/Skeleton3D:LeftLeg")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, -0.706586, -0.0271363, -0.706586, 0.0271363)
+tracks/15/type = "rotation_3d"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Pinkerton/Armature/Skeleton3D:LeftLeg.001")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = PackedFloat32Array(0, 1, -0.0383765, 1.76396e-08, 2.72799e-09, 0.999263)
+tracks/16/type = "rotation_3d"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Pinkerton/Armature/Skeleton3D:LeftLeg.002")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = PackedFloat32Array(0, 1, 0.0824805, 1.47129e-08, 1.21768e-09, 0.996593)
+tracks/17/type = "rotation_3d"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Pinkerton/Armature/Skeleton3D:RightLeg")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = PackedFloat32Array(0, 1, 0.706586, -0.0271363, 0.706586, 0.0271363)
+tracks/18/type = "rotation_3d"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Pinkerton/Armature/Skeleton3D:RightLeg.001")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = PackedFloat32Array(0, 1, 0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
+tracks/19/type = "rotation_3d"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Pinkerton/Armature/Skeleton3D:RightLeg.002")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = PackedFloat32Array(0, 1, -0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
+tracks/20/type = "rotation_3d"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Pinkerton/Armature/Skeleton3D:Shotgun")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = PackedFloat32Array(0, 1, 4.21608e-09, -0.707107, 4.21608e-09, 0.707107)
+tracks/21/type = "rotation_3d"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Pinkerton/Armature/Skeleton3D:Pump")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Pinkerton/Armature/Skeleton3D/Shotgun/Shotgun/MuzzleFlash:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Pinkerton/Armature/Skeleton3D/Shotgun/Shotgun/MuzzleFlash/OmniLight3D:light_energy")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Pinkerton/Armature/Skeleton3D/Shotgun/Shotgun/MuzzleFlash:scale")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Pinkerton/Armature/Skeleton3D:position")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Pinkerton/Armature/Skeleton3D:rotation")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("CollisionShape3D:position")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Pinkerton/Armature/Skeleton3D/Cylinder/GPUParticles3D:emitting")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Pinkerton/Armature/Skeleton3D/Cylinder/GPUParticles3D2:emitting")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("CollisionShape3D:shape:radius")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("CollisionShape3D:shape:height")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath(".:collision_layer")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rb0vb"]
+_data = {
+"RESET": SubResource("Animation_o8lpw")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nfb3s"]
+animation = &"pinkerton_anims/pinkerton_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_whrfc"]
+animation = &"pinkerton_anims/pinkerton_death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8bms8"]
+animation = &"pinkerton_anims/pinkerton_flinch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oyciw"]
+animation = &"pinkerton_anims/pinkerton_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_imbdi"]
+animation = &"pinkerton_anims/pinkerton_move"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2prg3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7oomp"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dbccw"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4xupg"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_majfp"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2nn25"]
+xfade_time = 0.25
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w5vit"]
+xfade_time = 0.25
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_se8tw"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bj5l4"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x017w"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_goefx"]
+xfade_time = 0.15
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3fks7"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_stoq6"]
+xfade_time = 0.15
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wpkvg"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mr23i"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l00kp"]
+states/Start/position = Vector2(148, 100.889)
+states/attacking/node = SubResource("AnimationNodeAnimation_nfb3s")
+states/attacking/position = Vector2(306.889, 225)
+states/dead/node = SubResource("AnimationNodeAnimation_whrfc")
+states/dead/position = Vector2(448.093, 17.8766)
+states/flinching/node = SubResource("AnimationNodeAnimation_8bms8")
+states/flinching/position = Vector2(598.261, 224.617)
+states/idle/node = SubResource("AnimationNodeAnimation_oyciw")
+states/idle/position = Vector2(306.716, 100.047)
+states/moving/node = SubResource("AnimationNodeAnimation_imbdi")
+states/moving/position = Vector2(597.334, 101.139)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2prg3"), "idle", "moving", SubResource("AnimationNodeStateMachineTransition_7oomp"), "moving", "idle", SubResource("AnimationNodeStateMachineTransition_dbccw"), "moving", "attacking", SubResource("AnimationNodeStateMachineTransition_4xupg"), "idle", "attacking", SubResource("AnimationNodeStateMachineTransition_majfp"), "attacking", "moving", SubResource("AnimationNodeStateMachineTransition_2nn25"), "attacking", "idle", SubResource("AnimationNodeStateMachineTransition_w5vit"), "attacking", "dead", SubResource("AnimationNodeStateMachineTransition_se8tw"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_bj5l4"), "moving", "dead", SubResource("AnimationNodeStateMachineTransition_x017w"), "idle", "flinching", SubResource("AnimationNodeStateMachineTransition_goefx"), "attacking", "flinching", SubResource("AnimationNodeStateMachineTransition_3fks7"), "moving", "flinching", SubResource("AnimationNodeStateMachineTransition_stoq6"), "flinching", "moving", SubResource("AnimationNodeStateMachineTransition_wpkvg"), "flinching", "dead", SubResource("AnimationNodeStateMachineTransition_mr23i")]
+graph_offset = Vector2(-80, 6)
+
+[node name="Pinkerton" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 23
+script = ExtResource("1_1yhno")
+speed = 5.0
+wake_up_time = 0.0
+sight_line_sweep_speed = 10.0
+detection_stream = SubResource("AudioStreamRandomizer_hdxer")
+bullet = ExtResource("14_0v8ti")
+volley = 5
+spread = 5.0
+flinch_chance = 0.25
+flinch_time = 0.35
+death_stream = SubResource("AudioStreamRandomizer_a1m1h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_bp4ct")
+
+[node name="Pinkerton" parent="." instance=ExtResource("5_v6q8l")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 0)
+
+[node name="Skeleton3D" parent="Pinkerton/Armature" index="0"]
+bones/0/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/4/rotation = Quaternion(0.76084, 0.515875, 0.28441, 0.272226)
+bones/5/rotation = Quaternion(0.76084, 0.515875, 0.28441, 0.272226)
+bones/6/rotation = Quaternion(0.857969, -2.50254e-07, -1.11133e-07, 0.513702)
+bones/7/rotation = Quaternion(0.4321, -5.6259e-08, -2.93426e-07, 0.901826)
+bones/8/rotation = Quaternion(0.00533787, -2.35573e-08, -4.08353e-09, 0.999986)
+bones/9/rotation = Quaternion(0.0872251, 3.65174e-08, -6.55857e-08, 0.996189)
+bones/10/rotation = Quaternion(4.21608e-09, -0.707107, 4.21608e-09, 0.707107)
+bones/12/rotation = Quaternion(-0.857969, -2.57908e-07, 1.23917e-07, 0.513702)
+bones/13/rotation = Quaternion(-0.4321, 6.53152e-08, 2.48053e-07, 0.901826)
+bones/14/rotation = Quaternion(-0.00533782, -1.65725e-08, 2.76612e-09, 0.999986)
+bones/15/rotation = Quaternion(-0.0872251, -8.98916e-08, 5.45175e-08, 0.996189)
+bones/16/rotation = Quaternion(-0.706586, -0.0271363, -0.706586, 0.0271363)
+bones/17/rotation = Quaternion(-0.0383765, 1.76396e-08, 2.72799e-09, 0.999263)
+bones/18/rotation = Quaternion(0.0824805, 1.47129e-08, 1.21768e-09, 0.996593)
+bones/19/rotation = Quaternion(0.706586, -0.0271363, 0.706586, 0.0271363)
+bones/20/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
+bones/21/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
+
+[node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D" index="0"]
+transform = Transform3D(-0.167071, -0.869429, 0.464951, 0.977575, -0.207394, -0.0365405, 0.128197, 0.44842, 0.884582, -0.135555, 0.35198, 0.118932)
+bone_idx = 4
+
+[node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="0"]
+layers = 2
+material_override = SubResource("StandardMaterial3D_cxecq")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="1"]
+transform = Transform3D(0.771988, 0.557152, -0.305968, 0.274462, -0.726349, -0.630149, -0.573329, 0.402491, -0.713649, 0.145451, -0.0821093, -0.00993064)
+layers = 2
+amount = 16
+lifetime = 0.25
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_xg1er")
+draw_pass_1 = SubResource("SphereMesh_sc0xe")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Pinkerton/Armature/Skeleton3D/Cylinder/GPUParticles3D"]
+visible = false
+layers = 2
+light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="2"]
+transform = Transform3D(-0.557152, 0.771988, -0.305968, 0.726349, 0.274462, -0.630149, -0.402491, -0.573329, -0.713649, 0.125702, -0.174108, 0.0797706)
+layers = 2
+amount = 16
+lifetime = 0.25
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_xg1er")
+draw_pass_1 = SubResource("SphereMesh_sc0xe")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Pinkerton/Armature/Skeleton3D/Cylinder/GPUParticles3D2"]
+visible = false
+layers = 2
+light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+
+[node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.250607, -0.869429, 0.697428, 1.46636, -0.207394, -0.0548112, 0.192296, 0.44842, 1.32687, -0.179028, 0.34161, 0.141354)
+bone_idx = 5
+
+[node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D/Cylinder_001" index="0"]
+layers = 2
+material_override = SubResource("StandardMaterial3D_cxecq")
+
+[node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.986621, 0.137143, 0.0881552, -0.161515, 0.89581, 0.414051, -0.0221862, -0.42275, 0.905975, -0.231147, 0.395657, 0.0611846)
+bone_idx = 10
+
+[node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D/Shotgun" index="0"]
+layers = 2
+material_override = SubResource("StandardMaterial3D_u47u4")
+
+[node name="MuzzleFlash" type="MeshInstance3D" parent="Pinkerton/Armature/Skeleton3D/Shotgun/Shotgun" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.675, -0.135)
+visible = false
+layers = 2
+mesh = ExtResource("3_np25i")
+surface_material_override/0 = SubResource("StandardMaterial3D_udm4r")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Pinkerton/Armature/Skeleton3D/Shotgun/Shotgun/MuzzleFlash"]
+layers = 2
+light_color = Color(1, 1, 0, 1)
+omni_range = 10.0
+
+[node name="Spawner" type="Marker3D" parent="Pinkerton/Armature/Skeleton3D/Shotgun/Shotgun" index="1"]
+transform = Transform3D(-1.95578e-08, -1, 7.45058e-09, -3.72529e-08, 2.23517e-08, 1, -1, 2.04891e-08, -3.72529e-08, 0, 0.675, -0.135)
+
+[node name="Pump" parent="Pinkerton/Armature/Skeleton3D" index="3"]
+transform = Transform3D(0.986621, 0.137143, 0.0881552, -0.161515, 0.89581, 0.414051, -0.0221862, -0.42275, 0.905975, -0.231147, 0.395657, 0.0611846)
+bone_idx = 11
+
+[node name="Pump" parent="Pinkerton/Armature/Skeleton3D/Pump" index="0"]
+layers = 2
+material_override = SubResource("StandardMaterial3D_y7l6u")
+
+[node name="Body" parent="Pinkerton/Armature/Skeleton3D" index="4"]
+layers = 2
+material_override = SubResource("StandardMaterial3D_osars")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 1.5
+target_desired_distance = 3.0
+avoidance_enabled = true
+height = 2.0
+max_speed = 100.0
+
+[node name="SightLine" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, -16)
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SightLine"]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, -0.3, -1)
+visible = false
+layers = 2
+mesh = SubResource("CylinderMesh_t04gt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rb0vb"),
+"pinkerton_anims": ExtResource("5_bdfiq")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_l00kp")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+bus = &"Speech"
+doppler_tracking = 2
+
+[node name="Status" type="Node" parent="."]
+script = ExtResource("2_p7cng")
+max_health = 70.0
+gib_threshold = 90.0
+damage_sys = ExtResource("31_7r0oy")
+gibs = ExtResource("32_l26si")
+loot = Array[PackedScene]([ExtResource("3_5ywnf"), ExtResource("7_d0her"), ExtResource("8_slj13")])
+
+[editable path="Pinkerton"]

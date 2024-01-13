@@ -5,9 +5,13 @@ class_name AmbushPoint3D extends Marker3D
 @export var ambusher: PackedScene
 @export var y_offset: float = 1
 @export var trigger: Area3D
+#@export var on_interact: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+#	if on_interact:
+#		trigger.interacted.connect(_on_trigger_body_entered)
+#	else:
 	trigger.body_entered.connect(_on_trigger_body_entered)
 
 

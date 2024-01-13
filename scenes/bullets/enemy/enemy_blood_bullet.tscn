@@ -36,8 +36,8 @@ contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_omamu")
 speed = -25.0
-damage = 35.0
-explosion = "res://scenes/effects/damage_sys.tscn"
+damage = 20.0
+explosion = "res://scenes/effects/impacts/blood_bullet_impact.tscn"
 knockback_force = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -1,9 +1,13 @@
 extends Control
 
+@export var event_item: PackedScene
+@export var alert_duration: float = 10
+
 var current_ammo: String = "none"
 var current_alt_ammo: String = "none"
 var last_category: int = 1
 
+var alert_timer: float = 0
 var active_menus: int = 0
 
 @onready var player: Player = get_parent().get_parent()
@@ -15,13 +19,12 @@ var active_menus: int = 0
 @onready var flash_rect: TextureRect = find_child("Flash")
 @onready var blood_rect: TextureRect = find_child("Blood")
 
-@onready var keys: Array[Node] = find_child("KeysContainer").get_children().filter(func(n):
-		return n is TextureRect)
-@onready var weapons: Array[Node] = find_child("WeaponsContainer").get_children()
-
-@onready var crosshairs: TextureRect = find_child("Crosshairs")
-
-@onready var pause_menu: Control = find_child("Menu")
+@onready var keys: Array[Node] = $KeysContainer.get_children()
+@onready var weapons: Array[Node] = $WeaponsContainer.get_children()
+@onready var crosshairs: TextureRect = $Crosshairs
+@onready var pause_menu: Control = $Menu
+@onready var event_container: VBoxContainer = $EventContainer
+@onready var alert: Label = $Alert
 
 signal menu_closed(menu_layer: int)
 
@@ -29,6 +32,8 @@ signal menu_closed(menu_layer: int)
 func _ready() -> void:
 	flash_rect.visible = false
 	status.connect("key_acquired", _on_key_acquired)
+#	pause_menu.reparent(get_tree().root)
+#	get_tree().root.move_child(pause_menu, -1)
 
 
 func _process(delta: float) -> void:
@@ -53,7 +58,14 @@ func _process(delta: float) -> void:
 		if flash_rect.modulate.a <= 0:
 			flash_rect.visible = false
 	
-	if Input.is_action_just_pressed("pause"):
+	if alert.visible:
+		alert_timer -= delta
+		if alert_timer <= 1.0:
+			alert.modulate.a = alert_timer
+		if alert_timer <= 0.0:
+			alert.hide()
+	
+	if Input.is_action_just_pressed("ui_cancel"):
 		if active_menus <= 0:
 			get_tree().paused = true
 			pause_menu.show()
@@ -62,7 +74,7 @@ func _process(delta: float) -> void:
 		else:
 			close_top_menu()
 	
-	if Input.is_action_just_pressed("exit"): 
+	if Input.is_action_just_pressed("quick_exit"): 
 		get_tree().quit()
 
 
@@ -85,6 +97,20 @@ func flash_with_sound(color: Color, sound: AudioStream) -> void:
 	flash(color)
 	find_child("AudioStreamPlayer").stream = sound
 	find_child("AudioStreamPlayer").play()
+
+
+func log_event(event_text) -> void:
+	var event: Label = event_item.instantiate()
+	event.text = event_text
+	event_container.add_child(event)
+	event_container.move_child(event, 0)
+
+
+func set_alert(alert_text: String) -> void:
+	alert.text = alert_text
+	alert.modulate.a = 1.0
+	alert.show()
+	alert_timer = alert_duration
 
 
 func _on_weapon_hud_connected(category: int, index: int, ammo_type: String, \

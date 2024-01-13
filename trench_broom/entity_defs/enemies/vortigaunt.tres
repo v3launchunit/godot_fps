@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://brcfv7amkpov1"]
 
-[ext_resource type="PackedScene" uid="uid://bonaseme7rn5f" path="res://scenes/entities/vortigaunt.tscn" id="1_0j2cb"]
+[ext_resource type="PackedScene" uid="uid://bonaseme7rn5f" path="res://scenes/entities/locals/vortigaunt.tscn" id="1_0j2cb"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_kgqse"]
 
 [resource]

@@ -1,12 +1,15 @@
 class_name Player extends CharacterBody3D
 
 @export_category("Player")
+
+@export_group("Movement")
 @export_range(0, 35, 0.1, "or_greater") var speed: float = 10 # m/s
 @export_range(0, 100, 0.1) var acceleration: float = 100 # m/s^2
 @export var max_speed := Vector3(100, 100, 100)
 @export_range(0, 100, 0.1) var knockback_drag: float = 10
-
 @export_range(0.1, 3.0, 0.1, "or_greater") var jump_height: float = 1
+
+@export_group("Camera")
 @export_range(0.1, 10.0, 0.1, "or_greater") var camera_sens: float = 3
 @export_range(0.0, 15.0, 0.1, "or_greater") var roll_intensity: float = 3
 @export_range(0.0, 1.0) var roll_speed: float = 0.5
@@ -33,28 +36,41 @@ var sway_timer: float = PI/2
 
 @onready var camera: Camera3D = $PlayerCam
 @onready var interact_scan: RayCast3D = $PlayerCam/Interact
-@onready var interact_stream_player: AudioStreamPlayer = find_child("AudioStreamPlayer", false)
+@onready var interact_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	capture_mouse()
 	
 	
 func _process(_delta) -> void:
-	if Input.is_action_pressed("jump") and is_on_floor(): jumping = true
+	if Input.is_action_pressed("jump") and is_on_floor(): 
+		jumping = true
+	
 	if reorienting:
 		camera.rotation.x -= 0.1
-		if camera.rotation.x < -3:
-			camera.rotation.x += 6
+		if camera.rotation.x < -PI:
+			camera.rotation.x += 2 * PI
+		if camera.rotation.x > PI:
+			camera.rotation.x -= 2 * PI
 		if camera.rotation.x < 0.1 and camera.rotation.x > -0.1:
 			reorienting = false
-	if is_on_floor() and (camera.rotation.x < -1.5 or 
-			camera.rotation.x > 1.5) and not reorienting:
+	
+	if is_on_floor() and not reorienting and (
+			camera.rotation.x < -PI / 2 or 
+			camera.rotation.x > PI / 2
+	):
 		reorienting = true
 	
-	if Input.is_action_just_pressed("interact") and interact_scan.is_colliding() \
-			and interact_scan.get_collider().has_method("interact"):
+	if (
+			Input.is_action_just_pressed("interact") and 
+			interact_scan.is_colliding() and
+			interact_scan.get_collider().has_method("interact")
+	):
 		interact_stream_player.play()
 		interact_scan.get_collider().interact(self)
+	
+	if Input.is_action_just_pressed("quick_restart"):
+		get_tree().reload_current_scene()
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://7e6nf0ho2ltr"]
+[gd_scene load_steps=16 format=3 uid="uid://7e6nf0ho2ltr"]
 
 [ext_resource type="Script" path="res://scripts/objects/teleporter.gd" id="1_1hc1g"]
 [ext_resource type="AudioStream" uid="uid://dsucttfyc1d1t" path="res://audio/streams/effects/teleport.wav" id="2_tq5s8"]
@@ -46,6 +46,27 @@ color_ramp = SubResource("GradientTexture1D_xniqa")
 [sub_resource type="QuadMesh" id="QuadMesh_i3ie0"]
 orientation = 1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6nee"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="Gradient" id="Gradient_8a1aj"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3nejb"]
+gradient = SubResource("Gradient_8a1aj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p114c"]
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 2.5
+initial_velocity_max = 7.5
+color = Color(0, 3, 1.5, 1)
+color_ramp = SubResource("GradientTexture1D_3nejb")
+
+[sub_resource type="BoxMesh" id="BoxMesh_f0mow"]
+size = Vector3(0.063, 0.063, 0.063)
+
 [node name="Teleporter" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_mask = 62
@@ -60,7 +81,7 @@ travel_cost = 0.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_360gk")
 
-[node name="TeleportSys" type="GPUParticles3D" parent="."]
+[node name="TeleporterSys" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_4ftgn")
 cast_shadow = 0
 visibility_range_end = 90.0
@@ -69,9 +90,10 @@ visibility_range_fade_mode = 1
 process_material = SubResource("ParticleProcessMaterial_qdwga")
 draw_pass_1 = SubResource("QuadMesh_i3ie0")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="TeleportSys"]
+[node name="OmniLight3D" type="OmniLight3D" parent="TeleporterSys"]
 light_color = Color(0, 1, 0.501961, 1)
 light_energy = 3.0
+light_bake_mode = 1
 shadow_enabled = true
 distance_fade_enabled = true
 
@@ -80,6 +102,22 @@ stream = ExtResource("2_tq5s8")
 volume_db = 10.0
 doppler_tracking = 2
 
+[node name="TeleportSys" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_g6nee")
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_p114c")
+draw_pass_1 = SubResource("BoxMesh_f0mow")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="TeleportSys"]
+visible = false
+light_color = Color(0, 1, 0.501961, 1)
+light_energy = 3.0
+shadow_enabled = true
+distance_fade_enabled = true
+
 [node name="Destination" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
@@ -87,3 +125,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 stream = ExtResource("2_tq5s8")
 volume_db = 10.0
 doppler_tracking = 2
+
+[node name="TeleportSys" type="GPUParticles3D" parent="Destination"]
+material_override = SubResource("StandardMaterial3D_g6nee")
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_p114c")
+draw_pass_1 = SubResource("BoxMesh_f0mow")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Destination/TeleportSys"]
+visible = false
+light_color = Color(0, 1, 0.501961, 1)
+light_energy = 3.0
+shadow_enabled = true
+distance_fade_enabled = true

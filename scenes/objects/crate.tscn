@@ -1,14 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxdu412yk2ut8"]
+[gd_scene load_steps=22 format=3 uid="uid://bxdu412yk2ut8"]
 
 [ext_resource type="Texture2D" uid="uid://nvwephov841h" path="res://textures/objects/crate/crate_heights.png" id="1_63qee"]
 [ext_resource type="Texture2D" uid="uid://bs7borhko72ul" path="res://textures/objects/crate/crate_normals.png" id="2_8fvc1"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="2_ov4oo"]
+[ext_resource type="PackedScene" uid="uid://cgot11wwdrtbh" path="res://scenes/effects/damage/wood_damage_sys.tscn" id="4_2ugle"]
+[ext_resource type="PackedScene" uid="uid://bynbdpv50o6q2" path="res://scenes/effects/gibs/wood_shards.tscn" id="5_r4u8i"]
 [ext_resource type="PackedScene" uid="uid://boxs6v8ktotma" path="res://scenes/pickups/ammo/shell_box_pickup.tscn" id="5_tj7fj"]
 [ext_resource type="PackedScene" uid="uid://d2oe770gjlkup" path="res://scenes/pickups/ammo/akm_mag_pickup.tscn" id="6_5g75f"]
 [ext_resource type="PackedScene" uid="uid://coopugxxes4xq" path="res://scenes/pickups/ammo/grenade_pickup.tscn" id="6_g1hjl"]
 [ext_resource type="PackedScene" uid="uid://wdnyjfhryl0i" path="res://scenes/pickups/ammo/big_iron_bullet_pickup.tscn" id="7_x0qh2"]
 [ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://scenes/pickups/health/health_pack_pickup.tscn" id="8_07pij"]
-[ext_resource type="PackedScene" uid="uid://b3n8ejiapfh8" path="res://scenes/pickups/ammo/big_cell_pickup.tscn" id="9_cxlom"]
+[ext_resource type="PackedScene" uid="uid://b3n8ejiapfh8" path="res://scenes/pickups/ammo/large_cell_pickup.tscn" id="9_cxlom"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="10_6jjff"]
 [ext_resource type="PackedScene" uid="uid://joq438puropu" path="res://scenes/pickups/ammo/nail_box_pickup.tscn" id="11_nxe8i"]
 
@@ -70,5 +72,6 @@ radius = 1.0
 script = ExtResource("2_ov4oo")
 max_health = 25.0
 gib_threshold = 0.0
-gibs = "res://scenes/effects/wood_shards.tscn"
+damage_sys = ExtResource("4_2ugle")
+gibs = ExtResource("5_r4u8i")
 loot = Array[PackedScene]([ExtResource("5_tj7fj"), ExtResource("6_5g75f"), ExtResource("6_g1hjl"), ExtResource("7_x0qh2"), ExtResource("8_07pij"), ExtResource("9_cxlom"), ExtResource("10_6jjff"), ExtResource("11_nxe8i")])

@@ -5,6 +5,9 @@ extends Area3D
 @export_range(-1, 2) var required_key: int = -1
 @export var current_state: bool = false
 
+signal interacted
+
+
 func start() -> void:
 #	targets.append_array(find_children("*", "AnimationTree"))
 	for anim in targets:
@@ -13,7 +16,7 @@ func start() -> void:
 
 func interact(body: Node3D) -> void:
 	if required_key == -1 or body.find_child("Status").held_keys[required_key]:
-		print("button pressed")
+		interacted.emit()
 		current_state = true if one_way else not current_state
 		print(current_state)
 		for anim in targets:

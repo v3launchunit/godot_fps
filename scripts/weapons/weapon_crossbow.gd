@@ -16,8 +16,11 @@ func _process(delta: float) -> void:
 		charge_timer += delta
 		while charge_timer >= charge_tick_delay:
 			charge_timer -= charge_tick_delay
-			if not (manager.has_ammo(ammo_type) and active and \
-					Input.is_action_pressed("fire_main")):
+			if (
+					not (manager.has_ammo(ammo_type) and 
+					active and 
+					Input.is_action_pressed("weapon_fire_main"))
+			):
 				_fire()
 				banked_charges = 0
 				charge_timer = 0
@@ -25,12 +28,17 @@ func _process(delta: float) -> void:
 				return
 			else:
 				banked_charges += 1
-	elif active and (not safety_catch_active) and Input.is_action_pressed("fire_main") and \
-			cooldown_timer <= 0 and manager.has_ammo(ammo_type, ammo_cost, true):
+	elif (
+			active and 
+			(not safety_catch_active) and 
+			Input.is_action_pressed("weapon_fire_main") and 
+			cooldown_timer <= 0 
+			and manager.has_ammo(ammo_type, ammo_cost, true)
+	):
 		charging = true
 		state_machine.start("charging", true)
 	
-	if safety_catch_active and not Input.is_action_pressed("fire_main"):
+	if safety_catch_active and not Input.is_action_pressed("weapon_fire_main"):
 		safety_catch_active = false
 
 
@@ -63,6 +71,11 @@ func _fire() -> void:
 	
 	cooldown_timer = shot_cooldown
 	if eject_sys != null:
-		eject_sys.emit_particle(eject_sys.transform, transform.basis.z * Vector3.LEFT, \
-				Color.WHITE, Color.WHITE, 0)
+		eject_sys.emit_particle(
+				eject_sys.transform, 
+				transform.basis.z * Vector3.LEFT,
+				Color.WHITE, 
+				Color.WHITE, 
+				0
+		)
 	state_machine.start("firing", true)

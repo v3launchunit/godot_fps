@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://clthu8ys2m5fs"]
 
-[ext_resource type="PackedScene" uid="uid://cxqut1h5yt3nk" path="res://scenes/entities/eyeball.tscn" id="1_ytxw4"]
+[ext_resource type="PackedScene" uid="uid://cxqut1h5yt3nk" path="res://scenes/entities/locals/eyeball.tscn" id="1_ytxw4"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_d20uf"]
 
 [resource]

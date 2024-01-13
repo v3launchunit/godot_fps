@@ -12,6 +12,8 @@ enum State {
 }
 
 @export_category("EnemyBase")
+
+@export_group("Movement")
 @export_range(1, 35, 0.1) var speed: float = 10.0 # walk speed, in meters/second
 @export var turning_speed: float = 10.0
 @export_range(10, 400, 1) var acceleration: float = 100.0
@@ -20,26 +22,28 @@ enum State {
 
 @export_range(0.1, 3.0, 0.1) var jump_height: float = 1
 
+@export_group("Detection")
+@export var wake_up_time: float = 3.0 # How many seconds does it take for me to spawn in
 @export_range(0, 360, 1, "radians") var sight_line_sweep_angle: float = PI / 2
 @export_range(0, 10, 0.1, "or_greater") var sight_line_sweep_speed: float = 3 # how many sweeps I do in PI seconds
 #@export var enemies: Array[String] = ["Player"]
 @export var detection_stream: AudioStream
 
-@export var wake_up_time: float = 3.0 # How many seconds does it take for me to spawn in
-@export var attack_interval: float = 3.0 # How many seconds I spend moving between attacks
-@export var attack_range: float = 32.0 # Max distance at which I will attack
-@export var melee_range: float = 2.0 # Distance at which I don't need to move between attacks
-@export var attack_delay: float = 0.5 # How many seconds into my attack animation do I actually fire
-@export var attack_recovery_time: float = 0.25 # How long do I wait after firing before I go back to moving
-@export_file("*.tscn") var bullet: String
+@export_group("Combat")
+@export_range(0.0, 10.0, 0.01, "or_greater") var attack_interval: float = 3.0 # How many seconds I spend moving between attacks
+@export_range(0.0, 64.0, 0.1, "or_greater") var attack_range: float = 32.0 # Max distance at which I will attack
+@export_range(0.0, 10.0, 0.1, "or_greater") var melee_range: float = 2.0 # Distance at which I don't need to move between attacks
+@export_range(0.0, 1.0, 0.01, "or_greater") var attack_delay: float = 0.5 # How many seconds into my attack animation do I actually fire
+@export_range(0.0, 1.0, 0.01, "or_greater") var attack_recovery_time: float = 0.25 # How long do I wait after firing before I go back to moving
+@export var bullet: PackedScene
 @export var volley: int = 1
-@export var spread: float = 0.0
-
-@export_range(0, 1) var flinch_chance: float = 0.1
-@export var flinch_time: float = 1.0
-@export var death_stream: AudioStream
-
+@export_range(0.0, 180.0, 0.1, "degrees") var spread: float = 0.0
 @export var current_targets: Array[PhysicsBody3D]
+
+@export_group("Damage")
+@export_range(0.0, 1.0) var flinch_chance: float = 0.1
+@export_range(0.0, 10.0, 0.01, "or_greater") var flinch_time: float = 1.0
+@export var death_stream: AudioStream
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -59,7 +63,6 @@ var state_timer: float = 0 # How long I've been in my current state, in seconds
 @onready var status: Status = find_child("Status")
 
 @onready var spawner: Node3D = find_child("Spawner")
-@onready var bullet_scene: PackedScene = load(bullet)
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 @onready var attack_range_squared = attack_range * attack_range
 @onready var melee_range_squared = melee_range * melee_range
@@ -215,11 +218,13 @@ func _pursue(delta) -> void:
 	if check_target_validity(): # Make sure I actually have a target first
 		if check_path_staleness():
 			nav_agent.target_position = current_targets[-1].global_position
-		var next_pos := nav_agent.get_next_path_position()
+		
+		var next_pos: Vector3 = nav_agent.get_next_path_position()
 		sight_line.look_at(next_pos)
-		global_rotation.y = (
-				lerp_angle(global_rotation.y, 
-				sight_line.global_rotation.y, delta * turning_speed)
+		global_rotation.y = lerp_angle(
+				global_rotation.y, 
+				sight_line.global_rotation.y, 
+				delta * turning_speed
 		)
 		walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
 		nav_agent.set_velocity(walk_vel)
@@ -275,18 +280,15 @@ func _attack(_delta) -> void:
 
 
 func do_attack() -> void:
-#	var base_rotation = global_rotation
 	if (not current_targets.is_empty()) and current_targets[-1] != null:
 		spawner.look_at(current_targets[-1].global_position)
-#	spawner.rotate_y(-PI)
-#	spawner.rotate_x(PI)
 	var spawner_base_rotation = spawner.global_rotation
 	for v in volley:
 		spawner.global_rotation = spawner_base_rotation
 		spawner.rotate_z(deg_to_rad(randf_range(-spread/2, spread/2)))
 		spawner.rotate_y(deg_to_rad(randf_range(-spread/4, spread/4)))
 		
-		var instance = bullet_scene.instantiate()
+		var instance = bullet.instantiate()
 		spawner.add_child(instance)
 		instance.reparent(get_tree().root)
 		if instance is PhysicsBody3D:

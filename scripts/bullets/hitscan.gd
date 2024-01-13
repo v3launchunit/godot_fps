@@ -4,12 +4,12 @@ extends Node3D
 
 @export_flags_3d_physics var layer_mask: int = 1
 @export_range(-1000.0, 1000.0, 0.1) var range: float = 1000.0
-@export_range(0.0, 100.0, 1.0) var fade_speed: float = 50.0
 @export var damage: float = 10.0
 @export_file("*.tscn") var explosion: String
 @export var knockback_force: float = 1.0
 @export var from_camera: bool = true
 @export var piercer: bool = false
+@export_range(0.0, 100.0, 1.0) var fade_speed: float = 50.0
 
 var handled: bool = false
 var exceptions: Array = []
