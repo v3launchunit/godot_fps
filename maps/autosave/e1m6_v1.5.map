@@ -334,79 +334,55 @@
 }
 // brush 35
 {
-( -336 -128 64 ) ( -336 -127 64 ) ( -336 -128 65 ) terrain/trench_broom/planks 0 0 0 1 1
-( -304 -128 64 ) ( -304 -128 65 ) ( -303 -128 64 ) terrain/trench_broom/planks 0 0 0 1 1
-( -304 -128 64 ) ( -303 -128 64 ) ( -304 -127 64 ) terrain/trench_broom/planks 0 0 0 1 1
-( -80 -112 144 ) ( -80 -111 144 ) ( -79 -112 144 ) special/skip 0 0 0 1 1
-( -80 -112 80 ) ( -79 -112 80 ) ( -80 -112 81 ) special/skip 0 0 0 1 1
-( -64 -112 80 ) ( -64 -112 81 ) ( -64 -111 80 ) special/skip 0 0 0 1 1
+( -304 -144 64 ) ( -304 -143 64 ) ( -304 -144 65 ) terrain/trench_broom/planks 0 0 0 1 1
+( -304 -144 64 ) ( -304 -144 65 ) ( -303 -144 64 ) terrain/trench_broom/planks 0 0 0 1 1
+( -304 -144 64 ) ( -303 -144 64 ) ( -304 -143 64 ) terrain/trench_broom/planks 0 0 0 1 1
+( -80 -128 144 ) ( -80 -127 144 ) ( -79 -128 144 ) terrain/trench_broom/planks 0 0 0 1 1
+( -80 -128 80 ) ( -79 -128 80 ) ( -80 -128 81 ) terrain/trench_broom/planks 0 0 0 1 1
+( -64 -128 80 ) ( -64 -128 81 ) ( -64 -127 80 ) terrain/trench_broom/planks 0 0 0 1 1
 }
 // brush 36
 {
-( -336 -272 64 ) ( -336 -271 64 ) ( -336 -272 65 ) special/skip 0 0 0 1 1
-( -336 -400 64 ) ( -336 -400 65 ) ( -335 -400 64 ) special/skip 0 0 0 1 1
-( -336 -272 64 ) ( -335 -272 64 ) ( -336 -271 64 ) terrain/trench_broom/planks 0 0 0 1 1
-( -320 -128 144 ) ( -320 -127 144 ) ( -319 -128 144 ) special/skip 0 0 0 1 1
-( -320 -128 80 ) ( -319 -128 80 ) ( -320 -128 81 ) special/skip 0 0 0 1 1
-( -320 -128 80 ) ( -320 -128 81 ) ( -320 -127 80 ) terrain/trench_broom/planks 0 0 0 1 1
+( -320 -272 64 ) ( -320 -271 64 ) ( -320 -272 65 ) terrain/trench_broom/planks 0 0 0 1 1
+( -320 -368 64 ) ( -320 -368 65 ) ( -319 -368 64 ) terrain/trench_broom/planks 0 0 0 1 1
+( -320 -272 64 ) ( -319 -272 64 ) ( -320 -271 64 ) terrain/trench_broom/planks 0 0 0 1 1
+( -304 -128 144 ) ( -304 -127 144 ) ( -303 -128 144 ) terrain/trench_broom/planks 0 0 0 1 1
+( -304 -128 80 ) ( -303 -128 80 ) ( -304 -128 81 ) terrain/trench_broom/planks 0 0 0 1 1
+( -304 -128 80 ) ( -304 -128 81 ) ( -304 -127 80 ) terrain/trench_broom/planks 0 0 0 1 1
 }
 // brush 37
 {
-( -320 -400 64 ) ( -320 -399 64 ) ( -320 -400 65 ) special/skip 0 0 0 1 1
-( -320 -400 64 ) ( -320 -400 65 ) ( -319 -400 64 ) special/skip 0 0 0 1 1
-( -320 -400 64 ) ( -319 -400 64 ) ( -320 -399 64 ) terrain/trench_broom/planks 0 0 0 1 1
-( -80 -384 144 ) ( -80 -383 144 ) ( -79 -384 144 ) special/skip 0 0 0 1 1
-( -80 -384 80 ) ( -79 -384 80 ) ( -80 -384 81 ) terrain/trench_broom/planks 0 0 0 1 1
-( -48 -384 80 ) ( -48 -384 81 ) ( -48 -383 80 ) special/skip 0 0 0 1 1
+( -320 -384 64 ) ( -320 -383 64 ) ( -320 -384 65 ) terrain/trench_broom/planks 0 0 0 1 1
+( -320 -384 64 ) ( -320 -384 65 ) ( -319 -384 64 ) terrain/trench_broom/planks 0 0 0 1 1
+( -320 -384 64 ) ( -319 -384 64 ) ( -320 -383 64 ) terrain/trench_broom/planks 0 0 0 1 1
+( -80 -368 144 ) ( -80 -367 144 ) ( -79 -368 144 ) terrain/trench_broom/planks 0 0 0 1 1
+( -80 -368 80 ) ( -79 -368 80 ) ( -80 -368 81 ) terrain/trench_broom/planks 0 0 0 1 1
+( -80 -368 80 ) ( -80 -368 81 ) ( -80 -367 80 ) terrain/trench_broom/planks 0 0 0 1 1
 }
 // brush 38
 {
-( -64 -384 64 ) ( -64 -383 64 ) ( -64 -384 65 ) terrain/trench_broom/planks 0 0 0 1 1
-( -64 -384 64 ) ( -64 -384 65 ) ( -63 -384 64 ) terrain/trench_broom/planks 0 0 0 1 1
-( -64 -384 64 ) ( -63 -384 64 ) ( -64 -383 64 ) terrain/trench_broom/planks 0 0 0 1 1
-( -48 -144 144 ) ( -48 -143 144 ) ( -47 -144 144 ) special/skip 0 0 0 1 1
-( -48 -112 80 ) ( -47 -112 80 ) ( -48 -112 81 ) special/skip 0 0 0 1 1
-( -48 -144 80 ) ( -48 -144 81 ) ( -48 -143 80 ) special/skip 0 0 0 1 1
+( -80 -384 64 ) ( -80 -383 64 ) ( -80 -384 65 ) terrain/trench_broom/planks 0 0 0 1 1
+( -80 -384 64 ) ( -80 -384 65 ) ( -79 -384 64 ) terrain/trench_broom/planks 0 0 0 1 1
+( -80 -384 64 ) ( -79 -384 64 ) ( -80 -383 64 ) terrain/trench_broom/planks 0 0 0 1 1
+( -64 -144 144 ) ( -64 -143 144 ) ( -63 -144 144 ) terrain/trench_broom/planks 0 0 0 1 1
+( -64 -144 80 ) ( -63 -144 80 ) ( -64 -144 81 ) terrain/trench_broom/planks 0 0 0 1 1
+( -64 -144 80 ) ( -64 -144 81 ) ( -64 -143 80 ) terrain/trench_broom/planks 0 0 0 1 1
 }
 // brush 39
 {
-( -336 -400 144 ) ( -336 -399 144 ) ( -336 -400 145 ) special/skip 0 0 0 1 1
-( -256 -400 144 ) ( -256 -400 145 ) ( -255 -400 144 ) special/skip 0 0 0 1 1
-( -256 -400 144 ) ( -255 -400 144 ) ( -256 -399 144 ) terrain/trench_broom/metal 0 0 0 1 1
-( -48 -208 160 ) ( -48 -207 160 ) ( -47 -208 160 ) special/skip 0 0 0 1 1
-( -48 -112 160 ) ( -47 -112 160 ) ( -48 -112 161 ) special/skip 0 0 0 1 1
-( -48 -208 160 ) ( -48 -208 161 ) ( -48 -207 160 ) special/skip 0 0 0 1 1
+( -320 -384 144 ) ( -320 -383 144 ) ( -320 -384 145 ) terrain/trench_broom/concrete 0 0 0 1 1
+( -272 -384 144 ) ( -272 -384 145 ) ( -271 -384 144 ) terrain/trench_broom/concrete 0 0 0 1 1
+( -272 -384 144 ) ( -271 -384 144 ) ( -272 -383 144 ) terrain/trench_broom/concrete 0 0 0 1 1
+( -64 -192 160 ) ( -64 -191 160 ) ( -63 -192 160 ) terrain/trench_broom/concrete 0 0 0 1 1
+( -64 -128 160 ) ( -63 -128 160 ) ( -64 -128 161 ) terrain/trench_broom/concrete 0 0 0 1 1
+( -64 -192 160 ) ( -64 -192 161 ) ( -64 -191 160 ) terrain/trench_broom/concrete 0 0 0 1 1
 }
 // brush 40
 {
 ( -272 -176 80 ) ( -272 -336 80 ) ( -272 -336 48 ) terrain/trench_broom/concrete 0 0 0 1 1
-( -272 -176 80 ) ( -256 -192 80 ) ( -256 -320 80 ) terrain/trench_broom/concrete 0 0 0 1 1
-( -272 -336 80 ) ( -256 -320 80 ) ( -272 -336 48 ) terrain/trench_broom/concrete 64 0 0 1 1
-( -272 -176 48 ) ( -256 -192 80 ) ( -272 -176 80 ) terrain/trench_broom/concrete -96 0 0 1 1
-( -256 -320 80 ) ( -256 -192 80 ) ( -272 -176 48 ) terrain/trench_broom/concrete -16 48 0 1 1
-}
-// brush 41
-{
-( -272 -176 80 ) ( -256 -192 80 ) ( -272 -176 48 ) terrain/trench_broom/concrete 0 0 0 1 1
-( -128 -192 80 ) ( -112 -176 48 ) ( -272 -176 48 ) terrain/trench_broom/concrete -16 48 0 1 1
-( -272 -176 80 ) ( -112 -176 80 ) ( -128 -192 80 ) terrain/trench_broom/concrete 0 0 0 1 1
-( -112 -176 48 ) ( -112 -176 80 ) ( -272 -176 80 ) terrain/trench_broom/concrete 0 0 0 1 1
-( -128 -192 80 ) ( -112 -176 80 ) ( -112 -176 48 ) terrain/trench_broom/concrete 0 0 0 1 1
-}
-// brush 42
-{
-( -112 -336 48 ) ( -112 -176 48 ) ( -128 -192 80 ) terrain/trench_broom/concrete -16 48 0 1 1
-( -128 -320 80 ) ( -112 -336 80 ) ( -112 -336 48 ) terrain/trench_broom/concrete -96 0 0 1 1
-( -112 -176 48 ) ( -112 -176 80 ) ( -128 -192 80 ) terrain/trench_broom/concrete 64 0 0 1 1
-( -128 -192 80 ) ( -112 -176 80 ) ( -112 -336 80 ) terrain/trench_broom/concrete 0 0 0 1 1
-( -112 -336 80 ) ( -112 -176 80 ) ( -112 -176 48 ) terrain/trench_broom/concrete 0 0 0 1 1
-}
-// brush 43
-{
-( -272 -336 80 ) ( -272 -336 48 ) ( -256 -320 80 ) terrain/trench_broom/concrete 0 0 0 1 1
-( -272 -336 80 ) ( -112 -336 80 ) ( -112 -336 48 ) terrain/trench_broom/concrete 0 0 0 1 1
-( -128 -320 80 ) ( -112 -336 80 ) ( -272 -336 80 ) terrain/trench_broom/concrete 0 0 0 1 1
-( -128 -320 80 ) ( -256 -320 80 ) ( -272 -336 48 ) terrain/trench_broom/concrete -16 48 0 1 1
-( -112 -336 48 ) ( -112 -336 80 ) ( -128 -320 80 ) terrain/trench_broom/concrete 0 0 0 1 1
+( -272 -336 80 ) ( -256 -336 64 ) ( -272 -336 48 ) terrain/trench_broom/concrete 0 0 0 1 1
+( -272 -176 48 ) ( -256 -176 64 ) ( -272 -176 80 ) terrain/trench_broom/concrete 0 0 0 1 1
+( -256 -336 64 ) ( -256 -176 64 ) ( -272 -176 48 ) terrain/trench_broom/concrete 0 0 0 1 1
+( -272 -176 80 ) ( -256 -176 64 ) ( -256 -336 64 ) terrain/trench_broom/concrete 0 0 0 1 1
 }
 }

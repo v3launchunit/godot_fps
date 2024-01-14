@@ -6,12 +6,13 @@
 
 [sub_resource type="Gradient" id="Gradient_b360i"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.5)
-colors = PackedColorArray(0.0666667, 0.0666667, 0.0666667, 1, 0.133333, 0.0666667, 0.133333, 1)
+offsets = PackedFloat32Array(0, 0.4, 0.5, 0.8, 0.9)
+colors = PackedColorArray(0.0666667, 0.0666667, 0.0666667, 1, 0.133333, 0.0666667, 0.133333, 1, 0.0666667, 0.0666667, 0.0666667, 1, 0, 0, 0.2, 1, 0.0666667, 0.0666667, 0.0666667, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wvn4v"]
 noise_type = 2
 frequency = 0.0215
+fractal_type = 2
 fractal_octaves = 3
 cellular_jitter = 1.0
 
@@ -19,6 +20,7 @@ cellular_jitter = 1.0
 width = 128
 height = 128
 seamless = true
+seamless_blend_skirt = 0.25
 normalize = false
 color_ramp = SubResource("Gradient_b360i")
 noise = SubResource("FastNoiseLite_wvn4v")

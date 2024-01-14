@@ -14,7 +14,6 @@ class_name WeaponManager extends Camera3D
 
 @export var anti_clip_speed: float = 7.5
 
-var fov_desired: float
 var anti_clip_collisions: int = 0
 var current_weapon_pos: float
 
@@ -39,7 +38,6 @@ func _ready():
 	switched_weapons.emit(current_category, current_index[current_category], true)
 	current_weapon_pos = get_node(weapons[current_category][current_index\
 			[current_category]]).position.z
-	fov_desired = fov
 	
 	anti_clip_box.body_entered.connect(on_viewmodel_anti_clip_body_entered)
 	anti_clip_box.body_exited.connect(on_viewmodel_anti_clip_body_exited)
@@ -233,7 +231,7 @@ func get_selected_weapon_path() -> NodePath:
 
 
 func scope_changed(amount: float):
-	fov = fov_desired / amount
+	fov = Globals.s_fov_desired / amount
 	get_parent().camera_zoom_sens = 1 / amount
 
 

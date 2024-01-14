@@ -1,0 +1,88 @@
+// Game: VolumetricsTest
+// Format: Standard
+// entity 0
+{
+"classname" "worldspawn"
+"_tb_textures" "textures/special;textures/terrain/trench_broom"
+// brush 0
+{
+( -96 -64 -32 ) ( -96 -63 -32 ) ( -96 -64 -31 ) special/skip 0 0 0 1 1
+( -64 -48 -32 ) ( -64 -48 -31 ) ( -63 -48 -32 ) special/skip 0 0 0 1 1
+( -64 -64 -32 ) ( -63 -64 -32 ) ( -64 -63 -32 ) special/skip 0 0 0 1 1
+( 64 64 -16 ) ( 64 65 -16 ) ( 65 64 -16 ) terrain/trench_broom/checker_board 0 0 0 1 1
+( 64 48 0 ) ( 65 48 0 ) ( 64 48 1 ) special/skip 0 0 0 1 1
+( 64 64 0 ) ( 64 64 1 ) ( 64 65 0 ) special/skip 0 0 0 1 1
+}
+// brush 1
+{
+( -112 32 -16 ) ( -112 33 -16 ) ( -112 32 -15 ) terrain/trench_broom/drywall 0 0 0 1 1
+( -64 32 -16 ) ( -64 32 -15 ) ( -63 32 -16 ) terrain/trench_broom/drywall 0 0 0 1 1
+( -64 32 -16 ) ( -63 32 -16 ) ( -64 33 -16 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 64 48 48 ) ( 64 49 48 ) ( 65 48 48 ) special/skip 0 0 0 1 1
+( 64 96 48 ) ( 65 96 48 ) ( 64 96 49 ) special/skip 0 0 0 1 1
+( 64 48 48 ) ( 64 48 49 ) ( 64 49 48 ) special/skip 0 0 0 1 1
+}
+// brush 2
+{
+( -112 -48 -16 ) ( -112 -47 -16 ) ( -112 -48 -15 ) terrain/trench_broom/drywall 0 0 0 1 1
+( -64 -96 -16 ) ( -64 -96 -15 ) ( -63 -96 -16 ) special/skip 0 0 0 1 1
+( -64 -48 -16 ) ( -63 -48 -16 ) ( -64 -47 -16 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 64 -32 48 ) ( 64 -31 48 ) ( 65 -32 48 ) special/skip 0 0 0 1 1
+( 64 -32 48 ) ( 65 -32 48 ) ( 64 -32 49 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 64 -32 48 ) ( 64 -32 49 ) ( 64 -31 48 ) special/skip 0 0 0 1 1
+}
+// brush 3
+{
+( -112 -80 48 ) ( -112 -79 48 ) ( -112 -80 49 ) special/skip 0 0 0 1 1
+( -64 -48 48 ) ( -64 -48 49 ) ( -63 -48 48 ) special/skip 0 0 0 1 1
+( -64 -80 48 ) ( -63 -80 48 ) ( -64 -79 48 ) terrain/trench_broom/concrete 0 0 0 1 1
+( 64 48 64 ) ( 64 49 64 ) ( 65 48 64 ) special/skip 0 0 0 1 1
+( 64 48 64 ) ( 65 48 64 ) ( 64 48 65 ) special/skip 0 0 0 1 1
+( 64 48 64 ) ( 64 48 65 ) ( 64 49 64 ) special/skip 0 0 0 1 1
+}
+// brush 4
+{
+( 48 -32 -16 ) ( 48 -16 -16 ) ( 48 -32 48 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 64 -32 -16 ) ( 48 -32 -16 ) ( 64 -32 48 ) special/skip 0 0 0 1 1
+( 64 -32 -16 ) ( 64 -16 -16 ) ( 48 -32 -16 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 48 -32 48 ) ( 48 -16 48 ) ( 64 -32 48 ) special/skip 0 0 0 1 1
+( 48 -16 -16 ) ( 64 -16 -16 ) ( 48 -16 48 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 64 -32 48 ) ( 64 -16 48 ) ( 64 -32 -16 ) special/skip 0 0 0 1 1
+}
+// brush 5
+{
+( 48 32 48 ) ( 48 16 48 ) ( 48 32 -16 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 64 16 48 ) ( 64 16 -16 ) ( 48 16 48 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 48 32 -16 ) ( 48 16 -16 ) ( 64 32 -16 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 64 32 48 ) ( 64 16 48 ) ( 48 32 48 ) special/skip 0 0 0 1 1
+( 64 32 48 ) ( 48 32 48 ) ( 64 32 -16 ) special/skip 0 0 0 1 1
+( 64 32 -16 ) ( 64 16 -16 ) ( 64 32 48 ) special/skip 0 0 0 1 1
+}
+// brush 6
+{
+( 48 -16 48 ) ( 48 -16 32 ) ( 48 16 48 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 64 -16 48 ) ( 64 -16 32 ) ( 48 -16 48 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 64 -16 32 ) ( 64 16 32 ) ( 48 -16 32 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 48 -16 48 ) ( 48 16 48 ) ( 64 -16 48 ) special/skip 0 0 0 1 1
+( 48 16 48 ) ( 48 16 32 ) ( 64 16 48 ) special/skip 0 0 0 1 1
+( 64 16 48 ) ( 64 16 32 ) ( 64 -16 48 ) special/skip 0 0 0 1 1
+}
+// brush 7
+{
+( 64 -32 48 ) ( 64 -32 49 ) ( 64 -33 48 ) special/clip 0 0 0 1 1
+( 64 -32 48 ) ( 63 -32 48 ) ( 64 -32 49 ) special/skip 0 0 0 1 1
+( 112 32 -16 ) ( 111 32 -16 ) ( 112 31 -16 ) special/skip 0 0 0 1 1
+( 64 -32 48 ) ( 64 -33 48 ) ( 63 -32 48 ) special/skip 0 0 0 1 1
+( 112 32 -16 ) ( 112 32 -15 ) ( 111 32 -16 ) special/skip 0 0 0 1 1
+( 80 32 -16 ) ( 80 31 -16 ) ( 80 32 -15 ) special/skip 0 0 0 1 1
+}
+// brush 8
+{
+( -288 -16 -32 ) ( -288 -15 -32 ) ( -288 -16 -31 ) special/skip 0 0 0 1 1
+( -240 -96 -32 ) ( -240 -96 -31 ) ( -239 -96 -32 ) special/skip 0 0 0 1 1
+( -240 -16 -32 ) ( -239 -16 -32 ) ( -240 -15 -32 ) special/skip 0 0 0 1 1
+( -112 112 -16 ) ( -112 113 -16 ) ( -111 112 -16 ) terrain/trench_broom/checker_board 0 0 0 1 1
+( -112 96 0 ) ( -111 96 0 ) ( -112 96 1 ) special/skip 0 0 0 1 1
+( -112 112 0 ) ( -112 112 1 ) ( -112 113 0 ) special/skip 0 0 0 1 1
+}
+}
