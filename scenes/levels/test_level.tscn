@@ -11,7 +11,6 @@
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="9_5wy7v"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="9_gru3p"]
 [ext_resource type="Material" uid="uid://o08npuo7facf" path="res://materials/terrain/trench_broom/bricks.tres" id="9_slujc"]
-[ext_resource type="Script" path="res://scripts/effects/halo.gd" id="10_5tus1"]
 [ext_resource type="Material" uid="uid://b47mcsimh3vki" path="res://materials/terrain/trench_broom/planks.tres" id="10_pl836"]
 [ext_resource type="Material" uid="uid://yggak3jcef1b" path="res://materials/terrain/trench_broom/log.tres" id="11_7fdv4"]
 [ext_resource type="Material" uid="uid://ytcbf12dyaaj" path="res://materials/terrain/trench_broom/log_end.tres" id="12_jydl3"]

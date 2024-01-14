@@ -1,0 +1,79 @@
+// Game: VolumetricsTest
+// Format: Standard
+// entity 0
+{
+"classname" "worldspawn"
+"_tb_textures" "textures/special;textures/terrain/trench_broom"
+// brush 0
+{
+( -64 -64 -16 ) ( -64 -63 -16 ) ( -64 -64 -15 ) special/skip 0 0 0 1 1
+( -64 -48 -16 ) ( -64 -48 -15 ) ( -63 -48 -16 ) special/skip 0 0 0 1 1
+( -64 -64 -16 ) ( -63 -64 -16 ) ( -64 -63 -16 ) special/skip 0 0 0 1 1
+( 64 64 0 ) ( 64 65 0 ) ( 65 64 0 ) terrain/trench_broom/checker_board 0 0 0 1 1
+( 64 48 16 ) ( 65 48 16 ) ( 64 48 17 ) special/skip 0 0 0 1 1
+( 64 64 16 ) ( 64 64 17 ) ( 64 65 16 ) special/skip 0 0 0 1 1
+}
+// brush 1
+{
+( -64 32 0 ) ( -64 33 0 ) ( -64 32 1 ) special/skip 0 0 0 1 1
+( -64 32 0 ) ( -64 32 1 ) ( -63 32 0 ) terrain/trench_broom/drywall 0 0 0 1 1
+( -64 32 0 ) ( -63 32 0 ) ( -64 33 0 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 64 48 64 ) ( 64 49 64 ) ( 65 48 64 ) special/skip 0 0 0 1 1
+( 64 48 64 ) ( 65 48 64 ) ( 64 48 65 ) special/skip 0 0 0 1 1
+( 64 48 64 ) ( 64 48 65 ) ( 64 49 64 ) special/skip 0 0 0 1 1
+}
+// brush 2
+{
+( -64 -48 0 ) ( -64 -47 0 ) ( -64 -48 1 ) special/skip 0 0 0 1 1
+( -64 -48 0 ) ( -64 -48 1 ) ( -63 -48 0 ) special/skip 0 0 0 1 1
+( -64 -48 0 ) ( -63 -48 0 ) ( -64 -47 0 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 64 -32 64 ) ( 64 -31 64 ) ( 65 -32 64 ) special/skip 0 0 0 1 1
+( 64 -32 64 ) ( 65 -32 64 ) ( 64 -32 65 ) terrain/trench_broom/drywall 0 0 0 1 1
+( 64 -32 64 ) ( 64 -32 65 ) ( 64 -31 64 ) special/skip 0 0 0 1 1
+}
+// brush 3
+{
+( -64 -80 64 ) ( -64 -79 64 ) ( -64 -80 65 ) special/skip 0 0 0 1 1
+( -64 -48 64 ) ( -64 -48 65 ) ( -63 -48 64 ) special/skip 0 0 0 1 1
+( -64 -80 64 ) ( -63 -80 64 ) ( -64 -79 64 ) terrain/trench_broom/concrete 0 0 0 1 1
+( 64 48 80 ) ( 64 49 80 ) ( 65 48 80 ) special/skip 0 0 0 1 1
+( 64 48 80 ) ( 65 48 80 ) ( 64 48 81 ) special/skip 0 0 0 1 1
+( 64 48 80 ) ( 64 48 81 ) ( 64 49 80 ) special/skip 0 0 0 1 1
+}
+// brush 4
+{
+( -64 32 64 ) ( -64 16 64 ) ( -64 32 0 ) special/skip 0 0 0 1 1
+( -48 16 0 ) ( -64 16 0 ) ( -48 16 64 ) terrain/trench_broom/drywall 0 0 0 1 1
+( -64 32 0 ) ( -64 16 0 ) ( -48 32 0 ) terrain/trench_broom/drywall 0 0 0 1 1
+( -48 32 64 ) ( -48 16 64 ) ( -64 32 64 ) special/skip 0 0 0 1 1
+( -64 32 0 ) ( -48 32 0 ) ( -64 32 64 ) special/skip 0 0 0 1 1
+( -48 32 0 ) ( -48 16 0 ) ( -48 32 64 ) terrain/trench_broom/drywall 0 0 0 1 1
+}
+// brush 5
+{
+( -64 -32 0 ) ( -64 -16 0 ) ( -64 -32 64 ) special/skip 0 0 0 1 1
+( -64 -32 64 ) ( -48 -32 64 ) ( -64 -32 0 ) special/skip 0 0 0 1 1
+( -48 -32 0 ) ( -48 -16 0 ) ( -64 -32 0 ) terrain/trench_broom/drywall 0 0 0 1 1
+( -64 -32 64 ) ( -64 -16 64 ) ( -48 -32 64 ) special/skip 0 0 0 1 1
+( -64 -16 64 ) ( -64 -16 0 ) ( -48 -16 64 ) terrain/trench_broom/drywall 0 0 0 1 1
+( -48 -32 64 ) ( -48 -16 64 ) ( -48 -32 0 ) terrain/trench_broom/drywall 0 0 0 1 1
+}
+// brush 6
+{
+( -64 -16 64 ) ( -64 -16 48 ) ( -64 16 64 ) special/skip 0 0 0 1 1
+( -48 -16 64 ) ( -48 -16 48 ) ( -64 -16 64 ) special/skip 0 0 0 1 1
+( -64 16 48 ) ( -64 -16 48 ) ( -48 16 48 ) terrain/trench_broom/drywall 0 0 0 1 1
+( -48 16 64 ) ( -48 -16 64 ) ( -64 16 64 ) special/skip 0 0 0 1 1
+( -64 16 64 ) ( -64 16 48 ) ( -48 16 64 ) terrain/trench_broom/drywall 0 0 0 1 1
+( -48 16 64 ) ( -48 16 48 ) ( -48 -16 64 ) terrain/trench_broom/drywall 0 0 0 1 1
+}
+// brush 7
+{
+( -80 -32 0 ) ( -80 -31 0 ) ( -80 -32 1 ) special/skip 0 0 0 1 1
+( -112 -32 0 ) ( -112 -32 1 ) ( -111 -32 0 ) special/skip 0 0 0 1 1
+( -112 -32 0 ) ( -111 -32 0 ) ( -112 -31 0 ) special/skip 0 0 0 1 1
+( -64 32 64 ) ( -64 33 64 ) ( -63 32 64 ) special/skip 0 0 0 1 1
+( -64 32 64 ) ( -63 32 64 ) ( -64 32 65 ) special/skip 0 0 0 1 1
+( -64 32 64 ) ( -64 32 65 ) ( -64 33 64 ) special/clip 0 0 0 1 1
+}
+}

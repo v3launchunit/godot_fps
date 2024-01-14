@@ -374,7 +374,7 @@ Campaign:
 				Enforcer
 				*PlasmaDroid (boss)
 		E1M7 (""):
-			
+			Evil factory/processing plant.
 			Weapons:
 				AKM
 				Boomstick
