@@ -20,6 +20,9 @@ var current_weapon_pos: float
 var prior_category: int = 0
 var prior_index: int = 0
 
+var prior_fov: float = Globals.s_fov_desired
+var prior_zoom: float = 1.0
+
 @onready var ammo_amounts: Dictionary = ammo_types.duplicate() # Created right before _ready
 @onready var anti_clip_box: Area3D = $ViewmodelAntiClip
 @onready var rummage_stream_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -48,6 +51,10 @@ func _process(delta):
 #	weapon_cam.global_transform = global_transform
 #	weapon_cam.h_offset = h_offset
 #	weapon_cam.v_offset = v_offset
+	
+	if prior_fov != Globals.s_fov_desired:
+		prior_fov = Globals.s_fov_desired
+		scope_changed(prior_zoom)
 	
 	if Input.is_action_just_pressed("weapon_next"):
 		_next_weapon()
@@ -231,6 +238,8 @@ func get_selected_weapon_path() -> NodePath:
 
 
 func scope_changed(amount: float):
+	prior_fov = Globals.s_fov_desired
+	prior_zoom = amount
 	fov = Globals.s_fov_desired / amount
 	get_parent().camera_zoom_sens = 1 / amount
 
