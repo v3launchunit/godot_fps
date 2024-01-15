@@ -22,6 +22,7 @@ buses/default_bus_layout="res://audio/default_bus_layout.tres"
 [autoload]
 
 Globals="*res://scripts/globals.gd"
+GameMenu="*res://scenes/ui/game_menu.tscn"
 
 [display]
 
@@ -247,10 +248,6 @@ reflections/main_scene="res://scenes/levels/e1m5_v1.tscn"
 
 [shader_globals]
 
-PI={
-"type": "float",
-"value": 3.142
-}
 viewmodel_fov={
 "type": "float",
 "value": 90.0

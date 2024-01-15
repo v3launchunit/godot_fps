@@ -8,7 +8,6 @@ var current_alt_ammo: String = "none"
 var last_category: int = 1
 
 var alert_timer: float = 0
-var active_menus: int = 0
 
 @onready var player: Player = get_parent().get_parent()
 @onready var status: PlayerStatus = get_parent().get_parent().find_child("Status")
@@ -25,8 +24,6 @@ var active_menus: int = 0
 @onready var pause_menu: Control = $Menu
 @onready var event_container: VBoxContainer = $EventContainer
 @onready var alert: Label = $Alert
-
-signal menu_closed(menu_layer: int)
 
 
 func _ready() -> void:
@@ -65,27 +62,8 @@ func _process(delta: float) -> void:
 		if alert_timer <= 0.0:
 			alert.hide()
 	
-	if Input.is_action_just_pressed("ui_cancel"):
-		if active_menus <= 0:
-			get_tree().paused = true
-			pause_menu.show()
-			player.release_mouse()
-			active_menus = 1
-		else:
-			close_top_menu()
-	
 	if Input.is_action_just_pressed("quick_exit"): 
 		get_tree().quit()
-
-
-func close_top_menu() -> void:
-	menu_closed.emit(active_menus)
-	active_menus -= 1
-	if active_menus <= 0:
-		get_tree().paused = false
-		pause_menu.hide()
-		player.capture_mouse()
-		active_menus = 0
 
 
 func flash(color: Color) -> void:

@@ -18,7 +18,7 @@ class_name Player extends CharacterBody3D
 @export var jump_sway: float = 0.01
 
 var jumping: bool = false
-var mouse_captured: bool = false
+static var mouse_captured: bool = false
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -87,12 +87,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func capture_mouse() -> void:
+static func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_captured = true
 
 
-func release_mouse() -> void:
+static func release_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_captured = false
 
