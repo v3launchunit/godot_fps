@@ -18,7 +18,7 @@ func _ready():
 #	var p = get_parent().get_parent()
 	manager.switched_weapons.connect(_on_player_cam_switched_weapons)
 	hud_connected.connect(manager.find_child("HUD")._on_weapon_hud_connected)
-	hud_connected.emit(ammo_type, alt_ammo_type)
+	hud_connected.emit(category, index, ammo_type, alt_ammo_type)
 	state_machine.start("deploy", true)
 
 

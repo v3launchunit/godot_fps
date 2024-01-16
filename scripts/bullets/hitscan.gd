@@ -41,7 +41,8 @@ func _physics_process(delta):
 				query_origin, 
 				query_origin + range * get_global_transform().basis.z, 
 				layer_mask)
-		query.set_exclude(exceptions)
+		if not exceptions.is_empty():
+			query.set_exclude(exceptions)
 		var result = space.intersect_ray(query)
 		
 		var mesh: Node3D = get_node("MeshInstance3D")

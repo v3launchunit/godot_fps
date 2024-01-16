@@ -209,6 +209,14 @@ max_length = 5
 virtual_keyboard_type = 2
 caret_blink = true
 
+[node name="ResolutionApplyButton" type="Button" parent="SettingsPanel/Video/Resolution"]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 26.0
+offset_right = 214.0
+offset_bottom = 57.0
+text = " Apply "
+
 [node name="ScaleFactor" type="Control" parent="SettingsPanel/Video"]
 custom_minimum_size = Vector2(0, 68)
 layout_mode = 2
@@ -343,4 +351,6 @@ grow_vertical = 2
 [connection signal="pressed" from="VBoxContainer/Audio" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Gameplay" to="." method="_on_gameplay_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_button_pressed"]
-[connection signal="drag_ended" from="SettingsPanel/Video/FOV/FovSlider" to="SettingsPanel/Video" method="_on_fov_slider_drag_ended"]
+[connection signal="pressed" from="SettingsPanel/Video/Resolution/ResolutionApplyButton" to="SettingsPanel/Video" method="_on_resolution_apply_button_pressed"]
+[connection signal="value_changed" from="SettingsPanel/Video/ScaleFactor/ScaleSlider" to="SettingsPanel/Video" method="_on_scale_slider_value_changed"]
+[connection signal="value_changed" from="SettingsPanel/Video/FOV/FovSlider" to="SettingsPanel/Video" method="_on_fov_slider_value_changed"]

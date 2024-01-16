@@ -423,7 +423,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5qju"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rccbc"]
 render_priority = 0
 shader = SubResource("Shader_t2p06")
 shader_parameter/albedo = Color(1, 1, 1, 1)
@@ -441,7 +441,7 @@ shader_parameter/texture_metallic = ExtResource("9_2ordl")
 shader_parameter/texture_roughness = ExtResource("10_iuq6n")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ps8yr"]
-material = SubResource("ShaderMaterial_p5qju")
+material = SubResource("ShaderMaterial_rccbc")
 top_radius = 0.05
 bottom_radius = 0.05
 height = 0.175
@@ -475,6 +475,7 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pb0tv"]
+allow_transition_to_self = true
 states/alt_firing/node = SubResource("AnimationNodeAnimation_gw5kj")
 states/alt_firing/position = Vector2(477.667, 11)
 states/deploy/node = SubResource("AnimationNodeAnimation_62y18")
@@ -482,9 +483,9 @@ states/deploy/position = Vector2(393.667, 100.333)
 states/firing/node = SubResource("AnimationNodeAnimation_74vc0")
 states/firing/position = Vector2(477.667, 195)
 states/idle/node = SubResource("AnimationNodeAnimation_hph0p")
-states/idle/position = Vector2(565.667, 95.4445)
+states/idle/position = Vector2(585.667, 101.519)
 transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_b3vqj"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_5ju1q"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_e8rcd"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_004om")]
-graph_offset = Vector2(-91, 17)
+graph_offset = Vector2(-124, -34)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qjdy1"]
 radius = 16.0
@@ -561,7 +562,7 @@ _data = {
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.15, -0.25, -0.35)
 
 [node name="PumpShotgun" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00625279, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00459387, 0)
 layers = 4
 cast_shadow = 0
 mesh = ExtResource("1_ejui6")

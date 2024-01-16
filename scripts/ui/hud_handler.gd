@@ -21,7 +21,7 @@ var alert_timer: float = 0
 @onready var keys: Array[Node] = $KeysContainer.get_children()
 @onready var weapons: Array[Node] = $WeaponsContainer.get_children()
 @onready var crosshairs: TextureRect = $Crosshairs
-@onready var pause_menu: Control = $Menu
+#@onready var pause_menu: Control = $Menu
 @onready var event_container: VBoxContainer = $EventContainer
 @onready var alert: Label = $Alert
 
@@ -91,8 +91,12 @@ func set_alert(alert_text: String) -> void:
 	alert_timer = alert_duration
 
 
-func _on_weapon_hud_connected(category: int, index: int, ammo_type: String, \
-		alt_ammo_type: String) -> void:
+func _on_weapon_hud_connected(
+			category: int, 
+			index: int, 
+			ammo_type: String,
+			alt_ammo_type: String
+	) -> void:
 	current_ammo = ammo_type
 	current_alt_ammo = alt_ammo_type
 	crosshairs.texture.region.position = Vector2(index * 32, category * 32)
