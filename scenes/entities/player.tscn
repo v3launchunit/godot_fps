@@ -1,16 +1,74 @@
-[gd_scene load_steps=17 format=3 uid="uid://c63k27ek72d3d"]
+[gd_scene load_steps=36 format=3 uid="uid://c63k27ek72d3d"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_7iuqc"]
 [ext_resource type="Script" path="res://scripts/player/weapon_manager.gd" id="2_dkt8i"]
+[ext_resource type="AudioStream" uid="uid://c7enblvm4yyws" path="res://audio/streams/voices/player/hups/hup_1.wav" id="2_ltik2"]
 [ext_resource type="PackedScene" uid="uid://bimc4ufk5hicg" path="res://scenes/weapons/pump_shotgun.tscn" id="2_w8f7c"]
+[ext_resource type="AudioStream" uid="uid://b6d0wnf3jecta" path="res://audio/streams/voices/player/hups/hup_2.wav" id="3_6ae3o"]
 [ext_resource type="AudioStream" uid="uid://dyub7yfblkj1f" path="res://audio/streams/typewriter.wav" id="3_esyxp"]
+[ext_resource type="AudioStream" uid="uid://be3e2ce82sum6" path="res://audio/streams/voices/player/hups/hup_11.wav" id="4_tvufw"]
+[ext_resource type="AudioStream" uid="uid://cgm7r4b3kf36q" path="res://audio/streams/voices/player/hups/hup_12.wav" id="5_lnrhu"]
+[ext_resource type="AudioStream" uid="uid://3nq08mhu7hgj" path="res://audio/streams/voices/player/hups/hup_13.wav" id="6_2r6q6"]
 [ext_resource type="AudioStream" uid="uid://bmlxxe8maevqb" path="res://audio/streams/click.wav" id="6_3oqj4"]
 [ext_resource type="Texture2D" uid="uid://c0bhiisq4qel1" path="res://textures/flashlight_projector.png" id="6_eocyj"]
 [ext_resource type="PackedScene" uid="uid://dh4rwigqkk6va" path="res://scenes/ui/player_hud.tscn" id="6_tw0uv"]
+[ext_resource type="AudioStream" uid="uid://b6hblfi38ddq4" path="res://audio/streams/voices/player/hups/hup_14.wav" id="7_faeet"]
 [ext_resource type="PackedScene" uid="uid://bjpo451a0eupa" path="res://scenes/weapons/axe.tscn" id="7_wdg6b"]
+[ext_resource type="AudioStream" uid="uid://diwl7b1646pt2" path="res://audio/streams/voices/player/hups/hup_15.wav" id="8_phu5y"]
 [ext_resource type="Script" path="res://scripts/player/flashlight.gd" id="9_wc8gg"]
+[ext_resource type="AudioStream" uid="uid://c84847bf2ax0v" path="res://audio/streams/voices/player/hups/hup_16.wav" id="9_y5n02"]
+[ext_resource type="AudioStream" uid="uid://b6hpblvhs0c4f" path="res://audio/streams/voices/player/hups/hup_17.wav" id="10_4nlgq"]
 [ext_resource type="Script" path="res://scripts/player/player_status.gd" id="10_af6uj"]
+[ext_resource type="AudioStream" uid="uid://dkfsp11jb2re7" path="res://audio/streams/voices/player/hups/hup_18.wav" id="11_8wl43"]
 [ext_resource type="PackedScene" uid="uid://wfllsui4k1if" path="res://scenes/effects/gibs/player_gibs.tscn" id="11_t14nv"]
+[ext_resource type="AudioStream" uid="uid://c7nmgkuq6q1sw" path="res://audio/streams/voices/player/hups/hup_3.wav" id="12_bjjyo"]
+[ext_resource type="AudioStream" uid="uid://d32mev28nulxc" path="res://audio/streams/voices/player/hups/hup_4.wav" id="13_pg18w"]
+[ext_resource type="AudioStream" uid="uid://b8wlssmljrw50" path="res://audio/streams/voices/player/hups/hup_5.wav" id="14_gh54w"]
+[ext_resource type="AudioStream" uid="uid://btd2d2qsxkhjo" path="res://audio/streams/voices/player/hups/hup_6.wav" id="15_gisw4"]
+[ext_resource type="AudioStream" uid="uid://bmpwrksg7upyb" path="res://audio/streams/voices/player/hups/hup_7.wav" id="16_854b0"]
+[ext_resource type="AudioStream" uid="uid://ccqxt72tfs7xh" path="res://audio/streams/voices/player/hups/hup_8.wav" id="17_r4lw8"]
+[ext_resource type="AudioStream" uid="uid://cxjgdawg2i02r" path="res://audio/streams/voices/player/hups/hup_9.wav" id="18_hhbve"]
+[ext_resource type="AudioStream" uid="uid://chxa831hh5rn7" path="res://audio/streams/voices/player/hups/hup_10.wav" id="19_xssea"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yxu58"]
+streams_count = 18
+random_pitch = 1.15
+stream_0/stream = ExtResource("2_ltik2")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_6ae3o")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("12_bjjyo")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("13_pg18w")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("14_gh54w")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("15_gisw4")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("16_854b0")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("17_r4lw8")
+stream_7/weight = 1.0
+stream_8/stream = ExtResource("18_hhbve")
+stream_8/weight = 1.0
+stream_9/stream = ExtResource("19_xssea")
+stream_9/weight = 1.0
+stream_10/stream = ExtResource("4_tvufw")
+stream_10/weight = 1.0
+stream_11/stream = ExtResource("5_lnrhu")
+stream_11/weight = 1.0
+stream_12/stream = ExtResource("6_2r6q6")
+stream_12/weight = 1.0
+stream_13/stream = ExtResource("7_faeet")
+stream_13/weight = 1.0
+stream_14/stream = ExtResource("8_phu5y")
+stream_14/weight = 1.0
+stream_15/stream = ExtResource("9_y5n02")
+stream_15/weight = 1.0
+stream_16/stream = ExtResource("10_4nlgq")
+stream_16/weight = 1.0
+stream_17/stream = ExtResource("11_8wl43")
+stream_17/weight = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2aq05"]
 radius = 0.49
@@ -42,6 +100,7 @@ speed = 15.0
 acceleration = 50.0
 jump_height = 2.2
 camera_sens = 12.0
+jump_stream = SubResource("AudioStreamRandomizer_yxu58")
 
 [node name="PlayerHitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_2aq05")

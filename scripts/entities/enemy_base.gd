@@ -256,12 +256,22 @@ func check_path_staleness() -> bool:
 
 
 func check_attack_readiness() -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(
+			global_position, 
+			current_targets[-1].global_position, 
+			collision_mask,
+	)
+	var hit := space_state.intersect_ray(query)
+	
 	return (
 			current_targets[-1].global_position.distance_squared_to(global_position) 
 			< melee_range_squared or (
-					state_timer >= attack_interval + randf() 
-					and current_targets[-1].global_position.distance_squared_to(global_position)
-					< attack_range_squared
+					state_timer >= attack_interval + randf() and 
+					current_targets[-1].global_position.distance_squared_to(global_position)
+					< attack_range_squared and
+					hit and 
+					hit.collider is Player
 			)
 		) #and sight_line.get_collider() == current_target:
 

@@ -380,7 +380,7 @@ radius = 16.0
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.15, -0.5, -0.25)
 
 [node name="AKM" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00982801, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00560361, 0)
 layers = 4
 cast_shadow = 0
 mesh = ExtResource("1_srb21")
@@ -415,6 +415,7 @@ omni_shadow_mode = 0
 
 [node name="ShellEject" type="GPUParticles3D" parent="AKM"]
 transform = Transform3D(0.866025, -5.85622e-09, -0.5, -0.5, -2.18557e-08, -0.866025, -5.85621e-09, 1, -2.18557e-08, 0, 0.25, 0.25)
+visible = false
 layers = 4
 emitting = false
 amount = 5

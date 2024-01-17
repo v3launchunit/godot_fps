@@ -17,6 +17,10 @@ class_name Player extends CharacterBody3D
 @export var sway_height: float = 0.3
 @export var jump_sway: float = 0.01
 
+@export_group("Sounds")
+@export var interact_stream: AudioStream
+@export var jump_stream: AudioStream
+
 var jumping: bool = false
 static var mouse_captured: bool = false
 
@@ -36,7 +40,7 @@ var sway_timer: float = PI/2
 
 @onready var camera: Camera3D = $PlayerCam
 @onready var interact_scan: RayCast3D = $PlayerCam/Interact
-@onready var interact_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	capture_mouse()
@@ -44,6 +48,8 @@ func _ready() -> void:
 	
 func _process(_delta) -> void:
 	if Input.is_action_pressed("jump") and is_on_floor(): 
+		stream_player.stream = jump_stream
+		stream_player.play()
 		jumping = true
 	
 	if reorienting:
@@ -66,7 +72,8 @@ func _process(_delta) -> void:
 			interact_scan.is_colliding() and
 			interact_scan.get_collider().has_method("interact")
 	):
-		interact_stream_player.play()
+		stream_player.stream = interact_stream
+		stream_player.play()
 		interact_scan.get_collider().interact(self)
 	
 	if Input.is_action_just_pressed("quick_restart"):

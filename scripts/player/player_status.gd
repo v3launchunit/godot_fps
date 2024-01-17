@@ -4,6 +4,7 @@ class_name PlayerStatus extends Status
 
 @export var max_armor: float = 100
 @export_range(0, 1, 0.01) var armor_absorption := 0.5
+@export var injury_sound: AudioStream
 
 var armor: float
 var held_keys: Array[bool] = [false, false, false]
