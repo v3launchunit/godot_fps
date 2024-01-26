@@ -1,7 +1,8 @@
-[gd_scene load_steps=149 format=3 uid="uid://ddybwy4hdo2q3"]
+[gd_scene load_steps=151 format=3 uid="uid://ddybwy4hdo2q3"]
 
 [ext_resource type="PackedScene" uid="uid://c63k27ek72d3d" path="res://scenes/entities/player.tscn" id="1_y76j7"]
 [ext_resource type="Texture2D" uid="uid://c8k3lo0nolynw" path="res://textures/terrain/trench_broom/bricks.png" id="2_7jjft"]
+[ext_resource type="Script" path="res://scripts/effects/env_settings_hook.gd" id="3_3e2p7"]
 [ext_resource type="ArrayOccluder3D" uid="uid://de24am4sbu2ce" path="res://scenes/levels/test_level/test_level.occ" id="3_3m5x1"]
 [ext_resource type="Texture2D" uid="uid://cwfs3yd67cdxg" path="res://textures/terrain/bricks/bricks_heights.png" id="3_h0mpp"]
 [ext_resource type="Texture2D" uid="uid://d0airnxbjud3t" path="res://textures/terrain/bricks/bricks_normals.png" id="4_l7ysy"]
@@ -31,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://ce2yor24rivr3" path="res://scenes/pickups/weapons/nailgun_pickup.tscn" id="28_xbcgv"]
 [ext_resource type="PackedScene" uid="uid://dakry3wmqjckc" path="res://scenes/pickups/weapons/crossbow_pickup.tscn" id="30_o7cbw"]
 [ext_resource type="CompressedTexture3D" uid="uid://cbk1h1yxquuv1" path="res://scenes/levels/test_level/test_level.GPUParticlesCollisionSDF3D_data.exr" id="31_rvbgk"]
+[ext_resource type="PackedScene" uid="uid://dxyhvyy821swt" path="res://scenes/pickups/weapons/hunting_rifle_pickup.tscn" id="31_vh5l7"]
 [ext_resource type="Shader" uid="uid://dyecxfl8r46aq" path="res://shaders/lens_flare_halo.tres" id="32_3d00j"]
 [ext_resource type="PackedScene" uid="uid://7e6nf0ho2ltr" path="res://scenes/objects/teleporter.tscn" id="32_ww2oq"]
 [ext_resource type="Script" path="res://scripts/entities/ambush.gd" id="33_2reti"]
@@ -709,6 +711,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("17_74lb7")
+script = ExtResource("3_3e2p7")
 
 [node name="ParticleCollider" type="GPUParticlesCollisionSDF3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -16)
@@ -1071,10 +1074,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -10)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -6)
 
 [node name="NailgunPickup" parent="Things/Pickups" instance=ExtResource("28_xbcgv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, -5)
 
 [node name="CrossbowPickup" parent="Things/Pickups" instance=ExtResource("30_o7cbw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3)
+
+[node name="HuntingRiflePickup" parent="Things/Pickups" instance=ExtResource("31_vh5l7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, -6)
 
 [node name="Particles" type="Node" parent="Things"]
 
@@ -1167,7 +1173,6 @@ transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
-visible = false
 material_override = SubResource("StandardMaterial3D_ti0rx")
 amount = 32
 process_material = SubResource("ParticleProcessMaterial_minwl")

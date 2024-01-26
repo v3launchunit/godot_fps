@@ -38,6 +38,6 @@ detail_mask = ExtResource("2_05n67")
 detail_blend_mode = 3
 detail_albedo = SubResource("NoiseTexture2D_yxgvw")
 detail_normal = ExtResource("3_hvwek")
-uv1_scale = Vector3(0.008, 0.008, 0.008)
+uv1_scale = Vector3(0.0078125, 0.0078125, 0.0078125)
 uv1_world_triplanar = true
 texture_filter = 0

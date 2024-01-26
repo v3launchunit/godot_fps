@@ -1,44 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://wfllsui4k1if"]
 
+[ext_resource type="Script" path="res://scripts/entities/player/player_gibs.gd" id="1_05c88"]
 [ext_resource type="Script" path="res://scripts/auto_play.gd" id="1_x8wn6"]
 [ext_resource type="Texture2D" uid="uid://cmq3arf61ax4f" path="res://textures/ui/menu_panel.png" id="2_t0aun"]
-
-[sub_resource type="GDScript" id="GDScript_1rvy2"]
-script/source = "extends Node3D
-
-@export_range(0.1, 30.0, 0.1, \"or_greater\") var camera_sens: float = 12
-
-var look_dir: Vector2 # Input direction for look/aim
-
-@onready var body: Node3D = $Node3D
-@onready var camera: Camera3D = $Node3D/Camera3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	camera.fov = Globals.s_fov_desired
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	Engine.time_scale = move_toward(Engine.time_scale, 0.0, delta * 0.05)
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		look_dir = event.relative * 0.001
-		_rotate_camera(camera_sens)
-	else:
-		get_tree().reload_current_scene()
-		Engine.time_scale = 1.0
-		queue_free()
-
-
-func _rotate_camera(sens_mod: float = 1.0) -> void:
-#	print(camera.rotation)
-	body.rotation.y -= look_dir.x * camera_sens * sens_mod
-	camera.rotation.x -= look_dir.y * camera_sens * sens_mod
-"
 
 [sub_resource type="Animation" id="Animation_5qn3g"]
 resource_name = "anim"
@@ -89,8 +53,8 @@ shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.12549)
 shadow_offset = Vector2(0, 1)
 
-[node name="PlayerGibs" type="Node3D"]
-script = SubResource("GDScript_1rvy2")
+[node name="PlayerGibs" type="Node3D" groups=["player_cam"]]
+script = ExtResource("1_05c88")
 
 [node name="Node3D" type="Node3D" parent="."]
 

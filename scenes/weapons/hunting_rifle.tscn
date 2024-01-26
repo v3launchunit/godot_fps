@@ -1,0 +1,474 @@
+[gd_scene load_steps=36 format=3 uid="uid://bsjlv88juhpn5"]
+
+[ext_resource type="PackedScene" uid="uid://ewr07g72fjaa" path="res://models/weapons/hunting_rifle.glb" id="1_2vytj"]
+[ext_resource type="Texture2D" uid="uid://c23vayn4doala" path="res://textures/weapons/big_iron/big_iron_detail_mask.png" id="2_bifsi"]
+[ext_resource type="ArrayMesh" uid="uid://bblg4t73miejx" path="res://models/weapons/muzzle_flash_alt.obj" id="2_jyn3n"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon_rifle.gd" id="2_rovkw"]
+[ext_resource type="Texture2D" uid="uid://ss8r0up4rgsx" path="res://textures/weapons/big_iron/big_iron_metallic.png" id="3_16lpt"]
+[ext_resource type="PackedScene" uid="uid://bf80ik7ckctt6" path="res://scenes/bullets/player/hunting_rifle_bullet.tscn" id="3_m5odq"]
+[ext_resource type="Texture2D" uid="uid://br5tgbkka8rp7" path="res://textures/weapons/big_iron/big_iron_roughness.png" id="4_21mai"]
+[ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="6_tkwec"]
+[ext_resource type="Texture2D" uid="uid://cmq3arf61ax4f" path="res://textures/ui/menu_panel.png" id="7_fhw24"]
+[ext_resource type="AnimationLibrary" uid="uid://c3dmw3a4e8q1c" path="res://scenes/weapons/hunting_rifle_anims.res" id="7_mroe0"]
+
+[sub_resource type="Shader" id="Shader_ojypt"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform float clearcoat : hint_range(0,1);
+uniform float clearcoat_roughness : hint_range(0,1);
+uniform sampler2D texture_clearcoat : hint_default_white,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_albedo : source_color,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_normal : hint_normal,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_mask : hint_default_white,filter_nearest,repeat_enable;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+global uniform float viewmodel_fov;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+
+	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
+	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
+	// modify projection matrix
+	PROJECTION_MATRIX[1][1] = -onetanfov;
+	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
+
+	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
+	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION.z = mix(POSITION.z, 0, 0.99);
+}
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	vec2 clearcoat_tex = texture(texture_clearcoat,base_uv).xy;
+	CLEARCOAT = clearcoat*clearcoat_tex.x;	CLEARCOAT_ROUGHNESS = clearcoat_roughness*clearcoat_tex.y;
+	vec4 detail_tex = texture(texture_detail_albedo,base_uv);
+	vec4 detail_norm_tex = texture(texture_detail_normal,base_uv);
+	vec4 detail_mask_tex = texture(texture_detail_mask,base_uv);
+	vec3 detail = mix(ALBEDO.rgb,detail_tex.rgb,detail_tex.a);
+	vec3 detail_norm = mix(NORMAL_MAP,detail_norm_tex.rgb,detail_tex.a);
+	NORMAL_MAP = mix(NORMAL_MAP,detail_norm,detail_mask_tex.r);
+	ALBEDO.rgb = mix(ALBEDO.rgb,detail,detail_mask_tex.r);
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_v5jf5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.7)
+colors = PackedColorArray(0.278431, 0.172549, 0.0470588, 1, 0.341176, 0.207843, 0.0784314, 1, 0.447059, 0.298039, 0.14902, 1, 0.415686, 0.313726, 0.145098, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q3vr3"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p0187"]
+width = 128
+height = 32
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="Gradient" id="Gradient_daxxy"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2rron"]
+gradient = SubResource("Gradient_daxxy")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1wj7s"]
+width = 128
+height = 32
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bt3r6"]
+render_priority = 0
+shader = SubResource("Shader_ojypt")
+shader_parameter/albedo = Color(0.501961, 0.501961, 0.501961, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.25
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_metallic = ExtResource("3_16lpt")
+shader_parameter/texture_roughness = ExtResource("4_21mai")
+shader_parameter/texture_clearcoat = ExtResource("2_bifsi")
+shader_parameter/texture_detail_albedo = SubResource("NoiseTexture2D_p0187")
+shader_parameter/texture_detail_normal = SubResource("NoiseTexture2D_1wj7s")
+shader_parameter/texture_detail_mask = SubResource("GradientTexture1D_2rron")
+
+[sub_resource type="Shader" id="Shader_wcwhh"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+global uniform float viewmodel_fov;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	
+	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
+	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
+	// modify projection matrix
+	PROJECTION_MATRIX[1][1] = -onetanfov;
+	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
+	
+	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
+	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION.z = mix(POSITION.z, 0, 0.99);
+}
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_blho4"]
+render_priority = 0
+shader = SubResource("Shader_wcwhh")
+shader_parameter/albedo = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yq81i"]
+render_priority = 0
+shader = SubResource("Shader_wcwhh")
+shader_parameter/albedo = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Shader" id="Shader_mcad4"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+global uniform float viewmodel_fov;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	
+	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
+	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
+	// modify projection matrix
+	PROJECTION_MATRIX[1][1] = -onetanfov;
+	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
+	
+	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
+	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION.z = mix(POSITION.z, 0, 0.99);
+}
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mbnu"]
+render_priority = 0
+shader = SubResource("Shader_mcad4")
+shader_parameter/albedo = Color(1, 1, 0, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e5j86"]
+animation = &"hunting_rifle_anims/hunting_rifle_charge"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7p0tc"]
+animation = &"hunting_rifle_anims/hunting_rifle_deploy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uirlo"]
+animation = &"hunting_rifle_anims/hunting_rifle_fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5h6dv"]
+animation = &"hunting_rifle_anims/hunting_rifle_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k7jep"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_66ngj"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_psx32"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wkyh6"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_p1jc4"]
+allow_transition_to_self = true
+states/charging/node = SubResource("AnimationNodeAnimation_e5j86")
+states/charging/position = Vector2(358.321, 24.2058)
+states/deploy/node = SubResource("AnimationNodeAnimation_7p0tc")
+states/deploy/position = Vector2(357.333, 156.222)
+states/firing/node = SubResource("AnimationNodeAnimation_uirlo")
+states/firing/position = Vector2(536, 25.2593)
+states/idle/node = SubResource("AnimationNodeAnimation_5h6dv")
+states/idle/position = Vector2(536.444, 156.667)
+transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_k7jep"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_66ngj"), "charging", "idle", SubResource("AnimationNodeStateMachineTransition_psx32"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_wkyh6")]
+graph_offset = Vector2(-58, -1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tgx3e"]
+radius = 16.0
+
+[sub_resource type="Animation" id="Animation_c5vnn"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hunting_rifle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hunting_rifle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hunting_rifle/Bolt")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0.1, 0.85)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hunting_rifle/Bolt")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, -0.866025, 0.5)
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("hunting_rifle/Spawner/MuzzleFlash:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("hunting_rifle/AlertRadius:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3k0yj"]
+_data = {
+"RESET": SubResource("Animation_c5vnn")
+}
+
+[node name="HuntingRifle" type="Node3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.125, 0, -0.15, -0.35)
+
+[node name="hunting_rifle" parent="." instance=ExtResource("1_2vytj")]
+script = ExtResource("2_rovkw")
+_charge_delay = 0.75
+category = 3
+index = 1
+bullet = ExtResource("3_m5odq")
+shot_cooldown = 1.2
+ammo_type = "big_iron_bullets"
+
+[node name="Body" parent="hunting_rifle" index="0"]
+material_override = SubResource("ShaderMaterial_bt3r6")
+
+[node name="Barrel" parent="hunting_rifle" index="1"]
+material_override = SubResource("ShaderMaterial_blho4")
+
+[node name="Bolt" parent="hunting_rifle" index="2"]
+transform = Transform3D(-0.499999, 0.866025, 0, -0.866025, -0.499999, 0, 0, 0, 2, 0, 0.1, 0.85)
+material_override = SubResource("ShaderMaterial_yq81i")
+
+[node name="Spawner" type="Marker3D" parent="hunting_rifle"]
+transform = Transform3D(-1, 0, -3.01992e-07, 0, 1, 0, 1.50996e-07, 0, -2, -3.54062e-07, 0.102407, -2.4)
+
+[node name="MuzzleFlash" type="MeshInstance3D" parent="hunting_rifle/Spawner"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 4.23193e-06, -0.000249945, 0.000486732)
+visible = false
+layers = 4
+material_override = SubResource("ShaderMaterial_4mbnu")
+cast_shadow = 0
+mesh = ExtResource("2_jyn3n")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="hunting_rifle/Spawner/MuzzleFlash"]
+layers = 4
+light_color = Color(1, 1, 0, 1)
+light_energy = 0.0
+shadow_enabled = true
+omni_range = 10.0
+omni_shadow_mode = 0
+
+[node name="AnimationTree" type="AnimationTree" parent="hunting_rifle"]
+tree_root = SubResource("AnimationNodeStateMachine_p1jc4")
+anim_player = NodePath("../../AnimationPlayer")
+active = true
+
+[node name="AlertRadius" type="Area3D" parent="hunting_rifle"]
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+script = ExtResource("6_tkwec")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hunting_rifle/AlertRadius"]
+shape = SubResource("SphereShape3D_tgx3e")
+
+[node name="Label" type="Label" parent="hunting_rifle"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -74.0
+offset_right = -10.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "1"
+horizontal_alignment = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="hunting_rifle/Label"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -8.0
+offset_top = -14.0
+offset_right = 18.0
+offset_bottom = 74.0
+grow_horizontal = 2
+texture = ExtResource("7_fhw24")
+patch_margin_left = 4
+patch_margin_top = 16
+patch_margin_right = 4
+patch_margin_bottom = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3k0yj"),
+"hunting_rifle_anims": ExtResource("7_mroe0")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 5
+bus = &"Weapons"
+
+[editable path="hunting_rifle"]

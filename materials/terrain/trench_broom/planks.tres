@@ -48,6 +48,6 @@ detail_mask = SubResource("GradientTexture2D_hwec1")
 detail_uv_layer = 1
 detail_albedo = SubResource("NoiseTexture2D_qtiay")
 detail_normal = ExtResource("2_ruk8d")
-uv1_scale = Vector3(0.008, 0.008, 0.008)
+uv1_scale = Vector3(0.0078125, 0.0078125, 0.0078125)
 uv1_world_triplanar = true
 texture_filter = 0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://cprbuapjccc8b"]
+[gd_scene load_steps=25 format=3 uid="uid://cprbuapjccc8b"]
 
 [ext_resource type="PackedScene" uid="uid://b4rf5i4ramo71" path="res://models/weapons/nailgun.glb" id="1_e18ie"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_double_barrel.gd" id="2_3wn8a"]
 [ext_resource type="AnimationLibrary" uid="uid://clbhlm2virvf0" path="res://models/weapons/nailgun_anims.res" id="3_8tsnk"]
 [ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_kb333"]
+[ext_resource type="PackedScene" uid="uid://dhplxq8nkqau3" path="res://scenes/bullets/player/nail.tscn" id="3_v6ia4"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="4_xgkgl"]
 
 [sub_resource type="Shader" id="Shader_wcwhh"]
@@ -308,11 +309,11 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
 [node name="Nailgun" parent="." instance=ExtResource("1_e18ie")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 3.61861e-06, 0)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.00929194, 0)
 script = ExtResource("2_3wn8a")
 category = 2
 index = 1
-bullet = "res://scenes/bullets/player/nail.tscn"
+bullet = ExtResource("3_v6ia4")
 shot_cooldown = 0.15
 ammo_type = "nails"
 anti_clip_distance = 0.25
@@ -403,5 +404,6 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Weapons"
 
 [editable path="Nailgun"]

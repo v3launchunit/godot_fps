@@ -28,5 +28,5 @@ heightmap_scale = 1.0
 heightmap_texture = ExtResource("1_b65qf")
 detail_blend_mode = 1
 detail_albedo = SubResource("NoiseTexture2D_utime")
-uv1_scale = Vector3(0.008, 0.008, 0.008)
+uv1_scale = Vector3(0.0078125, 0.0078125, 0.0078125)
 texture_filter = 0

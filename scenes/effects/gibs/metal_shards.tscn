@@ -53,3 +53,5 @@ script = ExtResource("2_r6u15")
 stream = SubResource("AudioStreamRandomizer_vvpnn")
 volume_db = -10.0
 autoplay = true
+bus = &"Combat"
+doppler_tracking = 2

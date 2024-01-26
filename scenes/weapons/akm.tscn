@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://xpo774l18flk"]
+[gd_scene load_steps=37 format=3 uid="uid://xpo774l18flk"]
 
 [ext_resource type="ArrayMesh" uid="uid://53jffpg6vhkj" path="res://models/weapons/akm.obj" id="1_srb21"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_base.gd" id="2_aqwyy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dre07gr8t1lp2" path="res://textures/weapons/akm/akm_roughness.png" id="4_7ifif"]
 [ext_resource type="Script" path="res://scripts/weapons/scope.gd" id="4_uav1m"]
 [ext_resource type="AnimationLibrary" uid="uid://dvna0xeatmq0y" path="res://scenes/weapons/anims.res" id="5_q7x1e"]
+[ext_resource type="PackedScene" uid="uid://cwytbvgvgmk00" path="res://scenes/bullets/player/akm_bullet.tscn" id="6_15eot"]
 [ext_resource type="AnimationLibrary" uid="uid://pyw3ltt10q24" path="res://scenes/weapons/akm_anims.res" id="6_w4nrh"]
 [ext_resource type="AnimationLibrary" uid="uid://byhlw1uu73dbf" path="res://scenes/weapons/shotgun_anims.res" id="7_bs841"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="8_ehvva"]
@@ -42,13 +43,13 @@ global uniform float viewmodel_fov;
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	
+
 	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
 	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
 	// modify projection matrix
 	PROJECTION_MATRIX[1][1] = -onetanfov;
 	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-	
+
 	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
 	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
 	POSITION.z = mix(POSITION.z, 0, 0.99);
@@ -285,13 +286,13 @@ global uniform float viewmodel_fov;
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	
+
 	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
 	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
 	// modify projection matrix
 	PROJECTION_MATRIX[1][1] = -onetanfov;
 	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-	
+
 	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
 	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
 	POSITION.z = mix(POSITION.z, 0, 0.99);
@@ -380,7 +381,7 @@ radius = 16.0
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.15, -0.5, -0.25)
 
 [node name="AKM" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00560361, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00111856, 0)
 layers = 4
 cast_shadow = 0
 mesh = ExtResource("1_srb21")
@@ -388,7 +389,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_tonrh")
 surface_material_override/1 = SubResource("ShaderMaterial_rw8l1")
 script = ExtResource("2_aqwyy")
 category = 2
-bullet = "res://scenes/bullets/player/akm_bullet.tscn"
+bullet = ExtResource("6_15eot")
 shot_cooldown = 0.08
 spread = 2.5
 ammo_type = "akm_bullets"
@@ -451,3 +452,4 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -5.0
+bus = &"Weapons"

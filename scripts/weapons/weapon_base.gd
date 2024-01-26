@@ -4,18 +4,35 @@ class_name WeaponBase extends Node3D
 signal hud_connected(category: int, index: int, ammo_type: String, alt_ammo_type: String)
 
 @export_category("Weapon")
-
+## The category where this weapon is stored. Categories 0-6 correspond to the
+## top-row number keys 1-7.
 @export_range(0, 6, 1) var category: int = 0
+## The position this weapon inhabits within its category. Affects the order in
+## which weapons are selected.
 @export var index: int = 0
 
-@export_file("*.tscn") var bullet: String
-@export_range(0, 3, 0.01) var shot_cooldown: float = 1.0 # seconds
+## The scene that is instantiated when this weapon is fired.
+@export var bullet: PackedScene
+## The time, in seconds, that the player must wait after firing this weapon
+## before they can fire it again.
+@export_range(0, 3, 0.01) var shot_cooldown: float = 1.0
+## The number of projectiles that should be instantiated per shot.
 @export_range(1, 50, 1) var volley: int = 1
+## The maximum horizontal offset of the fired projectile(s), in degrees.
+## Vertical spread is half this.
 @export_range(0, 90) var spread: float = 0.0
+## The amount of force that will be imparted onto the player when this weapon is
+## fired.
 @export var recoil: float = 0.0
 
+## The name of the ammo pool this weapon draws from in order to fire.
 @export var ammo_type: String = "none"
+## The amount of ammo consumed per shot.
 @export var ammo_cost: int = 1
+## If use_safety_catch is enabled, when the player switches to this weapon while
+## holding the "fire" button, they will be prevented from firing until the
+## "fire" button is released, so as to not waste ammo and/or blow onself up with
+## an explosive weapon in close quarters.
 @export var use_safety_catch: bool = true
 
 @export var anti_clip_distance: float = 0
@@ -24,9 +41,9 @@ var active: bool = true
 var cooldown_timer: float = 0.0 # seconds
 var refire_penalty: float = 0.0
 var safety_catch_active: bool = false
+var hud: Control
 
 @onready var spawner = find_child("Spawner")
-@onready var bullet_scene: PackedScene = load(bullet)
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 @onready var manager: WeaponManager = get_parent().get_parent()
 @onready var eject_sys: GPUParticles3D = find_child("ShellEject")
@@ -36,7 +53,8 @@ var safety_catch_active: bool = false
 func _ready() -> void:
 #	bullet_scene = load(bullet)
 	manager.switched_weapons.connect(_on_player_cam_switched_weapons)
-	hud_connected.connect(manager.find_child("HUD")._on_weapon_hud_connected)
+	hud = find_parent("Player").find_child("HUD")
+	hud_connected.connect(hud._on_weapon_hud_connected)
 #	hud_connected.emit(ammo_type, "none")
 #	recoiled.connect(p.get_parent().get_script().apply_knockback)
 	state_machine.start("deploy", true)
@@ -46,19 +64,19 @@ func _ready() -> void:
 func _process(delta) -> void:
 	if cooldown_timer > 0:
 		cooldown_timer -= delta
-	
+
 	if refire_penalty > 0:
 		refire_penalty -= delta
-	
+
 	if (
-			active and 
-			(not safety_catch_active) and 
-			Input.is_action_pressed("weapon_fire_main") and 
-			cooldown_timer <= 0 and 
+			active and
+			(not safety_catch_active) and
+			Input.is_action_pressed("weapon_fire_main") and
+			cooldown_timer <= 0 and
 			manager.has_ammo(ammo_type, ammo_cost)
 	):
 		_fire()
-	
+
 	if safety_catch_active and not Input.is_action_pressed("weapon_fire_main"):
 		safety_catch_active = false
 
@@ -95,24 +113,26 @@ func _fire() -> void:
 #			spawner.rotate_y(PI)
 #		else:
 		global_rotation = base_rotation
-		spawner.global_rotation = spawner_base_rotation
+		spawner.global_rotation = manager.global_rotation
 		rotate_y(deg_to_rad(randf_range(-spread/2, spread/2) * refire_penalty))
 		rotate_x(deg_to_rad(randf_range(-spread/4, spread/4) * refire_penalty))
 		refire_penalty = 1.0
-		
-		var instance = bullet_scene.instantiate()
+
+		var instance = bullet.instantiate()
 		spawner.add_child(instance)
-		instance.reparent(get_tree().root)
-		instance.invoker = manager.get_parent_node_3d()
-		
+		if instance is Hitscan:
+			instance.query_origin = manager.global_position
+		instance.reparent(get_tree().root.get_child(2))
+		instance.invoker = manager.find_parent("Player")
+
 	global_rotation = base_rotation
 	spawner.global_rotation = spawner_base_rotation
-	
+
 	if recoil != 0:
 #		recoiled.emit(Vector3.BACK * recoil)
 		var p: Player = find_parent("Player")
 		p.apply_knockback(recoil * get_global_transform().basis.z * -1)
-	
+
 	cooldown_timer = shot_cooldown
 	if eject_sys != null:
 		eject_sys.emit_particle(eject_sys.transform, transform.basis.z * Vector3.LEFT, \

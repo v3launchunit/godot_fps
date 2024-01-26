@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bimc4ufk5hicg"]
+[gd_scene load_steps=46 format=3 uid="uid://bimc4ufk5hicg"]
 
 [ext_resource type="ArrayMesh" uid="uid://cgahp1theduxt" path="res://models/weapons/pump_shotgun.obj" id="1_ejui6"]
 [ext_resource type="Texture2D" uid="uid://crih0rgk10al6" path="res://textures/weapons/pump_shotgun/shotgun_detail_mask.png" id="2_1omhy"]
@@ -7,6 +7,8 @@
 [ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_8b28n"]
 [ext_resource type="Texture2D" uid="uid://blae7355fr3lo" path="res://textures/weapons/pump_shotgun/shotgun_roughness.png" id="4_vaanv"]
 [ext_resource type="AnimationLibrary" uid="uid://byhlw1uu73dbf" path="res://scenes/weapons/shotgun_anims.res" id="5_eekxh"]
+[ext_resource type="PackedScene" uid="uid://rchnjnxfhuga" path="res://scenes/bullets/player/grenade.tscn" id="6_upi5a"]
+[ext_resource type="PackedScene" uid="uid://d4mp4mj8p46h1" path="res://scenes/bullets/player/hitscan_bullet.tscn" id="7_uhak0"]
 [ext_resource type="Texture2D" uid="uid://dbnasmfycrfat" path="res://textures/objects/shotgun_shell/shotgun_shell.png" id="8_xoaa3"]
 [ext_resource type="Texture2D" uid="uid://cxhsqnpu78e2q" path="res://textures/objects/shotgun_shell/shotgun_shell_metallic.png" id="9_2ordl"]
 [ext_resource type="Texture2D" uid="uid://dao3wvs485yhb" path="res://textures/objects/shotgun_shell/shotgun_shell_roughness.png" id="10_iuq6n"]
@@ -563,17 +565,17 @@ _data = {
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.15, -0.25, -0.35)
 
 [node name="PumpShotgun" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00916752, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00234739, 0)
 layers = 4
 material_override = SubResource("ShaderMaterial_758ey")
 cast_shadow = 0
 mesh = ExtResource("1_ejui6")
 script = ExtResource("2_rkwad")
-alt_bullet = "res://scenes/bullets/grenade.tscn"
+alt_bullet = ExtResource("6_upi5a")
 alt_shot_cooldown = 1.25
 alt_ammo_type = "grenades"
 category = 1
-bullet = "res://scenes/bullets/hitscan_bullet.tscn"
+bullet = ExtResource("7_uhak0")
 shot_cooldown = 0.85
 volley = 9
 spread = 5.0
@@ -645,6 +647,7 @@ script = ExtResource("11_gubn0")
 shape = SubResource("SphereShape3D_qjdy1")
 
 [node name="Grip" type="MeshInstance3D" parent="PumpShotgun"]
+cast_shadow = 0
 mesh = ExtResource("11_qkg1t")
 surface_material_override/0 = SubResource("ShaderMaterial_xtwxk")
 surface_material_override/1 = SubResource("ShaderMaterial_eldlo")
@@ -657,3 +660,4 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 max_polyphony = 2
+bus = &"Weapons"

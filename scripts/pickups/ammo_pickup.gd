@@ -12,5 +12,8 @@ func _process(delta: float) -> void:
 
 
 func interact(body: Node3D) -> void:
-	if body.name == "Player" and body.find_child("PlayerCam").add_ammo(ammo_type, ammo_amount):
+	if (
+			body.name == "Player"
+			and body.find_child("PlayerCam").add_ammo(ammo_type, ammo_amount)
+	):
 		picked_up(body)

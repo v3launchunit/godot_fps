@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://beg6173x6vjha"]
+[gd_scene load_steps=20 format=3 uid="uid://beg6173x6vjha"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_8bvgn"]
+[ext_resource type="PackedScene" uid="uid://d2uhwn8vwve4r" path="res://scenes/effects/bullet_impact_purple.tscn" id="2_mcoxo"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="2_vsxx0"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_gm5xy"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="4_4wtc8"]
@@ -94,9 +95,9 @@ max_contacts_reported = 5
 contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_8bvgn")
-speed = -50.0
+speed = 50.0
 damage = 30.0
-explosion = "res://scenes/effects/bullet_impact_purple.tscn"
+explosion = ExtResource("2_mcoxo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)

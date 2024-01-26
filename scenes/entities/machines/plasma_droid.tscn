@@ -299,6 +299,8 @@ speed = 5.0
 knockback_multiplier = 0.0
 wake_up_time = 0.0
 detection_stream = ExtResource("2_duui2")
+attack_interval = 1.5
+attack_range = 64.0
 attack_recovery_time = 1.5
 bullet = ExtResource("3_avpih")
 flinch_chance = 0.0
@@ -323,7 +325,6 @@ layers = 2
 material_override = SubResource("StandardMaterial3D_pvdr6")
 
 [node name="Neck" parent="plasma_droid/Body" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 layers = 2
 material_override = SubResource("StandardMaterial3D_pvdr6")
 
@@ -423,6 +424,8 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+bus = &"Enemies"
+doppler_tracking = 2
 
 [node name="Status" type="Node" parent="."]
 script = ExtResource("2_3ftdv")

@@ -17,9 +17,11 @@ func _physics_process(delta: float) -> void:
 
 func on_body_entered(body: Node3D) -> void:
 #	print("sound heard")
-	if body.has_method("detect_target") and (body.current_targets.is_empty() or \
-			body.current_targets[-1] != get_node(^"../../../..")):
-		body.detect_target(get_node(^"../../../.."))
+	if body.has_method("detect_target") and (
+			body.current_targets.is_empty()
+			or body.current_targets[-1] != find_parent("Player")
+	):
+		body.detect_target(find_parent("Player"))
 #		print("target updated to " + get_node(^"../../../..").name)
 #	print(body is EnemyBase)
 #	if body is EnemyBase:

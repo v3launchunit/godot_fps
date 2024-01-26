@@ -37,6 +37,6 @@ detail_enabled = true
 detail_mask = ExtResource("2_ftx1e")
 detail_blend_mode = 2
 detail_albedo = SubResource("NoiseTexture2D_ecvys")
-uv1_scale = Vector3(0.008, 0.008, 0.008)
+uv1_scale = Vector3(0.0078125, 0.0078125, 0.0078125)
 uv1_world_triplanar = true
 texture_filter = 0

@@ -1,48 +1,94 @@
 class_name EnemyBase extends CharacterBody3D
 
 enum State {
-	AMBUSHING, # Busy spawning in and can't do anything
-	IDLE, # Does not have a target
-	SEARCHING, # Moving towards detected sound and does not have a target
-	PURSUING, # Pursuing target
-	ATTACKING, # Firing at target
-	POST_ATTACKING, # Recovering after firing at target
-	FLINCHING, # Unable to move due to flinching from an attack
-	DEAD, # But not gibbed
+	## Busy spawning in and can't do anything. Meant to prevent the enemy from
+	## instantly targeting the player and ruining all my hard work on the ambush
+	## animations.
+	AMBUSHING,
+	## Does not have a target, or really anything else to do.
+	IDLE,
+	## Moving towards some detected event, but does not have any targets.
+	## [br]Currently unused.
+	SEARCHING,
+	## Pursuing the current target.
+	PURSUING,
+	ATTACKING, ## Firing at target.
+	## Recovering after firing at target. Separate from [enum State.ATTACKING]
+	## for the sake of only needing to keep track of one timer that tracks how
+	## long the node has been in a given state.
+	POST_ATTACKING,
+	## Unable to move due to flinching from an attack.
+	FLINCHING,
+	## Self-explanatory.
+	DEAD,
 }
 
 @export_category("EnemyBase")
 
 @export_group("Movement")
-@export_range(1, 35, 0.1) var speed: float = 10.0 # walk speed, in meters/second
-@export var turning_speed: float = 10.0
-@export_range(10, 400, 1) var acceleration: float = 100.0
+## The base movement speed of this enemy.
+@export_range(1, 35, 0.1, "or_greater") var speed: float = 10.0
+## The speed at which this enemy is able to reorient itself.
+@export_range(1, 35, 0.1, "or_greater") var turning_speed: float = 10.0
+## The rate at which this enemy goes from standing still to moving at full
+## speed.
+@export_range(10, 400, 0.1) var acceleration: float = 100.0
+## An intensity multiplier for incoming knockback.
 @export_range(0, 1, 0.001, "or_greater") var knockback_multiplier: float = 1.0
-@export var knockback_drag: float = 10.0 # How much my knockback velocity decreases each second
-
+## The rate at which the velocity imparted by knockback "decays" towards zero.
+@export var knockback_drag: float = 10.0
+## Self-explanatory.
 @export_range(0.1, 3.0, 0.1) var jump_height: float = 1
 
 @export_group("Detection")
-@export var wake_up_time: float = 3.0 # How many seconds does it take for me to spawn in
+## The delay, in seconds, between this enemy being added to the [SceneTree] and
+## becoming active.
+@export var wake_up_time: float = 3.0
+## The "field of view" of this enemy - essentially, how far away from its
+## current orientation it can spot the player while idle.
 @export_range(0, 360, 1, "radians") var sight_line_sweep_angle: float = PI / 2
-@export_range(0, 10, 0.1, "or_greater") var sight_line_sweep_speed: float = 3 # how many sweeps I do in PI seconds
+## The speed with which this enemy scans for targets, expressed as the number
+## of full sweeps that occur every PI seconds.
+@export_range(0, 10, 0.1, "or_greater") var sight_line_sweep_speed: float = 3
 #@export var enemies: Array[String] = ["Player"]
+## The sound that plays when this enemy first detects a target while idle.
 @export var detection_stream: AudioStream
 
 @export_group("Combat")
-@export_range(0.0, 10.0, 0.01, "or_greater") var attack_interval: float = 3.0 # How many seconds I spend moving between attacks
-@export_range(0.0, 64.0, 0.1, "or_greater") var attack_range: float = 32.0 # Max distance at which I will attack
-@export_range(0.0, 10.0, 0.1, "or_greater") var melee_range: float = 2.0 # Distance at which I don't need to move between attacks
-@export_range(0.0, 1.0, 0.01, "or_greater") var attack_delay: float = 0.5 # How many seconds into my attack animation do I actually fire
-@export_range(0.0, 1.0, 0.01, "or_greater") var attack_recovery_time: float = 0.25 # How long do I wait after firing before I go back to moving
+## The minimum time, in seconds, that this enemy must spend moving before
+## making an attack. The actual interval varies randomly between this value
+## and attack_interval + 1.
+@export_range(0.0, 10.0, 0.01, "or_greater") var attack_interval: float = 3.0
+## The absolute furthest away this enemy can be from its target and still be
+## able to attack.
+@export_range(0.0, 64.0, 0.1, "or_greater") var attack_range: float = 32.0
+## If this enemy's target is within this range, the waiting time from
+## attack_interval will be skipped.
+@export_range(0.0, 10.0, 0.1, "or_greater") var melee_range: float = 2.0
+## The amount of time, in seconds, between when the attack animation begins
+## and the attack's associated projectile(s) actually spawn.
+@export_range(0.0, 1.0, 0.01, "or_greater") var attack_delay: float = 0.5
+## The amount of time after spawning an attack's projectile(s) before this enemy
+## can begin moving again.
+@export_range(0.0, 1.0, 0.01, "or_greater") var attack_recovery_time: float = 0.25
+## The projectile(s) fired when this enemy attacks its target.
 @export var bullet: PackedScene
+## The number of projectiles that should be fired per attack.
 @export var volley: int = 1
+## The maximum horizontal offset of the attack's projectile(s), in degrees.
+## Vertical spread is half this.
 @export_range(0.0, 180.0, 0.1, "degrees") var spread: float = 0.0
+## The enemy's current known targets, in ascending order of priority.
 @export var current_targets: Array[PhysicsBody3D]
 
 @export_group("Damage")
-@export_range(0.0, 1.0) var flinch_chance: float = 0.1
+## The percent chance that this enemy will flinch and stop moving per incoming
+## damage instance (NOT health lost).
+@export_range(0.0, 1.0, 0.001) var flinch_chance: float = 0.1
+## The amount of time after a flinch is triggered before this enemy can begin
+## moving again.
 @export_range(0.0, 10.0, 0.01, "or_greater") var flinch_time: float = 1.0
+## The sound that plays when this enemy dies.
 @export var death_stream: AudioStream
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -50,11 +96,11 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var current_state: State = State.AMBUSHING
 var current_destination: Vector3
 
-var walk_vel: Vector3 = Vector3.ZERO # Walking velocity 
-var safe_walk_vel: Vector3 = Vector3.ZERO
-var grav_vel: Vector3 = Vector3.ZERO # Gravity velocity 
-var jump_vel: Vector3 = Vector3.ZERO # Jumping velocity
-var knockback_vel: Vector3 = Vector3.ZERO # Knockback velocity
+var walk_vel := Vector3.ZERO # Walking velocity
+var safe_walk_vel := Vector3.ZERO
+var grav_vel := Vector3.ZERO # Gravity velocity
+var jump_vel := Vector3.ZERO # Jumping velocity
+var knockback_vel := Vector3.ZERO # Knockback velocity
 
 var state_timer: float = 0 # How long I've been in my current state, in seconds
 
@@ -88,7 +134,10 @@ func _physics_process(delta: float) -> void:
 	match current_state:
 		State.AMBUSHING:
 			if state_timer >= wake_up_time:
-				change_state(State.IDLE)
+				change_state(
+						State.IDLE if current_targets.is_empty()
+						else State.PURSUING
+				)
 		State.IDLE:
 			_scan(delta)
 		State.SEARCHING:
@@ -104,19 +153,19 @@ func _physics_process(delta: float) -> void:
 			_flinch()
 		State.DEAD:
 			pass
-	
+
 	if check_target_validity() and current_targets[-1].get_node("Status").health <= 0:
 		current_targets.pop_back()
-	
+
 	move_and_slide()
 
 
-# In case I need/want to do stuff with state transitions 
+# In case I need/want to do stuff with state transitions
 # (probably where I'll handle animations & shit)
 func change_state(to: State):
 	if current_state == State.DEAD or to == current_state:
 		return
-	
+
 	match current_state:
 		State.AMBUSHING:
 			pass
@@ -134,7 +183,7 @@ func change_state(to: State):
 			pass
 		State.DEAD:
 			pass
-	
+
 	match to:
 		State.AMBUSHING:
 			pass
@@ -158,7 +207,7 @@ func change_state(to: State):
 			audio_player.stream = death_stream
 			audio_player.play()
 			state_machine.travel("dead", true)
-	
+
 	walk_vel = Vector3.ZERO
 	nav_agent.set_velocity(Vector3.ZERO)
 	current_state = to
@@ -167,21 +216,20 @@ func change_state(to: State):
 
 func detect_target(target: PhysicsBody3D) -> void:
 	if not (
-			current_state == State.AMBUSHING 
-			or current_state == State.FLINCHING 
+			current_state == State.AMBUSHING
+			or current_state == State.FLINCHING
 			or current_state == State.DEAD
 	):
-		if current_targets.is_empty():
+		if current_targets.is_empty(): # Only play detect sound if idle
 			audio_player.stream = detection_stream
 			audio_player.play()
 		current_targets.append(target)
-#	print("target detected")
 		if current_state == State.IDLE or current_state == State.SEARCHING:
 			change_state(State.PURSUING)
 
 
 func _scan(_delta) -> void:
-	sight_line.rotation.y = sin(state_timer * sight_line_sweep_speed + randf() / 
+	sight_line.rotation.y = sin(state_timer * sight_line_sweep_speed + randf() /
 			sight_line_sweep_angle * 2) * sight_line_sweep_angle / 2
 	if sight_line.is_colliding() and sight_line.get_collider() is Player:
 		detect_target(sight_line.get_collider())
@@ -194,7 +242,7 @@ func _investigate(delta) -> void:
 		nav_agent.target_position = current_destination
 #	look_at(nav_agent.get_next_path_position())
 #	rotation.x = 0
-	global_rotation.y = lerp_angle(global_rotation.y, 
+	global_rotation.y = lerp_angle(global_rotation.y,
 			sight_line.global_rotation.y, delta * turning_speed)
 	walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
 #	velocity += walk_vel
@@ -213,34 +261,34 @@ func _pursue(delta) -> void:
 #		current_destination = current_target.global_position
 #		change_state(State.SEARCHING)
 #		return
-	
+
 	# Casually approach target
 	if check_target_validity(): # Make sure I actually have a target first
 		if check_path_staleness():
 			nav_agent.target_position = current_targets[-1].global_position
-		
+
 		var next_pos: Vector3 = nav_agent.get_next_path_position()
 		sight_line.look_at(next_pos)
 		global_rotation.y = lerp_angle(
-				global_rotation.y, 
-				sight_line.global_rotation.y, 
+				global_rotation.y,
+				sight_line.global_rotation.y,
 				delta * turning_speed
 		)
 		walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
 		nav_agent.set_velocity(walk_vel)
 #		velocity += safe_walk_vel
-		
+
 		# Decide if it's time to attack my target
 		if check_attack_readiness():
 			_begin_attack()
-		
+
 	else: # Can't pursue a target that doesn't exist
 		change_state(State.IDLE)
-		# Scrapped conditionals to try and make enemies breach obstacles 
+		# Scrapped conditionals to try and make enemies breach obstacles
 		# (might reimplement later idk)
 # 				\
 #				or (sight_line.get_collider().global_position.distance_to(global_position) < 2 \
-#				and sight_line.get_collider().find_child("Status") != null) 
+#				and sight_line.get_collider().find_child("Status") != null)
 
 
 func check_target_validity() -> bool:
@@ -249,31 +297,34 @@ func check_target_validity() -> bool:
 
 func check_path_staleness() -> bool:
 	return (
-			randf() < Globals.C_PATH_RE_EVAL_CHANCE 
+			randf() < Globals.C_PATH_RE_EVAL_CHANCE
 			and nav_agent.target_position.distance_squared_to(
 			current_targets[-1].global_position) > path_re_eval_distance_squared
 		)
 
 
 func check_attack_readiness() -> bool:
+	return (
+			current_targets[-1].global_position.distance_squared_to(global_position)
+			< melee_range_squared or (
+					state_timer >= attack_interval + randf() and
+					current_targets[-1].global_position.distance_squared_to(global_position)
+					< attack_range_squared and
+					can_see_target()
+			)
+		) #and sight_line.get_collider() == current_target:
+
+
+func can_see_target() -> bool:
 	var space_state = get_world_3d().direct_space_state
 	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(
-			global_position, 
-			current_targets[-1].global_position, 
+			global_position,
+			current_targets[-1].global_position,
 			collision_mask,
 	)
 	var hit := space_state.intersect_ray(query)
-	
-	return (
-			current_targets[-1].global_position.distance_squared_to(global_position) 
-			< melee_range_squared or (
-					state_timer >= attack_interval + randf() and 
-					current_targets[-1].global_position.distance_squared_to(global_position)
-					< attack_range_squared and
-					hit and 
-					hit.collider is Player
-			)
-		) #and sight_line.get_collider() == current_target:
+
+	return hit and hit.collider == current_targets[-1]
 
 
 func _begin_attack() -> void:
@@ -297,16 +348,16 @@ func do_attack() -> void:
 		spawner.global_rotation = spawner_base_rotation
 		spawner.rotate_z(deg_to_rad(randf_range(-spread/2, spread/2)))
 		spawner.rotate_y(deg_to_rad(randf_range(-spread/4, spread/4)))
-		
+
 		var instance = bullet.instantiate()
 		spawner.add_child(instance)
 		instance.reparent(get_tree().root)
 		if instance is PhysicsBody3D:
 			instance.add_collision_exception_with(self)
 			add_collision_exception_with(instance)
-		
+
 		instance.invoker = self
-		
+
 #	global_rotation = spawner_base_rotation
 	spawner.global_rotation = spawner_base_rotation
 	change_state(State.POST_ATTACKING)
@@ -315,8 +366,8 @@ func do_attack() -> void:
 func _post_attack(_delta) -> void:
 	if state_timer >= attack_recovery_time:
 		change_state(
-				State.IDLE if current_targets.is_empty() or 
-				current_targets[-1] == null or 
+				State.IDLE if current_targets.is_empty() or
+				current_targets[-1] == null or
 				current_targets[-1].find_child("Status").health <= 0 else State.PURSUING
 		)
 	nav_agent.set_velocity(Vector3.ZERO)

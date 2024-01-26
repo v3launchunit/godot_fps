@@ -100,6 +100,7 @@ distance_fade_enabled = true
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_tq5s8")
 volume_db = 10.0
+bus = &"World"
 doppler_tracking = 2
 
 [node name="TeleportSys" type="GPUParticles3D" parent="."]
@@ -124,6 +125,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Destination"]
 stream = ExtResource("2_tq5s8")
 volume_db = 10.0
+bus = &"World"
 doppler_tracking = 2
 
 [node name="TeleportSys" type="GPUParticles3D" parent="Destination"]

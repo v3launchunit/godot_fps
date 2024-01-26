@@ -4,6 +4,7 @@ var from_alt_barrel: bool = false
 
 @onready var alt_spawner = find_child("AltSpawner")
 
+
 func _deploy(with_safety_catch: bool = true) -> void:
 	visible = true
 	active = true
@@ -14,19 +15,24 @@ func _deploy(with_safety_catch: bool = true) -> void:
 
 
 func _fire() -> void:
+	var spawner_base_rotation = spawner.global_rotation
+	spawner.global_rotation = manager.global_rotation
 	for v in volley:
-		var instance = bullet_scene.instantiate()
+		var instance = bullet.instantiate()
 		if from_alt_barrel:
 			alt_spawner.add_child(instance)
 		else:
 			spawner.add_child(instance)
-		instance.reparent(get_tree().root)
-		instance.invoker = manager.get_parent_node_3d()
-	
+		if instance is Hitscan:
+			instance.query_origin = manager.global_position
+		instance.reparent(get_tree().root.get_child(2))
+		instance.invoker = manager.find_parent("Player")
+	spawner.global_rotation = spawner_base_rotation
+
 	if recoil != 0:
 		var p: Player = find_parent("Player")
 		p.apply_knockback(recoil * get_global_transform().basis.z * -1)
-	
+
 	cooldown_timer = shot_cooldown
 	if eject_sys != null:
 		eject_sys.emit_particle(eject_sys.transform, transform.basis.z * Vector3.LEFT, \

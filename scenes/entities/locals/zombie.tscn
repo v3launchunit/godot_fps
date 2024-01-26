@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://1k3tiy342e76" path="res://audio/streams/voices/canary/death_moan_3.wav" id="9_edxqe"]
 [ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://audio/streams/voices/wilhelm_scream.ogg" id="10_r1wo5"]
 [ext_resource type="PackedScene" uid="uid://fmof3asd7vir" path="res://models/entities/zombie.glb" id="10_srtgb"]
-[ext_resource type="AnimationLibrary" uid="uid://bfcwcy8o6awrr" path="res://scenes/entities/zombie_anims.res" id="11_bwev3"]
+[ext_resource type="AnimationLibrary" uid="uid://bfcwcy8o6awrr" path="res://scenes/entities/locals/zombie_anims.res" id="11_bwev3"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="12_vljf1"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="13_unmri"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="14_jjv6v"]
@@ -416,7 +416,7 @@ bones/17/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/18/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder_002" parent="zombie/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.671029, 0.000102237, -0.741432, 0.186706, 0.967752, 0.16911, 0.717539, -0.251907, 0.64937, -0.355237, -0.871718, 0.202152)
+transform = Transform3D(0.676484, -0.0123215, -0.736355, 0.192802, 0.967951, 0.160929, 0.710772, -0.250836, 0.657179, -0.345004, -0.887514, 0.219211)
 bone_idx = 8
 
 [node name="Spawner" type="Marker3D" parent="zombie/Armature/Skeleton3D/Cylinder_002/Cylinder_002" index="0"]
@@ -457,7 +457,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-bus = &"Speech"
+bus = &"Enemies"
 doppler_tracking = 2
 
 [node name="Status" type="Node" parent="."]

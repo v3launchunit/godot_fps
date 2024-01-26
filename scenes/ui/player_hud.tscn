@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dh4rwigqkk6va"]
+[gd_scene load_steps=32 format=3 uid="uid://dh4rwigqkk6va"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud_handler.gd" id="1_prp1p"]
 [ext_resource type="Texture2D" uid="uid://co2ho6yh415d6" path="res://textures/ui/hud_bar.png" id="2_77nrq"]
@@ -10,11 +10,25 @@
 [ext_resource type="Texture2D" uid="uid://bf3n3tgu6akfw" path="res://textures/ui/weapon_frames_atlas.png" id="6_xihl4"]
 [ext_resource type="PackedScene" uid="uid://dv0a4feruvg2r" path="res://scenes/ui/event.tscn" id="8_8bnt1"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvsq7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p88gi"]
 shader = ExtResource("2_hw7s3")
-shader_parameter/intensity = 4.0
+shader_parameter/intensity = 1.0
 shader_parameter/threshold = 0.9
-shader_parameter/spread = 16
+shader_parameter/spread = 12
+
+[sub_resource type="GDScript" id="GDScript_jd5es"]
+script/source = "extends ColorRect
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	Globals.settings_changed.connect(_on_globals_settings_changed)
+	_on_globals_settings_changed()
+
+
+func _on_globals_settings_changed() -> void:
+	visible = Globals.s_cross_glow_enabled
+"
 
 [sub_resource type="Gradient" id="Gradient_ljioa"]
 offsets = PackedFloat32Array(0.5, 1)
@@ -112,21 +126,15 @@ mouse_filter = 2
 script = ExtResource("1_prp1p")
 event_item = ExtResource("8_8bnt1")
 
+[node name="CrossBloom" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_p88gi")
+mouse_filter = 2
+script = SubResource("GDScript_jd5es")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 max_polyphony = 5
 bus = &"Player"
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_qvsq7")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="Blood" type="TextureRect" parent="."]
 visible = false

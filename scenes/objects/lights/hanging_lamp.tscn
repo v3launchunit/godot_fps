@@ -7,7 +7,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrb5n"]
 shading_mode = 0
-albedo_color = Color(1, 2.01, 1.05, 1)
+albedo_color = Color(3, 2.01, 1.05, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_l8rac"]
 material = SubResource("StandardMaterial3D_wrb5n")
@@ -55,7 +55,6 @@ height = 1.0
 [node name="HangingLamp" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 mesh = SubResource("SphereMesh_l8rac")
-skeleton = NodePath("OmniLight3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(1, 0.67451, 0.34902, 1)

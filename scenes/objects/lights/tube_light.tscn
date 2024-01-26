@@ -135,7 +135,7 @@ mesh = SubResource("CylinderMesh_nuthf")
 skeleton = NodePath("OmniLight3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -0.125, 0.25, 0)
 light_color = Color(1, 0.901961, 0.815686, 1)
 light_energy = 1.875
 light_bake_mode = 1
@@ -157,7 +157,7 @@ script = ExtResource("3_s1nd8")
 color = Color(1, 0.901961, 0.815686, 1)
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, -0.25, 4.37114e-08)
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -0.125, -0.25, 0)
 light_color = Color(1, 0.901961, 0.815686, 1)
 light_energy = 1.875
 light_bake_mode = 1
