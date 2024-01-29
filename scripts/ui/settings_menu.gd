@@ -37,22 +37,22 @@ func _on_other_button_pressed() -> void:
 
 
 func _select_sub_menu(sub_menu: SubMenus) -> void:
-	$SettingsPanel.get_child(current_sub_menu).process_mode = Node.PROCESS_MODE_DISABLED
+	$SettingsPanel.get_child(current_sub_menu).process_mode = PROCESS_MODE_DISABLED
 	$SettingsPanel.get_child(current_sub_menu).hide()
 	current_sub_menu = sub_menu
-	$SettingsPanel.get_child(sub_menu).process_mode = Node.PROCESS_MODE_INHERIT
-	$SettingsPanel.get_child(sub_menu).process_priority = -1
+	$SettingsPanel.get_child(sub_menu).process_mode = PROCESS_MODE_INHERIT
+#	$SettingsPanel.get_child(sub_menu).process_priority = -1
 	$SettingsPanel.get_child(sub_menu).show()
 
 
 func _on_back_button_pressed() -> void:
 	find_parent("GameMenu").close_top_menu()
 	hide()
-	process_mode = Node.PROCESS_MODE_DISABLED
+	process_mode = PROCESS_MODE_DISABLED
 
 
 func _on_menu_closed(menu_layer: int) -> void:
 	if menu_layer <= 2 and is_visible_in_tree():
 		Globals.settings_changed.emit()
 		hide()
-		process_mode = Node.PROCESS_MODE_DISABLED
+		process_mode = PROCESS_MODE_DISABLED

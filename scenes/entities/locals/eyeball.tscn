@@ -581,7 +581,6 @@ spot_angle_attenuation = 5.13242e-05
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 3.0
 path_height_offset = -1.5
-avoidance_enabled = true
 max_speed = 100.0
 use_3d_avoidance = true
 

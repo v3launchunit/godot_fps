@@ -129,6 +129,7 @@ event_item = ExtResource("8_8bnt1")
 [node name="CrossBloom" type="ColorRect" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_p88gi")
+layout_mode = 0
 mouse_filter = 2
 script = SubResource("GDScript_jd5es")
 

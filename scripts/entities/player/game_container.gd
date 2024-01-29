@@ -8,4 +8,4 @@ func _ready() -> void:
 
 
 func _on_globals_settings_changed() -> void:
-	stretch_shrink = Globals.s_stretch_scale / Globals.s_ui_scale
+	stretch_shrink = Globals.s_stretch_scale / floori(Globals.s_ui_scale)

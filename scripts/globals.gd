@@ -17,6 +17,10 @@ const C_EPSILON: float = 0.0001
 ## its current path on a given frame (to prevent lag spikes from everyone
 ## recalculating their paths simultaneously).
 const C_PATH_RE_EVAL_CHANCE: float = 0.1
+## The total number of autoloads. Used so that instantiated scenes are correctly
+## parented to the level scene, and by extension, do not persist between loading
+## new scenes or reloading the current scene.
+const C_AUTOLOAD_COUNT: int = 2
 
 
 # ---------------------------------------------------------------------------- #
@@ -47,14 +51,14 @@ var s_cross_glow_enabled: bool = false
 
 ## The sensitivity multiplier applied to mouse movement with regards to the
 ## first-person camera.
-var s_camera_sensitivity: float = 12
+var s_camera_sensitivity: float = 12.0
 
 ## Self-explanatory.
-var s_master_volume: float = 87
+var s_master_volume: float = 87.0
 ## Self-explanatory.
-var s_sound_volume: float = 100
+var s_sound_volume: float = 100.0
 ## Self-explanatory.
-var s_music_volume: float = 100
+var s_music_volume: float = 100.0
 
 ## Tells scripts to check to see if the game's settings have been changed and
 ## to update any values they need to.

@@ -19,10 +19,11 @@ func _ready() -> void:
 
 
 func _on_trigger_body_entered(_body: Node3D) -> void:
-	var a: Node3D = ambusher.instantiate()
-	add_child(a)
-	a.position += Vector3(0, y_offset, 0)
-	a.reparent(get_parent_node_3d())
-	if auto_target:
-		a.detect_target(_body)
-	queue_free()
+	if _body is Player:
+		var a: Node3D = ambusher.instantiate()
+		add_child(a)
+		a.position += Vector3(0, y_offset, 0)
+		a.reparent(get_parent_node_3d())
+		if auto_target:
+			a.detect_target(_body)
+		queue_free()

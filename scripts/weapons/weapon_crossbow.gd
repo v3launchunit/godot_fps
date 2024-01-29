@@ -54,7 +54,7 @@ func _fire() -> void:
 #			spawner.rotate_y(PI)
 #		else:
 		global_rotation = base_rotation
-		spawner.global_rotation = spawner_base_rotation
+		spawner.global_rotation = manager.global_rotation
 		rotate_y(deg_to_rad(randf_range(-spread/2, spread/2)))
 		rotate_x(deg_to_rad(randf_range(-spread/4, spread/4)))
 

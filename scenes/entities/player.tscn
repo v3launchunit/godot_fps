@@ -151,6 +151,8 @@ ammo_types = {
 "cells": 100,
 "grenades": 25,
 "nails": 100,
+"rockets": 10,
+"sawblades": 15,
 "shells": 50
 }
 
@@ -185,13 +187,11 @@ hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="RayCast3D" type="RayCast3D" parent="SubViewportContainer/SubViewport/PlayerSync/PlayerCam"]
+[node name="Sightline" type="RayCast3D" parent="SubViewportContainer/SubViewport/PlayerSync/PlayerCam"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 target_position = Vector3(0, 0, -1000)
 collision_mask = 61
 hit_from_inside = true
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="ViewmodelAntiClip" type="Area3D" parent="SubViewportContainer/SubViewport/PlayerSync/PlayerCam"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.75)

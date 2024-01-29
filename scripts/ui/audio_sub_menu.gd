@@ -19,21 +19,21 @@ extends VBoxContainer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_master_slider.set_value_no_signal(Globals.s_master_volume)
-	_master_label.text = "%s" % Globals.s_master_volume
+	_master_label.text = "%s%%" % Globals.s_master_volume
 	AudioServer.set_bus_volume_db(
 			_master_bus,
 			percent_to_decibels(Globals.s_master_volume)
 	)
 
 	_sound_slider.set_value_no_signal(Globals.s_sound_volume)
-	_sound_label.text = "%s" % Globals.s_sound_volume
+	_sound_label.text = "%s%%" % Globals.s_sound_volume
 	AudioServer.set_bus_volume_db(
 			_sound_bus,
 			percent_to_decibels(Globals.s_sound_volume)
 	)
 
 	_music_slider.set_value_no_signal(Globals.s_music_volume)
-	_music_label.text = "%s" % Globals.s_music_volume
+	_music_label.text = "%s%%" % Globals.s_music_volume
 	AudioServer.set_bus_volume_db(
 			_music_bus,
 			percent_to_decibels(Globals.s_music_volume)

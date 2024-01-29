@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://nb7gtaflp4vs"]
+[gd_scene load_steps=24 format=3 uid="uid://nb7gtaflp4vs"]
 
 [ext_resource type="Texture2D" uid="uid://bsnabwad52kba" path="res://textures/terrain/log/log_heights.png" id="1_02xje"]
+[ext_resource type="Material" uid="uid://08yqplf2icxd" path="res://materials/effects/fire_halo.tres" id="2_m1aex"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="3_pjche"]
 
 [sub_resource type="Gradient" id="Gradient_v5jf5"]
@@ -93,32 +94,6 @@ vertex_color_use_as_albedo = true
 material = SubResource("StandardMaterial3D_6ruwr")
 size = Vector3(0.0625, 0.0625, 0.0625)
 
-[sub_resource type="Gradient" id="Gradient_qignl"]
-interpolation_mode = 2
-colors = PackedColorArray(2, 1, 0, 1, 0.501961, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_e4458"]
-gradient = SubResource("Gradient_qignl")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_najg3"]
-resource_local_to_scene = true
-render_priority = 100
-transparency = 1
-blend_mode = 1
-depth_draw_mode = 2
-no_depth_test = true
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = SubResource("GradientTexture2D_e4458")
-billboard_mode = 1
-fixed_size = true
-proximity_fade_distance = 3.0
-distance_fade_mode = 1
-distance_fade_min_distance = 2.5
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_66wxe"]
 load_path = "res://.godot/imported/halo.png-88068247d44276e09ca924d46b3606d1.s3tc.ctex"
 
@@ -184,7 +159,7 @@ omni_range = 10.0
 
 [node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_najg3")
+material_override = ExtResource("2_m1aex")
 cast_shadow = 0
 visibility_range_end = 90.0
 visibility_range_end_margin = 10.0

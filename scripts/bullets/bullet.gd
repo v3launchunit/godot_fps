@@ -1,4 +1,4 @@
-extends RigidBody3D
+class_name Bullet extends RigidBody3D
 
 @export_category("ProjectileBullet")
 
@@ -26,13 +26,14 @@ var invoker: Node3D
 #@onready var explosion_scene: PackedScene = load(explosion)
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
 	linear_velocity = -speed * global_transform.basis.z.normalized()
 #	add_collision_exception_with(get_node("Player"))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	if piercer and linear_velocity != -speed * global_transform.basis.z.normalized():
 		linear_velocity = -speed * global_transform.basis.z.normalized()
 #	if body_entered:
@@ -40,7 +41,7 @@ func _process(delta):
 #		queue_free()
 
 
-func _on_body_entered(body: Node):
+func _on_body_entered(body: Node) -> void:
 	var exp: Node
 	if explosion != null:
 		exp = explosion.instantiate()

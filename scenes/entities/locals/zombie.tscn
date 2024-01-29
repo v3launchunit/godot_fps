@@ -381,7 +381,6 @@ detection_stream = SubResource("AudioStreamRandomizer_cyl10")
 attack_range = 64.0
 attack_delay = 0.75
 attack_recovery_time = 0.5
-bullet = "res://scenes/bullets/enemy/enemy_fireball.tscn"
 flinch_chance = 0.35
 flinch_time = 0.25
 death_stream = SubResource("AudioStreamRandomizer_hl0u8")
@@ -416,7 +415,7 @@ bones/17/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/18/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder_002" parent="zombie/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.676484, -0.0123215, -0.736355, 0.192802, 0.967951, 0.160929, 0.710772, -0.250836, 0.657179, -0.345004, -0.887514, 0.219211)
+transform = Transform3D(0.571395, 0.0871558, -0.816034, -0.0499905, 0.996195, 0.0713938, 0.819151, -1.05674e-07, 0.573577, -0.430834, -0.80909, -1.32026e-07)
 bone_idx = 8
 
 [node name="Spawner" type="Marker3D" parent="zombie/Armature/Skeleton3D/Cylinder_002/Cylinder_002" index="0"]
@@ -431,7 +430,6 @@ visible = false
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 1.5
 target_desired_distance = 3.0
-avoidance_enabled = true
 height = 2.0
 
 [node name="SightLine" type="RayCast3D" parent="."]

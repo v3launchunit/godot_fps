@@ -54,7 +54,11 @@ func _pursue(delta) -> void:
 				current_targets[-1].global_position) < target_min_distance:
 			walk_vel += jump_height * sight_line.global_transform.basis.z
 
-		nav_agent.set_velocity(walk_vel)
+		if nav_agent.avoidance_enabled:
+			nav_agent.set_velocity(walk_vel)
+		else:
+			velocity += walk_vel
+			move_and_slide()
 
 		# Decide if it's time to attack my target
 		if check_attack_readiness(): #and sight_line.get_collider() == current_target:

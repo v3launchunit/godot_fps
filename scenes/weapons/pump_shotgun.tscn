@@ -565,7 +565,7 @@ _data = {
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.15, -0.25, -0.35)
 
 [node name="PumpShotgun" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00234739, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00328864, 0)
 layers = 4
 material_override = SubResource("ShaderMaterial_758ey")
 cast_shadow = 0
@@ -647,6 +647,7 @@ script = ExtResource("11_gubn0")
 shape = SubResource("SphereShape3D_qjdy1")
 
 [node name="Grip" type="MeshInstance3D" parent="PumpShotgun"]
+layers = 4
 cast_shadow = 0
 mesh = ExtResource("11_qkg1t")
 surface_material_override/0 = SubResource("ShaderMaterial_xtwxk")

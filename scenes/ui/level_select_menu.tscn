@@ -151,6 +151,7 @@ text = "E1M8"
 script = ExtResource("3_4djrb")
 
 [node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E1"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 10
 theme = ExtResource("3_30jf0")
@@ -219,6 +220,7 @@ text = "E2M8"
 script = ExtResource("3_4djrb")
 
 [node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E2"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 10
 theme = ExtResource("3_30jf0")
@@ -287,6 +289,7 @@ text = "E3M8"
 script = ExtResource("3_4djrb")
 
 [node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E3"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 10
 theme = ExtResource("3_30jf0")
@@ -295,6 +298,7 @@ text = "E3MS"
 script = ExtResource("3_4djrb")
 
 [node name="E4" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -355,6 +359,7 @@ text = "E4M8"
 script = ExtResource("3_4djrb")
 
 [node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E4"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 10
 theme = ExtResource("3_30jf0")

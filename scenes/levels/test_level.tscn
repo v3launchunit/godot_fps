@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=3 uid="uid://ddybwy4hdo2q3"]
+[gd_scene load_steps=152 format=3 uid="uid://ddybwy4hdo2q3"]
 
 [ext_resource type="PackedScene" uid="uid://c63k27ek72d3d" path="res://scenes/entities/player.tscn" id="1_y76j7"]
 [ext_resource type="Texture2D" uid="uid://c8k3lo0nolynw" path="res://textures/terrain/trench_broom/bricks.png" id="2_7jjft"]
@@ -36,6 +36,7 @@
 [ext_resource type="Shader" uid="uid://dyecxfl8r46aq" path="res://shaders/lens_flare_halo.tres" id="32_3d00j"]
 [ext_resource type="PackedScene" uid="uid://7e6nf0ho2ltr" path="res://scenes/objects/teleporter.tscn" id="32_ww2oq"]
 [ext_resource type="Script" path="res://scripts/entities/ambush.gd" id="33_2reti"]
+[ext_resource type="PackedScene" uid="uid://df20em4dv0q37" path="res://scenes/pickups/weapons/rpg_pickup.tscn" id="33_3err4"]
 [ext_resource type="Shader" path="res://shaders/depth_test.gdshader" id="33_eelvg"]
 [ext_resource type="PackedScene" uid="uid://bonaseme7rn5f" path="res://scenes/entities/locals/vortigaunt.tscn" id="34_138mm"]
 [ext_resource type="Shader" path="res://shaders/psx_test.gdshader" id="34_rr40p"]
@@ -1081,6 +1082,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3)
 
 [node name="HuntingRiflePickup" parent="Things/Pickups" instance=ExtResource("31_vh5l7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, -6)
+
+[node name="RPGPickup" parent="Things/Pickups" instance=ExtResource("33_3err4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2887, 2.98023e-08, -7.2825)
 
 [node name="Particles" type="Node" parent="Things"]
 

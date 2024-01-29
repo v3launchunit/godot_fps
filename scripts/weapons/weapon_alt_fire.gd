@@ -10,14 +10,14 @@ extends WeaponBase
 @export_range(1, 50, 1) var alt_volley: int = 1
 ## The maximum horizontal offset of the fired projectile(s), in degrees.
 ## Vertical spread is half this.
-@export_range(0, 90) var alt_spread: float = 0.0
+@export_range(0, 90, 0.1) var alt_spread: float = 0.0
 
 @export_group("Ammo")
 ## The name of the ammo pool this weapon draws from in order to fire.
 @export var alt_ammo_type: String = "none"
 @export var alt_ammo_cost: int = 1
 
-@onready var alt_spawner: Node3D = get_node("AltSpawner")
+@onready var alt_spawner: Node3D = find_child("AltSpawner")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

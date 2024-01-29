@@ -165,7 +165,6 @@ offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme = ExtResource("3_sxm1b")
 follow_focus = true
 vertical_scroll_mode = 2
@@ -175,7 +174,6 @@ process_priority = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 2
 theme = ExtResource("3_sxm1b")
 script = ExtResource("4_qf7cu")
 
@@ -487,13 +485,13 @@ offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme = ExtResource("3_sxm1b")
+follow_focus = true
+vertical_scroll_mode = 2
 
 [node name="Audio" type="VBoxContainer" parent="SettingsPanel/AudioScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
-mouse_filter = 2
 theme = ExtResource("3_sxm1b")
 script = ExtResource("5_x8l5s")
 
@@ -506,7 +504,8 @@ theme = ExtResource("3_sxm1b")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 23.0
+offset_right = -20.0
+offset_bottom = 26.0
 grow_horizontal = 2
 theme = ExtResource("3_sxm1b")
 text = "Master Volume"
@@ -520,6 +519,7 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = -8.0
+offset_right = -20.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -532,7 +532,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
+offset_top = -26.0
+offset_right = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_sxm1b")
@@ -552,7 +553,8 @@ theme = ExtResource("3_sxm1b")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 23.0
+offset_right = -20.0
+offset_bottom = 26.0
 grow_horizontal = 2
 theme = ExtResource("3_sxm1b")
 text = "Sound Volume"
@@ -566,6 +568,7 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = -8.0
+offset_right = -20.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -578,7 +581,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
+offset_top = -26.0
+offset_right = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_sxm1b")
@@ -588,6 +592,7 @@ uppercase = true
 
 [node name="SoundPreview" type="AudioStreamPlayer" parent="SettingsPanel/AudioScroll/Audio/Sound"]
 stream = ExtResource("6_rku53")
+bus = &"Sound"
 
 [node name="Music" type="Control" parent="SettingsPanel/AudioScroll/Audio"]
 custom_minimum_size = Vector2(0, 68)
@@ -598,7 +603,8 @@ theme = ExtResource("3_sxm1b")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 23.0
+offset_right = -20.0
+offset_bottom = 26.0
 grow_horizontal = 2
 theme = ExtResource("3_sxm1b")
 text = "Music Volume"
@@ -612,6 +618,7 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = -8.0
+offset_right = -20.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -624,7 +631,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
+offset_top = -26.0
+offset_right = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_sxm1b")
@@ -636,63 +644,48 @@ uppercase = true
 stream = ExtResource("6_rku53")
 bus = &"Music"
 
-[node name="Gameplay" type="Control" parent="SettingsPanel"]
+[node name="GameplayScroll" type="ScrollContainer" parent="SettingsPanel"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Gameplay" type="VBoxContainer" parent="SettingsPanel/GameplayScroll"]
 process_mode = 4
 layout_mode = 2
-anchors_preset = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 24.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
 theme = ExtResource("3_sxm1b")
 
-[node name="Input" type="Control" parent="SettingsPanel"]
-process_mode = 4
+[node name="InputScroll" type="ScrollContainer" parent="SettingsPanel"]
 visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Input" type="VBoxContainer" parent="SettingsPanel/InputScroll"]
+process_mode = 4
 layout_mode = 2
-anchors_preset = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 24.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
 theme = ExtResource("3_sxm1b")
 
-[node name="Accessibility" type="Control" parent="SettingsPanel"]
-process_mode = 4
+[node name="AccessibilityScroll" type="ScrollContainer" parent="SettingsPanel"]
 visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Accessibility" type="VBoxContainer" parent="SettingsPanel/AccessibilityScroll"]
+process_mode = 4
 layout_mode = 2
-anchors_preset = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 24.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
 theme = ExtResource("3_sxm1b")
 
-[node name="Other" type="Control" parent="SettingsPanel"]
-process_mode = 4
+[node name="OtherScroll" type="ScrollContainer" parent="SettingsPanel"]
 visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Other" type="VBoxContainer" parent="SettingsPanel/OtherScroll"]
+process_mode = 4
 layout_mode = 2
-anchors_preset = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 24.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
 theme = ExtResource("3_sxm1b")
 
 [connection signal="pressed" from="VBoxContainer/Video" to="." method="_on_video_button_pressed"]

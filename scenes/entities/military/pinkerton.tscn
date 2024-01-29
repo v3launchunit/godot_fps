@@ -650,7 +650,7 @@ bones/20/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/21/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.128743, -0.400135, 0.907369, 0.954719, -0.297479, 0.00427781, 0.268212, 0.866832, 0.420314, -0.0418581, 0.33443, 0.199471)
+transform = Transform3D(-0.151912, -0.70768, 0.690008, 0.939844, -0.319532, -0.120801, 0.305968, 0.630149, 0.71365, -0.0941592, 0.335863, 0.157678)
 bone_idx = 4
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="0"]
@@ -690,7 +690,7 @@ shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.193114, -0.400135, 1.36105, 1.43208, -0.297479, 0.00641637, 0.402317, 0.866833, 0.630471, -0.0618654, 0.319555, 0.242814)
+transform = Transform3D(-0.227868, -0.707681, 1.03501, 1.40977, -0.319532, -0.181201, 0.458952, 0.630149, 1.07047, -0.129544, 0.319886, 0.189187)
 bone_idx = 5
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D/Cylinder_001" index="0"]
@@ -698,7 +698,7 @@ layers = 2
 material_override = SubResource("StandardMaterial3D_cxecq")
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.986641, 0.129552, 0.0987671, -0.159887, 0.886276, 0.434685, -0.0312205, -0.444669, 0.89515, -0.230824, 0.396017, 0.0641)
+transform = Transform3D(1, 1.49012e-08, -3.57628e-07, 5.96046e-08, -1, 1.19263e-08, -3.57628e-07, -1.19264e-08, -1, -0.4, -1.22, -0.0500002)
 bone_idx = 10
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D/Shotgun" index="0"]
@@ -721,7 +721,7 @@ omni_range = 10.0
 transform = Transform3D(-1.95578e-08, -1, 7.45058e-09, -3.72529e-08, 2.23517e-08, 1, -1, 2.04891e-08, -3.72529e-08, 0, 0.675, -0.135)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.986641, 0.129552, 0.0987671, -0.159887, 0.886276, 0.434685, -0.0312205, -0.444669, 0.89515, -0.230824, 0.396017, 0.0641)
+transform = Transform3D(1, 1.49012e-08, -3.57628e-07, 5.96046e-08, -1, 1.19263e-08, -3.57628e-07, -1.19264e-08, -1, -0.4, -1.22, -0.0500002)
 bone_idx = 11
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D/Pump" index="0"]
@@ -735,7 +735,6 @@ material_override = SubResource("StandardMaterial3D_osars")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 1.5
 target_desired_distance = 3.0
-avoidance_enabled = true
 height = 2.0
 max_speed = 100.0
 

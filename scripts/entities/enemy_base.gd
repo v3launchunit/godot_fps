@@ -138,6 +138,8 @@ func _physics_process(delta: float) -> void:
 						State.IDLE if current_targets.is_empty()
 						else State.PURSUING
 				)
+				if not current_targets.is_empty():
+					detect_target(current_targets[-1])
 		State.IDLE:
 			_scan(delta)
 		State.SEARCHING:
@@ -275,7 +277,10 @@ func _pursue(delta) -> void:
 				delta * turning_speed
 		)
 		walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
-		nav_agent.set_velocity(walk_vel)
+		if nav_agent.avoidance_enabled:
+			nav_agent.set_velocity(walk_vel)
+		else:
+			velocity += walk_vel
 #		velocity += safe_walk_vel
 
 		# Decide if it's time to attack my target
@@ -416,5 +421,6 @@ func _on_status_died() -> void:
 
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
-	velocity += safe_velocity
-	move_and_slide()
+	if nav_agent.avoidance_enabled:
+		velocity += safe_velocity
+		move_and_slide()

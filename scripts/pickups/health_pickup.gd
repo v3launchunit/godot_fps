@@ -14,8 +14,8 @@ func _process(delta: float) -> void:
 
 func interact(body: Node3D) -> void:
 	if body.name == "Player" and body.find_child("Status").heal(
-			heal_amount, 
-			can_overheal, 
+			heal_amount,
+			can_overheal,
 			is_armor_pickup
 	):
 		picked_up(body)

@@ -406,7 +406,6 @@ skeleton = NodePath("../../../CollisionShape3D")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 1.5
 target_desired_distance = 2.0
-avoidance_enabled = true
 
 [node name="SightLine" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -16)
