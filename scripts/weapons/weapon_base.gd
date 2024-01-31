@@ -4,13 +4,8 @@ class_name WeaponBase extends Node3D
 signal hud_connected(category: int, index: int, ammo_type: String, alt_ammo_type: String)
 
 @export_category("Weapon")
-## The category where this weapon is stored. Categories 0-6 correspond to the
-## top-row number keys 1-7.
-@export_range(0, 6, 1) var category: int = 0
-## The position this weapon inhabits within its category. Affects the order in
-## which weapons are selected.
-@export var index: int = 0
 
+@export_group("Primary Fire")
 ## The scene that is instantiated when this weapon is fired.
 @export var bullet: PackedScene
 ## The time, in seconds, that the player must wait after firing this weapon
@@ -25,6 +20,7 @@ signal hud_connected(category: int, index: int, ammo_type: String, alt_ammo_type
 ## fired.
 @export var recoil: float = 0.0
 
+@export_group("Primary Ammo", "ammo_")
 ## The name of the ammo pool this weapon draws from in order to fire.
 @export var ammo_type: String = "none"
 ## The amount of ammo consumed per shot.
@@ -36,6 +32,14 @@ signal hud_connected(category: int, index: int, ammo_type: String, alt_ammo_type
 @export var use_safety_catch: bool = true
 
 @export var anti_clip_distance: float = 0
+
+@export_group("Sorting")
+## The category where this weapon is stored. Categories 0-6 correspond to the
+## top-row number keys 1-7.
+@export_range(0, 6, 1) var category: int = 0
+## The position this weapon inhabits within its category. Affects the order in
+## which weapons are selected.
+@export var index: int = 0
 
 var active: bool = true
 var cooldown_timer: float = 0.0 # seconds
@@ -105,14 +109,14 @@ func _holster() -> void:
 
 
 func _fire() -> void:
-	var base_rotation = global_rotation
-	var spawner_base_rotation = spawner.global_rotation
+	var base_rotation = rotation
+	var spawner_base_rotation = spawner.rotation
 	for v in volley:
 #		if manager.find_child("RayCast3D").is_colliding():
 #			spawner.look_at(manager.find_child("RayCast3D").get_collision_point())
 #			spawner.rotate_y(PI)
 #		else:
-		global_rotation = base_rotation
+		rotation = base_rotation
 		spawner.global_rotation = manager.global_rotation
 		rotate_y(deg_to_rad(randf_range(-spread/2, spread/2) * refire_penalty))
 		rotate_x(deg_to_rad(randf_range(-spread/4, spread/4) * refire_penalty))
@@ -125,8 +129,8 @@ func _fire() -> void:
 		instance.reparent(get_tree().root.get_child(2))
 		instance.invoker = manager.find_parent("Player")
 
-	global_rotation = base_rotation
-	spawner.global_rotation = spawner_base_rotation
+	rotation = base_rotation
+	spawner.rotation = spawner_base_rotation
 
 	if recoil != 0:
 #		recoiled.emit(Vector3.BACK * recoil)

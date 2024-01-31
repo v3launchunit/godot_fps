@@ -200,7 +200,7 @@ pickup_text = "A still-beating heart (+200% bonus health)"
 shape = SubResource("CylinderShape3D_uc2sx")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(0.813742, 0, 0.581226, 0, 1, 0, -0.581226, 0, 0.813742, 0, 0.0172328, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
@@ -223,9 +223,18 @@ color = Color(0, 1, 0, 1)
 transform = Transform3D(0.25, 0, 4.25748e-08, 0, 0.25, 0, -4.25748e-08, 0, 0.25, -0.139497, 0.7, 0.0232516)
 layers = 2
 material_override = SubResource("ShaderMaterial_56y00")
+cast_shadow = 0
 visibility_range_end = 25.0
 visibility_range_end_margin = 5.0
 mesh = ExtResource("5_tvl1v")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Area3D"]
+transform = Transform3D(1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0.75, 0)
+light_color = Color(0, 1, 0, 1)
+light_energy = 2.0
+light_bake_mode = 0
+shadow_enabled = true
+omni_range = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Area3D")

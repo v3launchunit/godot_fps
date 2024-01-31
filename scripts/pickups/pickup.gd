@@ -30,8 +30,8 @@ func picked_up(body: Node) -> void:
 		hud.flash_with_sound(flash_color, pickup_sound)
 	else:
 		hud.flash(flash_color)
-	
+
 	if pickup_text != null and pickup_text != "":
 		hud.log_event(pickup_text)
-	
+
 	queue_free()

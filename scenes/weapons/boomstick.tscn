@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://ct1gr7br07rn4" path="res://textures/weapons/boomstick/boomstick_stock_detail_mask.png" id="5_e71qv"]
 [ext_resource type="Texture2D" uid="uid://whh5ds0hp7ug" path="res://textures/weapons/boomstick/boomstick_stock_metallic.png" id="6_sagf4"]
 [ext_resource type="Texture2D" uid="uid://iboxykf07oin" path="res://textures/weapons/boomstick/boomstick_stock_roughness.png" id="7_q40ik"]
+[ext_resource type="PackedScene" uid="uid://byrs4y4a0drln" path="res://scenes/bullets/player/boomstick_bullet.tscn" id="9_h281q"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="10_khxxt"]
-[ext_resource type="PackedScene" uid="uid://d4mp4mj8p46h1" path="res://scenes/bullets/player/hitscan_bullet.tscn" id="10_u6hun"]
 [ext_resource type="Texture2D" uid="uid://dbnasmfycrfat" path="res://textures/objects/shotgun_shell/shotgun_shell.png" id="12_546ee"]
 [ext_resource type="Texture2D" uid="uid://cxhsqnpu78e2q" path="res://textures/objects/shotgun_shell/shotgun_shell_metallic.png" id="13_6782y"]
 [ext_resource type="Texture2D" uid="uid://dao3wvs485yhb" path="res://textures/objects/shotgun_shell/shotgun_shell_roughness.png" id="14_d028w"]
@@ -447,22 +447,20 @@ radial_segments = 6
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.35, 0)
 
 [node name="Boomstick" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.43105e-05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.37348e-05, 0)
 layers = 4
 cast_shadow = 0
 mesh = ExtResource("1_7e58d")
 surface_material_override/0 = SubResource("ShaderMaterial_ru7kf")
 surface_material_override/1 = SubResource("ShaderMaterial_ewf5o")
 script = ExtResource("2_nf3wy")
-alt_bullet = ExtResource("10_u6hun")
+alt_bullet = ExtResource("9_h281q")
 alt_shot_cooldown = 2.0
 alt_volley = 36
 alt_spread = 30.0
 alt_ammo_type = "shells"
 alt_ammo_cost = 2
-category = 1
-index = 1
-bullet = ExtResource("10_u6hun")
+bullet = ExtResource("9_h281q")
 shot_cooldown = 2.0
 volley = 36
 spread = 30.0
@@ -470,6 +468,8 @@ recoil = 7.5
 ammo_type = "shells"
 ammo_cost = 2
 anti_clip_distance = 1.25
+category = 1
+index = 1
 
 [node name="Spawner" type="Marker3D" parent="Boomstick"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)

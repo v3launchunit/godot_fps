@@ -2443,7 +2443,7 @@ environment = SubResource("Environment_e370e")
 script = ExtResource("3_8cana")
 
 [node name="Player" parent="." instance=ExtResource("9_6tvam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("4_rb2cs")

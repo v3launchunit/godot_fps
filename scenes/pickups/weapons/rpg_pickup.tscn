@@ -85,10 +85,11 @@ collision_layer = 8
 lock_rotation = true
 script = ExtResource("1_2musx")
 weapon = "res://scenes/weapons/rpg.tscn"
-starting_ammo = 3
+starting_ammo = 1
+starting_alt_ammo = 5
 flash_color = Color(1, 1, 0, 1)
 pickup_sound = ExtResource("2_fqxmo")
-pickup_text = "Retrieved an RPG (and 3 rockets)"
+pickup_text = "Retrieved an RPG (and 5 grenades)"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_uc2sx")

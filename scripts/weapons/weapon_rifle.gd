@@ -48,10 +48,12 @@ func _process(delta) -> void:
 
 func _fire() -> void:
 	var base_scale = scale
+#	spread = volley
 	super()
 	scale = base_scale
 
 	volley = 1
+#	spread = 0
 	_label.text = "+0"#"1" if manager.has_ammo(ammo_type, ammo_cost, true) else "0"
 
 

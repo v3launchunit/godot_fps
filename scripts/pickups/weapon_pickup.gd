@@ -10,6 +10,9 @@ extends Pickup
 ## weapon, they are guarenteed to recieve the associated ammunition, regardless
 ## of how much ammo of that type they already possess.
 @export var starting_ammo: int = 0
+## Ditto, but for secondary-fire weapons. Ignored if the weapon is not
+## [WeaponAltFire].
+@export var starting_alt_ammo: int = 0
 
 @onready var weapon_scene: PackedScene = load(weapon)
 
@@ -28,8 +31,14 @@ func interact(body: Node3D) -> void:
 
 		if manager.add_weapon(instance, starting_ammo):
 			manager.force_add_ammo(instance.get_child(0).ammo_type, starting_ammo)
+			if instance.get_child(0) is WeaponAltFire:
+				manager.force_add_ammo(instance.get_child(0).alt_ammo_type, starting_alt_ammo)
 			picked_up(body)
-		elif manager.add_ammo(instance.get_child(0).ammo_type, starting_ammo):
+		elif (
+				manager.add_ammo(instance.get_child(0).ammo_type, starting_ammo)
+				or instance.get_child(0) is WeaponAltFire
+				and manager.add_ammo(instance.get_child(0).alt_ammo_type, starting_alt_ammo)
+		):
 			instance.queue_free()
 			picked_up(body)
 		else:

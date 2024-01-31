@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c63k27ek72d3d"]
+[gd_scene load_steps=44 format=3 uid="uid://c63k27ek72d3d"]
 
 [ext_resource type="Script" path="res://scripts/entities/player/player.gd" id="1_30yaf"]
 [ext_resource type="AudioStream" uid="uid://c7enblvm4yyws" path="res://audio/streams/voices/player/hups/hup_1.wav" id="2_ltik2"]
@@ -30,6 +30,8 @@
 [ext_resource type="Script" path="res://scripts/entities/player/game_container.gd" id="22_xo3e0"]
 [ext_resource type="Script" path="res://scripts/entities/player/flashlight.gd" id="25_we7ax"]
 [ext_resource type="Script" path="res://scripts/entities/player/player_status.gd" id="28_ee1uu"]
+[ext_resource type="Shader" path="res://shaders/cross_bloom.gdshader" id="29_lcani"]
+[ext_resource type="Shader" path="res://shaders/cross_bloom_mesh.gdshader" id="32_knaf5"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ww5sc"]
 streams_count = 1
@@ -80,6 +82,26 @@ stream_17/weight = 1.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2aq05"]
 radius = 0.49
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7t8ki"]
+shader = ExtResource("29_lcani")
+shader_parameter/intensity = 1.0
+shader_parameter/threshold = 0.9
+shader_parameter/spread = 12
+
+[sub_resource type="GDScript" id="GDScript_rb3tb"]
+script/source = "extends ColorRect
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	Globals.settings_changed.connect(_on_globals_settings_changed)
+	_on_globals_settings_changed()
+
+
+func _on_globals_settings_changed() -> void:
+	visible = Globals.s_cross_glow_enabled
+"
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d4n5i"]
 streams_count = 1
 random_pitch = 1.15
@@ -88,6 +110,17 @@ stream_0/weight = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jf2a8"]
 size = Vector3(0.5, 0.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_65bbo"]
+render_priority = 0
+shader = ExtResource("32_knaf5")
+shader_parameter/intensity = 1.0
+shader_parameter/threshold = 0.9
+shader_parameter/spread = 10
+
+[sub_resource type="QuadMesh" id="QuadMesh_5eidy"]
+flip_faces = true
+size = Vector2(2, 2)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_iu3ba"]
 radial_segments = 8
@@ -112,6 +145,17 @@ shape = SubResource("CapsuleShape3D_2aq05")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ww5sc")
 bus = &"Player"
+
+[node name="CrossBloom" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_7t8ki")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = SubResource("GDScript_rb3tb")
 
 [node name="HUD" parent="." instance=ExtResource("6_tw0uv")]
 
@@ -202,6 +246,13 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/PlayerSync/PlayerCam/ViewmodelAntiClip"]
 shape = SubResource("BoxShape3D_jf2a8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/PlayerSync/PlayerCam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1)
+visible = false
+material_override = SubResource("ShaderMaterial_65bbo")
+mesh = SubResource("QuadMesh_5eidy")
+skeleton = NodePath("../../../../..")
 
 [node name="Axe" parent="SubViewportContainer/SubViewport/PlayerSync/PlayerCam" instance=ExtResource("7_wdg6b")]
 

@@ -35,6 +35,7 @@ func _ready():
 		ammo_amounts[key] = 0
 
 	ammo_amounts["shells"] = 15
+	ammo_amounts["grenades"] = 3
 
 #	weapons[current_weapon].deploy
 #	switched_weapons.connect(find_child("HUD")._on_player_cam_switched_weapons)

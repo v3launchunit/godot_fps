@@ -180,13 +180,13 @@ transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.75,
 [node name="rpg" parent="." instance=ExtResource("1_70x0w")]
 script = ExtResource("2_105pf")
 alt_bullet = ExtResource("3_wurbf")
-alt_volley = 4
+alt_volley = 5
 alt_spread = 10.0
 alt_ammo_type = "grenades"
-alt_ammo_cost = 4
-category = 4
+alt_ammo_cost = 5
 bullet = ExtResource("4_1m7jv")
 ammo_type = "rockets"
+category = 4
 
 [node name="tube" parent="rpg" index="0"]
 layers = 4

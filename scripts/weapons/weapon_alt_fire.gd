@@ -1,6 +1,8 @@
-extends WeaponBase
+class_name WeaponAltFire extends WeaponBase
 
 @export_category("AltFire")
+
+@export_group("Secondary Fire", "alt_")
 
 @export var alt_bullet: PackedScene
 ## The time, in seconds, that the player must wait after using this weapon's
@@ -12,7 +14,7 @@ extends WeaponBase
 ## Vertical spread is half this.
 @export_range(0, 90, 0.1) var alt_spread: float = 0.0
 
-@export_group("Ammo")
+@export_group("Secondary Ammo", "alt_ammo_")
 ## The name of the ammo pool this weapon draws from in order to fire.
 @export var alt_ammo_type: String = "none"
 @export var alt_ammo_cost: int = 1
