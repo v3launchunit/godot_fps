@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="1_mlvnr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_21cnm"]
-font_size = 8
 shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.12549)
 shadow_offset = Vector2(0, 1)

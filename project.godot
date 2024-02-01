@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="VolumetricsTest"
-run/main_scene="res://scenes/levels/e1m5_v1.tscn"
-config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+run/main_scene="res://scenes/levels/test_level.tscn"
+config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [audio]
 
 buses/default_bus_layout="res://audio/default_bus_layout.tres"
+
+[autoload]
+
+Globals="*res://scripts/globals.gd"
+GameMenu="*res://scenes/ui/game_menu.tscn"
 
 [display]
 
@@ -26,7 +31,7 @@ window/size/viewport_height=768
 window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
-window/stretch/scale=2.0
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -242,10 +247,6 @@ reflections/main_scene="res://scenes/levels/e1m5_v1.tscn"
 
 [shader_globals]
 
-PI={
-"type": "float",
-"value": 3.142
-}
 viewmodel_fov={
 "type": "float",
 "value": 90.0

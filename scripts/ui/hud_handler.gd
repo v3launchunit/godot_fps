@@ -1,18 +1,21 @@
 extends Control
 
+## The scene that is instantiated when a new event is printed to the in-game
+## event log.
 @export var event_item: PackedScene
-@export var alert_duration: float = 10
+## The time, in seconds, that a screen alert (NOT an event log entry) will
+## remain visible onscreen before being hidden.
+@export var alert_duration: float = 10.0
 
 var current_ammo: String = "none"
 var current_alt_ammo: String = "none"
 var last_category: int = 1
 
-var alert_timer: float = 0
-var active_menus: int = 0
+var alert_timer: float = 0.0
 
-@onready var player: Player = get_parent().get_parent()
-@onready var status: PlayerStatus = get_parent().get_parent().find_child("Status")
-@onready var manager: WeaponManager = get_parent()
+var player: Player
+var status: PlayerStatus
+var manager: WeaponManager
 
 @onready var health_counter: Label = find_child("HealthCounter")
 @onready var ammo_counter: Label = find_child("AmmoCounter")
@@ -21,17 +24,18 @@ var active_menus: int = 0
 
 @onready var keys: Array[Node] = $KeysContainer.get_children()
 @onready var weapons: Array[Node] = $WeaponsContainer.get_children()
-@onready var crosshairs: TextureRect = $Crosshairs
-@onready var pause_menu: Control = $Menu
+@onready var crosshairs: TextureRect = find_child("Crosshairs") as TextureRect
+#@onready var pause_menu: Control = $Menu
 @onready var event_container: VBoxContainer = $EventContainer
 @onready var alert: Label = $Alert
-
-signal menu_closed(menu_layer: int)
 
 
 func _ready() -> void:
 	flash_rect.visible = false
+	player = get_parent()
+	status = player.find_child("Status")
 	status.connect("key_acquired", _on_key_acquired)
+	manager = player.find_child("PlayerCam")
 #	pause_menu.reparent(get_tree().root)
 #	get_tree().root.move_child(pause_menu, -1)
 
@@ -43,49 +47,30 @@ func _process(delta: float) -> void:
 		blood_rect.modulate.a = clamp(1 - (status.health / 50), 0, 2)
 	else:
 		blood_rect.visible = false
-	
+
 	if current_alt_ammo == "none" or current_alt_ammo == current_ammo:
 		if current_ammo == "none":
 			ammo_counter.text = "--"
 		else:
 			ammo_counter.text = "%s" % manager.ammo_amounts[current_ammo]
 	else:
-		ammo_counter.text = "%s/%s" % [manager.ammo_amounts[current_ammo], 
+		ammo_counter.text = "%s/%s" % [manager.ammo_amounts[current_ammo],
 				manager.ammo_amounts[current_alt_ammo]]
-	
+
 	if flash_rect.visible:
 		flash_rect.modulate.a -= delta
 		if flash_rect.modulate.a <= 0:
 			flash_rect.visible = false
-	
+
 	if alert.visible:
 		alert_timer -= delta
 		if alert_timer <= 1.0:
 			alert.modulate.a = alert_timer
 		if alert_timer <= 0.0:
 			alert.hide()
-	
-	if Input.is_action_just_pressed("ui_cancel"):
-		if active_menus <= 0:
-			get_tree().paused = true
-			pause_menu.show()
-			player.release_mouse()
-			active_menus = 1
-		else:
-			close_top_menu()
-	
-	if Input.is_action_just_pressed("quick_exit"): 
+
+	if Input.is_action_just_pressed("quick_exit"):
 		get_tree().quit()
-
-
-func close_top_menu() -> void:
-	menu_closed.emit(active_menus)
-	active_menus -= 1
-	if active_menus <= 0:
-		get_tree().paused = false
-		pause_menu.hide()
-		player.capture_mouse()
-		active_menus = 0
 
 
 func flash(color: Color) -> void:
@@ -113,8 +98,12 @@ func set_alert(alert_text: String) -> void:
 	alert_timer = alert_duration
 
 
-func _on_weapon_hud_connected(category: int, index: int, ammo_type: String, \
-		alt_ammo_type: String) -> void:
+func _on_weapon_hud_connected(
+			category: int,
+			index: int,
+			ammo_type: String,
+			alt_ammo_type: String
+	) -> void:
 	current_ammo = ammo_type
 	current_alt_ammo = alt_ammo_type
 	crosshairs.texture.region.position = Vector2(index * 32, category * 32)

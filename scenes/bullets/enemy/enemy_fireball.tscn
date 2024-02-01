@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://doj0aysg6oqh2"]
+[gd_scene load_steps=23 format=3 uid="uid://doj0aysg6oqh2"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_ymvu6"]
+[ext_resource type="PackedScene" uid="uid://fn1fivb2ndvo" path="res://scenes/effects/bullet_impact_yellow.tscn" id="2_rlntx"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="3_c45im"]
 [ext_resource type="AudioStream" uid="uid://bhhnxh2cjbiuq" path="res://audio/streams/ambient/fire_ball_ambient.wav" id="3_ghwt3"]
 [ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="4_hhht4"]
@@ -25,14 +26,14 @@ albedo_color = Color(1, 0.501961, 0, 1)
 [sub_resource type="Gradient" id="Gradient_4horr"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xarou"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hxa1d"]
 gradient = SubResource("Gradient_4horr")
 
-[sub_resource type="Gradient" id="Gradient_1eai8"]
-colors = PackedColorArray(1, 0.501961, 0, 1, 0.5, 0.5, 0.5, 0)
+[sub_resource type="Gradient" id="Gradient_o1kva"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0lb1k"]
-gradient = SubResource("Gradient_1eai8")
+gradient = SubResource("Gradient_o1kva")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rp4fy"]
 emission_shape = 1
@@ -41,22 +42,22 @@ direction = Vector3(0, 1, 0)
 gravity = Vector3(0, 0, 0)
 initial_velocity_max = 0.25
 color_ramp = SubResource("GradientTexture1D_0lb1k")
-color_initial_ramp = SubResource("GradientTexture1D_xarou")
+color_initial_ramp = SubResource("GradientTexture1D_hxa1d")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ruwr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yv6bv"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_43kdv"]
-material = SubResource("StandardMaterial3D_6ruwr")
-size = Vector3(0.063, 0.063, 0.063)
+material = SubResource("StandardMaterial3D_yv6bv")
+size = Vector3(0.0625, 0.0625, 0.0625)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vqe2o"]
 load_path = "res://.godot/imported/halo.png-88068247d44276e09ca924d46b3606d1.s3tc.ctex"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs0w4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pj7r"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
@@ -69,10 +70,10 @@ proximity_fade_distance = 3.0
 distance_fade_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_tgqma"]
-material = SubResource("StandardMaterial3D_fs0w4")
+material = SubResource("StandardMaterial3D_3pj7r")
 size = Vector2(0.15, 0.14)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0qhau"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hb1eh"]
 load_path = "res://.godot/imported/halo.png-88068247d44276e09ca924d46b3606d1.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_24bqr"]
@@ -81,7 +82,7 @@ blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.501961, 0, 1)
-albedo_texture = SubResource("CompressedTexture2D_0qhau")
+albedo_texture = SubResource("CompressedTexture2D_hb1eh")
 billboard_mode = 1
 fixed_size = true
 proximity_fade_distance = 3.0
@@ -97,9 +98,9 @@ max_contacts_reported = 5
 contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_ymvu6")
-speed = -25.0
+speed = 25.0
 damage = 35.0
-explosion = "res://scenes/effects/bullet_impact_yellow.tscn"
+explosion = ExtResource("2_rlntx")
 knockback_force = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

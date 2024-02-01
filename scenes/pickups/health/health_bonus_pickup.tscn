@@ -70,7 +70,7 @@ script = ExtResource("1_e1j35")
 heal_amount = 1
 can_overheal = true
 pickup_sound = ExtResource("2_7pkm3")
-pickup_text = "+1 bonus health"
+pickup_text = "+1% bonus health"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_uc2sx")

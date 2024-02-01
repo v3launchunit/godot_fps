@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://dah6eunyfmnqh"]
+[gd_scene load_steps=29 format=3 uid="uid://dah6eunyfmnqh"]
 
 [ext_resource type="PackedScene" uid="uid://bfpoyydd4y6gc" path="res://models/weapons/crossbow.glb" id="1_cxeg4"]
 [ext_resource type="AnimationLibrary" uid="uid://doq8kttqg86x7" path="res://scenes/weapons/crossbow_anims.res" id="2_exmv2"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_crossbow.gd" id="2_vadfq"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="3_2m668"]
+[ext_resource type="PackedScene" uid="uid://u6obomqkbr77" path="res://scenes/bullets/player/crossbow_bolt.tscn" id="3_71ym8"]
 
 [sub_resource type="Shader" id="Shader_wcwhh"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
@@ -305,8 +306,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.
 [node name="Crossbow" parent="." instance=ExtResource("1_cxeg4")]
 script = ExtResource("2_vadfq")
 category = 3
-index = 1
-bullet = "res://scenes/bullets/player/crossbow_bolt.tscn"
+index = 2
+bullet = ExtResource("3_71ym8")
 shot_cooldown = 1.7
 ammo_type = "cells"
 anti_clip_distance = 0.75
@@ -375,5 +376,6 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Weapons"
 
 [editable path="Crossbow"]

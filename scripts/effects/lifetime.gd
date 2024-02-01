@@ -16,5 +16,5 @@ func _on_timeout():
 		var e = decay_explosion.instantiate()
 		get_parent().add_child(e)
 		e.reparent(get_tree().root)
-	
+
 	get_parent().queue_free()

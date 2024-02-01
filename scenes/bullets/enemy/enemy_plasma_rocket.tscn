@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://fd8mwvba35jo"]
+[gd_scene load_steps=18 format=3 uid="uid://fd8mwvba35jo"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_bykpv"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="2_3tmpf"]
+[ext_resource type="PackedScene" uid="uid://ctgdbydttjqwq" path="res://scenes/effects/plasma_explosion.tscn" id="2_xkuk1"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_j7cvy"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="4_10o8e"]
 [ext_resource type="AudioStream" uid="uid://bsv250k61o40r" path="res://audio/streams/ambient/plasma_shot_ambient.wav" id="5_pik6u"]
@@ -80,9 +81,9 @@ max_contacts_reported = 5
 contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_bykpv")
-speed = -50.0
+speed = 50.0
 damage = 30.0
-explosion = "res://scenes/effects/plasma_explosion.tscn"
+explosion = ExtResource("2_xkuk1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)

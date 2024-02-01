@@ -78,7 +78,7 @@ _data = {
 "anim": SubResource("Animation_wivti")
 }
 
-[node name="ShellPickup" type="RigidBody3D"]
+[node name="CellPickup" type="RigidBody3D"]
 collision_layer = 8
 lock_rotation = true
 script = ExtResource("1_e3b4u")

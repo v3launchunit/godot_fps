@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bualcyceoh6ux"
-path.s3tc="res://.godot/imported/checker_board_detail_mask.png-4b3ea428ee6100955640bbee9279444f.s3tc.ctex"
+path="res://.godot/imported/checker_board_detail_mask.png-4b3ea428ee6100955640bbee9279444f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/terrain/checker_board/checker_board_detail_mask.png"
-dest_files=["res://.godot/imported/checker_board_detail_mask.png-4b3ea428ee6100955640bbee9279444f.s3tc.ctex"]
+dest_files=["res://.godot/imported/checker_board_detail_mask.png-4b3ea428ee6100955640bbee9279444f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

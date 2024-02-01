@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bjpo451a0eupa"]
+[gd_scene load_steps=26 format=3 uid="uid://bjpo451a0eupa"]
 
 [ext_resource type="ArrayMesh" uid="uid://cdgo2jvrkn5bc" path="res://models/weapons/axe.obj" id="1_sq7xt"]
 [ext_resource type="Texture2D" uid="uid://ccv4wnujh6dk" path="res://textures/weapons/axe/axe_detail_mask.png" id="2_yqvpt"]
@@ -6,6 +6,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://b7bfeeqv2plqj" path="res://scenes/weapons/axe_anims.res" id="3_t18wh"]
 [ext_resource type="Texture2D" uid="uid://bxx7weftifjpm" path="res://textures/weapons/axe/axe_roughness.png" id="4_bycow"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_double_barrel.gd" id="5_fkvwm"]
+[ext_resource type="PackedScene" uid="uid://chdnpriqcxbgj" path="res://scenes/bullets/player/melee_scan.tscn" id="6_jc7bq"]
 
 [sub_resource type="Shader" id="Shader_vna4n"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
@@ -165,20 +166,18 @@ graph_offset = Vector2(-136, 58)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.35)
 
 [node name="Axe" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.499978, -0.866038, 0, 0.866038, 0.499978, 0, 0, 0, 1, -0.15, 0.00085694, 0)
+transform = Transform3D(0.499978, -0.866038, 0, 0.866038, 0.499978, 0, 0, 0, 1, -0.15, 0.00471156, 0)
 layers = 4
 material_override = SubResource("ShaderMaterial_h7uo5")
 cast_shadow = 0
 mesh = ExtResource("1_sq7xt")
 script = ExtResource("5_fkvwm")
-bullet = "res://scenes/bullets/player/melee_scan.tscn"
+bullet = ExtResource("6_jc7bq")
 shot_cooldown = 0.4
 
 [node name="Spawner" type="Marker3D" parent="Axe"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="AltSpawner" type="Marker3D" parent="Axe"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="Axe"]
 tree_root = SubResource("AnimationNodeStateMachine_o311l")
@@ -193,3 +192,4 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -3.0
+bus = &"Weapons"

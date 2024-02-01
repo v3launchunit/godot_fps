@@ -74,3 +74,5 @@ script = ExtResource("2_l7om6")
 stream = SubResource("AudioStreamRandomizer_4hg1j")
 volume_db = -10.0
 autoplay = true
+bus = &"Combat"
+doppler_tracking = 2

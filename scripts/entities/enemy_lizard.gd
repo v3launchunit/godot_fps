@@ -24,7 +24,7 @@ func _attack(_delta) -> void:
 
 func _begin_attack() -> void:
 	attack_is_melee = (
-			current_targets[-1].global_position.distance_squared_to(global_position) 
+			current_targets[-1].global_position.distance_squared_to(global_position)
 			< melee_range_squared)
 	look_at(current_targets[-1].position)
 	rotation.x = 0
@@ -43,14 +43,14 @@ func do_attack() -> void:
 	var spawner_r_base_rotation = spawner_right.global_rotation
 	for v in volley:
 		var s = spawner_right if 2 % (v + 1) == 0 else spawner_left
-		
+
 		s.global_rotation = (
-				spawner_r_base_rotation if 2 % (v + 1) == 0 
+				spawner_r_base_rotation if 2 % (v + 1) == 0
 				else spawner_l_base_rotation
 		)
 		s.rotate_z(deg_to_rad(randf_range(-spread/2, spread/2)))
 		spawner.rotate_y(deg_to_rad(randf_range(-spread/4, spread/4)))
-		
+
 		var instance = bullet.instantiate()
 		if 2 % (v + 1) == 0:
 			spawner_right.add_child(instance)
@@ -60,9 +60,9 @@ func do_attack() -> void:
 			instance.add_collision_exception_with(self)
 			add_collision_exception_with(instance)
 		instance.reparent(get_tree().root)
-		
+
 		instance.invoker = self
-		
+
 #	global_rotation = spawner_base_rotation
 	spawner_left.global_rotation = spawner_l_base_rotation
 	spawner_right.global_rotation = spawner_r_base_rotation
@@ -80,16 +80,16 @@ func do_melee() -> void:
 		spawner.global_rotation = spawner_base_rotation
 		spawner.rotate_z(deg_to_rad(randf_range(-spread/2, spread/2)))
 		spawner.rotate_y(deg_to_rad(randf_range(-spread/4, spread/4)))
-		
+
 		var instance = melee_bullet.instantiate()
 		spawner.add_child(instance)
 		instance.reparent(get_tree().root)
 		if instance is PhysicsBody3D:
 			instance.add_collision_exception_with(self)
 			add_collision_exception_with(instance)
-		
+
 		instance.invoker = self
-		
+
 #	global_rotation = spawner_base_rotation
 	spawner.global_rotation = spawner_base_rotation
 	change_state(State.POST_ATTACKING)

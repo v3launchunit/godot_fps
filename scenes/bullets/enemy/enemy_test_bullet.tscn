@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://blrtnnu61g5s"]
+[gd_scene load_steps=14 format=3 uid="uid://blrtnnu61g5s"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_5litf"]
 [ext_resource type="ArrayMesh" uid="uid://cqf6v4gaperkn" path="res://models/bullets/bullet.obj" id="2_afg0c"]
+[ext_resource type="PackedScene" uid="uid://fn1fivb2ndvo" path="res://scenes/effects/bullet_impact_yellow.tscn" id="2_x2ip4"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="3_o658m"]
 [ext_resource type="AudioStream" uid="uid://crtqyq64m3wm1" path="res://audio/streams/ambient/bullet_ambient.wav" id="4_0y1a2"]
 [ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="5_fvl37"]
@@ -54,9 +55,9 @@ max_contacts_reported = 5
 contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_5litf")
-speed = -25.0
+speed = 25.0
 damage = 8.0
-explosion = "res://scenes/effects/bullet_impact_yellow.tscn"
+explosion = ExtResource("2_x2ip4")
 knockback_force = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
