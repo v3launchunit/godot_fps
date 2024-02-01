@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bimc4ufk5hicg"]
+[gd_scene load_steps=46 format=3 uid="uid://bimc4ufk5hicg"]
 
 [ext_resource type="ArrayMesh" uid="uid://cgahp1theduxt" path="res://models/weapons/pump_shotgun.obj" id="1_ejui6"]
 [ext_resource type="Texture2D" uid="uid://crih0rgk10al6" path="res://textures/weapons/pump_shotgun/shotgun_detail_mask.png" id="2_1omhy"]
@@ -7,10 +7,13 @@
 [ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_8b28n"]
 [ext_resource type="Texture2D" uid="uid://blae7355fr3lo" path="res://textures/weapons/pump_shotgun/shotgun_roughness.png" id="4_vaanv"]
 [ext_resource type="AnimationLibrary" uid="uid://byhlw1uu73dbf" path="res://scenes/weapons/shotgun_anims.res" id="5_eekxh"]
+[ext_resource type="PackedScene" uid="uid://rchnjnxfhuga" path="res://scenes/bullets/player/grenade.tscn" id="6_upi5a"]
+[ext_resource type="PackedScene" uid="uid://d4mp4mj8p46h1" path="res://scenes/bullets/player/hitscan_bullet.tscn" id="7_uhak0"]
 [ext_resource type="Texture2D" uid="uid://dbnasmfycrfat" path="res://textures/objects/shotgun_shell/shotgun_shell.png" id="8_xoaa3"]
 [ext_resource type="Texture2D" uid="uid://cxhsqnpu78e2q" path="res://textures/objects/shotgun_shell/shotgun_shell_metallic.png" id="9_2ordl"]
 [ext_resource type="Texture2D" uid="uid://dao3wvs485yhb" path="res://textures/objects/shotgun_shell/shotgun_shell_roughness.png" id="10_iuq6n"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="11_gubn0"]
+[ext_resource type="ArrayMesh" uid="uid://4fkwqxsei5n8" path="res://models/weapons/pump_shotgun_grip.obj" id="11_qkg1t"]
 
 [sub_resource type="Shader" id="Shader_n22n6"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
@@ -123,168 +126,6 @@ shader_parameter/texture_clearcoat = ExtResource("2_1omhy")
 shader_parameter/texture_detail_albedo = SubResource("NoiseTexture2D_fagd6")
 shader_parameter/texture_detail_normal = SubResource("NoiseTexture2D_7duje")
 shader_parameter/texture_detail_mask = ExtResource("2_1omhy")
-
-[sub_resource type="Shader" id="Shader_hcj4a"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
-
-shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
-uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
-uniform float point_size : hint_range(0,128);
-uniform float roughness : hint_range(0,1);
-uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
-uniform float specular;
-uniform float metallic;
-uniform sampler2D texture_normal : hint_roughness_normal,filter_nearest,repeat_enable;
-uniform float normal_scale : hint_range(-16,16);
-uniform float clearcoat : hint_range(0,1);
-uniform float clearcoat_roughness : hint_range(0,1);
-uniform sampler2D texture_clearcoat : hint_default_white,filter_nearest,repeat_enable;
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
-global uniform float viewmodel_fov;
-
-
-void vertex() {
-	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	
-	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
-	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
-	// modify projection matrix
-	PROJECTION_MATRIX[1][1] = -onetanfov;
-	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-	
-	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
-	POSITION.z = mix(POSITION.z, 0, 0.99);
-}
-
-void fragment() {
-	vec2 base_uv = UV;
-	vec4 albedo_tex = texture(texture_albedo,base_uv);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
-	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
-	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
-	SPECULAR = specular;
-	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
-	NORMAL_MAP_DEPTH = normal_scale;
-	vec2 clearcoat_tex = texture(texture_clearcoat,base_uv).xy;
-	CLEARCOAT = clearcoat*clearcoat_tex.x;	CLEARCOAT_ROUGHNESS = clearcoat_roughness*clearcoat_tex.y;
-}
-"
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ti8ho"]
-width = 128
-height = 128
-generate_mipmaps = false
-seamless_blend_skirt = 1.0
-color_ramp = SubResource("Gradient_v5jf5")
-noise = SubResource("FastNoiseLite_q3vr3")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ifyxs"]
-width = 128
-height = 128
-generate_mipmaps = false
-seamless_blend_skirt = 1.0
-as_normal_map = true
-bump_strength = 1.0
-noise = SubResource("FastNoiseLite_q3vr3")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eldlo"]
-render_priority = 0
-shader = SubResource("Shader_hcj4a")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 0.75
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/normal_scale = 1.0
-shader_parameter/clearcoat = 1.0
-shader_parameter/clearcoat_roughness = 0.25
-shader_parameter/uv1_scale = Vector3(0.25, 1, 0.25)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = SubResource("NoiseTexture2D_ti8ho")
-shader_parameter/texture_normal = SubResource("NoiseTexture2D_ifyxs")
-
-[sub_resource type="Shader" id="Shader_rno2n"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
-
-shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
-uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
-uniform float point_size : hint_range(0,128);
-uniform float roughness : hint_range(0,1);
-uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
-uniform float specular;
-uniform float metallic;
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
-global uniform float viewmodel_fov;
-
-
-void vertex() {
-	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	
-	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
-	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
-	// modify projection matrix
-	PROJECTION_MATRIX[1][1] = -onetanfov;
-	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-	
-	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
-	POSITION.z = mix(POSITION.z, 0, 0.99);
-}
-
-
-
-
-
-
-void fragment() {
-	vec2 base_uv = UV;
-	vec4 albedo_tex = texture(texture_albedo,base_uv);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
-	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
-	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
-	SPECULAR = specular;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xtwxk"]
-render_priority = 0
-shader = SubResource("Shader_rno2n")
-shader_parameter/albedo = Color(0.501961, 0.501961, 0.501961, 1)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 0.25
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 1.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="Shader" id="Shader_mcad4"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
@@ -423,7 +264,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5qju"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rccbc"]
 render_priority = 0
 shader = SubResource("Shader_t2p06")
 shader_parameter/albedo = Color(1, 1, 1, 1)
@@ -441,7 +282,7 @@ shader_parameter/texture_metallic = ExtResource("9_2ordl")
 shader_parameter/texture_roughness = ExtResource("10_iuq6n")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ps8yr"]
-material = SubResource("ShaderMaterial_p5qju")
+material = SubResource("ShaderMaterial_rccbc")
 top_radius = 0.05
 bottom_radius = 0.05
 height = 0.175
@@ -454,7 +295,7 @@ animation = &"shotgun_anims/shotgun_alt_fire"
 animation = &"shotgun_anims/shotgun_deploy"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_74vc0"]
-animation = &"shotgun_anims/shotgun_fire"
+animation = &"shotgun_anims/shotgun_fire_pump"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hph0p"]
 animation = &"shotgun_anims/shotgun_idle"
@@ -475,6 +316,7 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pb0tv"]
+allow_transition_to_self = true
 states/alt_firing/node = SubResource("AnimationNodeAnimation_gw5kj")
 states/alt_firing/position = Vector2(477.667, 11)
 states/deploy/node = SubResource("AnimationNodeAnimation_62y18")
@@ -482,12 +324,174 @@ states/deploy/position = Vector2(393.667, 100.333)
 states/firing/node = SubResource("AnimationNodeAnimation_74vc0")
 states/firing/position = Vector2(477.667, 195)
 states/idle/node = SubResource("AnimationNodeAnimation_hph0p")
-states/idle/position = Vector2(565.667, 95.4445)
+states/idle/position = Vector2(585.667, 101.519)
 transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_b3vqj"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_5ju1q"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_e8rcd"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_004om")]
-graph_offset = Vector2(-91, 17)
+graph_offset = Vector2(-124, -34)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qjdy1"]
 radius = 16.0
+
+[sub_resource type="Shader" id="Shader_rno2n"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+global uniform float viewmodel_fov;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	
+	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
+	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
+	// modify projection matrix
+	PROJECTION_MATRIX[1][1] = -onetanfov;
+	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
+	
+	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
+	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION.z = mix(POSITION.z, 0, 0.99);
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xtwxk"]
+render_priority = 0
+shader = SubResource("Shader_rno2n")
+shader_parameter/albedo = Color(0.501961, 0.501961, 0.501961, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Shader" id="Shader_hcj4a"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_normal : hint_roughness_normal,filter_nearest,repeat_enable;
+uniform float normal_scale : hint_range(-16,16);
+uniform float clearcoat : hint_range(0,1);
+uniform float clearcoat_roughness : hint_range(0,1);
+uniform sampler2D texture_clearcoat : hint_default_white,filter_nearest,repeat_enable;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+global uniform float viewmodel_fov;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	
+	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
+	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
+	// modify projection matrix
+	PROJECTION_MATRIX[1][1] = -onetanfov;
+	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
+	
+	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
+	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION.z = mix(POSITION.z, 0, 0.99);
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+	vec2 clearcoat_tex = texture(texture_clearcoat,base_uv).xy;
+	CLEARCOAT = clearcoat*clearcoat_tex.x;	CLEARCOAT_ROUGHNESS = clearcoat_roughness*clearcoat_tex.y;
+}
+"
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ti8ho"]
+width = 128
+height = 128
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5jf5")
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ifyxs"]
+width = 128
+height = 128
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_q3vr3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eldlo"]
+render_priority = 0
+shader = SubResource("Shader_hcj4a")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.75
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.25
+shader_parameter/uv1_scale = Vector3(0.25, 1, 0.25)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_ti8ho")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_ifyxs")
 
 [sub_resource type="Animation" id="Animation_yqihf"]
 length = 0.001
@@ -561,19 +565,17 @@ _data = {
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.15, -0.25, -0.35)
 
 [node name="PumpShotgun" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00625279, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00328864, 0)
 layers = 4
+material_override = SubResource("ShaderMaterial_758ey")
 cast_shadow = 0
 mesh = ExtResource("1_ejui6")
-surface_material_override/0 = SubResource("ShaderMaterial_758ey")
-surface_material_override/1 = SubResource("ShaderMaterial_eldlo")
-surface_material_override/2 = SubResource("ShaderMaterial_xtwxk")
 script = ExtResource("2_rkwad")
-alt_bullet = "res://scenes/bullets/grenade.tscn"
+alt_bullet = ExtResource("6_upi5a")
 alt_shot_cooldown = 1.25
 alt_ammo_type = "grenades"
 category = 1
-bullet = "res://scenes/bullets/hitscan_bullet.tscn"
+bullet = ExtResource("7_uhak0")
 shot_cooldown = 0.85
 volley = 9
 spread = 5.0
@@ -621,6 +623,7 @@ omni_shadow_mode = 0
 
 [node name="ShellEject" type="GPUParticles3D" parent="PumpShotgun"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.125, 0)
+visible = false
 layers = 4
 emitting = false
 amount = 5
@@ -643,6 +646,13 @@ script = ExtResource("11_gubn0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PumpShotgun/AlertRadius"]
 shape = SubResource("SphereShape3D_qjdy1")
 
+[node name="Grip" type="MeshInstance3D" parent="PumpShotgun"]
+layers = 4
+cast_shadow = 0
+mesh = ExtResource("11_qkg1t")
+surface_material_override/0 = SubResource("ShaderMaterial_xtwxk")
+surface_material_override/1 = SubResource("ShaderMaterial_eldlo")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_vx23l"),
@@ -651,3 +661,4 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 max_polyphony = 2
+bus = &"Weapons"

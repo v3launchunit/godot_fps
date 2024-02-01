@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://u6obomqkbr77"]
+[gd_scene load_steps=8 format=3 uid="uid://u6obomqkbr77"]
 
 [ext_resource type="Script" path="res://scripts/bullets/hitscan.gd" id="1_inyp7"]
 [ext_resource type="ArrayMesh" uid="uid://cfjlieto7r0xy" path="res://models/bullets/hitscan_bullet.obj" id="2_co20h"]
+[ext_resource type="PackedScene" uid="uid://dgr75fm83e7bb" path="res://scenes/effects/bullet_impact_cyan.tscn" id="2_w135i"]
 
 [sub_resource type="Gradient" id="Gradient_lh4cc"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
@@ -25,10 +26,10 @@ albedo_texture = SubResource("GradientTexture2D_16e03")
 [node name="Hitscan" type="Node3D"]
 script = ExtResource("1_inyp7")
 layer_mask = 5
-fade_speed = 5.0
 damage = 30.0
-explosion = "res://scenes/effects/bullet_impact_white.tscn"
+explosion = ExtResource("2_w135i")
 piercer = true
+fade_speed = 25.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 2

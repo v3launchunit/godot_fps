@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhplxq8nkqau3"]
+[gd_scene load_steps=7 format=3 uid="uid://dhplxq8nkqau3"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_e5fcg"]
+[ext_resource type="PackedScene" uid="uid://ew75cbfb63v5" path="res://scenes/bullets/player/lodged_nail.tscn" id="2_anp6i"]
 [ext_resource type="ArrayMesh" uid="uid://dnda4sjlmlawu" path="res://models/bullets/nail.obj" id="2_ia8ek"]
 [ext_resource type="AudioStream" uid="uid://crtqyq64m3wm1" path="res://audio/streams/ambient/bullet_ambient.wav" id="4_i3kve"]
 
@@ -23,15 +24,16 @@ contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_e5fcg")
 speed = 50.0
-explosion = "res://scenes/bullets/player/lodged_nail.tscn"
+explosion = ExtResource("2_anp6i")
 sticky = true
+piercer = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 shape = SubResource("BoxShape3D_h48e4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 6, 0, 0, 0)
+transform = Transform3D(-1, 0, -5.24537e-07, 0, 1, 0, 8.74228e-08, 0, -6, 0, 0, 1)
 layers = 2
 material_override = SubResource("StandardMaterial3D_6vr76")
 cast_shadow = 0

@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://byrs4y4a0drln"]
+
+[ext_resource type="Script" path="res://scripts/bullets/hitscan.gd" id="1_6cva7"]
+[ext_resource type="PackedScene" uid="uid://fn1fivb2ndvo" path="res://scenes/effects/bullet_impact_yellow.tscn" id="2_g2edo"]
+[ext_resource type="ArrayMesh" uid="uid://cfjlieto7r0xy" path="res://models/bullets/hitscan_bullet.obj" id="3_ugc8p"]
+
+[sub_resource type="Gradient" id="Gradient_x0pdp"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ewjuj"]
+gradient = SubResource("Gradient_x0pdp")
+fill_from = Vector2(0, 0.875)
+fill_to = Vector2(0, 0.5)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vcl2f"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+albedo_texture = SubResource("GradientTexture2D_ewjuj")
+proximity_fade_enabled = true
+
+[sub_resource type="Skin" id="Skin_axrfg"]
+
+[node name="Hitscan" type="Node3D"]
+script = ExtResource("1_6cva7")
+layer_mask = 5
+explosion = ExtResource("2_g2edo")
+piercer = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+layers = 2
+material_override = SubResource("StandardMaterial3D_vcl2f")
+cast_shadow = 0
+mesh = ExtResource("3_ugc8p")
+skin = SubResource("Skin_axrfg")

@@ -357,7 +357,8 @@ shape = SubResource("SphereShape3D_er5bi")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_4pgkn")
 autoplay = true
-doppler_tracking = 1
+bus = &"Combat"
+doppler_tracking = 2
 
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 10.0

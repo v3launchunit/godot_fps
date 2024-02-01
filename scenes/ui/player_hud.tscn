@@ -1,21 +1,13 @@
-[gd_scene load_steps=32 format=3 uid="uid://dh4rwigqkk6va"]
+[gd_scene load_steps=29 format=3 uid="uid://dh4rwigqkk6va"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud_handler.gd" id="1_prp1p"]
 [ext_resource type="Texture2D" uid="uid://co2ho6yh415d6" path="res://textures/ui/hud_bar.png" id="2_77nrq"]
-[ext_resource type="Shader" path="res://shaders/cross_bloom.gdshader" id="2_hw7s3"]
 [ext_resource type="Texture2D" uid="uid://cbl2184sxvg3f" path="res://textures/ui/crosshairs_atlas.png" id="3_ejr72"]
 [ext_resource type="Texture2D" uid="uid://dm7hg6gel5eeu" path="res://textures/ui/keys_atlas.png" id="4_3g4p3"]
 [ext_resource type="Shader" path="res://shaders/inverse_hud.gdshader" id="5_33rrr"]
 [ext_resource type="Texture2D" uid="uid://cywpqd2oi8p3r" path="res://textures/ui/weapons_atlas.png" id="5_rr2yr"]
 [ext_resource type="Texture2D" uid="uid://bf3n3tgu6akfw" path="res://textures/ui/weapon_frames_atlas.png" id="6_xihl4"]
-[ext_resource type="PackedScene" uid="uid://cyh67pqghsn3n" path="res://scenes/ui/game_menu.tscn" id="7_8wm7j"]
 [ext_resource type="PackedScene" uid="uid://dv0a4feruvg2r" path="res://scenes/ui/event.tscn" id="8_8bnt1"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvsq7"]
-shader = ExtResource("2_hw7s3")
-shader_parameter/intensity = 4.0
-shader_parameter/threshold = 0.9
-shader_parameter/spread = 16
 
 [sub_resource type="Gradient" id="Gradient_ljioa"]
 offsets = PackedFloat32Array(0.5, 1)
@@ -117,17 +109,6 @@ event_item = ExtResource("8_8bnt1")
 max_polyphony = 5
 bus = &"Player"
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_qvsq7")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Blood" type="TextureRect" parent="."]
 visible = false
 modulate = Color(1, 0, 0, 1)
@@ -139,6 +120,7 @@ anchor_bottom = 1.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_isuaa")
 
 [node name="Flash" type="TextureRect" parent="."]
@@ -151,6 +133,7 @@ anchor_bottom = 1.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_7oab2")
 
 [node name="HUDPanel" type="NinePatchRect" parent="."]
@@ -222,6 +205,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(16, 16)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_6dcnq")
 stretch_mode = 3
 
@@ -234,23 +218,27 @@ offset_top = -32.0
 offset_right = 96.0
 grow_vertical = 0
 pivot_offset = Vector2(0, 32)
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Red" type="TextureRect" parent="KeysContainer"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+mouse_filter = 2
 texture = SubResource("AtlasTexture_mab5h")
 stretch_mode = 2
 
 [node name="Green" type="TextureRect" parent="KeysContainer"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+mouse_filter = 2
 texture = SubResource("AtlasTexture_fwsqw")
 stretch_mode = 2
 
 [node name="Blue" type="TextureRect" parent="KeysContainer"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+mouse_filter = 2
 texture = SubResource("AtlasTexture_kep41")
 stretch_mode = 2
 
@@ -263,12 +251,14 @@ offset_left = 112.0
 offset_top = -32.0
 offset_right = 336.0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Category0" type="TextureRect" parent="WeaponsContainer"]
 self_modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 2
 offset_right = 32.0
 offset_bottom = 32.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_6tiso")
 stretch_mode = 2
 
@@ -277,6 +267,7 @@ show_behind_parent = true
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_y2lr2")
 stretch_mode = 2
 
@@ -286,6 +277,7 @@ layout_mode = 2
 offset_left = 32.0
 offset_right = 64.0
 offset_bottom = 32.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_6dbyc")
 stretch_mode = 2
 
@@ -294,6 +286,7 @@ show_behind_parent = true
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_0y4ls")
 stretch_mode = 2
 
@@ -304,6 +297,7 @@ layout_mode = 2
 offset_left = 64.0
 offset_right = 96.0
 offset_bottom = 32.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_o00qo")
 stretch_mode = 2
 
@@ -312,6 +306,7 @@ show_behind_parent = true
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_ayrss")
 stretch_mode = 2
 
@@ -322,6 +317,7 @@ layout_mode = 2
 offset_left = 96.0
 offset_right = 128.0
 offset_bottom = 32.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_qflcx")
 stretch_mode = 2
 
@@ -330,6 +326,7 @@ show_behind_parent = true
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_g556c")
 stretch_mode = 2
 
@@ -340,6 +337,7 @@ layout_mode = 2
 offset_left = 128.0
 offset_right = 160.0
 offset_bottom = 32.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_2wwlc")
 stretch_mode = 2
 
@@ -348,6 +346,7 @@ show_behind_parent = true
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_1htvs")
 stretch_mode = 2
 
@@ -358,6 +357,7 @@ anchor_bottom = 1.0
 offset_right = 512.0
 offset_bottom = -32.0
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Alert" type="Label" parent="."]
@@ -380,12 +380,3 @@ horizontal_alignment = 1
 autowrap_mode = 3
 uppercase = true
 max_lines_visible = 4
-
-[node name="Menu" parent="." instance=ExtResource("7_8wm7j")]
-visible = false
-top_level = true
-layout_mode = 1
-
-[connection signal="menu_closed" from="." to="Menu/Settings" method="_on_hud_menu_closed"]
-
-[editable path="Menu"]

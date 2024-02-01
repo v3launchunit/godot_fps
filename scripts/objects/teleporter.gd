@@ -25,7 +25,7 @@ func _on_body_entered(body: Node3D) -> void:
 	body.global_position = destination
 	for stream in streams:
 		stream.play()
-	
+
 	for sys in tele_sys:
 		sys.emitting = true
 		sys.restart()

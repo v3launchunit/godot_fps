@@ -548,7 +548,7 @@ bones/20/rotation = Quaternion(0.038, -0.001, 0, 0.999)
 bones/21/rotation = Quaternion(-0.076, 0.032, 0.381, 0.921)
 
 [node name="Cylinder_001" parent="enforcer/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1.22972, -0.566009, -0.130236, -0.438125, -0.282915, -1.37038, 0.738805, 0.774334, -0.595889, -0.102904, 0.152943, 0.655731)
+transform = Transform3D(1.22972, -0.566009, -0.130236, -0.41576, -0.259554, -1.38765, 0.751617, 0.782474, -0.554503, -0.102904, 0.16823, 0.644351)
 bone_idx = 4
 
 [node name="Cylinder_001" parent="enforcer/Armature/Skeleton3D/Cylinder_001" index="0"]
@@ -556,7 +556,7 @@ layers = 2
 material_override = SubResource("StandardMaterial3D_1216o")
 
 [node name="Cylinder_002" parent="enforcer/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1.22972, 0.566009, 0.130236, 0.438124, -0.282914, -1.37039, -0.738805, 0.774334, -0.595888, 0.102904, 0.152943, 0.655731)
+transform = Transform3D(1.22972, 0.566009, 0.130236, 0.41576, -0.259554, -1.38765, -0.751617, 0.782474, -0.554503, 0.102904, 0.168229, 0.644351)
 bone_idx = 5
 
 [node name="Cylinder_002" parent="enforcer/Armature/Skeleton3D/Cylinder_002" index="0"]
@@ -564,7 +564,7 @@ layers = 2
 material_override = SubResource("StandardMaterial3D_1216o")
 
 [node name="Cylinder" parent="enforcer/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.433164, 0.682347, 0.588874, 0.514335, 0.723659, -0.460192, -0.740154, 0.10354, -0.664418, -0.46769, 0.601342, 0.241998)
+transform = Transform3D(-0.431214, 0.676892, 0.59655, 0.478614, 0.732097, -0.484729, -0.764842, 0.0764956, -0.639661, -0.469853, 0.597938, 0.206775)
 bone_idx = 10
 
 [node name="Cylinder" parent="enforcer/Armature/Skeleton3D/Cylinder" index="0"]
@@ -572,7 +572,7 @@ layers = 2
 material_override = SubResource("StandardMaterial3D_1216o")
 
 [node name="Cube" parent="enforcer/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.0291543, -0.127291, 0.991437, 0.999542, 0.0117674, -0.0278817, -0.0081176, 0.991796, 0.127576, -0.0183868, -0.37168, 0.971193)
+transform = Transform3D(0.000655363, -0.158829, 0.987306, 0.999986, -0.00515565, -0.00149314, 0.00532747, 0.987293, 0.158824, -0.0231161, -0.370515, 0.956688)
 bone_idx = 15
 
 [node name="Cube" parent="enforcer/Armature/Skeleton3D/Cube" index="0"]
@@ -601,7 +601,6 @@ material_override = SubResource("StandardMaterial3D_eqlil")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 1.5
-avoidance_enabled = true
 height = 2.0
 max_speed = 100.0
 
@@ -622,7 +621,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-bus = &"Speech"
+bus = &"Enemies"
 doppler_tracking = 2
 
 [editable path="enforcer"]

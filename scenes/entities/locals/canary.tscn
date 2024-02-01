@@ -529,7 +529,7 @@ bones/21/rotation = Quaternion(0.037, -0.01, 0.259, 0.965)
 bones/22/rotation = Quaternion(-0.082, -0.007, -0.087, 0.993)
 
 [node name="Cylinder_001" parent="Canary/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1.22999, -0.565544, -0.132221, -0.828204, -0.740979, -0.573339, 0.226275, 0.362092, -1.37978, -0.102402, 0.105455, 0.326264)
+transform = Transform3D(1.23002, -0.565522, -0.132206, -0.823397, -0.733482, -0.601271, 0.243062, 0.37708, -1.36784, -0.102389, 0.107483, 0.335393)
 bone_idx = 4
 
 [node name="Cylinder_001" parent="Canary/Armature/Skeleton3D/Cylinder_001" index="0"]
@@ -537,7 +537,7 @@ layers = 2
 material_override = SubResource("StandardMaterial3D_7ynex")
 
 [node name="Cylinder_002" parent="Canary/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1.22945, 0.566473, 0.128251, 0.828052, -0.741049, -0.573355, -0.22975, 0.360493, -1.38015, 0.103405, 0.105443, 0.325973)
+transform = Transform3D(1.22943, 0.566494, 0.128266, 0.823245, -0.733552, -0.601287, -0.246536, 0.375481, -1.36821, 0.103418, 0.10747, 0.335102)
 bone_idx = 5
 
 [node name="Cylinder_002" parent="Canary/Armature/Skeleton3D/Cylinder_002" index="0"]
@@ -545,7 +545,7 @@ layers = 2
 material_override = SubResource("StandardMaterial3D_tnmui")
 
 [node name="Helmet" parent="Canary/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.999999, 0.0013863, 0.000278706, -6.19722e-05, 0.239883, -0.970802, -0.00141266, 0.970801, 0.239883, 0.00075153, 0.406131, 0.490035)
+transform = Transform3D(0.999999, 0.00138042, 0.00030684, -6.19926e-05, 0.259566, -0.965725, -0.00141275, 0.965724, 0.259565, 0.000756104, 0.411427, 0.493018)
 bone_idx = 6
 
 [node name="Helmet" parent="Canary/Armature/Skeleton3D/Helmet" index="0"]
@@ -553,7 +553,7 @@ layers = 2
 material_override = SubResource("StandardMaterial3D_ehbbl")
 
 [node name="Cylinder" parent="Canary/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.999999, 0.0005152, -0.00131684, -6.19722e-05, -0.914398, -0.404817, -0.00141266, 0.404816, -0.914397, 0.000777525, 0.164292, 0.519046)
+transform = Transform3D(0.999999, 0.000541884, -0.00130616, -6.19926e-05, -0.905981, -0.423318, -0.00141275, 0.423317, -0.90598, 0.000789076, 0.170229, 0.526939)
 bone_idx = 7
 
 [node name="Cylinder" parent="Canary/Armature/Skeleton3D/Cylinder" index="0"]
@@ -568,7 +568,7 @@ shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="Pickaxe" parent="Canary/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.148946, -0.0161963, -0.00726273, -0.0139962, 0.144911, -0.0361226, 0.0109167, -0.0351912, -0.145404, -0.269995, -0.624189, 0.434845)
+transform = Transform3D(-0.148731, -0.0167757, -0.00988748, -0.0138118, 0.144572, -0.0375273, 0.0137266, -0.0362993, -0.144893, -0.264676, -0.624216, 0.445525)
 bone_idx = 12
 
 [node name="Pickaxe" parent="Canary/Armature/Skeleton3D/Pickaxe" index="0"]
@@ -583,7 +583,6 @@ material_override = SubResource("StandardMaterial3D_msjgk")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 1.5
-avoidance_enabled = true
 height = 2.0
 max_speed = 100.0
 
@@ -609,7 +608,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-bus = &"Speech"
+bus = &"Enemies"
 doppler_tracking = 2
 
 [node name="Status" type="Node" parent="."]

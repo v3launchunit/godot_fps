@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://teto5bopi0w8"]
 
-[ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="1_metq8"]
+[ext_resource type="Material" uid="uid://c42r6gnwbsttx" path="res://materials/effects/fancy_halo.tres" id="1_tg5by"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="2_v2qg2"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="3_s1nd8"]
 
@@ -32,7 +32,7 @@ distance_fade_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_wntbp"]
 material = SubResource("StandardMaterial3D_w2kd2")
-size = Vector2(0.375, 0.375)
+size = Vector2(3, 0.375)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1qd4"]
 transparency = 1
@@ -135,7 +135,7 @@ mesh = SubResource("CylinderMesh_nuthf")
 skeleton = NodePath("OmniLight3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -0.125, 0.25, 0)
 light_color = Color(1, 0.901961, 0.815686, 1)
 light_energy = 1.875
 light_bake_mode = 1
@@ -145,7 +145,7 @@ omni_range = 18.75
 
 [node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
 layers = 2
-material_override = ExtResource("1_metq8")
+material_override = ExtResource("1_tg5by")
 cast_shadow = 0
 visibility_range_end = 100.0
 visibility_range_end_margin = 10.0
@@ -157,7 +157,7 @@ script = ExtResource("3_s1nd8")
 color = Color(1, 0.901961, 0.815686, 1)
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, -0.25, 4.37114e-08)
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -0.125, -0.25, 0)
 light_color = Color(1, 0.901961, 0.815686, 1)
 light_energy = 1.875
 light_bake_mode = 1
@@ -167,7 +167,7 @@ omni_range = 18.75
 
 [node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D2"]
 layers = 2
-material_override = ExtResource("1_metq8")
+material_override = ExtResource("1_tg5by")
 cast_shadow = 0
 visibility_range_end = 100.0
 visibility_range_end_margin = 10.0

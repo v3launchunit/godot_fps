@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://chdnpriqcxbgj"]
+[gd_scene load_steps=6 format=3 uid="uid://chdnpriqcxbgj"]
 
 [ext_resource type="Script" path="res://scripts/bullets/hitscan.gd" id="1_horjo"]
 [ext_resource type="ArrayMesh" uid="uid://cfjlieto7r0xy" path="res://models/bullets/hitscan_bullet.obj" id="2_ljvoq"]
+[ext_resource type="PackedScene" uid="uid://fn1fivb2ndvo" path="res://scenes/effects/bullet_impact_yellow.tscn" id="2_u4jbl"]
 
 [sub_resource type="Skin" id="Skin_axrfg"]
 
@@ -14,7 +15,7 @@ script = ExtResource("1_horjo")
 layer_mask = 5
 range = 3.0
 damage = 60.0
-explosion = "res://scenes/effects/bullet_impact_white.tscn"
+explosion = ExtResource("2_u4jbl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)

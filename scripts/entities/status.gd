@@ -1,15 +1,24 @@
 class_name Status extends Node
 
-@export_category("Status")
-
 signal injured(source: Node3D)
 signal died
 
+@export_category("Status")
+
+## The amount of health this node will have when initialized, and the maximum
+## amount of health it can be healed to (besides bonus health).
 @export var max_health: float = 100.0
+## The amount of additional damage after death required to cause this node's
+## parent to explode into its gibs.
 @export var gib_threshold: float = 50.0
+## The scene that instantiates whenever this node takes damage.
 @export var damage_sys: PackedScene
+## The scene that instantiates if this node's parent is reduced to gibs.
 @export var gibs: PackedScene
+## One of the contained scenes will be randomly selected to be instantiated
+## when this node's parent dies.
 @export var loot: Array[PackedScene] = []
+## How far up the tree this node should affect its parents.
 @export var ripple_distance: int = 1
 
 var health: float
@@ -46,7 +55,7 @@ func damage(amount: float) -> float:
 	if health <= -gib_threshold:
 		if not is_dead:
 			kill()
-		
+
 		target_parent.queue_free()
 		var exp: Node
 		if gibs != null:
@@ -62,7 +71,7 @@ func damage(amount: float) -> float:
 		kill()
 		return maxf(amount + health, 0) # health will be negative
 	injured.emit()
-	
+
 	return amount # return value is amount of damage recieved, for piercers
 
 
@@ -80,8 +89,8 @@ func kill():
 	if not loot.is_empty():
 		var loot_spawn: RigidBody3D = loot.pick_random().instantiate()
 		target_parent.add_child(loot_spawn)
-		loot_spawn.reparent(get_tree().root)
+		loot_spawn.reparent(get_tree().root.get_child(2))
 		loot_spawn.rotation = Vector3(0, 0, 0)
 		loot_spawn.linear_velocity = Vector3(randf_range(-3, 3), 10, randf_range(-3, 3))
-		
+
 #		var loot_scene = load(loot.pick_random())

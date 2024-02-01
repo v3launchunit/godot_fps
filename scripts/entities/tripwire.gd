@@ -3,6 +3,7 @@ class_name AreaTripwire extends Area3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	collision_mask = 2
 	body_entered.connect(_on_body_entered)
 
 
