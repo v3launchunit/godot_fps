@@ -16,7 +16,6 @@ noise_type = 2
 frequency = 0.0215
 fractal_type = 2
 fractal_octaves = 3
-cellular_jitter = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5vrw4"]
 width = 128

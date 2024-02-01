@@ -11,6 +11,7 @@ depth_draw_mode = 2
 no_depth_test = true
 shading_mode = 0
 disable_ambient_light = true
+disable_fog = true
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_v44b2")
 texture_filter = 1

@@ -47,26 +47,6 @@ fixed_size = true
 proximity_fade_distance = 3.0
 distance_fade_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7rmc8"]
-animation = &"off"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n5q0r"]
-animation = &"on"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4ngb6"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_00byd"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_262vw"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tsrdu"]
-states/off/node = SubResource("AnimationNodeAnimation_7rmc8")
-states/off/position = Vector2(697.333, 98.8889)
-states/on/node = SubResource("AnimationNodeAnimation_n5q0r")
-states/on/position = Vector2(402.667, 99.3333)
-transitions = ["Start", "on", SubResource("AnimationNodeStateMachineTransition_4ngb6"), "on", "off", SubResource("AnimationNodeStateMachineTransition_00byd"), "off", "on", SubResource("AnimationNodeStateMachineTransition_262vw")]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8qxt"]
 albedo_color = Color(0, 0, 0, 1)
 
@@ -130,6 +110,26 @@ _data = {
 "on": SubResource("Animation_fv30p")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7rmc8"]
+animation = &"off"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n5q0r"]
+animation = &"on"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4ngb6"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_00byd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_262vw"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tsrdu"]
+states/off/node = SubResource("AnimationNodeAnimation_7rmc8")
+states/off/position = Vector2(697.333, 98.8889)
+states/on/node = SubResource("AnimationNodeAnimation_n5q0r")
+states/on/position = Vector2(402.667, 99.3333)
+transitions = ["Start", "on", SubResource("AnimationNodeStateMachineTransition_4ngb6"), "on", "off", SubResource("AnimationNodeStateMachineTransition_00byd"), "off", "on", SubResource("AnimationNodeStateMachineTransition_262vw")]
+
 [node name="Lamp" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 mesh = SubResource("SphereMesh_cciy3")
@@ -158,9 +158,11 @@ script = ExtResource("3_hvnjn")
 color = Color(1, 0.67451, 0.34902, 1)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rjy61")
+}
 tree_root = SubResource("AnimationNodeStateMachine_tsrdu")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -34,14 +34,14 @@
 [ext_resource type="Shader" path="res://shaders/cross_bloom_mesh.gdshader" id="32_knaf5"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ww5sc"]
-streams_count = 1
 random_pitch = 1.15
+streams_count = 1
 stream_0/stream = ExtResource("6_3oqj4")
 stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yxu58"]
-streams_count = 18
 random_pitch = 1.15
+streams_count = 18
 stream_0/stream = ExtResource("2_ltik2")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("3_6ae3o")
@@ -103,8 +103,8 @@ func _on_globals_settings_changed() -> void:
 "
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d4n5i"]
-streams_count = 1
 random_pitch = 1.15
+streams_count = 1
 stream_0/stream = ExtResource("3_esyxp")
 stream_0/weight = 1.0
 
