@@ -37,4 +37,4 @@ heightmap_scale = 8.0
 heightmap_texture = ExtResource("2_kq6i0")
 uv1_scale = Vector3(0.0078125, 0.0009766, 0.0078125)
 uv1_world_triplanar = true
-texture_filter = 0
+texture_filter = 2

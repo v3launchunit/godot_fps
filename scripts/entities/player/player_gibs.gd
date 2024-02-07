@@ -4,12 +4,13 @@ extends Node3D
 
 var look_dir: Vector2 # Input direction for look/aim
 
-@onready var body: Node3D = $Node3D
-@onready var camera: Camera3D = $Node3D/Camera3D
+@onready var body: Node3D = find_child("PlayerCorpse")
+@onready var camera: Camera3D = find_child("PlayerCam")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	body.global_transform = global_transform
 	camera.fov = Globals.s_fov_desired
 
 
@@ -18,7 +19,7 @@ func _process(delta: float) -> void:
 	Engine.time_scale = move_toward(Engine.time_scale, 0.0, delta * 0.05)
 	if (
 			Input.is_action_just_pressed("interact")
-			or Input.is_action_just_pressed("ui_cancel")
+			#or Input.is_action_just_pressed("ui_cancel")
 	):
 		get_tree().reload_current_scene()
 		Engine.time_scale = 1.0

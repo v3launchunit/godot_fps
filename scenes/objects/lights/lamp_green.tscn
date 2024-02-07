@@ -1,12 +1,9 @@
 [gd_scene load_steps=22 format=3 uid="uid://cdmlijgutbrlm"]
 
 [ext_resource type="Texture2D" uid="uid://c3ho4pll2ocil" path="res://textures/effects/fancier_halo.png" id="1_5o7al"]
+[ext_resource type="Material" uid="uid://l8xk4t71f8ph" path="res://materials/objects/lamp_green.tres" id="1_v6spw"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="2_6dbeb"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="3_fqfbq"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2srs"]
-shading_mode = 0
-albedo_color = Color(0.372549, 2.00392, 0.129412, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrb5n"]
 shading_mode = 0
@@ -29,6 +26,7 @@ depth_draw_mode = 2
 no_depth_test = true
 shading_mode = 0
 disable_ambient_light = true
+disable_fog = true
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_5o7al")
 texture_filter = 1
@@ -69,26 +67,6 @@ billboard_mode = 1
 fixed_size = true
 proximity_fade_distance = 3.0
 distance_fade_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7rmc8"]
-animation = &"off"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n5q0r"]
-animation = &"on"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4ngb6"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_00byd"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_262vw"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tsrdu"]
-states/off/node = SubResource("AnimationNodeAnimation_7rmc8")
-states/off/position = Vector2(697.333, 98.8889)
-states/on/node = SubResource("AnimationNodeAnimation_n5q0r")
-states/on/position = Vector2(402.667, 99.3333)
-transitions = ["Start", "on", SubResource("AnimationNodeStateMachineTransition_4ngb6"), "on", "off", SubResource("AnimationNodeStateMachineTransition_00byd"), "off", "on", SubResource("AnimationNodeStateMachineTransition_262vw")]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8qxt"]
 albedo_color = Color(0, 0, 0, 1)
@@ -153,11 +131,32 @@ _data = {
 "on": SubResource("Animation_fv30p")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7rmc8"]
+animation = &"off"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n5q0r"]
+animation = &"on"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4ngb6"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_00byd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_262vw"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tsrdu"]
+states/off/node = SubResource("AnimationNodeAnimation_7rmc8")
+states/off/position = Vector2(697.333, 98.8889)
+states/on/node = SubResource("AnimationNodeAnimation_n5q0r")
+states/on/position = Vector2(402.667, 99.3333)
+transitions = ["Start", "on", SubResource("AnimationNodeStateMachineTransition_4ngb6"), "on", "off", SubResource("AnimationNodeStateMachineTransition_00byd"), "off", "on", SubResource("AnimationNodeStateMachineTransition_262vw")]
+
 [node name="Lamp" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_c2srs")
+visibility_range_end = 25.0
+visibility_range_end_margin = 5.0
 mesh = SubResource("SphereMesh_cciy3")
-skeleton = NodePath("OmniLight3D")
+surface_material_override/0 = ExtResource("1_v6spw")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0.25, 0)
@@ -169,6 +168,7 @@ distance_fade_enabled = true
 omni_range = 15.0
 
 [node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 layers = 2
 material_override = SubResource("StandardMaterial3D_6njtk")
 cast_shadow = 0
@@ -182,9 +182,11 @@ script = ExtResource("3_fqfbq")
 color = Color(0.184314, 1, 0.0666667, 1)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rjy61")
+}
 tree_root = SubResource("AnimationNodeStateMachine_tsrdu")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -41,6 +41,10 @@ enum State {
 @export_range(0.1, 3.0, 0.1) var jump_height: float = 1
 
 @export_group("Detection")
+## If enabled, prevents sight-based detection.
+@export var blind: bool = false
+## If enabled, prevents sound-based detection.
+@export var deaf: bool = false
 ## The delay, in seconds, between this enemy being added to the [SceneTree] and
 ## becoming active.
 @export var wake_up_time: float = 3.0
@@ -112,9 +116,10 @@ var state_timer: float = 0 # How long I've been in my current state, in seconds
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 @onready var attack_range_squared = attack_range * attack_range
 @onready var melee_range_squared = melee_range * melee_range
-@onready var path_re_eval_distance_squared = $NavigationAgent3D.target_desired_distance \
+@onready var path_re_eval_distance_squared = (
+		$NavigationAgent3D.target_desired_distance
 		* $NavigationAgent3D.target_desired_distance
-
+)
 @onready var audio_player: AudioStreamPlayer3D = find_child("AudioStreamPlayer3D")
 
 func _ready() -> void:
@@ -231,11 +236,19 @@ func detect_target(target: PhysicsBody3D) -> void:
 
 
 func _scan(_delta) -> void:
-	sight_line.rotation.y = sin(state_timer * sight_line_sweep_speed + randf() /
-			sight_line_sweep_angle * 2) * sight_line_sweep_angle / 2
-	if sight_line.is_colliding() and sight_line.get_collider() is Player:
+	sight_line.rotation.y = sin(
+			state_timer * sight_line_sweep_speed
+			+ randf() / sight_line_sweep_angle * 2
+	) * sight_line_sweep_angle / 2
+
+	if (
+			not blind
+			and sight_line.is_colliding()
+			and sight_line.get_collider() is Player
+	):
 		detect_target(sight_line.get_collider())
 		change_state(State.PURSUING)
+
 	nav_agent.set_velocity(Vector3.ZERO)
 
 
@@ -246,7 +259,10 @@ func _investigate(delta) -> void:
 #	rotation.x = 0
 	global_rotation.y = lerp_angle(global_rotation.y,
 			sight_line.global_rotation.y, delta * turning_speed)
-	walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
+	walk_vel = walk_vel.move_toward(
+			-speed * transform.basis.z,
+			acceleration * delta
+	)
 #	velocity += walk_vel
 	nav_agent.set_velocity(walk_vel)
 	velocity += safe_walk_vel

@@ -21,6 +21,8 @@ const C_PATH_RE_EVAL_CHANCE: float = 0.1
 ## parented to the level scene, and by extension, do not persist between loading
 ## new scenes or reloading the current scene.
 const C_AUTOLOAD_COUNT: int = 2
+const C_FLARE_RE_EVAL_CHANCE: float = 0.1
+const C_FLARE_RE_EVAL_DISTANCE_SQUARED: float = 4.0
 
 
 # ---------------------------------------------------------------------------- #

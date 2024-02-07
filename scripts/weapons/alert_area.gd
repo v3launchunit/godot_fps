@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 
 func on_body_entered(body: Node3D) -> void:
 #	print("sound heard")
-	if body.has_method("detect_target") and (
+	if body.has_method("detect_target") and not body.deaf and (
 			body.current_targets.is_empty()
 			or body.current_targets[-1] != find_parent("Player")
 	):

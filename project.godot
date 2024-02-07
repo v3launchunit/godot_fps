@@ -28,7 +28,7 @@ GameMenu="*res://scenes/ui/game_menu.tscn"
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
-window/size/mode=3
+window/size/mode=4
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
@@ -234,16 +234,25 @@ debug_give_max_ammo={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
+reflections/sky_reflections/texture_array_reflections=false
 global_illumination/gi/use_half_resolution=true
+shading/overrides/force_lambert_over_burley=true
+textures/default_filters/use_nearest_mipmap_filter=true
+textures/default_filters/anisotropic_filtering_level=0
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 scaling_3d/fsr_sharpness=0.2
-textures/decals/filter=0
-textures/light_projectors/filter=1
+textures/decals/filter=2
+textures/light_projectors/filter=2
 environment/glow/upscale_mode=0
 global_illumination/sdfgi/frames_to_update_lights=4
+environment/volumetric_fog/volume_depth=32
 occlusion_culling/use_occlusion_culling=true
 environment/defaults/default_environment="res://scenes/default_environment.tres"
 reflections/main_scene="res://scenes/levels/e1m5_v1.tscn"
+shading/volumetric_fog/volume_depth=32
+shading/volumetric_fog/use_filter=0
 
 [shader_globals]
 

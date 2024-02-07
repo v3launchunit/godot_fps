@@ -73,6 +73,7 @@ spot_range = 15.0
 spot_angle = 25.0
 
 [node name="LensFlare" type="MeshInstance3D" parent="LampPost/SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
 material_override = ExtResource("2_tp44j")
 cast_shadow = 0
 custom_aabb = AABB(0.001, 0.001, 0.001, 0.002, 0.002, 0.002)

@@ -17,8 +17,8 @@
 [ext_resource type="AnimationLibrary" uid="uid://cu6kaw3wmnu2i" path="res://scenes/entities/machines/plasma_droid_anims.res" id="8_hkuiw"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fvgwv"]
-streams_count = 1
 random_pitch = 1.15
+streams_count = 1
 stream_0/stream = ExtResource("2_cqd0j")
 stream_0/weight = 1.0
 
@@ -84,9 +84,9 @@ gradient = SubResource("Gradient_pawwp")
 emission_shape = 1
 emission_sphere_radius = 0.1
 direction = Vector3(0, 0, 1)
-gravity = Vector3(0, 0.25, 0)
 initial_velocity_min = 0.1
 initial_velocity_max = 0.5
+gravity = Vector3(0, 0.25, 0)
 color_ramp = SubResource("GradientTexture1D_v15st")
 
 [sub_resource type="Shader" id="Shader_hxicf"]
@@ -381,6 +381,7 @@ skeleton = NodePath("../..")
 light_color = Color(1, 0, 2, 1)
 light_energy = 0.0
 shadow_enabled = true
+distance_fade_enabled = true
 omni_range = 10.0
 omni_shadow_mode = 0
 
@@ -418,9 +419,12 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4knrq"),
+"plasma_droid_anims": ExtResource("8_hkuiw")
+}
 tree_root = SubResource("AnimationNodeStateMachine_nc82m")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 bus = &"Enemies"

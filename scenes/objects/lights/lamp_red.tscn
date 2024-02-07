@@ -54,6 +54,8 @@ distance_fade_mode = 1
 [node name="LampRed" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_bnnda")
+visibility_range_end = 25.0
+visibility_range_end_margin = 5.0
 mesh = SubResource("SphereMesh_cciy3")
 skeleton = NodePath("OmniLight3D")
 
@@ -67,6 +69,7 @@ distance_fade_enabled = true
 omni_range = 10.0
 
 [node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 layers = 2
 material_override = ExtResource("1_joeq1")
 cast_shadow = 0

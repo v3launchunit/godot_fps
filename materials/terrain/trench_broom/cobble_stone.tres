@@ -14,4 +14,4 @@ normal_texture = ExtResource("3_0mg6o")
 heightmap_texture = ExtResource("2_ye77l")
 uv1_scale = Vector3(0.064, 0.064, 0.064)
 uv1_world_triplanar = true
-texture_filter = 0
+texture_filter = 2

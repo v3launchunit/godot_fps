@@ -2,10 +2,18 @@ extends EnemyBase
 
 @export_category("EnemyLizard")
 
-@export var melee_delay: float = 0.5 # How many seconds into my attack animation do I actually fire
-@export var melee_recovery_time: float = 0.25 # How long do I wait after firing before I go back to moving
+## The amount of time, in seconds, between when the melee attack animation
+## begins and its associated projectile(s) actually spawn.
+@export var melee_delay: float = 0.5
+## The amount of time after spawning a melee attack's projectile(s) before this
+## enemy can begin moving again.
+@export var melee_recovery_time: float = 0.25
+## The projectile(s) fired when this enemy performs a melee attack.
 @export var melee_bullet: PackedScene
+## The number of projectiles that should be fired per melee attack.
 @export var melee_volley: int = 1
+## The maximum horizontal offset of the melee attack's projectile(s), in degrees.
+## Vertical spread is half this.
 @export var melee_spread: float = 0.0
 
 var attack_is_melee: bool = false

@@ -32,4 +32,4 @@ normal_texture = SubResource("NoiseTexture2D_q7vhb")
 heightmap_scale = 3.0
 uv1_scale = Vector3(0.0078125, 0.0078125, 0.0078125)
 uv1_world_triplanar = true
-texture_filter = 0
+texture_filter = 2

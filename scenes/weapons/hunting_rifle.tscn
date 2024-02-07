@@ -272,49 +272,6 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e5j86"]
-animation = &"hunting_rifle_anims/hunting_rifle_charge"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7p0tc"]
-animation = &"hunting_rifle_anims/hunting_rifle_deploy"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uirlo"]
-animation = &"hunting_rifle_anims/hunting_rifle_fire"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5h6dv"]
-animation = &"hunting_rifle_anims/hunting_rifle_idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k7jep"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_66ngj"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_psx32"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wkyh6"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_p1jc4"]
-allow_transition_to_self = true
-states/charging/node = SubResource("AnimationNodeAnimation_e5j86")
-states/charging/position = Vector2(358.321, 24.2058)
-states/deploy/node = SubResource("AnimationNodeAnimation_7p0tc")
-states/deploy/position = Vector2(357.333, 156.222)
-states/firing/node = SubResource("AnimationNodeAnimation_uirlo")
-states/firing/position = Vector2(536, 25.2593)
-states/idle/node = SubResource("AnimationNodeAnimation_5h6dv")
-states/idle/position = Vector2(536.444, 156.667)
-transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_k7jep"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_66ngj"), "charging", "idle", SubResource("AnimationNodeStateMachineTransition_psx32"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_wkyh6")]
-graph_offset = Vector2(-58, -1)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_tgx3e"]
-radius = 16.0
-
 [sub_resource type="Animation" id="Animation_c5vnn"]
 length = 0.001
 tracks/0/type = "position_3d"
@@ -375,27 +332,73 @@ _data = {
 "RESET": SubResource("Animation_c5vnn")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e5j86"]
+animation = &"hunting_rifle_anims/hunting_rifle_charge"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7p0tc"]
+animation = &"hunting_rifle_anims/hunting_rifle_deploy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uirlo"]
+animation = &"hunting_rifle_anims/hunting_rifle_fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5h6dv"]
+animation = &"hunting_rifle_anims/hunting_rifle_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k7jep"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_66ngj"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_psx32"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wkyh6"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_p1jc4"]
+allow_transition_to_self = true
+states/charging/node = SubResource("AnimationNodeAnimation_e5j86")
+states/charging/position = Vector2(358.321, 24.2058)
+states/deploy/node = SubResource("AnimationNodeAnimation_7p0tc")
+states/deploy/position = Vector2(357.333, 156.222)
+states/firing/node = SubResource("AnimationNodeAnimation_uirlo")
+states/firing/position = Vector2(536, 25.2593)
+states/idle/node = SubResource("AnimationNodeAnimation_5h6dv")
+states/idle/position = Vector2(536.444, 156.667)
+transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_k7jep"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_66ngj"), "charging", "idle", SubResource("AnimationNodeStateMachineTransition_psx32"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_wkyh6")]
+graph_offset = Vector2(-58, -1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tgx3e"]
+radius = 16.0
+
 [node name="HuntingRifle" type="Node3D"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.125, 0, -0.15, -0.35)
 
 [node name="hunting_rifle" parent="." instance=ExtResource("1_2vytj")]
 script = ExtResource("2_rovkw")
 _charge_delay = 0.75
-category = 3
-index = 1
 bullet = ExtResource("3_m5odq")
 shot_cooldown = 1.2
 ammo_type = "big_iron_bullets"
+category = 3
+index = 1
 
 [node name="Body" parent="hunting_rifle" index="0"]
 material_override = SubResource("ShaderMaterial_bt3r6")
+cast_shadow = 0
 
 [node name="Barrel" parent="hunting_rifle" index="1"]
 material_override = SubResource("ShaderMaterial_blho4")
+cast_shadow = 0
 
 [node name="Bolt" parent="hunting_rifle" index="2"]
 transform = Transform3D(-0.499999, 0.866025, 0, -0.866025, -0.499999, 0, 0, 0, 2, 0, 0.1, 0.85)
 material_override = SubResource("ShaderMaterial_yq81i")
+cast_shadow = 0
 
 [node name="Spawner" type="Marker3D" parent="hunting_rifle"]
 transform = Transform3D(-1, 0, -3.01992e-07, 0, 1, 0, 1.50996e-07, 0, -2, -3.54062e-07, 0.102407, -2.4)
@@ -417,9 +420,13 @@ omni_range = 10.0
 omni_shadow_mode = 0
 
 [node name="AnimationTree" type="AnimationTree" parent="hunting_rifle"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_3k0yj"),
+"hunting_rifle_anims": ExtResource("7_mroe0")
+}
 tree_root = SubResource("AnimationNodeStateMachine_p1jc4")
 anim_player = NodePath("../../AnimationPlayer")
-active = true
 
 [node name="AlertRadius" type="Area3D" parent="hunting_rifle"]
 collision_layer = 2

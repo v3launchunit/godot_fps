@@ -14,6 +14,6 @@ uppercase = true
 
 [node name="Lifetime" type="Timer" parent="."]
 process_mode = 3
-wait_time = 3.0
+wait_time = 10.0
 autostart = true
 script = ExtResource("1_mlvnr")

@@ -42,6 +42,6 @@ detail_blend_mode = 1
 detail_albedo = ExtResource("1_4fasb")
 uv1_scale = Vector3(0.0078125, 0.0078125, 0.078125)
 uv1_world_triplanar = true
-texture_filter = 0
+texture_filter = 2
 distance_fade_mode = 1
 distance_fade_min_distance = 15.0

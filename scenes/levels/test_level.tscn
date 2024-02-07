@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=3 uid="uid://ddybwy4hdo2q3"]
+[gd_scene load_steps=156 format=3 uid="uid://ddybwy4hdo2q3"]
 
 [ext_resource type="PackedScene" uid="uid://c63k27ek72d3d" path="res://scenes/entities/player.tscn" id="1_y76j7"]
 [ext_resource type="Texture2D" uid="uid://c8k3lo0nolynw" path="res://textures/terrain/trench_broom/bricks.png" id="2_7jjft"]
@@ -714,6 +714,31 @@ color_ramp = SubResource("GradientTexture1D_awc0b")
 
 [sub_resource type="QuadMesh" id="QuadMesh_m2e73"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a0kw2"]
+noise_type = 2
+fractal_lacunarity = 2.17
+fractal_gain = 0.65
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jieqa"]
+width = 128
+height = 128
+invert = true
+seamless = true
+seamless_blend_skirt = 0.25
+as_normal_map = true
+noise = SubResource("FastNoiseLite_a0kw2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8meh"]
+transparency = 1
+albedo_color = Color(0.87451, 0.87451, 1, 0.501961)
+roughness = 0.1
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_jieqa")
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_e4nf1"]
+size = Vector3(4, 1, 4)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_y76j7")]
@@ -1190,5 +1215,11 @@ material_override = SubResource("StandardMaterial3D_ti0rx")
 amount = 32
 process_material = SubResource("ParticleProcessMaterial_minwl")
 draw_pass_1 = SubResource("QuadMesh_m2e73")
+
+[node name="Water" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, 0, -10)
+visible = false
+material_override = SubResource("StandardMaterial3D_i8meh")
+mesh = SubResource("BoxMesh_e4nf1")
 
 [editable path="Things/Teleporter"]

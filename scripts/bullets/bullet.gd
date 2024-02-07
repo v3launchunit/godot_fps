@@ -27,7 +27,8 @@ var invoker: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
 	linear_velocity = -speed * global_transform.basis.z.normalized()
 #	add_collision_exception_with(get_node("Player"))
 

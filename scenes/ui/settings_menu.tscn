@@ -465,6 +465,7 @@ button_pressed = true
 text = "Light Bloom"
 
 [node name="CBloomCheck" type="CheckButton" parent="SettingsPanel/VideoScroll/Video/Glow"]
+visible = false
 layout_mode = 2
 tooltip_text = "Toggles a procedural cross-shaped 
 lens flare post-processing effect. 
@@ -592,7 +593,6 @@ uppercase = true
 
 [node name="SoundPreview" type="AudioStreamPlayer" parent="SettingsPanel/AudioScroll/Audio/Sound"]
 stream = ExtResource("6_rku53")
-bus = &"Sound"
 
 [node name="Music" type="Control" parent="SettingsPanel/AudioScroll/Audio"]
 custom_minimum_size = Vector2(0, 68)

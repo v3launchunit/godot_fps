@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://wfllsui4k1if"]
+[gd_scene load_steps=9 format=3 uid="uid://wfllsui4k1if"]
 
 [ext_resource type="Script" path="res://scripts/entities/player/player_gibs.gd" id="1_05c88"]
 [ext_resource type="Script" path="res://scripts/auto_play.gd" id="1_x8wn6"]
 [ext_resource type="Texture2D" uid="uid://cmq3arf61ax4f" path="res://textures/ui/menu_panel.png" id="2_t0aun"]
+[ext_resource type="Script" path="res://scripts/entities/player/game_container.gd" id="3_0y2ya"]
 
 [sub_resource type="Animation" id="Animation_5qn3g"]
 resource_name = "anim"
@@ -11,14 +12,14 @@ step = 0.05
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D")
+tracks/0/path = NodePath("Control/SubViewportContainer/SubViewport/PlayerCorpse/PlayerCam")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.5, 0, 0.3, 1, 0, 0, 0, 0.4, 1, 0, 0, 0, 0.75, 1, 0, -0.5, 0)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node3D")
+tracks/1/path = NodePath("Control/SubViewportContainer/SubViewport/PlayerCorpse/PlayerCam")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.5, 1, 0, 0, 0, 1, 0.75, 1, -0.383, 0, 0, 0.924)
@@ -53,17 +54,8 @@ shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.12549)
 shadow_offset = Vector2(0, 1)
 
-[node name="PlayerGibs" type="Node3D" groups=["player_cam"]]
+[node name="PlayerGibs" type="Node3D"]
 script = ExtResource("1_05c88")
-
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-doppler_tracking = 2
-current = true
-fov = 120.0
-far = 1000.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -78,6 +70,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+stretch_shrink = 2
+script = ExtResource("3_0y2ya")
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(683, 384)
+render_target_update_mode = 4
+
+[node name="PlayerCorpse" type="Node3D" parent="Control/SubViewportContainer/SubViewport"]
+
+[node name="PlayerCam" type="Camera3D" parent="Control/SubViewportContainer/SubViewport/PlayerCorpse" groups=["player_cam"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+doppler_tracking = 2
+current = true
+fov = 120.0
+far = 1000.0
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
@@ -86,6 +105,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(1, 0, 0, 1)
 
 [node name="DeathPanel" type="NinePatchRect" parent="Control"]
@@ -114,10 +134,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -120.5
-offset_top = -124.0
-offset_right = 120.5
-offset_bottom = -76.0
+offset_left = -172.5
+offset_top = -133.5
+offset_right = 172.5
+offset_bottom = -66.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "YOU ARE DEAD"
@@ -137,5 +157,25 @@ offset_right = 29.0
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Shame."
+text = "Shame.
+"
 label_settings = SubResource("LabelSettings_bp74a")
+horizontal_alignment = 1
+
+[node name="RespawnLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.5
+offset_top = 76.5
+offset_right = 95.5
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PRess \"e\" to live again"
+label_settings = SubResource("LabelSettings_bp74a")
+horizontal_alignment = 1
+uppercase = true

@@ -73,21 +73,6 @@ func _process(_delta) -> void:
 		stream_player.play()
 		jumping = true
 
-	if reorienting:
-		camera.rotation.x -= 0.1
-		if camera.rotation.x < -PI:
-			camera.rotation.x += 2 * PI
-		if camera.rotation.x > PI:
-			camera.rotation.x -= 2 * PI
-		if camera.rotation.x < 0.1 and camera.rotation.x > -0.1:
-			reorienting = false
-
-	if is_on_floor() and not reorienting and (
-			camera.rotation.x < -PI / 2 or
-			camera.rotation.x > PI / 2
-	):
-		reorienting = true
-
 	if (
 			Input.is_action_just_pressed("interact") and
 			interact_scan.is_colliding() and
@@ -104,6 +89,25 @@ func _process(_delta) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Check if my camera rotation is valid
+	if is_on_floor() and not reorienting and (
+			camera.rotation.x < -PI / 2 or
+			camera.rotation.x > PI / 2
+	):
+		reorienting = true
+
+	# If not, perform somersaults until it is
+	if reorienting:
+		camera.rotation.x -= PI * delta
+		if camera.rotation.x < -PI: # To prevent excessive somersaulting
+			camera.rotation.x += 2 * PI
+		if camera.rotation.x > PI: # To prevent excessive somersaulting
+			camera.rotation.x -= 2 * PI
+		# To prevent eternal somersaulting
+		if camera.rotation.x < 0.1 and camera.rotation.x > -0.1:
+			reorienting = false
+
+	# Handle actually moving
 	if mouse_captured: _handle_joypad_camera_rotation(delta)
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta) + _knockback(delta)
 	velocity.clamp(-max_speed, max_speed)
