@@ -38,7 +38,7 @@ enum State {
 ## The rate at which the velocity imparted by knockback "decays" towards zero.
 @export var knockback_drag: float = 10.0
 ## Self-explanatory.
-@export_range(0.1, 3.0, 0.1) var jump_height: float = 1
+@export_range(0.0, 3.0, 0.1, "or_greater") var jump_height: float = 0.0
 
 @export_group("Detection")
 ## If enabled, prevents sight-based detection.
@@ -271,45 +271,39 @@ func _investigate(delta) -> void:
 
 
 func _pursue(delta) -> void:
-	# [Removed because it makes them look stupid]
-	# Check if I can actually still see my target, otherwise go to its last known position
-	# (Basically, this is to prevent omniscient AI in the laziest way possible)
-#	sight_line.look_at(current_target.global_position)
-#	if sight_line.get_collider() != current_target:
-#		current_destination = current_target.global_position
-#		change_state(State.SEARCHING)
-#		return
+	if not check_target_validity(): # Make sure I actually have a target first
+		change_state(State.IDLE) # Can't pursue a target that doesn't exist
+		return
+
+	if check_path_staleness(): # Make sure my target is still where I think it is
+		nav_agent.target_position = current_targets[-1].global_position
 
 	# Casually approach target
-	if check_target_validity(): # Make sure I actually have a target first
-		if check_path_staleness():
-			nav_agent.target_position = current_targets[-1].global_position
+	var next_pos: Vector3 = nav_agent.get_next_path_position()
+	sight_line.look_at(next_pos)
+	global_rotation.y = lerp_angle(
+			global_rotation.y,
+			sight_line.global_rotation.y,
+			delta * turning_speed
+	)
+	walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
+	if nav_agent.avoidance_enabled:
+		nav_agent.set_velocity(walk_vel)
+	else:
+		velocity += walk_vel
 
-		var next_pos: Vector3 = nav_agent.get_next_path_position()
-		sight_line.look_at(next_pos)
-		global_rotation.y = lerp_angle(
-				global_rotation.y,
-				sight_line.global_rotation.y,
-				delta * turning_speed
-		)
-		walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
-		if nav_agent.avoidance_enabled:
-			nav_agent.set_velocity(walk_vel)
-		else:
-			velocity += walk_vel
-#		velocity += safe_walk_vel
+	if jump_height > 0 and should_jump():
+		_do_jump()
 
-		# Decide if it's time to attack my target
-		if check_attack_readiness():
-			_begin_attack()
+	# Decide if it's time to attack my target
+	if check_attack_readiness():
+		_begin_attack()
 
-	else: # Can't pursue a target that doesn't exist
-		change_state(State.IDLE)
-		# Scrapped conditionals to try and make enemies breach obstacles
-		# (might reimplement later idk)
-# 				\
-#				or (sight_line.get_collider().global_position.distance_to(global_position) < 2 \
-#				and sight_line.get_collider().find_child("Status") != null)
+	# Scrapped conditionals to try and make enemies breach obstacles
+	# (might reimplement later idk)
+#
+#			or (sight_line.get_collider().global_position.distance_to(global_position) < 2
+#			and sight_line.get_collider().find_child("Status") != null)
 
 
 func check_target_validity() -> bool:
@@ -346,6 +340,19 @@ func can_see_target() -> bool:
 	var hit := space_state.intersect_ray(query)
 
 	return hit and hit.collider == current_targets[-1]
+
+
+func should_jump() -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var query: PhysicsShapeQueryParameters3D = PhysicsShapeQueryParameters3D.new()
+	query.shape = BoxShape3D.new()
+	query.transform = global_transform
+	query.transform.origin += transform.basis.z
+	query.transform.origin -= Vector3(0, -0.4, 0)
+	query.collision_mask = collision_mask
+	#query.exclude.append(self)
+	var hit := space_state.intersect_shape(query)
+	return not hit.is_empty()
 
 
 func _begin_attack() -> void:

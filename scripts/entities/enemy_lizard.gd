@@ -14,7 +14,7 @@ extends EnemyBase
 @export var melee_volley: int = 1
 ## The maximum horizontal offset of the melee attack's projectile(s), in degrees.
 ## Vertical spread is half this.
-@export var melee_spread: float = 0.0
+@export_range(0.0, 180.0, 0.1, "degrees") var melee_spread: float = 0.0
 
 var attack_is_melee: bool = false
 

@@ -62,7 +62,7 @@ func damage(amount: float) -> float:
 			print("gibbed")
 			exp = gibs.instantiate()
 			target_parent.add_child(exp)
-			exp.reparent(get_parent())
+			exp.reparent(get_tree().root.get_child(Globals.C_AUTOLOAD_COUNT))
 			gibs = null
 		return 0
 	if is_dead:

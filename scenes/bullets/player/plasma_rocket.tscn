@@ -76,10 +76,10 @@ collision_layer = 2
 collision_mask = 5
 input_ray_pickable = false
 gravity_scale = 0.0
+lock_rotation = true
 continuous_cd = true
 max_contacts_reported = 5
 contact_monitor = true
-lock_rotation = true
 script = ExtResource("1_ynftt")
 speed = 50.0
 damage = 120.0
@@ -109,7 +109,7 @@ draw_pass_1 = SubResource("CylinderMesh_3dr6j")
 script = ExtResource("2_t8frq")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, 0, 0, 1)
+transform = Transform3D(-1, 1.50996e-07, 6.60025e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, 0, 0, 0)
 layers = 2
 light_color = Color(0.501961, 0, 1, 1)
 light_energy = 2.0

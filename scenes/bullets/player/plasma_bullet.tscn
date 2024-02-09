@@ -33,9 +33,9 @@ emission_shape = 3
 emission_box_extents = Vector3(0.125, 0.125, 2)
 direction = Vector3(0, 0, 1)
 spread = 0.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_prqt5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qrb3"]
@@ -90,10 +90,10 @@ collision_layer = 2
 collision_mask = 5
 input_ray_pickable = false
 gravity_scale = 0.0
+lock_rotation = true
 continuous_cd = true
 max_contacts_reported = 5
 contact_monitor = true
-lock_rotation = true
 script = ExtResource("1_y0jrv")
 speed = 50.0
 damage = 30.0
@@ -121,7 +121,7 @@ draw_pass_1 = SubResource("BoxMesh_wwmxc")
 script = ExtResource("3_wrin4")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, 0, 0, 1)
+transform = Transform3D(-1, 1.50996e-07, 6.60025e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, 0, 0, 0)
 layers = 2
 light_color = Color(0.501961, 0, 1, 1)
 distance_fade_enabled = true

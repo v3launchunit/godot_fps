@@ -247,7 +247,6 @@ textures/decals/filter=2
 textures/light_projectors/filter=2
 environment/glow/upscale_mode=0
 global_illumination/sdfgi/frames_to_update_lights=4
-environment/volumetric_fog/volume_depth=32
 occlusion_culling/use_occlusion_culling=true
 environment/defaults/default_environment="res://scenes/default_environment.tres"
 reflections/main_scene="res://scenes/levels/e1m5_v1.tscn"

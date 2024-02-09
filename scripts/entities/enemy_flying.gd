@@ -22,49 +22,49 @@ func _scan(delta) -> void:
 
 
 func _pursue(delta) -> void:
+	if not check_target_validity(): # Make sure I actually have a target first
+		change_state(State.IDLE) # Can't pursue a target that doesn't exist
+
+	if check_path_staleness():
+		nav_agent.target_position = current_targets[-1].global_position
+
 	# Casually approach target
-	if check_target_validity(): # Make sure I actually have a target first
-		if check_path_staleness():
-			nav_agent.target_position = current_targets[-1].global_position
+	var next_pos: Vector3
 
-		var next_pos: Vector3
+	if can_see_target():
+		next_pos = current_targets[-1].global_position
+		sight_line.look_at(next_pos)
+	else:
+		next_pos = nav_agent.get_next_path_position()
+		sight_line.look_at(next_pos)
 
-		if can_see_target():
-			next_pos = current_targets[-1].global_position
-			sight_line.look_at(next_pos)
-		else:
-			next_pos = nav_agent.get_next_path_position()
-			sight_line.look_at(next_pos)
+	global_rotation.y = lerp_angle(
+			global_rotation.y,
+			sight_line.global_rotation.y,
+			delta * turning_speed
+	)
 
-		global_rotation.y = lerp_angle(
-				global_rotation.y,
-				sight_line.global_rotation.y,
-				delta * turning_speed
-		)
+	walk_vel = walk_vel.move_toward(
+			-speed * sight_line.global_transform.basis.z,
+			acceleration * delta
+	)
 
-		walk_vel = walk_vel.move_toward(
-				-speed * sight_line.global_transform.basis.z,
-				acceleration * delta
-		)
+	if floor_line.is_colliding():
+		walk_vel.y += jump_height
 
-		if floor_line.is_colliding():
-			walk_vel.y += jump_height
+	if global_position.distance_to(
+			current_targets[-1].global_position) < target_min_distance:
+		walk_vel += jump_height * sight_line.global_transform.basis.z
 
-		if global_position.distance_to(
-				current_targets[-1].global_position) < target_min_distance:
-			walk_vel += jump_height * sight_line.global_transform.basis.z
+	if nav_agent.avoidance_enabled:
+		nav_agent.set_velocity(walk_vel)
+	else:
+		velocity += walk_vel
+		move_and_slide()
 
-		if nav_agent.avoidance_enabled:
-			nav_agent.set_velocity(walk_vel)
-		else:
-			velocity += walk_vel
-			move_and_slide()
-
-		# Decide if it's time to attack my target
-		if check_attack_readiness(): #and sight_line.get_collider() == current_target:
-			change_state(State.ATTACKING)
-	else: # Can't pursue a target that doesn't exist
-		change_state(State.IDLE)
+	# Decide if it's time to attack my target
+	if check_attack_readiness(): #and sight_line.get_collider() == current_target:
+		change_state(State.ATTACKING)
 
 
 func _attack(delta) -> void:

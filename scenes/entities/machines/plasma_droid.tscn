@@ -1,23 +1,52 @@
-[gd_scene load_steps=51 format=3 uid="uid://pr3j5d4ifvrt"]
+[gd_scene load_steps=60 format=3 uid="uid://pr3j5d4ifvrt"]
 
+[ext_resource type="Script" path="res://scripts/entities/enemy_attack_pattern.gd" id="1_jd6vl"]
 [ext_resource type="PackedScene" uid="uid://b12xu872st3c" path="res://models/entities/plasma_droid.glb" id="1_whe1e"]
-[ext_resource type="Script" path="res://scripts/entities/enemy_base.gd" id="1_ybg3f"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="2_3ftdv"]
 [ext_resource type="AudioStream" uid="uid://duaykpmpnx0s2" path="res://audio/streams/effects/falling_pipe.wav" id="2_cqd0j"]
 [ext_resource type="AudioStream" uid="uid://ccvyploa5k7uu" path="res://audio/streams/voices/plasma_droid/plasma_droid_detect.wav" id="2_duui2"]
 [ext_resource type="ArrayMesh" uid="uid://ceibhbi3vm1n0" path="res://models/weapons/plasma_cannon.obj" id="2_scks3"]
+[ext_resource type="Script" path="res://scripts/entities/attack_pattern.gd" id="3_3f3op"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_54erg"]
 [ext_resource type="PackedScene" uid="uid://fd8mwvba35jo" path="res://scenes/bullets/enemy/enemy_plasma_rocket.tscn" id="3_avpih"]
 [ext_resource type="PackedScene" uid="uid://cu70msbgu2ysm" path="res://scenes/effects/damage/metal_damage_sys.tscn" id="3_bt5p4"]
 [ext_resource type="PackedScene" uid="uid://ctgdbydttjqwq" path="res://scenes/effects/plasma_explosion.tscn" id="3_rukio"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="4_ifk2m"]
+[ext_resource type="PackedScene" uid="uid://beg6173x6vjha" path="res://scenes/bullets/enemy/enemy_plasma_bullet.tscn" id="4_k6qs3"]
 [ext_resource type="PackedScene" uid="uid://b3n8ejiapfh8" path="res://scenes/pickups/ammo/large_cell_pickup.tscn" id="5_4ag46"]
 [ext_resource type="ArrayMesh" uid="uid://bq2ld7p1te64i" path="res://models/weapons/muzzle_flash_plasma.obj" id="5_8e7tr"]
 [ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://scenes/pickups/health/health_pack_pickup.tscn" id="6_o1v1h"]
 [ext_resource type="AnimationLibrary" uid="uid://cu6kaw3wmnu2i" path="res://scenes/entities/machines/plasma_droid_anims.res" id="8_hkuiw"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fvgwv"]
+[sub_resource type="Resource" id="Resource_ba0li"]
+script = ExtResource("3_3f3op")
+bullet = ExtResource("3_avpih")
+volley = 1
+spread = 0.0
+spawners = Array[NodePath]([])
+delay = 1.0
+recovery_time = 1.5
+animation = &"attacking"
+burst = 1
+burst_delay = 0.1
+weight = 1.0
+
+[sub_resource type="Resource" id="Resource_wk1ps"]
+script = ExtResource("3_3f3op")
+bullet = ExtResource("4_k6qs3")
+volley = 1
+spread = 0.0
+spawners = Array[NodePath]([])
+delay = 0.5
+recovery_time = 2.0
+animation = &"bullet_attacking"
+burst = 4
+burst_delay = 0.25
+weight = 2.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_akb4x"]
 random_pitch = 1.15
+random_volume_offset_db = 1.5
 streams_count = 1
 stream_0/stream = ExtResource("2_cqd0j")
 stream_0/weight = 1.0
@@ -246,6 +275,9 @@ animation = &"plasma_droid_anims/plasma_droid_ambush"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hkehg"]
 animation = &"plasma_droid_anims/plasma_droid_fire"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bpegu"]
+animation = &"plasma_droid_anims/plasma_droid_fire_bullets"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rtijg"]
 animation = &"plasma_droid_anims/plasma_droid_idle"
 
@@ -278,33 +310,48 @@ xfade_time = 0.25
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_njr1r"]
 xfade_time = 0.5
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o53ac"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_imdu4"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ustj1"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gepv6"]
+xfade_time = 0.25
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nc82m"]
 states/Start/position = Vector2(339.111, -8.24693)
 states/ambush/node = SubResource("AnimationNodeAnimation_fcwup")
 states/ambush/position = Vector2(340, 143.341)
 states/attacking/node = SubResource("AnimationNodeAnimation_hkehg")
-states/attacking/position = Vector2(585.333, -9.85186)
+states/attacking/position = Vector2(484, -8.60084)
+states/bullet_attacking/node = SubResource("AnimationNodeAnimation_bpegu")
+states/bullet_attacking/position = Vector2(699.178, -9.44035)
 states/idle/node = SubResource("AnimationNodeAnimation_rtijg")
 states/idle/position = Vector2(484, 142.532)
 states/moving/node = SubResource("AnimationNodeAnimation_88wle")
 states/moving/position = Vector2(698.667, 141.918)
-transitions = ["Start", "ambush", SubResource("AnimationNodeStateMachineTransition_13ygg"), "ambush", "idle", SubResource("AnimationNodeStateMachineTransition_nmaeh"), "idle", "moving", SubResource("AnimationNodeStateMachineTransition_tx3g5"), "moving", "attacking", SubResource("AnimationNodeStateMachineTransition_5joso"), "attacking", "idle", SubResource("AnimationNodeStateMachineTransition_lr4pj"), "idle", "attacking", SubResource("AnimationNodeStateMachineTransition_5jx2v"), "attacking", "moving", SubResource("AnimationNodeStateMachineTransition_oqab8"), "moving", "idle", SubResource("AnimationNodeStateMachineTransition_njr1r")]
+transitions = ["Start", "ambush", SubResource("AnimationNodeStateMachineTransition_13ygg"), "ambush", "idle", SubResource("AnimationNodeStateMachineTransition_nmaeh"), "idle", "moving", SubResource("AnimationNodeStateMachineTransition_tx3g5"), "moving", "attacking", SubResource("AnimationNodeStateMachineTransition_5joso"), "attacking", "idle", SubResource("AnimationNodeStateMachineTransition_lr4pj"), "idle", "attacking", SubResource("AnimationNodeStateMachineTransition_5jx2v"), "attacking", "moving", SubResource("AnimationNodeStateMachineTransition_oqab8"), "moving", "idle", SubResource("AnimationNodeStateMachineTransition_njr1r"), "idle", "bullet_attacking", SubResource("AnimationNodeStateMachineTransition_o53ac"), "bullet_attacking", "idle", SubResource("AnimationNodeStateMachineTransition_imdu4"), "bullet_attacking", "moving", SubResource("AnimationNodeStateMachineTransition_ustj1"), "moving", "bullet_attacking", SubResource("AnimationNodeStateMachineTransition_gepv6")]
 graph_offset = Vector2(50.4669, -36)
 
 [node name="PlasmaDroid" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 23
-script = ExtResource("1_ybg3f")
+script = ExtResource("1_jd6vl")
+patterns = Array[ExtResource("3_3f3op")]([SubResource("Resource_ba0li"), SubResource("Resource_wk1ps")])
 speed = 5.0
 knockback_multiplier = 0.0
 wake_up_time = 0.0
 detection_stream = ExtResource("2_duui2")
 attack_interval = 1.5
 attack_range = 64.0
+melee_range = 4.0
 attack_recovery_time = 1.5
-bullet = ExtResource("3_avpih")
 flinch_chance = 0.0
-death_stream = SubResource("AudioStreamRandomizer_fvgwv")
+death_stream = SubResource("AudioStreamRandomizer_akb4x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_xqi1h")
@@ -427,6 +474,8 @@ tree_root = SubResource("AnimationNodeStateMachine_nc82m")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+volume_db = 3.0
+max_polyphony = 8
 bus = &"Enemies"
 doppler_tracking = 2
 

@@ -260,6 +260,7 @@ skeleton = NodePath("../../../../..")
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.15, -0.25, -0.35)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 layers = 2
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_iu3ba")
