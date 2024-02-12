@@ -7,7 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bblg4t73miejx" path="res://models/weapons/muzzle_flash_alt.obj" id="3_7l0wc"]
 [ext_resource type="Texture2D" uid="uid://br5tgbkka8rp7" path="res://textures/weapons/big_iron/big_iron_roughness.png" id="4_g758g"]
 [ext_resource type="Script" path="res://scripts/weapons/scope.gd" id="4_p5y4d"]
-[ext_resource type="PackedScene" uid="uid://cehwd234g5us7" path="res://scenes/bullets/player/big_iron_bullet.tscn" id="6_lqm6f"]
+[ext_resource type="PackedScene" uid="uid://cehwd234g5us7" path="res://scenes/bullets/player/hitscan/big_iron_bullet.tscn" id="6_lqm6f"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="8_ibv0x"]
 [ext_resource type="AudioStream" uid="uid://cs34y7mvho53h" path="res://audio/streams/weapons/firing/boomstick_fire.wav" id="9_i8lc1"]
 

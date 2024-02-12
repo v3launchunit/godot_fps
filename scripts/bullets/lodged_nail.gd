@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("weapon_fire_alt"): #and weapon_manager.current_category \
-#			== required_weapon.x and weapon_manager.current_index[\
-#			weapon_manager.current_category] == required_weapon.y:
+			#== required_weapon.x and weapon_manager.current_index[\
+			#weapon_manager.current_category] == required_weapon.y:
 		primed = true
+		#Engine.time_scale *= 0.5

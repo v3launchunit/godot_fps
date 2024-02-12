@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/weapons/weapon_double_barrel.gd" id="2_3wn8a"]
 [ext_resource type="AnimationLibrary" uid="uid://clbhlm2virvf0" path="res://models/weapons/nailgun_anims.res" id="3_8tsnk"]
 [ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_kb333"]
-[ext_resource type="PackedScene" uid="uid://dhplxq8nkqau3" path="res://scenes/bullets/player/nail.tscn" id="3_v6ia4"]
+[ext_resource type="PackedScene" uid="uid://dhplxq8nkqau3" path="res://scenes/bullets/player/projectile/nail.tscn" id="3_v6ia4"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="4_xgkgl"]
 
 [sub_resource type="Shader" id="Shader_wcwhh"]

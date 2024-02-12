@@ -24,6 +24,7 @@ func _scan(delta) -> void:
 func _pursue(delta) -> void:
 	if not check_target_validity(): # Make sure I actually have a target first
 		change_state(State.IDLE) # Can't pursue a target that doesn't exist
+		return
 
 	if check_path_staleness():
 		nav_agent.target_position = current_targets[-1].global_position

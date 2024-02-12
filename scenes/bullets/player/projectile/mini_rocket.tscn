@@ -33,8 +33,8 @@ gradient = SubResource("Gradient_5b5pq")
 emission_shape = 1
 emission_sphere_radius = 0.25
 direction = Vector3(0, 1, 0)
-gravity = Vector3(0, 0, 0)
 initial_velocity_max = 0.25
+gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_0lb1k")
 color_initial_ramp = SubResource("GradientTexture1D_hxa1d")
 
@@ -91,14 +91,14 @@ size = Vector3(0.1, 0.1, 25)
 
 [node name="MiniRocket" type="RigidBody3D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 69
 input_ray_pickable = false
 gravity_scale = 0.0
+lock_rotation = true
 custom_integrator = true
 continuous_cd = true
 max_contacts_reported = 5
 contact_monitor = true
-lock_rotation = true
 linear_damp_mode = 1
 linear_damp = 100.0
 script = ExtResource("1_bigms")

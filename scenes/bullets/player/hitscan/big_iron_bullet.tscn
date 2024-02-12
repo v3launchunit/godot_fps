@@ -13,7 +13,7 @@ albedo_color = Color(1, 1, 0, 1)
 
 [node name="Hitscan" type="Node3D"]
 script = ExtResource("1_whain")
-layer_mask = 5
+layer_mask = 69
 damage = 240.0
 explosion = ExtResource("2_vlrsp")
 piercer = true

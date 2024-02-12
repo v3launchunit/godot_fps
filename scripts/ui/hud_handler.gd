@@ -17,25 +17,26 @@ var player: Player
 var status: PlayerStatus
 var manager: WeaponManager
 
-@onready var health_counter: Label = find_child("HealthCounter")
-@onready var ammo_counter: Label = find_child("AmmoCounter")
-@onready var flash_rect: TextureRect = find_child("Flash")
-@onready var blood_rect: TextureRect = find_child("Blood")
+@onready var health_counter: Label = find_child("HealthCounter") as Label
+@onready var ammo_counter: Label = find_child("AmmoCounter") as Label
+@onready var flash_rect: TextureRect = find_child("Flash") as TextureRect
+@onready var blood_rect: TextureRect = find_child("Blood") as TextureRect
+@onready var stream_player: AudioStreamPlayer = \
+		find_child("AudioStreamPlayer") as AudioStreamPlayer
 
 @onready var keys: Array[Node] = $KeysContainer.get_children()
-@onready var weapons: Array[Node] = $WeaponsContainer.get_children()
+@onready var weapons: Array[Node] = $WeaponsContainer2D.get_children()
 @onready var crosshairs: TextureRect = find_child("Crosshairs") as TextureRect
-#@onready var pause_menu: Control = $Menu
-@onready var event_container: VBoxContainer = $EventContainer
-@onready var alert: Label = $Alert
+@onready var event_container: VBoxContainer = $EventContainer as VBoxContainer
+@onready var alert: Label = $Alert as Label
 
 
 func _ready() -> void:
 	flash_rect.visible = false
-	player = get_parent()
-	status = player.find_child("Status")
+	player = get_parent() as Player
+	status = player.find_child("Status") as PlayerStatus
 	status.connect("key_acquired", _on_key_acquired)
-	manager = player.find_child("PlayerCam")
+	manager = player.find_child("PlayerCam") as WeaponManager
 #	pause_menu.reparent(get_tree().root)
 #	get_tree().root.move_child(pause_menu, -1)
 
@@ -80,12 +81,12 @@ func flash(color: Color) -> void:
 
 func flash_with_sound(color: Color, sound: AudioStream) -> void:
 	flash(color)
-	find_child("AudioStreamPlayer").stream = sound
-	find_child("AudioStreamPlayer").play()
+	stream_player.stream = sound
+	stream_player.play()
 
 
-func log_event(event_text) -> void:
-	var event: Label = event_item.instantiate()
+func log_event(event_text: String) -> void:
+	var event: Label = event_item.instantiate() as Label
 	event.text = event_text
 	event_container.add_child(event)
 	event_container.move_child(event, 0)
@@ -101,8 +102,8 @@ func set_alert(alert_text: String) -> void:
 func _on_weapon_hud_connected(
 			category: int,
 			index: int,
-			ammo_type: String,
-			alt_ammo_type: String
+			ammo_type: String = "none",
+			alt_ammo_type: String = "none"
 	) -> void:
 	current_ammo = ammo_type
 	current_alt_ammo = alt_ammo_type

@@ -3,10 +3,10 @@
 [ext_resource type="ArrayMesh" uid="uid://ceibhbi3vm1n0" path="res://models/weapons/plasma_cannon.obj" id="1_rqd6x"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_alt_fire.gd" id="2_ehb67"]
 [ext_resource type="ArrayMesh" uid="uid://bq2ld7p1te64i" path="res://models/weapons/muzzle_flash_plasma.obj" id="3_8rdg8"]
-[ext_resource type="PackedScene" uid="uid://cowh82u84k27w" path="res://scenes/bullets/player/plasma_rocket.tscn" id="3_d0hrl"]
+[ext_resource type="PackedScene" uid="uid://cowh82u84k27w" path="res://scenes/bullets/player/projectile/plasma_rocket.tscn" id="3_d0hrl"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="4_0bwio"]
 [ext_resource type="AnimationLibrary" uid="uid://c3tiox0a0fs23" path="res://scenes/weapons/plasma_cannon_anims.res" id="4_bijp4"]
-[ext_resource type="PackedScene" uid="uid://ddrh730si0u6x" path="res://scenes/bullets/player/plasma_bullet.tscn" id="4_swy3p"]
+[ext_resource type="PackedScene" uid="uid://ddrh730si0u6x" path="res://scenes/bullets/player/projectile/plasma_bullet.tscn" id="4_swy3p"]
 
 [sub_resource type="Shader" id="Shader_wcwhh"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.

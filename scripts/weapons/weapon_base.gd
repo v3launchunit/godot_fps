@@ -20,7 +20,7 @@ signal hud_connected(category: int, index: int, ammo_type: String, alt_ammo_type
 ## fired.
 @export var recoil: float = 0.0
 
-@export_group("Primary Ammo", "ammo_")
+@export_subgroup("Primary Ammo", "ammo_")
 ## The name of the ammo pool this weapon draws from in order to fire.
 @export var ammo_type: String = "none"
 ## The amount of ammo consumed per shot.
@@ -41,13 +41,22 @@ signal hud_connected(category: int, index: int, ammo_type: String, alt_ammo_type
 ## which weapons are selected.
 @export var index: int = 0
 
+## Holdover from before I knew what a "process mode" was. Will probably stick
+## around forever.
 var active: bool = true
 var cooldown_timer: float = 0.0 # seconds
+## Set to 1.0 when a bullet is instantiated (i.e. only applied to the first
+## bullet in a given volley), and decays back to 0.0 over the course of one
+## second. The spread of any given bullet is multiplied by this. [br] In
+## essence, this variable ensures that the first bullet fired from a weapon
+## will always be accurate.
 var refire_penalty: float = 0.0
 var safety_catch_active: bool = false
 var hud: Control
 
-@onready var spawner = find_child("Spawner")
+## This node's global position is used to determine where the weapon's
+## projectile(s) will be fired from.
+@onready var spawner: Node3D = find_child("Spawner")
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 @onready var manager: WeaponManager = get_parent().get_parent()
 @onready var eject_sys: GPUParticles3D = find_child("ShellEject")

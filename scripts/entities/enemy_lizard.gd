@@ -67,6 +67,9 @@ func do_attack() -> void:
 		if instance is PhysicsBody3D:
 			instance.add_collision_exception_with(self)
 			add_collision_exception_with(instance)
+		if instance is Hitscan:
+			instance.query_origin = global_position
+			instance.exceptions.append(self)
 		instance.reparent(get_tree().root)
 
 		instance.invoker = self

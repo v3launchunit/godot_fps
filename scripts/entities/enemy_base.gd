@@ -210,6 +210,8 @@ func change_state(to: State):
 			pass
 		State.FLINCHING:
 			state_machine.travel("flinching", true)
+			if check_target_validity():
+				look_at(current_targets[-1].global_position)
 		State.DEAD:
 			audio_player.stream = death_stream
 			audio_player.play()
@@ -332,26 +334,26 @@ func check_attack_readiness() -> bool:
 
 func can_see_target() -> bool:
 	var space_state = get_world_3d().direct_space_state
-	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(
+	var query := PhysicsRayQueryParameters3D.create(
 			global_position,
 			current_targets[-1].global_position,
 			collision_mask,
 	)
-	var hit := space_state.intersect_ray(query)
+	var hit: Dictionary = space_state.intersect_ray(query)
 
-	return hit and hit.collider == current_targets[-1]
+	return not hit.is_empty() and hit.collider == current_targets[-1]
 
 
 func should_jump() -> bool:
-	var space_state = get_world_3d().direct_space_state
-	var query: PhysicsShapeQueryParameters3D = PhysicsShapeQueryParameters3D.new()
+	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
+	var query := PhysicsShapeQueryParameters3D.new()
 	query.shape = BoxShape3D.new()
 	query.transform = global_transform
 	query.transform.origin += transform.basis.z
 	query.transform.origin -= Vector3(0, -0.4, 0)
 	query.collision_mask = collision_mask
 	#query.exclude.append(self)
-	var hit := space_state.intersect_shape(query)
+	var hit: Array[Dictionary] = space_state.intersect_shape(query)
 	return not hit.is_empty()
 
 
@@ -383,6 +385,9 @@ func do_attack() -> void:
 		if instance is PhysicsBody3D:
 			instance.add_collision_exception_with(self)
 			add_collision_exception_with(instance)
+		if instance is Hitscan:
+			instance.query_origin = global_position
+			instance.exceptions.append(self)
 
 		instance.invoker = self
 

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dre07gr8t1lp2" path="res://textures/weapons/akm/akm_roughness.png" id="4_7ifif"]
 [ext_resource type="Script" path="res://scripts/weapons/scope.gd" id="4_uav1m"]
 [ext_resource type="AnimationLibrary" uid="uid://dvna0xeatmq0y" path="res://scenes/weapons/anims.res" id="5_q7x1e"]
-[ext_resource type="PackedScene" uid="uid://cwytbvgvgmk00" path="res://scenes/bullets/player/akm_bullet.tscn" id="6_15eot"]
+[ext_resource type="PackedScene" uid="uid://cwytbvgvgmk00" path="res://scenes/bullets/player/hitscan/akm_bullet.tscn" id="6_15eot"]
 [ext_resource type="AnimationLibrary" uid="uid://pyw3ltt10q24" path="res://scenes/weapons/akm_anims.res" id="6_w4nrh"]
 [ext_resource type="AnimationLibrary" uid="uid://byhlw1uu73dbf" path="res://scenes/weapons/shotgun_anims.res" id="7_bs841"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="8_ehvva"]

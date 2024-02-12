@@ -25,7 +25,6 @@ albedo_texture = SubResource("GradientTexture2D_16e03")
 
 [node name="Hitscan" type="Node3D"]
 script = ExtResource("1_inyp7")
-layer_mask = 5
 damage = 30.0
 explosion = ExtResource("2_w135i")
 piercer = true

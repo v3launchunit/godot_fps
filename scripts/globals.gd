@@ -2,27 +2,35 @@ extends Node
 
 ## This script is meant to hold various constants, global variables, user
 ## settings, etc. It also handles saving and loading user settings to and from
-## the disc, but it's not really meant to perform any real logic beyond that.
+## the disc and a few other scene-independent things.
 
 
 # ---------------------------------------------------------------------------- #
 # --------------------------------- CONSTANTS -------------------------------- #
 # ---------------------------------------------------------------------------- #
 
-## Error value for float equality comparisons (direct equality comparisons are
-## inadvisable because of floating-point precision errors resulting in numbers
+## Error value for float equality comparisons (direct usage of == is generally
+## discouraged because of floating-point precision errors resulting in numbers
 ## potentially being slightly off).
 const C_EPSILON: float = 0.0001
 ## The percentage chance that a given enemy will check if it should re-evaluate
 ## its current path on a given frame (to prevent lag spikes from everyone
 ## recalculating their paths simultaneously).
 const C_PATH_RE_EVAL_CHANCE: float = 0.1
-## The total number of autoloads. Used so that instantiated scenes are correctly
-## parented to the level scene, and by extension, do not persist between loading
-## new scenes or reloading the current scene.
+## The total number of autoloads above the loaded level scene. Used so that
+## instantiated scenes are correctly parented to the level scene, and by
+## extension, do not persist between loading new scenes or reloading the
+## current scene.
 const C_AUTOLOAD_COUNT: int = 2
+## The percentage chance that whether a given lens flare's visibility will be
+## checked this frame.
 const C_FLARE_RE_EVAL_CHANCE: float = 0.1
+## The minimum distance that the player character must have traveled for lens
+## flares to begin re-evaluating visibility, multiplied by itself to make the
+## distance check slightly faster.
 const C_FLARE_RE_EVAL_DISTANCE_SQUARED: float = 4.0
+## If a hitscan tracer is shorter than this value, it will be deleted.
+const C_HITSCAN_MIN_LENGTH: float = 0.125
 
 
 # ---------------------------------------------------------------------------- #
@@ -73,14 +81,24 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	# When the settings get changed, save them to disq.
 	settings_changed.connect(_on_settings_changed)
 
 
+#func _physics_process(delta: float) -> void:
+	#Engine.time_scale = smoothstep(Engine.time_scale, 1.0, delta / Engine.time_scale)
+
+
+## Reads the current configuration settings from disq and loads them into memory.
 func _load_config() -> void:
 	var config = ConfigFile.new()
-	var err = config.load("user://settings.cfg") # Read from file.
-	if err != OK:
-		return # If the file didn't load, ignore it.
+	# Read from file and remember whether it was successful.
+	var err: Error = config.load("user://settings.cfg")
+
+	# If the file didn't load successfully (err != "OK"/0), ignore it and just
+	# keep the hardcoded defaults.
+	if err:
+		return
 
 	s_stretch_scale = config.get_value("video", "stretch_scale", s_stretch_scale)
 	s_ui_scale = config.get_value("video", "ui_scale", s_ui_scale)
@@ -96,6 +114,7 @@ func _load_config() -> void:
 	s_music_volume = config.get_value("audio", "music_volume", s_music_volume)
 
 
+## Save the current configuration settings to disq.
 func _on_settings_changed() -> void:
 	var config = ConfigFile.new()
 

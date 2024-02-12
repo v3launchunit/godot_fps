@@ -3282,6 +3282,9 @@ shape = SubResource("BoxShape3D_mrqeb")
 [node name="PlasmaDroid" parent="Things/GreenPath/BossRoomS/AreaTripwire" instance=ExtResource("55_bykpp")]
 transform = Transform3D(-2.23517e-08, 0, 1, 0, 1, 0, -1, 0, -2.23517e-08, 5.5, -1, -8.25)
 
+[node name="PlasmaCannon" parent="Things/GreenPath/BossRoomS/AreaTripwire/PlasmaDroid/plasma_droid/Body/Right/Right_001/Right_003" index="0"]
+transform = Transform3D(4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 0, -2.25, 0)
+
 [node name="LensFlare" parent="Things/GreenPath/BossRoomS/AreaTripwire/PlasmaDroid/plasma_droid/Body/Right/Right_001/Right_003/PlasmaCannon/Spawner" index="0"]
 material_override = SubResource("StandardMaterial3D_tyc1x")
 

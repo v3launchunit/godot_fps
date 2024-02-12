@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://tlrvdvva8pj7"]
 
-[ext_resource type="PackedScene" uid="uid://c356m28y5sg6h" path="res://scenes/bullets/player/mini_rocket.tscn" id="1_agav0"]
+[ext_resource type="PackedScene" uid="uid://c356m28y5sg6h" path="res://scenes/bullets/player/projectile/mini_rocket.tscn" id="1_agav0"]
 [ext_resource type="Script" path="res://scripts/self_destructor.gd" id="1_xx2aq"]
 
 [node name="Node3D" type="Node3D"]

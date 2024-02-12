@@ -242,7 +242,7 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_kep41")
 stretch_mode = 2
 
-[node name="WeaponsContainer" type="Control" parent="."]
+[node name="WeaponsContainer2D" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -253,7 +253,7 @@ offset_right = 336.0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="Category0" type="TextureRect" parent="WeaponsContainer"]
+[node name="Category0" type="TextureRect" parent="WeaponsContainer2D"]
 self_modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 2
 offset_right = 32.0
@@ -262,7 +262,7 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_6tiso")
 stretch_mode = 2
 
-[node name="Frame" type="TextureRect" parent="WeaponsContainer/Category0"]
+[node name="Frame" type="TextureRect" parent="WeaponsContainer2D/Category0"]
 show_behind_parent = true
 layout_mode = 0
 offset_right = 32.0
@@ -271,7 +271,7 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_y2lr2")
 stretch_mode = 2
 
-[node name="Category1" type="TextureRect" parent="WeaponsContainer"]
+[node name="Category1" type="TextureRect" parent="WeaponsContainer2D"]
 self_modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 2
 offset_left = 32.0
@@ -281,7 +281,7 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_6dbyc")
 stretch_mode = 2
 
-[node name="Frame" type="TextureRect" parent="WeaponsContainer/Category1"]
+[node name="Frame" type="TextureRect" parent="WeaponsContainer2D/Category1"]
 show_behind_parent = true
 layout_mode = 0
 offset_right = 32.0
@@ -290,7 +290,7 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_0y4ls")
 stretch_mode = 2
 
-[node name="Category2" type="TextureRect" parent="WeaponsContainer"]
+[node name="Category2" type="TextureRect" parent="WeaponsContainer2D"]
 visible = false
 self_modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 2
@@ -301,7 +301,7 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_o00qo")
 stretch_mode = 2
 
-[node name="Frame" type="TextureRect" parent="WeaponsContainer/Category2"]
+[node name="Frame" type="TextureRect" parent="WeaponsContainer2D/Category2"]
 show_behind_parent = true
 layout_mode = 0
 offset_right = 32.0
@@ -310,7 +310,7 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_ayrss")
 stretch_mode = 2
 
-[node name="Category3" type="TextureRect" parent="WeaponsContainer"]
+[node name="Category3" type="TextureRect" parent="WeaponsContainer2D"]
 visible = false
 self_modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 2
@@ -321,7 +321,7 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_qflcx")
 stretch_mode = 2
 
-[node name="Frame" type="TextureRect" parent="WeaponsContainer/Category3"]
+[node name="Frame" type="TextureRect" parent="WeaponsContainer2D/Category3"]
 show_behind_parent = true
 layout_mode = 0
 offset_right = 32.0
@@ -330,7 +330,7 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_g556c")
 stretch_mode = 2
 
-[node name="Category4" type="TextureRect" parent="WeaponsContainer"]
+[node name="Category4" type="TextureRect" parent="WeaponsContainer2D"]
 visible = false
 self_modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 2
@@ -341,7 +341,7 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_2wwlc")
 stretch_mode = 2
 
-[node name="Frame" type="TextureRect" parent="WeaponsContainer/Category4"]
+[node name="Frame" type="TextureRect" parent="WeaponsContainer2D/Category4"]
 show_behind_parent = true
 layout_mode = 0
 offset_right = 32.0

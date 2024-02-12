@@ -226,6 +226,7 @@ debug_give_max_ammo={
 3d_physics/layer_4="Pickups"
 3d_physics/layer_5="Projectiles"
 3d_physics/layer_6="Corpses"
+3d_physics/layer_7="Shields"
 
 [physics]
 

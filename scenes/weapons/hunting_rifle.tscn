@@ -5,7 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bblg4t73miejx" path="res://models/weapons/muzzle_flash_alt.obj" id="2_jyn3n"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_rifle.gd" id="2_rovkw"]
 [ext_resource type="Texture2D" uid="uid://ss8r0up4rgsx" path="res://textures/weapons/big_iron/big_iron_metallic.png" id="3_16lpt"]
-[ext_resource type="PackedScene" uid="uid://bf80ik7ckctt6" path="res://scenes/bullets/player/hunting_rifle_bullet.tscn" id="3_m5odq"]
+[ext_resource type="PackedScene" uid="uid://bf80ik7ckctt6" path="res://scenes/bullets/player/hitscan/hunting_rifle_bullet.tscn" id="3_m5odq"]
 [ext_resource type="Texture2D" uid="uid://br5tgbkka8rp7" path="res://textures/weapons/big_iron/big_iron_roughness.png" id="4_21mai"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="6_tkwec"]
 [ext_resource type="Texture2D" uid="uid://cmq3arf61ax4f" path="res://textures/ui/menu_panel.png" id="7_fhw24"]

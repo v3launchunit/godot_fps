@@ -3,9 +3,9 @@ class_name Bullet extends RigidBody3D
 @export_category("ProjectileBullet")
 
 ## The speed with which this bullet travels.
-@export_range(0.0, 100.0, 0.1) var speed: float = 10
+@export_range(0.0, 100.0, 0.1, "or_greater") var speed: float = 10
 ## The amount of damage that this bullet deals upon contact.
-@export_range(0.0, 1000.0, 0.1) var damage: float = 10
+@export_range(0.0, 1000.0, 0.1, "or_greater") var damage: float = 10
 ## The scene that is instantiated when this bullet object contacts a surface.
 @export var explosion: PackedScene
 ## If set to "true", then the explosion set above will be parented to the
@@ -19,7 +19,7 @@ class_name Bullet extends RigidBody3D
 @export var piercer: bool = true
 ## The base knockback force this bullet imparts onto whatever surface it
 ## contacts.
-@export_range(0.0, 100.0, 0.1) var knockback_force: float = 1.0
+@export_range(0.0, 100.0, 0.1, "or_greater") var knockback_force: float = 1.0
 
 var invoker: Node3D
 
@@ -27,9 +27,11 @@ var invoker: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	linear_damp_mode = RigidBody3D.DAMP_MODE_REPLACE
 	if not body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)
-	linear_velocity = -speed * global_transform.basis.z.normalized()
+	if linear_velocity == Vector3.ZERO:
+		linear_velocity = -speed * global_transform.basis.z.normalized()
 #	add_collision_exception_with(get_node("Player"))
 
 

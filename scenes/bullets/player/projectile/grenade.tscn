@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=3 uid="uid://rchnjnxfhuga"]
 
-[ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_ltu1h"]
-[ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="2_qm8eu"]
-[ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="3_lnkux"]
-[ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_xmqsj"]
-[ext_resource type="PackedScene" uid="uid://dco7xp2cwuyge" path="res://scenes/effects/explosion.tscn" id="4_67f8y"]
-[ext_resource type="Script" path="res://scripts/effects/halo.gd" id="4_vjvho"]
+[ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_1kcle"]
+[ext_resource type="PackedScene" uid="uid://dco7xp2cwuyge" path="res://scenes/effects/explosion.tscn" id="2_pnu70"]
+[ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="3_01yl2"]
+[ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="4_3b6p7"]
+[ext_resource type="Script" path="res://scripts/effects/halo.gd" id="5_ceuba"]
+[ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="6_tyl6o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s6itv"]
 radius = 0.063
@@ -58,15 +58,15 @@ size = Vector2(0.15, 0.15)
 
 [node name="Bullet" type="RigidBody3D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 69
 input_ray_pickable = false
 continuous_cd = true
 max_contacts_reported = 5
 contact_monitor = true
-script = ExtResource("1_ltu1h")
+script = ExtResource("1_1kcle")
 speed = 35.0
 damage = 100.0
-explosion = ExtResource("4_67f8y")
+explosion = ExtResource("2_pnu70")
 piercer = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -88,7 +88,7 @@ lifetime = 0.25
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_0vas0")
 draw_pass_1 = SubResource("CapsuleMesh_ajr70")
-script = ExtResource("2_qm8eu")
+script = ExtResource("3_01yl2")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 layers = 2
@@ -99,18 +99,18 @@ omni_shadow_mode = 0
 
 [node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
 layers = 2
-material_override = ExtResource("3_xmqsj")
+material_override = ExtResource("4_3b6p7")
 cast_shadow = 0
 mesh = SubResource("QuadMesh_j7ack")
-script = ExtResource("4_vjvho")
+script = ExtResource("5_ceuba")
 color = Color(1, 0.501961, 0, 1)
 
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 30.0
 one_shot = true
 autostart = true
-script = ExtResource("3_lnkux")
-decay_explosion = ExtResource("4_67f8y")
+script = ExtResource("6_tyl6o")
+decay_explosion = ExtResource("2_pnu70")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="GPUParticles3D" method="_on_bullet_body_entered"]

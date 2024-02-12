@@ -3,7 +3,7 @@ class_name WeaponAltFire extends WeaponBase
 @export_category("AltFire")
 
 @export_group("Secondary Fire", "alt_")
-
+## The bullet shot by the secondary fire.
 @export var alt_bullet: PackedScene
 ## The time, in seconds, that the player must wait after using this weapon's
 ## alt-fire before the weapon can be used again.
@@ -14,11 +14,13 @@ class_name WeaponAltFire extends WeaponBase
 ## Vertical spread is half this.
 @export_range(0, 90, 0.1) var alt_spread: float = 0.0
 
-@export_group("Secondary Ammo", "alt_ammo_")
+@export_subgroup("Secondary Ammo", "alt_ammo_")
 ## The name of the ammo pool this weapon draws from in order to fire.
 @export var alt_ammo_type: String = "none"
+## How much ammo must be consumed per shot.
 @export var alt_ammo_cost: int = 1
 
+## Where the secondary fire's bullets are fired from.
 @onready var alt_spawner: Node3D = find_child("AltSpawner")
 
 # Called when the node enters the scene tree for the first time.
