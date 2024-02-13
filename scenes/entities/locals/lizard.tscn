@@ -16,24 +16,22 @@
 [ext_resource type="PackedScene" uid="uid://c5pbs8t6p7ogl" path="res://scenes/effects/gibs/gibs.tscn" id="11_p5oxo"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hkga1"]
-streams_count = 2
 random_pitch = 1.25
+streams_count = 2
 stream_0/stream = ExtResource("2_saxi0")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("3_88yk7")
 stream_1/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_emaxw"]
-streams_count = 1
 random_pitch = 1.25
+streams_count = 1
 stream_0/stream = ExtResource("4_wjf2y")
 stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2cyp5"]
-streams_count = 2
 playback_mode = 1
-random_pitch = 1.0
-random_volume_offset_db = 0.0
+streams_count = 2
 stream_0/stream = SubResource("AudioStreamRandomizer_emaxw")
 stream_0/weight = 100.0
 stream_1/stream = ExtResource("5_4ak67")

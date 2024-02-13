@@ -103,7 +103,6 @@ void fragment() {
 noise_type = 2
 frequency = 0.3005
 offset = Vector3(34.2, 0, 0)
-cellular_jitter = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_blpww"]
 width = 64
@@ -119,7 +118,6 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mjwig"]
 noise_type = 2
 frequency = 0.1485
-cellular_jitter = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t5qiw"]
 width = 64

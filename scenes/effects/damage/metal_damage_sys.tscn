@@ -31,8 +31,8 @@ material = SubResource("StandardMaterial3D_1y342")
 size = Vector3(0.063, 0.063, 0.063)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8v46a"]
-streams_count = 1
 random_pitch = 1.15
+streams_count = 1
 stream_0/stream = ExtResource("2_5fwbv")
 stream_0/weight = 1.0
 

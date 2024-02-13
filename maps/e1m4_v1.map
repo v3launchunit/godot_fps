@@ -1,0 +1,25 @@
+// Game: VolumetricsTest
+// Format: Standard
+// entity 0
+{
+"classname" "worldspawn"
+"_tb_textures" "textures/special;textures/terrain/trench_broom"
+// brush 0
+{
+( -64 -64 -48 ) ( -64 -63 -48 ) ( -64 -64 -47 ) terrain/trench_broom/rock 0 0 0 1 1
+( -64 -64 -48 ) ( -64 -64 -47 ) ( -63 -64 -48 ) terrain/trench_broom/rock 0 0 0 1 1
+( -64 -64 -32 ) ( -63 -64 -32 ) ( -64 -63 -32 ) terrain/trench_broom/rock 0 0 0 1 1
+( 64 64 -16 ) ( 64 65 -16 ) ( 65 64 -16 ) terrain/trench_broom/rock 0 0 0 1 1
+( 64 64 -16 ) ( 65 64 -16 ) ( 64 64 -15 ) terrain/trench_broom/rock 0 0 0 1 1
+( 64 64 -16 ) ( 64 64 -15 ) ( 64 65 -16 ) terrain/trench_broom/rock 0 0 0 1 1
+}
+// brush 1
+{
+( 32 -64 -16 ) ( 32 -63 -16 ) ( 32 -64 -15 ) __TB_empty 0 0 0 1 1
+( 32 -64 -16 ) ( 32 -64 -15 ) ( 33 -64 -16 ) __TB_empty 0 0 0 1 1
+( 32 -64 -16 ) ( 33 -64 -16 ) ( 32 -63 -16 ) __TB_empty 0 0 0 1 1
+( 64 48 48 ) ( 64 49 48 ) ( 65 48 48 ) __TB_empty 0 0 0 1 1
+( 64 64 0 ) ( 65 64 0 ) ( 64 64 1 ) __TB_empty 0 0 0 1 1
+( 64 48 0 ) ( 64 48 1 ) ( 64 49 0 ) __TB_empty 0 0 0 1 1
+}
+}

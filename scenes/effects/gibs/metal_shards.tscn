@@ -11,14 +11,14 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 gradient = SubResource("Gradient_qqwon")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ss8t6"]
+particle_flag_align_y = true
 emission_shape = 3
 emission_box_extents = Vector3(0.5, 0.5, 0.5)
-particle_flag_align_y = true
+angle_min = -720.0
+angle_max = 720.0
 direction = Vector3(0, 1, 0)
 initial_velocity_min = 5.0
 initial_velocity_max = 10.0
-angle_min = -720.0
-angle_max = 720.0
 color_ramp = SubResource("GradientTexture1D_qlv50")
 collision_mode = 1
 collision_friction = 0.5
@@ -34,8 +34,8 @@ left_to_right = 0.0
 size = Vector3(0.25, 0.125, 0.5)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vvpnn"]
-streams_count = 1
 random_pitch = 1.15
+streams_count = 1
 stream_0/stream = ExtResource("2_8mfh6")
 stream_0/weight = 1.0
 

@@ -2972,7 +2972,6 @@
 ( -688 96 208 ) ( -672 96 208 ) ( -688 96 384 ) special/skip 0 0 0 1 1
 ( -672 96 208 ) ( -672 80 208 ) ( -672 96 384 ) terrain/trench_broom/bricks_brown 0 0 0 1 1
 }
-}
 // brush 283
 {
 ( -816 -32 416 ) ( -832 0 416 ) ( -832 0 544 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
