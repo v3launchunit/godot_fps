@@ -89,7 +89,7 @@ func kill():
 	if not loot.is_empty():
 		var loot_spawn: RigidBody3D = loot.pick_random().instantiate()
 		target_parent.add_child(loot_spawn)
-		loot_spawn.reparent(get_tree().root.get_child(2))
+		loot_spawn.reparent(get_tree().current_scene)
 		loot_spawn.rotation = Vector3(0, 0, 0)
 		loot_spawn.linear_velocity = Vector3(randf_range(-3, 3), 10, randf_range(-3, 3))
 

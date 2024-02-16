@@ -14,16 +14,18 @@ class_name WeaponManager extends Camera3D
 
 @export var anti_clip_speed: float = 7.5
 
+@export_group("Save Data")
+@export var prior_category: int = 0
+@export var prior_index: int = 0
+
+@export var prior_fov: float = Globals.s_fov_desired
+@export var prior_zoom: float = 1.0
+
+@export var ammo_amounts: Dictionary # Created right before _ready
+
 var anti_clip_collisions: int = 0
 var current_weapon_pos: float
 
-var prior_category: int = 0
-var prior_index: int = 0
-
-var prior_fov: float = Globals.s_fov_desired
-var prior_zoom: float = 1.0
-
-@onready var ammo_amounts: Dictionary = ammo_types.duplicate() # Created right before _ready
 @onready var anti_clip_box: Area3D = $ViewmodelAntiClip
 @onready var rummage_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
@@ -31,8 +33,10 @@ signal switched_weapons(category: int, index: int, with_safety_catch: bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for key in ammo_amounts:
-		ammo_amounts[key] = 0
+	if ammo_amounts.is_empty():
+		ammo_amounts = ammo_types.duplicate()
+		for key in ammo_amounts:
+			ammo_amounts[key] = 0
 
 	ammo_amounts["shells"] = 15
 	ammo_amounts["grenades"] = 3

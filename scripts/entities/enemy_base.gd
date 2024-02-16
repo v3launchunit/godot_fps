@@ -123,6 +123,7 @@ var state_timer: float = 0 # How long I've been in my current state, in seconds
 @onready var audio_player: AudioStreamPlayer3D = find_child("AudioStreamPlayer3D")
 
 func _ready() -> void:
+	add_to_group("persist", true)
 	state_machine.start("ambush", true)
 	status.injured.connect(_on_status_injured)
 	status.died.connect(_on_status_died)

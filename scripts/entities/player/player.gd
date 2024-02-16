@@ -48,10 +48,11 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var move_dir: Vector2 ## Input direction for movement.
 var look_dir: Vector2 ## Input direction for look/aim.
 
-var walk_vel: Vector3 ## The current walking velocity vector.
-var grav_vel: Vector3 ## The current gravity velocity vector.
-var jump_vel: Vector3 ## The current jumping velocity vector.
-var knockback_vel: Vector3 ## The current knockback velocity vector.
+@export_group("Save Data")
+@export var walk_vel: Vector3 ## The current walking velocity vector.
+@export var grav_vel: Vector3 ## The current gravity velocity vector.
+@export var jump_vel: Vector3 ## The current jumping velocity vector.
+@export var knockback_vel: Vector3 ## The current knockback velocity vector.
 
 var camera_zoom_sens: float = 1.0
 var reorienting: bool = false
@@ -84,6 +85,14 @@ func _process(_delta) -> void:
 
 	if Input.is_action_just_pressed("quick_restart"):
 		get_tree().reload_current_scene()
+
+	if Input.is_action_just_pressed("quick_save"):
+		Globals.save_game(Globals.C_QUICKSAVE_PATH)
+
+	if Input.is_action_just_pressed("quick_load"):
+		var q: PackedScene = load(Globals.C_QUICKSAVE_PATH)
+		if q != null:
+			get_tree().change_scene_to_packed(q)
 
 	camera_sync.global_transform = global_transform
 

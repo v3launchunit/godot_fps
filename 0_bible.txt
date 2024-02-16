@@ -40,8 +40,9 @@ Weapons:
 		Hunting Rifle:
 			Primary: Medium Shot
 				Uses big iron ammo
-			Secondary: [idk molest the bolt to load more shells into the chamber]
-				[maybe have bonus shells cause ricochets off of shit too]
+			Secondary: Overload
+				Adds another shell to the chamber, increasing damage
+				Persists until fired
 		Crossbow
 			Primary: Charge Beam
 			Secondary: Prism Grenade
@@ -59,7 +60,7 @@ Weapons:
 		Flamethrower:
 			Primary: Hot
 			Secondary: Hotter
-				Uses cell ammo
+				Uses cell ammo(?)
 		Minigun:
 			Primary: Spray
 			Secondary: Spin

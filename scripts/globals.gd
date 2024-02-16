@@ -13,15 +13,18 @@ extends Node
 ## discouraged because of floating-point precision errors resulting in numbers
 ## potentially being slightly off).
 const C_EPSILON: float = 0.0001
-## The percentage chance that a given enemy will check if it should re-evaluate
-## its current path on a given frame (to prevent lag spikes from everyone
-## recalculating their paths simultaneously).
-const C_PATH_RE_EVAL_CHANCE: float = 0.1
+
 ## The total number of autoloads above the loaded level scene. Used so that
 ## instantiated scenes are correctly parented to the level scene, and by
 ## extension, do not persist between loading new scenes or reloading the
 ## current scene.
 const C_AUTOLOAD_COUNT: int = 2
+
+## The percentage chance that a given enemy will check if it should re-evaluate
+## its current path on a given frame (to prevent lag spikes from everyone
+## recalculating their paths simultaneously).
+const C_PATH_RE_EVAL_CHANCE: float = 0.1
+
 ## The percentage chance that whether a given lens flare's visibility will be
 ## checked this frame.
 const C_FLARE_RE_EVAL_CHANCE: float = 0.1
@@ -29,8 +32,12 @@ const C_FLARE_RE_EVAL_CHANCE: float = 0.1
 ## flares to begin re-evaluating visibility, multiplied by itself to make the
 ## distance check slightly faster.
 const C_FLARE_RE_EVAL_DISTANCE_SQUARED: float = 4.0
+
 ## If a hitscan tracer is shorter than this value, it will be deleted.
 const C_HITSCAN_MIN_LENGTH: float = 0.125
+
+## The filepath that user quicksaves live in.
+const C_QUICKSAVE_PATH: String = "user://saves/auto/quicksave.scn"
 
 
 # ---------------------------------------------------------------------------- #
@@ -81,6 +88,12 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	# Create save directories if they don't already exist.
+	if not DirAccess.dir_exists_absolute("user://saves/auto"):
+		DirAccess.make_dir_recursive_absolute("user://saves/auto")
+	if not DirAccess.dir_exists_absolute("user://saves/user"):
+		DirAccess.make_dir_recursive_absolute("user://saves/user")
+
 	# When the settings get changed, save them to disq.
 	settings_changed.connect(_on_settings_changed)
 
@@ -132,3 +145,9 @@ func _on_settings_changed() -> void:
 	config.set_value("audio", "music_volume", s_music_volume)
 
 	config.save("user://settings.cfg") # Write to file.
+
+
+func save_game(to: String) -> void:
+	var scene := PackedScene.new()
+	scene.pack(get_tree().root.get_child(C_AUTOLOAD_COUNT))
+	ResourceSaver.save(scene, to)
