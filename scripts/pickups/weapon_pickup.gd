@@ -30,6 +30,9 @@ func interact(body: Node3D) -> void:
 		manager.add_child(instance)
 
 		if manager.add_weapon(instance, starting_ammo):
+			instance.owner = manager
+			#get_tree().current_scene.set_editable_instance(instance, true)
+			#body.set_editable_instance(instance, true)
 			manager.force_add_ammo(instance.get_child(0).ammo_type, starting_ammo)
 			if instance.get_child(0) is WeaponAltFire:
 				manager.force_add_ammo(instance.get_child(0).alt_ammo_type, starting_alt_ammo)

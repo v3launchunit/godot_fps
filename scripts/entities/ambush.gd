@@ -34,6 +34,7 @@ func _on_trigger_body_entered(_body: Node3D) -> void:
 		add_child(a)
 		a.position += Vector3(0, y_offset, 0)
 		a.reparent(get_parent_node_3d())
+		a.owner = a.get_parent()
 		if auto_target and a.has_method("detect_target"):
 			a.detect_target(_body)
 		if a is Hitscan:

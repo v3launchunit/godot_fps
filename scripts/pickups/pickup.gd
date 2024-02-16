@@ -11,7 +11,8 @@ class_name Pickup extends RigidBody3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	area.body_entered.connect(interact)
+	if not area.body_entered.is_connected(interact):
+		area.body_entered.connect(interact)
 	find_child("AnimationPlayer").play("anim")
 
 

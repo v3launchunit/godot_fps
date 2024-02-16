@@ -1,5 +1,6 @@
-[gd_scene load_steps=156 format=3 uid="uid://ddybwy4hdo2q3"]
+[gd_scene load_steps=157 format=3 uid="uid://ddybwy4hdo2q3"]
 
+[ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_ncffn"]
 [ext_resource type="PackedScene" uid="uid://c63k27ek72d3d" path="res://scenes/entities/player.tscn" id="1_y76j7"]
 [ext_resource type="Texture2D" uid="uid://c8k3lo0nolynw" path="res://textures/terrain/trench_broom/bricks.png" id="2_7jjft"]
 [ext_resource type="Script" path="res://scripts/effects/env_settings_hook.gd" id="3_3e2p7"]
@@ -740,6 +741,7 @@ texture_filter = 2
 size = Vector3(4, 1, 4)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_ncffn")
 
 [node name="Player" parent="." instance=ExtResource("1_y76j7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
