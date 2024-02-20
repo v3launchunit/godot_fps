@@ -7,40 +7,45 @@ class_name Player extends CharacterBody3D
 @export_range(0, 35, 0.1, "or_greater") var speed: float = 10
 ## The rate at which the player accelerates from standing still to moving at
 ## full speed.
-@export_range(0, 100, 0.1) var acceleration: float = 100
+@export_range(0, 100, 0.1, "or_greater") var acceleration: float = 100
 ## The absolute fastest that the player can travel in each direction.
 @export var max_speed := Vector3(100, 100, 100)
-## The rate at which the velocity imparted by knockback "decays" towards zero.
-@export_range(0, 100, 0.1) var knockback_drag: float = 10
+## The rate at which the velocity imparted by sliding "decays" towards zero.
+@export_range(0, 100, 0.1, "or_greater") var slide_drag: float = 10
+## Ditto for knockback.
+@export_range(0, 100, 0.1, "or_greater") var knockback_drag: float = 10
 ## Self-explanatory.
 @export_range(0.1, 3.0, 0.1, "or_greater") var jump_height: float = 1
 
 @export_group("Camera")
-## The sensitivity multiplier for looking around with the mouse.
-#@export_range(0.1, 10.0, 0.1, "or_greater") var camera_sens: float = 12.0
 ## The roll angle, in degrees, that the camera turns toward when strafing.
 @export_range(0.0, 15.0, 0.1, "or_greater", "radians") var roll_intensity: float = 0.052
 ## The rate at which the camera tilt experiened while strafing is applied.
-@export_range(0.0, 1.0) var roll_speed: float = 0.5
+@export_range(0.0, 1.0, 0.001) var roll_speed: float = 0.5
+
 ## The frequency of the camera's horizontal movement when walking.
-@export var sway_speed: float = 5.0
+@export_range(0.0, 10.0, 0.1, "or_greater") var sway_speed: float = 5.0
 ## The amplitude of the camera's horizontal movement when walking. (The camera's
 ## vertical amplitude is half this, resulting in the camera moving in a
 ## figure-eight pattern.)
-@export var sway_height: float = 0.3
+@export_range(0.0, 1.0, 0.001) var sway_height: float = 0.3
 ## While airborne, the weapon's apparent position (produced by manipulating the
 ## camera's transform position and vertical offset) corresponds to the player's
 ## current falling speed, multiplied by this.
-@export var jump_sway: float = 0.01
+@export_range(0.0, 1.0, 0.001) var jump_sway: float = 0.01
+@export_range(0.0, 1.0, 0.001) var strafe_sway: float = 0.025
+@export_range(-1.0, 1.0, 0.01) var look_drag: float = 0.25
 
 @export_group("Sounds")
 ## The audio stream that plays when the player attempts to interact with an
 ## interactable object.
 @export var interact_stream: AudioStream
+
 ## The audio stream that plays when the player jumps.
 @export var jump_stream: AudioStream
 
 var jumping: bool = false
+var crouching: bool = false
 static var mouse_captured: bool = false
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -49,6 +54,7 @@ var move_dir: Vector2 ## Input direction for movement.
 var look_dir: Vector2 ## Input direction for look/aim.
 
 var walk_vel: Vector3 ## The current walking velocity vector.
+var slide_vel: Vector3 ## The current sliding velocity vector.
 var grav_vel: Vector3 ## The current gravity velocity vector.
 var jump_vel: Vector3 ## The current jumping velocity vector.
 var knockback_vel: Vector3 ## The current knockback velocity vector.
@@ -57,11 +63,12 @@ var camera_zoom_sens: float = 1.0
 var reorienting: bool = false
 var sway_timer: float = PI/2
 
-@onready var camera: Camera3D = find_child("PlayerCam")
-@onready var camera_sync: Node3D = find_child("PlayerSync")
-@onready var flashlight: SpotLight3D = find_child("Flashlight")
-@onready var interact_scan: RayCast3D = find_child("Interact")
-@onready var stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var camera := find_child("PlayerCam") as Camera3D
+@onready var camera_sync := find_child("PlayerSync") as Node3D
+@onready var flashlight := find_child("Flashlight") as SpotLight3D
+@onready var interact_scan := find_child("Interact") as RayCast3D
+@onready var clearance_scan := $ClearanceCast as ShapeCast3D
+@onready var stream_player := $AudioStreamPlayer as AudioStreamPlayer
 
 func _ready() -> void:
 	capture_mouse()
@@ -72,6 +79,21 @@ func _process(_delta) -> void:
 		stream_player.stream = jump_stream
 		stream_player.play()
 		jumping = true
+
+	if Input.is_action_just_pressed("crouch") and not crouching:
+		_toggle_crouch(true)
+
+	if crouching and (
+			not (
+					Globals.s_toggle_crouch
+					or Input.is_action_pressed("crouch")
+			) or (
+					Globals.s_toggle_crouch
+					and Input.is_action_just_pressed("crouch")
+			)
+			and not clearance_scan.is_colliding()
+	):
+		_toggle_crouch(false)
 
 	if (
 			Input.is_action_just_pressed("interact") and
@@ -109,8 +131,14 @@ func _physics_process(delta: float) -> void:
 
 	# Handle actually moving
 	if mouse_captured: _handle_joypad_camera_rotation(delta)
-	velocity = _walk(delta) + _gravity(delta) + _jump(delta) + _knockback(delta)
-	velocity.clamp(-max_speed, max_speed)
+	velocity = (
+			_walk(delta)
+			+ _slide(delta)
+			+ _gravity(delta)
+			+ _jump(delta)
+			+ _knockback(delta)
+	)
+	velocity = velocity.clamp(-max_speed, max_speed)
 	move_and_slide()
 
 
@@ -161,10 +189,23 @@ func apply_knockback(amount: Vector3) -> void:
 #	print("knockback applied")
 
 
+func _toggle_crouch(to: bool) -> void:
+	var hitbox: CollisionShape3D = $PlayerHitbox as CollisionShape3D
+	var crouchbox: CollisionShape3D = $PlayerCrouchHitbox as CollisionShape3D
+	if to and is_on_floor():
+		translate(Vector3(0, -1, 0))
+		slide_vel = walk_vel
+	crouching = to
+	hitbox.disabled = to
+	crouchbox.disabled = not to
+
+
 func _walk(delta: float) -> Vector3:
-	move_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
-	var _forward: Vector3 = transform.basis * Vector3(move_dir.x, 0, move_dir.y)
-	var walk_dir: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
+	var move_input: Vector2 = Input.get_vector(
+			"move_left", "move_right", "move_forward", "move_backwards")
+	move_dir = move_dir.move_toward(move_input, delta * acceleration / speed)
+	var forward: Vector3 = transform.basis * Vector3(move_input.x, 0, move_input.y)
+	var walk_dir: Vector3 = Vector3(forward.x, 0, forward.z).normalized()
 
 	# Roll camera while strafing
 	camera.rotation.z = move_toward(
@@ -182,18 +223,27 @@ func _walk(delta: float) -> Vector3:
 
 	# Handle camera & weapon sway/jump lag
 	camera.position = Vector3(
-			move_dir.length() * sway_height * cos(sway_speed * sway_timer),
-			0.5 + (move_dir.length() * sway_height / 3 * sin(
-					2 * sway_speed * sway_timer
-			)),
+			(
+					move_dir.length() * sway_height * cos(
+							sway_speed * sway_timer
+					)
+					- move_dir.x * strafe_sway
+			),
+			(
+					0.5
+					+ move_dir.length() * sway_height / 3 * sin(
+							2 * sway_speed * sway_timer
+					)
+			),
 			0
 	) if is_on_floor() else Vector3(
 			0,
 			0.5 - clampf((grav_vel.y + jump_vel.y) * jump_sway, -0.1, 0.1),
 			0
 	)
-	# Manipulating the v_offset like this makes it look like the weapon is
-	# moving relative to the camera
+	# Manipulating the offsets like this makes it look like the weapon is
+	# moving relative to the camera without having to actually move the weapon
+	camera.h_offset = move_dir.x * strafe_sway
 	camera.v_offset = (
 			move_dir.length() * -sway_height / 6 * sin(10 * sway_timer)
 	) if is_on_floor() else clampf(
@@ -205,15 +255,24 @@ func _walk(delta: float) -> Vector3:
 	return walk_vel
 
 
+func _slide(delta: float) -> Vector3:
+	if is_on_floor() or walk_vel.normalized().dot(slide_vel.normalized()) < 0.5:
+		slide_vel = slide_vel.move_toward(Vector3.ZERO, delta * slide_drag)
+	return slide_vel
+
+
 func _gravity(delta: float) -> Vector3:
 	grav_vel = Vector3.ZERO if is_on_floor() else grav_vel.move_toward(
-			Vector3(0, velocity.y - gravity, 0), gravity * delta)
+			Vector3(0, velocity.y - gravity, 0),
+			gravity * delta
+	)
 	return grav_vel
 
 
 func _jump(delta: float) -> Vector3:
 	if jumping:
-		if is_on_floor(): jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
+		if is_on_floor():
+			jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
 		jumping = false
 		reorienting = false
 		return jump_vel

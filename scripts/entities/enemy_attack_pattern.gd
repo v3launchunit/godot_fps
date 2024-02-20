@@ -12,6 +12,8 @@ enum PatternSelectionMode {
 var current_pattern: int = 0
 var current_burst: int = 0
 
+@onready var anim_player: AnimationPlayer = find_child("AnimationPlayer") as AnimationPlayer
+
 
 func _pursue(delta) -> void:
 	# weird hacky randomization algorithm
@@ -42,9 +44,19 @@ func _begin_attack() -> void:
 
 
 func _attack(_delta) -> void:
-	if (state_timer >= patterns[current_pattern].delay
-			+ current_burst * patterns[current_pattern].burst_delay):
-		do_attack()
+	if (
+			state_timer >= patterns[current_pattern].delay
+			+ current_burst * patterns[current_pattern].burst_delay
+	):
+		if patterns[current_pattern].cancelable and not can_see_target():
+			change_state(State.POST_ATTACKING)
+			anim_player.seek(
+					patterns[current_pattern].delay
+					+ patterns[current_pattern].burst
+					* patterns[current_pattern].burst_delay
+			)
+		else:
+			do_attack()
 	nav_agent.set_velocity(Vector3.ZERO)
 
 

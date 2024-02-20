@@ -70,6 +70,10 @@ var s_sound_volume: float = 100.0
 ## Self-explanatory.
 var s_music_volume: float = 100.0
 
+## Whether crouching is a toggle or a hold.
+var s_toggle_crouch: bool = false
+
+
 ## Tells scripts to check to see if the game's settings have been changed and
 ## to update any values they need to.
 signal settings_changed

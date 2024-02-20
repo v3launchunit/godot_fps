@@ -210,7 +210,7 @@ func has_ammo(type: String, amount: int = 1, virtual_charge: bool = false) -> bo
 	return false
 
 
-func add_weapon(weapon: Node, starting_ammo: int = 0) -> bool:
+func add_weapon(weapon: Node, _starting_ammo: int = 0) -> bool:
 	var weap: WeaponBase = weapon.get_child(0)
 	if (
 			weapons[weap.category].is_empty() or

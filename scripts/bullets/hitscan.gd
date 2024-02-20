@@ -3,7 +3,7 @@ class_name Hitscan extends Node3D
 @export_category("Hitscan")
 
 @export_flags_3d_physics var layer_mask: int = 69
-@export_range(0.0, 1000.0, 0.1, "or_greater", "or_less") var range: float = 1000.0
+@export_range(0.0, 1000.0, 0.1, "or_greater", "or_less") var max_range: float = 1000.0
 @export_range(0.0, 1000.0, 0.1, "or_greater") var damage: float = 10.0
 @export var explosion: PackedScene
 @export_range(0.0, 100.0, 0.1, "or_greater") var knockback_force: float = 1.0
@@ -20,7 +20,7 @@ var exceptions: Array = []
 var invoker: Node3D
 #var camera: Camera3D
 
-@onready var mesh: Node3D = get_node("MeshInstance3D")
+@onready var mesh: Node3D = get_node("MeshInstance3D") as Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,14 +32,14 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(delta: float) -> void:
 	if handled:
 		mesh.scale.z -= fade_speed * delta
 		if mesh.scale.z < Globals.C_HITSCAN_MIN_LENGTH:
 			queue_free()
 
 
-func _physics_process(delta):
+func _physics_process(_delta: float) -> void:
 	if handled:
 		return
 
@@ -51,24 +51,23 @@ func _physics_process(delta):
 	print(query_origin)
 	var query = PhysicsRayQueryParameters3D.create(
 			query_origin,
-			query_origin - (range * global_transform.basis.z),
+			query_origin - (max_range * global_transform.basis.z),
 			layer_mask
 	)
 	if not (exceptions.is_empty() or exceptions[0] == null):
 		query.set_exclude(exceptions)
 
-	var result = space.intersect_ray(query)
-	var mesh: Node3D = get_node("MeshInstance3D")
+	var result: Dictionary = space.intersect_ray(query)
 
 	if result:
 		mesh.global_position = result.position
 		mesh.scale.z = result.position.distance_to(global_position)
 		mesh.look_at(global_position)
 
-		if result.collider.name == "Shield":
-			print("hit shield")
-			exceptions.append(result.collider)
-			handled = false
+		#if result.collider.name == "Shield":
+			#print("hit shield")
+			#exceptions.append(result.collider)
+			#handled = false
 
 		if result.collider.has_node("Status"):
 			var status: Status = result.collider.find_child("Status")
@@ -94,6 +93,6 @@ func _physics_process(delta):
 			exp.find_child("Area3D").invoker = invoker
 
 	else: # if the bullet didn't hit anything
-		mesh.global_position = global_position + range * global_transform.basis.z
-		mesh.scale.z = range - 1
+		mesh.global_position = global_position + max_range * global_transform.basis.z
+		mesh.scale.z = max_range - 1
 		mesh.look_at(global_position)

@@ -25,14 +25,17 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug_give_max_health"):
-		health = 100 if health < 100 else health
-		armor = 25 if armor < 25 else armor
+		if health < 100.0:
+			health = 100.0
+		if armor < 25.0:
+			armor = 25.0
 		is_dead = false
 
 	if Input.is_action_just_pressed("debug_give_max_armor"):
-		armor = 100 if armor < 100 else armor
+		if armor < 100.0:
+			armor = 100.0
 #	if health > max_health:
 #		health -= overheal_decay_rate * delta
 #		if health < max_health:
@@ -43,8 +46,9 @@ func damage(amount: float) -> float: # returns damage dealt, for piercers
 	if is_dead:
 		return 0 # corpses cannot stop piercers
 	hud.flash(Color(1, 0, 0, clamp(amount / 10, 0.1, 1)))
-	get_parent().get_child(1).stream = injury_stream
-	get_parent().get_child(1).play()
+	var stream_player := get_parent().get_node("AudioStreamPlayer") as AudioStreamPlayer
+	stream_player.stream = injury_stream
+	stream_player.play()
 	health -= amount * (1 - armor_absorption)
 	armor  -= amount * armor_absorption
 	if armor <= 0:
@@ -63,8 +67,8 @@ func kill():
 	if gibs != null:
 		var exp: Node = gibs.instantiate()
 		target_parent.add_child(exp)
-		exp.reparent(get_tree().root)
-		move_child(exp, 0)
+		exp.reparent(get_tree().current_scene)
+		#move_child(exp, 0)
 		get_parent().find_child("PlayerCam").switched_weapons.emit(-1, -1, false)
 		get_parent().find_child("PlayerCam").current = false
 		gibs = null

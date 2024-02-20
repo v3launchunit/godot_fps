@@ -46,12 +46,12 @@ func _on_resolution_apply_button_pressed() -> void:
 
 
 func _on_scale_slider_value_changed(value: float) -> void:
-	Globals.s_stretch_scale = value
+	Globals.s_stretch_scale = floori(value)
 	scale_label.text = "%sx" % value
 
 
-func _on_scale_slider_drag_ended(value_changed: bool) -> void:
-	pass
+#func _on_scale_slider_drag_ended(value_changed: bool) -> void:
+	#pass
 
 
 func _on_ui_scale_slider_value_changed(value: float) -> void:

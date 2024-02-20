@@ -12,6 +12,7 @@ class_name AttackPattern extends Resource
 @export var animation: StringName = "attacking"
 @export_range(1, 10, 1, "or_greater") var burst: int = 1
 @export_range(0.0, 1.0, 0.01, "or_greater") var burst_delay: float = 0.1
+@export var cancelable: bool = false
 
 @export_group("", "")
 @export_range(0.0, 100.0, 0.001) var weight: float = 1.0

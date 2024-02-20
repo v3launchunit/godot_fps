@@ -57,12 +57,12 @@ func damage(amount: float) -> float:
 			kill()
 
 		target_parent.queue_free()
-		var exp: Node
+		var i: Node
 		if gibs != null:
 			print("gibbed")
-			exp = gibs.instantiate()
-			target_parent.add_child(exp)
-			exp.reparent(get_tree().root.get_child(Globals.C_AUTOLOAD_COUNT))
+			i = gibs.instantiate()
+			target_parent.add_child(i)
+			i.reparent(get_tree().current_scene)
 			gibs = null
 		return 0
 	if is_dead:

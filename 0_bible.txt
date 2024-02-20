@@ -1,0 +1,534 @@
+
+Weapons:
+	Slot 1 (Melee):
+		Axe:
+			Primary: Swing
+				Deflects projectiles
+			Secondary: nothing lol
+		Syringe:
+			Primary: Stab
+			Secondary: Heal
+		Sword:
+			Primary: Swing
+					Fires projectile at 100%+ health
+			Secondary: Guard
+					Deflects projectiles
+
+	Slot 2 (Shotguns):
+		Shotgun:
+			Primary: Shot
+			Secondary: Impact Grenade
+		Boomstick:
+			Primary: Super Shot
+			Secondary: Sawblade Launcher
+
+	Slot 3 (Automatics):
+		AKM:
+			Primary: Spray
+			Secondary: Sights
+		Nailgun:
+			Primary: Nails
+			Secondary: Detonate
+		Plasma Cannon:
+			Primary: Plasma Bullets
+			Secondary: Plasma Rockets
+
+	Slot 4 (Snipers):
+		Big Iron:
+			Primary: Big Shot
+			Secondary: Scope
+		Hunting Rifle:
+			Primary: Medium Shot
+				Uses big iron ammo
+			Secondary: [idk molest the bolt to load more shells into the chamber]
+				[maybe have bonus shells cause ricochets off of shit too]
+		Crossbow
+			Primary: Charge Beam
+			Secondary: Prism Grenade
+				Shoot with charge beam for big fun
+
+	Slot 5 (Explosives):
+		Hand Cannon:
+			Primary: Bouncy Grenade
+			Secondary: Detonate
+		RPG:
+			Primary: Guided Missile
+			Secondary: Lock On
+
+	Slot 6 (Misc.):
+		Flamethrower:
+			Primary: Hot
+			Secondary: Hotter
+				Uses cell ammo
+		Minigun:
+			Primary: Spray
+			Secondary: Spin
+
+
+Enemies:
+	Locals:
+		Infight with: Locals, Military, Machines
+
+		Canary:
+			Tough
+			Slow
+			Dumb
+			Melee only (pickaxe)
+			Undead miners
+			Voice Lines:
+				Detecting Player:
+					[various forlorn moans] *2
+					"Forsaken..." *1
+					"Help..." *1
+				Dying:
+					[various haunted moans] *3
+					"Release..." *1
+				Voice Effects:
+					Reverse
+					Flanger
+
+		["zombie"]:
+			Weak
+			Slow
+			Ranged (fireball)
+			Melee (claws)
+			Voice Lines:
+				Detecting Player:
+
+				Dying:
+
+				Voice Effects:
+					none
+
+		Tarantula ["vortigaunt"]:
+			Tough
+			Medium
+			Ranged (lightning bolt)
+			Long wind-up
+			Voice Lines:
+				Detecting Player:
+					[angry screech]
+				Dying:
+					[screech]
+				Voice Effects:
+					Duplicate track
+					Pitch new track +8 semitones
+					Duplicate original track
+					Pitch new track -8 semitones
+
+		Lizard:
+			Tough
+			Slow
+			Dumb
+			Ranged (blood bullet *2)
+			Melee (bite)
+
+		Eyeball:
+			Weak
+			Fast
+			Flying
+			Ranged (blood bullet)
+
+		Wraith:
+			Weak
+			Medium
+			Flying
+			Can turn intangible
+			Melee Only (claws)
+
+		[name pending]:
+			Weak
+			Medium
+			Ranged (homing orbs)
+
+		Flux Beast:
+			Tough
+			Medium
+			Teleporter
+			Melee Only (teeth)
+
+
+	Military:
+		Infight with: Locals
+
+		Hound:
+			Weak
+			Fast
+			Melee Only (lunge, teeth)
+
+		Hell Hound:
+			Weak
+			Fast
+			Alert nearby Hell Hounds upon spotting player
+			Melee Only (lunge, teeth)
+
+		Pinkerton:
+			Weak
+			Medium
+			Ranged (shotgun)
+			Voice Lines:
+				Detecting Player:
+					"Halt!" *2
+					"Get her!" *2
+					"Stop her!" *1
+					"Kill her!" *3
+					"Intruder spotted." *1
+					"Tresspasser!" *3
+				Dying:
+					[pained grunt] *4
+				Vocal Effects:
+					Amplify (-25)
+					Amplify (+50)
+					Compressor
+					Filter Curve EQ (radio preset)
+					Vinyl (1930, lofi)
+					Amplify (-25)
+					Amplify (+50)
+					Bitcrush (4 bits/sample, crush only)
+
+		Enforcer:
+			Tough
+			Medium
+			Has a shield
+			Melee Only (baton)
+			Voice Lines:
+				Detecting Player:
+					"Stand Down!"
+					"Do not resist!"
+					"Remain silent!"
+					"Stop resisting!"
+				Dying:
+					[pained moan]
+				Vocal Effects:
+					Change Pitch (down 5-8 semitones)
+					Compressor
+					Filter Curve EQ (radio preset)
+					Bitcrush (4 bits/sample, crush then resample)
+
+		Moonshiner:
+			Tough
+			Slow
+			Ranged (rapid fire tommy gunn)
+
+		Rocketeer:
+			Medium
+			Medium
+			Ranged (rockets)
+			Voice Lines:
+				Detecting Player:
+					"Enemy spotted."
+					"Target acquired."
+					"Intruder detected."
+				Dying:
+					"Man down!"
+					"Help!"
+					[various pained screams]
+				Vocal Effects:
+					Pitch (-12.5%)
+					Compression
+					Filter Curve EQ (radio preset)
+					Vinyl (1930, lofi)
+
+		Flux Trooper:
+			Medium
+			Fast
+			Teleporter
+			Ranged (plasma burst)
+			Voice Lines:
+				Detecting Player:
+
+				Dying:
+
+				Vocal Effects:
+
+
+		Hammer:
+			Medium
+			Fast
+			Ranged (akm)
+			Melee (hammer)
+			Voice Lines:
+				Detecting Player:
+					"Vermin!"
+					"Filth!"
+					"Scum!"
+					"Maggot!"
+					[evil laughter]
+					[evil growl]
+				Dying:
+					"Damn you!"
+					"How--"
+					[pained scream]
+
+
+	Machines:
+		Infight with: Locals
+
+		Camera:
+			Stationary
+			Aggros all connected enemies upon spotting player
+			Alerts all connected enemies upon death
+
+		Survey Quad:
+			Aggros all connected enemies upon spotting player
+			Alerts all connected enemies upon death
+
+		Turret:
+			Stationary
+			Ranged (bullets)
+
+		Plasma Droid:
+			Very Tough
+			Slow
+			Ranged (plasma burst, plasma rocket)
+
+		Crossbow Drone:
+			Tough
+			Medium
+			Ranged (crossbow blast)
+			Long wind-up
+			Deploys third leg when aiming
+
+		Mortar Mech:
+			Tough
+			Slow
+			Ranged (homing mortars *3, landmines)
+
+		Tank:
+			Extremely tough
+			Slow
+			Ranged (cannon, machine gun, rocket pods)
+
+		Chopper:
+			Very Tough
+			Fast
+			Flying
+			Ranged (machine gun, dual rocket pods)
+			Can deploy other enemies
+
+
+Bosses:
+	Tanya:
+		Dual Pistols
+		C4
+		Fast
+
+
+Level Concepts:
+	Abandoned/overrun mining town (E1M3 "16 Tons")
+	Network of bridges spanning a chasm (E1M4)
+	Floating islands
+	Train level
+
+
+Campaign:
+	E1:
+		Classic familiar world, mostly Locals and Military, Basic-type keys
+		E1M1 ("In the Flesh?"):
+
+			Weapons:
+				*Shotgun
+			Enemies:
+				*Pinkerton
+				*Canary
+		E1M2 ("The Color out of Space"):
+
+			Weapons:
+				*AKM
+			Enemies:
+				Pinkerton
+				Canary
+				*Lizard
+		E1M3 ("Sixteen Tons"):
+			An abandoned mining town, crawling with unfathomable monstrosities
+			of pure evil. Also canaries and tarantulas.
+			Weapons:
+				AKM
+				*Boomstick
+			Enemies:
+				Pinkerton
+				Canary
+				Lizard
+				*Tarantula
+		E1M4 (""):
+			An old mine system, composed of a maze of caves and tunnels
+			connected by a bridge network spanning the central chasm.
+			Weapons:
+				AKM
+				Boomstick
+				*BigIron
+			Enemies:
+				Pinkerton
+				Canary
+				Lizard
+				*Eyeball
+		E1M5 (""):
+			A cliffside lookout facility, patrolled by Pinkertons and Enforcers.
+			Weapons:
+				AKM
+				Boomstick
+				BigIron
+				*Nailgun
+			Enemies:
+				Pinkerton
+				Canary
+				Lizard
+				Eyeball
+				Tarantula
+				*Enforcer
+		E1M6 (""):
+			A secret laboratory, buried deep within the earth and harboring
+			all manner of strange and terrible things.
+			Weapons:
+				AKM
+				Boomstick
+				BigIron
+				Nailgun
+				*PlasmaCannon
+			Enemies:
+				Pinkerton
+				Canary
+				Lizard
+				Eyeball
+				Tarantula
+				Enforcer
+				*PlasmaDroid (as miniboss)
+		E1M7 (""):
+			Evil factory/processing plant.
+			Weapons:
+				AKM
+				Boomstick
+				BigIron
+				Nailgun
+				PlasmaCannon
+			Enemies:
+				Pinkerton
+				Canary
+				Lizard
+				Eyeball
+				Tarantula
+				Enforcer
+				PlasmaDroid
+		E1M8 (""):
+			Boss level. A mysterious facility, housing some sort of portal.
+			Weapons:
+				Boomstick
+				PlasmaCannon
+			Enemies:
+				Pinkerton
+
+		E1S1 ("DOOT" [formatted like DOOM's title text]):
+			A recreation of DOOM's E1M1.
+			Alternate names:
+				"Doomed from the Start"
+
+
+	E2:
+		Eldritch otherworld outskirts, lots of Locals
+		Neuron-type keyes
+		E2M1 ("Brave New World"):
+		E2M2 (""):
+		E2M3 (""):
+		E2M4 (""):
+		E2M5 (""):
+		E2M6 (""):
+		E2M7 ("Heart Lungs Liver Nerves"):
+			The living interior of some great old one's body.
+		E2M8 ("The White Whale"):
+			Boss level.
+		E2S1 ("SUSK" [formatted like DUSK's title text]):
+			Recreation of E1M3 of DUSK.
+			Alternate names:
+				"Dusk to Dusk"
+
+
+	E3:
+		Eldritch otherworld industrial zone, lots of Locals and Military
+		Gemkey-type keys
+		E3M1 (""):
+		E3M2 (""):
+		E3M3 (""):
+		E3M4 ("The Nameless City"):
+			Self-explanatory.
+			Level ends w/ walking towards a portal, which is then cut off by
+			the slamming of a steel shutter door, as the player is swarmed by
+			Pinkertons. The player must then escape the now Military-infested
+			temple.
+		E3M5 ("King Rat"):
+			Where gods go to die.
+		E3M6 ("Whalefall"):
+			The interior of some great old one's corpse.
+		E3M7 ("The Grapes of Wrath"):
+			The hellish bowels of a great one corpse processing facility.
+			Featuring blood sewers.
+		E3M8 (""):
+			Boss level.
+		E3S1 ("ULTRAKICK" [formatted like ULTRAKILL's title text]):
+			Recreation of 1-1 from ULTRAKILL.
+			Alternate names:
+				"One UltraHell of a Time"
+
+
+	E4:
+		Military/Industrial wasteland in familiar world, swarming with Military
+		and Machines
+		Keycard-type keys
+		E4M1 ("In the Flesh"):
+			Reprise of E1M1, with more dangerous enemies and a much more
+			industrial aesthetic.
+			Weapons:
+				*Syringe
+			Enemies:
+				Pinkerton
+				Enforcer
+				Soldier
+				*Hammer
+				*Chopper
+		E4M2 ("Silent Spring"):
+		E4M3 (""):
+		E4M4 (""):
+		E4M5 (""):
+		E4M6 (""):
+		E4M7 (""):
+			Make your final approach towards THE MACHINE.
+		E4M8 ("WELCOME"):
+			Destroy THE MACHINE from within.
+		E4S1 ("Echoes"):
+			Obscenely long slaughter level.
+
+
+Juicy Lore Bits:
+	Biology:
+		* All bone is metal
+		Most metal is bone
+		Humans:
+			Head is skinless, covered by thick exoskeleton made of exposed bone*
+			Proboscis instead of mouth
+				Proboscis is used for syringes and needles
+			Eyes are covered by glass(?) membrane
+				Eyelids are metallic and behind said membrane
+				Irises are bioluminescent
+			Facial plastic surgery involves a lot of welding
+			Glasses are very rare, only used if the correction needs to be contextual or something
+				Generally, sight disorders are corrected by way of surgically altering/replacing
+
+		Crows:
+			Sapient
+			Only fully organic creatures (aside from maybe bones*)
+
+
+Credits:
+	Main Developer:
+		Meeee :)
+
+	Assets:
+		Textures:
+			Meeee :)
+			Some normal maps generated uisng Laighter
+		Audio:
+			Effects:
+				Various random stock sounds from FelysianStudios
+				Various random stock sounds from Pixabay
+				Meeee :)
+			Voices:
+				Meeee :)

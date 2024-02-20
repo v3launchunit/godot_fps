@@ -29,6 +29,7 @@ recovery_time = 1.5
 animation = &"attacking"
 burst = 1
 burst_delay = 0.1
+cancelable = true
 weight = 1.0
 
 [sub_resource type="Resource" id="Resource_wk1ps"]
@@ -42,6 +43,7 @@ recovery_time = 2.0
 animation = &"bullet_attacking"
 burst = 4
 burst_delay = 0.25
+cancelable = true
 weight = 2.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_akb4x"]

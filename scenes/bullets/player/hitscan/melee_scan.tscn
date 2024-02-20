@@ -12,7 +12,7 @@ vertex_color_use_as_albedo = true
 
 [node name="Hitscan" type="Node3D"]
 script = ExtResource("1_w621j")
-range = 3.0
+max_range = 3.0
 damage = 60.0
 explosion = ExtResource("2_jky7n")
 

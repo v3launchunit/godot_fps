@@ -36,7 +36,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if piercer and linear_velocity != -speed * global_transform.basis.z.normalized():
 		linear_velocity = -speed * global_transform.basis.z.normalized()
 #	if body_entered:
@@ -45,14 +45,14 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	var exp: Node
+	var e: Node
 	if explosion != null:
-		exp = explosion.instantiate()
-		add_child(exp)
-		exp.reparent(body if sticky else get_tree().root.get_child(2))
-		if exp is LodgedNail:
-			exp.invoker = invoker
-		for child in exp.get_children():
+		e = explosion.instantiate()
+		add_child(e)
+		e.reparent(body if sticky else get_tree().root.get_child(2))
+		if e is LodgedNail:
+			e.invoker = invoker
+		for child in e.get_children():
 			if child is AreaDamage:
 				child.invoker = invoker
 

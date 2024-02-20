@@ -13,7 +13,7 @@ vertex_color_use_as_albedo = true
 [node name="Hitscan" type="Node3D"]
 script = ExtResource("1_ykoau")
 layer_mask = 71
-range = 4.0
+max_range = 3.0
 damage = 60.0
 explosion = ExtResource("2_g838h")
 knockback_force = 0.0

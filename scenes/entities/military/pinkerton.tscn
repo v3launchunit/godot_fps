@@ -1,32 +1,32 @@
-[gd_scene load_steps=86 format=3 uid="uid://cc7snvg1qg4i4"]
+[gd_scene load_steps=90 format=3 uid="uid://cc7snvg1qg4i4"]
 
-[ext_resource type="Script" path="res://scripts/entities/enemy_base.gd" id="1_1yhno"]
+[ext_resource type="Script" path="res://scripts/entities/enemy_pinkerton.gd" id="1_4o8wq"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="2_p7cng"]
-[ext_resource type="AudioStream" uid="uid://k1hmkq07use5" path="res://audio/streams/voices/pinkerton/detect/get_her_1.wav" id="2_ttu8i"]
+[ext_resource type="AudioStream" uid="uid://k1hmkq07use5" path="res://audio/streams/voices/pinkerton/detect/get_her_1.wav" id="2_sxcfu"]
+[ext_resource type="AudioStream" uid="uid://bcbenycltm5pg" path="res://audio/streams/voices/pinkerton/detect/get_her_2.wav" id="3_5es6a"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="3_5ywnf"]
 [ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_np25i"]
-[ext_resource type="AudioStream" uid="uid://bcbenycltm5pg" path="res://audio/streams/voices/pinkerton/detect/get_her_2.wav" id="3_s6toq"]
-[ext_resource type="AudioStream" uid="uid://cd7ytakwg5sgo" path="res://audio/streams/voices/pinkerton/detect/halt_1.wav" id="4_5hrar"]
+[ext_resource type="AudioStream" uid="uid://djru6dnc2lnrv" path="res://audio/streams/voices/pinkerton/detect/tresspasser_2.wav" id="4_mrwr3"]
 [ext_resource type="AnimationLibrary" uid="uid://dhxang8l8iyqp" path="res://scenes/entities/military/pinkerton_anims.res" id="5_bdfiq"]
+[ext_resource type="AudioStream" uid="uid://bty85t0ut8oro" path="res://audio/streams/voices/pinkerton/detect/tresspasser_3.wav" id="5_e5dnl"]
 [ext_resource type="PackedScene" uid="uid://sgwxe7sgcert" path="res://models/entities/pinkerton.glb" id="5_v6q8l"]
-[ext_resource type="AudioStream" uid="uid://bw30qs54ire0" path="res://audio/streams/voices/pinkerton/detect/halt_2.wav" id="5_xke6e"]
-[ext_resource type="AudioStream" uid="uid://cix5xh517bnj4" path="res://audio/streams/voices/pinkerton/detect/intruder_spotted_1.wav" id="6_2o32y"]
-[ext_resource type="AudioStream" uid="uid://fimyb2r1ra54" path="res://audio/streams/voices/pinkerton/detect/kill_her_1.wav" id="7_c1q5u"]
+[ext_resource type="AudioStream" uid="uid://cd7ytakwg5sgo" path="res://audio/streams/voices/pinkerton/detect/halt_1.wav" id="6_1u6d5"]
+[ext_resource type="AudioStream" uid="uid://bw30qs54ire0" path="res://audio/streams/voices/pinkerton/detect/halt_2.wav" id="7_6sm5o"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="7_d0her"]
+[ext_resource type="AudioStream" uid="uid://cix5xh517bnj4" path="res://audio/streams/voices/pinkerton/detect/intruder_spotted_1.wav" id="8_phrdl"]
 [ext_resource type="PackedScene" uid="uid://dl7fuv4wdxtjx" path="res://scenes/pickups/ammo/shell_pickup.tscn" id="8_slj13"]
-[ext_resource type="AudioStream" uid="uid://2i1oefv2d7uf" path="res://audio/streams/voices/pinkerton/detect/kill_her_2.wav" id="8_y2otn"]
-[ext_resource type="AudioStream" uid="uid://cvhddpbrl73h7" path="res://audio/streams/voices/pinkerton/detect/kill_her_3.wav" id="9_vl76a"]
-[ext_resource type="AudioStream" uid="uid://dlc4tyjayi4sv" path="res://audio/streams/voices/pinkerton/detect/stop_her_1.wav" id="10_mrux3"]
-[ext_resource type="AudioStream" uid="uid://cqcaj4cjjb1ip" path="res://audio/streams/voices/pinkerton/detect/tresspasser_1.wav" id="11_pncib"]
-[ext_resource type="AudioStream" uid="uid://djru6dnc2lnrv" path="res://audio/streams/voices/pinkerton/detect/tresspasser_2.wav" id="12_nosob"]
-[ext_resource type="AudioStream" uid="uid://bty85t0ut8oro" path="res://audio/streams/voices/pinkerton/detect/tresspasser_3.wav" id="13_eblm2"]
+[ext_resource type="AudioStream" uid="uid://fimyb2r1ra54" path="res://audio/streams/voices/pinkerton/detect/kill_her_1.wav" id="9_fw5ta"]
+[ext_resource type="AudioStream" uid="uid://2i1oefv2d7uf" path="res://audio/streams/voices/pinkerton/detect/kill_her_2.wav" id="10_cnalv"]
+[ext_resource type="AudioStream" uid="uid://cvhddpbrl73h7" path="res://audio/streams/voices/pinkerton/detect/kill_her_3.wav" id="11_q5fbb"]
+[ext_resource type="AudioStream" uid="uid://dlc4tyjayi4sv" path="res://audio/streams/voices/pinkerton/detect/stop_her_1.wav" id="12_tfmbw"]
+[ext_resource type="AudioStream" uid="uid://cqcaj4cjjb1ip" path="res://audio/streams/voices/pinkerton/detect/tresspasser_1.wav" id="13_0jqmp"]
 [ext_resource type="PackedScene" uid="uid://blrtnnu61g5s" path="res://scenes/bullets/enemy/enemy_test_bullet.tscn" id="14_0v8ti"]
-[ext_resource type="AudioStream" uid="uid://bxlkhiwffdgdt" path="res://audio/streams/voices/pinkerton/death/scream_1.wav" id="14_ftlx6"]
-[ext_resource type="AudioStream" uid="uid://472lwhnuv0ad" path="res://audio/streams/voices/pinkerton/death/scream_2.wav" id="15_dxsxu"]
-[ext_resource type="AudioStream" uid="uid://db7ebp6630xbh" path="res://audio/streams/voices/pinkerton/death/scream_3.wav" id="16_0rah0"]
-[ext_resource type="AudioStream" uid="uid://b5ay00lvhbvmm" path="res://audio/streams/voices/pinkerton/death/scream_4.wav" id="17_1ljih"]
-[ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://audio/streams/voices/wilhelm_scream.ogg" id="18_d25a8"]
+[ext_resource type="AudioStream" uid="uid://b5ay00lvhbvmm" path="res://audio/streams/voices/pinkerton/death/scream_4.wav" id="15_kxmnn"]
+[ext_resource type="AudioStream" uid="uid://db7ebp6630xbh" path="res://audio/streams/voices/pinkerton/death/scream_3.wav" id="16_vn7a5"]
+[ext_resource type="AudioStream" uid="uid://472lwhnuv0ad" path="res://audio/streams/voices/pinkerton/death/scream_2.wav" id="17_n4f4t"]
+[ext_resource type="AudioStream" uid="uid://bxlkhiwffdgdt" path="res://audio/streams/voices/pinkerton/death/scream_1.wav" id="18_ac1r7"]
 [ext_resource type="Texture2D" uid="uid://crih0rgk10al6" path="res://textures/weapons/pump_shotgun/shotgun_detail_mask.png" id="19_qblbc"]
+[ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://audio/streams/voices/wilhelm_scream.ogg" id="19_txijk"]
 [ext_resource type="Texture2D" uid="uid://co8o24o1hnvyl" path="res://textures/entities/enemies/pinkerton/pinkerton_albedo.png" id="20_0syyy"]
 [ext_resource type="Texture2D" uid="uid://bsnabwad52kba" path="res://textures/terrain/log/log_heights.png" id="20_s44er"]
 [ext_resource type="Texture2D" uid="uid://c2ubhgqhrxtiu" path="res://textures/weapons/pump_shotgun/shotgun_metallic.png" id="20_w745n"]
@@ -37,52 +37,52 @@
 [ext_resource type="PackedScene" uid="uid://cqctw8dd0ar4n" path="res://scenes/effects/damage/damage_sys.tscn" id="31_7r0oy"]
 [ext_resource type="PackedScene" uid="uid://c5pbs8t6p7ogl" path="res://scenes/effects/gibs/gibs.tscn" id="32_l26si"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hdxer"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oao7a"]
 random_pitch = 1.15
 streams_count = 12
-stream_0/stream = ExtResource("2_ttu8i")
-stream_0/weight = 3.0
-stream_1/stream = ExtResource("3_s6toq")
-stream_1/weight = 3.0
-stream_2/stream = ExtResource("4_5hrar")
-stream_2/weight = 3.0
-stream_3/stream = ExtResource("5_xke6e")
-stream_3/weight = 3.0
-stream_4/stream = ExtResource("6_2o32y")
-stream_4/weight = 6.0
-stream_5/stream = ExtResource("7_c1q5u")
-stream_5/weight = 2.0
-stream_6/stream = ExtResource("8_y2otn")
-stream_6/weight = 2.0
-stream_7/stream = ExtResource("9_vl76a")
-stream_7/weight = 2.0
-stream_8/stream = ExtResource("10_mrux3")
-stream_8/weight = 6.0
-stream_9/stream = ExtResource("11_pncib")
-stream_9/weight = 2.0
-stream_10/stream = ExtResource("12_nosob")
-stream_10/weight = 2.0
-stream_11/stream = ExtResource("13_eblm2")
-stream_11/weight = 2.0
+stream_0/stream = ExtResource("2_sxcfu")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_5es6a")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_1u6d5")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("7_6sm5o")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("8_phrdl")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("9_fw5ta")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("10_cnalv")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("11_q5fbb")
+stream_7/weight = 1.0
+stream_8/stream = ExtResource("12_tfmbw")
+stream_8/weight = 1.0
+stream_9/stream = ExtResource("13_0jqmp")
+stream_9/weight = 1.0
+stream_10/stream = ExtResource("4_mrwr3")
+stream_10/weight = 1.0
+stream_11/stream = ExtResource("5_e5dnl")
+stream_11/weight = 1.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w5kcn"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vgyku"]
 random_pitch = 1.15
 streams_count = 4
-stream_0/stream = ExtResource("14_ftlx6")
+stream_0/stream = ExtResource("15_kxmnn")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("15_dxsxu")
+stream_1/stream = ExtResource("16_vn7a5")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("16_0rah0")
+stream_2/stream = ExtResource("17_n4f4t")
 stream_2/weight = 1.0
-stream_3/stream = ExtResource("17_1ljih")
+stream_3/stream = ExtResource("18_ac1r7")
 stream_3/weight = 1.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a1m1h"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_36k8d"]
 playback_mode = 1
 streams_count = 2
-stream_0/stream = SubResource("AudioStreamRandomizer_w5kcn")
+stream_0/stream = SubResource("AudioStreamRandomizer_vgyku")
 stream_0/weight = 100.0
-stream_1/stream = ExtResource("18_d25a8")
+stream_1/stream = ExtResource("19_txijk")
 stream_1/weight = 0.001
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bp4ct"]
@@ -236,6 +236,7 @@ bottom_radius = 0.0
 radial_segments = 8
 
 [sub_resource type="Animation" id="Animation_o8lpw"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
@@ -541,6 +542,9 @@ animation = &"pinkerton_anims/pinkerton_flinch"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oyciw"]
 animation = &"pinkerton_anims/pinkerton_idle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8e0s5"]
+animation = &"pinkerton_anims/pinkerton_jump"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_imbdi"]
 animation = &"pinkerton_anims/pinkerton_move"
 
@@ -591,6 +595,16 @@ xfade_time = 0.25
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mr23i"]
 xfade_time = 0.1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gw055"]
+xfade_time = 0.05
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oewr8"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xmef0"]
+xfade_time = 0.2
+switch_mode = 1
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l00kp"]
 states/Start/position = Vector2(148, 100.889)
 states/attacking/node = SubResource("AnimationNodeAnimation_nfb3s")
@@ -601,25 +615,28 @@ states/flinching/node = SubResource("AnimationNodeAnimation_8bms8")
 states/flinching/position = Vector2(598.261, 224.617)
 states/idle/node = SubResource("AnimationNodeAnimation_oyciw")
 states/idle/position = Vector2(306.716, 100.047)
+states/jumping/node = SubResource("AnimationNodeAnimation_8e0s5")
+states/jumping/position = Vector2(771.346, 100.074)
 states/moving/node = SubResource("AnimationNodeAnimation_imbdi")
 states/moving/position = Vector2(597.334, 101.139)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2prg3"), "idle", "moving", SubResource("AnimationNodeStateMachineTransition_7oomp"), "moving", "idle", SubResource("AnimationNodeStateMachineTransition_dbccw"), "moving", "attacking", SubResource("AnimationNodeStateMachineTransition_4xupg"), "idle", "attacking", SubResource("AnimationNodeStateMachineTransition_majfp"), "attacking", "moving", SubResource("AnimationNodeStateMachineTransition_2nn25"), "attacking", "idle", SubResource("AnimationNodeStateMachineTransition_w5vit"), "attacking", "dead", SubResource("AnimationNodeStateMachineTransition_se8tw"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_bj5l4"), "moving", "dead", SubResource("AnimationNodeStateMachineTransition_x017w"), "idle", "flinching", SubResource("AnimationNodeStateMachineTransition_goefx"), "attacking", "flinching", SubResource("AnimationNodeStateMachineTransition_3fks7"), "moving", "flinching", SubResource("AnimationNodeStateMachineTransition_stoq6"), "flinching", "moving", SubResource("AnimationNodeStateMachineTransition_wpkvg"), "flinching", "dead", SubResource("AnimationNodeStateMachineTransition_mr23i")]
-graph_offset = Vector2(-80, 6)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2prg3"), "idle", "moving", SubResource("AnimationNodeStateMachineTransition_7oomp"), "moving", "idle", SubResource("AnimationNodeStateMachineTransition_dbccw"), "moving", "attacking", SubResource("AnimationNodeStateMachineTransition_4xupg"), "idle", "attacking", SubResource("AnimationNodeStateMachineTransition_majfp"), "attacking", "moving", SubResource("AnimationNodeStateMachineTransition_2nn25"), "attacking", "idle", SubResource("AnimationNodeStateMachineTransition_w5vit"), "attacking", "dead", SubResource("AnimationNodeStateMachineTransition_se8tw"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_bj5l4"), "moving", "dead", SubResource("AnimationNodeStateMachineTransition_x017w"), "idle", "flinching", SubResource("AnimationNodeStateMachineTransition_goefx"), "attacking", "flinching", SubResource("AnimationNodeStateMachineTransition_3fks7"), "moving", "flinching", SubResource("AnimationNodeStateMachineTransition_stoq6"), "flinching", "moving", SubResource("AnimationNodeStateMachineTransition_wpkvg"), "flinching", "dead", SubResource("AnimationNodeStateMachineTransition_mr23i"), "moving", "jumping", SubResource("AnimationNodeStateMachineTransition_gw055"), "jumping", "moving", SubResource("AnimationNodeStateMachineTransition_oewr8"), "jumping", "flinching", SubResource("AnimationNodeStateMachineTransition_xmef0")]
+graph_offset = Vector2(-98, -5)
 
 [node name="Pinkerton" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 23
-script = ExtResource("1_1yhno")
+script = ExtResource("1_4o8wq")
 speed = 5.0
+jump_height = 2.0
 wake_up_time = 0.0
 sight_line_sweep_speed = 10.0
-detection_stream = SubResource("AudioStreamRandomizer_hdxer")
+detection_stream = SubResource("AudioStreamRandomizer_oao7a")
 bullet = ExtResource("14_0v8ti")
 volley = 5
 spread = 5.0
 flinch_chance = 0.25
 flinch_time = 0.35
-death_stream = SubResource("AudioStreamRandomizer_a1m1h")
+death_stream = SubResource("AudioStreamRandomizer_36k8d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_bp4ct")
@@ -648,8 +665,7 @@ bones/20/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/21/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.15012, -0.988213, -0.0299745, 0.985593, -0.147195, -0.0833088, 0.0779148, -0.0420491, 0.996073, -0.172514, 0.358039, 0.0580716)
-bone_idx = 4
+transform = Transform3D(-0.0908375, -0.104473, 0.990371, 0.914166, -0.403228, 0.0413118, 0.39503, 0.909116, 0.132134, 0.0104821, 0.305058, 0.254819)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="0"]
 layers = 2
@@ -688,16 +704,14 @@ shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.225181, -0.988213, -0.0449616, 1.47839, -0.147196, -0.124964, 0.116872, -0.042049, 1.49411, -0.221926, 0.350679, 0.055969)
-bone_idx = 5
+transform = Transform3D(-0.136256, -0.104473, 1.48556, 1.37125, -0.403229, 0.0619674, 0.592544, 0.909116, 0.198201, 0.00525831, 0.284896, 0.300276)
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D/Cylinder_001" index="0"]
 layers = 2
 material_override = SubResource("StandardMaterial3D_cxecq")
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.986636, 0.132391, 0.0949812, -0.160522, 0.889783, 0.427222, -0.0279523, -0.436759, 0.899144, -0.230903, 0.395966, 0.063057)
-bone_idx = 10
+transform = Transform3D(0.986615, 0.110301, 0.120106, -0.154941, 0.863721, 0.479561, -0.0508415, -0.491751, 0.86925, -0.231266, 0.394391, 0.0700487)
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D/Shotgun" index="0"]
 layers = 2
@@ -719,8 +733,7 @@ omni_range = 10.0
 transform = Transform3D(-1.95578e-08, -1, 7.45058e-09, -3.72529e-08, 2.23517e-08, 1, -1, 2.04891e-08, -3.72529e-08, 0, 0.675, -0.135)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.986636, 0.132391, 0.0949812, -0.160522, 0.889783, 0.427222, -0.0279523, -0.436759, 0.899144, -0.230903, 0.395966, 0.063057)
-bone_idx = 11
+transform = Transform3D(0.986615, 0.110301, 0.120106, -0.154941, 0.863721, 0.479561, -0.0508415, -0.491751, 0.86925, -0.231266, 0.394391, 0.0700487)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D/Pump" index="0"]
 layers = 2

@@ -96,7 +96,7 @@ func _fire_alt():
 		instance.invoker = manager.find_parent("Player")
 
 	global_rotation = base_rotation
-	alt_spawner.global_rotation = base_rotation
+	alt_spawner.global_rotation = spawner_base_rotation
 
 	cooldown_timer = alt_shot_cooldown
 	state_machine.start("alt_firing", true)

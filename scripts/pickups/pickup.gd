@@ -16,11 +16,11 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
-func interact(body: Node3D) -> void:
+func interact(_body: Node3D) -> void:
 	pass
 
 

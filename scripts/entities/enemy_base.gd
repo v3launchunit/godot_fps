@@ -100,6 +100,8 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var current_state: State = State.AMBUSHING
 var current_destination: Vector3
 
+var jumping: bool = false
+
 var walk_vel := Vector3.ZERO # Walking velocity
 var safe_walk_vel := Vector3.ZERO
 var grav_vel := Vector3.ZERO # Gravity velocity
@@ -113,7 +115,8 @@ var state_timer: float = 0 # How long I've been in my current state, in seconds
 @onready var status: Status = find_child("Status")
 
 @onready var spawner: Node3D = find_child("Spawner")
-@onready var state_machine = $AnimationTree.get("parameters/playback")
+@onready var state_machine: AnimationNodeStateMachinePlayback = $AnimationTree.get(
+		"parameters/playback")
 @onready var attack_range_squared = attack_range * attack_range
 @onready var melee_range_squared = melee_range * melee_range
 @onready var path_re_eval_distance_squared = (
@@ -134,7 +137,7 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	velocity = _gravity(delta) + _knockback(delta)
+	velocity = _jump(delta) + _gravity(delta) + _knockback(delta)
 
 	match current_state:
 		State.AMBUSHING:
@@ -347,13 +350,14 @@ func can_see_target() -> bool:
 func should_jump() -> bool:
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var query := PhysicsShapeQueryParameters3D.new()
-	query.shape = BoxShape3D.new()
+	query.shape = SphereShape3D.new()
 	query.transform = global_transform
 	query.transform.origin += transform.basis.z
-	query.transform.origin -= Vector3(0, -0.4, 0)
-	query.collision_mask = collision_mask
-	#query.exclude.append(self)
+	query.transform.origin -= Vector3(0, -0.25, 0)
+	query.collision_mask = 1 + 2 + 16 # default layer, player, projectiles
+	query.exclude.append(get_rid())
 	var hit: Array[Dictionary] = space_state.intersect_shape(query)
+	#print(hit)
 	return not hit.is_empty()
 
 
@@ -413,8 +417,9 @@ func _flinch() -> void:
 
 
 func _do_jump() -> void:
+	state_machine.travel("jumping", true)
 	if is_on_floor():
-		jump_vel.y = jump_height
+		jumping = true
 
 
 func apply_knockback(amount: Vector3) -> void:
@@ -423,6 +428,19 @@ func apply_knockback(amount: Vector3) -> void:
 		grav_vel = Vector3.ZERO
 #		jumping = false
 	knockback_vel += amount * knockback_multiplier
+
+
+func _jump(delta: float) -> Vector3:
+	if jumping:
+		if is_on_floor():
+			jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
+		jumping = false
+		return jump_vel
+	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(
+			Vector3.ZERO, gravity * delta)
+	if is_on_floor() and state_machine.get_current_node() == "jumping":
+		state_machine.travel("moving", true)
+	return jump_vel
 
 
 func _gravity(delta: float) -> Vector3:
