@@ -360,4 +360,45 @@
 ( 128 640 128 ) ( 129 640 128 ) ( 128 640 129 ) terrain/trench_broom/bricks 0 0 0 1 1
 ( 128 640 128 ) ( 128 640 129 ) ( 128 641 128 ) terrain/trench_broom/bricks 0 0 0 1 1
 }
+// brush 39
+{
+( 192 128 -16 ) ( 192 129 -16 ) ( 192 128 -15 ) terrain/trench_broom/lava 0 0 0 1 1
+( 192 128 -16 ) ( 192 128 -15 ) ( 193 128 -16 ) terrain/trench_broom/lava 0 0 0 1 1
+( 192 128 -64 ) ( 193 128 -64 ) ( 192 129 -64 ) terrain/trench_broom/lava 0 0 0 1 1
+( 256 192 0 ) ( 256 193 0 ) ( 257 192 0 ) terrain/trench_broom/lava 0 0 0 1 1
+( 256 192 0 ) ( 257 192 0 ) ( 256 192 1 ) terrain/trench_broom/lava 0 0 0 1 1
+( 256 192 0 ) ( 256 192 1 ) ( 256 193 0 ) terrain/trench_broom/lava 0 0 0 1 1
+}
+// brush 40
+{
+( 256 0 0 ) ( 192 64 0 ) ( 192 64 128 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+( 192 0 -64 ) ( 193 0 -64 ) ( 192 1 -64 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+( 256 64 0 ) ( 256 65 0 ) ( 257 64 0 ) terrain/trench_broom/lava_flowing 64 64 180 1 1
+( 256 64 0 ) ( 257 64 0 ) ( 256 64 1 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+( 240 48 0 ) ( 224 32 0 ) ( 224 32 128 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+}
+// brush 41
+{
+( 192 0 -16 ) ( 192 1 -16 ) ( 192 0 -15 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+( 192 0 -64 ) ( 193 0 -64 ) ( 192 1 -64 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+( 256 64 0 ) ( 256 65 0 ) ( 257 64 0 ) terrain/trench_broom/lava_flowing 64 -64 -90 1 1
+( 240 48 0 ) ( 224 32 0 ) ( 224 32 128 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+( 256 0 0 ) ( 192 64 128 ) ( 192 64 0 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+}
+// brush 42
+{
+( 256 0 0 ) ( 192 64 0 ) ( 192 64 128 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+( 240 48 0 ) ( 224 32 128 ) ( 224 32 0 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+( 192 0 -64 ) ( 193 0 -64 ) ( 192 1 -64 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+( 256 64 0 ) ( 256 65 0 ) ( 257 64 0 ) terrain/trench_broom/lava_flowing 0 0 90 1 1
+( 256 64 0 ) ( 256 64 1 ) ( 256 65 0 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+}
+// brush 43
+{
+( 240 48 0 ) ( 224 32 128 ) ( 224 32 0 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+( 192 0 -16 ) ( 192 0 -15 ) ( 193 0 -16 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+( 192 0 -64 ) ( 193 0 -64 ) ( 192 1 -64 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+( 256 64 0 ) ( 256 65 0 ) ( 257 64 0 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+( 256 0 0 ) ( 192 64 128 ) ( 192 64 0 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
+}
 }

@@ -40,8 +40,8 @@ Weapons:
 		Hunting Rifle:
 			Primary: Medium Shot
 				Uses big iron ammo
-			Secondary: [idk molest the bolt to load more shells into the chamber]
-				[maybe have bonus shells cause ricochets off of shit too]
+			Secondary: Charge
+				Increases damage, costs 1 ammo
 		Crossbow
 			Primary: Charge Beam
 			Secondary: Prism Grenade
@@ -53,7 +53,7 @@ Weapons:
 			Secondary: Detonate
 		RPG:
 			Primary: Guided Missile
-			Secondary: Lock On
+			Secondary: Homing Missiles
 
 	Slot 6 (Misc.):
 		Flamethrower:
@@ -94,9 +94,7 @@ Enemies:
 			Melee (claws)
 			Voice Lines:
 				Detecting Player:
-
 				Dying:
-
 				Voice Effects:
 					none
 
@@ -236,9 +234,7 @@ Enemies:
 			Ranged (plasma burst)
 			Voice Lines:
 				Detecting Player:
-
 				Dying:
-
 				Vocal Effects:
 
 
@@ -297,13 +293,13 @@ Enemies:
 		Tank:
 			Extremely tough
 			Slow
-			Ranged (cannon, machine gun, rocket pods)
+			Ranged (cannon, machine gun, homing rocket pods)
 
 		Chopper:
 			Very Tough
 			Fast
 			Flying
-			Ranged (machine gun, dual rocket pods)
+			Ranged (machine gun, dual homing rocket pods)
 			Can deploy other enemies
 
 
@@ -378,7 +374,7 @@ Campaign:
 				*Enforcer
 		E1M6 (""):
 			A secret laboratory, buried deep within the earth and harboring
-			all manner of strange and terrible things.
+			all manner of strange and terrible OSHA violations.
 			Weapons:
 				AKM
 				Boomstick
@@ -461,7 +457,7 @@ Campaign:
 		E3M7 ("The Grapes of Wrath"):
 			The hellish bowels of a great one corpse processing facility.
 			Featuring blood sewers.
-		E3M8 (""):
+		E3M8 ("Comfortably Numb"):
 			Boss level.
 		E3S1 ("ULTRAKICK" [formatted like ULTRAKILL's title text]):
 			Recreation of 1-1 from ULTRAKILL.

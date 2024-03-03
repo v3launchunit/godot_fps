@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bonaseme7rn5f"]
+[gd_scene load_steps=62 format=3 uid="uid://bonaseme7rn5f"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_base.gd" id="1_mc1rn"]
 [ext_resource type="AudioStream" uid="uid://d2887bt1n0r5m" path="res://audio/streams/voices/vortigaunt/detect_screech_1.wav" id="2_ovmvv"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c5pbs8t6p7ogl" path="res://scenes/effects/gibs/gibs.tscn" id="16_deg2e"]
 [ext_resource type="PackedScene" uid="uid://b3bisp7cspupn" path="res://models/entities/vortigaunt.glb" id="19_2vrj2"]
 [ext_resource type="AnimationLibrary" uid="uid://c6ax6eregbrwp" path="res://scenes/entities/locals/vortigaunt_anims.res" id="20_hkyne"]
+[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="21_lwbg8"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="30_tfc0g"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="32_jp1h1"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="33_wc5bg"]
@@ -447,17 +448,18 @@ max_speed = 100.0
 transform = Transform3D(-0.2, 0, -5.07036e-07, 0, 0.2, 0, 5.07036e-07, 0, -0.2, 0, 0.1, 0)
 
 [node name="Skeleton3D" parent="Vortigaunt/Armature" index="0"]
-bones/2/rotation = Quaternion(0.160182, 1.1767e-07, 1.90952e-08, 0.987088)
-bones/3/rotation = Quaternion(-0.160182, 3.30675e-14, -3.81904e-08, 0.987088)
-bones/4/rotation = Quaternion(-2.66925e-08, 2.66925e-08, 0.707107, 0.707107)
+bones/2/rotation = Quaternion(0.160182, 1.1767e-07, 1.90952e-08, 0.987087)
+bones/3/rotation = Quaternion(-0.160182, 3.35599e-14, -3.81904e-08, 0.987087)
+bones/4/rotation = Quaternion(5.98943e-22, 0, 0.707107, 0.707107)
 bones/5/rotation = Quaternion(-2.66925e-08, 2.66925e-08, 0.707107, 0.707107)
 bones/9/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
+bones/13/rotation = Quaternion(0.5, -0.5, -0.5, -0.5)
 bones/14/rotation = Quaternion(-0.707107, 2.66925e-08, -2.66925e-08, 0.707107)
+bones/17/rotation = Quaternion(0.5, 0.5, 0.5, -0.5)
 bones/18/rotation = Quaternion(-0.707107, -2.66925e-08, 2.66925e-08, 0.707107)
 
 [node name="HeadTrailObj" parent="Vortigaunt/Armature/Skeleton3D" index="0"]
-transform = Transform3D(3.88434e-14, -1, 2.38419e-07, 1, 3.33067e-14, 4.56954e-08, -1.053e-07, 2.38419e-07, 1, 3.36153e-14, 3.9, 0.299999)
-bone_idx = 4
+transform = Transform3D(1, 1.22349e-08, -7.53945e-08, -7.35417e-08, -0.112391, -0.993664, -2.06311e-08, 0.993664, -0.112391, 1.13092e-07, 3.17998, 1.06256)
 
 [node name="HeadTrailObj" parent="Vortigaunt/Armature/Skeleton3D/HeadTrailObj" index="0"]
 transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
@@ -493,9 +495,13 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath(".")
+libraries = {
+"": SubResource("AnimationLibrary_1iiit"),
+"vortigaunt_anims": ExtResource("20_hkyne")
+}
 tree_root = SubResource("AnimationNodeStateMachine_uc7lt")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 volume_db = -3.0
@@ -510,5 +516,7 @@ gib_threshold = 150.0
 damage_sys = ExtResource("15_ayyc7")
 gibs = ExtResource("16_deg2e")
 loot = Array[PackedScene]([ExtResource("32_jp1h1"), ExtResource("33_wc5bg"), ExtResource("34_34rbe")])
+
+[node name="StairStepper" parent="." instance=ExtResource("21_lwbg8")]
 
 [editable path="Vortigaunt"]

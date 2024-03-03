@@ -83,16 +83,13 @@ func _process(_delta) -> void:
 	if Input.is_action_just_pressed("crouch") and not crouching:
 		_toggle_crouch(true)
 
-	if crouching and (
-			not (
-					Globals.s_toggle_crouch
-					or Input.is_action_pressed("crouch")
-			) or (
-					Globals.s_toggle_crouch
-					and Input.is_action_just_pressed("crouch")
-			)
-			and not clearance_scan.is_colliding()
-	):
+	if crouching and ((
+			Globals.s_toggle_crouch
+			and Input.is_action_just_pressed("crouch")
+	) or not (
+			Globals.s_toggle_crouch
+			or Input.is_action_pressed("crouch")
+	)) and not clearance_scan.is_colliding():
 		_toggle_crouch(false)
 
 	if (

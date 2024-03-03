@@ -11,7 +11,6 @@ sky_material = SubResource("ProceduralSkyMaterial_2jtk7")
 [resource]
 background_mode = 2
 sky = SubResource("Sky_udgag")
-glow_enabled = true
 glow_blend_mode = 0
 glow_map = ExtResource("2_8idb3")
 volumetric_fog_enabled = true

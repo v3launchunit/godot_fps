@@ -442,13 +442,13 @@ text = "120"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Glow" type="HFlowContainer" parent="SettingsPanel/VideoScroll/Video"]
+[node name="Effects" type="HFlowContainer" parent="SettingsPanel/VideoScroll/Video"]
 custom_minimum_size = Vector2(0, 33)
 layout_mode = 2
 theme = ExtResource("3_sxm1b")
 alignment = 1
 
-[node name="FlaresCheck" type="CheckButton" parent="SettingsPanel/VideoScroll/Video/Glow"]
+[node name="FlaresCheck" type="CheckButton" parent="SettingsPanel/VideoScroll/Video/Effects"]
 layout_mode = 2
 tooltip_text = "Toggles the mesh-based halos 
 present on light sources and pickups."
@@ -456,7 +456,7 @@ theme = ExtResource("3_sxm1b")
 button_pressed = true
 text = "Light Halos"
 
-[node name="BloomCheck" type="CheckButton" parent="SettingsPanel/VideoScroll/Video/Glow"]
+[node name="BloomCheck" type="CheckButton" parent="SettingsPanel/VideoScroll/Video/Effects"]
 layout_mode = 2
 tooltip_text = "Toggles the procedural halos created 
 by the \"glow\" post-processing effect."
@@ -464,7 +464,7 @@ theme = ExtResource("3_sxm1b")
 button_pressed = true
 text = "Light Bloom"
 
-[node name="CBloomCheck" type="CheckButton" parent="SettingsPanel/VideoScroll/Video/Glow"]
+[node name="CBloomCheck" type="CheckButton" parent="SettingsPanel/VideoScroll/Video/Effects"]
 visible = false
 layout_mode = 2
 tooltip_text = "Toggles a procedural cross-shaped 
@@ -473,6 +473,13 @@ lens flare post-processing effect.
 I worked very hard on it."
 theme = ExtResource("3_sxm1b")
 text = "Cross Bloom"
+
+[node name="VolumetricFogCheck" type="CheckButton" parent="SettingsPanel/VideoScroll/Video/Effects"]
+layout_mode = 2
+tooltip_text = "Toggles volumetric fog."
+theme = ExtResource("3_sxm1b")
+button_pressed = true
+text = "Volumetric Fog"
 
 [node name="AudioScroll" type="ScrollContainer" parent="SettingsPanel"]
 process_mode = 4
@@ -699,9 +706,10 @@ theme = ExtResource("3_sxm1b")
 [connection signal="value_changed" from="SettingsPanel/VideoScroll/Video/UIScaleFactor/UIScaleSlider" to="SettingsPanel/VideoScroll/Video" method="_on_ui_scale_slider_value_changed"]
 [connection signal="value_changed" from="SettingsPanel/VideoScroll/Video/CrosshairSize/CrosshairSizeSlider" to="SettingsPanel/VideoScroll/Video" method="_on_crosshair_size_slider_value_changed"]
 [connection signal="value_changed" from="SettingsPanel/VideoScroll/Video/FOV/FovSlider" to="SettingsPanel/VideoScroll/Video" method="_on_fov_slider_value_changed"]
-[connection signal="toggled" from="SettingsPanel/VideoScroll/Video/Glow/FlaresCheck" to="SettingsPanel/VideoScroll/Video" method="_on_flares_check_toggled"]
-[connection signal="toggled" from="SettingsPanel/VideoScroll/Video/Glow/BloomCheck" to="SettingsPanel/VideoScroll/Video" method="_on_bloom_check_toggled"]
-[connection signal="toggled" from="SettingsPanel/VideoScroll/Video/Glow/CBloomCheck" to="SettingsPanel/VideoScroll/Video" method="_on_c_bloom_check_toggled"]
+[connection signal="toggled" from="SettingsPanel/VideoScroll/Video/Effects/FlaresCheck" to="SettingsPanel/VideoScroll/Video" method="_on_flares_check_toggled"]
+[connection signal="toggled" from="SettingsPanel/VideoScroll/Video/Effects/BloomCheck" to="SettingsPanel/VideoScroll/Video" method="_on_bloom_check_toggled"]
+[connection signal="toggled" from="SettingsPanel/VideoScroll/Video/Effects/CBloomCheck" to="SettingsPanel/VideoScroll/Video" method="_on_c_bloom_check_toggled"]
+[connection signal="toggled" from="SettingsPanel/VideoScroll/Video/Effects/VolumetricFogCheck" to="SettingsPanel/VideoScroll/Video" method="_on_volumetric_fog_check_toggled"]
 [connection signal="value_changed" from="SettingsPanel/AudioScroll/Audio/Master/MasterSlider" to="SettingsPanel/AudioScroll/Audio" method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="SettingsPanel/AudioScroll/Audio/Sound/SoundSlider" to="SettingsPanel/AudioScroll/Audio" method="_on_sound_slider_value_changed"]
 [connection signal="value_changed" from="SettingsPanel/AudioScroll/Audio/Music/MusicSlider" to="SettingsPanel/AudioScroll/Audio" method="_on_music_slider_value_changed"]

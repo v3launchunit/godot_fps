@@ -375,6 +375,8 @@ func _attack(_delta) -> void:
 
 
 func do_attack() -> void:
+	look_at(current_targets[-1].position)
+	rotation.x = 0
 	if (not current_targets.is_empty()) and current_targets[-1] != null:
 		spawner.look_at(current_targets[-1].global_position)
 	var spawner_base_rotation = spawner.global_rotation

@@ -28,13 +28,13 @@ scale_min = 0.5
 scale_max = 2.0
 color = Color(1, 0.501961, 0, 1)
 color_ramp = SubResource("GradientTexture1D_oraxr")
-hue_variation_min = 0.17
 hue_variation_max = 0.17
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4mvg"]
 transparency = 3
 alpha_hash_scale = 1.0
 alpha_antialiasing_mode = 0
+blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 
@@ -192,7 +192,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Shockwave:material_override:albedo_color")
+tracks/9/path = NodePath("Blastwave:material_override:albedo_color")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -311,18 +311,18 @@ tracks/8/keys = {
 tracks/9/type = "scale_3d"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Shockwave")
+tracks/9/path = NodePath("Blastwave")
 tracks/9/interp = 1
 tracks/9/loop_wrap = false
-tracks/9/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.5, 1, 30, 30, 30)
+tracks/9/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.3, 1, 30, 30, 30)
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Shockwave:material_override:albedo_color")
+tracks/10/path = NodePath("Blastwave:material_override:albedo_color")
 tracks/10/interp = 1
 tracks/10/loop_wrap = false
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 0, 1), Color(1, 0, 0, 0)]
@@ -418,9 +418,8 @@ libraries = {
 }
 script = ExtResource("2_w10mg")
 
-[node name="Shockwave" type="MeshInstance3D" parent="."]
+[node name="Blastwave" type="MeshInstance3D" parent="."]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-visible = false
 material_override = SubResource("StandardMaterial3D_rl26o")
 mesh = ExtResource("3_nm51l")
 skeleton = NodePath("../AnimationPlayer")

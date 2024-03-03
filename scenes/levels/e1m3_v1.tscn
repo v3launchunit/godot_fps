@@ -2348,6 +2348,7 @@ stream_0/weight = 1.0
 
 [sub_resource type="Animation" id="Animation_0a18c"]
 resource_name = "on"
+length = 2.0
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2398,7 +2399,7 @@ xfade_curve = SubResource("Curve_ock0p")
 states/off/node = SubResource("AnimationNodeAnimation_e4duc")
 states/off/position = Vector2(405.334, 100.338)
 states/on/node = SubResource("AnimationNodeAnimation_5kq1t")
-states/on/position = Vector2(548, 99.9753)
+states/on/position = Vector2(556, 94.6749)
 transitions = ["Start", "off", SubResource("AnimationNodeStateMachineTransition_kw522"), "off", "on", SubResource("AnimationNodeStateMachineTransition_v3mup")]
 graph_offset = Vector2(0, 40)
 
@@ -2494,6 +2495,7 @@ shadow_enabled = true
 
 [node name="EditorLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 0
 editor_only = true

@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://ctgdbydttjqwq"]
+[gd_scene load_steps=30 format=3 uid="uid://ctgdbydttjqwq"]
 
 [ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="1_6sl8e"]
 [ext_resource type="Script" path="res://scripts/auto_play.gd" id="2_etkcd"]
+[ext_resource type="ArrayMesh" uid="uid://cx13p5fo0cmf6" path="res://models/effects/octagon_quad.obj" id="2_qmcat"]
 [ext_resource type="Script" path="res://scripts/effects/area_damage.gd" id="3_e2vgx"]
 [ext_resource type="AudioStream" uid="uid://tv57kig5mcoh" path="res://audio/streams/effects/kaboom.wav" id="4_22yul"]
 [ext_resource type="AudioStream" uid="uid://b4em0t5e3pb8a" path="res://audio/streams/effects/vine_boom.mp3" id="5_vgmmu"]
@@ -34,6 +35,7 @@ hue_variation_max = 0.17
 transparency = 3
 alpha_hash_scale = 1.0
 alpha_antialiasing_mode = 0
+blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 
@@ -174,6 +176,30 @@ tracks/8/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Blastwave:material_override:albedo_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Blastwave:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(30, 30, 30)]
+}
 
 [sub_resource type="Animation" id="Animation_1qm5a"]
 resource_name = "anim"
@@ -281,6 +307,30 @@ tracks/8/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Blastwave:material_override:albedo_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 2, 1), Color(1, 0, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Blastwave:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(30, 30, 30)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7h3vl"]
 _data = {
@@ -300,6 +350,24 @@ rings = 8
 
 [sub_resource type="FogMaterial" id="FogMaterial_hi1pk"]
 albedo = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Gradient" id="Gradient_s6cww"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.5, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_303r5"]
+gradient = SubResource("Gradient_s6cww")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5x4e"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 0)
+albedo_texture = SubResource("GradientTexture2D_303r5")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_er5bi"]
 radius = 3.0
@@ -365,6 +433,12 @@ mesh = SubResource("SphereMesh_cpldg")
 layers = 2
 shape = 0
 material = SubResource("FogMaterial_hi1pk")
+
+[node name="Blastwave" type="MeshInstance3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, -1.31134e-06, 30, 0, -30, -1.31134e-06, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_g5x4e")
+mesh = ExtResource("2_qmcat")
+skeleton = NodePath("../AnimationPlayer")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_mask = 7

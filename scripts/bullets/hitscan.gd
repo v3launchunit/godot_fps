@@ -10,6 +10,7 @@ class_name Hitscan extends Node3D
 #@export var from_camera: bool = true
 @export var piercer: bool = false
 @export_range(0.0, 100.0, 0.1, "or_greater") var fade_speed: float = 50.0
+@export_range(0.0, 5.0, 0.1, "or_greater") var linger: float = 0.0
 
 # Defaults to some ridiculous coordinate b/c vector3 apparently isn't nullable
 # (this could theoretically be solved by not declaring a type but that is a far
@@ -19,6 +20,7 @@ var handled: bool = false
 var exceptions: Array = []
 var invoker: Node3D
 #var camera: Camera3D
+var linger_time: float = 0.0
 
 @onready var mesh: Node3D = get_node("MeshInstance3D") as Node3D
 
@@ -33,10 +35,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if handled:
+	if handled and linger_time >= linger:
 		mesh.scale.z -= fade_speed * delta
 		if mesh.scale.z < Globals.C_HITSCAN_MIN_LENGTH:
 			queue_free()
+	else:
+		linger_time += delta
 
 
 func _physics_process(_delta: float) -> void:

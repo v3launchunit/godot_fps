@@ -9,6 +9,7 @@ class_name PlayerStatus extends Status
 var armor: float
 var held_keys: Array[bool] = [false, false, false]
 
+@onready var stream_player := get_parent().get_node("AudioStreamPlayer") as AudioStreamPlayer
 @onready var hud = get_parent().find_child("HUD")
 
 signal key_acquired(key: int)
@@ -46,9 +47,9 @@ func damage(amount: float) -> float: # returns damage dealt, for piercers
 	if is_dead:
 		return 0 # corpses cannot stop piercers
 	hud.flash(Color(1, 0, 0, clamp(amount / 10, 0.1, 1)))
-	var stream_player := get_parent().get_node("AudioStreamPlayer") as AudioStreamPlayer
-	stream_player.stream = injury_stream
-	stream_player.play()
+	if amount > 0:
+		stream_player.stream = injury_stream
+		stream_player.play()
 	health -= amount * (1 - armor_absorption)
 	armor  -= amount * armor_absorption
 	if armor <= 0:

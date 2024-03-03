@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://c63k27ek72d3d"]
+[gd_scene load_steps=48 format=3 uid="uid://c63k27ek72d3d"]
 
 [ext_resource type="Script" path="res://scripts/entities/player/player.gd" id="1_30yaf"]
 [ext_resource type="AudioStream" uid="uid://c7enblvm4yyws" path="res://audio/streams/voices/player/hups/hup_1.wav" id="2_ltik2"]
@@ -31,7 +31,9 @@
 [ext_resource type="Script" path="res://scripts/entities/player/flashlight.gd" id="25_we7ax"]
 [ext_resource type="Script" path="res://scripts/entities/player/player_status.gd" id="28_ee1uu"]
 [ext_resource type="Shader" path="res://shaders/cross_bloom.gdshader" id="29_lcani"]
+[ext_resource type="AudioStream" uid="uid://c4letg1n03lmd" path="res://audio/streams/voices/player/damage_placeholder.wav" id="32_2hkf1"]
 [ext_resource type="Shader" path="res://shaders/cross_bloom_mesh.gdshader" id="32_knaf5"]
+[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="34_0co5b"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ww5sc"]
 random_pitch = 1.15
@@ -120,9 +122,12 @@ size = Vector3(0.5, 0.5, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65bbo"]
 render_priority = 0
 shader = ExtResource("32_knaf5")
-shader_parameter/intensity = 1.0
-shader_parameter/threshold = 0.9
-shader_parameter/spread = 10
+shader_parameter/strength = 0.08
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.25
+shader_parameter/aberration = 0.425
+shader_parameter/width = 0.04
+shader_parameter/feather = 0.135
 
 [sub_resource type="QuadMesh" id="QuadMesh_5eidy"]
 flip_faces = true
@@ -132,7 +137,11 @@ size = Vector2(2, 2)
 radial_segments = 8
 rings = 1
 
-[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_a2sej"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uyctv"]
+random_pitch = 1.25
+streams_count = 1
+stream_0/stream = ExtResource("32_2hkf1")
+stream_0/weight = 1.0
 
 [node name="Player" type="CharacterBody3D"]
 editor_description = "The player character."
@@ -287,6 +296,8 @@ mesh = SubResource("CapsuleMesh_iu3ba")
 [node name="Status" type="Node" parent="."]
 process_mode = 1
 script = ExtResource("28_ee1uu")
-injury_stream = SubResource("AudioStreamGenerator_a2sej")
+injury_stream = SubResource("AudioStreamRandomizer_uyctv")
 gib_threshold = 5000.0
 gibs = ExtResource("11_t14nv")
+
+[node name="StairStepper" parent="." instance=ExtResource("34_0co5b")]

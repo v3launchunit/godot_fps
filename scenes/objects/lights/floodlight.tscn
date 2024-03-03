@@ -95,6 +95,7 @@ light_projector = ExtResource("3_gcdu4")
 shadow_enabled = true
 distance_fade_enabled = true
 spot_range = 25.0
+spot_angle = 60.0
 
 [node name="LensFlare" type="MeshInstance3D" parent="floodlight/Stand/Neck_L/Lamp_L/SpotLight3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.14)
@@ -126,6 +127,7 @@ light_projector = ExtResource("3_gcdu4")
 shadow_enabled = true
 distance_fade_enabled = true
 spot_range = 25.0
+spot_angle = 60.0
 
 [node name="LensFlare" type="MeshInstance3D" parent="floodlight/Stand/Neck_R/Lamp_R/SpotLight3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15)

@@ -85,3 +85,7 @@ func _on_bloom_check_toggled(button_pressed: bool) -> void:
 
 func _on_c_bloom_check_toggled(button_pressed: bool) -> void:
 	Globals.s_cross_glow_enabled = button_pressed
+
+
+func _on_volumetric_fog_check_toggled(button_pressed: bool) -> void:
+	Globals.s_volumetric_fog_enabled = button_pressed

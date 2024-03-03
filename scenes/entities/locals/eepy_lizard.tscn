@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://68ll8lt6xqyd"]
+[gd_scene load_steps=93 format=3 uid="uid://68ll8lt6xqyd"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_lizard.gd" id="1_vmwu0"]
 [ext_resource type="PackedScene" uid="uid://dj8yo2whvp2w7" path="res://scenes/bullets/enemy/enemy_melee_scan.tscn" id="2_p5c7q"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c5pbs8t6p7ogl" path="res://scenes/effects/gibs/gibs.tscn" id="13_tpj4t"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="14_bi5do"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="15_tscye"]
+[ext_resource type="Script" path="res://scripts/entities/stair_stepper.gd" id="16_51dlk"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hkga1"]
 random_pitch = 1.25
@@ -630,6 +631,9 @@ states/moving/position = Vector2(649.8, 22.8889)
 transitions = ["Start", "ambush", SubResource("AnimationNodeStateMachineTransition_uyds1"), "ambush", "idle", SubResource("AnimationNodeStateMachineTransition_6h3lp"), "idle", "moving", SubResource("AnimationNodeStateMachineTransition_enpnc"), "moving", "meleeing", SubResource("AnimationNodeStateMachineTransition_xhqvc"), "moving", "attacking", SubResource("AnimationNodeStateMachineTransition_u8qvp"), "attacking", "moving", SubResource("AnimationNodeStateMachineTransition_08tqw"), "meleeing", "moving", SubResource("AnimationNodeStateMachineTransition_od4bf"), "moving", "idle", SubResource("AnimationNodeStateMachineTransition_5o8iw"), "attacking", "idle", SubResource("AnimationNodeStateMachineTransition_qmi6j"), "idle", "attacking", SubResource("AnimationNodeStateMachineTransition_jpucx"), "meleeing", "idle", SubResource("AnimationNodeStateMachineTransition_7k533"), "idle", "meleeing", SubResource("AnimationNodeStateMachineTransition_jnr5b"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_aebrt"), "moving", "dead", SubResource("AnimationNodeStateMachineTransition_av1u6"), "meleeing", "dead", SubResource("AnimationNodeStateMachineTransition_l1fp7"), "attacking", "dead", SubResource("AnimationNodeStateMachineTransition_qrwb0"), "idle", "flinching", SubResource("AnimationNodeStateMachineTransition_yixqf"), "flinching", "moving", SubResource("AnimationNodeStateMachineTransition_r3e4g"), "attacking", "flinching", SubResource("AnimationNodeStateMachineTransition_nndtd"), "meleeing", "flinching", SubResource("AnimationNodeStateMachineTransition_ismnd"), "moving", "flinching", SubResource("AnimationNodeStateMachineTransition_ppc1d"), "flinching", "dead", SubResource("AnimationNodeStateMachineTransition_n80pq")]
 graph_offset = Vector2(-22, -6)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_brebs"]
+size = Vector3(1, 0.5, 3)
+
 [node name="EepyLizard" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 23
@@ -677,7 +681,7 @@ bones/28/rotation = Quaternion(-0.500011, 0, 0, 0.866019)
 bones/29/rotation = Quaternion(-0.258969, 0, 0, 0.965886)
 
 [node name="Head" type="BoneAttachment3D" parent="lizard/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, 3.27997e-10, 8.04481e-08, 8.04481e-08, -0.00815439, -0.999967, 3.28015e-10, 0.999967, -0.00815439, 1.31199e-09, -0.0326176, 3.99987)
+transform = Transform3D(1, 1.17217e-10, 1.49025e-08, 1.49025e-08, -0.01573, -0.999876, 1.17214e-10, 0.999876, -0.01573, 4.68868e-10, -0.0629201, 3.99951)
 bone_name = "Head"
 bone_idx = 6
 
@@ -695,8 +699,7 @@ process_material = SubResource("ParticleProcessMaterial_enddm")
 draw_pass_1 = SubResource("QuadMesh_me12s")
 
 [node name="JawLeft" parent="lizard/Armature/Skeleton3D" index="1"]
-transform = Transform3D(8.04481e-08, 1, 3.27997e-10, -0.999967, 8.04481e-08, -0.00815439, -0.00815439, 3.28015e-10, 0.999967, 1.47599e-09, -0.0366948, 4.49985)
-bone_idx = 7
+transform = Transform3D(1.49025e-08, 1, 1.17217e-10, -0.999876, 1.49025e-08, -0.01573, -0.01573, 1.17214e-10, 0.999876, 5.27476e-10, -0.0707851, 4.49944)
 
 [node name="JawLeft" parent="lizard/Armature/Skeleton3D/JawLeft" index="0"]
 transform = Transform3D(1, -1.42108e-14, 0, -1.25528e-14, 1, -1.42109e-14, 0, 0, 1, 0, 0, 0)
@@ -715,24 +718,21 @@ draw_pass_1 = SubResource("SphereMesh_2vp0u")
 [node name="SpawnerRight" type="Marker3D" parent="lizard/Armature/Skeleton3D/JawLeft/JawLeft/GPUParticles3D"]
 
 [node name="HornLeftBottom" parent="lizard/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-3.27997e-10, 8.04481e-08, -1, 0.00815439, -0.999967, -8.04481e-08, -0.999967, -0.00815439, -3.28015e-10, 1.2, -0.544425, 5.44574)
-bone_idx = 8
+transform = Transform3D(-1.17217e-10, 1.49025e-08, -1, 0.01573, -0.999876, -1.49025e-08, -0.999876, -0.01573, -1.17214e-10, 1.2, -0.585667, 5.44146)
 
 [node name="HornLeftBottom" parent="lizard/Armature/Skeleton3D/HornLeftBottom" index="0"]
 layers = 2
 material_override = SubResource("StandardMaterial3D_uepsu")
 
 [node name="HornLeftTop" parent="lizard/Armature/Skeleton3D" index="3"]
-transform = Transform3D(8.04481e-08, 3.27997e-10, -1, -0.999967, -0.00815439, -8.04481e-08, -0.00815439, 0.999967, -3.28015e-10, 1.2, 0.455542, 5.4539)
-bone_idx = 9
+transform = Transform3D(1.49025e-08, 1.17217e-10, -1, -0.999876, -0.01573, -1.49025e-08, -0.01573, 0.999876, -1.17214e-10, 1.2, 0.414209, 5.45719)
 
 [node name="HornLeftTop" parent="lizard/Armature/Skeleton3D/HornLeftTop" index="0"]
 layers = 2
 material_override = SubResource("StandardMaterial3D_uepsu")
 
 [node name="JawRight" parent="lizard/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-8.04481e-08, -1, 3.27997e-10, 0.999967, -8.04481e-08, -0.00815439, 0.00815439, -3.28015e-10, 0.999967, 1.47599e-09, -0.0366948, 4.49985)
-bone_idx = 10
+transform = Transform3D(-1.49025e-08, -1, 1.17217e-10, 0.999876, -1.49025e-08, -0.01573, 0.01573, -1.17214e-10, 0.999876, 5.27476e-10, -0.0707851, 4.49944)
 
 [node name="JawRight" parent="lizard/Armature/Skeleton3D/JawRight" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 7.57849e-15, 0, 3.07846e-15, 1, 0, 0, 0)
@@ -751,16 +751,14 @@ draw_pass_1 = SubResource("SphereMesh_42m1i")
 [node name="SpawnerLeft" type="Marker3D" parent="lizard/Armature/Skeleton3D/JawRight/JawRight/GPUParticles3D"]
 
 [node name="HornRightBottom" parent="lizard/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-3.27997e-10, -8.04481e-08, 1, 0.00815439, 0.999967, 8.04481e-08, -0.999967, 0.00815439, 3.28015e-10, -1.2, -0.544425, 5.44574)
-bone_idx = 11
+transform = Transform3D(-1.17217e-10, -1.49025e-08, 1, 0.01573, 0.999876, 1.49025e-08, -0.999876, 0.01573, 1.17214e-10, -1.2, -0.585667, 5.44146)
 
 [node name="HornRightBottom" parent="lizard/Armature/Skeleton3D/HornRightBottom" index="0"]
 layers = 2
 material_override = SubResource("StandardMaterial3D_uepsu")
 
 [node name="HornRightTop" parent="lizard/Armature/Skeleton3D" index="6"]
-transform = Transform3D(8.90966e-08, -3.27998e-10, 1, -0.999967, 0.0081544, 8.90963e-08, -0.0081544, -0.999967, 3.98538e-10, -1.2, 0.455542, 5.4539)
-bone_idx = 12
+transform = Transform3D(2.35509e-08, -1.17217e-10, 1, -0.999876, 0.01573, 2.35499e-08, -0.01573, -0.999876, 2.53255e-10, -1.2, 0.414209, 5.45719)
 
 [node name="HornRightTop" parent="lizard/Armature/Skeleton3D/HornRightTop" index="0"]
 layers = 2
@@ -808,5 +806,18 @@ gib_threshold = 100.0
 damage_sys = ExtResource("12_sfw3v")
 gibs = ExtResource("13_tpj4t")
 loot = Array[PackedScene]([ExtResource("14_bi5do"), ExtResource("15_tscye")])
+
+[node name="StairStepper" type="Node3D" parent="."]
+script = ExtResource("16_51dlk")
+
+[node name="LowCast" type="ShapeCast3D" parent="StairStepper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24, -0.25)
+shape = SubResource("BoxShape3D_brebs")
+target_position = Vector3(0, 0, 0)
+
+[node name="HighCast" type="ShapeCast3D" parent="StairStepper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.25)
+shape = SubResource("BoxShape3D_brebs")
+target_position = Vector3(0, 0, 0)
 
 [editable path="lizard"]

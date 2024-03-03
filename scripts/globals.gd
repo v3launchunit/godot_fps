@@ -51,13 +51,14 @@ var s_fov_desired: float = 120
 var s_viewmodel_fov: float = 90
 
 ## Toggles the procedural halos created by the "glow" post-processing effect.
-var s_glow_enabled: bool = true
+var s_glow_enabled: bool = false
 ## Toggles the mesh-based halos present on various light sources and
 ## bright objects.
 var s_flares_enabled: bool = true
 ## Toggles a procedural cross-shaped lens flare post-processing effect. I worked
 ## very hard on it.
 var s_cross_glow_enabled: bool = false
+var s_volumetric_fog_enabled: bool = true
 
 ## The sensitivity multiplier applied to mouse movement with regards to the
 ## first-person camera.
@@ -111,7 +112,10 @@ func _load_config() -> void:
 	s_viewmodel_fov = config.get_value("video", "viewmodel_fov", s_viewmodel_fov)
 	s_flares_enabled = config.get_value("video", "flares_enabled", s_flares_enabled)
 	s_glow_enabled = config.get_value("video", "glow_enabled", s_glow_enabled)
-	s_cross_glow_enabled = config.get_value("video", "cross_glow_enabled", s_cross_glow_enabled)
+	s_cross_glow_enabled = config.get_value("video", "cross_glow_enabled",
+			s_cross_glow_enabled)
+	s_volumetric_fog_enabled = config.get_value("video", "volumetric_fog_enabled",
+			s_volumetric_fog_enabled)
 
 	s_master_volume = config.get_value("audio", "master_volume", s_master_volume)
 	s_sound_volume = config.get_value("audio", "sound_volume", s_sound_volume)
@@ -130,6 +134,7 @@ func _on_settings_changed() -> void:
 	config.set_value("video", "flares_enabled", s_flares_enabled)
 	config.set_value("video", "glow_enabled", s_glow_enabled)
 	config.set_value("video", "cross_glow_enabled", s_cross_glow_enabled)
+	config.set_value("video", "volumetric_fog_enabled", s_volumetric_fog_enabled)
 
 	config.set_value("audio", "master_volume", s_master_volume)
 	config.set_value("audio", "sound_volume", s_sound_volume)

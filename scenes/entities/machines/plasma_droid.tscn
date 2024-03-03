@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://pr3j5d4ifvrt"]
+[gd_scene load_steps=61 format=3 uid="uid://pr3j5d4ifvrt"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_attack_pattern.gd" id="1_jd6vl"]
 [ext_resource type="PackedScene" uid="uid://b12xu872st3c" path="res://models/entities/plasma_droid.glb" id="1_whe1e"]
@@ -17,9 +17,11 @@
 [ext_resource type="ArrayMesh" uid="uid://bq2ld7p1te64i" path="res://models/weapons/muzzle_flash_plasma.obj" id="5_8e7tr"]
 [ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://scenes/pickups/health/health_pack_pickup.tscn" id="6_o1v1h"]
 [ext_resource type="AnimationLibrary" uid="uid://cu6kaw3wmnu2i" path="res://scenes/entities/machines/plasma_droid_anims.res" id="8_hkuiw"]
+[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="18_7c8tp"]
 
 [sub_resource type="Resource" id="Resource_ba0li"]
 script = ExtResource("3_3f3op")
+weight = 1.0
 bullet = ExtResource("3_avpih")
 volley = 1
 spread = 0.0
@@ -30,10 +32,10 @@ animation = &"attacking"
 burst = 1
 burst_delay = 0.1
 cancelable = true
-weight = 1.0
 
 [sub_resource type="Resource" id="Resource_wk1ps"]
 script = ExtResource("3_3f3op")
+weight = 2.0
 bullet = ExtResource("4_k6qs3")
 volley = 1
 spread = 0.0
@@ -44,7 +46,6 @@ animation = &"bullet_attacking"
 burst = 4
 burst_delay = 0.25
 cancelable = true
-weight = 2.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_akb4x"]
 random_pitch = 1.15
@@ -488,5 +489,8 @@ gib_threshold = 0.0
 damage_sys = ExtResource("3_bt5p4")
 gibs = ExtResource("3_rukio")
 loot = Array[PackedScene]([ExtResource("5_4ag46"), ExtResource("6_o1v1h")])
+
+[node name="StairStepper" parent="." instance=ExtResource("18_7c8tp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [editable path="plasma_droid"]

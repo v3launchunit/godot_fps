@@ -1,14 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://u6obomqkbr77"]
+[gd_scene load_steps=18 format=3 uid="uid://u6obomqkbr77"]
 
 [ext_resource type="Script" path="res://scripts/bullets/hitscan.gd" id="1_inyp7"]
 [ext_resource type="ArrayMesh" uid="uid://cfjlieto7r0xy" path="res://models/bullets/hitscan_bullet.obj" id="2_co20h"]
 [ext_resource type="PackedScene" uid="uid://dgr75fm83e7bb" path="res://scenes/effects/bullet_impact_cyan.tscn" id="2_w135i"]
+[ext_resource type="Shader" path="res://shaders/lightning.gdshader" id="4_ttioc"]
 
 [sub_resource type="Gradient" id="Gradient_lh4cc"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_16e03"]
 gradient = SubResource("Gradient_lh4cc")
+width = 16
+height = 16
 fill_from = Vector2(0, 0.875)
 fill_to = Vector2(0, 0.5)
 metadata/_snap_enabled = true
@@ -16,6 +19,7 @@ metadata/_snap_count = 8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nbng"]
 transparency = 1
+blend_mode = 1
 cull_mode = 2
 shading_mode = 0
 albedo_color = Color(0, 5, 5, 1)
@@ -23,12 +27,82 @@ albedo_texture = SubResource("GradientTexture2D_16e03")
 
 [sub_resource type="Skin" id="Skin_axrfg"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5b6os"]
+noise_type = 3
+frequency = 0.25
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gyies"]
+width = 16
+height = 16
+seamless = true
+noise = SubResource("FastNoiseLite_5b6os")
+
+[sub_resource type="Gradient" id="Gradient_hvl4x"]
+offsets = PackedFloat32Array(0.375, 0.4375, 0.5625, 0.625)
+colors = PackedColorArray(0, 3, 3, 0, 0, 3, 3, 1, 0, 3, 3, 0.8, 0, 3, 3, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r6gdn"]
+gradient = SubResource("Gradient_hvl4x")
+width = 16
+height = 16
+use_hdr = true
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="Gradient" id="Gradient_noo6w"]
+offsets = PackedFloat32Array(0.5, 0.75)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qox87"]
+gradient = SubResource("Gradient_noo6w")
+width = 16
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4e4mr"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_ttioc")
+shader_parameter/intensity = 0.75
+shader_parameter/scroll_speed = 2.0
+shader_parameter/tex = SubResource("GradientTexture2D_r6gdn")
+shader_parameter/tex_2 = SubResource("GradientTexture1D_qox87")
+shader_parameter/noise = SubResource("NoiseTexture2D_gyies")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rgpba"]
+orientation = 0
+
+[sub_resource type="GDScript" id="GDScript_tennt"]
+script/source = "extends MeshInstance3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	#material_override.uv_scale.x = global_basis.get_scale().z
+	set_instance_shader_parameter(
+			\"uv_scale\",
+			Vector2(get_parent().scale.z, 1.0)
+	)
+	pass
+"
+
 [node name="Hitscan" type="Node3D"]
 script = ExtResource("1_inyp7")
 damage = 30.0
 explosion = ExtResource("2_w135i")
 piercer = true
 fade_speed = 25.0
+linger = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 2
@@ -36,3 +110,21 @@ material_override = SubResource("StandardMaterial3D_4nbng")
 cast_shadow = 0
 mesh = ExtResource("2_co20h")
 skin = SubResource("Skin_axrfg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+process_mode = 4
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
+material_override = SubResource("ShaderMaterial_4e4mr")
+mesh = SubResource("QuadMesh_rgpba")
+skeleton = NodePath("../..")
+script = SubResource("GDScript_tennt")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+process_mode = 4
+transform = Transform3D(-1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
+material_override = SubResource("ShaderMaterial_4e4mr")
+mesh = SubResource("QuadMesh_rgpba")
+skeleton = NodePath("../..")
+script = SubResource("GDScript_tennt")
