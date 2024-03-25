@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://ctgdbydttjqwq"]
+[gd_scene load_steps=35 format=3 uid="uid://ctgdbydttjqwq"]
 
 [ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="1_6sl8e"]
 [ext_resource type="Script" path="res://scripts/auto_play.gd" id="2_etkcd"]
 [ext_resource type="ArrayMesh" uid="uid://cx13p5fo0cmf6" path="res://models/effects/octagon_quad.obj" id="2_qmcat"]
 [ext_resource type="Script" path="res://scripts/effects/area_damage.gd" id="3_e2vgx"]
+[ext_resource type="Texture2D" uid="uid://djg6ch15ainnw" path="res://textures/effects/radial_n.png" id="3_vhjgo"]
 [ext_resource type="AudioStream" uid="uid://tv57kig5mcoh" path="res://audio/streams/effects/kaboom.wav" id="4_22yul"]
 [ext_resource type="AudioStream" uid="uid://b4em0t5e3pb8a" path="res://audio/streams/effects/vine_boom.mp3" id="5_vgmmu"]
 
@@ -200,6 +201,30 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector3(30, 30, 30)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Blastwave:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Blastwave/Shockwave:material_override:refraction_scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.1]
+}
 
 [sub_resource type="Animation" id="Animation_1qm5a"]
 resource_name = "anim"
@@ -331,6 +356,30 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(30, 30, 30)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Blastwave:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Blastwave/Shockwave:material_override:refraction_scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.1, 0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7h3vl"]
 _data = {
@@ -368,6 +417,33 @@ transparency = 1
 shading_mode = 0
 albedo_color = Color(1, 0, 0, 0)
 albedo_texture = SubResource("GradientTexture2D_303r5")
+
+[sub_resource type="Gradient" id="Gradient_3gn6l"]
+offsets = PackedFloat32Array(0.125, 0.375, 0.625, 0.875)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fuw5n"]
+gradient = SubResource("Gradient_3gn6l")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxkv0"]
+no_depth_test = true
+albedo_color = Color(1, 1, 1, 0)
+metallic_specular = 0.0
+roughness = 0.0
+normal_enabled = true
+normal_texture = ExtResource("3_vhjgo")
+refraction_enabled = true
+refraction_scale = -0.1
+refraction_texture = SubResource("GradientTexture2D_fuw5n")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_w3cqw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_er5bi"]
 radius = 3.0
@@ -436,9 +512,18 @@ material = SubResource("FogMaterial_hi1pk")
 
 [node name="Blastwave" type="MeshInstance3D" parent="."]
 transform = Transform3D(30, 0, 0, 0, -1.31134e-06, 30, 0, -30, -1.31134e-06, 0, 0, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_g5x4e")
 mesh = ExtResource("2_qmcat")
 skeleton = NodePath("../AnimationPlayer")
+
+[node name="Shockwave" type="MeshInstance3D" parent="Blastwave"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+sorting_offset = -100.0
+material_override = SubResource("StandardMaterial3D_kxkv0")
+mesh = SubResource("QuadMesh_w3cqw")
+skeleton = NodePath("../..")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_mask = 7

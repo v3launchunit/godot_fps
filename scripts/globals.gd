@@ -141,3 +141,14 @@ func _on_settings_changed() -> void:
 	config.set_value("audio", "music_volume", s_music_volume)
 
 	config.save("user://settings.cfg") # Write to file.
+
+
+## returns from incremented or decremented by 1 towards to
+## (eg. intstep(1,5) returns 2)
+func intstep(from: int, to: int) -> int:
+	if from > to:
+		return from - 1
+	elif from < to:
+		return from + 1
+	else:
+		return from

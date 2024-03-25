@@ -260,3 +260,15 @@ viewmodel_fov={
 "type": "float",
 "value": 90.0
 }
+vertex_snap={
+"type": "float",
+"value": 0.0
+}
+affine_warp={
+"type": "bool",
+"value": false
+}
+screen_size={
+"type": "ivec2",
+"value": Vector2i(683, 384)
+}

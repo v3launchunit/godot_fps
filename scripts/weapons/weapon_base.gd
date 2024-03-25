@@ -19,6 +19,14 @@ signal hud_connected(category: int, index: int, ammo_type: String, alt_ammo_type
 ## The amount of force that will be imparted onto the player when this weapon is
 ## fired.
 @export var recoil: float = 0.0
+@export_range(
+		-180.0,
+		180.0,
+		0.1,
+		"or_less",
+		"or_greater",
+		"radians"
+) var cam_recoil: float = PI / 36.0
 
 @export_subgroup("Primary Ammo", "ammo_")
 ## The name of the ammo pool this weapon draws from in order to fire.
@@ -60,6 +68,7 @@ var hud: Control
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 @onready var manager: WeaponManager = get_parent().get_parent()
 @onready var eject_sys: GPUParticles3D = find_child("ShellEject")
+@onready var player: Player = find_parent("Player") as Player
 #@onready var alert_area: Area3D = get_node_or_null("AlertRadius")
 
 # Called when the node enters the scene tree for the first time.
@@ -135,16 +144,18 @@ func _fire() -> void:
 		spawner.add_child(instance)
 		if instance is Hitscan:
 			instance.query_origin = manager.global_position
-		instance.reparent(get_tree().root.get_child(2))
+		instance.reparent(get_tree().current_scene)
 		instance.invoker = manager.find_parent("Player")
 
 	rotation = base_rotation
 	spawner.rotation = spawner_base_rotation
 
-	if recoil != 0:
+	if abs(recoil) > Globals.C_EPSILON:
 #		recoiled.emit(Vector3.BACK * recoil)
-		var p: Player = find_parent("Player")
-		p.apply_knockback(recoil * get_global_transform().basis.z * -1)
+		player.apply_knockback(recoil * get_global_transform().basis.z * -1)
+
+	if abs(cam_recoil) > deg_to_rad(Globals.C_EPSILON):
+		player.cam_recoil_pos += cam_recoil
 
 	cooldown_timer = shot_cooldown
 	if eject_sys != null:

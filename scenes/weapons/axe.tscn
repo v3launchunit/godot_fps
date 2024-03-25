@@ -166,7 +166,7 @@ graph_offset = Vector2(-136, 58)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.35)
 
 [node name="Axe" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.499978, -0.866038, 0, 0.866038, 0.499978, 0, 0, 0, 1, -0.15, 0.00471156, 0)
+transform = Transform3D(0.499978, -0.866038, 0, 0.866038, 0.499978, 0, 0, 0, 1, -0.15, 0.00512417, 0)
 layers = 4
 material_override = SubResource("ShaderMaterial_h7uo5")
 cast_shadow = 0
@@ -174,15 +174,19 @@ mesh = ExtResource("1_sq7xt")
 script = ExtResource("5_fkvwm")
 bullet = ExtResource("6_jc7bq")
 shot_cooldown = 0.4
+cam_recoil = -0.261799
 
 [node name="Spawner" type="Marker3D" parent="Axe"]
 
 [node name="AltSpawner" type="Marker3D" parent="Axe"]
 
 [node name="AnimationTree" type="AnimationTree" parent="Axe"]
+root_node = NodePath(".")
+libraries = {
+"axe_anims": ExtResource("3_t18wh")
+}
 tree_root = SubResource("AnimationNodeStateMachine_o311l")
 anim_player = NodePath("../../AnimationPlayer")
-active = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Axe/AnimationTree")

@@ -92,7 +92,7 @@ func _fire_alt():
 		alt_spawner.add_child(instance)
 		if instance is Hitscan:
 			instance.query_origin = manager.global_position
-		instance.reparent(get_tree().root.get_child(2))
+		instance.reparent(get_tree().current_scene)
 		instance.invoker = manager.find_parent("Player")
 
 	global_rotation = base_rotation

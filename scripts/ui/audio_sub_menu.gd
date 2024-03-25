@@ -41,7 +41,8 @@ func _ready() -> void:
 
 
 static func percent_to_decibels(input: float) -> float:
-	return input * 0.6 - 60
+	return linear_to_db(input * 0.01)
+	#return input * 0.6 - 60
 
 
 func _on_master_slider_value_changed(value: float) -> void:

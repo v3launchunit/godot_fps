@@ -17,12 +17,17 @@ var player: Player
 var status: PlayerStatus
 var manager: WeaponManager
 
+var health_display: int = 0.0
+var armor_display: int = 0.0
+var main_ammo_display: int = 0.0
+var alt_ammo_display: int = 0.0
+
 @onready var health_counter: Label = find_child("HealthCounter") as Label
 @onready var ammo_counter: Label = find_child("AmmoCounter") as Label
 @onready var flash_rect: TextureRect = find_child("Flash") as TextureRect
 @onready var blood_rect: TextureRect = find_child("Blood") as TextureRect
-@onready var stream_player: AudioStreamPlayer = \
-		find_child("AudioStreamPlayer") as AudioStreamPlayer
+@onready var stream_player: AudioStreamPlayer = find_child(
+		"AudioStreamPlayer") as AudioStreamPlayer
 
 @onready var keys: Array[Node] = $KeysContainer.get_children()
 @onready var weapons: Array[Node] = $WeaponsContainer2D.get_children()
@@ -33,7 +38,7 @@ var manager: WeaponManager
 
 func _ready() -> void:
 	flash_rect.visible = false
-	player = get_parent() as Player
+	player = find_parent("Player") as Player
 	status = player.find_child("Status") as PlayerStatus
 	status.connect("key_acquired", _on_key_acquired)
 	manager = player.find_child("PlayerCam") as WeaponManager
@@ -42,7 +47,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	health_counter.text = "%s/%s%%" % [ceili(status.armor), ceili(status.health)]
+	health_display = Globals.intstep(health_display, ceili(status.health))
+	armor_display = Globals.intstep(armor_display, ceili(status.armor))
+	health_counter.text = "%s/%s%%" % [armor_display, health_display]
 	if status.health < 50:
 		blood_rect.visible = true
 		blood_rect.modulate.a = clamp(1 - (status.health / 50), 0, 2)
@@ -51,12 +58,29 @@ func _process(delta: float) -> void:
 
 	if current_alt_ammo == "none" or current_alt_ammo == current_ammo:
 		if current_ammo == "none":
+			main_ammo_display = 0
+			alt_ammo_display = 0
 			ammo_counter.text = "--"
 		else:
-			ammo_counter.text = "%s" % manager.ammo_amounts[current_ammo]
+			main_ammo_display = Globals.intstep(
+					main_ammo_display,
+					manager.ammo_amounts[current_ammo]
+			)
+			alt_ammo_display = 0
+			ammo_counter.text = "%s" % main_ammo_display
 	else:
-		ammo_counter.text = "%s/%s" % [manager.ammo_amounts[current_ammo],
-				manager.ammo_amounts[current_alt_ammo]]
+		main_ammo_display = Globals.intstep(
+				main_ammo_display,
+				manager.ammo_amounts[current_ammo]
+		)
+		alt_ammo_display = Globals.intstep(
+				alt_ammo_display,
+				manager.ammo_amounts[current_alt_ammo]
+		)
+		ammo_counter.text = "%s/%s" % [
+				alt_ammo_display,
+				main_ammo_display
+		]
 
 	if flash_rect.visible:
 		flash_rect.modulate.a -= delta

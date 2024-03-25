@@ -336,6 +336,8 @@ func check_attack_readiness() -> bool:
 
 
 func can_see_target() -> bool:
+	if current_targets.is_empty() or current_targets[-1] == null:
+		return false
 	var space_state = get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.create(
 			global_position,
@@ -375,9 +377,9 @@ func _attack(_delta) -> void:
 
 
 func do_attack() -> void:
-	look_at(current_targets[-1].position)
-	rotation.x = 0
 	if (not current_targets.is_empty()) and current_targets[-1] != null:
+		look_at(current_targets[-1].global_position)
+		rotation.x = 0
 		spawner.look_at(current_targets[-1].global_position)
 	var spawner_base_rotation = spawner.global_rotation
 	for v in volley:

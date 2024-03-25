@@ -237,7 +237,7 @@
 ( -912 32 0 ) ( -848 -32 0 ) ( -848 -32 -16 ) terrain/trench_broom/big_cobble_stone -48 0 0 1 1
 ( -848 -32 -16 ) ( -848 304 -16 ) ( -912 304 -16 ) terrain/trench_broom/big_cobble_stone 0 0 0 1 1
 ( -912 304 0 ) ( -848 304 0 ) ( -848 -32 0 ) terrain/trench_broom/big_cobble_stone 0 0 0 1 1
-( -848 384 -16 ) ( -848 384 0 ) ( -912 384 0 ) terrain/trench_broom/big_cobble_stone 0 0 0 1 1
+( -848 560 -16 ) ( -848 560 0 ) ( -912 560 0 ) terrain/trench_broom/big_cobble_stone 0 0 0 1 1
 ( -848 -32 0 ) ( -848 304 0 ) ( -848 304 -16 ) terrain/trench_broom/big_cobble_stone 0 0 0 1 1
 }
 // brush 26
@@ -705,6 +705,32 @@
 ( 160 -848 0 ) ( 160 32 0 ) ( 80 -48 0 ) terrain/trench_broom/rock 0 0 0 1 1
 ( 80 -48 256 ) ( 160 32 256 ) ( 160 -848 256 ) terrain/trench_broom/rock 0 0 0 1 1
 ( 160 -848 256 ) ( 160 32 256 ) ( 160 32 0 ) terrain/trench_broom/rock 0 0 0 1 1
+}
+// brush 77
+{
+( -327.61904761904 -640 0 ) ( -160 -720 112 ) ( -312.7195767195626 -736 0 ) terrain/trench_broom/rock -2.5648804 -2.5648804 0 1 1
+( -312.7195767195626 -736 0 ) ( -160 -720 112 ) ( -272 -784 0 ) terrain/trench_broom/rock -2.5648804 -2.5648804 0 1 1
+( -256 -448 0 ) ( -160 -720 112 ) ( -327.61904761904 -640 0 ) terrain/trench_broom/rock 0 0 0 1 1
+( -256 -448 0 ) ( -48 -448 80 ) ( -160 -720 112 ) terrain/trench_broom/rock 0 0 0 1 1
+( -256 -448 0 ) ( -32 -336 0 ) ( -48 -448 80 ) terrain/trench_broom/rock 0 -14.933319 0 1 1
+( -48 -448 80 ) ( 16 -688 112 ) ( -160 -720 112 ) terrain/trench_broom/rock 0 0 0 1 1
+( -272 -784 0 ) ( 16 -688 0 ) ( -32 -336 0 ) terrain/trench_broom/rock 0 0 0 1 1
+( -160 -720 112 ) ( 16 -688 112 ) ( -272 -784 0 ) terrain/trench_broom/rock 0 0 0 1 1
+( -272 -784 0 ) ( 16 -688 112 ) ( 16 -688 0 ) terrain/trench_broom/rock 0 0 0 1 1
+( -32 -336 0 ) ( 16 -688 112 ) ( -48 -448 80 ) terrain/trench_broom/rock 0 0 0 1 1
+( 16 -688 0 ) ( 16 -688 112 ) ( -32 -336 0 ) terrain/trench_broom/rock 0 0 0 1 1
+}
+// brush 78
+{
+( -448 -736 0 ) ( -448 -800 64 ) ( -448 -848 80 ) terrain/trench_broom/rock 0 0 0 1 1
+( -448 -736 0 ) ( -304 -656 0 ) ( -448 -800 64 ) terrain/trench_broom/rock 0 -15.144653 0 1 1
+( -304 -656 0 ) ( -224 -704 64 ) ( -448 -800 64 ) terrain/trench_broom/rock 0 -9.760986 0 1 1
+( -448 -800 64 ) ( -256 -848 128 ) ( -448 -848 80 ) terrain/trench_broom/rock 0 0 0 1 1
+( -448 -800 64 ) ( -224 -704 64 ) ( -256 -848 128 ) terrain/trench_broom/rock 0 0 0 1 1
+( -448 -848 80 ) ( -256 -848 128 ) ( -256 -848 0 ) terrain/trench_broom/rock 0 0 0 1 1
+( -448 -848 0 ) ( -256 -848 0 ) ( -304 -656 0 ) terrain/trench_broom/rock 0 0 0 1 1
+( -256 -848 0 ) ( -224 -704 64 ) ( -304 -656 0 ) terrain/trench_broom/rock -7.2365417 -3.8851929 0 1 1
+( -256 -848 128 ) ( -224 -704 64 ) ( -256 -848 0 ) terrain/trench_broom/rock 0 0 0 1 1
 }
 }
 // entity 1

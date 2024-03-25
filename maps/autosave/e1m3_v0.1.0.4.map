@@ -5,6 +5,7 @@
 "classname" "worldspawn"
 "_tb_textures" "textures/terrain/trench_broom"
 "_tb_def" "builtin:Qodot.fgd"
+"_tb_layer_omit_from_export" "1"
 // brush 0
 {
 ( -432 32 0 ) ( -432 -32 0 ) ( -432 -32 -16 ) terrain/trench_broom/big_cobble_stone 0 0 0 1 1

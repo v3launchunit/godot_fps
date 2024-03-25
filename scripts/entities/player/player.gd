@@ -4,18 +4,22 @@ class_name Player extends CharacterBody3D
 
 @export_group("Movement")
 ## The player's base movement speed.
-@export_range(0, 35, 0.1, "or_greater") var speed: float = 10
+@export_range(0.0, 35.0, 0.1, "or_greater") var speed: float = 10.0
 ## The rate at which the player accelerates from standing still to moving at
 ## full speed.
-@export_range(0, 100, 0.1, "or_greater") var acceleration: float = 100
+@export_range(0.0, 100.0, 0.1, "or_greater") var acceleration: float = 100.0
 ## The absolute fastest that the player can travel in each direction.
-@export var max_speed := Vector3(100, 100, 100)
+@export var max_speed := Vector3(100.0, 100.0, 100.0)
 ## The rate at which the velocity imparted by sliding "decays" towards zero.
-@export_range(0, 100, 0.1, "or_greater") var slide_drag: float = 10
+@export_range(0.0, 100.0, 0.1, "or_greater") var slide_drag: float = 10.0
 ## Ditto for knockback.
-@export_range(0, 100, 0.1, "or_greater") var knockback_drag: float = 10
+@export_range(0.0, 100.0, 0.1, "or_greater") var knockback_drag: float = 10.0
 ## Self-explanatory.
 @export_range(0.1, 3.0, 0.1, "or_greater") var jump_height: float = 1
+@export_range(1, 10, 1, "or_greater") var max_jumps: int = 1
+@export_range(0.0, 100.0, 0.1, "or_greater") var rise_grav: float = 9.8
+@export_range(0.0, 100.0, 0.1, "or_greater") var fall_grav: float = 9.8
+@export_range(0.0, 100.0, 0.1, "or_greater") var slam_speed: float = 100.0
 
 @export_group("Camera")
 ## The roll angle, in degrees, that the camera turns toward when strafing.
@@ -46,8 +50,10 @@ class_name Player extends CharacterBody3D
 
 var jumping: bool = false
 var crouching: bool = false
+var slamming: bool = false
 static var mouse_captured: bool = false
 
+var jumps: int = 1
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var move_dir: Vector2 ## Input direction for movement.
@@ -63,6 +69,9 @@ var camera_zoom_sens: float = 1.0
 var reorienting: bool = false
 var sway_timer: float = PI/2
 
+var cam_recoil_pos: float = 0.0
+var cam_recoil_vel: float = 0.0
+
 @onready var camera := find_child("PlayerCam") as Camera3D
 @onready var camera_sync := find_child("PlayerSync") as Node3D
 @onready var flashlight := find_child("Flashlight") as SpotLight3D
@@ -75,13 +84,13 @@ func _ready() -> void:
 
 
 func _process(_delta) -> void:
-	if Input.is_action_pressed("jump") and is_on_floor():
+	if is_on_floor() and jumps < max_jumps:
+		jumps = max_jumps
+
+	if Input.is_action_pressed("jump") and jumps > 0:
 		stream_player.stream = jump_stream
 		stream_player.play()
 		jumping = true
-
-	if Input.is_action_just_pressed("crouch") and not crouching:
-		_toggle_crouch(true)
 
 	if crouching and ((
 			Globals.s_toggle_crouch
@@ -101,10 +110,14 @@ func _process(_delta) -> void:
 		stream_player.play()
 		interact_scan.get_collider().interact(self)
 
+	if Input.is_action_just_pressed("crouch") and not crouching:
+		if not is_on_floor() and not Input.is_action_pressed("jump"):
+			slamming = true
+		else:
+			_toggle_crouch(true)
+
 	if Input.is_action_just_pressed("quick_restart"):
 		get_tree().reload_current_scene()
-
-	camera_sync.global_transform = global_transform
 
 
 func _physics_process(delta: float) -> void:
@@ -123,7 +136,7 @@ func _physics_process(delta: float) -> void:
 		if camera.rotation.x > PI: # To prevent excessive somersaulting
 			camera.rotation.x -= 2 * PI
 		# To prevent eternal somersaulting
-		if camera.rotation.x < 0.1 and camera.rotation.x > -0.1:
+		if abs(camera.rotation.x) < 0.1:
 			reorienting = false
 
 	# Handle actually moving
@@ -135,6 +148,12 @@ func _physics_process(delta: float) -> void:
 			+ _jump(delta)
 			+ _knockback(delta)
 	)
+	cam_recoil_pos = camera_sync.rotation.x + cam_recoil_vel
+	cam_recoil_pos = smoothstep(camera_sync.rotation.x + cam_recoil_vel * delta, 0, delta)
+	cam_recoil_vel = lerpf(cam_recoil_vel, 0, delta)
+	camera_sync.global_transform = global_transform
+	camera_sync.rotation.x = cam_recoil_pos
+
 	velocity = velocity.clamp(-max_speed, max_speed)
 	move_and_slide()
 
@@ -182,6 +201,7 @@ func apply_knockback(amount: Vector3) -> void:
 		jump_vel = Vector3.ZERO
 		grav_vel = Vector3.ZERO
 		jumping = false
+		slamming = false
 	knockback_vel += amount
 #	print("knockback applied")
 
@@ -202,7 +222,7 @@ func _walk(delta: float) -> Vector3:
 			"move_left", "move_right", "move_forward", "move_backwards")
 	move_dir = move_dir.move_toward(move_input, delta * acceleration / speed)
 	var forward: Vector3 = transform.basis * Vector3(move_input.x, 0, move_input.y)
-	var walk_dir: Vector3 = Vector3(forward.x, 0, forward.z).normalized()
+	var walk_dir := Vector3(forward.x, 0, forward.z).normalized()
 
 	# Roll camera while strafing
 	camera.rotation.z = move_toward(
@@ -223,12 +243,10 @@ func _walk(delta: float) -> Vector3:
 			(
 					move_dir.length() * sway_height * cos(
 							sway_speed * sway_timer
-					)
-					- move_dir.x * strafe_sway
+					) - move_dir.x * strafe_sway
 			),
 			(
-					0.5
-					+ move_dir.length() * sway_height / 3 * sin(
+					0.5 + move_dir.length() * sway_height / 3 * sin(
 							2 * sway_speed * sway_timer
 					)
 			),
@@ -249,32 +267,57 @@ func _walk(delta: float) -> Vector3:
 			0.1
 	)
 
-	return walk_vel
+	if (
+			slamming
+			and Input.is_action_just_pressed("jump")
+			and move_input.length_squared() > Globals.C_EPSILON
+	):
+		slamming = false
+		grav_vel = Vector3.ZERO
+		slide_vel = walk_dir * speed/4
+
+	return Vector3.ZERO if slamming else walk_vel
 
 
 func _slide(delta: float) -> Vector3:
 	if is_on_floor() or walk_vel.normalized().dot(slide_vel.normalized()) < 0.5:
 		slide_vel = slide_vel.move_toward(Vector3.ZERO, delta * slide_drag)
-	return slide_vel
+	return Vector3.ZERO if slamming else slide_vel
 
 
 func _gravity(delta: float) -> Vector3:
-	grav_vel = Vector3.ZERO if is_on_floor() else grav_vel.move_toward(
-			Vector3(0, velocity.y - gravity, 0),
-			gravity * delta
-	)
+	if slamming:
+		if is_on_floor():
+			slamming = false
+		else:
+			grav_vel = Vector3(0, -slam_speed, 0)
+	else:
+		grav_vel = Vector3.ZERO if is_on_floor() else grav_vel.move_toward(
+				Vector3(0, velocity.y - (
+						rise_grav
+						if Input.is_action_pressed("jump")
+						else fall_grav
+				), 0),
+				gravity * delta
+		)
 	return grav_vel
 
 
 func _jump(delta: float) -> Vector3:
 	if jumping:
-		if is_on_floor():
+		if jumps > 0:
 			jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
+			jumps -= 1
 		jumping = false
 		reorienting = false
 		return jump_vel
+	#if not Input.is_action_pressed("jump"):
 	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(
-			Vector3.ZERO, gravity * delta)
+			Vector3.ZERO, (
+					rise_grav
+					if Input.is_action_pressed("jump")
+					else fall_grav
+			) * delta)
 	return jump_vel
 
 

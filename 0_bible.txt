@@ -1,3 +1,25 @@
+====================================================================================================
+============================================= DA BIBLE =============================================
+====================================================================================================
+
+Schmoovement:
+	Basics:
+		WASD: run around
+		Space: jump
+		Shift: crouch
+	Jumpy tricks:
+		Boomstick can be used to double jump
+		Rocket jump with any explosives
+	Shifty shit:
+		Press crouch while moving to slide
+		Jump while sliding to long jump
+		Press crouch while airborne and holding jump to vault (crouching hitbox)
+		Presh crouch while airborne and NOT holding jump to ground pound
+		Jump right after landing from a ground pound to jump back up to that height and then some
+		Press jump while holding any direction to dive in that direction, canceling the pound
+	Swimming:
+		6DOF
+
 
 Weapons:
 	Slot 1 (Melee):
@@ -18,6 +40,7 @@ Weapons:
 		Shotgun:
 			Primary: Shot
 			Secondary: Impact Grenade
+				Maybe allow charging velocity(?)
 		Boomstick:
 			Primary: Super Shot
 			Secondary: Sawblade Launcher
@@ -49,8 +72,13 @@ Weapons:
 
 	Slot 5 (Explosives):
 		Hand Cannon:
+			Stylize as flare gun(?)
 			Primary: Bouncy Grenade
+				Hold "fire" to charge
+				Grenade deals impact damage without exploding
+				Bonus damage for double donk?
 			Secondary: Detonate
+				Maybe have it as pistol - shoot grenade to blow it up
 		RPG:
 			Primary: Guided Missile
 			Secondary: Homing Missiles
@@ -139,6 +167,12 @@ Enemies:
 			Medium
 			Ranged (homing orbs)
 
+		Kiwi:
+			Tough
+			Fast
+			Charger
+			Melee only (scissor beak)
+
 		Flux Beast:
 			Tough
 			Medium
@@ -211,7 +245,7 @@ Enemies:
 		Rocketeer:
 			Medium
 			Medium
-			Ranged (rockets)
+			Ranged (homing rockets, fast rockets)
 			Voice Lines:
 				Detecting Player:
 					"Enemy spotted."
@@ -236,7 +270,6 @@ Enemies:
 				Detecting Player:
 				Dying:
 				Vocal Effects:
-
 
 		Hammer:
 			Medium
@@ -303,11 +336,32 @@ Enemies:
 			Can deploy other enemies
 
 
-Bosses:
-	Tanya:
-		Dual Pistols
-		C4
-		Fast
+	Charge attacker logic:
+		Target some distance away from player in random direction, facing target
+		Right before winding up, check to make sure that a clear path exists
+				toward target (via shapecast)
+		Stop tracking player when winding up
+		Charge extremely fast in chosen direction
+
+
+	Teleporter Logic:
+		When walking, build up "charge"
+		charge spent based on distance when teleporting
+		destination must be *empty* to teleport
+		cannot teleport to midair
+		Will teleport to:
+			5m directly behind target
+			random position toward target
+			next node in path
+			180 degrees about target
+			completely random position
+
+
+	Bosses:
+		Tanya:
+			Dual Pistols
+			C4
+			Fast
 
 
 Level Concepts:
@@ -485,7 +539,7 @@ Campaign:
 		E4M4 (""):
 		E4M5 (""):
 		E4M6 (""):
-		E4M7 (""):
+		E4M7 ("Spiral of Ants"):
 			Make your final approach towards THE MACHINE.
 		E4M8 ("WELCOME"):
 			Destroy THE MACHINE from within.
