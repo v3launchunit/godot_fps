@@ -91,7 +91,7 @@ func _physics_process(_delta: float) -> void:
 				handled = false
 
 		var exp: Node3D = explosion.instantiate()
-		get_tree().root.get_child(Globals.C_AUTOLOAD_COUNT).add_child(exp)
+		get_tree().current_scene.add_child(exp)
 		exp.global_position = result.position
 		if exp.find_child("Area3D") is AreaDamage:
 			exp.find_child("Area3D").invoker = invoker
