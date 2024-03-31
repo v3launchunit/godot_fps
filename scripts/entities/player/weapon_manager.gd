@@ -40,8 +40,9 @@ func _ready():
 #	weapons[current_weapon].deploy
 #	switched_weapons.connect(find_child("HUD")._on_player_cam_switched_weapons)
 	switched_weapons.emit(current_category, current_index[current_category], true)
-	current_weapon_pos = get_node(weapons[current_category][current_index\
-			[current_category]]).position.z
+	current_weapon_pos = get_node(
+			weapons[current_category][current_index[current_category]]
+	).position.z
 	anti_clip_box.body_entered.connect(on_viewmodel_anti_clip_body_entered)
 	anti_clip_box.body_exited.connect(on_viewmodel_anti_clip_body_exited)
 
@@ -172,10 +173,8 @@ func _select_weapon(category: int, index: int) -> void:
 func _select_category(category: int) -> void:
 	if weapons[category].is_empty():
 		return
-
 	prior_category = current_category
 	prior_index = current_index[current_category]
-
 	get_selected_weapon_node().position.z = current_weapon_pos
 	if current_category == category:
 		current_index[category] += 1

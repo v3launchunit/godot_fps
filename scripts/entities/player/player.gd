@@ -72,7 +72,9 @@ var sway_timer: float = PI/2
 var cam_recoil_pos: float = 0.0
 var cam_recoil_vel: float = 0.0
 
-@onready var camera := find_child("PlayerCam") as Camera3D
+var holding = null
+
+@onready var camera := find_child("PlayerCam") as WeaponManager
 @onready var camera_sync := find_child("PlayerSync") as Node3D
 @onready var flashlight := find_child("Flashlight") as SpotLight3D
 @onready var interact_scan := find_child("Interact") as RayCast3D
@@ -101,6 +103,7 @@ func _process(_delta) -> void:
 	)) and not clearance_scan.is_colliding():
 		_toggle_crouch(false)
 
+	# Check if I should interact with anything
 	if (
 			Input.is_action_just_pressed("interact") and
 			interact_scan.is_colliding() and
@@ -324,3 +327,9 @@ func _jump(delta: float) -> Vector3:
 func _knockback(delta: float) -> Vector3:
 	knockback_vel = knockback_vel.move_toward(Vector3.ZERO, knockback_drag * delta)
 	return knockback_vel
+
+
+func _on_carriable_grabbed(what: Carriable) -> void:
+	camera.switched_weapons.emit(-1, -1)
+	holding = what
+
