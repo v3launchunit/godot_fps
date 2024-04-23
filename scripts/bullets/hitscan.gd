@@ -5,6 +5,8 @@ class_name Hitscan extends Node3D
 @export_flags_3d_physics var layer_mask: int = 69
 @export_range(0.0, 1000.0, 0.1, "or_greater", "or_less") var max_range: float = 1000.0
 @export_range(0.0, 1000.0, 0.1, "or_greater") var damage: float = 10.0
+@export var player_damage_multiplier: Array[float] = [0.5, 0.75, 1.0, 1.0]
+@export var damage_type: Status.DamageType = Status.DamageType.GENERIC
 @export var explosion: PackedScene
 @export_range(0.0, 100.0, 0.1, "or_greater") var knockback_force: float = 1.0
 #@export var from_camera: bool = true
@@ -85,7 +87,11 @@ func _physics_process(_delta: float) -> void:
 						result.collider.global_position - global_position
 				).normalized())
 
-			damage -= status.damage(damage)
+			damage -= status.damage(damage * (
+					player_damage_multiplier[Globals.s_difficulty]
+					if status is PlayerStatus
+					else 1.0
+			))
 			exceptions.append(result.collider)
 			if damage > 0 and piercer:
 				handled = false

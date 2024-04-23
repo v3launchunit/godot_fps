@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://pr3j5d4ifvrt"]
+[gd_scene load_steps=65 format=3 uid="uid://pr3j5d4ifvrt"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_attack_pattern.gd" id="1_jd6vl"]
 [ext_resource type="PackedScene" uid="uid://b12xu872st3c" path="res://models/entities/plasma_droid.glb" id="1_whe1e"]
@@ -10,13 +10,15 @@
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_54erg"]
 [ext_resource type="PackedScene" uid="uid://fd8mwvba35jo" path="res://scenes/bullets/enemy/enemy_plasma_rocket.tscn" id="3_avpih"]
 [ext_resource type="PackedScene" uid="uid://cu70msbgu2ysm" path="res://scenes/effects/damage/metal_damage_sys.tscn" id="3_bt5p4"]
-[ext_resource type="PackedScene" uid="uid://ctgdbydttjqwq" path="res://scenes/effects/plasma_explosion.tscn" id="3_rukio"]
+[ext_resource type="PackedScene" uid="uid://ctgdbydttjqwq" path="res://scenes/effects/explosions/plasma_explosion.tscn" id="3_rukio"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="4_ifk2m"]
 [ext_resource type="PackedScene" uid="uid://beg6173x6vjha" path="res://scenes/bullets/enemy/enemy_plasma_bullet.tscn" id="4_k6qs3"]
 [ext_resource type="PackedScene" uid="uid://b3n8ejiapfh8" path="res://scenes/pickups/ammo/large_cell_pickup.tscn" id="5_4ag46"]
 [ext_resource type="ArrayMesh" uid="uid://bq2ld7p1te64i" path="res://models/weapons/muzzle_flash_plasma.obj" id="5_8e7tr"]
 [ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://scenes/pickups/health/health_pack_pickup.tscn" id="6_o1v1h"]
 [ext_resource type="AnimationLibrary" uid="uid://cu6kaw3wmnu2i" path="res://scenes/entities/machines/plasma_droid_anims.res" id="8_hkuiw"]
+[ext_resource type="Shader" path="res://shaders/spatial/unlit_add_psx.gdshader" id="11_o6law"]
+[ext_resource type="Shader" path="res://shaders/spatial/unlit_mix_psx.gdshader" id="12_djo4k"]
 [ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="18_7c8tp"]
 
 [sub_resource type="Resource" id="Resource_ba0li"]
@@ -57,9 +59,97 @@ stream_0/weight = 1.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xqi1h"]
 height = 3.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvdr6"]
-metallic = 1.0
-roughness = 0.25
+[sub_resource type="Shader" id="Shader_q8nw2"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rn6hr"]
+render_priority = 0
+shader = SubResource("Shader_q8nw2")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Shader" id="Shader_4a45e"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
 
 [sub_resource type="Gradient" id="Gradient_ml1sv"]
 colors = PackedColorArray(0, 1, 1, 1, 1, 0, 2, 1)
@@ -70,9 +160,20 @@ use_hdr = true
 fill_from = Vector2(0, 0.8)
 fill_to = Vector2(0, 0.2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgk5p"]
-shading_mode = 0
-albedo_texture = SubResource("GradientTexture2D_kweik")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4itip"]
+render_priority = 0
+shader = SubResource("Shader_4a45e")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = SubResource("GradientTexture2D_kweik")
 
 [sub_resource type="Gradient" id="Gradient_4h0ey"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -99,12 +200,12 @@ distance_fade_mode = 1
 material = SubResource("StandardMaterial3D_hv0iq")
 size = Vector2(0.15, 0.15)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qhc8"]
-transparency = 1
-blend_mode = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0, 2, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_te0ud"]
+render_priority = 0
+shader = ExtResource("11_o6law")
+shader_parameter/albedo = Color(1, 0, 2, 1)
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
 
 [sub_resource type="Gradient" id="Gradient_pawwp"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -191,10 +292,12 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 material = SubResource("ShaderMaterial_re0b1")
 size = Vector3(0.063, 0.063, 0.063)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47xi0"]
-blend_mode = 1
-shading_mode = 0
-albedo_color = Color(1, 0, 2, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjbpf"]
+render_priority = 0
+shader = ExtResource("12_djo4k")
+shader_parameter/albedo = Color(0, 1, 1, 1)
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qbyuk"]
 shading_mode = 0
@@ -364,39 +467,41 @@ transform = Transform3D(-7.85788e-07, 0, 0.25, 0, 0.25, 0, -0.25, 0, -7.85788e-0
 
 [node name="Body" parent="plasma_droid" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_pvdr6")
+material_override = SubResource("ShaderMaterial_rn6hr")
 
 [node name="LeftLeg" parent="plasma_droid/Body" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_pvdr6")
+material_override = SubResource("ShaderMaterial_rn6hr")
 
 [node name="LeftLeg_001" parent="plasma_droid/Body/LeftLeg" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_pvdr6")
+material_override = SubResource("ShaderMaterial_rn6hr")
 
 [node name="Neck" parent="plasma_droid/Body" index="1"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_pvdr6")
+material_override = SubResource("ShaderMaterial_rn6hr")
 
 [node name="Head" parent="plasma_droid/Body/Neck" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_pvdr6")
+material_override = SubResource("ShaderMaterial_rn6hr")
 
 [node name="Right" parent="plasma_droid/Body" index="2"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_pvdr6")
+material_override = SubResource("ShaderMaterial_rn6hr")
 
 [node name="Right_001" parent="plasma_droid/Body/Right" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_fgk5p")
+material_override = SubResource("ShaderMaterial_4itip")
 
 [node name="Right_003" parent="plasma_droid/Body/Right/Right_001" index="0"]
+transform = Transform3D(0.666667, 0, 0, 0, 1, 0, 0, 0, 0.666667, 2.27374e-13, -1, 0.1325)
 layers = 2
-material_override = SubResource("StandardMaterial3D_pvdr6")
+material_override = SubResource("ShaderMaterial_rn6hr")
 
 [node name="PlasmaCannon" type="MeshInstance3D" parent="plasma_droid/Body/Right/Right_001/Right_003" index="0"]
 transform = Transform3D(4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 0, -2.25, 0)
-material_override = SubResource("StandardMaterial3D_pvdr6")
+layers = 2
+material_override = SubResource("ShaderMaterial_rn6hr")
 mesh = ExtResource("2_scks3")
 
 [node name="Spawner" type="Marker3D" parent="plasma_droid/Body/Right/Right_001/Right_003/PlasmaCannon"]
@@ -413,7 +518,7 @@ color = Color(1, 0, 2, 1)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="plasma_droid/Body/Right/Right_001/Right_003/PlasmaCannon/Spawner"]
 layers = 4
-material_override = SubResource("StandardMaterial3D_7qhc8")
+material_override = SubResource("ShaderMaterial_te0ud")
 amount = 64
 process_material = SubResource("ParticleProcessMaterial_8qjk4")
 draw_pass_1 = SubResource("BoxMesh_n4iid")
@@ -421,8 +526,8 @@ draw_pass_1 = SubResource("BoxMesh_n4iid")
 [node name="MuzzleFlash" type="MeshInstance3D" parent="plasma_droid/Body/Right/Right_001/Right_003/PlasmaCannon/Spawner"]
 transform = Transform3D(1, -1.50996e-07, 1.50996e-07, -1.50996e-07, -1, 0, 1.50996e-07, -2.13163e-14, -1, -7.63691e-08, 0, 0.0250344)
 visible = false
-layers = 4
-material_override = SubResource("StandardMaterial3D_47xi0")
+layers = 2
+material_override = SubResource("ShaderMaterial_te0ud")
 cast_shadow = 0
 mesh = ExtResource("5_8e7tr")
 skeleton = NodePath("../..")
@@ -437,19 +542,20 @@ omni_shadow_mode = 0
 
 [node name="Right_002" parent="plasma_droid/Body/Right" index="1"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_fgk5p")
+material_override = SubResource("ShaderMaterial_4itip")
 
 [node name="RightLeg" parent="plasma_droid/Body" index="3"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_pvdr6")
+material_override = SubResource("ShaderMaterial_rn6hr")
 
 [node name="RightLeg_001" parent="plasma_droid/Body/RightLeg" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_pvdr6")
+material_override = SubResource("ShaderMaterial_rn6hr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="plasma_droid/Body" index="4"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.8, 1, 0)
 layers = 2
+material_override = SubResource("ShaderMaterial_xjbpf")
 visibility_range_end = 20.0
 mesh = SubResource("CylinderMesh_8shqk")
 skeleton = NodePath("../../../CollisionShape3D")

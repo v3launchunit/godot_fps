@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=17 format=3 uid="uid://c36hv0o6g0udo"]
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=20 format=3 uid="uid://c36hv0o6g0udo"]
 
 [ext_resource type="Resource" uid="uid://cw4s1hnxqetee" path="res://addons/qodot/game_definitions/fgd/solid_classes/func_group_solid_class.tres" id="2"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="6"]
@@ -16,11 +16,14 @@
 [ext_resource type="Resource" uid="uid://b70dbh5v15xno" path="res://addons/qodot/game_definitions/fgd/solid_classes/trigger_solid_class.tres" id="14_5ym2q"]
 [ext_resource type="Resource" uid="uid://bu2f3lupsjhfp" path="res://addons/qodot/game_definitions/fgd/solid_classes/wall_solid_class.tres" id="15_j2dvh"]
 [ext_resource type="Resource" uid="uid://v3fbh0xn5d2h" path="res://addons/qodot/game_definitions/fgd/solid_classes/physics_solid_class.tres" id="16"]
+[ext_resource type="Resource" uid="uid://viho8nejlj1n" path="res://trench_broom/entity_defs/brush/water_solid_class.tres" id="16_u2y4r"]
+[ext_resource type="Resource" uid="uid://bn8ijfkkxi53l" path="res://trench_broom/entity_defs/brush/door_solid_class.tres" id="17_d3u56"]
+[ext_resource type="Resource" uid="uid://dg1cf7dvcvmmd" path="res://trench_broom/entity_defs/brush/destructible_solid_class.tres" id="18_70c7v"]
 
 [resource]
 script = ExtResource("6")
 export_file = false
-target_folder = ""
+target_folder = "C:/Users/lengl/Desktop/Miscellaneous Apps/TrenchBroom/games/VolumetricsTest"
 fgd_name = "Qodot"
 base_fgd_files = Array[Resource]([])
-entity_definitions = Array[Resource]([ExtResource("9"), ExtResource("2"), ExtResource("10"), ExtResource("8"), ExtResource("16"), ExtResource("6_8sfwb"), ExtResource("7_mkjh6"), ExtResource("8_jgy0q"), ExtResource("9_xkc5y"), ExtResource("10_4774b"), ExtResource("11_fyofn"), ExtResource("12_37isg"), ExtResource("13_w15of"), ExtResource("14_5ym2q"), ExtResource("15_j2dvh")])
+entity_definitions = Array[Resource]([ExtResource("9"), ExtResource("2"), ExtResource("10"), ExtResource("8"), ExtResource("16"), ExtResource("6_8sfwb"), ExtResource("7_mkjh6"), ExtResource("8_jgy0q"), ExtResource("9_xkc5y"), ExtResource("10_4774b"), ExtResource("11_fyofn"), ExtResource("12_37isg"), ExtResource("13_w15of"), ExtResource("14_5ym2q"), ExtResource("15_j2dvh"), ExtResource("16_u2y4r"), ExtResource("17_d3u56"), ExtResource("18_70c7v")])

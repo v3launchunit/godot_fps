@@ -1,9 +1,11 @@
-class_name AreaDamage extends Area3D
+class_name AreaDamage
+extends Area3D
 
 @export_category("AreaDamage")
 
 @export var damage: float = 120
 @export var player_damage_override: float = 30
+@export var damage_type: Status.DamageType = Status.DamageType.GENERIC
 @export var knockback_force: float = 15
 
 var invoker: Node3D

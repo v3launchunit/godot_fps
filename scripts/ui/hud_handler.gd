@@ -1,4 +1,4 @@
-extends Control
+class_name HudHandler extends Control
 
 ## The scene that is instantiated when a new event is printed to the in-game
 ## event log.
@@ -49,7 +49,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	health_display = Globals.intstep(health_display, ceili(status.health))
 	armor_display = Globals.intstep(armor_display, ceili(status.armor))
-	health_counter.text = "%s/%s%%" % [armor_display, health_display]
+	health_counter.text = "%03d/%03d%%" % [armor_display, health_display]
 	if status.health < 50:
 		blood_rect.visible = true
 		blood_rect.modulate.a = clamp(1 - (status.health / 50), 0, 2)
@@ -60,14 +60,14 @@ func _process(delta: float) -> void:
 		if current_ammo == "none":
 			main_ammo_display = 0
 			alt_ammo_display = 0
-			ammo_counter.text = "--"
+			ammo_counter.text = "---/---"
 		else:
 			main_ammo_display = Globals.intstep(
 					main_ammo_display,
 					manager.ammo_amounts[current_ammo]
 			)
 			alt_ammo_display = 0
-			ammo_counter.text = "%s" % main_ammo_display
+			ammo_counter.text = "---/%03d" % main_ammo_display
 	else:
 		main_ammo_display = Globals.intstep(
 				main_ammo_display,
@@ -77,7 +77,7 @@ func _process(delta: float) -> void:
 				alt_ammo_display,
 				manager.ammo_amounts[current_alt_ammo]
 		)
-		ammo_counter.text = "%s/%s" % [
+		ammo_counter.text = "%03d/%03d" % [
 				alt_ammo_display,
 				main_ammo_display
 		]

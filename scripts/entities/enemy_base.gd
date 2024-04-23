@@ -285,13 +285,14 @@ func _pursue(delta) -> void:
 
 	# Casually approach target
 	var next_pos: Vector3 = nav_agent.get_next_path_position()
-	sight_line.look_at(next_pos)
-	global_rotation.y = lerp_angle(
-			global_rotation.y,
-			sight_line.global_rotation.y,
-			delta * turning_speed
-	)
-	walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
+	if is_on_floor():
+		sight_line.look_at(next_pos)
+		global_rotation.y = lerp_angle(
+				global_rotation.y,
+				sight_line.global_rotation.y,
+				delta * turning_speed
+		)
+		walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
 	if nav_agent.avoidance_enabled:
 		nav_agent.set_velocity(walk_vel)
 	else:

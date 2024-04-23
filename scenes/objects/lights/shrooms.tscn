@@ -1,13 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl2s16poygxvk"]
+[gd_scene load_steps=9 format=3 uid="uid://dl2s16poygxvk"]
 
+[ext_resource type="Shader" path="res://shaders/spatial/unlit_mix_psx.gdshader" id="1_1pxu8"]
 [ext_resource type="ArrayMesh" uid="uid://csscrw28bv1u1" path="res://models/objects/shroom.obj" id="1_icids"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="2_3fnjj"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="3_0l2qy"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="4_6u6gm"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv6wr"]
-shading_mode = 0
-albedo_color = Color(0, 1, 0.376471, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecos1"]
+render_priority = 0
+shader = ExtResource("1_1pxu8")
+shader_parameter/albedo = Color(0, 1, 0.376471, 1)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_ixgd1"]
 size = Vector2(0.15, 0.15)
@@ -32,7 +36,7 @@ shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_dv6wr")
+material_override = SubResource("ShaderMaterial_ecos1")
 cast_shadow = 0
 visibility_range_end = 25.0
 visibility_range_end_margin = 5.0

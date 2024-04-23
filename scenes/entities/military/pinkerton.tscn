@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://cc7snvg1qg4i4"]
+[gd_scene load_steps=96 format=3 uid="uid://cc7snvg1qg4i4"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_pinkerton.gd" id="1_4o8wq"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="2_p7cng"]
@@ -28,7 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://crih0rgk10al6" path="res://textures/weapons/pump_shotgun/shotgun_detail_mask.png" id="19_qblbc"]
 [ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://audio/streams/voices/wilhelm_scream.ogg" id="19_txijk"]
 [ext_resource type="Texture2D" uid="uid://co8o24o1hnvyl" path="res://textures/entities/enemies/pinkerton/pinkerton_albedo.png" id="20_0syyy"]
-[ext_resource type="Texture2D" uid="uid://bsnabwad52kba" path="res://textures/terrain/log/log_heights.png" id="20_s44er"]
 [ext_resource type="Texture2D" uid="uid://c2ubhgqhrxtiu" path="res://textures/weapons/pump_shotgun/shotgun_metallic.png" id="20_w745n"]
 [ext_resource type="Texture2D" uid="uid://cxcypi06wwlum" path="res://textures/entities/enemies/pinkerton/pinkerton_detail_mask.png" id="21_d5v6x"]
 [ext_resource type="Texture2D" uid="uid://exkw0wktl54p" path="res://textures/entities/enemies/pinkerton/pinkerton_metallic.png" id="21_tvmks"]
@@ -89,10 +88,58 @@ stream_1/weight = 0.001
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bp4ct"]
 resource_local_to_scene = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxecq"]
-albedo_color = Color(0.75, 0.75, 0.75, 1)
-metallic = 1.0
-roughness = 0.25
+[sub_resource type="Shader" id="Shader_hdi5f"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bkory"]
+render_priority = 0
+shader = SubResource("Shader_hdi5f")
+shader_parameter/albedo = Color(0.75, 0.75, 0.75, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="Gradient" id="Gradient_rrp2w"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -104,18 +151,121 @@ gradient = SubResource("Gradient_rrp2w")
 gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_28pn6")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f53jo"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0, 0, 1)
+[sub_resource type="Shader" id="Shader_2gaha"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	albedo_tex *= COLOR;
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	ALPHA *= albedo.a * albedo_tex.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uadv6"]
+render_priority = 0
+shader = SubResource("Shader_2gaha")
+shader_parameter/albedo = Color(1, 0, 0, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_sc0xe"]
-material = SubResource("StandardMaterial3D_f53jo")
+material = SubResource("ShaderMaterial_uadv6")
 radius = 0.06
 height = 0.05
-radial_segments = 8
+radial_segments = 4
 rings = 3
+
+[sub_resource type="Shader" id="Shader_uevtc"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform float clearcoat : hint_range(0,1);
+uniform float clearcoat_roughness : hint_range(0,1);
+uniform sampler2D texture_clearcoat : hint_default_white,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_albedo : source_color,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_normal : hint_normal,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_mask : hint_default_white,filter_nearest,repeat_enable;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	vec2 clearcoat_tex = texture(texture_clearcoat,base_uv).xy;
+	CLEARCOAT = clearcoat*clearcoat_tex.x;	CLEARCOAT_ROUGHNESS = clearcoat_roughness*clearcoat_tex.y;
+	vec4 detail_tex = texture(texture_detail_albedo,base_uv);
+	vec4 detail_norm_tex = texture(texture_detail_normal,base_uv);
+	vec4 detail_mask_tex = texture(texture_detail_mask,base_uv);
+	vec3 detail = mix(ALBEDO.rgb,detail_tex.rgb,detail_tex.a);
+	vec3 detail_norm = mix(NORMAL_MAP,detail_norm_tex.rgb,detail_tex.a);
+	NORMAL_MAP = mix(NORMAL_MAP,detail_norm,detail_mask_tex.r);
+	ALBEDO.rgb = mix(ALBEDO.rgb,detail,detail_mask_tex.r);
+}
+"
 
 [sub_resource type="Gradient" id="Gradient_v5jf5"]
 interpolation_mode = 1
@@ -142,23 +292,128 @@ as_normal_map = true
 bump_strength = 1.0
 noise = SubResource("FastNoiseLite_q3vr3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u47u4"]
-albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
-metallic = 1.0
-metallic_texture = ExtResource("20_w745n")
-roughness_texture = ExtResource("21_xf3tc")
-clearcoat_enabled = true
-clearcoat_roughness = 0.25
-clearcoat_texture = ExtResource("19_qblbc")
-detail_enabled = true
-detail_mask = ExtResource("19_qblbc")
-detail_albedo = SubResource("NoiseTexture2D_fagd6")
-detail_normal = SubResource("NoiseTexture2D_7duje")
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xpgsl"]
+render_priority = 0
+shader = SubResource("Shader_uevtc")
+shader_parameter/albedo = Color(0.501961, 0.501961, 0.501961, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.25
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_metallic = ExtResource("20_w745n")
+shader_parameter/texture_roughness = ExtResource("21_xf3tc")
+shader_parameter/texture_clearcoat = ExtResource("19_qblbc")
+shader_parameter/texture_detail_albedo = SubResource("NoiseTexture2D_fagd6")
+shader_parameter/texture_detail_normal = SubResource("NoiseTexture2D_7duje")
+shader_parameter/texture_detail_mask = ExtResource("19_qblbc")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udm4r"]
-shading_mode = 0
-albedo_color = Color(1, 1, 0, 1)
+[sub_resource type="Shader" id="Shader_r0nnw"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n85vr"]
+render_priority = 0
+shader = SubResource("Shader_r0nnw")
+shader_parameter/albedo = Color(1, 1, 0, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Shader" id="Shader_4ce0w"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_normal : hint_roughness_normal,filter_nearest,repeat_enable;
+uniform float normal_scale : hint_range(-16,16);
+uniform float clearcoat : hint_range(0,1);
+uniform float clearcoat_roughness : hint_range(0,1);
+uniform sampler2D texture_clearcoat : hint_default_white,filter_nearest,repeat_enable;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+	vec2 clearcoat_tex = texture(texture_clearcoat,base_uv).xy;
+	CLEARCOAT = clearcoat*clearcoat_tex.x;	CLEARCOAT_ROUGHNESS = clearcoat_roughness*clearcoat_tex.y;
+}
+"
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ti8ho"]
 width = 128
@@ -177,18 +432,73 @@ as_normal_map = true
 bump_strength = 1.0
 noise = SubResource("FastNoiseLite_q3vr3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7l6u"]
-albedo_texture = SubResource("NoiseTexture2D_ti8ho")
-roughness = 0.75
-normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_ifyxs")
-clearcoat_enabled = true
-clearcoat_roughness = 0.25
-heightmap_scale = 8.0
-heightmap_texture = ExtResource("20_s44er")
-uv1_scale = Vector3(0.25, 1, 0.25)
-uv1_world_triplanar = true
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebqrs"]
+render_priority = 0
+shader = SubResource("Shader_4ce0w")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.75
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.25
+shader_parameter/uv1_scale = Vector3(0.25, 1, 0.25)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_ti8ho")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_ifyxs")
+
+[sub_resource type="Shader" id="Shader_7ts18"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_detail_albedo : source_color,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_normal : hint_normal,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_mask : hint_default_white,filter_nearest,repeat_enable;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	vec4 detail_tex = texture(texture_detail_albedo,base_uv);
+	vec4 detail_norm_tex = texture(texture_detail_normal,base_uv);
+	vec4 detail_mask_tex = texture(texture_detail_mask,base_uv);
+	vec3 detail = mix(ALBEDO.rgb,ALBEDO.rgb*detail_tex.rgb,detail_tex.a);
+	vec3 detail_norm = mix(NORMAL_MAP,detail_norm_tex.rgb,detail_tex.a);
+	NORMAL_MAP = mix(NORMAL_MAP,detail_norm,detail_mask_tex.r);
+	ALBEDO.rgb = mix(ALBEDO.rgb,detail,detail_mask_tex.r);
+}
+"
 
 [sub_resource type="Gradient" id="Gradient_842kq"]
 interpolation_mode = 1
@@ -214,17 +524,25 @@ as_normal_map = true
 bump_strength = 1.0
 noise = SubResource("FastNoiseLite_dtqry")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_osars"]
-albedo_texture = ExtResource("20_0syyy")
-metallic = 1.0
-metallic_texture = ExtResource("21_tvmks")
-roughness_texture = ExtResource("22_758q5")
-detail_enabled = true
-detail_mask = ExtResource("21_d5v6x")
-detail_blend_mode = 3
-detail_albedo = SubResource("NoiseTexture2D_vdgww")
-detail_normal = SubResource("NoiseTexture2D_hiytb")
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnys1"]
+render_priority = 0
+shader = SubResource("Shader_7ts18")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("20_0syyy")
+shader_parameter/texture_metallic = ExtResource("21_tvmks")
+shader_parameter/texture_roughness = ExtResource("22_758q5")
+shader_parameter/texture_detail_albedo = SubResource("NoiseTexture2D_vdgww")
+shader_parameter/texture_detail_normal = SubResource("NoiseTexture2D_hiytb")
+shader_parameter/texture_detail_mask = ExtResource("21_d5v6x")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3sdgy"]
 transparency = 1
@@ -666,11 +984,11 @@ bones/20/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/21/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.0722745, 0.024976, 0.997072, 0.911061, -0.40517, 0.0761891, 0.405886, 0.9139, 0.00652865, 0.0323176, 0.305713, 0.252092)
+transform = Transform3D(-0.150909, -0.988345, -0.020005, 0.988149, -0.150242, -0.0314616, 0.0280893, -0.0245157, 0.999305, -0.172235, 0.363159, 0.0308763)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_cxecq")
+material_override = SubResource("ShaderMaterial_bkory")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="1"]
 transform = Transform3D(0.771988, 0.557152, -0.305968, 0.274462, -0.726349, -0.630149, -0.573329, 0.402491, -0.713649, 0.145451, -0.0821093, -0.00993064)
@@ -705,25 +1023,25 @@ shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.108411, 0.0249762, 1.49561, 1.36659, -0.40517, 0.114283, 0.608829, 0.9139, 0.00979269, 0.0335664, 0.285453, 0.297788)
+transform = Transform3D(-0.226363, -0.988345, -0.0300072, 1.48222, -0.150242, -0.0471928, 0.0421343, -0.0245156, 1.49896, -0.221653, 0.355647, 0.0296504)
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D/Cylinder_001" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_cxecq")
+material_override = SubResource("ShaderMaterial_bkory")
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.986613, 0.11, 0.120391, -0.154857, 0.86338, 0.480202, -0.0511209, -0.492417, 0.868857, -0.231284, 0.394343, 0.0701292)
+transform = Transform3D(0.986603, 0.140562, 0.0828018, -0.162167, 0.900294, 0.403946, -0.0177664, -0.411962, 0.911028, -0.231422, 0.395232, 0.059723)
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D/Shotgun" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_u47u4")
+material_override = SubResource("ShaderMaterial_xpgsl")
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Pinkerton/Armature/Skeleton3D/Shotgun/Shotgun" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.675, -0.135)
 visible = false
 layers = 2
 mesh = ExtResource("3_np25i")
-surface_material_override/0 = SubResource("StandardMaterial3D_udm4r")
+surface_material_override/0 = SubResource("ShaderMaterial_n85vr")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Pinkerton/Armature/Skeleton3D/Shotgun/Shotgun/MuzzleFlash"]
 layers = 2
@@ -734,15 +1052,15 @@ omni_range = 10.0
 transform = Transform3D(-1.95578e-08, -1, 7.45058e-09, -3.72529e-08, 2.23517e-08, 1, -1, 2.04891e-08, -3.72529e-08, 0, 0.675, -0.135)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.986613, 0.11, 0.120391, -0.154857, 0.86338, 0.480202, -0.0511209, -0.492417, 0.868857, -0.231284, 0.394343, 0.0701292)
+transform = Transform3D(0.986603, 0.140562, 0.0828018, -0.162167, 0.900294, 0.403946, -0.0177664, -0.411962, 0.911028, -0.231422, 0.395232, 0.059723)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D/Pump" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_y7l6u")
+material_override = SubResource("ShaderMaterial_ebqrs")
 
 [node name="Body" parent="Pinkerton/Armature/Skeleton3D" index="4"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_osars")
+material_override = SubResource("ShaderMaterial_dnys1")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 1.5

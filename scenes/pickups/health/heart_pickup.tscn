@@ -71,10 +71,12 @@ uniform vec3 uv2_offset;
 
 uniform float min_size = 1.0;
 uniform float scale_flux = 0.25;
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
 	VERTEX *= (sin((TIME - sin(VERTEX.y))) * scale_flux * 0.5 + min_size + 1.0);
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
 }
 
 
@@ -198,7 +200,6 @@ pickup_text = "A still-beating heart (+200% bonus health)"
 shape = SubResource("CylinderShape3D_uc2sx")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]

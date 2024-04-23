@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="VolumetricsTest"
+config/tags=PackedStringArray("3d", "fps")
 run/main_scene="res://scenes/levels/test_level.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
@@ -22,7 +23,7 @@ buses/default_bus_layout="res://audio/default_bus_layout.tres"
 [autoload]
 
 Globals="*res://scripts/globals.gd"
-GameMenu="*res://scenes/ui/game_menu.tscn"
+GameMenu="*res://scenes/ui/menus/game_menu.tscn"
 
 [display]
 
@@ -262,11 +263,11 @@ viewmodel_fov={
 }
 vertex_snap={
 "type": "float",
-"value": 0.0
+"value": 0.75
 }
 affine_warp={
 "type": "bool",
-"value": false
+"value": true
 }
 screen_size={
 "type": "ivec2",

@@ -245,8 +245,9 @@ func get_selected_weapon_node() -> Node3D:
 
 func get_selected_weapon_path() -> NodePath:
 	if (
-			weapons[current_category].is_empty() or
-			weapons[current_category][current_index[current_category]] == null
+			weapons[current_category].is_empty()
+			or weapons[current_category][current_index[current_category]] == null
+			or current_index[current_category] > weapons[current_category].size()
 	):
 		return ^"Axe"
 	if weapons[current_category][current_index[current_category]] is NodePath:

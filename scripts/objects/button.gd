@@ -1,4 +1,5 @@
-class_name InteractButton extends Area3D
+class_name InteractButton
+extends Area3D
 
 enum key {
 	## The player cannot operate this button unless they have a red key.

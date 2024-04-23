@@ -17,3 +17,5 @@ func _process(_delta: float) -> void:
 
 func _on_pressed() -> void:
 	get_tree().change_scene_to_packed(_scene)
+	GameMenu.close_top_menu()
+	GameMenu.close_top_menu()

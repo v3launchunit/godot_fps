@@ -3,6 +3,14 @@ class_name Status extends Node
 signal injured(source: Node3D)
 signal died
 
+enum DamageType {
+	GENERIC,
+	EXPLOSION,
+	FIRE,
+	TOXIC,
+	ELECTRIC,
+}
+
 @export_category("Status")
 
 ## The amount of health this node will have when initialized, and the maximum
@@ -11,10 +19,13 @@ signal died
 ## The amount of additional damage after death required to cause this node's
 ## parent to explode into its gibs.
 @export var gib_threshold: float = 50.0
+@export var base_damage_factor: float = 1.0
+@export var damage_multipliers: Array[float] = [1.0, 1.0, 1.0, 1.0, 1.0]
 ## The scene that instantiates whenever this node takes damage.
 @export var damage_sys: PackedScene
 ## The scene that instantiates if this node's parent is reduced to gibs.
 @export var gibs: PackedScene
+@export var gibs_offset: Vector3 = Vector3.ZERO
 ## One of the contained scenes will be randomly selected to be instantiated
 ## when this node's parent dies.
 @export var loot: Array[PackedScene] = []
@@ -47,7 +58,11 @@ func _ready():
 
 
 func damage(amount: float) -> float:
-	health -= amount
+	return damage_typed(amount, DamageType.GENERIC)
+
+
+func damage_typed(amount: float, type: DamageType) -> float:
+	health -= amount * base_damage_factor * damage_multipliers[type]
 #	print(health)
 	if damage_sys != null:
 		var instance := damage_sys.instantiate()
@@ -57,11 +72,12 @@ func damage(amount: float) -> float:
 			kill()
 
 		target_parent.queue_free()
-		var i: Node
+		var i: Node3D
 		if gibs != null:
 			print("gibbed")
-			i = gibs.instantiate()
+			i = gibs.instantiate() as Node3D
 			target_parent.add_child(i)
+			i.translate(gibs_offset)
 			i.reparent(get_tree().current_scene)
 			gibs = null
 		return 0
@@ -73,6 +89,14 @@ func damage(amount: float) -> float:
 	injured.emit()
 
 	return amount # return value is amount of damage recieved, for piercers
+
+
+func rapid_damage(amount: float) -> void:
+	rapid_damage_typed(amount, DamageType.GENERIC)
+
+
+func rapid_damage_typed(amount: float, type: DamageType) -> void:
+	damage_typed(amount, type)
 
 
 func heal(amount: float, can_overheal: bool = false, heal_armor: bool = false) -> bool:

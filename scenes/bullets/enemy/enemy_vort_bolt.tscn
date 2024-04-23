@@ -1,8 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://cb1nvr0mua3y"]
+[gd_scene load_steps=24 format=3 uid="uid://cb1nvr0mua3y"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_c8ur7"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="2_nkjwq"]
-[ext_resource type="PackedScene" uid="uid://dgr75fm83e7bb" path="res://scenes/effects/bullet_impact_cyan.tscn" id="2_scb5v"]
+[ext_resource type="PackedScene" uid="uid://dgr75fm83e7bb" path="res://scenes/effects/impacts/bullet_impact_cyan.tscn" id="2_scb5v"]
 [ext_resource type="AudioStream" uid="uid://bsv250k61o40r" path="res://audio/streams/ambient/plasma_shot_ambient.wav" id="3_1mhdb"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="3_ab882"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_t6mc4"]
@@ -18,15 +18,127 @@ bottom_radius = 0.075
 height = 1.0
 radial_segments = 6
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vprig"]
-shading_mode = 0
-albedo_color = Color(0, 5, 5, 1)
+[sub_resource type="Shader" id="Shader_s6w3a"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0str"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(0, 5, 5, 1)
+shader_type spatial;
+render_mode blend_add,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	ALPHA *= albedo.a * albedo_tex.a * COLOR.a;
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_lh4cc"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_16e03"]
+gradient = SubResource("Gradient_lh4cc")
+width = 16
+height = 16
+fill_from = Vector2(0, 0.875)
+fill_to = Vector2(0, 0.5)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eus47"]
+render_priority = 0
+shader = SubResource("Shader_s6w3a")
+shader_parameter/albedo = Color(0, 5, 5, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = SubResource("GradientTexture2D_16e03")
+
+[sub_resource type="Shader" id="Shader_7g37q"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	albedo_tex *= COLOR;
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	ALPHA *= albedo.a * albedo_tex.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcun2"]
+render_priority = 0
+shader = SubResource("Shader_7g37q")
+shader_parameter/albedo = Color(0, 5, 5, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="Gradient" id="Gradient_0qvjn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -84,6 +196,7 @@ contact_monitor = true
 script = ExtResource("1_c8ur7")
 speed = 35.0
 damage = 75.0
+damage_type = 4
 explosion = ExtResource("2_scb5v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -95,12 +208,12 @@ transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.5099
 layers = 2
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_3dr6j")
-surface_material_override/0 = SubResource("StandardMaterial3D_vprig")
+surface_material_override/0 = SubResource("ShaderMaterial_eus47")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.5)
 layers = 2
-material_override = SubResource("StandardMaterial3D_p0str")
+material_override = SubResource("ShaderMaterial_wcun2")
 cast_shadow = 0
 amount = 32
 lifetime = 0.5

@@ -6,6 +6,8 @@ class_name Bullet extends RigidBody3D
 @export_range(0.0, 100.0, 0.1, "or_greater") var speed: float = 10
 ## The amount of damage that this bullet deals upon contact.
 @export_range(0.0, 1000.0, 0.1, "or_greater") var damage: float = 10
+@export var player_damage_multiplier: Array[float] = [0.5, 0.75, 1.0, 1.0]
+@export var damage_type: Status.DamageType = Status.DamageType.GENERIC
 ## The scene that is instantiated when this bullet object contacts a surface.
 @export var explosion: PackedScene
 ## If set to "true", then the explosion set above will be parented to the
@@ -57,7 +59,12 @@ func _on_body_entered(body: Node) -> void:
 				child.invoker = invoker
 
 	if body.name != "Shield" and body.has_node("Status"):
-		damage -= body.find_child("Status").damage(damage)
+		var status = body.find_child("Status")
+		damage -= status.damage(damage * (
+				player_damage_multiplier[Globals.s_difficulty]
+				if status is PlayerStatus
+				else 1.0
+		))
 		if body is EnemyBase and invoker != null and invoker != body:
 			body.detect_target(invoker)
 			body.apply_knockback(

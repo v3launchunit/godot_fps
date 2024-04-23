@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ce2yor24rivr3"]
+[gd_scene load_steps=15 format=3 uid="uid://ce2yor24rivr3"]
 
 [ext_resource type="Script" path="res://scripts/pickups/weapon_pickup.gd" id="1_qg8tj"]
 [ext_resource type="AudioStream" uid="uid://dxscywpf2ven0" path="res://audio/streams/pickups/pickup_weapon.wav" id="2_12kw6"]
@@ -30,10 +30,58 @@ distance_fade_mode = 1
 material = SubResource("StandardMaterial3D_hv0iq")
 size = Vector2(0.1, 0.1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idrrh"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
-metallic = 1.0
-roughness = 0.25
+[sub_resource type="Shader" id="Shader_snc4y"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2yu38"]
+render_priority = 0
+shader = SubResource("Shader_snc4y")
+shader_parameter/albedo = Color(0.501961, 0.501961, 0.501961, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_wivti"]
 resource_name = "anim"
@@ -90,7 +138,7 @@ color = Color(1, 1, 0, 1)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(1, 1.49011e-08, 2.58095e-08, -5.92119e-16, 0.866025, -0.5, -2.98023e-08, 0.5, 0.866025, 0, 0.25, 0)
 layers = 2
-material_override = SubResource("StandardMaterial3D_idrrh")
+material_override = SubResource("ShaderMaterial_2yu38")
 mesh = ExtResource("3_xq4sp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

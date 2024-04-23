@@ -11,4 +11,3 @@ func _on_globals_settings_changed() -> void:
 	environment.glow_enabled = Globals.s_glow_enabled
 	environment.volumetric_fog_enabled = Globals.s_volumetric_fog_enabled
 	environment.fog_enabled = not Globals.s_volumetric_fog_enabled
-

@@ -1,51 +1,61 @@
-[gd_scene load_steps=180 format=3 uid="uid://ddybwy4hdo2q3"]
+[gd_scene load_steps=227 format=3 uid="uid://ddybwy4hdo2q3"]
 
 [ext_resource type="PackedScene" uid="uid://c63k27ek72d3d" path="res://scenes/entities/player.tscn" id="1_y76j7"]
 [ext_resource type="Texture2D" uid="uid://c8k3lo0nolynw" path="res://textures/terrain/trench_broom/bricks.png" id="2_7jjft"]
 [ext_resource type="Texture2D" uid="uid://cu58hb7h0r68v" path="res://textures/effects/look_up_tables/1d_lut_16_color.png" id="2_nml4n"]
 [ext_resource type="Script" path="res://scripts/effects/env_settings_hook.gd" id="3_3e2p7"]
 [ext_resource type="ArrayOccluder3D" uid="uid://de24am4sbu2ce" path="res://scenes/levels/test_level/test_level.occ" id="3_3m5x1"]
-[ext_resource type="Texture2D" uid="uid://cwfs3yd67cdxg" path="res://textures/terrain/bricks/bricks_heights.png" id="3_h0mpp"]
+[ext_resource type="Texture2D" uid="uid://cwfs3yd67cdxg" path="res://textures/terrain/custom_hand/bricks/bricks_heights.png" id="3_h0mpp"]
 [ext_resource type="Texture2D" uid="uid://dybaimi1b3b85" path="res://textures/effects/glow/lens_dirt/lens_dirt_0.png" id="3_orade"]
-[ext_resource type="Shader" path="res://shaders/overcast.gdshader" id="4_32260"]
-[ext_resource type="Texture2D" uid="uid://d0airnxbjud3t" path="res://textures/terrain/bricks/bricks_normals.png" id="4_l7ysy"]
-[ext_resource type="Material" uid="uid://b0rku0cd06ewb" path="res://materials/terrain/trench_broom/metal.tres" id="5_8y8hw"]
+[ext_resource type="Shader" path="res://shaders/skybox/overcast.gdshader" id="4_3xsj2"]
+[ext_resource type="Texture2D" uid="uid://d0airnxbjud3t" path="res://textures/terrain/custom_hand/bricks/bricks_normals.png" id="4_l7ysy"]
+[ext_resource type="Material" uid="uid://j3w61nhxr063" path="res://materials/terrain/trench_broom_std/metal.tres" id="5_8y8hw"]
 [ext_resource type="PackedScene" uid="uid://bxdu412yk2ut8" path="res://scenes/objects/crate.tscn" id="7_o51n8"]
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="8_y3vma"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="9_5wy7v"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="9_gru3p"]
-[ext_resource type="Material" uid="uid://o08npuo7facf" path="res://materials/terrain/trench_broom/bricks.tres" id="9_slujc"]
-[ext_resource type="Material" uid="uid://b47mcsimh3vki" path="res://materials/terrain/trench_broom/planks.tres" id="10_pl836"]
-[ext_resource type="Material" uid="uid://yggak3jcef1b" path="res://materials/terrain/trench_broom/log.tres" id="11_7fdv4"]
-[ext_resource type="Material" uid="uid://ytcbf12dyaaj" path="res://materials/terrain/trench_broom/log_end.tres" id="12_jydl3"]
-[ext_resource type="Material" uid="uid://cn3rb2y71k55w" path="res://materials/terrain/trench_broom/glass.tres" id="13_m2vsu"]
-[ext_resource type="Material" uid="uid://cj5hh0jqt71gs" path="res://materials/terrain/trench_broom/rock.tres" id="14_76leo"]
+[ext_resource type="Material" uid="uid://canefyi6qjh54" path="res://materials/terrain/trench_broom_psx/planks.tres" id="10_pl836"]
+[ext_resource type="Material" uid="uid://cxyb8wsuh6ejk" path="res://materials/terrain/trench_broom_std/log.tres" id="11_7fdv4"]
+[ext_resource type="Material" uid="uid://qvw6kqouxvuf" path="res://materials/terrain/trench_broom_std/log_end.tres" id="12_jydl3"]
+[ext_resource type="Material" uid="uid://cb4c2yxg51cwb" path="res://materials/terrain/trench_broom_std/rock.tres" id="14_76leo"]
 [ext_resource type="PackedScene" uid="uid://dl7fuv4wdxtjx" path="res://scenes/pickups/ammo/shell_pickup.tscn" id="14_wnn8m"]
-[ext_resource type="Material" uid="uid://l745c7k3ok8n" path="res://materials/terrain/trench_broom/big_cobble_stone.tres" id="15_lkgbx"]
-[ext_resource type="Material" uid="uid://d218bxpld0xoe" path="res://materials/terrain/trench_broom/dirt.tres" id="16_ytcb8"]
+[ext_resource type="Material" uid="uid://t1hv3tspvh88" path="res://materials/terrain/trench_broom_std/planks.tres" id="15_jxmtu"]
 [ext_resource type="PackedScene" uid="uid://lt47oncbceb2" path="res://scenes/pickups/weapons/akm_pickup.tscn" id="19_1op0n"]
 [ext_resource type="PackedScene" uid="uid://c0kvfvxi487l1" path="res://scenes/objects/lights/street_lamp.tscn" id="19_oi1ts"]
 [ext_resource type="PackedScene" uid="uid://b2q7xucggusys" path="res://scenes/pickups/weapons/plasma_cannon_pickup.tscn" id="20_j626k"]
-[ext_resource type="Material" uid="uid://bjxf7atd60o5h" path="res://materials/terrain/trench_broom/lava_flowing.tres" id="21_mk7rf"]
+[ext_resource type="Material" uid="uid://c462jt0mdmhmv" path="res://materials/terrain/trench_broom_psx/lava_flowing.tres" id="21_mk7rf"]
 [ext_resource type="PackedScene" uid="uid://du780rqis8eqo" path="res://scenes/pickups/weapons/boomstick_pickup.tscn" id="21_n0mci"]
+[ext_resource type="Material" uid="uid://dfvigt0ajuo2y" path="res://materials/terrain/trench_broom_std/lava.tres" id="21_vc5x8"]
+[ext_resource type="Material" uid="uid://u66jm0qyquk8" path="res://materials/terrain/trench_broom_std/lava_flowing.tres" id="22_4x8gt"]
 [ext_resource type="PackedScene" uid="uid://b2ceyvvn2j4nq" path="res://scenes/pickups/weapons/big_iron_pickup.tscn" id="22_ih4aa"]
-[ext_resource type="PackedScene" uid="uid://dbqaoeg23gpbh" path="res://scenes/entities/locals/lizard.tscn" id="22_y1v5w"]
 [ext_resource type="PackedScene" uid="uid://cc7snvg1qg4i4" path="res://scenes/entities/military/pinkerton.tscn" id="23_cjkah"]
-[ext_resource type="PackedScene" uid="uid://cjsg2kgch70w2" path="res://scenes/entities/military/enforcer.tscn" id="23_gta54"]
 [ext_resource type="PackedScene" uid="uid://ce2yor24rivr3" path="res://scenes/pickups/weapons/nailgun_pickup.tscn" id="28_xbcgv"]
 [ext_resource type="PackedScene" uid="uid://dakry3wmqjckc" path="res://scenes/pickups/weapons/crossbow_pickup.tscn" id="30_o7cbw"]
 [ext_resource type="CompressedTexture3D" uid="uid://cbk1h1yxquuv1" path="res://scenes/levels/test_level/test_level.GPUParticlesCollisionSDF3D_data.exr" id="31_rvbgk"]
 [ext_resource type="PackedScene" uid="uid://dxyhvyy821swt" path="res://scenes/pickups/weapons/hunting_rifle_pickup.tscn" id="31_vh5l7"]
-[ext_resource type="Shader" uid="uid://dyecxfl8r46aq" path="res://shaders/lens_flare_halo.tres" id="32_3d00j"]
 [ext_resource type="PackedScene" uid="uid://7e6nf0ho2ltr" path="res://scenes/objects/teleporter.tscn" id="32_ww2oq"]
-[ext_resource type="Script" path="res://scripts/entities/ambush.gd" id="33_2reti"]
 [ext_resource type="PackedScene" uid="uid://df20em4dv0q37" path="res://scenes/pickups/weapons/rpg_pickup.tscn" id="33_3err4"]
-[ext_resource type="Shader" path="res://shaders/depth_test.gdshader" id="33_eelvg"]
-[ext_resource type="PackedScene" uid="uid://bonaseme7rn5f" path="res://scenes/entities/locals/vortigaunt.tscn" id="34_138mm"]
-[ext_resource type="Shader" path="res://shaders/psx_test.gdshader" id="34_rr40p"]
-[ext_resource type="PackedScene" uid="uid://cxqut1h5yt3nk" path="res://scenes/entities/locals/eyeball.tscn" id="35_qtyg3"]
-[ext_resource type="PackedScene" uid="uid://pr3j5d4ifvrt" path="res://scenes/entities/machines/plasma_droid.tscn" id="39_8f5m1"]
-[ext_resource type="Material" uid="uid://d0v63qsy7yraf" path="res://materials/terrain/trench_broom/lava.tres" id="43_s21r3"]
+[ext_resource type="Shader" uid="uid://dyecxfl8r46aq" path="res://shaders/spatial/lens_flare_halo.tres" id="37_h8n41"]
+[ext_resource type="Shader" path="res://shaders/spatial/depth_test.gdshader" id="39_ixlnj"]
+[ext_resource type="Shader" path="res://shaders/spatial/psx_test.gdshader" id="40_rjdkg"]
+[ext_resource type="Material" uid="uid://b6rbaay8nknm" path="res://materials/terrain/trench_broom_psx/lava.tres" id="43_s21r3"]
+[ext_resource type="Material" uid="uid://biw3k00jqqq3l" path="res://materials/terrain/trench_broom/water.tres" id="46_ns7ic"]
+[ext_resource type="Material" uid="uid://cj1r6jgxrihlc" path="res://materials/terrain/trench_broom_std/big_cobble_stone.tres" id="47_xgogf"]
+[ext_resource type="Material" uid="uid://bocds2tb574aw" path="res://materials/terrain/trench_broom_std/bricks_stone.tres" id="48_2g3n4"]
+[ext_resource type="Material" uid="uid://bdhdwkh72dfij" path="res://materials/terrain/trench_broom_std/bricks.tres" id="48_gi7qj"]
+[ext_resource type="Material" uid="uid://d30jjdowuphyo" path="res://materials/terrain/trench_broom_std/checker_board.tres" id="49_m84pa"]
+[ext_resource type="Material" uid="uid://c4hv23ws8v5oc" path="res://materials/terrain/trench_broom_std/bricks_brown.tres" id="49_w3ae8"]
+[ext_resource type="Material" uid="uid://dqemvrb4pcd2g" path="res://materials/terrain/trench_broom_std/concrete.tres" id="50_x7e0h"]
+[ext_resource type="Material" uid="uid://dh6h4bfv6pod2" path="res://materials/terrain/trench_broom_std/key_metal_blue.tres" id="51_5u2o8"]
+[ext_resource type="Material" uid="uid://bde5vbq7ns88s" path="res://materials/terrain/trench_broom_psx/drywall.tres" id="52_7f1p3"]
+[ext_resource type="Material" uid="uid://c6o23twmkg77m" path="res://materials/terrain/trench_broom_std/key_metal_green.tres" id="53_mxesg"]
+[ext_resource type="Material" uid="uid://bpiuncp6wk4t2" path="res://materials/terrain/trench_broom_std/key_metal_red.tres" id="54_7qit8"]
+[ext_resource type="Material" uid="uid://byeqdr6er6cvv" path="res://materials/terrain/trench_broom_std/dirt.tres" id="54_l1jww"]
+[ext_resource type="Material" uid="uid://dfx72vq82n85j" path="res://materials/terrain/trench_broom_psx/shutter_door.tres" id="55_ridvu"]
+[ext_resource type="Material" uid="uid://do2cbn6keg5jn" path="res://materials/terrain/trench_broom_std/glass.tres" id="56_qmoys"]
+[ext_resource type="Script" path="res://scripts/effects/area_hazard.gd" id="58_lrv2b"]
+[ext_resource type="Texture2D" uid="uid://d1mf3oaajnl80" path="res://textures/terrain/trench_broom/log_end.png" id="59_haoqj"]
+[ext_resource type="Texture2D" uid="uid://dsmd00jgy5c2x" path="res://textures/terrain/custom_hand/log_end/log_end_normals.png" id="60_42kr3"]
 
 [sub_resource type="Gradient" id="Gradient_m4bx2"]
 offsets = PackedFloat32Array(0.25, 1)
@@ -79,7 +89,7 @@ metadata/_snap_enabled = true
 metadata/_snap_count = 16
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2pp38"]
-shader = ExtResource("4_32260")
+shader = ExtResource("4_3xsj2")
 shader_parameter/sky_cubemap_color = Color(0.25098, 0.25098, 0.25098, 1)
 shader_parameter/scroll_speed = 0.005
 shader_parameter/sky_tex = SubResource("NoiseTexture2D_43ter")
@@ -217,14 +227,82 @@ size = Vector3(5, 0.45, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dqicn"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_1q4kh"]
+[sub_resource type="Shader" id="Shader_rr5nj"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_always,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_refraction : filter_nearest_mipmap,repeat_enable;
+uniform float refraction : hint_range(-16,16);
+uniform vec4 refraction_texture_channel;
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest_mipmap;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	vec3 ref_normal = NORMAL;
+	vec2 ref_ofs = SCREEN_UV - ref_normal.xy * dot(texture(texture_refraction,base_uv),refraction_texture_channel) * refraction;
+	float ref_amount = 1.0 - albedo.a * albedo_tex.a;
+	EMISSION += textureLod(screen_texture,ref_ofs,ROUGHNESS * 8.0).rgb * ref_amount * EXPOSURE;
+	ALBEDO *= 1.0 - ref_amount;
+	ALPHA = 1.0;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g2v0n"]
+render_priority = 0
+shader = SubResource("Shader_rr5nj")
+shader_parameter/albedo = Color(1, 1, 1, 0.0627451)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.1
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/refraction = 0.05
+shader_parameter/refraction_texture_channel = null
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wcim7"]
 _surfaces = [{
 "aabb": AABB(-6, -2, -10, 46, 10, 20),
 "attribute_data": PackedByteArray(0, 0, 192, 194, 0, 0, 0, 66, 0, 0, 128, 66, 0, 0, 0, 66, 0, 0, 128, 66, 0, 0, 128, 193, 0, 0, 128, 194, 0, 0, 0, 0, 0, 0, 128, 194, 0, 0, 192, 66, 0, 0, 128, 194, 0, 0, 128, 66, 0, 0, 128, 66, 0, 0, 128, 66, 0, 0, 128, 66, 0, 0, 192, 66, 0, 0, 128, 194, 0, 0, 128, 194, 0, 0, 128, 66, 0, 0, 128, 194, 0, 0, 128, 66, 0, 0, 128, 66, 0, 0, 128, 194, 0, 0, 128, 66, 0, 0, 128, 194, 0, 0, 128, 194, 0, 0, 128, 194, 0, 0, 192, 66, 0, 0, 128, 66, 0, 0, 192, 66, 0, 0, 128, 66, 0, 0, 128, 194, 0, 0, 128, 194, 0, 0, 0, 66, 0, 0, 128, 66, 0, 0, 0, 66, 0, 0, 128, 66, 0, 0, 128, 193, 0, 0, 128, 194, 0, 0, 128, 193, 0, 0, 192, 194, 0, 0, 0, 66, 0, 0, 128, 194, 0, 0, 0, 0, 0, 0, 128, 66, 0, 0, 128, 193, 0, 0, 128, 66, 0, 0, 0, 66, 0, 0, 192, 194, 0, 0, 0, 66, 0, 0, 128, 66, 0, 0, 0, 66, 0, 0, 128, 66, 255, 255, 127, 193, 254, 255, 127, 194, 0, 0, 0, 0, 0, 0, 128, 66, 0, 0, 192, 66, 0, 0, 32, 67, 153, 153, 153, 66, 0, 0, 32, 67, 0, 0, 128, 194, 0, 0, 128, 66, 0, 0, 128, 194, 0, 0, 128, 66, 255, 255, 127, 193, 0, 0, 128, 66, 0, 0, 0, 66, 0, 0, 32, 67, 0, 0, 0, 66, 1, 0, 0, 67, 108, 208, 121, 54, 0, 0, 128, 66, 96, 39, 22, 66, 2, 0, 16, 67, 96, 39, 22, 66, 0, 0, 32, 67, 148, 90, 73, 66, 0, 0, 128, 66, 177, 19, 139, 66, 0, 0, 128, 66, 254, 255, 127, 66, 0, 0, 128, 66, 0, 0, 128, 194, 2, 0, 16, 67, 254, 255, 127, 66, 1, 0, 0, 67, 0, 0, 128, 194, 2, 0, 16, 67, 254, 255, 127, 66, 0, 0, 128, 66, 0, 0, 128, 194, 0, 0, 32, 67, 153, 153, 153, 66, 2, 0, 16, 67, 254, 255, 127, 66, 1, 0, 0, 67, 0, 0, 128, 194, 0, 0, 32, 67, 0, 0, 128, 194, 173, 170, 254, 194, 171, 170, 128, 194, 90, 85, 15, 195, 190, 170, 126, 66, 86, 85, 31, 195, 239, 238, 152, 66, 86, 85, 31, 195, 171, 170, 128, 194, 1, 0, 0, 195, 0, 0, 128, 194, 248, 255, 127, 194, 0, 0, 128, 194, 5, 0, 16, 195, 10, 0, 128, 66, 248, 255, 127, 194, 0, 0, 128, 194, 0, 0, 128, 194, 254, 255, 127, 66, 5, 0, 16, 195, 10, 0, 128, 66, 0, 0, 32, 195, 150, 90, 73, 66, 5, 0, 16, 195, 118, 39, 22, 66, 0, 0, 128, 194, 96, 39, 22, 66, 0, 0, 128, 194, 177, 19, 139, 66, 0, 0, 32, 195, 0, 0, 128, 194, 0, 0, 32, 195, 154, 153, 153, 66, 0, 0, 128, 194, 0, 0, 192, 66, 0, 0, 128, 194, 0, 0, 128, 194, 0, 0, 32, 195, 0, 0, 0, 66, 0, 0, 128, 194, 0, 0, 0, 66, 248, 255, 127, 194, 0, 0, 128, 193, 1, 0, 0, 195, 81, 92, 59, 54, 0, 0, 128, 66, 0, 0, 0, 66, 0, 0, 192, 194, 0, 0, 0, 66, 254, 255, 127, 194, 175, 0, 33, 182, 0, 0, 128, 66, 0, 0, 128, 193, 0, 0, 136, 67, 0, 0, 128, 194, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 128, 194, 0, 0, 128, 193, 0, 0, 128, 194, 0, 0, 224, 66, 0, 0, 128, 194, 0, 0, 224, 66, 0, 0, 64, 194, 0, 0, 128, 193, 0, 0, 64, 194, 0, 0, 128, 193, 0, 0, 144, 195, 0, 0, 128, 193, 0, 0, 136, 195, 0, 0, 224, 66, 0, 0, 136, 195, 0, 0, 224, 66, 0, 0, 144, 195, 0, 0, 128, 193, 0, 0, 144, 195, 0, 0, 224, 66, 0, 0, 144, 195, 0, 0, 224, 66, 0, 0, 136, 195, 0, 0, 128, 193, 0, 0, 136, 195, 0, 0, 128, 193, 0, 0, 128, 194, 0, 0, 128, 193, 0, 0, 64, 194, 0, 0, 224, 66, 0, 0, 64, 194, 0, 0, 224, 66, 0, 0, 128, 194, 0, 0, 136, 67, 0, 0, 128, 194, 0, 0, 144, 67, 0, 0, 128, 194, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 136, 67, 0, 0, 0, 0, 0, 0, 144, 67, 0, 0, 0, 0, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 192, 66, 0, 0, 64, 194, 0, 0, 224, 66, 0, 0, 64, 194, 0, 0, 224, 66, 0, 0, 0, 0, 0, 0, 192, 66, 0, 0, 0, 0, 0, 0, 192, 66, 0, 0, 144, 195, 0, 0, 192, 66, 0, 0, 136, 195, 0, 0, 224, 66, 0, 0, 136, 195, 0, 0, 224, 66, 0, 0, 144, 195, 0, 0, 192, 66, 0, 0, 144, 195, 0, 0, 224, 66, 0, 0, 144, 195, 0, 0, 224, 66, 0, 0, 136, 195, 0, 0, 192, 66, 0, 0, 136, 195, 0, 0, 192, 66, 0, 0, 64, 194, 0, 0, 192, 66, 0, 0, 0, 0, 0, 0, 224, 66, 0, 0, 0, 0, 0, 0, 224, 66, 0, 0, 64, 194, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 0, 0, 0, 0, 136, 67, 0, 0, 0, 0, 0, 0, 192, 66, 0, 0, 136, 195, 0, 0, 192, 66, 0, 0, 144, 195, 2, 0, 160, 66, 0, 0, 144, 195, 2, 0, 160, 66, 0, 0, 136, 195, 0, 0, 192, 66, 0, 0, 48, 194, 2, 0, 160, 66, 0, 0, 64, 194, 0, 0, 192, 66, 0, 0, 64, 194, 2, 0, 160, 66, 0, 0, 144, 195, 0, 0, 192, 66, 0, 0, 144, 195, 0, 0, 192, 66, 0, 0, 136, 195, 2, 0, 160, 66, 0, 0, 136, 195, 0, 0, 192, 66, 0, 0, 48, 194, 0, 0, 192, 66, 0, 0, 64, 194, 2, 0, 160, 66, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 48, 194, 0, 0, 136, 67, 0, 0, 48, 194, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 192, 66, 0, 0, 136, 195, 0, 0, 192, 66, 0, 0, 144, 195, 255, 255, 167, 66, 0, 0, 144, 195, 255, 255, 167, 66, 0, 0, 136, 195, 0, 0, 192, 66, 255, 255, 31, 194, 255, 255, 167, 66, 0, 0, 64, 194, 0, 0, 192, 66, 0, 0, 64, 194, 255, 255, 167, 66, 0, 0, 144, 195, 0, 0, 192, 66, 0, 0, 144, 195, 0, 0, 192, 66, 0, 0, 136, 195, 255, 255, 167, 66, 0, 0, 136, 195, 0, 0, 192, 66, 255, 255, 31, 194, 0, 0, 192, 66, 0, 0, 64, 194, 255, 255, 167, 66, 0, 0, 64, 194, 0, 0, 144, 67, 255, 255, 31, 194, 0, 0, 136, 67, 255, 255, 31, 194, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 136, 67, 0, 0, 16, 194, 0, 0, 144, 67, 0, 0, 16, 194, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 192, 66, 0, 0, 16, 194, 0, 0, 176, 66, 0, 0, 64, 194, 0, 0, 192, 66, 0, 0, 64, 194, 0, 0, 176, 66, 0, 0, 144, 195, 0, 0, 192, 66, 0, 0, 144, 195, 0, 0, 192, 66, 0, 0, 136, 195, 0, 0, 176, 66, 0, 0, 136, 195, 0, 0, 192, 66, 0, 0, 16, 194, 0, 0, 192, 66, 0, 0, 64, 194, 0, 0, 176, 66, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 16, 194, 0, 0, 136, 67, 0, 0, 16, 194, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 136, 67, 253, 255, 255, 193, 0, 0, 144, 67, 253, 255, 255, 193, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 192, 66, 253, 255, 255, 193, 0, 0, 184, 66, 0, 0, 64, 194, 0, 0, 192, 66, 0, 0, 64, 194, 0, 0, 184, 66, 0, 0, 144, 195, 0, 0, 192, 66, 0, 0, 144, 195, 0, 0, 192, 66, 0, 0, 136, 195, 0, 0, 184, 66, 0, 0, 136, 195, 0, 0, 192, 66, 253, 255, 255, 193, 0, 0, 192, 66, 0, 0, 64, 194, 0, 0, 184, 66, 0, 0, 64, 194, 0, 0, 144, 67, 253, 255, 255, 193, 0, 0, 136, 67, 253, 255, 255, 193, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 136, 67, 255, 255, 255, 193, 0, 0, 144, 67, 255, 255, 255, 193, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 136, 67, 0, 0, 64, 194, 254, 255, 47, 66, 255, 255, 255, 193, 254, 255, 47, 66, 0, 0, 64, 194, 254, 255, 63, 66, 0, 0, 64, 194, 0, 0, 128, 192, 0, 0, 144, 195, 0, 0, 0, 0, 0, 0, 144, 195, 0, 0, 0, 0, 0, 0, 136, 195, 0, 0, 128, 192, 0, 0, 136, 195, 254, 255, 47, 66, 255, 255, 255, 193, 254, 255, 63, 66, 0, 0, 64, 194, 254, 255, 47, 66, 0, 0, 64, 194, 0, 0, 144, 67, 255, 255, 255, 193, 0, 0, 136, 67, 255, 255, 255, 193, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 136, 67, 0, 0, 16, 194, 0, 0, 144, 67, 0, 0, 16, 194, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 32, 66, 0, 0, 16, 194, 0, 0, 32, 66, 0, 0, 64, 194, 0, 0, 64, 66, 0, 0, 64, 194, 0, 0, 32, 66, 0, 0, 144, 195, 0, 0, 64, 66, 0, 0, 144, 195, 0, 0, 64, 66, 0, 0, 136, 195, 0, 0, 32, 66, 0, 0, 136, 195, 0, 0, 32, 66, 0, 0, 16, 194, 0, 0, 64, 66, 0, 0, 64, 194, 0, 0, 32, 66, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 16, 194, 0, 0, 136, 67, 0, 0, 16, 194, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 134, 67, 0, 0, 64, 194, 0, 0, 142, 67, 0, 0, 64, 194, 0, 0, 142, 67, 0, 0, 96, 194, 0, 0, 134, 67, 0, 0, 96, 194, 0, 0, 16, 66, 0, 0, 32, 194, 0, 0, 16, 66, 0, 0, 64, 194, 0, 0, 64, 66, 0, 0, 64, 194, 0, 0, 16, 66, 0, 0, 144, 195, 0, 0, 64, 66, 0, 0, 144, 195, 0, 0, 64, 66, 0, 0, 136, 195, 0, 0, 16, 66, 0, 0, 136, 195, 0, 0, 16, 66, 0, 0, 32, 194, 0, 0, 64, 66, 0, 0, 64, 194, 0, 0, 16, 66, 0, 0, 64, 194, 0, 0, 224, 65, 0, 0, 140, 195, 0, 0, 224, 65, 0, 0, 132, 195, 0, 0, 32, 66, 0, 0, 132, 195, 0, 0, 32, 66, 0, 0, 140, 195, 0, 0, 132, 67, 0, 0, 80, 194, 0, 0, 140, 67, 0, 0, 80, 194, 0, 0, 140, 67, 0, 0, 96, 194, 0, 0, 132, 67, 0, 0, 96, 194, 253, 255, 255, 65, 0, 0, 48, 194, 253, 255, 255, 65, 0, 0, 64, 194, 253, 255, 63, 66, 0, 0, 64, 194, 0, 0, 0, 66, 0, 0, 144, 195, 254, 255, 63, 66, 0, 0, 144, 195, 254, 255, 63, 66, 0, 0, 136, 195, 0, 0, 0, 66, 0, 0, 136, 195, 253, 255, 255, 65, 0, 0, 48, 194, 253, 255, 63, 66, 0, 0, 64, 194, 253, 255, 255, 65, 0, 0, 64, 194, 0, 0, 192, 65, 0, 0, 140, 195, 0, 0, 192, 65, 0, 0, 132, 195, 254, 255, 31, 66, 0, 0, 132, 195, 254, 255, 31, 66, 0, 0, 140, 195, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 136, 67, 0, 0, 0, 0, 0, 0, 144, 67, 0, 0, 0, 0, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 0, 0, 0, 0, 64, 194, 0, 0, 128, 65, 0, 0, 64, 194, 0, 0, 128, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 144, 195, 0, 0, 0, 0, 0, 0, 136, 195, 0, 0, 128, 65, 0, 0, 136, 195, 0, 0, 128, 65, 0, 0, 144, 195, 0, 0, 0, 0, 0, 0, 144, 195, 0, 0, 128, 65, 0, 0, 144, 195, 0, 0, 128, 65, 0, 0, 136, 195, 0, 0, 0, 0, 0, 0, 136, 195, 0, 0, 0, 0, 0, 0, 64, 194, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 65, 0, 0, 0, 0, 0, 0, 128, 65, 0, 0, 64, 194, 0, 0, 136, 67, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 64, 194, 0, 0, 144, 67, 0, 0, 0, 0, 0, 0, 136, 67, 0, 0, 0, 0, 0, 0, 136, 67, 0, 0, 224, 194, 0, 0, 136, 67, 0, 0, 128, 194, 0, 0, 144, 67, 0, 0, 128, 194, 0, 0, 144, 67, 0, 0, 224, 194, 0, 0, 0, 194, 0, 0, 224, 194, 0, 0, 0, 67, 0, 0, 224, 194, 0, 0, 0, 67, 0, 0, 128, 194, 0, 0, 0, 194, 0, 0, 128, 194, 0, 0, 0, 194, 0, 0, 144, 195, 0, 0, 0, 194, 0, 0, 136, 195, 0, 0, 0, 67, 0, 0, 136, 195, 0, 0, 0, 67, 0, 0, 144, 195, 0, 0, 0, 194, 0, 0, 144, 195, 0, 0, 0, 67, 0, 0, 144, 195, 0, 0, 0, 67, 0, 0, 136, 195, 0, 0, 0, 194, 0, 0, 136, 195, 0, 0, 0, 194, 0, 0, 224, 194, 0, 0, 0, 194, 0, 0, 128, 194, 0, 0, 0, 67, 0, 0, 128, 194, 0, 0, 0, 67, 0, 0, 224, 194, 0, 0, 136, 67, 0, 0, 224, 194, 0, 0, 144, 67, 0, 0, 224, 194, 0, 0, 144, 67, 0, 0, 128, 194, 0, 0, 136, 67, 0, 0, 128, 194, 0, 0, 136, 67, 0, 0, 224, 194, 0, 0, 136, 67, 0, 0, 128, 194, 0, 0, 144, 67, 0, 0, 128, 194, 0, 0, 144, 67, 0, 0, 224, 194, 0, 0, 224, 194, 0, 0, 224, 194, 0, 0, 160, 194, 0, 0, 224, 194, 0, 0, 160, 194, 0, 0, 128, 194, 0, 0, 224, 194, 0, 0, 128, 194, 0, 0, 224, 194, 0, 0, 144, 195, 0, 0, 224, 194, 0, 0, 136, 195, 0, 0, 160, 194, 0, 0, 136, 195, 0, 0, 160, 194, 0, 0, 144, 195, 0, 0, 224, 194, 0, 0, 144, 195, 0, 0, 160, 194, 0, 0, 144, 195, 0, 0, 160, 194, 0, 0, 136, 195, 0, 0, 224, 194, 0, 0, 136, 195, 0, 0, 224, 194, 0, 0, 224, 194, 0, 0, 224, 194, 0, 0, 128, 194, 0, 0, 160, 194, 0, 0, 128, 194, 0, 0, 160, 194, 0, 0, 224, 194, 0, 0, 136, 67, 0, 0, 224, 194, 0, 0, 144, 67, 0, 0, 224, 194, 0, 0, 144, 67, 0, 0, 128, 194, 0, 0, 136, 67, 0, 0, 128, 194, 0, 0, 136, 67, 0, 0, 0, 195, 0, 0, 136, 67, 0, 0, 224, 194, 0, 0, 144, 67, 0, 0, 224, 194, 0, 0, 144, 67, 0, 0, 0, 195, 0, 0, 224, 194, 0, 0, 0, 195, 0, 0, 0, 67, 0, 0, 0, 195, 0, 0, 0, 67, 0, 0, 224, 194, 0, 0, 224, 194, 0, 0, 224, 194, 0, 0, 224, 194, 0, 0, 144, 195, 0, 0, 224, 194, 0, 0, 136, 195, 0, 0, 0, 67, 0, 0, 136, 195, 0, 0, 0, 67, 0, 0, 144, 195, 0, 0, 224, 194, 0, 0, 144, 195, 0, 0, 0, 67, 0, 0, 144, 195, 0, 0, 0, 67, 0, 0, 136, 195, 0, 0, 224, 194, 0, 0, 136, 195, 0, 0, 224, 194, 0, 0, 0, 195, 0, 0, 224, 194, 0, 0, 224, 194, 0, 0, 0, 67, 0, 0, 224, 194, 0, 0, 0, 67, 0, 0, 0, 195, 0, 0, 136, 67, 0, 0, 0, 195, 0, 0, 144, 67, 0, 0, 0, 195, 0, 0, 144, 67, 0, 0, 224, 194, 0, 0, 136, 67, 0, 0, 224, 194, 0, 0, 160, 67, 0, 0, 0, 195, 0, 0, 160, 67, 0, 0, 128, 65, 0, 0, 28, 68, 0, 0, 128, 65, 0, 0, 28, 68, 0, 0, 0, 195, 0, 0, 0, 195, 0, 0, 0, 195, 0, 0, 224, 194, 0, 0, 0, 195, 0, 0, 224, 194, 0, 0, 128, 65, 0, 0, 0, 195, 0, 0, 128, 65, 0, 0, 0, 195, 0, 0, 28, 196, 0, 0, 0, 195, 0, 0, 160, 195, 0, 0, 224, 194, 0, 0, 160, 195, 0, 0, 224, 194, 0, 0, 28, 196, 0, 0, 0, 195, 0, 0, 28, 196, 0, 0, 224, 194, 0, 0, 28, 196, 0, 0, 224, 194, 0, 0, 160, 195, 0, 0, 0, 195, 0, 0, 160, 195, 0, 0, 0, 195, 0, 0, 0, 195, 0, 0, 0, 195, 0, 0, 128, 65, 0, 0, 224, 194, 0, 0, 128, 65, 0, 0, 224, 194, 0, 0, 0, 195, 0, 0, 160, 67, 0, 0, 0, 195, 0, 0, 28, 68, 0, 0, 0, 195, 0, 0, 28, 68, 0, 0, 128, 65, 0, 0, 160, 67, 0, 0, 128, 65, 0, 0, 136, 67, 0, 0, 0, 195, 0, 0, 136, 67, 0, 0, 0, 0, 0, 0, 160, 67, 0, 0, 0, 0, 0, 0, 160, 67, 0, 0, 0, 195, 0, 0, 0, 195, 0, 0, 0, 195, 0, 0, 224, 194, 0, 0, 0, 195, 0, 0, 224, 194, 0, 0, 0, 0, 0, 0, 0, 195, 0, 0, 0, 0, 0, 0, 0, 195, 0, 0, 160, 195, 0, 0, 0, 195, 0, 0, 136, 195, 0, 0, 224, 194, 0, 0, 136, 195, 0, 0, 224, 194, 0, 0, 160, 195, 0, 0, 0, 195, 0, 0, 160, 195, 0, 0, 224, 194, 0, 0, 160, 195, 0, 0, 224, 194, 0, 0, 136, 195, 0, 0, 0, 195, 0, 0, 136, 195, 0, 0, 0, 195, 0, 0, 0, 195, 0, 0, 0, 195, 0, 0, 0, 0, 0, 0, 224, 194, 0, 0, 0, 0, 0, 0, 224, 194, 0, 0, 0, 195, 0, 0, 136, 67, 0, 0, 0, 195, 0, 0, 160, 67, 0, 0, 0, 195, 0, 0, 160, 67, 0, 0, 0, 0, 0, 0, 136, 67, 0, 0, 0, 0, 0, 0, 144, 67, 0, 0, 0, 195, 0, 0, 144, 67, 0, 0, 0, 0, 0, 0, 160, 67, 0, 0, 0, 0, 0, 0, 160, 67, 0, 0, 0, 195, 0, 0, 224, 66, 0, 0, 0, 195, 0, 0, 0, 67, 0, 0, 0, 195, 0, 0, 0, 67, 0, 0, 0, 0, 0, 0, 224, 66, 0, 0, 0, 0, 0, 0, 224, 66, 0, 0, 160, 195, 0, 0, 224, 66, 0, 0, 144, 195, 0, 0, 0, 67, 0, 0, 144, 195, 0, 0, 0, 67, 0, 0, 160, 195, 0, 0, 224, 66, 0, 0, 160, 195, 0, 0, 0, 67, 0, 0, 160, 195, 0, 0, 0, 67, 0, 0, 144, 195, 0, 0, 224, 66, 0, 0, 144, 195, 0, 0, 224, 66, 0, 0, 0, 195, 0, 0, 224, 66, 0, 0, 0, 0, 0, 0, 0, 67, 0, 0, 0, 0, 0, 0, 0, 67, 0, 0, 0, 195, 0, 0, 144, 67, 0, 0, 0, 195, 0, 0, 160, 67, 0, 0, 0, 195, 0, 0, 160, 67, 0, 0, 0, 0, 0, 0, 144, 67, 0, 0, 0, 0, 0, 0, 160, 67, 0, 0, 0, 195, 0, 0, 160, 67, 0, 0, 128, 65, 0, 0, 28, 68, 0, 0, 128, 65, 0, 0, 28, 68, 0, 0, 0, 195, 0, 0, 224, 66, 0, 0, 0, 195, 0, 0, 0, 67, 0, 0, 0, 195, 0, 0, 0, 67, 0, 0, 128, 65, 0, 0, 224, 66, 0, 0, 128, 65, 0, 0, 224, 66, 0, 0, 28, 196, 0, 0, 224, 66, 0, 0, 160, 195, 0, 0, 0, 67, 0, 0, 160, 195, 0, 0, 0, 67, 0, 0, 28, 196, 0, 0, 224, 66, 0, 0, 28, 196, 0, 0, 0, 67, 0, 0, 28, 196, 0, 0, 0, 67, 0, 0, 160, 195, 0, 0, 224, 66, 0, 0, 160, 195, 0, 0, 224, 66, 0, 0, 0, 195, 0, 0, 224, 66, 0, 0, 128, 65, 0, 0, 0, 67, 0, 0, 128, 65, 0, 0, 0, 67, 0, 0, 0, 195, 0, 0, 160, 67, 0, 0, 0, 195, 0, 0, 28, 68, 0, 0, 0, 195, 0, 0, 28, 68, 0, 0, 128, 65, 0, 0, 160, 67, 0, 0, 128, 65, 0, 0, 28, 68, 0, 0, 0, 195, 0, 0, 28, 68, 0, 0, 128, 65, 0, 0, 32, 68, 0, 0, 128, 65, 0, 0, 32, 68, 0, 0, 0, 195, 0, 0, 0, 195, 0, 0, 0, 195, 0, 0, 0, 67, 0, 0, 0, 195, 0, 0, 0, 67, 0, 0, 128, 65, 0, 0, 0, 195, 0, 0, 128, 65, 0, 0, 0, 195, 0, 0, 32, 196, 0, 0, 0, 195, 0, 0, 28, 196, 0, 0, 0, 67, 0, 0, 28, 196, 0, 0, 0, 67, 0, 0, 32, 196, 0, 0, 0, 195, 0, 0, 32, 196, 0, 0, 0, 67, 0, 0, 32, 196, 0, 0, 0, 67, 0, 0, 28, 196, 0, 0, 0, 195, 0, 0, 28, 196, 0, 0, 0, 195, 0, 0, 0, 195, 0, 0, 0, 195, 0, 0, 128, 65, 0, 0, 0, 67, 0, 0, 128, 65, 0, 0, 0, 67, 0, 0, 0, 195, 0, 0, 28, 68, 0, 0, 0, 195, 0, 0, 32, 68, 0, 0, 0, 195, 0, 0, 32, 68, 0, 0, 128, 65, 0, 0, 28, 68, 0, 0, 128, 65),
 "format": 34359742487,
 "index_count": 696,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0, 24, 0, 25, 0, 26, 0, 24, 0, 26, 0, 27, 0, 28, 0, 29, 0, 30, 0, 28, 0, 30, 0, 31, 0, 32, 0, 33, 0, 34, 0, 32, 0, 34, 0, 35, 0, 36, 0, 37, 0, 38, 0, 36, 0, 38, 0, 39, 0, 40, 0, 41, 0, 42, 0, 43, 0, 44, 0, 45, 0, 46, 0, 47, 0, 48, 0, 46, 0, 48, 0, 49, 0, 50, 0, 51, 0, 52, 0, 50, 0, 52, 0, 53, 0, 54, 0, 55, 0, 56, 0, 57, 0, 58, 0, 59, 0, 60, 0, 61, 0, 62, 0, 60, 0, 62, 0, 63, 0, 64, 0, 65, 0, 66, 0, 64, 0, 66, 0, 67, 0, 68, 0, 69, 0, 70, 0, 68, 0, 70, 0, 71, 0, 72, 0, 73, 0, 74, 0, 72, 0, 74, 0, 75, 0, 76, 0, 77, 0, 78, 0, 76, 0, 78, 0, 79, 0, 80, 0, 81, 0, 82, 0, 80, 0, 82, 0, 83, 0, 84, 0, 85, 0, 86, 0, 84, 0, 86, 0, 87, 0, 88, 0, 89, 0, 90, 0, 88, 0, 90, 0, 91, 0, 92, 0, 93, 0, 94, 0, 92, 0, 94, 0, 95, 0, 96, 0, 97, 0, 98, 0, 96, 0, 98, 0, 99, 0, 100, 0, 101, 0, 102, 0, 100, 0, 102, 0, 103, 0, 104, 0, 105, 0, 106, 0, 104, 0, 106, 0, 107, 0, 108, 0, 109, 0, 110, 0, 108, 0, 110, 0, 111, 0, 112, 0, 113, 0, 114, 0, 112, 0, 114, 0, 115, 0, 116, 0, 117, 0, 118, 0, 116, 0, 118, 0, 119, 0, 120, 0, 121, 0, 122, 0, 120, 0, 122, 0, 123, 0, 124, 0, 125, 0, 126, 0, 124, 0, 126, 0, 127, 0, 128, 0, 129, 0, 130, 0, 131, 0, 132, 0, 133, 0, 131, 0, 133, 0, 134, 0, 135, 0, 136, 0, 137, 0, 138, 0, 139, 0, 140, 0, 138, 0, 140, 0, 141, 0, 142, 0, 143, 0, 144, 0, 142, 0, 144, 0, 145, 0, 146, 0, 147, 0, 148, 0, 149, 0, 150, 0, 151, 0, 149, 0, 151, 0, 152, 0, 153, 0, 154, 0, 155, 0, 156, 0, 157, 0, 158, 0, 156, 0, 158, 0, 159, 0, 160, 0, 161, 0, 162, 0, 160, 0, 162, 0, 163, 0, 164, 0, 165, 0, 166, 0, 167, 0, 168, 0, 169, 0, 167, 0, 169, 0, 170, 0, 171, 0, 172, 0, 173, 0, 174, 0, 175, 0, 176, 0, 174, 0, 176, 0, 177, 0, 178, 0, 179, 0, 180, 0, 178, 0, 180, 0, 181, 0, 182, 0, 183, 0, 184, 0, 185, 0, 186, 0, 187, 0, 185, 0, 187, 0, 188, 0, 189, 0, 190, 0, 191, 0, 192, 0, 193, 0, 194, 0, 192, 0, 194, 0, 195, 0, 196, 0, 197, 0, 198, 0, 196, 0, 198, 0, 199, 0, 200, 0, 201, 0, 202, 0, 203, 0, 204, 0, 205, 0, 203, 0, 205, 0, 206, 0, 207, 0, 208, 0, 209, 0, 210, 0, 211, 0, 212, 0, 210, 0, 212, 0, 213, 0, 214, 0, 215, 0, 216, 0, 214, 0, 216, 0, 217, 0, 218, 0, 219, 0, 220, 0, 221, 0, 222, 0, 223, 0, 221, 0, 223, 0, 224, 0, 225, 0, 226, 0, 227, 0, 228, 0, 229, 0, 230, 0, 228, 0, 230, 0, 231, 0, 232, 0, 233, 0, 234, 0, 232, 0, 234, 0, 235, 0, 236, 0, 237, 0, 238, 0, 239, 0, 240, 0, 241, 0, 239, 0, 241, 0, 242, 0, 243, 0, 244, 0, 245, 0, 246, 0, 247, 0, 248, 0, 246, 0, 248, 0, 249, 0, 250, 0, 251, 0, 252, 0, 250, 0, 252, 0, 253, 0, 254, 0, 255, 0, 0, 1, 1, 1, 2, 1, 3, 1, 1, 1, 3, 1, 4, 1, 5, 1, 6, 1, 7, 1, 8, 1, 9, 1, 10, 1, 8, 1, 10, 1, 11, 1, 12, 1, 13, 1, 14, 1, 12, 1, 14, 1, 15, 1, 16, 1, 17, 1, 18, 1, 16, 1, 18, 1, 19, 1, 20, 1, 21, 1, 22, 1, 20, 1, 22, 1, 23, 1, 24, 1, 25, 1, 26, 1, 24, 1, 26, 1, 27, 1, 28, 1, 29, 1, 30, 1, 28, 1, 30, 1, 31, 1, 32, 1, 33, 1, 34, 1, 32, 1, 34, 1, 35, 1, 36, 1, 37, 1, 38, 1, 36, 1, 38, 1, 39, 1, 40, 1, 41, 1, 42, 1, 40, 1, 42, 1, 43, 1, 44, 1, 45, 1, 46, 1, 44, 1, 46, 1, 47, 1, 48, 1, 49, 1, 50, 1, 48, 1, 50, 1, 51, 1, 52, 1, 53, 1, 54, 1, 52, 1, 54, 1, 55, 1, 56, 1, 57, 1, 58, 1, 56, 1, 58, 1, 59, 1, 60, 1, 61, 1, 62, 1, 60, 1, 62, 1, 63, 1, 64, 1, 65, 1, 66, 1, 64, 1, 66, 1, 67, 1, 68, 1, 69, 1, 70, 1, 68, 1, 70, 1, 71, 1, 72, 1, 73, 1, 74, 1, 72, 1, 74, 1, 75, 1, 76, 1, 77, 1, 78, 1, 76, 1, 78, 1, 79, 1, 80, 1, 81, 1, 82, 1, 80, 1, 82, 1, 83, 1, 84, 1, 85, 1, 86, 1, 84, 1, 86, 1, 87, 1, 88, 1, 89, 1, 90, 1, 88, 1, 90, 1, 91, 1, 92, 1, 93, 1, 94, 1, 92, 1, 94, 1, 95, 1, 96, 1, 97, 1, 98, 1, 96, 1, 98, 1, 99, 1, 100, 1, 101, 1, 102, 1, 100, 1, 102, 1, 103, 1, 104, 1, 105, 1, 106, 1, 104, 1, 106, 1, 107, 1, 108, 1, 109, 1, 110, 1, 108, 1, 110, 1, 111, 1, 112, 1, 113, 1, 114, 1, 112, 1, 114, 1, 115, 1, 116, 1, 117, 1, 118, 1, 116, 1, 118, 1, 119, 1, 120, 1, 121, 1, 122, 1, 120, 1, 122, 1, 123, 1, 124, 1, 125, 1, 126, 1, 124, 1, 126, 1, 127, 1, 128, 1, 129, 1, 130, 1, 128, 1, 130, 1, 131, 1, 132, 1, 133, 1, 134, 1, 132, 1, 134, 1, 135, 1, 136, 1, 137, 1, 138, 1, 136, 1, 138, 1, 139, 1, 140, 1, 141, 1, 142, 1, 140, 1, 142, 1, 143, 1, 144, 1, 145, 1, 146, 1, 144, 1, 146, 1, 147, 1, 148, 1, 149, 1, 150, 1, 148, 1, 150, 1, 151, 1, 152, 1, 153, 1, 154, 1, 152, 1, 154, 1, 155, 1, 156, 1, 157, 1, 158, 1, 156, 1, 158, 1, 159, 1, 160, 1, 161, 1, 162, 1, 160, 1, 162, 1, 163, 1, 164, 1, 165, 1, 166, 1, 164, 1, 166, 1, 167, 1, 168, 1, 169, 1, 170, 1, 168, 1, 170, 1, 171, 1, 172, 1, 173, 1, 174, 1, 172, 1, 174, 1, 175, 1, 176, 1, 177, 1, 178, 1, 176, 1, 178, 1, 179, 1, 180, 1, 181, 1, 182, 1, 180, 1, 182, 1, 183, 1, 184, 1, 185, 1, 186, 1, 184, 1, 186, 1, 187, 1, 188, 1, 189, 1, 190, 1, 188, 1, 190, 1, 191, 1, 192, 1, 193, 1, 194, 1, 192, 1, 194, 1, 195, 1, 196, 1, 197, 1, 198, 1, 196, 1, 198, 1, 199, 1, 200, 1, 201, 1, 202, 1, 200, 1, 202, 1, 203, 1, 204, 1, 205, 1, 206, 1, 204, 1, 206, 1, 207, 1, 208, 1, 209, 1, 210, 1, 208, 1, 210, 1, 211, 1, 212, 1, 213, 1, 214, 1, 212, 1, 214, 1, 215, 1, 216, 1, 217, 1, 218, 1, 216, 1, 218, 1, 219, 1, 220, 1, 221, 1, 222, 1, 220, 1, 222, 1, 223, 1, 224, 1, 225, 1, 226, 1, 224, 1, 226, 1, 227, 1),
-"material": ExtResource("9_slujc"),
+"material": ExtResource("48_gi7qj"),
 "name": "terrain/trench_broom/bricks",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -248,7 +326,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 264,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0, 20, 0, 23, 0, 24, 0, 20, 0, 24, 0, 25, 0, 20, 0, 25, 0, 26, 0, 20, 0, 26, 0, 27, 0, 20, 0, 27, 0, 28, 0, 20, 0, 28, 0, 29, 0, 20, 0, 29, 0, 30, 0, 20, 0, 30, 0, 31, 0, 32, 0, 33, 0, 34, 0, 32, 0, 34, 0, 35, 0, 36, 0, 37, 0, 38, 0, 36, 0, 38, 0, 39, 0, 40, 0, 41, 0, 42, 0, 40, 0, 42, 0, 43, 0, 40, 0, 43, 0, 44, 0, 40, 0, 44, 0, 45, 0, 40, 0, 45, 0, 46, 0, 40, 0, 46, 0, 47, 0, 40, 0, 47, 0, 48, 0, 40, 0, 48, 0, 49, 0, 40, 0, 49, 0, 50, 0, 40, 0, 50, 0, 51, 0, 52, 0, 53, 0, 54, 0, 52, 0, 54, 0, 55, 0, 56, 0, 57, 0, 58, 0, 56, 0, 58, 0, 59, 0, 60, 0, 61, 0, 62, 0, 60, 0, 62, 0, 63, 0, 64, 0, 65, 0, 66, 0, 64, 0, 66, 0, 67, 0, 68, 0, 69, 0, 70, 0, 68, 0, 70, 0, 71, 0, 72, 0, 73, 0, 74, 0, 72, 0, 74, 0, 75, 0, 76, 0, 77, 0, 78, 0, 76, 0, 78, 0, 79, 0, 80, 0, 81, 0, 82, 0, 80, 0, 82, 0, 83, 0, 84, 0, 85, 0, 86, 0, 84, 0, 86, 0, 87, 0, 88, 0, 89, 0, 90, 0, 88, 0, 90, 0, 91, 0, 92, 0, 93, 0, 94, 0, 92, 0, 94, 0, 95, 0, 96, 0, 97, 0, 98, 0, 96, 0, 98, 0, 99, 0, 100, 0, 101, 0, 102, 0, 100, 0, 102, 0, 103, 0, 104, 0, 105, 0, 106, 0, 104, 0, 106, 0, 107, 0, 108, 0, 109, 0, 110, 0, 108, 0, 110, 0, 111, 0, 112, 0, 113, 0, 114, 0, 112, 0, 114, 0, 115, 0, 116, 0, 117, 0, 118, 0, 116, 0, 118, 0, 119, 0, 120, 0, 121, 0, 122, 0, 120, 0, 122, 0, 123, 0, 124, 0, 125, 0, 126, 0, 124, 0, 126, 0, 127, 0, 128, 0, 129, 0, 130, 0, 128, 0, 130, 0, 131, 0, 132, 0, 133, 0, 134, 0, 132, 0, 134, 0, 135, 0, 136, 0, 137, 0, 138, 0, 136, 0, 138, 0, 139, 0, 140, 0, 141, 0, 142, 0, 140, 0, 142, 0, 143, 0, 144, 0, 145, 0, 146, 0, 147, 0, 148, 0, 149, 0, 147, 0, 149, 0, 150, 0, 151, 0, 152, 0, 153, 0, 151, 0, 153, 0, 154, 0, 155, 0, 156, 0, 157, 0, 155, 0, 157, 0, 158, 0, 159, 0, 160, 0, 161, 0),
-"material": ExtResource("10_pl836"),
+"material": ExtResource("15_jxmtu"),
 "name": "terrain/trench_broom/planks",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -284,7 +362,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 72,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0, 24, 0, 25, 0, 26, 0, 24, 0, 26, 0, 27, 0, 28, 0, 29, 0, 30, 0, 28, 0, 30, 0, 31, 0, 32, 0, 33, 0, 34, 0, 32, 0, 34, 0, 35, 0, 36, 0, 37, 0, 38, 0, 36, 0, 38, 0, 39, 0, 40, 0, 41, 0, 42, 0, 40, 0, 42, 0, 43, 0, 44, 0, 45, 0, 46, 0, 44, 0, 46, 0, 47, 0),
-"material": ExtResource("13_m2vsu"),
+"material": SubResource("ShaderMaterial_g2v0n"),
 "name": "terrain/trench_broom/glass",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -308,7 +386,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 108,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0, 24, 0, 25, 0, 26, 0, 24, 0, 26, 0, 27, 0, 28, 0, 29, 0, 30, 0, 28, 0, 30, 0, 31, 0, 32, 0, 33, 0, 34, 0, 32, 0, 34, 0, 35, 0, 36, 0, 37, 0, 38, 0, 36, 0, 38, 0, 39, 0, 40, 0, 41, 0, 42, 0, 40, 0, 42, 0, 43, 0, 44, 0, 45, 0, 46, 0, 44, 0, 46, 0, 47, 0, 48, 0, 49, 0, 50, 0, 48, 0, 50, 0, 51, 0, 52, 0, 53, 0, 54, 0, 52, 0, 54, 0, 55, 0, 56, 0, 57, 0, 58, 0, 56, 0, 58, 0, 59, 0, 60, 0, 61, 0, 62, 0, 60, 0, 62, 0, 63, 0, 64, 0, 65, 0, 66, 0, 64, 0, 66, 0, 67, 0, 68, 0, 69, 0, 70, 0, 68, 0, 70, 0, 71, 0),
-"material": ExtResource("15_lkgbx"),
+"material": ExtResource("47_xgogf"),
 "name": "terrain/trench_broom/big_cobble_stone",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -320,7 +398,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 36,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
-"material": ExtResource("16_ytcb8"),
+"material": ExtResource("54_l1jww"),
 "name": "terrain/trench_broom/dirt",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -332,7 +410,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 36,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
-"material": ExtResource("43_s21r3"),
+"material": ExtResource("21_vc5x8"),
 "name": "terrain/trench_broom/lava",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -344,7 +422,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 96,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 10, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16, 0, 14, 0, 16, 0, 17, 0, 18, 0, 19, 0, 20, 0, 18, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0, 26, 0, 27, 0, 28, 0, 29, 0, 30, 0, 28, 0, 30, 0, 31, 0, 32, 0, 33, 0, 34, 0, 32, 0, 34, 0, 35, 0, 36, 0, 37, 0, 38, 0, 36, 0, 38, 0, 39, 0, 40, 0, 41, 0, 42, 0, 40, 0, 42, 0, 43, 0, 44, 0, 45, 0, 46, 0, 47, 0, 48, 0, 49, 0, 50, 0, 51, 0, 52, 0, 50, 0, 52, 0, 53, 0, 54, 0, 55, 0, 56, 0, 54, 0, 56, 0, 57, 0, 58, 0, 59, 0, 60, 0, 58, 0, 60, 0, 61, 0, 62, 0, 63, 0, 64, 0, 65, 0, 66, 0, 67, 0, 68, 0, 69, 0, 70, 0, 68, 0, 70, 0, 71, 0),
-"material": ExtResource("21_mk7rf"),
+"material": ExtResource("22_4x8gt"),
 "name": "terrain/trench_broom/lava_flowing",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -352,136 +430,136 @@ _surfaces = [{
 "vertex_data": PackedByteArray(1, 0, 0, 64, 0, 0, 128, 192, 0, 0, 96, 65, 0, 0, 128, 64, 0, 0, 128, 192, 0, 0, 64, 65, 0, 0, 128, 64, 0, 0, 0, 0, 0, 0, 64, 65, 1, 0, 0, 64, 0, 0, 0, 0, 0, 0, 96, 65, 1, 0, 0, 64, 0, 0, 128, 192, 0, 0, 96, 65, 0, 0, 128, 64, 0, 0, 128, 192, 0, 0, 128, 65, 0, 0, 128, 64, 0, 0, 128, 192, 0, 0, 64, 65, 1, 0, 0, 64, 0, 0, 0, 0, 0, 0, 96, 65, 0, 0, 128, 64, 0, 0, 0, 0, 0, 0, 64, 65, 0, 0, 128, 64, 0, 0, 0, 0, 0, 0, 128, 65, 0, 0, 128, 64, 0, 0, 0, 0, 0, 0, 64, 65, 0, 0, 128, 64, 0, 0, 128, 192, 0, 0, 64, 65, 0, 0, 128, 64, 0, 0, 128, 192, 0, 0, 128, 65, 0, 0, 128, 64, 0, 0, 0, 0, 0, 0, 128, 65, 1, 0, 0, 64, 0, 0, 0, 0, 0, 0, 96, 65, 0, 0, 128, 64, 0, 0, 0, 0, 0, 0, 128, 65, 0, 0, 128, 64, 0, 0, 128, 192, 0, 0, 128, 65, 1, 0, 0, 64, 0, 0, 128, 192, 0, 0, 96, 65, 0, 0, 0, 0, 0, 0, 128, 192, 0, 0, 64, 65, 1, 0, 128, 64, 0, 0, 128, 192, 0, 0, 64, 65, 1, 0, 128, 64, 0, 0, 0, 0, 0, 0, 64, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 65, 1, 0, 128, 64, 0, 0, 128, 192, 0, 0, 64, 65, 0, 0, 0, 0, 0, 0, 128, 192, 0, 0, 64, 65, 1, 0, 0, 64, 0, 0, 128, 192, 0, 0, 96, 65, 1, 0, 128, 64, 0, 0, 0, 0, 0, 0, 64, 65, 1, 0, 0, 64, 0, 0, 0, 0, 0, 0, 96, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 65, 1, 0, 0, 64, 0, 0, 0, 0, 0, 0, 96, 65, 1, 0, 0, 64, 0, 0, 128, 192, 0, 0, 96, 65, 0, 0, 0, 0, 0, 0, 128, 192, 0, 0, 64, 65, 1, 0, 128, 64, 0, 0, 0, 0, 0, 0, 64, 65, 1, 0, 128, 64, 0, 0, 128, 192, 0, 0, 64, 65, 1, 0, 0, 64, 0, 0, 128, 192, 0, 0, 96, 65, 1, 0, 0, 64, 0, 0, 0, 0, 0, 0, 96, 65, 1, 0, 0, 64, 0, 0, 0, 0, 0, 0, 96, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 65, 0, 0, 0, 0, 0, 0, 128, 192, 0, 0, 128, 65, 1, 0, 0, 64, 0, 0, 128, 192, 0, 0, 96, 65, 1, 0, 0, 64, 0, 0, 0, 0, 0, 0, 96, 65, 1, 0, 0, 64, 0, 0, 128, 192, 0, 0, 96, 65, 1, 0, 128, 64, 0, 0, 128, 192, 0, 0, 128, 65, 1, 0, 128, 64, 0, 0, 0, 0, 0, 0, 128, 65, 0, 0, 0, 0, 0, 0, 128, 192, 0, 0, 128, 65, 1, 0, 128, 64, 0, 0, 128, 192, 0, 0, 128, 65, 1, 0, 0, 64, 0, 0, 128, 192, 0, 0, 96, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 65, 1, 0, 0, 64, 0, 0, 0, 0, 0, 0, 96, 65, 1, 0, 128, 64, 0, 0, 0, 0, 0, 0, 128, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 65, 1, 0, 128, 64, 0, 0, 0, 0, 0, 0, 128, 65, 1, 0, 128, 64, 0, 0, 128, 192, 0, 0, 128, 65, 0, 0, 0, 0, 0, 0, 128, 192, 0, 0, 128, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 65, 0, 0, 0, 0, 0, 0, 128, 192, 0, 0, 64, 65, 1, 0, 0, 64, 0, 0, 128, 192, 0, 0, 96, 65, 1, 0, 0, 64, 0, 0, 0, 0, 0, 0, 96, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 65, 0, 0, 0, 0, 0, 0, 128, 192, 0, 0, 128, 65, 0, 0, 0, 0, 0, 0, 128, 192, 0, 0, 64, 65, 1, 0, 0, 64, 0, 0, 128, 192, 0, 0, 96, 65, 0, 0, 0, 0, 0, 0, 128, 192, 0, 0, 64, 65, 0, 0, 0, 0, 0, 0, 128, 192, 0, 0, 128, 65, 1, 0, 0, 64, 0, 0, 0, 0, 0, 0, 96, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 65, 1, 0, 0, 64, 0, 0, 128, 192, 0, 0, 96, 65, 0, 0, 0, 0, 0, 0, 128, 192, 0, 0, 128, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 65, 1, 0, 0, 64, 0, 0, 0, 0, 0, 0, 96, 65, 0, 0, 255, 191, 255, 127, 255, 191, 0, 0, 255, 191, 255, 127, 255, 191, 0, 0, 255, 191, 255, 127, 255, 191, 0, 0, 255, 191, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 255, 255, 255, 255, 127, 255, 255, 255, 255, 255, 255, 255, 127, 255, 255, 255, 255, 255, 255, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 63, 255, 127, 255, 127, 255, 191, 255, 63, 255, 127, 255, 127, 255, 191, 255, 63, 255, 127, 255, 127, 255, 191, 255, 63, 255, 127, 255, 127, 255, 191, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 255, 255, 191, 255, 127, 255, 255, 255, 255, 255, 191, 255, 127, 255, 255, 255, 255, 255, 191, 255, 63, 255, 127, 255, 127, 255, 191, 255, 63, 255, 127, 255, 127, 255, 191, 255, 63, 255, 127, 255, 127, 255, 191, 255, 63, 255, 127, 255, 127, 255, 191, 255, 191, 255, 127, 255, 127, 255, 63, 255, 191, 255, 127, 255, 127, 255, 63, 255, 191, 255, 127, 255, 127, 255, 63, 255, 191, 255, 127, 255, 127, 255, 63, 0, 0, 255, 191, 255, 127, 255, 191, 0, 0, 255, 191, 255, 127, 255, 191, 0, 0, 255, 191, 255, 127, 255, 191, 0, 0, 255, 191, 255, 127, 255, 191, 255, 255, 255, 191, 255, 127, 255, 63, 255, 255, 255, 191, 255, 127, 255, 63, 255, 255, 255, 191, 255, 127, 255, 63, 255, 255, 255, 191, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 0, 0, 255, 191, 255, 127, 255, 255, 0, 0, 255, 191, 255, 127, 255, 255, 0, 0, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 255, 255, 191, 255, 127, 255, 63, 255, 255, 255, 191, 255, 127, 255, 63, 255, 255, 255, 191, 255, 127, 255, 63, 255, 255, 255, 191, 255, 127, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 191, 255, 127, 255, 127, 255, 63, 255, 191, 255, 127, 255, 127, 255, 63, 255, 191, 255, 127, 255, 127, 255, 63, 255, 191, 255, 127, 255, 127, 255, 63)
 }]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yyrhb"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_icdad"]
 points = PackedVector3Array(-6, -2, -4, 4, -2, -4, 4, 1, -4, -4, 0, -4, -4, 0, 4, -6, -2, 4, 4, 1, 4, 4, -2, 4)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uxgj7"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2mcmd"]
 points = PackedVector3Array(-6, -2, 4, 4, -2, 4, 4, 1, 4, -4, 0, 4, -4.8, -2, 10, 4, -2, 10, 4, -2.32658e-07, 8, -4, -1, 9)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jgtju"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_go372"]
 points = PackedVector3Array(4, -1.74493e-07, -8, -4, -1, -9, -4.8, -2, -10, 4, -2, -10, 4, 1, -4, -4, 1.49945e-07, -4, -6, -2, -4, 4, -2, -4)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m6ss5"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jmgsw"]
 points = PackedVector3Array(-2, 4, 2, -2, 0, 2, -1, 0, 2, -1, 4, 2, -2, 4, 3, -2, 0, 3, -1, 0, 3, -1, 4, 3)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xwyyy"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bxpxp"]
 points = PackedVector3Array(4, 6, -4, 3, 6, -4, 3, 0, -4, 4, 1, -4, 4, 6.4, -3.9, 3, 6.4, -3.9, 4, 6.7, -3.7, 3, 6.7, -3.7, 4, 6.9, -3.4, 3, 6.9, -3.4, 4, 7, -3, 3, 7, -3, 3, 7, 3, 3, 6.9, 3.4, 3, 6.7, 3.7, 3, 6.4, 3.9, 3, 6, 4, 3, 0, 4, 4, 7, 3, 4, 1, 4, 4, 6, 4, 4, 6.4, 3.9, 4, 6.7, 3.7, 4, 6.9, 3.4)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f2wks"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pld35"]
 points = PackedVector3Array(-1.75, 0, -3, -1.25, 0, -3, -1.25, 4, -3, -1.75, 4, -3, -2, 4, -2.75, -2, 0, -2.75, -1, 0, -2.75, -1, 4, -2.75, -2, 4, -2.25, -2, 0, -2.25, -1.75, 0, -2, -1.25, 0, -2, -1, 0, -2.25, -1, 4, -2.25, -1.25, 4, -2, -1.75, 4, -2)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xmyq4"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qalej"]
 points = PackedVector3Array(0.5, 4, -2, 0.5, 2, -2, 1.5, 2, -2, 1.5, 4, -2, 0.5, 4, 2, 0.5, 2, 2, 1.5, 2, 2, 1.5, 4, 2)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8vqd0"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ps2of"]
 points = PackedVector3Array(15, 4, -7, 7, 0, -7, 19, 0, -7, 19, 4, -7, 15, 4, 0, 7, 0, 0, 19, 0, 0, 19, 4, 0)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_18cly"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_exhlb"]
 points = PackedVector3Array(19, 1, -5, 23, 3, -5, 23, 4, -5, 19, 4, -5, 19, 4, -2, 19, 1, -2, 23, 4, -2, 23, 3, -2)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pluvs"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7vgjk"]
 points = PackedVector3Array(31, 4, -5, 31, 3, -5, 35, 1, -5, 35, 4, -5, 31, 4, -2, 31, 3, -2, 35, 1, -2, 35, 4, -2)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h2tir"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gttia"]
 points = PackedVector3Array(23, 4, -5, 23, 3, -5, 31, 3, -5, 31, 4, -5, 23, 4, -2, 23, 3, -2, 31, 3, -2, 31, 4, -2)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qmkhr"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k7n7v"]
 points = PackedVector3Array(35, 4, -5, 35, -1, -5, 38, -1, -5, 38, 4, -5, 35, 4, -2, 35, -1, -2, 38, -1, -2, 38, 4, -2)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_abidb"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p4n61"]
 points = PackedVector3Array(4, 0, -8, 4, -2, -10, 20, -2, -10, 20, 0, -8, 4, 0, 8, 4, -2, 10, 20, -2, 10, 20, 0, 8)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f0o3i"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ivcd1"]
 points = PackedVector3Array(17.25, 3, 1, 17.25, 0, 1, 17.75, 0, 1, 17.75, 3, 1, 17.25, 3, 7, 17.25, 0, 7, 17.75, 0, 7, 17.75, 3, 7)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_narle"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wasp8"]
 points = PackedVector3Array(17, 4, 0, 17, 3, 0, 18, 3, 0, 18, 4, 0, 17, 4, 8, 17, 3, 8, 18, 3, 8, 18, 4, 8)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ewuco"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f34vm"]
 points = PackedVector3Array(17, 3, 7, 17, 0, 7, 18, 0, 7, 18, 3, 7, 17, 3, 8, 17, 0, 8, 18, 0, 8, 18, 3, 8)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nndru"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fxiv8"]
 points = PackedVector3Array(17, 2.75, 7, 18, 2.75, 7, 18, 3, 6, 17, 3, 6, 17, 3, 7, 18, 3, 7)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q3nu4"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0ujye"]
 points = PackedVector3Array(17, 2.5, 7, 18, 2.5, 7, 18, 3, 6.25, 17, 3, 6.25, 17, 3, 7, 18, 3, 7)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nxnw2"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ng1c5"]
 points = PackedVector3Array(17, 2.25, 7, 18, 2.25, 7, 18, 3, 6.5, 17, 3, 6.5, 17, 3, 7, 18, 3, 7)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pk5k8"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bpawn"]
 points = PackedVector3Array(17, 2, 7, 18, 2, 7, 18, 3, 6.75, 17, 3, 6.75, 17, 3, 7, 18, 3, 7)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y8qwq"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ee0p4"]
 points = PackedVector3Array(17, 2, 1, 18, 2, 1, 18, 3, 1, 17, 3, 1, 17, 3, 1.25, 18, 3, 1.25)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_26umo"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ycbp1"]
 points = PackedVector3Array(17, 2.25, 1, 18, 2.25, 1, 18, 3, 1, 17, 3, 1, 17, 3, 1.5, 18, 3, 1.5)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mqtjj"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u3lsi"]
 points = PackedVector3Array(17, 2.5, 1, 18, 2.5, 1, 18, 3, 1, 17, 3, 1, 17, 3, 1.75, 18, 3, 1.75)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wng55"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ree2o"]
 points = PackedVector3Array(17, 2.75, 1, 18, 2.75, 1, 18, 3, 1, 17, 3, 1, 17, 3, 2, 18, 3, 2)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2jvc0"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_i7cbk"]
 points = PackedVector3Array(17, 3, 0, 17, 0, 0, 18, 0, 0, 18, 3, 0, 17, 3, 1, 17, 0, 1, 18, 0, 1, 18, 3, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_te20x"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j0bep"]
 points = PackedVector3Array(17, 7, -2, 17, 4, -2, 18, 4, -2, 18, 7, -2, 17, 7, 8, 17, 4, 8, 18, 4, 8, 18, 7, 8)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j88vp"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_015sn"]
 points = PackedVector3Array(17, 7, -7, 17, 4, -7, 18, 4, -7, 18, 7, -7, 17, 7, -5, 17, 4, -5, 18, 4, -5, 18, 7, -5)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hxncd"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fqy35"]
 points = PackedVector3Array(17, 8, -7, 17, 7, -7, 18, 7, -7, 18, 8, -7, 17, 8, 8, 17, 7, 8, 18, 7, 8, 18, 8, 8)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jr6x8"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0k7km"]
 points = PackedVector3Array(20, -1, -10, 20, -2, -10, 42, -2, -10, 42, -1, -10, 20, -1, 10, 20, -2, 10, 42, -2, 10, 42, -1, 10)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_da617"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wpn52"]
 points = PackedVector3Array(20, 8, -8, 20, -1, -8, 39, -1, -8, 39, 8, -8, 20, 8, -7, 20, -1, -7, 39, -1, -7, 39, 8, -7)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_saf81"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a02mj"]
 points = PackedVector3Array(17, 8, -8, 17, 0, -8, 20, 0, -8, 20, 8, -8, 17, 8, -7, 17, 0, -7, 20, 0, -7, 20, 8, -7)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wn2lu"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k3xx4"]
 points = PackedVector3Array(18, 8, 7, 18, 0, 7, 20, 0, 7, 20, 8, 7, 18, 8, 8, 18, 0, 8, 20, 0, 8, 20, 8, 8)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gw4gs"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kuw61"]
 points = PackedVector3Array(20, 8, 7, 20, -1, 7, 39, -1, 7, 39, 8, 7, 20, 8, 8, 20, -1, 8, 39, -1, 8, 39, 8, 8)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h8b3r"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5cf5y"]
 points = PackedVector3Array(41, 8, 0, 41, 9, 0, 16, 9, 0, 16, 8, 0, 16, 7, 9, 41, 7, 9, 16, 8, 9, 41, 8, 9)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oxemc"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ifttg"]
 points = PackedVector3Array(41, 8, -9, 16, 8, -9, 16, 7, -9, 41, 7, -9, 41, 9, 0, 16, 9, 0, 16, 8, 0, 41, 8, 0)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2cgyr"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xiqwd"]
 points = PackedVector3Array(35, 4, -2, 35, -1, -2, 38, -1, -2, 38, 4, -2, 35, 1.5, 3, 35, -1, 3, 38, -1, 3, 38, 1.5, 3)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w0vtw"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_g86tf"]
 points = PackedVector3Array(35, 1.5, 3, 35, -1, 3, 38, -1, 3, 38, 1.5, 3, 35, 1.5, 6, 35, -1, 6, 38, -1, 6, 38, 1.5, 6)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_apmpw"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w4bqx"]
 points = PackedVector3Array(35, 1.5, 3, 30, -1, 3, 35, -1, 3, 35, 1.5, 6, 30, -1, 6, 35, -1, 6)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p0n2r"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rx0mh"]
 points = PackedVector3Array(39, 8, -8, 39, -1, -8, 40, -1, -8, 40, 8, -8, 39, 8, 8, 39, -1, 8, 40, -1, 8, 40, 8, 8)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2bai0"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qysqg"]
 points = PackedVector3Array(8, 0, 12, 8, -4, 12, 12, -4, 12, 12, 0, 12, 8, 0, 16, 8, -4, 16, 12, -4, 16, 12, 0, 16)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hrcfp"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4fap1"]
 points = PackedVector3Array(2, -4, 14, 4, -4, 12, 4, 0, 12, 2, 0, 14, 4, -4, 16, 4, 0, 16)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qkg4t"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yetms"]
 points = PackedVector3Array(0, -4, 12, 4, -4, 12, 4, 0, 12, 0, 0, 12, 2, -4, 14, 2, 0, 14)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m4exv"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ne2of"]
 points = PackedVector3Array(2, 0, 14, 0, 0, 16, 0, -4, 16, 2, -4, 14, 4, -4, 16, 4, 0, 16)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6fsnn"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eke44"]
 points = PackedVector3Array(0, 0, 12, 0, -4, 12, 2, -4, 14, 2, 0, 14, 0, 0, 16, 0, -4, 16)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7qtod"]
@@ -730,7 +808,7 @@ grow_amount = 0.075
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nvkfr"]
 render_priority = 0
-shader = ExtResource("32_3d00j")
+shader = ExtResource("37_h8n41")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efmho"]
 transparency = 1
@@ -749,7 +827,7 @@ size = Vector2(0.25, 0.25)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4y1om"]
 render_priority = 0
-shader = ExtResource("33_eelvg")
+shader = ExtResource("39_ixlnj")
 
 [sub_resource type="BoxMesh" id="BoxMesh_mfm58"]
 size = Vector3(-5, 10, 20)
@@ -761,7 +839,7 @@ noise = SubResource("FastNoiseLite_tuhld")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5abgc"]
 render_priority = 0
-shader = ExtResource("34_rr40p")
+shader = ExtResource("40_rjdkg")
 shader_parameter/affine_mapping = true
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.25
@@ -769,8 +847,6 @@ shader_parameter/resolution = Vector2i(683, 384)
 shader_parameter/albedo = SubResource("NoiseTexture2D_jor0j")
 
 [sub_resource type="BoxMesh" id="BoxMesh_l4wb7"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7x4x7"]
 
 [sub_resource type="Gradient" id="Gradient_tykyu"]
 colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 0)
@@ -977,6 +1053,482 @@ refraction_texture_channel = 2
 uv1_scale = Vector3(3, 2, 2)
 texture_filter = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0bu0"]
+
+[sub_resource type="Shader" id="Shader_tf5uw"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_normal : hint_roughness_normal,filter_nearest,repeat_enable;
+uniform float normal_scale : hint_range(-16,16);
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_38vyr"]
+render_priority = 0
+shader = SubResource("Shader_tf5uw")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.75
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv1_scale = Vector3(0.0625, 0.0625, 0.0625)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("59_haoqj")
+shader_parameter/texture_normal = ExtResource("60_42kr3")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_62usx"]
+_surfaces = [{
+"aabb": AABB(2, -1, -4, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 0, 66, 0, 0, 128, 193, 0, 0, 0, 66, 0, 0, 128, 65, 0, 0, 32, 67, 0, 0, 128, 65, 0, 0, 32, 67, 0, 0, 128, 193, 0, 0, 128, 194, 0, 0, 128, 193, 0, 0, 128, 66, 0, 0, 128, 193, 0, 0, 128, 66, 0, 0, 128, 65, 0, 0, 128, 194, 0, 0, 128, 65, 0, 0, 128, 194, 0, 0, 32, 195, 0, 0, 128, 194, 0, 0, 0, 194, 0, 0, 128, 66, 0, 0, 0, 194, 0, 0, 128, 66, 0, 0, 32, 195, 0, 0, 128, 194, 0, 0, 32, 195, 0, 0, 128, 66, 0, 0, 32, 195, 0, 0, 128, 66, 0, 0, 0, 194, 0, 0, 128, 194, 0, 0, 0, 194, 0, 0, 128, 194, 0, 0, 128, 193, 0, 0, 128, 194, 0, 0, 128, 65, 0, 0, 128, 66, 0, 0, 128, 65, 0, 0, 128, 66, 0, 0, 128, 193, 0, 0, 0, 66, 0, 0, 128, 193, 0, 0, 32, 67, 0, 0, 128, 193, 0, 0, 32, 67, 0, 0, 128, 65, 0, 0, 0, 66, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("47_xgogf"),
+"name": "terrain/trench_broom/big_cobble_stone",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 128, 192, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 128, 192, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 128, 192, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 128, 192, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 128, 192, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 128, 192, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 128, 192, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 128, 192, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 128, 192, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 128, 192, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 128, 192, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 128, 192, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 128, 64, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(14, -1, -4, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 96, 67, 0, 0, 128, 193, 0, 0, 96, 67, 0, 0, 128, 65, 0, 0, 176, 67, 0, 0, 128, 65, 0, 0, 176, 67, 0, 0, 128, 193, 0, 0, 128, 194, 0, 0, 128, 193, 0, 0, 128, 66, 0, 0, 128, 193, 0, 0, 128, 66, 0, 0, 128, 65, 0, 0, 128, 194, 0, 0, 128, 65, 0, 0, 128, 194, 0, 0, 176, 195, 0, 0, 128, 194, 0, 0, 96, 195, 0, 0, 128, 66, 0, 0, 96, 195, 0, 0, 128, 66, 0, 0, 176, 195, 0, 0, 128, 194, 0, 0, 176, 195, 0, 0, 128, 66, 0, 0, 176, 195, 0, 0, 128, 66, 0, 0, 96, 195, 0, 0, 128, 194, 0, 0, 96, 195, 0, 0, 128, 194, 0, 0, 128, 193, 0, 0, 128, 194, 0, 0, 128, 65, 0, 0, 128, 66, 0, 0, 128, 65, 0, 0, 128, 66, 0, 0, 128, 193, 0, 0, 96, 67, 0, 0, 128, 193, 0, 0, 176, 67, 0, 0, 128, 193, 0, 0, 176, 67, 0, 0, 128, 65, 0, 0, 96, 67, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("48_gi7qj"),
+"name": "terrain/trench_broom/bricks",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 128, 192, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 128, 192, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 128, 192, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 128, 192, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 128, 192, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 128, 192, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 128, 192, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 128, 192, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 128, 192, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 128, 192, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 128, 192, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 128, 192, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 128, 64, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(-22, -1, 8, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 176, 195, 0, 0, 128, 193, 0, 0, 176, 195, 0, 0, 128, 65, 0, 0, 96, 195, 0, 0, 128, 65, 0, 0, 96, 195, 0, 0, 128, 193, 0, 0, 0, 67, 0, 0, 128, 193, 0, 0, 128, 67, 0, 0, 128, 193, 0, 0, 128, 67, 0, 0, 128, 65, 0, 0, 0, 67, 0, 0, 128, 65, 0, 0, 0, 67, 0, 0, 96, 67, 0, 0, 0, 67, 0, 0, 176, 67, 0, 0, 128, 67, 0, 0, 176, 67, 0, 0, 128, 67, 0, 0, 96, 67, 0, 0, 0, 67, 0, 0, 96, 67, 0, 0, 128, 67, 0, 0, 96, 67, 0, 0, 128, 67, 0, 0, 176, 67, 0, 0, 0, 67, 0, 0, 176, 67, 0, 0, 0, 67, 0, 0, 128, 193, 0, 0, 0, 67, 0, 0, 128, 65, 0, 0, 128, 67, 0, 0, 128, 65, 0, 0, 128, 67, 0, 0, 128, 193, 0, 0, 176, 195, 0, 0, 128, 193, 0, 0, 96, 195, 0, 0, 128, 193, 0, 0, 96, 195, 0, 0, 128, 65, 0, 0, 176, 195, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("49_w3ae8"),
+"name": "terrain/trench_broom/bricks_brown",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 128, 65, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(-10, -1, 8, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 32, 195, 0, 0, 128, 193, 0, 0, 32, 195, 0, 0, 128, 65, 0, 0, 0, 194, 0, 0, 128, 65, 0, 0, 0, 194, 0, 0, 128, 193, 0, 0, 0, 67, 0, 0, 128, 193, 0, 0, 128, 67, 0, 0, 128, 193, 0, 0, 128, 67, 0, 0, 128, 65, 0, 0, 0, 67, 0, 0, 128, 65, 0, 0, 0, 67, 0, 0, 0, 66, 0, 0, 0, 67, 0, 0, 32, 67, 0, 0, 128, 67, 0, 0, 32, 67, 0, 0, 128, 67, 0, 0, 0, 66, 0, 0, 0, 67, 0, 0, 0, 66, 0, 0, 128, 67, 0, 0, 0, 66, 0, 0, 128, 67, 0, 0, 32, 67, 0, 0, 0, 67, 0, 0, 32, 67, 0, 0, 0, 67, 0, 0, 128, 193, 0, 0, 0, 67, 0, 0, 128, 65, 0, 0, 128, 67, 0, 0, 128, 65, 0, 0, 128, 67, 0, 0, 128, 193, 0, 0, 32, 195, 0, 0, 128, 193, 0, 0, 0, 194, 0, 0, 128, 193, 0, 0, 0, 194, 0, 0, 128, 65, 0, 0, 32, 195, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("48_2g3n4"),
+"name": "terrain/trench_broom/bricks_stone",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 128, 65, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(2, -1, 8, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 0, 66, 0, 0, 128, 193, 0, 0, 0, 66, 0, 0, 128, 65, 0, 0, 32, 67, 0, 0, 128, 65, 0, 0, 32, 67, 0, 0, 128, 193, 0, 0, 0, 67, 0, 0, 128, 193, 0, 0, 128, 67, 0, 0, 128, 193, 0, 0, 128, 67, 0, 0, 128, 65, 0, 0, 0, 67, 0, 0, 128, 65, 0, 0, 0, 67, 0, 0, 32, 195, 0, 0, 0, 67, 0, 0, 0, 194, 0, 0, 128, 67, 0, 0, 0, 194, 0, 0, 128, 67, 0, 0, 32, 195, 0, 0, 0, 67, 0, 0, 32, 195, 0, 0, 128, 67, 0, 0, 32, 195, 0, 0, 128, 67, 0, 0, 0, 194, 0, 0, 0, 67, 0, 0, 0, 194, 0, 0, 0, 67, 0, 0, 128, 193, 0, 0, 0, 67, 0, 0, 128, 65, 0, 0, 128, 67, 0, 0, 128, 65, 0, 0, 128, 67, 0, 0, 128, 193, 0, 0, 0, 66, 0, 0, 128, 193, 0, 0, 32, 67, 0, 0, 128, 193, 0, 0, 32, 67, 0, 0, 128, 65, 0, 0, 0, 66, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("49_m84pa"),
+"name": "terrain/trench_broom/checker_board",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 128, 65, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(14, -1, 8, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 96, 67, 0, 0, 128, 193, 0, 0, 96, 67, 0, 0, 128, 65, 0, 0, 176, 67, 0, 0, 128, 65, 0, 0, 176, 67, 0, 0, 128, 193, 0, 0, 0, 67, 0, 0, 128, 193, 0, 0, 128, 67, 0, 0, 128, 193, 0, 0, 128, 67, 0, 0, 128, 65, 0, 0, 0, 67, 0, 0, 128, 65, 0, 0, 0, 67, 0, 0, 176, 195, 0, 0, 0, 67, 0, 0, 96, 195, 0, 0, 128, 67, 0, 0, 96, 195, 0, 0, 128, 67, 0, 0, 176, 195, 0, 0, 0, 67, 0, 0, 176, 195, 0, 0, 128, 67, 0, 0, 176, 195, 0, 0, 128, 67, 0, 0, 96, 195, 0, 0, 0, 67, 0, 0, 96, 195, 0, 0, 0, 67, 0, 0, 128, 193, 0, 0, 0, 67, 0, 0, 128, 65, 0, 0, 128, 67, 0, 0, 128, 65, 0, 0, 128, 67, 0, 0, 128, 193, 0, 0, 96, 67, 0, 0, 128, 193, 0, 0, 176, 67, 0, 0, 128, 193, 0, 0, 176, 67, 0, 0, 128, 65, 0, 0, 96, 67, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("50_x7e0h"),
+"name": "terrain/trench_broom/concrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 0, 65, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 0, 65, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 128, 65, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 128, 65, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 128, 65, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(14, -1, 20, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 96, 67, 0, 0, 128, 193, 0, 0, 96, 67, 0, 0, 128, 65, 0, 0, 176, 67, 0, 0, 128, 65, 0, 0, 176, 67, 0, 0, 128, 193, 0, 0, 160, 67, 0, 0, 128, 193, 0, 0, 224, 67, 0, 0, 128, 193, 0, 0, 224, 67, 0, 0, 128, 65, 0, 0, 160, 67, 0, 0, 128, 65, 0, 0, 160, 67, 0, 0, 176, 195, 0, 0, 160, 67, 0, 0, 96, 195, 0, 0, 224, 67, 0, 0, 96, 195, 0, 0, 224, 67, 0, 0, 176, 195, 0, 0, 160, 67, 0, 0, 176, 195, 0, 0, 224, 67, 0, 0, 176, 195, 0, 0, 224, 67, 0, 0, 96, 195, 0, 0, 160, 67, 0, 0, 96, 195, 0, 0, 160, 67, 0, 0, 128, 193, 0, 0, 160, 67, 0, 0, 128, 65, 0, 0, 224, 67, 0, 0, 128, 65, 0, 0, 224, 67, 0, 0, 128, 193, 0, 0, 96, 67, 0, 0, 128, 193, 0, 0, 176, 67, 0, 0, 128, 193, 0, 0, 176, 67, 0, 0, 128, 65, 0, 0, 96, 67, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("51_5u2o8"),
+"name": "terrain/trench_broom/key_metal_blue",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 224, 65, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(-22, -1, 20, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 176, 195, 0, 0, 128, 193, 0, 0, 176, 195, 0, 0, 128, 65, 0, 0, 96, 195, 0, 0, 128, 65, 0, 0, 96, 195, 0, 0, 128, 193, 0, 0, 160, 67, 0, 0, 128, 193, 0, 0, 224, 67, 0, 0, 128, 193, 0, 0, 224, 67, 0, 0, 128, 65, 0, 0, 160, 67, 0, 0, 128, 65, 0, 0, 160, 67, 0, 0, 96, 67, 0, 0, 160, 67, 0, 0, 176, 67, 0, 0, 224, 67, 0, 0, 176, 67, 0, 0, 224, 67, 0, 0, 96, 67, 0, 0, 160, 67, 0, 0, 96, 67, 0, 0, 224, 67, 0, 0, 96, 67, 0, 0, 224, 67, 0, 0, 176, 67, 0, 0, 160, 67, 0, 0, 176, 67, 0, 0, 160, 67, 0, 0, 128, 193, 0, 0, 160, 67, 0, 0, 128, 65, 0, 0, 224, 67, 0, 0, 128, 65, 0, 0, 224, 67, 0, 0, 128, 193, 0, 0, 176, 195, 0, 0, 128, 193, 0, 0, 96, 195, 0, 0, 128, 193, 0, 0, 96, 195, 0, 0, 128, 65, 0, 0, 176, 195, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("54_l1jww"),
+"name": "terrain/trench_broom/dirt",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 224, 65, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(-10, -1, 20, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 32, 195, 0, 0, 128, 193, 0, 0, 32, 195, 0, 0, 128, 65, 0, 0, 0, 194, 0, 0, 128, 65, 0, 0, 0, 194, 0, 0, 128, 193, 0, 0, 160, 67, 0, 0, 128, 193, 0, 0, 224, 67, 0, 0, 128, 193, 0, 0, 224, 67, 0, 0, 128, 65, 0, 0, 160, 67, 0, 0, 128, 65, 0, 0, 160, 67, 0, 0, 0, 66, 0, 0, 160, 67, 0, 0, 32, 67, 0, 0, 224, 67, 0, 0, 32, 67, 0, 0, 224, 67, 0, 0, 0, 66, 0, 0, 160, 67, 0, 0, 0, 66, 0, 0, 224, 67, 0, 0, 0, 66, 0, 0, 224, 67, 0, 0, 32, 67, 0, 0, 160, 67, 0, 0, 32, 67, 0, 0, 160, 67, 0, 0, 128, 193, 0, 0, 160, 67, 0, 0, 128, 65, 0, 0, 224, 67, 0, 0, 128, 65, 0, 0, 224, 67, 0, 0, 128, 193, 0, 0, 32, 195, 0, 0, 128, 193, 0, 0, 0, 194, 0, 0, 128, 193, 0, 0, 0, 194, 0, 0, 128, 65, 0, 0, 32, 195, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("52_7f1p3"),
+"name": "terrain/trench_broom/drywall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 224, 65, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(2, -1, 20, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 0, 66, 0, 0, 128, 193, 0, 0, 0, 66, 0, 0, 128, 65, 0, 0, 32, 67, 0, 0, 128, 65, 0, 0, 32, 67, 0, 0, 128, 193, 0, 0, 160, 67, 0, 0, 128, 193, 0, 0, 224, 67, 0, 0, 128, 193, 0, 0, 224, 67, 0, 0, 128, 65, 0, 0, 160, 67, 0, 0, 128, 65, 0, 0, 160, 67, 0, 0, 32, 195, 0, 0, 160, 67, 0, 0, 0, 194, 0, 0, 224, 67, 0, 0, 0, 194, 0, 0, 224, 67, 0, 0, 32, 195, 0, 0, 160, 67, 0, 0, 32, 195, 0, 0, 224, 67, 0, 0, 32, 195, 0, 0, 224, 67, 0, 0, 0, 194, 0, 0, 160, 67, 0, 0, 0, 194, 0, 0, 160, 67, 0, 0, 128, 193, 0, 0, 160, 67, 0, 0, 128, 65, 0, 0, 224, 67, 0, 0, 128, 65, 0, 0, 224, 67, 0, 0, 128, 193, 0, 0, 0, 66, 0, 0, 128, 193, 0, 0, 32, 67, 0, 0, 128, 193, 0, 0, 32, 67, 0, 0, 128, 65, 0, 0, 0, 66, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("56_qmoys"),
+"name": "terrain/trench_broom/glass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 160, 65, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 160, 65, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 224, 65, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 224, 65, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 224, 65, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(14, -1, 32, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 96, 67, 0, 0, 128, 193, 0, 0, 96, 67, 0, 0, 128, 65, 0, 0, 176, 67, 0, 0, 128, 65, 0, 0, 176, 67, 0, 0, 128, 193, 0, 0, 0, 68, 0, 0, 128, 193, 0, 0, 32, 68, 0, 0, 128, 193, 0, 0, 32, 68, 0, 0, 128, 65, 0, 0, 0, 68, 0, 0, 128, 65, 0, 0, 0, 68, 0, 0, 176, 195, 0, 0, 0, 68, 0, 0, 96, 195, 0, 0, 32, 68, 0, 0, 96, 195, 0, 0, 32, 68, 0, 0, 176, 195, 0, 0, 0, 68, 0, 0, 176, 195, 0, 0, 32, 68, 0, 0, 176, 195, 0, 0, 32, 68, 0, 0, 96, 195, 0, 0, 0, 68, 0, 0, 96, 195, 0, 0, 0, 68, 0, 0, 128, 193, 0, 0, 0, 68, 0, 0, 128, 65, 0, 0, 32, 68, 0, 0, 128, 65, 0, 0, 32, 68, 0, 0, 128, 193, 0, 0, 96, 67, 0, 0, 128, 193, 0, 0, 176, 67, 0, 0, 128, 193, 0, 0, 176, 67, 0, 0, 128, 65, 0, 0, 96, 67, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("21_mk7rf"),
+"name": "terrain/trench_broom/lava_flowing",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 32, 66, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(-22, -1, 32, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 176, 195, 0, 0, 128, 193, 0, 0, 176, 195, 0, 0, 128, 65, 0, 0, 96, 195, 0, 0, 128, 65, 0, 0, 96, 195, 0, 0, 128, 193, 0, 0, 0, 68, 0, 0, 128, 193, 0, 0, 32, 68, 0, 0, 128, 193, 0, 0, 32, 68, 0, 0, 128, 65, 0, 0, 0, 68, 0, 0, 128, 65, 0, 0, 0, 68, 0, 0, 96, 67, 0, 0, 0, 68, 0, 0, 176, 67, 0, 0, 32, 68, 0, 0, 176, 67, 0, 0, 32, 68, 0, 0, 96, 67, 0, 0, 0, 68, 0, 0, 96, 67, 0, 0, 32, 68, 0, 0, 96, 67, 0, 0, 32, 68, 0, 0, 176, 67, 0, 0, 0, 68, 0, 0, 176, 67, 0, 0, 0, 68, 0, 0, 128, 193, 0, 0, 0, 68, 0, 0, 128, 65, 0, 0, 32, 68, 0, 0, 128, 65, 0, 0, 32, 68, 0, 0, 128, 193, 0, 0, 176, 195, 0, 0, 128, 193, 0, 0, 96, 195, 0, 0, 128, 193, 0, 0, 96, 195, 0, 0, 128, 65, 0, 0, 176, 195, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("53_mxesg"),
+"name": "terrain/trench_broom/key_metal_green",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 32, 66, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(-10, -1, 32, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 32, 195, 0, 0, 128, 193, 0, 0, 32, 195, 0, 0, 128, 65, 0, 0, 0, 194, 0, 0, 128, 65, 0, 0, 0, 194, 0, 0, 128, 193, 0, 0, 0, 68, 0, 0, 128, 193, 0, 0, 32, 68, 0, 0, 128, 193, 0, 0, 32, 68, 0, 0, 128, 65, 0, 0, 0, 68, 0, 0, 128, 65, 0, 0, 0, 68, 0, 0, 0, 66, 0, 0, 0, 68, 0, 0, 32, 67, 0, 0, 32, 68, 0, 0, 32, 67, 0, 0, 32, 68, 0, 0, 0, 66, 0, 0, 0, 68, 0, 0, 0, 66, 0, 0, 32, 68, 0, 0, 0, 66, 0, 0, 32, 68, 0, 0, 32, 67, 0, 0, 0, 68, 0, 0, 32, 67, 0, 0, 0, 68, 0, 0, 128, 193, 0, 0, 0, 68, 0, 0, 128, 65, 0, 0, 32, 68, 0, 0, 128, 65, 0, 0, 32, 68, 0, 0, 128, 193, 0, 0, 32, 195, 0, 0, 128, 193, 0, 0, 0, 194, 0, 0, 128, 193, 0, 0, 0, 194, 0, 0, 128, 65, 0, 0, 32, 195, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("54_7qit8"),
+"name": "terrain/trench_broom/key_metal_red",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 32, 66, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(2, -1, 32, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 0, 66, 0, 0, 128, 193, 0, 0, 0, 66, 0, 0, 128, 65, 0, 0, 32, 67, 0, 0, 128, 65, 0, 0, 32, 67, 0, 0, 128, 193, 0, 0, 0, 68, 0, 0, 128, 193, 0, 0, 32, 68, 0, 0, 128, 193, 0, 0, 32, 68, 0, 0, 128, 65, 0, 0, 0, 68, 0, 0, 128, 65, 0, 0, 0, 68, 0, 0, 32, 195, 0, 0, 0, 68, 0, 0, 0, 194, 0, 0, 32, 68, 0, 0, 0, 194, 0, 0, 32, 68, 0, 0, 32, 195, 0, 0, 0, 68, 0, 0, 32, 195, 0, 0, 32, 68, 0, 0, 32, 195, 0, 0, 32, 68, 0, 0, 0, 194, 0, 0, 0, 68, 0, 0, 0, 194, 0, 0, 0, 68, 0, 0, 128, 193, 0, 0, 0, 68, 0, 0, 128, 65, 0, 0, 32, 68, 0, 0, 128, 65, 0, 0, 32, 68, 0, 0, 128, 193, 0, 0, 0, 66, 0, 0, 128, 193, 0, 0, 32, 67, 0, 0, 128, 193, 0, 0, 32, 67, 0, 0, 128, 65, 0, 0, 0, 66, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("43_s21r3"),
+"name": "terrain/trench_broom/lava",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 0, 66, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 0, 66, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 32, 66, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 32, 66, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 32, 66, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(-22, -1, 44, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 176, 195, 0, 0, 128, 193, 0, 0, 176, 195, 0, 0, 128, 65, 0, 0, 96, 195, 0, 0, 128, 65, 0, 0, 96, 195, 0, 0, 128, 193, 0, 0, 48, 68, 0, 0, 128, 193, 0, 0, 80, 68, 0, 0, 128, 193, 0, 0, 80, 68, 0, 0, 128, 65, 0, 0, 48, 68, 0, 0, 128, 65, 0, 0, 48, 68, 0, 0, 96, 67, 0, 0, 48, 68, 0, 0, 176, 67, 0, 0, 80, 68, 0, 0, 176, 67, 0, 0, 80, 68, 0, 0, 96, 67, 0, 0, 48, 68, 0, 0, 96, 67, 0, 0, 80, 68, 0, 0, 96, 67, 0, 0, 80, 68, 0, 0, 176, 67, 0, 0, 48, 68, 0, 0, 176, 67, 0, 0, 48, 68, 0, 0, 128, 193, 0, 0, 48, 68, 0, 0, 128, 65, 0, 0, 80, 68, 0, 0, 128, 65, 0, 0, 80, 68, 0, 0, 128, 193, 0, 0, 176, 195, 0, 0, 128, 193, 0, 0, 96, 195, 0, 0, 128, 193, 0, 0, 96, 195, 0, 0, 128, 65, 0, 0, 176, 195, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("11_7fdv4"),
+"name": "terrain/trench_broom/log",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 80, 66, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(-10, -1, 44, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 32, 195, 0, 0, 128, 193, 0, 0, 32, 195, 0, 0, 128, 65, 0, 0, 0, 194, 0, 0, 128, 65, 0, 0, 0, 194, 0, 0, 128, 193, 0, 0, 48, 68, 0, 0, 128, 193, 0, 0, 80, 68, 0, 0, 128, 193, 0, 0, 80, 68, 0, 0, 128, 65, 0, 0, 48, 68, 0, 0, 128, 65, 0, 0, 48, 68, 0, 0, 0, 66, 0, 0, 48, 68, 0, 0, 32, 67, 0, 0, 80, 68, 0, 0, 32, 67, 0, 0, 80, 68, 0, 0, 0, 66, 0, 0, 48, 68, 0, 0, 0, 66, 0, 0, 80, 68, 0, 0, 0, 66, 0, 0, 80, 68, 0, 0, 32, 67, 0, 0, 48, 68, 0, 0, 32, 67, 0, 0, 48, 68, 0, 0, 128, 193, 0, 0, 48, 68, 0, 0, 128, 65, 0, 0, 80, 68, 0, 0, 128, 65, 0, 0, 80, 68, 0, 0, 128, 193, 0, 0, 32, 195, 0, 0, 128, 193, 0, 0, 0, 194, 0, 0, 128, 193, 0, 0, 0, 194, 0, 0, 128, 65, 0, 0, 32, 195, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": SubResource("ShaderMaterial_38vyr"),
+"name": "terrain/trench_broom/log_end",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 80, 66, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(2, -1, 44, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 0, 66, 0, 0, 128, 193, 0, 0, 0, 66, 0, 0, 128, 65, 0, 0, 32, 67, 0, 0, 128, 65, 0, 0, 32, 67, 0, 0, 128, 193, 0, 0, 48, 68, 0, 0, 128, 193, 0, 0, 80, 68, 0, 0, 128, 193, 0, 0, 80, 68, 0, 0, 128, 65, 0, 0, 48, 68, 0, 0, 128, 65, 0, 0, 48, 68, 0, 0, 32, 195, 0, 0, 48, 68, 0, 0, 0, 194, 0, 0, 80, 68, 0, 0, 0, 194, 0, 0, 80, 68, 0, 0, 32, 195, 0, 0, 48, 68, 0, 0, 32, 195, 0, 0, 80, 68, 0, 0, 32, 195, 0, 0, 80, 68, 0, 0, 0, 194, 0, 0, 48, 68, 0, 0, 0, 194, 0, 0, 48, 68, 0, 0, 128, 193, 0, 0, 48, 68, 0, 0, 128, 65, 0, 0, 80, 68, 0, 0, 128, 65, 0, 0, 80, 68, 0, 0, 128, 193, 0, 0, 0, 66, 0, 0, 128, 193, 0, 0, 32, 67, 0, 0, 128, 193, 0, 0, 32, 67, 0, 0, 128, 65, 0, 0, 0, 66, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("5_8y8hw"),
+"name": "terrain/trench_broom/metal",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 0, 64, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 32, 65, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 32, 65, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 0, 64, 0, 0, 128, 191, 0, 0, 80, 66, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(14, -1, 44, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 96, 67, 0, 0, 128, 193, 0, 0, 96, 67, 0, 0, 128, 65, 0, 0, 176, 67, 0, 0, 128, 65, 0, 0, 176, 67, 0, 0, 128, 193, 0, 0, 48, 68, 0, 0, 128, 193, 0, 0, 80, 68, 0, 0, 128, 193, 0, 0, 80, 68, 0, 0, 128, 65, 0, 0, 48, 68, 0, 0, 128, 65, 0, 0, 48, 68, 0, 0, 176, 195, 0, 0, 48, 68, 0, 0, 96, 195, 0, 0, 80, 68, 0, 0, 96, 195, 0, 0, 80, 68, 0, 0, 176, 195, 0, 0, 48, 68, 0, 0, 176, 195, 0, 0, 80, 68, 0, 0, 176, 195, 0, 0, 80, 68, 0, 0, 96, 195, 0, 0, 48, 68, 0, 0, 96, 195, 0, 0, 48, 68, 0, 0, 128, 193, 0, 0, 48, 68, 0, 0, 128, 65, 0, 0, 80, 68, 0, 0, 128, 65, 0, 0, 80, 68, 0, 0, 128, 193, 0, 0, 96, 67, 0, 0, 128, 193, 0, 0, 176, 67, 0, 0, 128, 193, 0, 0, 176, 67, 0, 0, 128, 65, 0, 0, 96, 67, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("10_pl836"),
+"name": "terrain/trench_broom/planks",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 48, 66, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 48, 66, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 96, 65, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 176, 65, 0, 0, 128, 63, 0, 0, 80, 66, 0, 0, 176, 65, 0, 0, 128, 191, 0, 0, 80, 66, 0, 0, 96, 65, 0, 0, 128, 191, 0, 0, 80, 66, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(-22, -1, 56, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 176, 195, 0, 0, 128, 193, 0, 0, 176, 195, 0, 0, 128, 65, 0, 0, 96, 195, 0, 0, 128, 65, 0, 0, 96, 195, 0, 0, 128, 193, 0, 0, 96, 68, 0, 0, 128, 193, 0, 0, 128, 68, 0, 0, 128, 193, 0, 0, 128, 68, 0, 0, 128, 65, 0, 0, 96, 68, 0, 0, 128, 65, 0, 0, 96, 68, 0, 0, 96, 67, 0, 0, 96, 68, 0, 0, 176, 67, 0, 0, 128, 68, 0, 0, 176, 67, 0, 0, 128, 68, 0, 0, 96, 67, 0, 0, 96, 68, 0, 0, 96, 67, 0, 0, 128, 68, 0, 0, 96, 67, 0, 0, 128, 68, 0, 0, 176, 67, 0, 0, 96, 68, 0, 0, 176, 67, 0, 0, 96, 68, 0, 0, 128, 193, 0, 0, 96, 68, 0, 0, 128, 65, 0, 0, 128, 68, 0, 0, 128, 65, 0, 0, 128, 68, 0, 0, 128, 193, 0, 0, 176, 195, 0, 0, 128, 193, 0, 0, 96, 195, 0, 0, 128, 193, 0, 0, 96, 195, 0, 0, 128, 65, 0, 0, 176, 195, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("14_76leo"),
+"name": "terrain/trench_broom/rock",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 96, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 96, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 96, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 96, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 96, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 128, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 128, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 96, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 96, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 96, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 128, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 128, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 96, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 128, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 128, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 96, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 96, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 96, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 128, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 128, 66, 0, 0, 176, 193, 0, 0, 128, 63, 0, 0, 128, 66, 0, 0, 96, 193, 0, 0, 128, 63, 0, 0, 128, 66, 0, 0, 96, 193, 0, 0, 128, 191, 0, 0, 128, 66, 0, 0, 176, 193, 0, 0, 128, 191, 0, 0, 128, 66, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(-10, -1, 56, 8, 2.00001, 8),
+"attribute_data": PackedByteArray(0, 0, 32, 195, 0, 0, 128, 193, 0, 0, 32, 195, 0, 0, 128, 65, 0, 0, 0, 194, 0, 0, 128, 65, 0, 0, 0, 194, 0, 0, 128, 193, 0, 0, 96, 68, 0, 0, 128, 193, 0, 0, 128, 68, 0, 0, 128, 193, 0, 0, 128, 68, 0, 0, 128, 65, 0, 0, 96, 68, 0, 0, 128, 65, 0, 0, 96, 68, 0, 0, 0, 66, 0, 0, 96, 68, 0, 0, 32, 67, 0, 0, 128, 68, 0, 0, 32, 67, 0, 0, 128, 68, 0, 0, 0, 66, 0, 0, 96, 68, 0, 0, 0, 66, 0, 0, 128, 68, 0, 0, 0, 66, 0, 0, 128, 68, 0, 0, 32, 67, 0, 0, 96, 68, 0, 0, 32, 67, 0, 0, 96, 68, 0, 0, 128, 193, 0, 0, 96, 68, 0, 0, 128, 65, 0, 0, 128, 68, 0, 0, 128, 65, 0, 0, 128, 68, 0, 0, 128, 193, 0, 0, 32, 195, 0, 0, 128, 193, 0, 0, 0, 194, 0, 0, 128, 193, 0, 0, 0, 194, 0, 0, 128, 65, 0, 0, 32, 195, 0, 0, 128, 65),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("55_ridvu"),
+"name": "terrain/trench_broom/shutter_door",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 96, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 96, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 96, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 96, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 96, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 128, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 128, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 96, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 96, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 96, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 128, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 128, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 96, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 128, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 128, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 96, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 96, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 96, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 128, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 128, 66, 0, 0, 32, 193, 0, 0, 128, 63, 0, 0, 128, 66, 0, 0, 0, 192, 0, 0, 128, 63, 0, 0, 128, 66, 0, 0, 0, 192, 0, 0, 128, 191, 0, 0, 128, 66, 0, 0, 32, 193, 0, 0, 128, 191, 0, 0, 128, 66, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6tscl"]
+points = PackedVector3Array(-22, 1, -4, -22, -1, -4, -14, -1, -4, -14, 1, -4, -22, 1, 4, -22, -1, 4, -14, -1, 4, -14, 1, 4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kguh7"]
+points = PackedVector3Array(-10, 1, -4, -10, -1, -4, -2, -1, -4, -2, 1, -4, -10, 1, 4, -10, -1, 4, -2, -1, 4, -2, 1, 4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rk16h"]
+points = PackedVector3Array(2, 1, -4, 2, -1, -4, 10, -1, -4, 10, 1, -4, 2, 1, 4, 2, -1, 4, 10, -1, 4, 10, 1, 4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ipg8k"]
+points = PackedVector3Array(14, 1, -4, 14, -1, -4, 22, -1, -4, 22, 1, -4, 14, 1, 4, 14, -1, 4, 22, -1, 4, 22, 1, 4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tlxls"]
+points = PackedVector3Array(-22, 1, 8, -22, -1, 8, -14, -1, 8, -14, 1, 8, -22, 1, 16, -22, -1, 16, -14, -1, 16, -14, 1, 16)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iunvo"]
+points = PackedVector3Array(-10, 1, 8, -10, -1, 8, -2, -1, 8, -2, 1, 8, -10, 1, 16, -10, -1, 16, -2, -1, 16, -2, 1, 16)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ohfsq"]
+points = PackedVector3Array(2, 1, 8, 2, -1, 8, 10, -1, 8, 10, 1, 8, 2, 1, 16, 2, -1, 16, 10, -1, 16, 10, 1, 16)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_smw7u"]
+points = PackedVector3Array(14, 1, 8, 14, -1, 8, 22, -1, 8, 22, 1, 8, 14, 1, 16, 14, -1, 16, 22, -1, 16, 22, 1, 16)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yy1hu"]
+points = PackedVector3Array(14, 1, 20, 14, -1, 20, 22, -1, 20, 22, 1, 20, 14, 1, 28, 14, -1, 28, 22, -1, 28, 22, 1, 28)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nw10u"]
+points = PackedVector3Array(-22, 1, 20, -22, -1, 20, -14, -1, 20, -14, 1, 20, -22, 1, 28, -22, -1, 28, -14, -1, 28, -14, 1, 28)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4xop3"]
+points = PackedVector3Array(-10, 1, 20, -10, -1, 20, -2, -1, 20, -2, 1, 20, -10, 1, 28, -10, -1, 28, -2, -1, 28, -2, 1, 28)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vli04"]
+points = PackedVector3Array(2, 1, 20, 2, -1, 20, 10, -1, 20, 10, 1, 20, 2, 1, 28, 2, -1, 28, 10, -1, 28, 10, 1, 28)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e1a3v"]
+points = PackedVector3Array(14, 1, 32, 14, -1, 32, 22, -1, 32, 22, 1, 32, 14, 1, 40, 14, -1, 40, 22, -1, 40, 22, 1, 40)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sel8o"]
+points = PackedVector3Array(-22, 1, 32, -22, -1, 32, -14, -1, 32, -14, 1, 32, -22, 1, 40, -22, -1, 40, -14, -1, 40, -14, 1, 40)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v3e6h"]
+points = PackedVector3Array(-10, 1, 32, -10, -1, 32, -2, -1, 32, -2, 1, 32, -10, 1, 40, -10, -1, 40, -2, -1, 40, -2, 1, 40)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6kogv"]
+points = PackedVector3Array(2, 1, 32, 2, -1, 32, 10, -1, 32, 10, 1, 32, 2, 1, 40, 2, -1, 40, 10, -1, 40, 10, 1, 40)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ixccc"]
+points = PackedVector3Array(-22, 1, 44, -22, -1, 44, -14, -1, 44, -14, 1, 44, -22, 1, 52, -22, -1, 52, -14, -1, 52, -14, 1, 52)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cxgmn"]
+points = PackedVector3Array(-10, 1, 44, -10, -1, 44, -2, -1, 44, -2, 1, 44, -10, 1, 52, -10, -1, 52, -2, -1, 52, -2, 1, 52)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qjo5t"]
+points = PackedVector3Array(2, 1, 44, 2, -1, 44, 10, -1, 44, 10, 1, 44, 2, 1, 52, 2, -1, 52, 10, -1, 52, 10, 1, 52)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6x0b7"]
+points = PackedVector3Array(14, 1, 44, 14, -1, 44, 22, -1, 44, 22, 1, 44, 14, 1, 52, 14, -1, 52, 22, -1, 52, 22, 1, 52)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_i65ph"]
+points = PackedVector3Array(-22, 1, 56, -22, -1, 56, -14, -1, 56, -14, 1, 56, -22, 1, 64, -22, -1, 64, -14, -1, 64, -14, 1, 64)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n5p8s"]
+points = PackedVector3Array(-10, 1, 56, -10, -1, 56, -2, -1, 56, -2, 1, 56, -10, 1, 64, -10, -1, 64, -2, -1, 64, -2, 1, 64)
+
+[sub_resource type="FogMaterial" id="FogMaterial_lmlt3"]
+albedo = Color(0, 1, 0, 1)
+
+[sub_resource type="Shader" id="Shader_07ks1"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mul,depth_draw_never,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float alpha_hash_scale;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	albedo_tex *= COLOR;
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	ALPHA *= albedo.a * albedo_tex.a;
+	ALPHA_HASH_SCALE = alpha_hash_scale;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7jyt"]
+render_priority = 0
+shader = SubResource("Shader_07ks1")
+shader_parameter/albedo = Color(0.752941, 1, 0.501961, 1)
+shader_parameter/alpha_hash_scale = 1.0
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_4pci3"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_rj4o3"]
+curve = SubResource("Curve_4pci3")
+
+[sub_resource type="Curve" id="Curve_pos2j"]
+min_value = -2.0
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6su4i"]
+curve = SubResource("Curve_pos2j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uep71"]
+emission_shape = 1
+emission_sphere_radius = 3.0
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_max = 1.0
+orbit_velocity_min = -0.01
+orbit_velocity_max = 0.01
+orbit_velocity_curve = SubResource("CurveTexture_6su4i")
+radial_velocity_min = -0.05
+radial_velocity_max = 0.05
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_rj4o3")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_2tjt0"]
+size = Vector3(0.0625, 0.0625, 0.0625)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fndb3"]
+radius = 2.5
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_y76j7")]
@@ -1050,139 +1602,139 @@ default_material = SubResource("StandardMaterial3D_dqicn")
 [node name="entity_0_worldspawn" type="StaticBody3D" parent="ParticleCollider/NavMesh/QodotMap"]
 
 [node name="entity_0_mesh_instance" type="MeshInstance3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-mesh = SubResource("ArrayMesh_1q4kh")
+mesh = SubResource("ArrayMesh_wcim7")
 
 [node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_yyrhb")
+shape = SubResource("ConvexPolygonShape3D_icdad")
 
 [node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_uxgj7")
+shape = SubResource("ConvexPolygonShape3D_2mcmd")
 
 [node name="entity_0_brush_2_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_jgtju")
+shape = SubResource("ConvexPolygonShape3D_go372")
 
 [node name="entity_0_brush_3_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_m6ss5")
+shape = SubResource("ConvexPolygonShape3D_jmgsw")
 
 [node name="entity_0_brush_4_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_xwyyy")
+shape = SubResource("ConvexPolygonShape3D_bxpxp")
 
 [node name="entity_0_brush_5_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_f2wks")
+shape = SubResource("ConvexPolygonShape3D_pld35")
 
 [node name="entity_0_brush_6_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_xmyq4")
+shape = SubResource("ConvexPolygonShape3D_qalej")
 
 [node name="entity_0_brush_7_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_8vqd0")
+shape = SubResource("ConvexPolygonShape3D_ps2of")
 
 [node name="entity_0_brush_8_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_18cly")
+shape = SubResource("ConvexPolygonShape3D_exhlb")
 
 [node name="entity_0_brush_9_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_pluvs")
+shape = SubResource("ConvexPolygonShape3D_7vgjk")
 
 [node name="entity_0_brush_10_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_h2tir")
+shape = SubResource("ConvexPolygonShape3D_gttia")
 
 [node name="entity_0_brush_11_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_qmkhr")
+shape = SubResource("ConvexPolygonShape3D_k7n7v")
 
 [node name="entity_0_brush_12_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_abidb")
+shape = SubResource("ConvexPolygonShape3D_p4n61")
 
 [node name="entity_0_brush_13_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_f0o3i")
+shape = SubResource("ConvexPolygonShape3D_ivcd1")
 
 [node name="entity_0_brush_14_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_narle")
+shape = SubResource("ConvexPolygonShape3D_wasp8")
 
 [node name="entity_0_brush_15_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_ewuco")
+shape = SubResource("ConvexPolygonShape3D_f34vm")
 
 [node name="entity_0_brush_16_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_nndru")
+shape = SubResource("ConvexPolygonShape3D_fxiv8")
 
 [node name="entity_0_brush_17_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_q3nu4")
+shape = SubResource("ConvexPolygonShape3D_0ujye")
 
 [node name="entity_0_brush_18_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_nxnw2")
+shape = SubResource("ConvexPolygonShape3D_ng1c5")
 
 [node name="entity_0_brush_19_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_pk5k8")
+shape = SubResource("ConvexPolygonShape3D_bpawn")
 
 [node name="entity_0_brush_20_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_y8qwq")
+shape = SubResource("ConvexPolygonShape3D_ee0p4")
 
 [node name="entity_0_brush_21_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_26umo")
+shape = SubResource("ConvexPolygonShape3D_ycbp1")
 
 [node name="entity_0_brush_22_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_mqtjj")
+shape = SubResource("ConvexPolygonShape3D_u3lsi")
 
 [node name="entity_0_brush_23_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_wng55")
+shape = SubResource("ConvexPolygonShape3D_ree2o")
 
 [node name="entity_0_brush_24_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_2jvc0")
+shape = SubResource("ConvexPolygonShape3D_i7cbk")
 
 [node name="entity_0_brush_25_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_te20x")
+shape = SubResource("ConvexPolygonShape3D_j0bep")
 
 [node name="entity_0_brush_26_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_j88vp")
+shape = SubResource("ConvexPolygonShape3D_015sn")
 
 [node name="entity_0_brush_27_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_hxncd")
+shape = SubResource("ConvexPolygonShape3D_fqy35")
 
 [node name="entity_0_brush_28_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_jr6x8")
+shape = SubResource("ConvexPolygonShape3D_0k7km")
 
 [node name="entity_0_brush_29_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_da617")
+shape = SubResource("ConvexPolygonShape3D_wpn52")
 
 [node name="entity_0_brush_30_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_saf81")
+shape = SubResource("ConvexPolygonShape3D_a02mj")
 
 [node name="entity_0_brush_31_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_wn2lu")
+shape = SubResource("ConvexPolygonShape3D_k3xx4")
 
 [node name="entity_0_brush_32_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_gw4gs")
+shape = SubResource("ConvexPolygonShape3D_kuw61")
 
 [node name="entity_0_brush_33_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_h8b3r")
+shape = SubResource("ConvexPolygonShape3D_5cf5y")
 
 [node name="entity_0_brush_34_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_oxemc")
+shape = SubResource("ConvexPolygonShape3D_ifttg")
 
 [node name="entity_0_brush_35_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_2cgyr")
+shape = SubResource("ConvexPolygonShape3D_xiqwd")
 
 [node name="entity_0_brush_36_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_w0vtw")
+shape = SubResource("ConvexPolygonShape3D_g86tf")
 
 [node name="entity_0_brush_37_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_apmpw")
+shape = SubResource("ConvexPolygonShape3D_w4bqx")
 
 [node name="entity_0_brush_38_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_p0n2r")
+shape = SubResource("ConvexPolygonShape3D_rx0mh")
 
 [node name="entity_0_brush_39_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_2bai0")
+shape = SubResource("ConvexPolygonShape3D_qysqg")
 
 [node name="entity_0_brush_40_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_hrcfp")
+shape = SubResource("ConvexPolygonShape3D_4fap1")
 
 [node name="entity_0_brush_41_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_qkg4t")
+shape = SubResource("ConvexPolygonShape3D_yetms")
 
 [node name="entity_0_brush_42_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_m4exv")
+shape = SubResource("ConvexPolygonShape3D_ne2of")
 
 [node name="entity_0_brush_43_collision_shape" type="CollisionShape3D" parent="ParticleCollider/NavMesh/QodotMap/entity_0_worldspawn"]
-shape = SubResource("ConvexPolygonShape3D_6fsnn")
+shape = SubResource("ConvexPolygonShape3D_eke44")
 
 [node name="StreetLamp" parent="ParticleCollider/NavMesh" instance=ExtResource("19_oi1ts")]
 
@@ -1195,6 +1747,8 @@ shape = SubResource("ConvexPolygonShape3D_6fsnn")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Things/Rendering/Lights"]
 transform = Transform3D(-0.707107, -0.664463, 0.241845, 0, 0.34202, 0.939693, -0.707107, 0.664463, -0.241845, 0, 3, 0)
 shadow_enabled = true
+shadow_bias = 0.5
+shadow_normal_bias = 5.345
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Things/Rendering/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, 7)
@@ -1323,13 +1877,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -39)
 [node name="Pinkerton5" parent="Things/Entities" instance=ExtResource("23_cjkah")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, -39)
 
-[node name="Lizard" parent="Things/Entities" instance=ExtResource("22_y1v5w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -25)
-wake_up_time = 1.0
-
-[node name="Enforcer" parent="Things/Entities" instance=ExtResource("23_gta54")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 2, -21.25)
-
 [node name="Pickups" type="Node" parent="Things"]
 
 [node name="ShellPickup" parent="Things/Pickups" instance=ExtResource("14_wnn8m")]
@@ -1444,28 +1991,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
 [node name="Destination" parent="Things/Teleporter" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="AmbushPoint3D" type="Marker3D" parent="Things" node_paths=PackedStringArray("trigger")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 10)
-script = ExtResource("33_2reti")
-ambusher = ExtResource("34_138mm")
-trigger = NodePath("../Area3D")
-
-[node name="AmbushPoint3D2" type="Marker3D" parent="Things" node_paths=PackedStringArray("trigger")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.5, 10)
-script = ExtResource("33_2reti")
-ambusher = ExtResource("35_qtyg3")
-trigger = NodePath("../Area3D")
-
-[node name="Area3D" type="Area3D" parent="Things"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5)
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/Area3D"]
-shape = SubResource("BoxShape3D_7x4x7")
-
-[node name="PlasmaDroid" parent="Things" instance=ExtResource("39_8f5m1")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -4.25, 1, -9.25)
-
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3)
 material_override = SubResource("StandardMaterial3D_ti0rx")
@@ -1479,5 +2004,118 @@ visible = false
 material_override = SubResource("ShaderMaterial_degdy")
 mesh = SubResource("BoxMesh_e4nf1")
 surface_material_override/0 = SubResource("StandardMaterial3D_i8meh")
+
+[node name="Water2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -12.5)
+visible = false
+material_override = ExtResource("46_ns7ic")
+mesh = SubResource("BoxMesh_e4nf1")
+surface_material_override/0 = SubResource("StandardMaterial3D_i8meh")
+
+[node name="QodotMap" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+script = ExtResource("8_y3vma")
+map_file = "C:/Users/lengl/Documents/Godot Projects/VolumetricsTest/maps/terrain_palette.map"
+entity_fgd = ExtResource("9_5wy7v")
+base_texture_dir = "res://materials"
+texture_file_extensions = PackedStringArray("png", "jpg", "jpeg", "bmp")
+default_material = SubResource("StandardMaterial3D_q0bu0")
+
+[node name="entity_0_worldspawn" type="StaticBody3D" parent="QodotMap"]
+
+[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="QodotMap/entity_0_worldspawn"]
+mesh = SubResource("ArrayMesh_62usx")
+
+[node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_6tscl")
+
+[node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_kguh7")
+
+[node name="entity_0_brush_2_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_rk16h")
+
+[node name="entity_0_brush_3_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_ipg8k")
+
+[node name="entity_0_brush_4_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_tlxls")
+
+[node name="entity_0_brush_5_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_iunvo")
+
+[node name="entity_0_brush_6_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_ohfsq")
+
+[node name="entity_0_brush_7_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_smw7u")
+
+[node name="entity_0_brush_8_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_yy1hu")
+
+[node name="entity_0_brush_9_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_nw10u")
+
+[node name="entity_0_brush_10_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_4xop3")
+
+[node name="entity_0_brush_11_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_vli04")
+
+[node name="entity_0_brush_12_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_e1a3v")
+
+[node name="entity_0_brush_13_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_sel8o")
+
+[node name="entity_0_brush_14_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_v3e6h")
+
+[node name="entity_0_brush_15_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_6kogv")
+
+[node name="entity_0_brush_16_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_ixccc")
+
+[node name="entity_0_brush_17_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_cxgmn")
+
+[node name="entity_0_brush_18_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_qjo5t")
+
+[node name="entity_0_brush_19_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_6x0b7")
+
+[node name="entity_0_brush_20_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_i65ph")
+
+[node name="entity_0_brush_21_collision_shape" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_n5p8s")
+
+[node name="GasCloud" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25, 1, -10.5)
+layers = 2
+size = Vector3(5, 5, 5)
+shape = 0
+material = SubResource("FogMaterial_lmlt3")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="GasCloud"]
+material_override = SubResource("ShaderMaterial_a7jyt")
+amount = 256
+lifetime = 5.0
+randomness = 1.0
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_uep71")
+draw_pass_1 = SubResource("BoxMesh_2tjt0")
+
+[node name="AreaHazard" type="Area3D" parent="GasCloud"]
+collision_mask = 6
+script = ExtResource("58_lrv2b")
+dps = 5.0
+player_dps_override = 5.0
+damage_type = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GasCloud/AreaHazard"]
+shape = SubResource("SphereShape3D_fndb3")
 
 [editable path="Things/Teleporter"]

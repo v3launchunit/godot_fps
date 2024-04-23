@@ -28,20 +28,22 @@ uniform vec3 uv2_offset;
 global uniform float viewmodel_fov;
 
 
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	
+
 	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
 	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
 	// modify projection matrix
 	PROJECTION_MATRIX[1][1] = -onetanfov;
 	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-	
+
 	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	//POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
 	POSITION.z = mix(POSITION.z, 0, 0.99);
 }
-
 
 void fragment() {
 	vec2 base_uv = UV;
@@ -92,20 +94,22 @@ uniform vec3 uv2_offset;
 global uniform float viewmodel_fov;
 
 
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	
+
 	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
 	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
 	// modify projection matrix
 	PROJECTION_MATRIX[1][1] = -onetanfov;
 	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-	
+
 	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	//POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
 	POSITION.z = mix(POSITION.z, 0, 0.99);
 }
-
 
 void fragment() {
 	vec2 base_uv = UV;
@@ -204,43 +208,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2iu2i")
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3q5q1"]
-animation = &"crossbow_anims/crossbow_charging"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nhy4f"]
-animation = &"crossbow_anims/crossbow_deploy"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x1u8f"]
-animation = &"crossbow_anims/crossbow_firing"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xok30"]
-animation = &"crossbow_anims/crossbow_idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ouq8"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f826a"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7cw0m"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_d86tq"]
-states/charging/node = SubResource("AnimationNodeAnimation_3q5q1")
-states/charging/position = Vector2(348, 184.667)
-states/deploy/node = SubResource("AnimationNodeAnimation_nhy4f")
-states/deploy/position = Vector2(345.333, 100.222)
-states/firing/node = SubResource("AnimationNodeAnimation_x1u8f")
-states/firing/position = Vector2(492.444, 185.556)
-states/idle/node = SubResource("AnimationNodeAnimation_xok30")
-states/idle/position = Vector2(492, 99.1852)
-transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_3ouq8"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_f826a"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_7cw0m")]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_55wpv"]
-radius = 16.0
-
 [sub_resource type="Animation" id="Animation_q1nis"]
 resource_name = "RESET"
 tracks/0/type = "position_3d"
@@ -303,17 +270,54 @@ _data = {
 "RESET": SubResource("Animation_q1nis")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3q5q1"]
+animation = &"crossbow_anims/crossbow_charging"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nhy4f"]
+animation = &"crossbow_anims/crossbow_deploy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x1u8f"]
+animation = &"crossbow_anims/crossbow_firing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xok30"]
+animation = &"crossbow_anims/crossbow_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ouq8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f826a"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7cw0m"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_d86tq"]
+states/charging/node = SubResource("AnimationNodeAnimation_3q5q1")
+states/charging/position = Vector2(348, 184.667)
+states/deploy/node = SubResource("AnimationNodeAnimation_nhy4f")
+states/deploy/position = Vector2(345.333, 100.222)
+states/firing/node = SubResource("AnimationNodeAnimation_x1u8f")
+states/firing/position = Vector2(492.444, 185.556)
+states/idle/node = SubResource("AnimationNodeAnimation_xok30")
+states/idle/position = Vector2(492, 99.1852)
+transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_3ouq8"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_f826a"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_7cw0m")]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_55wpv"]
+radius = 16.0
+
 [node name="Crossbow" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.35, 0)
 
 [node name="Crossbow" parent="." instance=ExtResource("1_cxeg4")]
 script = ExtResource("2_vadfq")
-category = 3
-index = 2
 bullet = ExtResource("3_71ym8")
 shot_cooldown = 1.7
 ammo_type = "cells"
 anti_clip_distance = 0.75
+category = 3
+index = 2
 
 [node name="Crossbow" parent="Crossbow" index="0"]
 layers = 4
@@ -359,9 +363,13 @@ draw_pass_1 = SubResource("ArrayMesh_avxgk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.95)
 
 [node name="AnimationTree" type="AnimationTree" parent="Crossbow"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_2b3ff"),
+"crossbow_anims": ExtResource("2_exmv2")
+}
 tree_root = SubResource("AnimationNodeStateMachine_d86tq")
 anim_player = NodePath("../../AnimationPlayer")
-active = true
 
 [node name="AlertRadius" type="Area3D" parent="Crossbow"]
 collision_layer = 2

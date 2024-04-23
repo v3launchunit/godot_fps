@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://ce7jor6ru8srq"]
 
 [ext_resource type="Script" path="res://scripts/objects/button.gd" id="1_53hhf"]
-[ext_resource type="Material" uid="uid://bw6jhxku4c7sm" path="res://materials/objects/shutter_door_2x3.tres" id="2_spwrc"]
+[ext_resource type="Material" uid="uid://b33py6y5v6idy" path="res://materials/objects/door_shutter_2x3.tres" id="2_asvw4"]
 [ext_resource type="AudioStream" uid="uid://ckncf1p1v8lhi" path="res://audio/streams/effects/metal_door_move.wav" id="3_2p1oe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qpqf2"]
@@ -129,7 +129,7 @@ shape = SubResource("BoxShape3D_qpqf2")
 shape = SubResource("BoxShape3D_28p6t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
-material_override = ExtResource("2_spwrc")
+material_override = ExtResource("2_asvw4")
 mesh = SubResource("BoxMesh_ljbsi")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

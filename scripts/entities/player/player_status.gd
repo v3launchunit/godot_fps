@@ -1,5 +1,7 @@
 class_name PlayerStatus extends Status
 
+signal key_acquired(key: int)
+
 @export_category("PlayerStatus")
 
 @export var max_armor: float = 100
@@ -10,9 +12,7 @@ var armor: float
 var held_keys: Array[bool] = [false, false, false]
 
 @onready var stream_player := get_parent().get_node("AudioStreamPlayer") as AudioStreamPlayer
-@onready var hud = get_parent().find_child("HUD")
-
-signal key_acquired(key: int)
+@onready var hud := get_parent().find_child("HUD") as HudHandler
 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,15 +43,15 @@ func _process(_delta: float) -> void:
 #			health = max_health
 
 
-func damage(amount: float) -> float: # returns damage dealt, for piercers
+func damage_typed(amount: float, type: DamageType) -> float: # returns damage dealt, for piercers
 	if is_dead:
 		return 0 # corpses cannot stop piercers
 	hud.flash(Color(1, 0, 0, clamp(amount / 10, 0.1, 1)))
 	if amount > 0:
 		stream_player.stream = injury_stream
 		stream_player.play()
-	health -= amount * (1 - armor_absorption)
-	armor  -= amount * armor_absorption
+	health -= amount * base_damage_factor * damage_multipliers[type] * (1 - armor_absorption)
+	armor  -= amount * base_damage_factor * damage_multipliers[type] * armor_absorption
 	if armor <= 0:
 		health += armor # armor will be negative
 		armor = 0
@@ -59,6 +59,16 @@ func damage(amount: float) -> float: # returns damage dealt, for piercers
 		kill()
 		return amount + health # health will be negative
 	return amount # return value is amount of damage recieved, for piercers
+
+
+func rapid_damage_typed(amount: float, type: DamageType) -> void:
+	health -= amount * base_damage_factor * damage_multipliers[type] * (1 - armor_absorption)
+	armor  -= amount * base_damage_factor * damage_multipliers[type] * armor_absorption
+	if armor <= 0:
+		health += armor # armor will be negative
+		armor = 0
+	if health <= 0:
+		kill()
 
 
 func kill():

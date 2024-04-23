@@ -4,6 +4,13 @@ extends Node
 ## settings, etc. It also handles saving and loading user settings to and from
 ## the disc and a few other scene-independent things.
 
+enum Difficulty {
+	EASY,
+	NORMAL,
+	HARD,
+	NIGHTMARE,
+}
+
 
 # ---------------------------------------------------------------------------- #
 # --------------------------------- CONSTANTS -------------------------------- #
@@ -50,6 +57,9 @@ var s_fov_desired: float = 120
 ## and generally ugly).
 var s_viewmodel_fov: float = 90
 
+var s_vertex_snap: int = 2
+var s_affine_warp: bool = false
+
 ## Toggles the procedural halos created by the "glow" post-processing effect.
 var s_glow_enabled: bool = false
 ## Toggles the mesh-based halos present on various light sources and
@@ -71,9 +81,10 @@ var s_sound_volume: float = 100.0
 ## Self-explanatory.
 var s_music_volume: float = 100.0
 
+## Self-explanatory.
+var s_difficulty := Difficulty.NORMAL
 ## Whether crouching is a toggle or a hold.
 var s_toggle_crouch: bool = false
-
 
 ## Tells scripts to check to see if the game's settings have been changed and
 ## to update any values they need to.
@@ -110,6 +121,8 @@ func _load_config() -> void:
 	s_crosshair_size = config.get_value("video", "crosshair_size", s_crosshair_size)
 	s_fov_desired = config.get_value("video", "fov_desired", s_fov_desired)
 	s_viewmodel_fov = config.get_value("video", "viewmodel_fov", s_viewmodel_fov)
+	s_vertex_snap = config.get_value("video", "vertex_snap", s_vertex_snap)
+	s_affine_warp = config.get_value("video", "affine_warp", s_affine_warp)
 	s_flares_enabled = config.get_value("video", "flares_enabled", s_flares_enabled)
 	s_glow_enabled = config.get_value("video", "glow_enabled", s_glow_enabled)
 	s_cross_glow_enabled = config.get_value("video", "cross_glow_enabled",
@@ -131,6 +144,8 @@ func _on_settings_changed() -> void:
 	config.set_value("video", "crosshair_size", s_crosshair_size)
 	config.set_value("video", "fov_desired", s_fov_desired)
 	config.set_value("video", "viewmodel_fov", s_viewmodel_fov)
+	config.set_value("video", "vertex_snap", s_vertex_snap)
+	config.set_value("video", "affine_warp", s_affine_warp)
 	config.set_value("video", "flares_enabled", s_flares_enabled)
 	config.set_value("video", "glow_enabled", s_glow_enabled)
 	config.set_value("video", "cross_glow_enabled", s_cross_glow_enabled)

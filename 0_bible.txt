@@ -237,10 +237,16 @@ Enemies:
 					Filter Curve EQ (radio preset)
 					Bitcrush (4 bits/sample, crush then resample)
 
-		Moonshiner:
+		Exterminator:
+			Medium
+			Medium
+			Ranged (flamethrower, gas grenades)
+
+		Soldier:
 			Tough
 			Slow
-			Ranged (rapid fire tommy gunn)
+			Ranged (akm, hand grenades)
+			Robo legs
 
 		Rocketeer:
 			Medium
@@ -265,7 +271,7 @@ Enemies:
 			Medium
 			Fast
 			Teleporter
-			Ranged (plasma burst)
+			Ranged (boomstick)
 			Voice Lines:
 				Detecting Player:
 				Dying:
@@ -336,6 +342,17 @@ Enemies:
 			Can deploy other enemies
 
 
+	Environment Hazards:
+		Airstrikes:
+			Come in several flavors
+			Dumb Bombs:
+				Big explosion
+			Gas Bombs:
+				Poison gas
+			Drop Pods:
+				Enemies
+
+
 	Charge attacker logic:
 		Target some distance away from player in random direction, facing target
 		Right before winding up, check to make sure that a clear path exists
@@ -348,7 +365,7 @@ Enemies:
 		When walking, build up "charge"
 		charge spent based on distance when teleporting
 		destination must be *empty* to teleport
-		cannot teleport to midair
+		cannot teleport to midair (will snap to floor instead)
 		Will teleport to:
 			5m directly behind target
 			random position toward target
@@ -375,7 +392,7 @@ Campaign:
 	E1:
 		Classic familiar world, mostly Locals and Military, Basic-type keys
 		E1M1 ("In the Flesh?"):
-
+		Intro level.
 			Weapons:
 				*Shotgun
 			Enemies:
@@ -481,9 +498,14 @@ Campaign:
 		E2M3 (""):
 		E2M4 (""):
 		E2M5 (""):
-		E2M6 (""):
-		E2M7 ("Heart Lungs Liver Nerves"):
+		E2M6 ("Heart Lungs Liver Nerves"):
 			The living interior of some great old one's body.
+		E2M7 ("The Nameless City"):
+			Self-explanatory.
+			Level ends w/ walking towards a portal, which is then cut off by
+			the slamming of a steel shutter door, as the player is swarmed by
+			Pinkertons. The player must then escape the now Military-infested
+			temple.
 		E2M8 ("The White Whale"):
 			Boss level.
 		E2S1 ("SUSK" [formatted like DUSK's title text]):
@@ -498,12 +520,7 @@ Campaign:
 		E3M1 (""):
 		E3M2 (""):
 		E3M3 (""):
-		E3M4 ("The Nameless City"):
-			Self-explanatory.
-			Level ends w/ walking towards a portal, which is then cut off by
-			the slamming of a steel shutter door, as the player is swarmed by
-			Pinkertons. The player must then escape the now Military-infested
-			temple.
+		E3M4 (""):
 		E3M5 ("King Rat"):
 			Where gods go to die.
 		E3M6 ("Whalefall"):
@@ -549,7 +566,7 @@ Campaign:
 
 Juicy Lore Bits:
 	Biology:
-		* All bone is metal
+		*All bone is metal
 		Most metal is bone
 		Humans:
 			Head is skinless, covered by thick exoskeleton made of exposed bone*
@@ -558,9 +575,10 @@ Juicy Lore Bits:
 			Eyes are covered by glass(?) membrane
 				Eyelids are metallic and behind said membrane
 				Irises are bioluminescent
-			Facial plastic surgery involves a lot of welding
+			Facial plastic surgery involves a lot of welding/metalworking
 			Glasses are very rare, only used if the correction needs to be contextual or something
-				Generally, sight disorders are corrected by way of surgically altering/replacing
+				Generally, sight disorders are corrected by way of surgically
+				altering/replacing the above-mentioned glass membranes
 
 		Crows:
 			Sapient
@@ -582,5 +600,13 @@ Credits:
 				Meeee :)
 			Voices:
 				Meeee :)
-		Tools:
-			Qodot
+		Code:
+			Meeee :)
+			Various publicly avaliable code/shader snippets
+
+	Tools:
+		Godot
+		Qodot
+		Aseprite
+		Laighter
+		Audacity

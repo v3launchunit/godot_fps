@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://c63k27ek72d3d"]
+[gd_scene load_steps=52 format=3 uid="uid://c63k27ek72d3d"]
 
 [ext_resource type="Script" path="res://scripts/entities/player/player.gd" id="1_30yaf"]
 [ext_resource type="AudioStream" uid="uid://c7enblvm4yyws" path="res://audio/streams/voices/player/hups/hup_1.wav" id="2_ltik2"]
@@ -28,12 +28,12 @@
 [ext_resource type="AudioStream" uid="uid://chxa831hh5rn7" path="res://audio/streams/voices/player/hups/hup_10.wav" id="19_xssea"]
 [ext_resource type="Script" path="res://scripts/entities/player/weapon_manager.gd" id="21_ffg7x"]
 [ext_resource type="Script" path="res://scripts/entities/player/game_container.gd" id="22_xo3e0"]
-[ext_resource type="Shader" path="res://shaders/chromatic_abberration.gdshader" id="25_tf358"]
+[ext_resource type="Shader" path="res://shaders/canvas/post_process/chromatic_abberration.gdshader" id="25_l6y17"]
 [ext_resource type="Script" path="res://scripts/entities/player/flashlight.gd" id="25_we7ax"]
+[ext_resource type="Shader" path="res://shaders/canvas/post_process/cross_bloom.gdshader" id="26_rpeim"]
 [ext_resource type="Script" path="res://scripts/entities/player/player_status.gd" id="28_ee1uu"]
-[ext_resource type="Shader" path="res://shaders/cross_bloom.gdshader" id="29_lcani"]
 [ext_resource type="AudioStream" uid="uid://c4letg1n03lmd" path="res://audio/streams/voices/player/damage_placeholder.wav" id="32_2hkf1"]
-[ext_resource type="Shader" path="res://shaders/cross_bloom_mesh.gdshader" id="32_knaf5"]
+[ext_resource type="Shader" path="res://shaders/spatial/cross_bloom_mesh.gdshader" id="33_60325"]
 [ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="34_0co5b"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ww5sc"]
@@ -102,11 +102,44 @@ stream_0/stream = ExtResource("32_2hkf1")
 stream_0/weight = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fiixt"]
-shader = ExtResource("25_tf358")
+shader = ExtResource("25_l6y17")
 shader_parameter/split = Vector2(10, 0)
 
+[sub_resource type="Shader" id="Shader_xnhus"]
+code = "shader_type canvas_item;
+
+render_mode blend_add;
+
+uniform float threshold: hint_range(0.0, 1.0, 0.01) = 0.9;
+uniform float scale = 2.0;
+uniform sampler2D screen_tex: hint_screen_texture, filter_nearest_mipmap;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR = max(scale * (textureLod(screen_tex, SCREEN_UV, scale) - threshold), vec4(0.0));
+	COLOR += max(scale * (textureLod(screen_tex, SCREEN_UV + SCREEN_PIXEL_SIZE * vec2(pow(2, scale), 0.0), scale) - threshold), vec4(0.0));
+	COLOR += max(scale * (textureLod(screen_tex, SCREEN_UV - SCREEN_PIXEL_SIZE * vec2(pow(2, scale), 0.0), scale) - threshold), vec4(0.0));
+	COLOR += max(scale * (textureLod(screen_tex, SCREEN_UV + SCREEN_PIXEL_SIZE * vec2(0.0, pow(2, scale)), scale) - threshold), vec4(0.0));
+	COLOR += max(scale * (textureLod(screen_tex, SCREEN_UV - SCREEN_PIXEL_SIZE * vec2(0.0, pow(2, scale)), scale) - threshold), vec4(0.0));
+	//COLOR /= 1.0 - scale;
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3u2iu"]
+shader = SubResource("Shader_xnhus")
+shader_parameter/threshold = 0.9
+shader_parameter/scale = 5.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7t8ki"]
-shader = ExtResource("29_lcani")
+shader = ExtResource("26_rpeim")
 shader_parameter/intensity = 1.0
 shader_parameter/threshold = 0.9
 shader_parameter/spread = 12
@@ -136,7 +169,7 @@ size = Vector3(0.5, 0.5, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65bbo"]
 render_priority = 0
-shader = ExtResource("32_knaf5")
+shader = ExtResource("33_60325")
 shader_parameter/strength = 0.08
 shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/radius = 0.25
@@ -208,6 +241,17 @@ mouse_filter = 2
 [node name="ChromaticAbberation" type="ColorRect" parent="Control"]
 visible = false
 material = SubResource("ShaderMaterial_fiixt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PixelBloom" type="ColorRect" parent="Control"]
+visible = false
+material = SubResource("ShaderMaterial_3u2iu")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -303,7 +347,6 @@ target_position = Vector3(0, 0, -4)
 collision_mask = 61
 hit_from_inside = true
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="Sightline" type="RayCast3D" parent="Control/SubViewportContainer/SubViewport/PlayerSync/PlayerCam"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)

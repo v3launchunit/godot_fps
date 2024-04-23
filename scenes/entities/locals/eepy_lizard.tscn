@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://68ll8lt6xqyd"]
+[gd_scene load_steps=98 format=3 uid="uid://68ll8lt6xqyd"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_lizard.gd" id="1_vmwu0"]
 [ext_resource type="PackedScene" uid="uid://dj8yo2whvp2w7" path="res://scenes/bullets/enemy/enemy_melee_scan.tscn" id="2_p5c7q"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://audio/streams/voices/wilhelm_scream.ogg" id="7_d0ams"]
 [ext_resource type="PackedScene" uid="uid://pidxth8qpjjm" path="res://models/entities/lizard.glb" id="8_ccvo6"]
 [ext_resource type="Texture2D" uid="uid://ds5gx6rr0ytfx" path="res://textures/effects/snore.png" id="9_s2a04"]
+[ext_resource type="Shader" path="res://shaders/spatial/unlit_mix_psx.gdshader" id="10_ashiv"]
 [ext_resource type="AnimationLibrary" uid="uid://bre8ccbuc7fbn" path="res://scenes/entities/locals/lizard_anims.res" id="10_f64uo"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="11_sgqsl"]
 [ext_resource type="PackedScene" uid="uid://cqctw8dd0ar4n" path="res://scenes/effects/damage/damage_sys.tscn" id="12_sfw3v"]
@@ -75,6 +76,49 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_5fp4o")
 size = Vector2(0.25, 0.25)
 
+[sub_resource type="Shader" id="Shader_lt305"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_normal : hint_roughness_normal,filter_nearest,repeat_enable;
+uniform float normal_scale : hint_range(-16,16);
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+}
+"
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_n0fpp"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1ywp7"]
@@ -85,13 +129,28 @@ as_normal_map = true
 bump_strength = 3.0
 noise = SubResource("FastNoiseLite_n0fpp")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uepsu"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
-metallic = 1.0
-roughness = 0.25
-normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_1ywp7")
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_674vb"]
+render_priority = 0
+shader = SubResource("Shader_lt305")
+shader_parameter/albedo = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_1ywp7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxr7w"]
+render_priority = 0
+shader = ExtResource("10_ashiv")
+shader_parameter/albedo = Color(1, 0, 0, 1)
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
 
 [sub_resource type="Gradient" id="Gradient_mj6ne"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -116,12 +175,62 @@ height = 0.05
 radial_segments = 8
 rings = 3
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c02c6"]
+render_priority = 0
+shader = ExtResource("10_ashiv")
+shader_parameter/albedo = Color(1, 0, 0, 1)
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
+
 [sub_resource type="SphereMesh" id="SphereMesh_42m1i"]
 material = SubResource("StandardMaterial3D_niape")
 radius = 0.1
 height = 0.05
 radial_segments = 8
 rings = 3
+
+[sub_resource type="Shader" id="Shader_hyf2c"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_normal : hint_roughness_normal,filter_nearest,repeat_enable;
+uniform float normal_scale : hint_range(-16,16);
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+}
+"
 
 [sub_resource type="Gradient" id="Gradient_4v7yc"]
 interpolation_mode = 1
@@ -145,12 +254,22 @@ as_normal_map = true
 bump_strength = 4.0
 noise = SubResource("FastNoiseLite_lq8pl")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8atw"]
-albedo_color = Color(0.752941, 0.501961, 0.752941, 1)
-albedo_texture = SubResource("NoiseTexture2D_vk4du")
-normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_tdvix")
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77woe"]
+render_priority = 0
+shader = SubResource("Shader_hyf2c")
+shader_parameter/albedo = Color(0.752941, 0.501961, 0.752941, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_vk4du")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_tdvix")
 
 [sub_resource type="Animation" id="Animation_j4qs2"]
 resource_name = "RESET"
@@ -681,7 +800,7 @@ bones/28/rotation = Quaternion(-0.500011, 0, 0, 0.866019)
 bones/29/rotation = Quaternion(-0.258969, 0, 0, 0.965886)
 
 [node name="Head" type="BoneAttachment3D" parent="lizard/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, 1.17217e-10, 1.49025e-08, 1.49025e-08, -0.01573, -0.999876, 1.17214e-10, 0.999876, -0.01573, 4.68868e-10, -0.0629201, 3.99951)
+transform = Transform3D(1, 7.11015e-12, 8.19411e-10, 8.19411e-10, -0.0173576, -0.999849, 7.11398e-12, 0.999849, -0.0173576, 2.84406e-11, -0.0694304, 3.9994)
 bone_name = "Head"
 bone_idx = 6
 
@@ -699,16 +818,17 @@ process_material = SubResource("ParticleProcessMaterial_enddm")
 draw_pass_1 = SubResource("QuadMesh_me12s")
 
 [node name="JawLeft" parent="lizard/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1.49025e-08, 1, 1.17217e-10, -0.999876, 1.49025e-08, -0.01573, -0.01573, 1.17214e-10, 0.999876, 5.27476e-10, -0.0707851, 4.49944)
+transform = Transform3D(8.19411e-10, 1, 7.11015e-12, -0.999849, 8.19411e-10, -0.0173576, -0.0173576, 7.11398e-12, 0.999849, 3.19957e-11, -0.0781091, 4.49932)
 
 [node name="JawLeft" parent="lizard/Armature/Skeleton3D/JawLeft" index="0"]
 transform = Transform3D(1, -1.42108e-14, 0, -1.25528e-14, 1, -1.42109e-14, 0, 0, 1, 0, 0, 0)
 layers = 2
-material_override = SubResource("StandardMaterial3D_uepsu")
+material_override = SubResource("ShaderMaterial_674vb")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="lizard/Armature/Skeleton3D/JawLeft/JawLeft" index="0"]
 transform = Transform3D(-5.00001, -2.98024e-07, 2.38419e-07, 1.13687e-13, -5, 2.98023e-07, -2.38419e-07, -5.68434e-14, 5, 1.78814e-07, 1, 2.125)
 layers = 2
+material_override = SubResource("ShaderMaterial_uxr7w")
 amount = 16
 lifetime = 0.25
 fixed_fps = 60
@@ -718,30 +838,31 @@ draw_pass_1 = SubResource("SphereMesh_2vp0u")
 [node name="SpawnerRight" type="Marker3D" parent="lizard/Armature/Skeleton3D/JawLeft/JawLeft/GPUParticles3D"]
 
 [node name="HornLeftBottom" parent="lizard/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-1.17217e-10, 1.49025e-08, -1, 0.01573, -0.999876, -1.49025e-08, -0.999876, -0.01573, -1.17214e-10, 1.2, -0.585667, 5.44146)
+transform = Transform3D(-7.11015e-12, 8.19411e-10, -1, 0.0173576, -0.999849, -8.19411e-10, -0.999849, -0.0173576, -7.11398e-12, 1.2, -0.594524, 5.4405)
 
 [node name="HornLeftBottom" parent="lizard/Armature/Skeleton3D/HornLeftBottom" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_uepsu")
+material_override = SubResource("ShaderMaterial_674vb")
 
 [node name="HornLeftTop" parent="lizard/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1.49025e-08, 1.17217e-10, -1, -0.999876, -0.01573, -1.49025e-08, -0.01573, 0.999876, -1.17214e-10, 1.2, 0.414209, 5.45719)
+transform = Transform3D(8.19411e-10, 7.11015e-12, -1, -0.999849, -0.0173576, -8.19411e-10, -0.0173576, 0.999849, -7.11398e-12, 1.2, 0.405326, 5.45786)
 
 [node name="HornLeftTop" parent="lizard/Armature/Skeleton3D/HornLeftTop" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_uepsu")
+material_override = SubResource("ShaderMaterial_674vb")
 
 [node name="JawRight" parent="lizard/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-1.49025e-08, -1, 1.17217e-10, 0.999876, -1.49025e-08, -0.01573, 0.01573, -1.17214e-10, 0.999876, 5.27476e-10, -0.0707851, 4.49944)
+transform = Transform3D(-8.19411e-10, -1, 7.11015e-12, 0.999849, -8.19411e-10, -0.0173576, 0.0173576, -7.11398e-12, 0.999849, 3.19957e-11, -0.0781091, 4.49932)
 
 [node name="JawRight" parent="lizard/Armature/Skeleton3D/JawRight" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 7.57849e-15, 0, 3.07846e-15, 1, 0, 0, 0)
 layers = 2
-material_override = SubResource("StandardMaterial3D_uepsu")
+material_override = SubResource("ShaderMaterial_674vb")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="lizard/Armature/Skeleton3D/JawRight/JawRight" index="0"]
 transform = Transform3D(-5, 2.98023e-07, 0, -1.42109e-14, -5, 2.98023e-07, -2.38419e-07, -5.68434e-14, 5, -1.78814e-07, 1, 2.125)
 layers = 2
+material_override = SubResource("ShaderMaterial_c02c6")
 amount = 16
 lifetime = 0.25
 fixed_fps = 60
@@ -751,23 +872,23 @@ draw_pass_1 = SubResource("SphereMesh_42m1i")
 [node name="SpawnerLeft" type="Marker3D" parent="lizard/Armature/Skeleton3D/JawRight/JawRight/GPUParticles3D"]
 
 [node name="HornRightBottom" parent="lizard/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-1.17217e-10, -1.49025e-08, 1, 0.01573, 0.999876, 1.49025e-08, -0.999876, 0.01573, 1.17214e-10, -1.2, -0.585667, 5.44146)
+transform = Transform3D(-7.11015e-12, -8.19411e-10, 1, 0.0173576, 0.999849, 8.19411e-10, -0.999849, 0.0173576, 7.11398e-12, -1.2, -0.594523, 5.4405)
 
 [node name="HornRightBottom" parent="lizard/Armature/Skeleton3D/HornRightBottom" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_uepsu")
+material_override = SubResource("ShaderMaterial_674vb")
 
 [node name="HornRightTop" parent="lizard/Armature/Skeleton3D" index="6"]
-transform = Transform3D(2.35509e-08, -1.17217e-10, 1, -0.999876, 0.01573, 2.35499e-08, -0.01573, -0.999876, 2.53255e-10, -1.2, 0.414209, 5.45719)
+transform = Transform3D(9.4679e-09, -7.11015e-12, 1, -0.999849, 0.0173576, 9.4666e-09, -0.0173576, -0.999849, 1.57231e-10, -1.2, 0.405326, 5.45786)
 
 [node name="HornRightTop" parent="lizard/Armature/Skeleton3D/HornRightTop" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_uepsu")
+material_override = SubResource("ShaderMaterial_674vb")
 
 [node name="Body" parent="lizard/Armature/Skeleton3D" index="7"]
 transform = Transform3D(1, -0.000383972, 1.42109e-14, 0.000383972, 1, -5.79782e-11, 1.42109e-14, 5.79782e-11, 1, 0, 0, 0)
 layers = 2
-material_override = SubResource("StandardMaterial3D_x8atw")
+material_override = SubResource("ShaderMaterial_77woe")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 1.5
