@@ -4,29 +4,35 @@ class_name BrushDoor
 extends AnimatableBody3D
 
 @export var properties: Dictionary
+@export var configured: bool = false
 
 var open: bool = false
 var audio_player: AudioStreamPlayer3D
+#var nav_link: NavigationLink3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint():
-		(get_child(0) as MeshInstance3D).layers = 0b00000_00000_00000_00010
-	else:
-		if properties.get("group") != "null":
-			add_to_group(properties.get("group"), true)
+		return
+	if properties.get("group") != "null":
+		add_to_group(properties.get("group"), true)
 
-		audio_player = AudioStreamPlayer3D.new()
-		audio_player.bus = "World"
-		audio_player.doppler_tracking = AudioStreamPlayer3D.DOPPLER_TRACKING_PHYSICS_STEP
-		audio_player.stream = load(properties.get("sound_file"))
-		add_child(audio_player)
-		#audio_player.position = properties.get("sound_pos") #* 0.0625
-		audio_player.position = get_child(1).shape.points[0]
+	audio_player = AudioStreamPlayer3D.new()
+	audio_player.bus = "World"
+	audio_player.doppler_tracking = AudioStreamPlayer3D.DOPPLER_TRACKING_PHYSICS_STEP
+	audio_player.stream = load(properties.get("sound_file"))
+	add_child(audio_player)
+	#audio_player.position = properties.get("sound_pos") #* 0.0625
+	audio_player.position = get_child(1).shape.points[0]
+
+	#nav_link = NavigationLink3D.new()
 
 
 func _physics_process(delta: float) -> void:
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() and not configured:
+		get_child(0).layers = 2
+		#get_child(0).set_layer_mask_value(1, false)
+		#get_child(0).set_layer_mask_value(2, true)
 		return
 	position = position.move_toward(
 			properties.get("open_pos") if open else Vector3.ZERO,
