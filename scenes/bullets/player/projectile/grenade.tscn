@@ -74,6 +74,7 @@ contact_monitor = true
 script = ExtResource("1_1kcle")
 speed = 35.0
 damage = 100.0
+damage_type = 1
 explosion = ExtResource("2_pnu70")
 piercer = false
 

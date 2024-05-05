@@ -44,6 +44,7 @@ Weapons:
 		Boomstick:
 			Primary: Super Shot
 			Secondary: Sawblade Launcher
+				Hold to spin blade w/o launching (a la ultrakill sawed-on)(?)
 
 	Slot 3 (Automatics):
 		AKM:
@@ -60,8 +61,9 @@ Weapons:
 		Big Iron:
 			Primary: Big Shot
 			Secondary: Scope
+				Stronger than that of AKM
 		Hunting Rifle:
-			Primary: Medium Shot
+			Primary: Big Dump
 				Uses big iron ammo
 			Secondary: Charge
 				Increases damage, costs 1 ammo
@@ -74,14 +76,21 @@ Weapons:
 		Hand Cannon:
 			Stylize as flare gun(?)
 			Primary: Bouncy Grenade
-				Hold "fire" to charge
+				Uses grenade ammo(?)
+				Hold "fire" to charge range
 				Grenade deals impact damage without exploding
 				Bonus damage for double donk?
 			Secondary: Detonate
 				Maybe have it as pistol - shoot grenade to blow it up
+		Howitzer:
+			Primary: Shell Shot
+				Uses grenade ammo(?)
+			Secondary: Scope
 		RPG:
 			Primary: Guided Missile
 			Secondary: Homing Missiles
+				Uses grenade ammo
+				Fires 5 missiles
 
 	Slot 6 (Misc.):
 		Flamethrower:
@@ -246,12 +255,15 @@ Enemies:
 			Tough
 			Slow
 			Ranged (akm, hand grenades)
-			Robo legs
+			Robo legs(?)
 
 		Rocketeer:
 			Medium
 			Medium
-			Ranged (homing rockets, fast rockets)
+			Ranged (fast rockets, homing rockets, diving rockets)
+				Fast rockets travel in a straight line
+				Homing rockets track player, half as fast as fast rockets
+				Diving rockets go towards above player, then drop once they're above the player
 			Voice Lines:
 				Detecting Player:
 					"Enemy spotted."
@@ -266,6 +278,13 @@ Enemies:
 					Compression
 					Filter Curve EQ (radio preset)
 					Vinyl (1930, lofi)
+
+		Minigunner:
+			Tough
+			Slow
+			Ranged (Rapid Fire Minigun)
+				tracking accuracy and rate of fire increases the longer line of
+				sight is maintained
 
 		Flux Trooper:
 			Medium
@@ -353,7 +372,7 @@ Enemies:
 				Enemies
 
 
-	Charge attacker logic:
+	Charge attacker enemy logic:
 		Target some distance away from player in random direction, facing target
 		Right before winding up, check to make sure that a clear path exists
 				toward target (via shapecast)
@@ -361,7 +380,7 @@ Enemies:
 		Charge extremely fast in chosen direction
 
 
-	Teleporter Logic:
+	Teleporter enemy Logic:
 		When walking, build up "charge"
 		charge spent based on distance when teleporting
 		destination must be *empty* to teleport
@@ -392,14 +411,13 @@ Campaign:
 	E1:
 		Classic familiar world, mostly Locals and Military, Basic-type keys
 		E1M1 ("In the Flesh?"):
-		Intro level.
-			Weapons:
-				*Shotgun
-			Enemies:
-				*Pinkerton
-				*Canary
+			Intro level.
+				Weapons:
+					*Shotgun
+				Enemies:
+					*Pinkerton
+					*Canary
 		E1M2 ("The Color out of Space"):
-
 			Weapons:
 				*AKM
 			Enemies:
@@ -607,6 +625,7 @@ Credits:
 	Tools:
 		Godot
 		Qodot
+		TrenchBroom
 		Aseprite
 		Laighter
 		Audacity

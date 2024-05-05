@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=6 format=3 uid="uid://b42lledbeltgc"]
+
+[ext_resource type="Resource" uid="uid://dqwqqvs3kuly8" path="res://trench_broom/custom_points.tres" id="1_2pt6c"]
+[ext_resource type="Resource" uid="uid://dg1cf7dvcvmmd" path="res://trench_broom/entity_defs/brush/destructible_solid_class.tres" id="2_j7210"]
+[ext_resource type="Resource" uid="uid://bn8ijfkkxi53l" path="res://trench_broom/entity_defs/brush/door_solid_class.tres" id="3_xs02u"]
+[ext_resource type="Resource" uid="uid://viho8nejlj1n" path="res://trench_broom/entity_defs/brush/water_solid_class.tres" id="4_aut6p"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="5_pp68m"]
+
+[resource]
+script = ExtResource("5_pp68m")
+export_file = false
+target_folder = "C:/Users/lengl/Desktop/Miscellaneous Apps/TrenchBroom/games/VolumetricsTest"
+fgd_name = "Solids"
+base_fgd_files = Array[Resource]([ExtResource("1_2pt6c")])
+entity_definitions = Array[Resource]([ExtResource("2_j7210"), ExtResource("3_xs02u"), ExtResource("4_aut6p")])

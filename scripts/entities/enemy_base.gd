@@ -39,6 +39,7 @@ enum State {
 @export var knockback_drag: float = 10.0
 ## Self-explanatory.
 @export_range(0.0, 3.0, 0.1, "or_greater") var jump_height: float = 0.0
+@export var target_pos_offset: Vector3 = Vector3.ZERO
 
 @export_group("Detection")
 ## If enabled, prevents sight-based detection.

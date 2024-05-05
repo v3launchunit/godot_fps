@@ -1595,7 +1595,7 @@
 ( 64 1008 -256 ) ( -858 1008 -256 ) ( 64 752 -256 ) terrain/trench_broom/bricks_brown 0 0 0 1 1
 ( 64 752 0 ) ( -794 752 0 ) ( 64 1008 0 ) terrain/trench_broom/dirt 0 0 0 1 1
 ( 64 1008 0 ) ( -858 1008 0 ) ( 64 1008 -16 ) special/clip 0 0 0 1 1
-( 64 752 0 ) ( 64 1008 0 ) ( 64 752 -16 ) special/skip 0 0 0 1 1
+( 64 752 0 ) ( 64 1008 0 ) ( 64 752 -16 ) special/clip 0 0 0 1 1
 }
 // brush 159
 {
@@ -2830,6 +2830,115 @@
 ( -448 -896 400 ) ( 160 -896 400 ) ( 160 -1024 400 ) terrain/trench_broom/rock 0 0 0 1 1
 ( 160 -896 0 ) ( 160 -896 400 ) ( -448 -896 400 ) terrain/trench_broom/rock 0 0 0 1 1
 ( 160 -1024 400 ) ( 160 -896 400 ) ( 160 -896 0 ) special/clip 0 0 0 1 1
+}
+// brush 279
+{
+( -952 -200 0 ) ( -952 -199 0 ) ( -952 -200 1 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+( -952 -200 0 ) ( -952 -200 1 ) ( -951 -200 0 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+( -952 -200 0 ) ( -951 -200 0 ) ( -952 -199 0 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+( -936 -184 80 ) ( -936 -183 80 ) ( -935 -184 80 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+( -936 -184 64 ) ( -935 -184 64 ) ( -936 -184 65 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+( -936 -184 64 ) ( -936 -184 65 ) ( -936 -183 64 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+}
+// brush 280
+{
+( -896 -264 0 ) ( -896 -263 0 ) ( -896 -264 1 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -896 -264 0 ) ( -896 -264 1 ) ( -895 -264 0 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -896 -264 0 ) ( -895 -264 0 ) ( -896 -263 0 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -880 -248 80 ) ( -880 -247 80 ) ( -879 -248 80 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -880 -248 64 ) ( -879 -248 64 ) ( -880 -248 65 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -880 -248 64 ) ( -880 -248 65 ) ( -880 -247 64 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+}
+// brush 281
+{
+( -952 -200 96 ) ( -952 -184 80 ) ( -952 -184 96 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+( -896 -264 96 ) ( -952 -200 80 ) ( -952 -200 96 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+( -880 -264 96 ) ( -896 -264 80 ) ( -896 -264 96 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+( -880 -248 80 ) ( -896 -264 80 ) ( -880 -264 80 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+( -880 -248 96 ) ( -952 -184 96 ) ( -936 -184 96 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+( -936 -184 96 ) ( -952 -184 80 ) ( -936 -184 80 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+( -936 -184 80 ) ( -880 -248 96 ) ( -936 -184 96 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+( -880 -248 96 ) ( -880 -264 80 ) ( -880 -264 96 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
+}
+// brush 282
+{
+( -1104 -400 96 ) ( -1104 -399 96 ) ( -1104 -400 97 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1104 -400 96 ) ( -1104 -400 97 ) ( -1103 -400 96 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1104 -400 96 ) ( -1103 -400 96 ) ( -1104 -399 96 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -392 144 ) ( -1096 -391 144 ) ( -1095 -392 144 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -392 144 ) ( -1095 -392 144 ) ( -1096 -392 145 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -392 144 ) ( -1096 -392 145 ) ( -1096 -391 144 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+}
+// brush 283
+{
+( -1104 -400 144 ) ( -1104 -399 144 ) ( -1104 -400 145 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1104 -400 144 ) ( -1104 -400 145 ) ( -1103 -400 144 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1104 -400 144 ) ( -1103 -400 144 ) ( -1104 -399 144 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -352 152 ) ( -1096 -351 152 ) ( -1095 -352 152 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -352 152 ) ( -1095 -352 152 ) ( -1096 -352 153 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -352 152 ) ( -1096 -352 153 ) ( -1096 -351 152 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+}
+// brush 284
+{
+( -1104 -360 96 ) ( -1104 -359 96 ) ( -1104 -360 97 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1104 -360 96 ) ( -1104 -360 97 ) ( -1103 -360 96 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1104 -360 96 ) ( -1103 -360 96 ) ( -1104 -359 96 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -352 144 ) ( -1096 -351 144 ) ( -1095 -352 144 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -352 144 ) ( -1095 -352 144 ) ( -1096 -352 145 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -352 144 ) ( -1096 -352 145 ) ( -1096 -351 144 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+}
+// brush 285
+{
+( -1104 -360 128 ) ( -1104 -360 144 ) ( -1104 -368 144 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -368 144 ) ( -1096 -360 128 ) ( -1104 -360 128 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1104 -360 144 ) ( -1096 -360 144 ) ( -1096 -368 144 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -360 128 ) ( -1096 -360 144 ) ( -1104 -360 144 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -368 144 ) ( -1096 -360 144 ) ( -1096 -360 128 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+}
+// brush 286
+{
+( -1104 -392 144 ) ( -1104 -392 128 ) ( -1104 -384 144 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1104 -392 144 ) ( -1096 -392 144 ) ( -1096 -392 128 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1104 -384 144 ) ( -1096 -384 144 ) ( -1096 -392 144 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -392 128 ) ( -1096 -384 144 ) ( -1104 -384 144 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+( -1096 -392 144 ) ( -1096 -384 144 ) ( -1096 -392 128 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
+}
+// brush 287
+{
+( -608 -304 112 ) ( -608 -320 112 ) ( -608 -320 0 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -608 -320 112 ) ( -592 -320 0 ) ( -608 -320 0 ) terrain/trench_broom/key_metal_green 6.883606 0 0 1 1
+( -592 -320 0 ) ( -592 -304 0 ) ( -608 -304 0 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -592 -304 0 ) ( -592 -304 96 ) ( -608 -304 112 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -608 -304 112 ) ( -592 -304 96 ) ( -608 -320 112 ) terrain/trench_broom/key_metal_green 9.600037 -6.399994 0 1 1
+( -608 -320 112 ) ( -592 -304 96 ) ( -592 -320 0 ) terrain/trench_broom/key_metal_green -6.3999634 9.600006 0 1 1
+( -592 -320 0 ) ( -592 -304 96 ) ( -592 -304 0 ) terrain/trench_broom/key_metal_green -6.399994 9.600006 0 1 1
+}
+// brush 288
+{
+( -496 -304 96 ) ( -496 -320 96 ) ( -496 -320 0 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -496 -304 96 ) ( -480 -304 112 ) ( -480 -320 112 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -496 -320 96 ) ( -480 -320 112 ) ( -480 -320 0 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -480 -320 0 ) ( -480 -304 0 ) ( -496 -304 0 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -480 -304 0 ) ( -480 -304 112 ) ( -496 -304 96 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -480 -320 112 ) ( -480 -304 112 ) ( -480 -304 0 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+}
+// brush 289
+{
+( -544 -304 128 ) ( -544 -320 128 ) ( -544 -320 112 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -544 -304 112 ) ( -544 -320 112 ) ( -496 -320 96 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -544 -320 128 ) ( -480 -320 112 ) ( -496 -320 96 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -496 -304 96 ) ( -480 -304 112 ) ( -544 -304 128 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -544 -304 128 ) ( -480 -304 112 ) ( -480 -320 112 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -480 -320 112 ) ( -480 -304 112 ) ( -496 -304 96 ) terrain/trench_broom/key_metal_green 8 -8 0 1 1
+}
+// brush 290
+{
+( -592 -304 96 ) ( -608 -304 112 ) ( -608 -320 112 ) terrain/trench_broom/key_metal_green 8 -8 0 1 1
+( -608 -304 112 ) ( -544 -304 128 ) ( -544 -320 128 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -608 -320 112 ) ( -544 -320 128 ) ( -544 -320 112 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -544 -304 112 ) ( -544 -304 128 ) ( -608 -304 112 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -544 -320 112 ) ( -544 -304 112 ) ( -592 -304 96 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
+( -544 -320 128 ) ( -544 -304 128 ) ( -544 -304 112 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
 }
 }
 // entity 1

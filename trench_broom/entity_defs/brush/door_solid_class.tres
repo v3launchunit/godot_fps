@@ -16,9 +16,10 @@ base_classes = Array[Resource]([])
 class_properties = {
 "closeable": false,
 "group": "none",
+"nav_link_offset": Vector3(0, 0, 1.5),
 "open_pos": Vector3(0, 0, 0),
 "open_sound_path": "res://audio/streams/effects/metal_door_move.wav",
-"open_speed": 5.0,
+"open_speed": 3.0,
 "remote_only": false,
 "required_key": -1,
 "sound_pos": Vector3(0, 0, 0)

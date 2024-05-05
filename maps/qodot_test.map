@@ -4,6 +4,7 @@
 {
 "classname" "worldspawn"
 "_tb_textures" "textures;textures/terrain;textures/terrain/trench_broom"
+"_tb_def" "external:games/VolumetricsTest/Qodot.fgd"
 // brush 0
 {
 ( -64 64 16 ) ( -64 -64 0 ) ( -64 -80 -16 ) terrain/trench_broom/bricks 0 0 0 1 1
@@ -401,4 +402,14 @@
 ( 256 64 0 ) ( 256 65 0 ) ( 257 64 0 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
 ( 256 0 0 ) ( 192 64 128 ) ( 192 64 0 ) terrain/trench_broom/lava_flowing 0 0 0 1 1
 }
+}
+// entity 1
+{
+"classname" "lamp"
+"origin" "0 456 128"
+}
+// entity 2
+{
+"classname" "lamp"
+"origin" "0 -24 48"
 }

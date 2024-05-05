@@ -85,10 +85,12 @@ func do_attack() -> void:
 
 		var instance: Node3D = current_bullet.instantiate()
 		current_spawner.add_child(instance)
-		instance.reparent(get_tree().root)
+		instance.reparent(get_tree().current_scene)
 		if instance is PhysicsBody3D:
 			instance.add_collision_exception_with(self)
 			add_collision_exception_with(instance)
+			if instance is HomingRocket:
+				instance.target = current_targets[-1]
 		if instance is Hitscan:
 			instance.query_origin = global_position
 			instance.exceptions.append(self)

@@ -1,11 +1,13 @@
-[gd_scene load_steps=33 format=3 uid="uid://dco7xp2cwuyge"]
+[gd_scene load_steps=42 format=3 uid="uid://dco7xp2cwuyge"]
 
 [ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="1_eyiwv"]
 [ext_resource type="Script" path="res://scripts/auto_play.gd" id="2_w10mg"]
 [ext_resource type="Script" path="res://scripts/effects/area_damage.gd" id="3_6neht"]
+[ext_resource type="Texture2D" uid="uid://djg6ch15ainnw" path="res://textures/effects/radial_n.png" id="3_kqyqy"]
 [ext_resource type="ArrayMesh" uid="uid://cx13p5fo0cmf6" path="res://models/effects/octagon_quad.obj" id="3_nm51l"]
 [ext_resource type="AudioStream" uid="uid://tv57kig5mcoh" path="res://audio/streams/effects/kaboom.wav" id="4_evxji"]
 [ext_resource type="AudioStream" uid="uid://b4em0t5e3pb8a" path="res://audio/streams/effects/vine_boom.mp3" id="5_8svvk"]
+[ext_resource type="Shader" path="res://shaders/canvas/canvas_shockwave.gdshader" id="7_wpe3s"]
 
 [sub_resource type="Gradient" id="Gradient_6b6sv"]
 interpolation_mode = 2
@@ -64,22 +66,32 @@ vertex_color_use_as_albedo = true
 material = SubResource("StandardMaterial3D_isnhk")
 size = Vector3(0.063, 0.063, 0.063)
 
+[sub_resource type="Curve" id="Curve_6ewcs"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_ba7py"]
+curve = SubResource("Curve_6ewcs")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t1l36"]
 particle_flag_align_y = true
 direction = Vector3(0, 1, 0)
 spread = 90.0
-initial_velocity_min = 25.0
+initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_ba7py")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3t175"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjj7o"]
 transparency = 1
 shading_mode = 0
+vertex_color_use_as_albedo = true
 albedo_color = Color(1, 1, 1, 0.5)
 use_particle_trails = true
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_0yp4d"]
-material = SubResource("StandardMaterial3D_3t175")
+material = SubResource("StandardMaterial3D_mjj7o")
 radius = 0.031
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3anle"]
@@ -138,7 +150,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D:surface_material_override/0:albedo_color")
+tracks/3/path = NodePath("Fireball:surface_material_override/0:albedo_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -150,7 +162,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("MeshInstance3D:material_override:albedo_color")
+tracks/4/path = NodePath("Fireball:material_override:albedo_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -219,6 +231,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [Color(1, 1, 0, 1)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ShrapnelSys:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_l41wm"]
 resource_name = "anim"
@@ -262,14 +286,14 @@ tracks/2/keys = {
 tracks/3/type = "scale_3d"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D")
+tracks/3/path = NodePath("Fireball")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.3, 1, 10, 10, 10)
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("MeshInstance3D:material_override:albedo_color")
+tracks/4/path = NodePath("Fireball:material_override:albedo_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = false
 tracks/4/keys = {
@@ -345,6 +369,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [Color(1, 1, 0, 1), Color(1, 0, 0, 0)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ShrapnelSys:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7h3vl"]
 _data = {
@@ -366,9 +402,32 @@ fill_to = Vector2(1, 0.5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rl26o"]
 resource_local_to_scene = true
 transparency = 1
+cull_mode = 2
 shading_mode = 0
 albedo_color = Color(1, 1, 0, 1)
 albedo_texture = SubResource("GradientTexture2D_303r5")
+
+[sub_resource type="Gradient" id="Gradient_t0civ"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gnu2c"]
+gradient = SubResource("Gradient_t0civ")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3k7u8"]
+depth_draw_mode = 2
+no_depth_test = true
+disable_fog = true
+albedo_color = Color(1, 1, 1, 0)
+metallic_specular = 0.0
+roughness = 0.0
+normal_enabled = true
+normal_texture = ExtResource("3_kqyqy")
+refraction_enabled = true
+refraction_texture = SubResource("GradientTexture2D_gnu2c")
+billboard_mode = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_er5bi"]
 radius = 3.0
@@ -389,6 +448,31 @@ stream_0/stream = SubResource("AudioStreamRandomizer_2hwim")
 stream_0/weight = 100.0
 stream_1/stream = ExtResource("5_8svvk")
 stream_1/weight = 0.001
+
+[sub_resource type="GDScript" id="GDScript_h85ix"]
+script/source = "extends Control
+
+var cam: Camera3D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	cam = get_tree().get_first_node_in_group(\"player_cam\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	visible = not cam.is_position_behind(get_parent().global_position)
+	position = cam.unproject_position(get_parent().global_position)
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4l7w"]
+shader = ExtResource("7_wpe3s")
+shader_parameter/strength = 0.08
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.25
+shader_parameter/aberration = 0.425
+shader_parameter/width = 0.04
+shader_parameter/feather = 0.135
 
 [node name="Explosion" type="Node3D"]
 
@@ -419,19 +503,18 @@ process_material = SubResource("ParticleProcessMaterial_wsbfl")
 draw_pass_1 = SubResource("BoxMesh_msm45")
 
 [node name="ShrapnelSys" type="GPUParticles3D" parent="."]
-visible = false
 layers = 2
-emitting = false
 amount = 32
-lifetime = 0.5
+lifetime = 0.25
 one_shot = true
 explosiveness = 1.0
+transform_align = 2
 trail_enabled = true
-trail_lifetime = 0.15
+trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_t1l36")
 draw_pass_1 = SubResource("TubeTrailMesh_0yp4d")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Fireball" type="MeshInstance3D" parent="."]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 layers = 2
 material_override = SubResource("StandardMaterial3D_3anle")
@@ -452,6 +535,13 @@ script = ExtResource("2_w10mg")
 [node name="Blastwave" type="MeshInstance3D" parent="."]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_rl26o")
+mesh = ExtResource("3_nm51l")
+skeleton = NodePath("../AnimationPlayer")
+
+[node name="Shockwave" type="MeshInstance3D" parent="."]
+visible = false
+sorting_offset = -100.0
+material_override = SubResource("StandardMaterial3D_3k7u8")
 mesh = ExtResource("3_nm51l")
 skeleton = NodePath("../AnimationPlayer")
 
@@ -487,3 +577,21 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 script = ExtResource("1_eyiwv")
+
+[node name="Control" type="Control" parent="."]
+process_mode = 4
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_h85ix")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Control"]
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_k4l7w")
+layout_mode = 0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0

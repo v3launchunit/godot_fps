@@ -1,0 +1,459 @@
+[gd_scene load_steps=51 format=3 uid="uid://cy8hwffqmck3s"]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_attack_pattern.gd" id="1_amqno"]
+[ext_resource type="PackedScene" uid="uid://dtybrk353o1i5" path="res://scenes/bullets/enemy/rockets/enemy_fast_rocket.tscn" id="2_tab8w"]
+[ext_resource type="Script" path="res://scripts/entities/attack_pattern.gd" id="2_tv63j"]
+[ext_resource type="PackedScene" uid="uid://d3ab78gmit1mf" path="res://models/entities/rocketeer.glb" id="2_x8iq8"]
+[ext_resource type="Script" path="res://scripts/entities/status.gd" id="3_0r7lt"]
+[ext_resource type="PackedScene" uid="uid://2virpprjewql" path="res://scenes/bullets/enemy/rockets/enemy_homing_rocket.tscn" id="4_1g82w"]
+[ext_resource type="PackedScene" uid="uid://cqctw8dd0ar4n" path="res://scenes/effects/damage/damage_sys.tscn" id="4_31foi"]
+[ext_resource type="Texture2D" uid="uid://cvtdvqqtnk5sc" path="res://textures/entities/enemies/rocketeer/rocketeer_albedo.png" id="4_yy6cj"]
+[ext_resource type="PackedScene" uid="uid://c5pbs8t6p7ogl" path="res://scenes/effects/gibs/gibs.tscn" id="5_xapab"]
+[ext_resource type="Texture2D" uid="uid://dc7cakxmr78h2" path="res://textures/entities/enemies/rocketeer/rocketeer_metallic.png" id="5_y5yxy"]
+[ext_resource type="Texture2D" uid="uid://cobrnuaq2l63n" path="res://textures/entities/enemies/rocketeer/rocketeer_roughness.png" id="6_i5ae8"]
+[ext_resource type="PackedScene" uid="uid://coopugxxes4xq" path="res://scenes/pickups/ammo/grenade_pickup.tscn" id="8_krnfx"]
+[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="9_vr1y5"]
+[ext_resource type="AnimationLibrary" uid="uid://c2ie0ye0ecnev" path="res://scenes/entities/military/rocketeer_anims.res" id="10_7nbok"]
+[ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://scenes/pickups/health/health_pack_pickup.tscn" id="12_fn6s3"]
+
+[sub_resource type="Resource" id="Resource_07esl"]
+script = ExtResource("2_tv63j")
+weight = 1.0
+bullet = ExtResource("2_tab8w")
+volley = 1
+spread = 0.0
+spawners = Array[NodePath]([NodePath("Rocketeer/Armature/Skeleton3D/rocket/rocket/Spawner")])
+delay = 0.5
+recovery_time = 0.5
+animation = &"attacking"
+burst = 1
+burst_delay = 0.1
+cancelable = false
+
+[sub_resource type="Resource" id="Resource_bb3lr"]
+script = ExtResource("2_tv63j")
+weight = 1.0
+bullet = ExtResource("4_1g82w")
+volley = 1
+spread = 0.0
+spawners = Array[NodePath]([NodePath("Rocketeer/Armature/Skeleton3D/rocket/rocket/Spawner")])
+delay = 0.5
+recovery_time = 0.75
+animation = &"attacking"
+burst = 1
+burst_delay = 0.1
+cancelable = false
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_5fauj"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_aqjtk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4e2dm"]
+height = 3.0
+
+[sub_resource type="Shader" id="Shader_snc4y"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_am0uh"]
+render_priority = 0
+shader = SubResource("Shader_snc4y")
+shader_parameter/albedo = Color(0.501961, 0.501961, 0.501961, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flj7k"]
+render_priority = 0
+shader = SubResource("Shader_snc4y")
+shader_parameter/albedo = Color(0.501961, 0.501961, 0.501961, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jaueq"]
+albedo_texture = ExtResource("4_yy6cj")
+metallic = 1.0
+metallic_texture = ExtResource("5_y5yxy")
+roughness_texture = ExtResource("6_i5ae8")
+texture_filter = 0
+
+[sub_resource type="Animation" id="Animation_5gldx"]
+resource_name = "RESET"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocketeer/Armature/Skeleton3D:Spine")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.0871557, 0, 0, 0.996195)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocketeer/Armature/Skeleton3D:Spine.001")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.300706, 0, 0, 0.953717)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocketeer/Armature/Skeleton3D:Neck")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rocketeer/Armature/Skeleton3D:Head")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.21644, 0, 0, 0.976296)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Rocketeer/Armature/Skeleton3D:LeftShoulder")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, -0.579228, 0.579228, 0.40558, 0.40558)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Rocketeer/Armature/Skeleton3D:LeftArm")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.230055, -0.236158, 0.676253, 0.658776)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Rocketeer/Armature/Skeleton3D:LeftArm.001")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.553936, -0.130947, 0.0778407, 0.818504)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Rocketeer/Armature/Skeleton3D:LeftArm.002")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.221483, -0.032309, 0.295357, 0.928798)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Rocketeer/Armature/Skeleton3D:RightShoulder")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, -0.5, -0.5, 0.5, -0.5)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Rocketeer/Armature/Skeleton3D:RightArm")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0.585078, -0.337795, 0.368639, 0.638501)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Rocketeer/Armature/Skeleton3D:RightArm.001")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0, 0, 0.816642, 0.577145)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Rocketeer/Armature/Skeleton3D:RightArm.002")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, 0, 0, -0.426569, 0.904455)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Rocketeer/Armature/Skeleton3D:rpg")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, -0.5, 0.5, 0.5, 0.5)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Rocketeer/Armature/Skeleton3D:rocket")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/14/type = "rotation_3d"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Rocketeer/Armature/Skeleton3D:Backpack")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, 3.7749e-08, 0, 0, 1)
+tracks/15/type = "rotation_3d"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Rocketeer/Armature/Skeleton3D:LeftLeg")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = PackedFloat32Array(0, 1, -0.704697, 0.0583225, 0.704697, 0.0583225)
+tracks/16/type = "rotation_3d"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Rocketeer/Armature/Skeleton3D:LeftLeg.001")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = PackedFloat32Array(0, 1, 0.00780262, -9.06806e-08, -1.6966e-08, 0.99997)
+tracks/17/type = "rotation_3d"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Rocketeer/Armature/Skeleton3D:RightLeg")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = PackedFloat32Array(0, 1, 0.704697, 0.0583225, 0.704697, -0.0583225)
+tracks/18/type = "rotation_3d"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Rocketeer/Armature/Skeleton3D:RightLeg.001")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = PackedFloat32Array(0, 1, 0.00780262, 9.06806e-08, 1.6966e-08, 0.99997)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ext3k"]
+_data = {
+"RESET": SubResource("Animation_5gldx")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ad7o0"]
+animation = &"rocketeer_anims/rocketeer_ambush"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bvr3c"]
+animation = &"rocketeer_anims/rocketeer_fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dttdc"]
+animation = &"rocketeer_anims/rocketeer_death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b1cvq"]
+animation = &"rocketeer_anims/rocketeer_flinch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wep46"]
+animation = &"rocketeer_anims/rocketeer_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_24wru"]
+animation = &"rocketeer_anims/rocketeer_move"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wt158"]
+advance_mode = 2
+
+[sub_resource type="Curve" id="Curve_6r4lb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c5aao"]
+xfade_time = 0.25
+xfade_curve = SubResource("Curve_6r4lb")
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j21ie"]
+xfade_time = 0.25
+xfade_curve = SubResource("Curve_6r4lb")
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eheve"]
+xfade_time = 0.25
+xfade_curve = SubResource("Curve_6r4lb")
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u45xb"]
+xfade_time = 0.5
+xfade_curve = SubResource("Curve_6r4lb")
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_054ne"]
+xfade_time = 0.25
+xfade_curve = SubResource("Curve_6r4lb")
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dooni"]
+xfade_time = 0.1
+xfade_curve = SubResource("Curve_6r4lb")
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ixwv"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_igi8r"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ieyo"]
+xfade_time = 0.25
+xfade_curve = SubResource("Curve_6r4lb")
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mvpsc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uhhig"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n53ba"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1xpau"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mwftu"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jej1e"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_f30pq"]
+states/ambush/node = SubResource("AnimationNodeAnimation_ad7o0")
+states/ambush/position = Vector2(349.827, 99.037)
+states/attacking/node = SubResource("AnimationNodeAnimation_bvr3c")
+states/attacking/position = Vector2(784.333, 182.807)
+states/dead/node = SubResource("AnimationNodeAnimation_dttdc")
+states/dead/position = Vector2(380.333, 285.045)
+states/flinching/node = SubResource("AnimationNodeAnimation_b1cvq")
+states/flinching/position = Vector2(712.074, 276.251)
+states/idle/node = SubResource("AnimationNodeAnimation_wep46")
+states/idle/position = Vector2(521.037, 101.309)
+states/moving/node = SubResource("AnimationNodeAnimation_24wru")
+states/moving/position = Vector2(712.778, 99.9534)
+transitions = ["Start", "ambush", SubResource("AnimationNodeStateMachineTransition_wt158"), "ambush", "idle", SubResource("AnimationNodeStateMachineTransition_c5aao"), "idle", "moving", SubResource("AnimationNodeStateMachineTransition_j21ie"), "moving", "attacking", SubResource("AnimationNodeStateMachineTransition_eheve"), "moving", "idle", SubResource("AnimationNodeStateMachineTransition_u45xb"), "attacking", "idle", SubResource("AnimationNodeStateMachineTransition_054ne"), "attacking", "flinching", SubResource("AnimationNodeStateMachineTransition_dooni"), "moving", "flinching", SubResource("AnimationNodeStateMachineTransition_8ixwv"), "idle", "flinching", SubResource("AnimationNodeStateMachineTransition_igi8r"), "flinching", "idle", SubResource("AnimationNodeStateMachineTransition_5ieyo"), "moving", "dead", SubResource("AnimationNodeStateMachineTransition_mvpsc"), "flinching", "dead", SubResource("AnimationNodeStateMachineTransition_uhhig"), "attacking", "dead", SubResource("AnimationNodeStateMachineTransition_n53ba"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_1xpau"), "ambush", "dead", SubResource("AnimationNodeStateMachineTransition_mwftu"), "ambush", "flinching", SubResource("AnimationNodeStateMachineTransition_jej1e")]
+graph_offset = Vector2(-98, 82)
+
+[node name="Rocketeer" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 87
+script = ExtResource("1_amqno")
+patterns = Array[ExtResource("2_tv63j")]([SubResource("Resource_07esl"), SubResource("Resource_bb3lr")])
+speed = 5.0
+detection_stream = SubResource("AudioStreamGenerator_5fauj")
+attack_interval = 4.0
+attack_range = 128.0
+death_stream = SubResource("AudioStreamGenerator_aqjtk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4e2dm")
+
+[node name="Rocketeer" parent="." instance=ExtResource("2_x8iq8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.125, 0)
+
+[node name="Skeleton3D" parent="Rocketeer/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.0871557, 0, 0, 0.996195)
+bones/1/rotation = Quaternion(0.300706, 0, 0, 0.953717)
+bones/3/rotation = Quaternion(-0.21644, 0, 0, 0.976296)
+bones/4/rotation = Quaternion(-0.579228, 0.579228, 0.40558, 0.40558)
+bones/5/rotation = Quaternion(0.230055, -0.236158, 0.676253, 0.658776)
+bones/6/rotation = Quaternion(0.553936, -0.130947, 0.0778407, 0.818504)
+bones/7/rotation = Quaternion(0.221483, -0.032309, 0.295357, 0.928798)
+bones/8/rotation = Quaternion(0.5, 0.5, -0.5, 0.5)
+bones/9/rotation = Quaternion(0.585078, -0.337795, 0.368639, 0.638501)
+bones/10/rotation = Quaternion(0, 0, 0.816642, 0.577145)
+bones/11/rotation = Quaternion(0, 0, -0.426569, 0.904455)
+bones/12/rotation = Quaternion(-0.5, 0.5, 0.5, 0.5)
+bones/14/rotation = Quaternion(3.7749e-08, 0, 0, 1)
+bones/15/rotation = Quaternion(-0.704697, 0.0583225, 0.704697, 0.0583225)
+bones/16/rotation = Quaternion(0.00780262, -9.06806e-08, -1.6966e-08, 0.99997)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(0.704697, 0.0583225, 0.704697, -0.0583225)
+bones/18/rotation = Quaternion(0.00780262, 9.06806e-08, 1.6966e-08, 0.99997)
+bones/18/scale = Vector3(1, 1, 1)
+
+[node name="rpg" parent="Rocketeer/Armature/Skeleton3D" index="0"]
+transform = Transform3D(3.98478, -0.304914, -0.169016, 0.316944, 3.97619, 0.299131, 0.145207, -0.311385, 3.98522, 3.15752, 4.84372, 9.52001)
+
+[node name="rpg" parent="Rocketeer/Armature/Skeleton3D/rpg" index="0"]
+material_override = SubResource("ShaderMaterial_am0uh")
+
+[node name="rocket" parent="Rocketeer/Armature/Skeleton3D" index="1"]
+transform = Transform3D(3.98478, -0.304914, -0.169016, 0.316944, 3.97619, 0.299131, 0.145207, -0.311385, 3.98522, 3.33133, 5.91071, 2.42132)
+
+[node name="rocket" parent="Rocketeer/Armature/Skeleton3D/rocket" index="0"]
+material_override = SubResource("ShaderMaterial_am0uh")
+
+[node name="Spawner" type="Marker3D" parent="Rocketeer/Armature/Skeleton3D/rocket/rocket" index="0"]
+
+[node name="Backpack" parent="Rocketeer/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.909128, -0.416517, 0, 0.416517, 0.909128, 0, 5.41336, -0.820287)
+
+[node name="Backpack" parent="Rocketeer/Armature/Skeleton3D/Backpack" index="0"]
+material_override = SubResource("ShaderMaterial_flj7k")
+
+[node name="Rocketeer" parent="Rocketeer/Armature/Skeleton3D" index="3"]
+material_override = SubResource("StandardMaterial3D_jaueq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 1.5
+target_desired_distance = 3.0
+height = 2.0
+max_speed = 100.0
+
+[node name="SightLine" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+target_position = Vector3(0, 0, -16)
+collision_mask = 3
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+attenuation_model = 3
+bus = &"Enemies"
+doppler_tracking = 2
+
+[node name="Status" type="Node" parent="."]
+script = ExtResource("3_0r7lt")
+max_health = 200.0
+gib_threshold = 0.0
+damage_sys = ExtResource("4_31foi")
+gibs = ExtResource("5_xapab")
+loot = Array[PackedScene]([ExtResource("12_fn6s3"), ExtResource("8_krnfx")])
+
+[node name="StairStepper" parent="." instance=ExtResource("9_vr1y5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ext3k"),
+"rocketeer_anims": ExtResource("10_7nbok")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ext3k"),
+"rocketeer_anims": ExtResource("10_7nbok")
+}
+tree_root = SubResource("AnimationNodeStateMachine_f30pq")
+anim_player = NodePath("../AnimationPlayer")
+
+[editable path="Rocketeer"]

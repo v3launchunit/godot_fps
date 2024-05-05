@@ -86,7 +86,7 @@ func _ready() -> void:
 
 
 func _process(_delta) -> void:
-	if is_on_floor() and jumps < max_jumps:
+	if jumps < max_jumps and is_on_floor():
 		jumps = max_jumps
 
 	if Input.is_action_pressed("jump") and jumps > 0:
@@ -159,6 +159,10 @@ func _physics_process(delta: float) -> void:
 
 	velocity = velocity.clamp(-max_speed, max_speed)
 	move_and_slide()
+
+	if position.y < Globals.C_PLAYER_MIN_HEIGHT:
+		position.y = -Globals.C_PLAYER_MIN_HEIGHT
+		grav_vel = Vector3.ZERO
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -301,7 +305,11 @@ func _gravity(delta: float) -> Vector3:
 						if Input.is_action_pressed("jump")
 						else fall_grav
 				), 0),
-				gravity * delta
+				(
+						rise_grav
+						if Input.is_action_pressed("jump")
+						else fall_grav
+				) * delta
 		)
 	return grav_vel
 
@@ -314,13 +322,15 @@ func _jump(delta: float) -> Vector3:
 		jumping = false
 		reorienting = false
 		return jump_vel
-	#if not Input.is_action_pressed("jump"):
-	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(
-			Vector3.ZERO, (
-					rise_grav
-					if Input.is_action_pressed("jump")
-					else fall_grav
-			) * delta)
+	if is_on_floor():
+		jump_vel = Vector3.ZERO
+	elif not Input.is_action_pressed("jump"):
+		jump_vel = jump_vel.move_toward(
+				Vector3.ZERO, (
+						rise_grav
+						#if Input.is_action_pressed("jump")
+						#else fall_grav
+				) * delta)
 	return jump_vel
 
 

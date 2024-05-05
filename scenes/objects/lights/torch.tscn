@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://nb7gtaflp4vs"]
+[gd_scene load_steps=30 format=3 uid="uid://nb7gtaflp4vs"]
 
 [ext_resource type="Shader" path="res://shaders/spatial/unlit_add_psx.gdshader" id="1_ef1wa"]
 [ext_resource type="Material" uid="uid://08yqplf2icxd" path="res://materials/effects/fire_halo.tres" id="2_m1aex"]
@@ -205,6 +205,15 @@ vertex_color_use_as_albedo = true
 material = SubResource("StandardMaterial3D_6ruwr")
 size = Vector3(0.0625, 0.0625, 0.0625)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvp88"]
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+use_point_size = true
+point_size = 2.0
+
+[sub_resource type="PointMesh" id="PointMesh_bm88g"]
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_66wxe"]
 load_path = "res://.godot/imported/halo.png-88068247d44276e09ca924d46b3606d1.s3tc.ctex"
 
@@ -263,6 +272,20 @@ randomness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_jd63c")
 draw_pass_1 = SubResource("BoxMesh_xu4jy")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+visible = false
+layers = 2
+material_override = SubResource("StandardMaterial3D_jvp88")
+cast_shadow = 0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
+amount = 1024
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_jd63c")
+draw_pass_1 = SubResource("PointMesh_bm88g")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)

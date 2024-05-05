@@ -1325,6 +1325,67 @@
 }
 // entity 16
 {
+"classname" "door"
+"open_pos" "0 4.5 0"
+"required_key" "1"
+// brush 0
+{
+( -576 -332 0 ) ( -576 -331 0 ) ( -576 -332 1 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -580 -332 0 ) ( -580 -332 1 ) ( -579 -332 0 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -580 -332 0 ) ( -579 -332 0 ) ( -580 -331 0 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -512 -324 96 ) ( -512 -323 96 ) ( -511 -324 96 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -512 -324 48 ) ( -511 -324 48 ) ( -512 -324 49 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -512 -324 48 ) ( -512 -324 49 ) ( -512 -323 48 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+}
+}
+// entity 17
+{
+"classname" "door"
+"open_pos" "0 3 0"
+"required_key" "2"
+// brush 0
+{
+( -952 -200 16 ) ( -952 -256 16 ) ( -952 -256 8 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -1021.4896551724125 -125.87586206896441 16 ) ( -845.4896551724125 -333.8758620689644 144 ) ( -845.4896551724125 -333.8758620689644 16 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -952 -256 16 ) ( -888 -256 16 ) ( -888 -256 8 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -888 -256 8 ) ( -888 -200 8 ) ( -952 -200 8 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -952 -200 64 ) ( -888 -200 64 ) ( -888 -256 64 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -888 -200 8 ) ( -888 -200 16 ) ( -952 -200 16 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -835.048275862069 -322.5793103448276 16 ) ( -1011.048275862069 -114.57931034482763 144 ) ( -1011.048275862069 -114.57931034482763 16 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+}
+}
+// entity 18
+{
+"classname" "door"
+"required_key" "0"
+"open_pos" "0 2.5 0"
+// brush 0
+{
+( -1116 -392 96 ) ( -1116 -391 96 ) ( -1116 -392 97 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -1116 -392 96 ) ( -1116 -392 97 ) ( -1115 -392 96 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -1116 -392 96 ) ( -1115 -392 96 ) ( -1116 -391 96 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -1108 -356 144 ) ( -1108 -355 144 ) ( -1107 -356 144 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -1108 -360 132 ) ( -1107 -360 132 ) ( -1108 -360 133 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -1108 -356 132 ) ( -1108 -356 133 ) ( -1108 -355 132 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+}
+}
+// entity 19
+{
+"classname" "door"
+"open_pos" "0 2.75 0"
+"required_key" "1"
+// brush 0
+{
+( -960 692 -432 ) ( -960 693 -432 ) ( -960 692 -431 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -960 692 -432 ) ( -960 692 -431 ) ( -959 692 -432 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -960 692 -432 ) ( -959 692 -432 ) ( -960 693 -432 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -912 700 -384 ) ( -912 701 -384 ) ( -911 700 -384 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -912 700 -384 ) ( -911 700 -384 ) ( -912 700 -383 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+( -912 700 -384 ) ( -912 700 -383 ) ( -912 701 -384 ) terrain/trench_broom/shutter_door 0 0 0 1 1
+}
+}
+// entity 20
+{
 "classname" "func_group"
 "_tb_type" "_tb_layer"
 "_tb_name" "House1"
@@ -1438,7 +1499,7 @@
 ( -264 -64 16 ) ( -264 -32 16 ) ( -264 -32 0 ) terrain/trench_broom/bricks_brown 0 24 0 1 1
 }
 }
-// entity 17
+// entity 21
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -1464,7 +1525,7 @@
 ( -208 -48 112 ) ( -200 -48 96 ) ( -200 -256 96 ) terrain/trench_broom/log 0 0 0 1 1
 }
 }
-// entity 18
+// entity 22
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -1535,7 +1596,7 @@
 ( -224 -206 64 ) ( -224 -206 65 ) ( -224 -205 64 ) terrain/trench_broom/planks 0 0 0 1 1
 }
 }
-// entity 19
+// entity 23
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -1595,7 +1656,7 @@
 ( -212 -228 96 ) ( -212 -228 97 ) ( -212 -227 96 ) terrain/trench_broom/log 4 0 0 1 1
 }
 }
-// entity 20
+// entity 24
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"
@@ -1872,7 +1933,7 @@
 ( -576 58 144 ) ( -576 186 112 ) ( -576 58 112 ) terrain/trench_broom/glass 0 0 0 1 1
 }
 }
-// entity 21
+// entity 25
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -1897,7 +1958,7 @@
 ( -520 168 24 ) ( -488 168 8 ) ( -488 152 8 ) special/skip 0 0 0 1 1
 }
 }
-// entity 22
+// entity 26
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -1923,7 +1984,7 @@
 ( -512 40 144 ) ( -512 216 144 ) ( -512 216 136 ) terrain/trench_broom/log -8 0 0 1 1
 }
 }
-// entity 23
+// entity 27
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"
@@ -2048,7 +2109,7 @@
 ( -1104 -368 144 ) ( -1104 -360 144 ) ( -1104 -360 128 ) terrain/trench_broom/bricks 0 0 0 1 1
 }
 }
-// entity 24
+// entity 28
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -2099,7 +2160,7 @@
 ( -1096 -352 144 ) ( -1096 -352 145 ) ( -1096 -351 144 ) terrain/trench_broom/key_metal_red 0 0 0 1 1
 }
 }
-// entity 25
+// entity 29
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -2136,7 +2197,7 @@
 ( -880 -248 64 ) ( -880 -248 65 ) ( -880 -247 64 ) terrain/trench_broom/key_metal_blue 0 0 0 1 1
 }
 }
-// entity 26
+// entity 30
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -2197,7 +2258,7 @@
 ( -848 -416 64 ) ( -848 -336 64 ) ( -848 -336 48 ) terrain/trench_broom/metal 0 0 0 1 1
 }
 }
-// entity 27
+// entity 31
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -2232,7 +2293,7 @@
 ( -923.0375661240682 -212.4101491261011 128 ) ( -923.0375661240682 -212.4101491261011 48 ) ( -902.2957672092638 -236.9231842072337 128 ) terrain/trench_broom/bricks 0 0 0 1 1
 }
 }
-// entity 28
+// entity 32
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"
@@ -2409,7 +2470,7 @@
 ( -589.475223509298 572.709647216564 80 ) ( -589.475223509298 572.709647216564 81 ) ( -589.2164044641954 573.6755730428531 80 ) terrain/trench_broom/planks -0.9126587 0 0 0.9659258 1
 }
 }
-// entity 29
+// entity 33
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"
@@ -2479,7 +2540,7 @@
 ( -336 664 32 ) ( -336 664 33 ) ( -336 665 32 ) terrain/trench_broom/bricks_brown 0 0 0 1 1
 }
 }
-// entity 30
+// entity 34
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -2773,7 +2834,7 @@
 ( -328 600 80 ) ( -328 600 79 ) ( -328 599 80 ) terrain/trench_broom/log_end -8 0 180 1 1
 }
 }
-// entity 31
+// entity 35
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"
@@ -3446,7 +3507,7 @@
 ( -400 816 4 ) ( -384 832 0 ) ( -384 816 0 ) special/skip 0 6.101013 0 1 1
 }
 }
-// entity 32
+// entity 36
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"
@@ -3601,7 +3662,7 @@
 ( -672 960 0 ) ( -640 896 0 ) ( -688 912 35.692307692308304 ) terrain/trench_broom/rock 2.1333008 1.5999756 0 1 1
 }
 }
-// entity 33
+// entity 37
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -3810,7 +3871,7 @@
 ( -816 776 16 ) ( -811.1999999999998 795.2000000000005 16 ) ( -816 776 0 ) terrain/trench_broom/bricks_brown -8 0 0 1 1
 }
 }
-// entity 34
+// entity 38
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"
@@ -3936,7 +3997,7 @@
 ( -784 864 -256 ) ( -784 864 -255 ) ( -784 865 -256 ) special/clip 0 0 0 1 1
 }
 }
-// entity 35
+// entity 39
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -3970,7 +4031,7 @@
 ( -512 784 -464 ) ( -512 783 -464 ) ( -512 784 -463 ) special/skip 0 0 180 1 -1
 }
 }
-// entity 36
+// entity 40
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4004,7 +4065,7 @@
 ( -704 864 -512 ) ( -704 912 -512 ) ( -704 912 -528 ) special/skip 0 10.647614 0 1 1.4142135
 }
 }
-// entity 37
+// entity 41
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"
@@ -4109,7 +4170,7 @@
 ( -1072 0 -272 ) ( -1072 0 -271 ) ( -1072 1 -272 ) terrain/trench_broom/rock 0 0 0 1 1
 }
 }
-// entity 38
+// entity 42
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4173,7 +4234,7 @@
 ( -976 160 -80 ) ( -976 320 -80 ) ( -976 256 -96 ) terrain/trench_broom/rock 0 0 0 1 1
 }
 }
-// entity 39
+// entity 43
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4217,7 +4278,7 @@
 ( -880 696 -448 ) ( -880 696 -447 ) ( -880 697 -448 ) terrain/trench_broom/key_metal_green 0 0 0 1 1
 }
 }
-// entity 40
+// entity 44
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4250,7 +4311,7 @@
 ( -912 624 -464 ) ( -912 688 -432 ) ( -912 688 -448 ) terrain/trench_broom/bricks_brown 0 0 0 1 1
 }
 }
-// entity 41
+// entity 45
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4284,7 +4345,7 @@
 ( -1024 0 -80 ) ( -1024 560 -80 ) ( -1072 560 -144 ) terrain/trench_broom/rock -8 -8 0 1 1
 }
 }
-// entity 42
+// entity 46
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4338,7 +4399,7 @@
 ( -800 696 -464 ) ( -800 696 -463 ) ( -800 697 -464 ) special/skip 0 0 0 1 1
 }
 }
-// entity 43
+// entity 47
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4432,7 +4493,7 @@
 ( -1056 -48 -320 ) ( -1040 16 -128 ) ( -1040 16 -320 ) terrain/trench_broom/rock 0 0 0 1 1
 }
 }
-// entity 44
+// entity 48
 {
 "classname" "func_group"
 "_tb_type" "_tb_layer"
@@ -4577,7 +4638,7 @@
 ( -1120 -448 272 ) ( -1120 -448 273 ) ( -1120 -447 272 ) terrain/trench_broom/bricks 0 0 0 1 1
 }
 }
-// entity 45
+// entity 49
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4637,7 +4698,7 @@
 ( -1180 -424 128 ) ( -1176 -432 128 ) ( -1176 -432 256 ) terrain/trench_broom/log 8 0 0 1 1
 }
 }
-// entity 46
+// entity 50
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4783,7 +4844,7 @@
 ( -1168 -304 304 ) ( -1168 -304 305 ) ( -1168 -303 304 ) terrain/trench_broom/metal 0 0 0 1 1
 }
 }
-// entity 47
+// entity 51
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -5007,7 +5068,7 @@
 ( -1184 -400 0 ) ( -1184 -400 1 ) ( -1184 -399 0 ) terrain/trench_broom/planks 0 0 0 1 1
 }
 }
-// entity 48
+// entity 52
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -5162,7 +5223,7 @@
 ( -1168 -304 -208 ) ( -1168 -304 -207 ) ( -1168 -303 -208 ) terrain/trench_broom/rock 0 0 0 1 1
 }
 }
-// entity 49
+// entity 53
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://u6obomqkbr77"]
+[gd_scene load_steps=22 format=3 uid="uid://u6obomqkbr77"]
 
 [ext_resource type="Script" path="res://scripts/bullets/lightning_scan.gd" id="1_3mdio"]
 [ext_resource type="ArrayMesh" uid="uid://cfjlieto7r0xy" path="res://models/bullets/hitscan_bullet.obj" id="2_co20h"]
@@ -144,32 +144,9 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_rel57"]
-noise_type = 2
-frequency = 0.1
-fractal_type = 3
-cellular_jitter = 10.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0w5sl"]
-noise = SubResource("FastNoiseLite_rel57")
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_q2m71"]
-gradient = SubResource("Gradient_lh4cc")
-width = 16
-height = 16
-fill_from = Vector2(0, 0.4375)
-fill_to = Vector2(0, 0.125)
-metadata/_snap_enabled = true
-metadata/_snap_count = 16
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ljq51"]
 render_priority = 0
 shader = ExtResource("5_c1ccc")
-shader_parameter/scale = 1.0
-shader_parameter/dance_rate = 0.1
-shader_parameter/col = Color(0.752941, 0.752941, 0.501961, 1)
-shader_parameter/dance_tex = SubResource("NoiseTexture2D_0w5sl")
-shader_parameter/tex = SubResource("GradientTexture2D_q2m71")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_jh1jo"]
 resource_local_to_scene = true
@@ -184,6 +161,7 @@ cap_bottom = false
 [node name="Hitscan" type="Node3D"]
 script = ExtResource("1_3mdio")
 damage = 30.0
+damage_type = 4
 explosion = ExtResource("2_o64b4")
 piercer = true
 fade_speed = 25.0

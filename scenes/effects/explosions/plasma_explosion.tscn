@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ctgdbydttjqwq"]
+[gd_scene load_steps=40 format=3 uid="uid://ctgdbydttjqwq"]
 
 [ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="1_6sl8e"]
 [ext_resource type="Script" path="res://scripts/auto_play.gd" id="2_etkcd"]
@@ -67,6 +67,34 @@ vertex_color_use_as_albedo = true
 material = SubResource("StandardMaterial3D_isnhk")
 size = Vector3(0.063, 0.063, 0.063)
 
+[sub_resource type="Curve" id="Curve_lwssd"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_k07dv"]
+curve = SubResource("Curve_lwssd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lulng"]
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_k07dv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_huytf"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.5)
+use_particle_trails = true
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_deilp"]
+material = SubResource("StandardMaterial3D_huytf")
+radius = 0.031
+
 [sub_resource type="Animation" id="Animation_3e3i5"]
 length = 0.001
 tracks/0/type = "value"
@@ -108,7 +136,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimationPlayer/MeshInstance3D:surface_material_override/0:albedo_color")
+tracks/3/path = NodePath("AnimationPlayer/Fireball:surface_material_override/0:albedo_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -120,7 +148,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimationPlayer/MeshInstance3D:mesh:material:albedo_color")
+tracks/4/path = NodePath("AnimationPlayer/Fireball:mesh:material:albedo_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -225,6 +253,18 @@ tracks/12/keys = {
 "update": 0,
 "values": [-0.1]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ShrapnelSys:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_1qm5a"]
 resource_name = "anim"
@@ -268,14 +308,14 @@ tracks/2/keys = {
 tracks/3/type = "scale_3d"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimationPlayer/MeshInstance3D")
+tracks/3/path = NodePath("AnimationPlayer/Fireball")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.3, 1, 10, 10, 10)
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimationPlayer/MeshInstance3D:mesh:material:albedo_color")
+tracks/4/path = NodePath("AnimationPlayer/Fireball:mesh:material:albedo_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -380,6 +420,18 @@ tracks/12/keys = {
 "update": 0,
 "values": [-0.1, 0.0]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ShrapnelSys:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7h3vl"]
 _data = {
@@ -414,6 +466,7 @@ fill_to = Vector2(1, 0.5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5x4e"]
 resource_local_to_scene = true
 transparency = 1
+cull_mode = 2
 shading_mode = 0
 albedo_color = Color(1, 0, 0, 0)
 albedo_texture = SubResource("GradientTexture2D_303r5")
@@ -493,14 +546,26 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_7sto1")
 draw_pass_1 = SubResource("BoxMesh_msm45")
 
+[node name="ShrapnelSys" type="GPUParticles3D" parent="."]
+layers = 2
+amount = 32
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+transform_align = 2
+trail_enabled = true
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_lulng")
+draw_pass_1 = SubResource("TubeTrailMesh_deilp")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_7h3vl")
 }
 script = ExtResource("2_etkcd")
-animated_materials = [NodePath("MeshInstance3D"), NodePath("FogVolume")]
+animated_materials = [NodePath("Fireball"), NodePath("FogVolume")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimationPlayer"]
+[node name="Fireball" type="MeshInstance3D" parent="AnimationPlayer"]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 layers = 2
 mesh = SubResource("SphereMesh_cpldg")
