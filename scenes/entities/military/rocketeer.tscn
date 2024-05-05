@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cy8hwffqmck3s"]
+[gd_scene load_steps=57 format=3 uid="uid://cy8hwffqmck3s"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_attack_pattern.gd" id="1_amqno"]
 [ext_resource type="PackedScene" uid="uid://dtybrk353o1i5" path="res://scenes/bullets/enemy/rockets/enemy_fast_rocket.tscn" id="2_tab8w"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c5pbs8t6p7ogl" path="res://scenes/effects/gibs/gibs.tscn" id="5_xapab"]
 [ext_resource type="Texture2D" uid="uid://dc7cakxmr78h2" path="res://textures/entities/enemies/rocketeer/rocketeer_metallic.png" id="5_y5yxy"]
 [ext_resource type="Texture2D" uid="uid://cobrnuaq2l63n" path="res://textures/entities/enemies/rocketeer/rocketeer_roughness.png" id="6_i5ae8"]
+[ext_resource type="Texture2D" uid="uid://clgl6xiya7ukn" path="res://textures/entities/enemies/rocketeer/rocketeer_detail_mask.png" id="7_28bj8"]
 [ext_resource type="PackedScene" uid="uid://coopugxxes4xq" path="res://scenes/pickups/ammo/grenade_pickup.tscn" id="8_krnfx"]
 [ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="9_vr1y5"]
 [ext_resource type="AnimationLibrary" uid="uid://c2ie0ye0ecnev" path="res://scenes/entities/military/rocketeer_anims.res" id="10_7nbok"]
@@ -118,12 +119,100 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jaueq"]
-albedo_texture = ExtResource("4_yy6cj")
-metallic = 1.0
-metallic_texture = ExtResource("5_y5yxy")
-roughness_texture = ExtResource("6_i5ae8")
-texture_filter = 0
+[sub_resource type="Shader" id="Shader_ubbct"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_detail_albedo : source_color,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_normal : hint_normal,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_mask : hint_default_white,filter_nearest,repeat_enable;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	vec4 detail_tex = texture(texture_detail_albedo,base_uv);
+	vec4 detail_norm_tex = texture(texture_detail_normal,base_uv);
+	vec4 detail_mask_tex = texture(texture_detail_mask,base_uv);
+	vec3 detail = mix(ALBEDO.rgb,ALBEDO.rgb*detail_tex.rgb,detail_tex.a);
+	vec3 detail_norm = mix(NORMAL_MAP,detail_norm_tex.rgb,detail_tex.a);
+	NORMAL_MAP = mix(NORMAL_MAP,detail_norm,detail_mask_tex.r);
+	ALBEDO.rgb = mix(ALBEDO.rgb,detail,detail_mask_tex.r);
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_4ydyl"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.3, 0.7)
+colors = PackedColorArray(0.466181, 0.466181, 0.466181, 1, 0.724643, 0.724643, 0.724643, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3krx4"]
+frequency = 0.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_idb3q"]
+width = 256
+height = 256
+color_ramp = SubResource("Gradient_4ydyl")
+noise = SubResource("FastNoiseLite_3krx4")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3e4lb"]
+width = 256
+height = 256
+as_normal_map = true
+bump_strength = 4.0
+noise = SubResource("FastNoiseLite_3krx4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0yry"]
+render_priority = 0
+shader = SubResource("Shader_ubbct")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("4_yy6cj")
+shader_parameter/texture_metallic = ExtResource("5_y5yxy")
+shader_parameter/texture_roughness = ExtResource("6_i5ae8")
+shader_parameter/texture_detail_albedo = SubResource("NoiseTexture2D_idb3q")
+shader_parameter/texture_detail_normal = SubResource("NoiseTexture2D_3e4lb")
+shader_parameter/texture_detail_mask = ExtResource("7_28bj8")
 
 [sub_resource type="Animation" id="Animation_5gldx"]
 resource_name = "RESET"
@@ -393,13 +482,13 @@ bones/18/rotation = Quaternion(0.00780262, 9.06806e-08, 1.6966e-08, 0.99997)
 bones/18/scale = Vector3(1, 1, 1)
 
 [node name="rpg" parent="Rocketeer/Armature/Skeleton3D" index="0"]
-transform = Transform3D(3.98478, -0.304914, -0.169016, 0.316944, 3.97619, 0.299131, 0.145207, -0.311385, 3.98522, 3.15752, 4.84372, 9.52001)
+transform = Transform3D(3.98478, -0.304914, -0.169016, 0.318536, 3.97249, 0.343348, 0.14168, -0.3555, 3.98165, 3.15752, 4.96373, 9.51991)
 
 [node name="rpg" parent="Rocketeer/Armature/Skeleton3D/rpg" index="0"]
 material_override = SubResource("ShaderMaterial_am0uh")
 
 [node name="rocket" parent="Rocketeer/Armature/Skeleton3D" index="1"]
-transform = Transform3D(3.98478, -0.304914, -0.169016, 0.316944, 3.97619, 0.299131, 0.145207, -0.311385, 3.98522, 3.33133, 5.91071, 2.42132)
+transform = Transform3D(3.98478, -0.304914, -0.169016, 0.318536, 3.97249, 0.343348, 0.14168, -0.3555, 3.98165, 3.33133, 5.95187, 2.40982)
 
 [node name="rocket" parent="Rocketeer/Armature/Skeleton3D/rocket" index="0"]
 material_override = SubResource("ShaderMaterial_am0uh")
@@ -407,13 +496,13 @@ material_override = SubResource("ShaderMaterial_am0uh")
 [node name="Spawner" type="Marker3D" parent="Rocketeer/Armature/Skeleton3D/rocket/rocket" index="0"]
 
 [node name="Backpack" parent="Rocketeer/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.909128, -0.416517, 0, 0.416517, 0.909128, 0, 5.41336, -0.820287)
+transform = Transform3D(1, 0, 0, 0, 0.913695, -0.406401, 0, 0.406401, 0.913695, 0, 5.41856, -0.826071)
 
 [node name="Backpack" parent="Rocketeer/Armature/Skeleton3D/Backpack" index="0"]
 material_override = SubResource("ShaderMaterial_flj7k")
 
 [node name="Rocketeer" parent="Rocketeer/Armature/Skeleton3D" index="3"]
-material_override = SubResource("StandardMaterial3D_jaueq")
+material_override = SubResource("ShaderMaterial_b0yry")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 1.5
