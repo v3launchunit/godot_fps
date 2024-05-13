@@ -80,6 +80,7 @@ colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xniqa"]
 gradient = SubResource("Gradient_an5ye")
+use_hdr = true
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qdwga"]
 emission_shape = 3

@@ -14,11 +14,14 @@ uniform vec3 tint: source_color = vec3(1.0);
 uniform sampler2D noise_tex: hint_default_white;
 uniform sampler2D screen_tex: hint_screen_texture, filter_nearest, repeat_disable;
 
-//#include "includes/random_inc.gdshaderinc"
+//#include "res://shaders/includes/psx_inc.gdshaderinc"
 
 void vertex() {
 	UV *= uv_scale * 0.0625;
-	// Called for every vertex the material is visible on.
+	//VERTEX.y -= texture(
+			//noise_tex,
+			//UV + TIME * wave_speed
+	//).r;
 }
 
 void fragment() {

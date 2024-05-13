@@ -40,6 +40,7 @@ enum State {
 ## Self-explanatory.
 @export_range(0.0, 3.0, 0.1, "or_greater") var jump_height: float = 0.0
 @export var target_pos_offset: Vector3 = Vector3.ZERO
+@export var wanderer: bool = false
 
 @export_group("Detection")
 ## If enabled, prevents sight-based detection.
@@ -101,6 +102,9 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var current_state: State = State.AMBUSHING
 var current_destination: Vector3
 
+var wander_idling: bool = false
+var wander_idle_timer: float = 0.0
+
 var jumping: bool = false
 
 var walk_vel := Vector3.ZERO # Walking velocity
@@ -109,7 +113,7 @@ var grav_vel := Vector3.ZERO # Gravity velocity
 var jump_vel := Vector3.ZERO # Jumping velocity
 var knockback_vel := Vector3.ZERO # Knockback velocity
 
-var state_timer: float = 0 # How long I've been in my current state, in seconds
+var state_timer: float = 0.0 # How long I've been in my current state, in seconds
 
 @onready var nav_agent: NavigationAgent3D = find_child("NavigationAgent3D")
 @onready var sight_line: RayCast3D = find_child("SightLine")
@@ -150,6 +154,8 @@ func _physics_process(delta: float) -> void:
 				if not current_targets.is_empty():
 					detect_target(current_targets[-1])
 		State.IDLE:
+			if wanderer:
+				_wander(delta)
 			_scan(delta)
 		State.SEARCHING:
 			_investigate(delta)
@@ -241,6 +247,36 @@ func detect_target(target: PhysicsBody3D) -> void:
 			change_state(State.PURSUING)
 
 
+func _wander(delta) -> void:
+	if wander_idle_timer < Globals.C_EPSILON:
+		if wander_idling:
+			wander_idling = false
+			current_destination = global_position + Vector3(
+					randf_range(-15.0, 15.0),
+					0,
+					randf_range(-15.0, 15.0)
+			)
+			nav_agent.target_position = current_destination
+			state_machine.travel("moving", true)
+		var next_pos: Vector3 = nav_agent.get_next_path_position()
+		sight_line.look_at(next_pos)
+		global_rotation.y = lerp_angle(
+				global_rotation.y,
+				sight_line.global_rotation.y,
+				delta * turning_speed
+		)
+		walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
+		if nav_agent.is_target_reached():
+			state_machine.travel("idle", true)
+			wander_idle_timer = randf_range(0.0, 30.0)
+		if nav_agent.avoidance_enabled:
+			nav_agent.set_velocity(walk_vel)
+		else:
+			velocity += walk_vel
+	else:
+		wander_idle_timer -= delta
+
+
 func _scan(_delta) -> void:
 	sight_line.rotation.y = sin(
 			state_timer * sight_line_sweep_speed
@@ -255,7 +291,7 @@ func _scan(_delta) -> void:
 		detect_target(sight_line.get_collider())
 		change_state(State.PURSUING)
 
-	nav_agent.set_velocity(Vector3.ZERO)
+	#nav_agent.set_velocity(Vector3.ZERO)
 
 
 func _investigate(delta) -> void:

@@ -153,6 +153,7 @@ contact_monitor = true
 linear_damp_mode = 1
 linear_damp = 100.0
 script = ExtResource("1_bigms")
+turning_speed = 35.0
 speed = 50.0
 damage = 120.0
 explosion = ExtResource("2_cs6yl")

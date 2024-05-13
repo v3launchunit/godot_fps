@@ -155,6 +155,7 @@ Enemies:
 			Tough
 			Slow
 			Dumb
+			Eats Spiders
 			Ranged (blood bullet *2)
 			Melee (bite)
 
@@ -187,6 +188,14 @@ Enemies:
 			Medium
 			Teleporter
 			Melee Only (teeth)
+
+		Spider:
+			Weak
+			Fast
+			Passive to player
+			Eats Eyeballs
+			Ranged (grappling web)
+			Melee (fangs)
 
 
 	Military:

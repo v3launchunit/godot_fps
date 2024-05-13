@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		scan_area.look_at(target.global_position)
 		var a = Quaternion(global_basis)
 		var b = Quaternion(scan_area.global_basis)
-		a = a.slerp(b, delta * turning_speed)
+		a = a.slerp(b, min(delta * turning_speed, 1.0))
 		global_basis = Basis(a)
 		scan_area.look_at(target.global_position)
 
@@ -43,4 +43,4 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 func _on_area_body_entered(body: Node3D) -> void:
 	if body is EnemyBase and target == null:
 		target = body
-		print("target found: %s" % target)
+		#print("target found: %s" % target)

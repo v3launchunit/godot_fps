@@ -1,31 +1,39 @@
 shader_type spatial;
 
-uniform float strength: hint_range(0.0, 0.1, 0.001) = 0.08;
-uniform vec2 center = vec2(0.5, 0.5);
-uniform float radius: hint_range(0.0, 1.0, 0.001) = 0.25;
+render_mode blend_add, unshaded;
 
+uniform float intensity : hint_range(0.0, 16.0, 0.1) = 1.0;
+uniform float threshold : hint_range(0.0, 4.0, 0.01) = 0.9;
+uniform int spread : hint_range(0, 100, 1) = 10;
+uniform float scale : hint_range(0.0, 4.0, 0.1) = 2;
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_linear_mipmap;
 
-uniform float aberration: hint_range(0.0, 1.0, 0.001) = 0.425;
-uniform float width: hint_range(0.0, 0.1, 0.0001) = 0.04;
-uniform float feather: hint_range(0.0, 1.0, 0.001) = 0.135;
+global uniform ivec2 screen_size;
 
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
+bool is_above_threshold(vec3 in_col) {
+	return in_col.x >= threshold || in_col.y >= threshold || in_col.z >= threshold;
+}
+
+void vertex() {
+	POSITION = vec4(VERTEX, 1.0);
+}
 
 void fragment() {
-	vec2 st = SCREEN_UV;
-	float aspect_ratio = 1.0;
-	vec2 scaled_st = (st -vec2(0.0, 0.5)) / vec2(1.0, aspect_ratio) + vec2(0,0.5);
-	vec2 dist_center = scaled_st - center;
-	float mask =  (1.0 - smoothstep(radius-feather, radius, length(dist_center))) * smoothstep(radius - width - feather, radius-width , length(dist_center));
-	vec2 offset = normalize(dist_center)*strength*mask;
-	vec2 biased_st = scaled_st - offset;
+	vec3 col = max(texture(screen_texture, SCREEN_UV).xyz - threshold, 0);
 
-	vec2 abber_vec = offset*aberration*mask;
+	for (int i = 1; i < spread; i++) {
+		float x_dist = float(i) / float(screen_size.x);
+		float y_dist = float(i) / float(screen_size.y);
+		vec3 col_up_left = clamp(textureLod(screen_texture, SCREEN_UV + vec2(-x_dist, y_dist), scale).xyz - threshold, vec3(0), vec3(8));
+		vec3 col_up_right = clamp(textureLod(screen_texture, SCREEN_UV + vec2(x_dist, y_dist), scale).xyz - threshold, vec3(0), vec3(8));
+		vec3 col_down_left = clamp(textureLod(screen_texture, SCREEN_UV + vec2(-x_dist, -y_dist), scale).xyz - threshold, vec3(0), vec3(8));
+		vec3 col_down_right = clamp(textureLod(screen_texture, SCREEN_UV + vec2(x_dist, -y_dist), scale).xyz - threshold, vec3(0), vec3(8));
 
-	vec2 final_st = st*(1.0-mask) + biased_st*mask;
+		col += col_up_left / (float(i) * 4.0);
+		col += col_up_right / (float(i) * 4.0);
+		col += col_down_left / (float(i) * 4.0);
+		col += col_down_right / (float(i) * 4.0);
+	}
 
-	vec4 red = texture(SCREEN_TEXTURE, final_st + abber_vec);
-	vec4 blue = texture(SCREEN_TEXTURE, final_st - abber_vec);
-	vec4 ori = texture(SCREEN_TEXTURE, final_st);
-	ALBEDO = vec3(red.r, ori.g, blue.b);
+	ALBEDO.xyz = col * intensity / float(spread);
 }

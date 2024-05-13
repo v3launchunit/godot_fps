@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://cmq3arf61ax4f" path="res://textures/ui/menu_panel.png" id="2_nwilm"]
 [ext_resource type="Script" path="res://scripts/ui/level_select_button.gd" id="3_4djrb"]
 [ext_resource type="Theme" uid="uid://dwof7m2ye3tjh" path="res://scenes/default_theme.tres" id="3_30jf0"]
-[ext_resource type="PackedScene" uid="uid://ddybwy4hdo2q3" path="res://scenes/levels/test_level/test_level.tscn" id="4_c2yb4"]
-[ext_resource type="PackedScene" uid="uid://3bt45n8rxvq5" path="res://scenes/levels/e1m3_v1/e1m3_v1.tscn" id="4_p4d27"]
-[ext_resource type="PackedScene" uid="uid://dhyysoapiaxew" path="res://scenes/levels/e1m5_v1/e1m5_v1.tscn" id="5_x1faw"]
-[ext_resource type="PackedScene" uid="uid://cor0l0jkjwbo5" path="res://scenes/levels/e1m6_v1/e1m6_v1.tscn" id="6_4jomd"]
-[ext_resource type="PackedScene" uid="uid://qvrf467m8cbk" path="res://scenes/levels/level_04/level_04.tscn" id="9_tniqv"]
+[ext_resource type="PackedScene" uid="uid://ddybwy4hdo2q3" path="res://scenes/levels/debug/test_level/test_level.tscn" id="4_c2yb4"]
+[ext_resource type="PackedScene" uid="uid://3bt45n8rxvq5" path="res://scenes/levels/campaign/episode_1/e1m3_v1/e1m3_v1.tscn" id="4_p4d27"]
+[ext_resource type="PackedScene" uid="uid://dhyysoapiaxew" path="res://scenes/levels/campaign/episode_1/e1m5_v1/e1m5_v1.tscn" id="5_x1faw"]
+[ext_resource type="PackedScene" uid="uid://cor0l0jkjwbo5" path="res://scenes/levels/campaign/episode_1/e1m6_v1/e1m6_v1.tscn" id="6_4jomd"]
+[ext_resource type="PackedScene" uid="uid://qvrf467m8cbk" path="res://scenes/levels/debug/level_04/level_04.tscn" id="9_tniqv"]
 
 [node name="LevelSelect" type="Control"]
 process_mode = 4
