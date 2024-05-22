@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="QodotFGDFile" load_steps=19 format=3 uid="uid://c36hv0o6g0udo"]
 
-[ext_resource type="Resource" uid="uid://b42lledbeltgc" path="res://trench_broom/custom_solids.tres" id="1_f0qxc"]
+[ext_resource type="Resource" path="res://trench_broom/custom_solids.tres" id="1_f0qxc"]
 [ext_resource type="Resource" uid="uid://cw4s1hnxqetee" path="res://addons/qodot/game_definitions/fgd/solid_classes/func_group_solid_class.tres" id="2"]
-[ext_resource type="Resource" uid="uid://dqwqqvs3kuly8" path="res://trench_broom/custom_points.tres" id="2_h3jh2"]
+[ext_resource type="Resource" path="res://trench_broom/custom_points.tres" id="2_h3jh2"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="6"]
 [ext_resource type="Resource" uid="uid://cubvqwi3p77sq" path="res://addons/qodot/game_definitions/fgd/point_classes/physics_ball_point_class.tres" id="6_8sfwb"]
 [ext_resource type="Resource" uid="uid://bu3h1cvdigp1i" path="res://addons/qodot/game_definitions/fgd/point_classes/signal_point_class.tres" id="7_mkjh6"]

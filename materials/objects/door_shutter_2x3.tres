@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://b33py6y5v6idy"]
+[gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://06qoujtg5bow"]
 
 [ext_resource type="Texture2D" uid="uid://b23ugm7sgumny" path="res://textures/objects/shutter_door/shutter_door_albedo.png" id="1_1lgq2"]
 [ext_resource type="Texture2D" uid="uid://dtbvd0e8uaahg" path="res://textures/objects/shutter_door/shutter_door_detail_mask.png" id="2_8w2k1"]

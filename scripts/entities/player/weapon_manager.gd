@@ -28,14 +28,14 @@ const ZOOM_SPEED: float = 10.0
 var anti_clip_collisions: int = 0
 #var current_weapon_pos: float
 
-var prior_category: int = 0
-var prior_index: int = 0
+#var prior_category: int = 0
+#var prior_index: int = 0
 
 var target_fov: float = Globals.s_fov_desired
-var prior_fov: float = Globals.s_fov_desired
-var prior_zoom: float = 1.0
+#var prior_fov: float = Globals.s_fov_desired
+#var prior_zoom: float = 1.0
 
-@onready var ammo_amounts: Dictionary = ammo_types.duplicate() # Created right before _ready
+#@onready var ammo_amounts: Dictionary = ammo_types.duplicate() # Created right before _ready
 @onready var anti_clip_box: Area3D = $ViewmodelAntiClip
 @onready var rummage_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 

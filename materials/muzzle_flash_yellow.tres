@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dq3a5fxspauox"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dwwoh3rw3ogd6"]
 
 [ext_resource type="Shader" path="res://shaders/spatial/weapons/muzzle_flash.gdshader" id="1_v2xtr"]
 

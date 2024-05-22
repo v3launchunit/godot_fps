@@ -176,9 +176,10 @@ func _on_settings_changed() -> void:
 
 func save_game(to: String) -> void:
 	var scene := PackedScene.new()
-	scene.pack(get_tree().root.get_child(C_AUTOLOAD_COUNT))
+	scene.pack(get_tree().current_scene())
 	ResourceSaver.save(scene, to)
-	
+
+
 ## returns from incremented or decremented by 1 towards to
 ## (eg. intstep(1,5) returns 2)
 func intstep(from: int, to: int) -> int:
