@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://bn8ijfkkxi53l"]
+
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_d70qg"]
+[ext_resource type="Script" path="res://scripts/terrain/brush_door.gd" id="2_rxnvy"]
+
+[resource]
+script = ExtResource("1_d70qg")
+spawn_type = 2
+build_visuals = true
+collision_shape_type = 1
+script_class = ExtResource("2_rxnvy")
+classname = "door"
+description = "Brush-based door."
+qodot_internal = false
+base_classes = Array[Resource]([])
+class_properties = {
+"closeable": false,
+"group": "none",
+"nav_link_offset": Vector3(0, 0, 1.5),
+"open_pos": Vector3(0, 0, 0),
+"open_sound_path": "res://audio/streams/effects/metal_door_move.wav",
+"open_speed": 3.0,
+"remote_only": false,
+"required_key": -1,
+"sound_pos": Vector3(0, 0, 0)
+}
+class_property_descriptions = {}
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
+node_class = "AnimatableBody3D"
+transient_node = false

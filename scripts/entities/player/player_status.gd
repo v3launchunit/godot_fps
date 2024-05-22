@@ -1,5 +1,7 @@
 class_name PlayerStatus extends Status
 
+signal key_acquired(key: int)
+
 @export_category("PlayerStatus")
 
 @export var max_armor: float = 100
@@ -9,9 +11,8 @@ class_name PlayerStatus extends Status
 var armor: float
 var held_keys: Array[bool] = [false, false, false]
 
-@onready var hud = get_parent().find_child("HUD")
-
-signal key_acquired(key: int)
+@onready var stream_player := get_parent().get_node("AudioStreamPlayer") as AudioStreamPlayer
+@onready var hud := get_parent().find_child("HUD") as HudHandler
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,28 +26,32 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug_give_max_health"):
-		health = 100 if health < 100 else health
-		armor = 25 if armor < 25 else armor
+		if health < 100.0:
+			health = 100.0
+		if armor < 25.0:
+			armor = 25.0
 		is_dead = false
 
 	if Input.is_action_just_pressed("debug_give_max_armor"):
-		armor = 100 if armor < 100 else armor
+		if armor < 100.0:
+			armor = 100.0
 #	if health > max_health:
 #		health -= overheal_decay_rate * delta
 #		if health < max_health:
 #			health = max_health
 
 
-func damage(amount: float) -> float: # returns damage dealt, for piercers
+func damage_typed(amount: float, type: DamageType) -> float: # returns damage dealt, for piercers
 	if is_dead:
 		return 0 # corpses cannot stop piercers
 	hud.flash(Color(1, 0, 0, clamp(amount / 10, 0.1, 1)))
-	get_parent().get_child(1).stream = injury_stream
-	get_parent().get_child(1).play()
-	health -= amount * (1 - armor_absorption)
-	armor  -= amount * armor_absorption
+	if amount > 0:
+		stream_player.stream = injury_stream
+		stream_player.play()
+	health -= amount * base_damage_factor * damage_multipliers[type] * (1 - armor_absorption)
+	armor  -= amount * base_damage_factor * damage_multipliers[type] * armor_absorption
 	if armor <= 0:
 		health += armor # armor will be negative
 		armor = 0
@@ -56,6 +61,16 @@ func damage(amount: float) -> float: # returns damage dealt, for piercers
 	return amount # return value is amount of damage recieved, for piercers
 
 
+func rapid_damage_typed(amount: float, type: DamageType) -> void:
+	health -= amount * base_damage_factor * damage_multipliers[type] * (1 - armor_absorption)
+	armor  -= amount * base_damage_factor * damage_multipliers[type] * armor_absorption
+	if armor <= 0:
+		health += armor # armor will be negative
+		armor = 0
+	if health <= 0:
+		kill()
+
+
 func kill():
 	is_dead = true
 	died.emit()
@@ -63,8 +78,8 @@ func kill():
 	if gibs != null:
 		var exp: Node = gibs.instantiate()
 		target_parent.add_child(exp)
-		exp.reparent(get_tree().root)
-		move_child(exp, 0)
+		exp.reparent(get_tree().current_scene)
+		#move_child(exp, 0)
 		get_parent().find_child("PlayerCam").switched_weapons.emit(-1, -1, false)
 		get_parent().find_child("PlayerCam").current = false
 		gibs = null

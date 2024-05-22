@@ -5,8 +5,9 @@ extends Bullet
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	pass
+func _physics_process(_delta: float) -> void:
+	if sightline.is_colliding():
+		look_at(sightline.get_collision_point())
 
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:

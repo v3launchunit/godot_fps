@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://l50jb3i7j7q7"]
+[gd_scene load_steps=16 format=3 uid="uid://l50jb3i7j7q7"]
 
 [ext_resource type="Script" path="res://scripts/pickups/ammo_pickup.gd" id="1_66eai"]
 [ext_resource type="AudioStream" uid="uid://g7unocdbdokw" path="res://audio/streams/pickups/pickup_ammo.wav" id="2_qwyew"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="3_ygfmr"]
+[ext_resource type="Shader" path="res://shaders/spatial/unlit_mix_psx.gdshader" id="4_x1hel"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uc2sx"]
 height = 1.0
@@ -41,6 +42,13 @@ distance_fade_mode = 1
 [sub_resource type="QuadMesh" id="QuadMesh_2sllx"]
 material = SubResource("StandardMaterial3D_w2kd2")
 size = Vector2(0.1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhrqh"]
+render_priority = 0
+shader = ExtResource("4_x1hel")
+shader_parameter/albedo = Color(0, 1, 1, 1)
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qbyuk"]
 shading_mode = 0
@@ -116,6 +124,7 @@ shadow_enabled = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(0.707107, -0.707107, 2.98023e-08, 0.707107, 0.707107, 0, -1.49012e-08, 1.49012e-08, 1, 0, -0.00851727, 0)
 layers = 2
+material_override = SubResource("ShaderMaterial_fhrqh")
 visibility_range_end = 20.0
 mesh = SubResource("CylinderMesh_kpl2l")
 

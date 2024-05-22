@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://beg6173x6vjha"]
+[gd_scene load_steps=21 format=3 uid="uid://beg6173x6vjha"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_8bvgn"]
-[ext_resource type="PackedScene" uid="uid://d2uhwn8vwve4r" path="res://scenes/effects/bullet_impact_purple.tscn" id="2_mcoxo"]
+[ext_resource type="PackedScene" uid="uid://d2uhwn8vwve4r" path="res://scenes/effects/impacts/bullet_impact_purple.tscn" id="2_mcoxo"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="2_vsxx0"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_gm5xy"]
+[ext_resource type="Material" uid="uid://c6fs0qxg5vbch" path="res://materials/plasma_bullet_mat.tres" id="3_vw7nh"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="4_4wtc8"]
 [ext_resource type="AudioStream" uid="uid://bsv250k61o40r" path="res://audio/streams/ambient/plasma_shot_ambient.wav" id="5_s6umv"]
 
@@ -106,6 +107,7 @@ shape = SubResource("BoxShape3D_h48e4")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, 0, 0, 0.5)
 layers = 2
+material_override = ExtResource("3_vw7nh")
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_3dr6j")
 surface_material_override/0 = SubResource("StandardMaterial3D_lktph")

@@ -1,5 +1,7 @@
 class_name WeaponManager extends Camera3D
 
+const ZOOM_SPEED: float = 10.0
+
 @export_category("WeaponManager")
 
 @export var weapons: Array[Array] = [[], [], [], [], [], [], []]
@@ -26,6 +28,14 @@ class_name WeaponManager extends Camera3D
 var anti_clip_collisions: int = 0
 #var current_weapon_pos: float
 
+var prior_category: int = 0
+var prior_index: int = 0
+
+var target_fov: float = Globals.s_fov_desired
+var prior_fov: float = Globals.s_fov_desired
+var prior_zoom: float = 1.0
+
+@onready var ammo_amounts: Dictionary = ammo_types.duplicate() # Created right before _ready
 @onready var anti_clip_box: Area3D = $ViewmodelAntiClip
 @onready var rummage_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
@@ -59,6 +69,8 @@ func _process(delta):
 	if prior_fov != Globals.s_fov_desired:
 		prior_fov = Globals.s_fov_desired
 		scope_changed(prior_zoom)
+
+	fov = lerpf(fov, target_fov, delta * ZOOM_SPEED)
 
 	if Input.is_action_just_pressed("weapon_next"):
 		_next_weapon()
@@ -176,7 +188,6 @@ func _select_weapon(category: int, index: int) -> void:
 func _select_category(category: int) -> void:
 	if weapons[category].is_empty():
 		return
-
 	prior_category = current_category
 	prior_index = current_index[current_category]
 
@@ -214,7 +225,7 @@ func has_ammo(type: String, amount: int = 1, virtual_charge: bool = false) -> bo
 	return false
 
 
-func add_weapon(weapon: Node, starting_ammo: int = 0) -> bool:
+func add_weapon(weapon: Node, _starting_ammo: int = 0) -> bool:
 	var weap: WeaponBase = weapon.get_child(0)
 	if (
 			weapons[weap.category].is_empty() or
@@ -250,8 +261,9 @@ func get_selected_weapon_node() -> Node3D:
 
 func get_selected_weapon_path() -> NodePath:
 	if (
-			weapons[current_category].is_empty() or
-			weapons[current_category][current_index[current_category]] == null
+			weapons[current_category].is_empty()
+			or weapons[current_category][current_index[current_category]] == null
+			or current_index[current_category] > weapons[current_category].size()
 	):
 		return ^"Axe"
 	if weapons[current_category][current_index[current_category]] is NodePath:
@@ -262,7 +274,7 @@ func get_selected_weapon_path() -> NodePath:
 func scope_changed(amount: float):
 	prior_fov = Globals.s_fov_desired
 	prior_zoom = amount
-	fov = Globals.s_fov_desired / amount
+	target_fov = Globals.s_fov_desired / amount
 	find_parent("Player").camera_zoom_sens = 1 / amount
 
 

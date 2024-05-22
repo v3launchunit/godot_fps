@@ -6,6 +6,8 @@ class_name Bullet extends RigidBody3D
 @export_range(0.0, 100.0, 0.1, "or_greater") var speed: float = 10
 ## The amount of damage that this bullet deals upon contact.
 @export_range(0.0, 1000.0, 0.1, "or_greater") var damage: float = 10
+@export var player_damage_multiplier: Array[float] = [0.5, 0.75, 1.0, 1.0]
+@export var damage_type: Status.DamageType = Status.DamageType.GENERIC
 ## The scene that is instantiated when this bullet object contacts a surface.
 @export var explosion: PackedScene
 ## If set to "true", then the explosion set above will be parented to the
@@ -36,7 +38,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if piercer and linear_velocity != -speed * global_transform.basis.z.normalized():
 		linear_velocity = -speed * global_transform.basis.z.normalized()
 #	if body_entered:
@@ -45,19 +47,24 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	var exp: Node
+	var e: Node
 	if explosion != null:
-		exp = explosion.instantiate()
-		add_child(exp)
-		exp.reparent(body if sticky else get_tree().root.get_child(2))
-		if exp is LodgedNail:
-			exp.invoker = invoker
-		for child in exp.get_children():
+		e = explosion.instantiate()
+		add_child(e)
+		e.reparent(body if sticky else get_tree().root.get_child(2))
+		if e is LodgedNail:
+			e.invoker = invoker
+		for child in e.get_children():
 			if child is AreaDamage:
 				child.invoker = invoker
 
 	if body.name != "Shield" and body.has_node("Status"):
-		damage -= body.find_child("Status").damage(damage)
+		var status = body.find_child("Status")
+		damage -= status.damage(damage * (
+				player_damage_multiplier[Globals.s_difficulty]
+				if status is PlayerStatus
+				else 1.0
+		))
 		if body is EnemyBase and invoker != null and invoker != body:
 			body.detect_target(invoker)
 			body.apply_knockback(

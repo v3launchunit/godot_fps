@@ -1,0 +1,390 @@
+[gd_scene load_steps=10 format=3 uid="uid://c58frru7780pf"]
+
+[ext_resource type="Script" path="res://scripts/ui/level_select_menu.gd" id="1_kus5n"]
+[ext_resource type="Texture2D" uid="uid://cmq3arf61ax4f" path="res://textures/ui/menu_panel.png" id="2_nwilm"]
+[ext_resource type="Script" path="res://scripts/ui/level_select_button.gd" id="3_4djrb"]
+[ext_resource type="Theme" uid="uid://dwof7m2ye3tjh" path="res://scenes/default_theme.tres" id="3_30jf0"]
+[ext_resource type="PackedScene" uid="uid://ddybwy4hdo2q3" path="res://scenes/levels/debug/test_level/test_level.tscn" id="4_c2yb4"]
+[ext_resource type="PackedScene" uid="uid://c73ftt2ccark1" path="res://scenes/levels/campaign/episode_1/e1m3_v2/e1m3_v2.tscn" id="5_ke8hl"]
+[ext_resource type="PackedScene" uid="uid://dhyysoapiaxew" path="res://scenes/levels/campaign/episode_1/e1m5_v1/e1m5_v1.tscn" id="5_x1faw"]
+[ext_resource type="PackedScene" uid="uid://cor0l0jkjwbo5" path="res://scenes/levels/campaign/episode_1/e1m6_v1/e1m6_v1.tscn" id="6_4jomd"]
+[ext_resource type="PackedScene" uid="uid://qvrf467m8cbk" path="res://scenes/levels/debug/level_04/level_04.tscn" id="9_tniqv"]
+
+[node name="LevelSelect" type="Control"]
+process_mode = 4
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kus5n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -43.0
+offset_right = 130.0
+offset_bottom = -12.0
+grow_vertical = 0
+size_flags_vertical = 10
+theme = ExtResource("3_30jf0")
+keep_pressed_outside = true
+text = "BACK"
+
+[node name="MenuPanel" type="NinePatchRect" parent="Back"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -18.0
+offset_right = 7.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_nwilm")
+patch_margin_left = 4
+patch_margin_top = 16
+patch_margin_right = 4
+patch_margin_bottom = 8
+
+[node name="SettingsPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 154.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_nwilm")
+patch_margin_left = 4
+patch_margin_top = 16
+patch_margin_right = 4
+patch_margin_bottom = 8
+
+[node name="LevelSelect" type="HBoxContainer" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 19.0
+offset_right = -8.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="E1" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="M1" type="Button" parent="SettingsPanel/LevelSelect/E1"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E1M1"
+script = ExtResource("3_4djrb")
+
+[node name="M2" type="Button" parent="SettingsPanel/LevelSelect/E1"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E1M2"
+script = ExtResource("3_4djrb")
+
+[node name="M3" type="Button" parent="SettingsPanel/LevelSelect/E1"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+text = "E1M3"
+script = ExtResource("3_4djrb")
+_scene = ExtResource("5_ke8hl")
+
+[node name="M4" type="Button" parent="SettingsPanel/LevelSelect/E1"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E1M4"
+script = ExtResource("3_4djrb")
+
+[node name="M5" type="Button" parent="SettingsPanel/LevelSelect/E1"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E1M5"
+script = ExtResource("3_4djrb")
+_scene = ExtResource("5_x1faw")
+
+[node name="M6" type="Button" parent="SettingsPanel/LevelSelect/E1"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+text = "E1M6"
+script = ExtResource("3_4djrb")
+_scene = ExtResource("6_4jomd")
+
+[node name="M7" type="Button" parent="SettingsPanel/LevelSelect/E1"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E1M7"
+script = ExtResource("3_4djrb")
+
+[node name="M8" type="Button" parent="SettingsPanel/LevelSelect/E1"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E1M8"
+script = ExtResource("3_4djrb")
+
+[node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E1"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 10
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E1MS"
+script = ExtResource("3_4djrb")
+
+[node name="E2" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="M1" type="Button" parent="SettingsPanel/LevelSelect/E2"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E2M1"
+script = ExtResource("3_4djrb")
+
+[node name="M2" type="Button" parent="SettingsPanel/LevelSelect/E2"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E2M2"
+script = ExtResource("3_4djrb")
+
+[node name="M3" type="Button" parent="SettingsPanel/LevelSelect/E2"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E2M3"
+script = ExtResource("3_4djrb")
+
+[node name="M4" type="Button" parent="SettingsPanel/LevelSelect/E2"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E2M4"
+script = ExtResource("3_4djrb")
+
+[node name="M5" type="Button" parent="SettingsPanel/LevelSelect/E2"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E2M5"
+script = ExtResource("3_4djrb")
+
+[node name="M6" type="Button" parent="SettingsPanel/LevelSelect/E2"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E2M6"
+script = ExtResource("3_4djrb")
+
+[node name="M7" type="Button" parent="SettingsPanel/LevelSelect/E2"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E2M7"
+script = ExtResource("3_4djrb")
+
+[node name="M8" type="Button" parent="SettingsPanel/LevelSelect/E2"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E2M8"
+script = ExtResource("3_4djrb")
+
+[node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E2"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 10
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E2MS"
+script = ExtResource("3_4djrb")
+
+[node name="E3" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="M1" type="Button" parent="SettingsPanel/LevelSelect/E3"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E3M1"
+script = ExtResource("3_4djrb")
+
+[node name="M2" type="Button" parent="SettingsPanel/LevelSelect/E3"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E3M2"
+script = ExtResource("3_4djrb")
+
+[node name="M3" type="Button" parent="SettingsPanel/LevelSelect/E3"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E3M3"
+script = ExtResource("3_4djrb")
+
+[node name="M4" type="Button" parent="SettingsPanel/LevelSelect/E3"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E3M4"
+script = ExtResource("3_4djrb")
+
+[node name="M5" type="Button" parent="SettingsPanel/LevelSelect/E3"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E3M5"
+script = ExtResource("3_4djrb")
+
+[node name="M6" type="Button" parent="SettingsPanel/LevelSelect/E3"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E3M6"
+script = ExtResource("3_4djrb")
+
+[node name="M7" type="Button" parent="SettingsPanel/LevelSelect/E3"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E3M7"
+script = ExtResource("3_4djrb")
+
+[node name="M8" type="Button" parent="SettingsPanel/LevelSelect/E3"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E3M8"
+script = ExtResource("3_4djrb")
+
+[node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E3"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 10
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E3MS"
+script = ExtResource("3_4djrb")
+
+[node name="E4" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="M1" type="Button" parent="SettingsPanel/LevelSelect/E4"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E4M1"
+script = ExtResource("3_4djrb")
+
+[node name="M2" type="Button" parent="SettingsPanel/LevelSelect/E4"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E4M2"
+script = ExtResource("3_4djrb")
+
+[node name="M3" type="Button" parent="SettingsPanel/LevelSelect/E4"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E4M3"
+script = ExtResource("3_4djrb")
+
+[node name="M4" type="Button" parent="SettingsPanel/LevelSelect/E4"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E4M4"
+script = ExtResource("3_4djrb")
+
+[node name="M5" type="Button" parent="SettingsPanel/LevelSelect/E4"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E4M5"
+script = ExtResource("3_4djrb")
+
+[node name="M6" type="Button" parent="SettingsPanel/LevelSelect/E4"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E4M6"
+script = ExtResource("3_4djrb")
+
+[node name="M7" type="Button" parent="SettingsPanel/LevelSelect/E4"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E4M7"
+script = ExtResource("3_4djrb")
+
+[node name="M8" type="Button" parent="SettingsPanel/LevelSelect/E4"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E4M8"
+script = ExtResource("3_4djrb")
+
+[node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E4"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 10
+theme = ExtResource("3_30jf0")
+disabled = true
+text = "E4MS"
+script = ExtResource("3_4djrb")
+
+[node name="Other" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TestLevel" type="Button" parent="SettingsPanel/LevelSelect/Other"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+text = "TEST LEVEL"
+script = ExtResource("3_4djrb")
+_scene = ExtResource("4_c2yb4")
+
+[node name="Unsorted1" type="Button" parent="SettingsPanel/LevelSelect/Other"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+text = "U1"
+script = ExtResource("3_4djrb")
+_scene = ExtResource("9_tniqv")
+
+[connection signal="pressed" from="Back" to="." method="_on_back_button_pressed"]

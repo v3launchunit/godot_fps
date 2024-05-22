@@ -5,6 +5,12 @@ extends Node
 ## the disc and a few other scene-independent things.
 
 
+enum Difficulty {
+	EASY,
+	NORMAL,
+	HARD,
+}
+
 # ---------------------------------------------------------------------------- #
 # --------------------------------- CONSTANTS -------------------------------- #
 # ---------------------------------------------------------------------------- #
@@ -39,16 +45,18 @@ const C_HITSCAN_MIN_LENGTH: float = 0.125
 ## The filepath that user quicksaves live in.
 const C_QUICKSAVE_PATH: String = "user://saves/auto/quicksave.scn"
 
+const C_PLAYER_MIN_HEIGHT: float = -1000.0
 
 # ---------------------------------------------------------------------------- #
 # --------------------------------- SETTINGS --------------------------------- #
 # ---------------------------------------------------------------------------- #
 
+# ---------- Visual settings ---------- #
 ## The screen's resolution is divided by this. Does not affect UI.
 var s_stretch_scale: int = 2
 ## The screen's resolution is divided by this. Only affects UI.
 var s_ui_scale: float = 1.0
-## Self-explanatory.
+## Scale multiplier for the ui crosshairs. 1.0 is 1:1 pixel-perfect with the output resolution.
 var s_crosshair_size: float = 1.0
 
 ## The base vertical Field of View for the player's camera.
@@ -57,25 +65,36 @@ var s_fov_desired: float = 120
 ## and generally ugly).
 var s_viewmodel_fov: float = 90
 
-## Toggles the procedural halos created by the "glow" post-processing effect.
-var s_glow_enabled: bool = true
-## Toggles the mesh-based halos present on various light sources and
-## bright objects.
+var s_vertex_snap: int = 2
+var s_affine_warp: bool = true
+
+## Toggles the mesh-based halos present on light sources and important objects.
 var s_flares_enabled: bool = true
+## Toggles the procedural halos created by the "glow" post-processing effect.
+var s_glow_enabled: bool = false
 ## Toggles a procedural cross-shaped lens flare post-processing effect. I worked
 ## very hard on it.
-var s_cross_glow_enabled: bool = false
+var s_cross_glow_enabled: bool = true
+var s_volumetric_fog_enabled: bool = true
 
 ## The sensitivity multiplier applied to mouse movement with regards to the
 ## first-person camera.
 var s_camera_sensitivity: float = 12.0
 
+# ---------- Audio settings ---------- #
 ## Self-explanatory.
-var s_master_volume: float = 87.0
+var s_master_volume: float = 70.0
 ## Self-explanatory.
 var s_sound_volume: float = 100.0
 ## Self-explanatory.
 var s_music_volume: float = 100.0
+
+# ---------- Gameplay settings ---------- #
+## Self-explanatory.
+var s_difficulty := Difficulty.NORMAL
+var s_nightmare_mode_active: bool = false
+## Whether crouching is a toggle or a hold.
+var s_toggle_crouch: bool = false
 
 ## Tells scripts to check to see if the game's settings have been changed and
 ## to update any values they need to.
@@ -118,9 +137,14 @@ func _load_config() -> void:
 	s_crosshair_size = config.get_value("video", "crosshair_size", s_crosshair_size)
 	s_fov_desired = config.get_value("video", "fov_desired", s_fov_desired)
 	s_viewmodel_fov = config.get_value("video", "viewmodel_fov", s_viewmodel_fov)
+	s_vertex_snap = config.get_value("video", "vertex_snap", s_vertex_snap)
+	s_affine_warp = config.get_value("video", "affine_warp", s_affine_warp)
 	s_flares_enabled = config.get_value("video", "flares_enabled", s_flares_enabled)
 	s_glow_enabled = config.get_value("video", "glow_enabled", s_glow_enabled)
-	s_cross_glow_enabled = config.get_value("video", "cross_glow_enabled", s_cross_glow_enabled)
+	s_cross_glow_enabled = config.get_value("video", "cross_glow_enabled",
+			s_cross_glow_enabled)
+	s_volumetric_fog_enabled = config.get_value("video", "volumetric_fog_enabled",
+			s_volumetric_fog_enabled)
 
 	s_master_volume = config.get_value("audio", "master_volume", s_master_volume)
 	s_sound_volume = config.get_value("audio", "sound_volume", s_sound_volume)
@@ -136,9 +160,12 @@ func _on_settings_changed() -> void:
 	config.set_value("video", "crosshair_size", s_crosshair_size)
 	config.set_value("video", "fov_desired", s_fov_desired)
 	config.set_value("video", "viewmodel_fov", s_viewmodel_fov)
+	config.set_value("video", "vertex_snap", s_vertex_snap)
+	config.set_value("video", "affine_warp", s_affine_warp)
 	config.set_value("video", "flares_enabled", s_flares_enabled)
 	config.set_value("video", "glow_enabled", s_glow_enabled)
 	config.set_value("video", "cross_glow_enabled", s_cross_glow_enabled)
+	config.set_value("video", "volumetric_fog_enabled", s_volumetric_fog_enabled)
 
 	config.set_value("audio", "master_volume", s_master_volume)
 	config.set_value("audio", "sound_volume", s_sound_volume)
@@ -151,3 +178,13 @@ func save_game(to: String) -> void:
 	var scene := PackedScene.new()
 	scene.pack(get_tree().root.get_child(C_AUTOLOAD_COUNT))
 	ResourceSaver.save(scene, to)
+	
+## returns from incremented or decremented by 1 towards to
+## (eg. intstep(1,5) returns 2)
+func intstep(from: int, to: int) -> int:
+	if from > to:
+		return from - 1
+	elif from < to:
+		return from + 1
+	else:
+		return from

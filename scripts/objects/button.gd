@@ -1,4 +1,8 @@
-class_name InteractButton extends Area3D
+class_name InteractButton
+extends Area3D
+
+
+signal interacted
 
 enum key {
 	## The player cannot operate this button unless they have a red key.
@@ -18,8 +22,6 @@ enum key {
 @export var required_key: key = key.NONE
 @export var current_state: bool = false
 @export var alert: String = ""
-
-signal interacted
 
 
 func start() -> void:

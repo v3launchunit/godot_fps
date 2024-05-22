@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="VolumetricsTest"
-run/main_scene="res://scenes/levels/test_level.tscn"
+config/tags=PackedStringArray("3d", "fps")
+run/main_scene="res://scenes/levels/debug/test_level/test_level.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,7 +23,7 @@ buses/default_bus_layout="res://audio/default_bus_layout.tres"
 [autoload]
 
 Globals="*res://scripts/globals.gd"
-GameMenu="*res://scenes/ui/game_menu.tscn"
+GameMenu="*res://scenes/ui/menus/game_menu.tscn"
 
 [display]
 
@@ -227,6 +228,7 @@ debug_give_max_ammo={
 3d_physics/layer_5="Projectiles"
 3d_physics/layer_6="Corpses"
 3d_physics/layer_7="Shields"
+3d_physics/layer_8="Doors"
 
 [physics]
 
@@ -259,4 +261,16 @@ shading/volumetric_fog/use_filter=0
 viewmodel_fov={
 "type": "float",
 "value": 90.0
+}
+vertex_snap={
+"type": "float",
+"value": 0.75
+}
+affine_warp={
+"type": "bool",
+"value": true
+}
+screen_size={
+"type": "ivec2",
+"value": Vector2i(683, 384)
 }

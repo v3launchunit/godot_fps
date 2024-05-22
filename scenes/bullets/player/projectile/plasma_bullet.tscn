@@ -1,7 +1,8 @@
 [gd_scene load_steps=20 format=3 uid="uid://ddrh730si0u6x"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_y0jrv"]
-[ext_resource type="PackedScene" uid="uid://d2uhwn8vwve4r" path="res://scenes/effects/bullet_impact_purple.tscn" id="2_6w578"]
+[ext_resource type="PackedScene" uid="uid://d2uhwn8vwve4r" path="res://scenes/effects/impacts/bullet_impact_purple.tscn" id="2_6w578"]
+[ext_resource type="Material" uid="uid://c6fs0qxg5vbch" path="res://materials/plasma_bullet_mat.tres" id="3_4xhqo"]
 [ext_resource type="AudioStream" uid="uid://bsv250k61o40r" path="res://audio/streams/ambient/plasma_shot_ambient.wav" id="3_81shg"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_crptv"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="3_wrin4"]
@@ -15,11 +16,6 @@ top_radius = 0.075
 bottom_radius = 0.075
 height = 1.0
 radial_segments = 6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lktph"]
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0, 2, 1)
 
 [sub_resource type="Gradient" id="Gradient_0qvjn"]
 offsets = PackedFloat32Array(0, 0.9, 1)
@@ -108,7 +104,7 @@ transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.5099
 layers = 2
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_3dr6j")
-surface_material_override/0 = SubResource("StandardMaterial3D_lktph")
+surface_material_override/0 = ExtResource("3_4xhqo")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

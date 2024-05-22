@@ -3,15 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://cu58hb7h0r68v" path="res://textures/effects/look_up_tables/1d_lut_16_color.png" id="1_l1r55"]
 [ext_resource type="Texture2D" uid="uid://dybaimi1b3b85" path="res://textures/effects/glow/lens_dirt/lens_dirt_0.png" id="2_8idb3"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2jtk7"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wgkln"]
 
 [sub_resource type="Sky" id="Sky_udgag"]
-sky_material = SubResource("ProceduralSkyMaterial_2jtk7")
+sky_material = SubResource("ProceduralSkyMaterial_wgkln")
 
 [resource]
 background_mode = 2
 sky = SubResource("Sky_udgag")
-glow_enabled = true
 glow_blend_mode = 0
 glow_map = ExtResource("2_8idb3")
 volumetric_fog_enabled = true

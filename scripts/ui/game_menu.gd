@@ -9,7 +9,7 @@ var _active_menus: int = 0
 signal menu_closed(menu_layer: int)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		if _active_menus <= 0:
 			get_tree().paused = true

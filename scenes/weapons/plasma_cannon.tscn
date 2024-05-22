@@ -29,21 +29,22 @@ uniform vec3 uv2_offset;
 
 global uniform float viewmodel_fov;
 
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	
+
 	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
 	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
 	// modify projection matrix
 	PROJECTION_MATRIX[1][1] = -onetanfov;
 	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-	
+
 	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	//POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
 	POSITION.z = mix(POSITION.z, 0, 0.99);
 }
-
 
 void fragment() {
 	vec2 base_uv = UV;
@@ -93,21 +94,22 @@ uniform vec3 uv2_offset;
 
 global uniform float viewmodel_fov;
 
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	
+
 	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
 	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
 	// modify projection matrix
 	PROJECTION_MATRIX[1][1] = -onetanfov;
 	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-	
+
 	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	//POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
 	POSITION.z = mix(POSITION.z, 0, 0.99);
 }
-
 
 void fragment() {
 	vec2 base_uv = UV;
@@ -157,48 +159,6 @@ color_ramp = SubResource("GradientTexture1D_v15st")
 material = SubResource("ShaderMaterial_re0b1")
 size = Vector3(0.063, 0.063, 0.063)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bxab6"]
-animation = &"plasma_cannon_anims/plasma_cannon_fire_alt"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f5jmi"]
-animation = &"plasma_cannon_anims/plasma_cannon_deploy"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1kkqo"]
-animation = &"plasma_cannon_anims/plasma_cannon_fire"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wfswt"]
-animation = &"plasma_cannon_anims/plasma_cannon_idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m2fko"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vjpgy"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k0cjf"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_up5bw"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cf4wg"]
-states/alt_firing/node = SubResource("AnimationNodeAnimation_bxab6")
-states/alt_firing/position = Vector2(682.667, 217.144)
-states/deploy/node = SubResource("AnimationNodeAnimation_f5jmi")
-states/deploy/position = Vector2(373.333, 95.9259)
-states/firing/node = SubResource("AnimationNodeAnimation_1kkqo")
-states/firing/position = Vector2(486.667, 216.815)
-states/idle/node = SubResource("AnimationNodeAnimation_wfswt")
-states/idle/position = Vector2(581.333, 96.4197)
-transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_m2fko"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_vjpgy"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_k0cjf"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_up5bw")]
-graph_offset = Vector2(4, 60)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_0tb5o"]
-radius = 16.0
-
 [sub_resource type="Animation" id="Animation_2r1p7"]
 length = 0.001
 tracks/0/type = "value"
@@ -243,11 +203,53 @@ _data = {
 "RESET": SubResource("Animation_2r1p7")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bxab6"]
+animation = &"plasma_cannon_anims/plasma_cannon_fire_alt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f5jmi"]
+animation = &"plasma_cannon_anims/plasma_cannon_deploy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1kkqo"]
+animation = &"plasma_cannon_anims/plasma_cannon_fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wfswt"]
+animation = &"plasma_cannon_anims/plasma_cannon_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m2fko"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vjpgy"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k0cjf"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_up5bw"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cf4wg"]
+states/alt_firing/node = SubResource("AnimationNodeAnimation_bxab6")
+states/alt_firing/position = Vector2(682.667, 217.144)
+states/deploy/node = SubResource("AnimationNodeAnimation_f5jmi")
+states/deploy/position = Vector2(373.333, 95.9259)
+states/firing/node = SubResource("AnimationNodeAnimation_1kkqo")
+states/firing/position = Vector2(486.667, 216.815)
+states/idle/node = SubResource("AnimationNodeAnimation_wfswt")
+states/idle/position = Vector2(581.333, 96.4197)
+transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_m2fko"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_vjpgy"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_k0cjf"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_up5bw")]
+graph_offset = Vector2(4, 60)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0tb5o"]
+radius = 16.0
+
 [node name="PlasmaCannon" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.35, -0.35)
 
 [node name="PlasmaCannon" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00196717, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00998373, 0)
 layers = 4
 material_override = SubResource("ShaderMaterial_r2bpe")
 cast_shadow = 0
@@ -256,18 +258,18 @@ script = ExtResource("2_ehb67")
 alt_bullet = ExtResource("3_d0hrl")
 alt_ammo_type = "cells"
 alt_ammo_cost = 4
-category = 2
-index = 2
 bullet = ExtResource("4_swy3p")
 shot_cooldown = 0.1
 ammo_type = "cells"
 anti_clip_distance = 0.1
+category = 2
+index = 2
 
 [node name="Spawner" type="Marker3D" parent="PlasmaCannon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.475)
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="PlasmaCannon/Spawner"]
-transform = Transform3D(1, -1.50996e-07, 1.50996e-07, -1.50996e-07, -1, -1.89227e-18, 1.50996e-07, -2.27978e-14, -1, -8.71226e-10, 0, 0.0250344)
+transform = Transform3D(1, -1.50996e-07, 1.50996e-07, -1.50996e-07, -1, -1.99222e-18, 1.50996e-07, -2.27977e-14, -1, -8.71226e-10, 0, 0.0250344)
 visible = false
 layers = 4
 material_override = SubResource("ShaderMaterial_re0b1")
@@ -292,7 +294,7 @@ draw_pass_1 = SubResource("BoxMesh_pde2p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.475)
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="PlasmaCannon/AltSpawner"]
-transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, -1.39252e-18, -1.50996e-07, -2.27983e-14, -1, -8.71226e-10, 0, 0.0250344)
+transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, -1.49247e-18, -1.50996e-07, -2.27982e-14, -1, -8.71226e-10, 0, 0.0250344)
 visible = false
 layers = 2
 material_override = SubResource("ShaderMaterial_re0b1")
@@ -308,9 +310,13 @@ omni_range = 10.0
 omni_shadow_mode = 0
 
 [node name="AnimationTree" type="AnimationTree" parent="PlasmaCannon"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_2hect"),
+"plasma_cannon_anims": ExtResource("4_bijp4")
+}
 tree_root = SubResource("AnimationNodeStateMachine_cf4wg")
 anim_player = NodePath("../../AnimationPlayer")
-active = true
 
 [node name="AlertRadius" type="Area3D" parent="PlasmaCannon"]
 collision_layer = 2

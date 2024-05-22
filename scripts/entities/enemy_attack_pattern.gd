@@ -12,6 +12,8 @@ enum PatternSelectionMode {
 var current_pattern: int = 0
 var current_burst: int = 0
 
+@onready var anim_player: AnimationPlayer = find_child("AnimationPlayer") as AnimationPlayer
+
 
 func _pursue(delta) -> void:
 	# weird hacky randomization algorithm
@@ -42,13 +44,25 @@ func _begin_attack() -> void:
 
 
 func _attack(_delta) -> void:
-	if (state_timer >= patterns[current_pattern].delay
-			+ current_burst * patterns[current_pattern].burst_delay):
-		do_attack()
+	if (
+			state_timer >= patterns[current_pattern].delay
+			+ current_burst * patterns[current_pattern].burst_delay
+	):
+		if patterns[current_pattern].cancelable and not can_see_target():
+			change_state(State.POST_ATTACKING)
+			anim_player.seek(
+					patterns[current_pattern].delay
+					+ patterns[current_pattern].burst
+					* patterns[current_pattern].burst_delay
+			)
+		else:
+			do_attack()
 	nav_agent.set_velocity(Vector3.ZERO)
 
 
 func do_attack() -> void:
+	look_at(current_targets[-1].position)
+	rotation.x = 0
 	var current_bullet: PackedScene = patterns[current_pattern].bullet
 	var current_volley: int = patterns[current_pattern].volley
 	var current_spread: float = patterns[current_pattern].spread
@@ -71,10 +85,12 @@ func do_attack() -> void:
 
 		var instance: Node3D = current_bullet.instantiate()
 		current_spawner.add_child(instance)
-		instance.reparent(get_tree().root)
+		instance.reparent(get_tree().current_scene)
 		if instance is PhysicsBody3D:
 			instance.add_collision_exception_with(self)
 			add_collision_exception_with(instance)
+			if instance is HomingRocket:
+				instance.target = current_targets[-1]
 		if instance is Hitscan:
 			instance.query_origin = global_position
 			instance.exceptions.append(self)

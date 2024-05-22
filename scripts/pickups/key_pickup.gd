@@ -2,11 +2,11 @@ extends Pickup
 
 @export_category("KeyPickup")
 
-@export_range(0, 2) var key_type: int = 0
+@export_enum("Red:0", "Green:1", "Blue:2") var key_type: int = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 

@@ -29,9 +29,12 @@ func _fire() -> void:
 		instance.invoker = manager.find_parent("Player")
 	spawner.global_rotation = spawner_base_rotation
 
-	if recoil != 0:
-		var p: Player = find_parent("Player")
-		p.apply_knockback(recoil * get_global_transform().basis.z * -1)
+	if abs(recoil) > Globals.C_EPSILON:
+#		recoiled.emit(Vector3.BACK * recoil)
+		player.apply_knockback(recoil * get_global_transform().basis.z * -1)
+
+	if abs(cam_recoil) > deg_to_rad(Globals.C_EPSILON):
+		player.cam_recoil_pos += cam_recoil
 
 	cooldown_timer = shot_cooldown
 	if eject_sys != null:

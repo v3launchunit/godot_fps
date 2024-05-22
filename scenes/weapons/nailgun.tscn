@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://cprbuapjccc8b"]
+[gd_scene load_steps=24 format=3 uid="uid://cprbuapjccc8b"]
 
 [ext_resource type="PackedScene" uid="uid://b4rf5i4ramo71" path="res://models/weapons/nailgun.glb" id="1_e18ie"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_double_barrel.gd" id="2_3wn8a"]
 [ext_resource type="AnimationLibrary" uid="uid://clbhlm2virvf0" path="res://models/weapons/nailgun_anims.res" id="3_8tsnk"]
 [ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_kb333"]
 [ext_resource type="PackedScene" uid="uid://dhplxq8nkqau3" path="res://scenes/bullets/player/projectile/nail.tscn" id="3_v6ia4"]
+[ext_resource type="Material" uid="uid://dq3a5fxspauox" path="res://materials/muzzle_flash_yellow.tres" id="4_tc63f"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="4_xgkgl"]
 
 [sub_resource type="Shader" id="Shader_wcwhh"]
@@ -28,21 +29,22 @@ uniform vec3 uv2_offset;
 
 global uniform float viewmodel_fov;
 
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	
+
 	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
 	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
 	// modify projection matrix
 	PROJECTION_MATRIX[1][1] = -onetanfov;
 	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-	
+
 	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	//POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
 	POSITION.z = mix(POSITION.z, 0, 0.99);
 }
-
 
 void fragment() {
 	vec2 base_uv = UV;
@@ -70,117 +72,6 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-
-[sub_resource type="Shader" id="Shader_mcad4"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
-
-shader_type spatial;
-render_mode blend_add,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
-uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
-uniform float point_size : hint_range(0,128);
-uniform float roughness : hint_range(0,1);
-uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
-uniform float specular;
-uniform float metallic;
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
-global uniform float viewmodel_fov;
-
-
-void vertex() {
-	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	
-	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
-	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
-	// modify projection matrix
-	PROJECTION_MATRIX[1][1] = -onetanfov;
-	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-	
-	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
-	POSITION.z = mix(POSITION.z, 0, 0.99);
-}
-
-
-void fragment() {
-	vec2 base_uv = UV;
-	vec4 albedo_tex = texture(texture_albedo,base_uv);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
-	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
-	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
-	SPECULAR = specular;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tu87l"]
-render_priority = 0
-shader = SubResource("Shader_mcad4")
-shader_parameter/albedo = Color(1, 1, 0, 1)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pa5f1"]
-animation = &"nailgun_anims/nailgun_fire_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_74tso"]
-animation = &"nailgun_anims/nailgun_deploy"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q8vi5"]
-animation = &"nailgun_anims/nailgun_fire_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_05c6l"]
-animation = &"nailgun_anims/nailgun_idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nqngg"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_743v3"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2r1s8"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j2gog"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_605m1"]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ytkg"]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_84u0q"]
-states/alt_firing/node = SubResource("AnimationNodeAnimation_pa5f1")
-states/alt_firing/position = Vector2(557.333, 144.667)
-states/deploy/node = SubResource("AnimationNodeAnimation_74tso")
-states/deploy/position = Vector2(312, 99.7778)
-states/firing/node = SubResource("AnimationNodeAnimation_q8vi5")
-states/firing/position = Vector2(556.889, 59.3333)
-states/idle/node = SubResource("AnimationNodeAnimation_05c6l")
-states/idle/position = Vector2(436, 98.8889)
-transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_nqngg"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_743v3"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_2r1s8"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_j2gog"), "firing", "alt_firing", SubResource("AnimationNodeStateMachineTransition_605m1"), "alt_firing", "firing", SubResource("AnimationNodeStateMachineTransition_8ytkg")]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_4k1jv"]
-radius = 16.0
 
 [sub_resource type="Animation" id="Animation_2afvw"]
 resource_name = "RESET"
@@ -305,18 +196,65 @@ _data = {
 "RESET": SubResource("Animation_2afvw")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pa5f1"]
+animation = &"nailgun_anims/nailgun_fire_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_74tso"]
+animation = &"nailgun_anims/nailgun_deploy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q8vi5"]
+animation = &"nailgun_anims/nailgun_fire_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_05c6l"]
+animation = &"nailgun_anims/nailgun_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nqngg"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_743v3"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2r1s8"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j2gog"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_605m1"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ytkg"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_84u0q"]
+states/alt_firing/node = SubResource("AnimationNodeAnimation_pa5f1")
+states/alt_firing/position = Vector2(557.333, 144.667)
+states/deploy/node = SubResource("AnimationNodeAnimation_74tso")
+states/deploy/position = Vector2(312, 99.7778)
+states/firing/node = SubResource("AnimationNodeAnimation_q8vi5")
+states/firing/position = Vector2(556.889, 59.3333)
+states/idle/node = SubResource("AnimationNodeAnimation_05c6l")
+states/idle/position = Vector2(436, 98.8889)
+transitions = ["Start", "deploy", SubResource("AnimationNodeStateMachineTransition_nqngg"), "deploy", "idle", SubResource("AnimationNodeStateMachineTransition_743v3"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_2r1s8"), "alt_firing", "idle", SubResource("AnimationNodeStateMachineTransition_j2gog"), "firing", "alt_firing", SubResource("AnimationNodeStateMachineTransition_605m1"), "alt_firing", "firing", SubResource("AnimationNodeStateMachineTransition_8ytkg")]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4k1jv"]
+radius = 16.0
+
 [node name="Nailgun" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
 [node name="Nailgun" parent="." instance=ExtResource("1_e18ie")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.000482631, 0)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.00099527, 0)
 script = ExtResource("2_3wn8a")
-category = 2
-index = 1
 bullet = ExtResource("3_v6ia4")
 shot_cooldown = 0.15
 ammo_type = "nails"
 anti_clip_distance = 0.25
+category = 2
+index = 1
 
 [node name="Body" parent="Nailgun" index="0"]
 layers = 4
@@ -328,12 +266,13 @@ transform = Transform3D(-0.025, -1.09278e-08, -1.09278e-09, 1.09278e-09, 0, -0.0
 layers = 4
 material_override = SubResource("ShaderMaterial_n0cpt")
 cast_shadow = 0
+custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Nailgun/BarrelL" index="0"]
 transform = Transform3D(50, -1.94707e-05, -8.51091e-14, 0, -2.18557e-06, 5, -1.94707e-05, -50, -2.18557e-07, -1.19209e-07, -1.4, 0)
 visible = false
 layers = 4
-material_override = SubResource("ShaderMaterial_tu87l")
+material_override = ExtResource("4_tc63f")
 cast_shadow = 0
 mesh = ExtResource("3_kb333")
 skeleton = NodePath("../../Spawner")
@@ -361,12 +300,13 @@ transform = Transform3D(-0.025, -1.09278e-08, -1.09278e-09, 1.09278e-09, 0, -0.0
 layers = 4
 material_override = SubResource("ShaderMaterial_n0cpt")
 cast_shadow = 0
+custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Nailgun/BarrelR" index="0"]
 transform = Transform3D(50, -1.94707e-05, -8.51091e-14, 0, -2.18557e-06, 5, -1.94707e-05, -50, -2.18557e-07, -2.38419e-07, -1.4, 0)
 visible = false
 layers = 4
-material_override = SubResource("ShaderMaterial_tu87l")
+material_override = ExtResource("4_tc63f")
 cast_shadow = 0
 mesh = ExtResource("3_kb333")
 skeleton = NodePath("../../AltSpawner")
@@ -386,9 +326,13 @@ transform = Transform3D(1, 4.33126e-07, 4.37112e-08, -4.33126e-07, 1, -4.37114e-
 transform = Transform3D(1, 4.33126e-07, 4.37112e-08, -4.33126e-07, 1, -4.37114e-07, -4.37114e-08, 4.37114e-07, 1, -0.05, 0, 0.55)
 
 [node name="AnimationTree" type="AnimationTree" parent="Nailgun"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_df57y"),
+"nailgun_anims": ExtResource("3_8tsnk")
+}
 tree_root = SubResource("AnimationNodeStateMachine_84u0q")
 anim_player = NodePath("../../AnimationPlayer")
-active = true
 
 [node name="AlertRadius" type="Area3D" parent="Nailgun"]
 collision_layer = 2

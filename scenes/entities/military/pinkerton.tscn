@@ -1,34 +1,33 @@
-[gd_scene load_steps=86 format=3 uid="uid://cc7snvg1qg4i4"]
+[gd_scene load_steps=96 format=3 uid="uid://cc7snvg1qg4i4"]
 
-[ext_resource type="Script" path="res://scripts/entities/enemy_base.gd" id="1_1yhno"]
+[ext_resource type="Script" path="res://scripts/entities/enemy_pinkerton.gd" id="1_4o8wq"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="2_p7cng"]
-[ext_resource type="AudioStream" uid="uid://k1hmkq07use5" path="res://audio/streams/voices/pinkerton/detect/get_her_1.wav" id="2_ttu8i"]
+[ext_resource type="AudioStream" uid="uid://k1hmkq07use5" path="res://audio/streams/voices/pinkerton/detect/get_her_1.wav" id="2_sxcfu"]
+[ext_resource type="AudioStream" uid="uid://bcbenycltm5pg" path="res://audio/streams/voices/pinkerton/detect/get_her_2.wav" id="3_5es6a"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="3_5ywnf"]
 [ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_np25i"]
-[ext_resource type="AudioStream" uid="uid://bcbenycltm5pg" path="res://audio/streams/voices/pinkerton/detect/get_her_2.wav" id="3_s6toq"]
-[ext_resource type="AudioStream" uid="uid://cd7ytakwg5sgo" path="res://audio/streams/voices/pinkerton/detect/halt_1.wav" id="4_5hrar"]
+[ext_resource type="AudioStream" uid="uid://djru6dnc2lnrv" path="res://audio/streams/voices/pinkerton/detect/tresspasser_2.wav" id="4_mrwr3"]
 [ext_resource type="AnimationLibrary" uid="uid://dhxang8l8iyqp" path="res://scenes/entities/military/pinkerton_anims.res" id="5_bdfiq"]
+[ext_resource type="AudioStream" uid="uid://bty85t0ut8oro" path="res://audio/streams/voices/pinkerton/detect/tresspasser_3.wav" id="5_e5dnl"]
 [ext_resource type="PackedScene" uid="uid://sgwxe7sgcert" path="res://models/entities/pinkerton.glb" id="5_v6q8l"]
-[ext_resource type="AudioStream" uid="uid://bw30qs54ire0" path="res://audio/streams/voices/pinkerton/detect/halt_2.wav" id="5_xke6e"]
-[ext_resource type="AudioStream" uid="uid://cix5xh517bnj4" path="res://audio/streams/voices/pinkerton/detect/intruder_spotted_1.wav" id="6_2o32y"]
-[ext_resource type="AudioStream" uid="uid://fimyb2r1ra54" path="res://audio/streams/voices/pinkerton/detect/kill_her_1.wav" id="7_c1q5u"]
+[ext_resource type="AudioStream" uid="uid://cd7ytakwg5sgo" path="res://audio/streams/voices/pinkerton/detect/halt_1.wav" id="6_1u6d5"]
+[ext_resource type="AudioStream" uid="uid://bw30qs54ire0" path="res://audio/streams/voices/pinkerton/detect/halt_2.wav" id="7_6sm5o"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="7_d0her"]
+[ext_resource type="AudioStream" uid="uid://cix5xh517bnj4" path="res://audio/streams/voices/pinkerton/detect/intruder_spotted_1.wav" id="8_phrdl"]
 [ext_resource type="PackedScene" uid="uid://dl7fuv4wdxtjx" path="res://scenes/pickups/ammo/shell_pickup.tscn" id="8_slj13"]
-[ext_resource type="AudioStream" uid="uid://2i1oefv2d7uf" path="res://audio/streams/voices/pinkerton/detect/kill_her_2.wav" id="8_y2otn"]
-[ext_resource type="AudioStream" uid="uid://cvhddpbrl73h7" path="res://audio/streams/voices/pinkerton/detect/kill_her_3.wav" id="9_vl76a"]
-[ext_resource type="AudioStream" uid="uid://dlc4tyjayi4sv" path="res://audio/streams/voices/pinkerton/detect/stop_her_1.wav" id="10_mrux3"]
-[ext_resource type="AudioStream" uid="uid://cqcaj4cjjb1ip" path="res://audio/streams/voices/pinkerton/detect/tresspasser_1.wav" id="11_pncib"]
-[ext_resource type="AudioStream" uid="uid://djru6dnc2lnrv" path="res://audio/streams/voices/pinkerton/detect/tresspasser_2.wav" id="12_nosob"]
-[ext_resource type="AudioStream" uid="uid://bty85t0ut8oro" path="res://audio/streams/voices/pinkerton/detect/tresspasser_3.wav" id="13_eblm2"]
+[ext_resource type="AudioStream" uid="uid://fimyb2r1ra54" path="res://audio/streams/voices/pinkerton/detect/kill_her_1.wav" id="9_fw5ta"]
+[ext_resource type="AudioStream" uid="uid://2i1oefv2d7uf" path="res://audio/streams/voices/pinkerton/detect/kill_her_2.wav" id="10_cnalv"]
+[ext_resource type="AudioStream" uid="uid://cvhddpbrl73h7" path="res://audio/streams/voices/pinkerton/detect/kill_her_3.wav" id="11_q5fbb"]
+[ext_resource type="AudioStream" uid="uid://dlc4tyjayi4sv" path="res://audio/streams/voices/pinkerton/detect/stop_her_1.wav" id="12_tfmbw"]
+[ext_resource type="AudioStream" uid="uid://cqcaj4cjjb1ip" path="res://audio/streams/voices/pinkerton/detect/tresspasser_1.wav" id="13_0jqmp"]
 [ext_resource type="PackedScene" uid="uid://blrtnnu61g5s" path="res://scenes/bullets/enemy/enemy_test_bullet.tscn" id="14_0v8ti"]
-[ext_resource type="AudioStream" uid="uid://bxlkhiwffdgdt" path="res://audio/streams/voices/pinkerton/death/scream_1.wav" id="14_ftlx6"]
-[ext_resource type="AudioStream" uid="uid://472lwhnuv0ad" path="res://audio/streams/voices/pinkerton/death/scream_2.wav" id="15_dxsxu"]
-[ext_resource type="AudioStream" uid="uid://db7ebp6630xbh" path="res://audio/streams/voices/pinkerton/death/scream_3.wav" id="16_0rah0"]
-[ext_resource type="AudioStream" uid="uid://b5ay00lvhbvmm" path="res://audio/streams/voices/pinkerton/death/scream_4.wav" id="17_1ljih"]
-[ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://audio/streams/voices/wilhelm_scream.ogg" id="18_d25a8"]
+[ext_resource type="AudioStream" uid="uid://b5ay00lvhbvmm" path="res://audio/streams/voices/pinkerton/death/scream_4.wav" id="15_kxmnn"]
+[ext_resource type="AudioStream" uid="uid://db7ebp6630xbh" path="res://audio/streams/voices/pinkerton/death/scream_3.wav" id="16_vn7a5"]
+[ext_resource type="AudioStream" uid="uid://472lwhnuv0ad" path="res://audio/streams/voices/pinkerton/death/scream_2.wav" id="17_n4f4t"]
+[ext_resource type="AudioStream" uid="uid://bxlkhiwffdgdt" path="res://audio/streams/voices/pinkerton/death/scream_1.wav" id="18_ac1r7"]
 [ext_resource type="Texture2D" uid="uid://crih0rgk10al6" path="res://textures/weapons/pump_shotgun/shotgun_detail_mask.png" id="19_qblbc"]
+[ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://audio/streams/voices/wilhelm_scream.ogg" id="19_txijk"]
 [ext_resource type="Texture2D" uid="uid://co8o24o1hnvyl" path="res://textures/entities/enemies/pinkerton/pinkerton_albedo.png" id="20_0syyy"]
-[ext_resource type="Texture2D" uid="uid://bsnabwad52kba" path="res://textures/terrain/log/log_heights.png" id="20_s44er"]
 [ext_resource type="Texture2D" uid="uid://c2ubhgqhrxtiu" path="res://textures/weapons/pump_shotgun/shotgun_metallic.png" id="20_w745n"]
 [ext_resource type="Texture2D" uid="uid://cxcypi06wwlum" path="res://textures/entities/enemies/pinkerton/pinkerton_detail_mask.png" id="21_d5v6x"]
 [ext_resource type="Texture2D" uid="uid://exkw0wktl54p" path="res://textures/entities/enemies/pinkerton/pinkerton_metallic.png" id="21_tvmks"]
@@ -36,62 +35,111 @@
 [ext_resource type="Texture2D" uid="uid://bw7v4h5hychul" path="res://textures/entities/enemies/pinkerton/pinkerton_roughness.png" id="22_758q5"]
 [ext_resource type="PackedScene" uid="uid://cqctw8dd0ar4n" path="res://scenes/effects/damage/damage_sys.tscn" id="31_7r0oy"]
 [ext_resource type="PackedScene" uid="uid://c5pbs8t6p7ogl" path="res://scenes/effects/gibs/gibs.tscn" id="32_l26si"]
+[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="37_sxmhw"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hdxer"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oao7a"]
 random_pitch = 1.15
 streams_count = 12
-stream_0/stream = ExtResource("2_ttu8i")
-stream_0/weight = 3.0
-stream_1/stream = ExtResource("3_s6toq")
-stream_1/weight = 3.0
-stream_2/stream = ExtResource("4_5hrar")
-stream_2/weight = 3.0
-stream_3/stream = ExtResource("5_xke6e")
-stream_3/weight = 3.0
-stream_4/stream = ExtResource("6_2o32y")
-stream_4/weight = 6.0
-stream_5/stream = ExtResource("7_c1q5u")
-stream_5/weight = 2.0
-stream_6/stream = ExtResource("8_y2otn")
-stream_6/weight = 2.0
-stream_7/stream = ExtResource("9_vl76a")
-stream_7/weight = 2.0
-stream_8/stream = ExtResource("10_mrux3")
-stream_8/weight = 6.0
-stream_9/stream = ExtResource("11_pncib")
-stream_9/weight = 2.0
-stream_10/stream = ExtResource("12_nosob")
-stream_10/weight = 2.0
-stream_11/stream = ExtResource("13_eblm2")
-stream_11/weight = 2.0
+stream_0/stream = ExtResource("2_sxcfu")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_5es6a")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_1u6d5")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("7_6sm5o")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("8_phrdl")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("9_fw5ta")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("10_cnalv")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("11_q5fbb")
+stream_7/weight = 1.0
+stream_8/stream = ExtResource("12_tfmbw")
+stream_8/weight = 1.0
+stream_9/stream = ExtResource("13_0jqmp")
+stream_9/weight = 1.0
+stream_10/stream = ExtResource("4_mrwr3")
+stream_10/weight = 1.0
+stream_11/stream = ExtResource("5_e5dnl")
+stream_11/weight = 1.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w5kcn"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vgyku"]
 random_pitch = 1.15
 streams_count = 4
-stream_0/stream = ExtResource("14_ftlx6")
+stream_0/stream = ExtResource("15_kxmnn")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("15_dxsxu")
+stream_1/stream = ExtResource("16_vn7a5")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("16_0rah0")
+stream_2/stream = ExtResource("17_n4f4t")
 stream_2/weight = 1.0
-stream_3/stream = ExtResource("17_1ljih")
+stream_3/stream = ExtResource("18_ac1r7")
 stream_3/weight = 1.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a1m1h"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_36k8d"]
 playback_mode = 1
 streams_count = 2
-stream_0/stream = SubResource("AudioStreamRandomizer_w5kcn")
+stream_0/stream = SubResource("AudioStreamRandomizer_vgyku")
 stream_0/weight = 100.0
-stream_1/stream = ExtResource("18_d25a8")
+stream_1/stream = ExtResource("19_txijk")
 stream_1/weight = 0.001
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bp4ct"]
 resource_local_to_scene = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxecq"]
-albedo_color = Color(0.75, 0.75, 0.75, 1)
-metallic = 1.0
-roughness = 0.25
+[sub_resource type="Shader" id="Shader_hdi5f"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bkory"]
+render_priority = 0
+shader = SubResource("Shader_hdi5f")
+shader_parameter/albedo = Color(0.75, 0.75, 0.75, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="Gradient" id="Gradient_rrp2w"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -103,18 +151,121 @@ gradient = SubResource("Gradient_rrp2w")
 gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_28pn6")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f53jo"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0, 0, 1)
+[sub_resource type="Shader" id="Shader_2gaha"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	albedo_tex *= COLOR;
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	ALPHA *= albedo.a * albedo_tex.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uadv6"]
+render_priority = 0
+shader = SubResource("Shader_2gaha")
+shader_parameter/albedo = Color(1, 0, 0, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_sc0xe"]
-material = SubResource("StandardMaterial3D_f53jo")
+material = SubResource("ShaderMaterial_uadv6")
 radius = 0.06
 height = 0.05
-radial_segments = 8
+radial_segments = 4
 rings = 3
+
+[sub_resource type="Shader" id="Shader_uevtc"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform float clearcoat : hint_range(0,1);
+uniform float clearcoat_roughness : hint_range(0,1);
+uniform sampler2D texture_clearcoat : hint_default_white,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_albedo : source_color,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_normal : hint_normal,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_mask : hint_default_white,filter_nearest,repeat_enable;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	vec2 clearcoat_tex = texture(texture_clearcoat,base_uv).xy;
+	CLEARCOAT = clearcoat*clearcoat_tex.x;	CLEARCOAT_ROUGHNESS = clearcoat_roughness*clearcoat_tex.y;
+	vec4 detail_tex = texture(texture_detail_albedo,base_uv);
+	vec4 detail_norm_tex = texture(texture_detail_normal,base_uv);
+	vec4 detail_mask_tex = texture(texture_detail_mask,base_uv);
+	vec3 detail = mix(ALBEDO.rgb,detail_tex.rgb,detail_tex.a);
+	vec3 detail_norm = mix(NORMAL_MAP,detail_norm_tex.rgb,detail_tex.a);
+	NORMAL_MAP = mix(NORMAL_MAP,detail_norm,detail_mask_tex.r);
+	ALBEDO.rgb = mix(ALBEDO.rgb,detail,detail_mask_tex.r);
+}
+"
 
 [sub_resource type="Gradient" id="Gradient_v5jf5"]
 interpolation_mode = 1
@@ -141,23 +292,128 @@ as_normal_map = true
 bump_strength = 1.0
 noise = SubResource("FastNoiseLite_q3vr3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u47u4"]
-albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
-metallic = 1.0
-metallic_texture = ExtResource("20_w745n")
-roughness_texture = ExtResource("21_xf3tc")
-clearcoat_enabled = true
-clearcoat_roughness = 0.25
-clearcoat_texture = ExtResource("19_qblbc")
-detail_enabled = true
-detail_mask = ExtResource("19_qblbc")
-detail_albedo = SubResource("NoiseTexture2D_fagd6")
-detail_normal = SubResource("NoiseTexture2D_7duje")
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xpgsl"]
+render_priority = 0
+shader = SubResource("Shader_uevtc")
+shader_parameter/albedo = Color(0.501961, 0.501961, 0.501961, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.25
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_metallic = ExtResource("20_w745n")
+shader_parameter/texture_roughness = ExtResource("21_xf3tc")
+shader_parameter/texture_clearcoat = ExtResource("19_qblbc")
+shader_parameter/texture_detail_albedo = SubResource("NoiseTexture2D_fagd6")
+shader_parameter/texture_detail_normal = SubResource("NoiseTexture2D_7duje")
+shader_parameter/texture_detail_mask = ExtResource("19_qblbc")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udm4r"]
-shading_mode = 0
-albedo_color = Color(1, 1, 0, 1)
+[sub_resource type="Shader" id="Shader_r0nnw"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n85vr"]
+render_priority = 0
+shader = SubResource("Shader_r0nnw")
+shader_parameter/albedo = Color(1, 1, 0, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="Shader" id="Shader_4ce0w"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_normal : hint_roughness_normal,filter_nearest,repeat_enable;
+uniform float normal_scale : hint_range(-16,16);
+uniform float clearcoat : hint_range(0,1);
+uniform float clearcoat_roughness : hint_range(0,1);
+uniform sampler2D texture_clearcoat : hint_default_white,filter_nearest,repeat_enable;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+	vec2 clearcoat_tex = texture(texture_clearcoat,base_uv).xy;
+	CLEARCOAT = clearcoat*clearcoat_tex.x;	CLEARCOAT_ROUGHNESS = clearcoat_roughness*clearcoat_tex.y;
+}
+"
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ti8ho"]
 width = 128
@@ -176,18 +432,73 @@ as_normal_map = true
 bump_strength = 1.0
 noise = SubResource("FastNoiseLite_q3vr3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7l6u"]
-albedo_texture = SubResource("NoiseTexture2D_ti8ho")
-roughness = 0.75
-normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_ifyxs")
-clearcoat_enabled = true
-clearcoat_roughness = 0.25
-heightmap_scale = 8.0
-heightmap_texture = ExtResource("20_s44er")
-uv1_scale = Vector3(0.25, 1, 0.25)
-uv1_world_triplanar = true
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebqrs"]
+render_priority = 0
+shader = SubResource("Shader_4ce0w")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.75
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.25
+shader_parameter/uv1_scale = Vector3(0.25, 1, 0.25)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_ti8ho")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_ifyxs")
+
+[sub_resource type="Shader" id="Shader_7ts18"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_detail_albedo : source_color,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_normal : hint_normal,filter_nearest,repeat_enable;
+uniform sampler2D texture_detail_mask : hint_default_white,filter_nearest,repeat_enable;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	vec4 detail_tex = texture(texture_detail_albedo,base_uv);
+	vec4 detail_norm_tex = texture(texture_detail_normal,base_uv);
+	vec4 detail_mask_tex = texture(texture_detail_mask,base_uv);
+	vec3 detail = mix(ALBEDO.rgb,ALBEDO.rgb*detail_tex.rgb,detail_tex.a);
+	vec3 detail_norm = mix(NORMAL_MAP,detail_norm_tex.rgb,detail_tex.a);
+	NORMAL_MAP = mix(NORMAL_MAP,detail_norm,detail_mask_tex.r);
+	ALBEDO.rgb = mix(ALBEDO.rgb,detail,detail_mask_tex.r);
+}
+"
 
 [sub_resource type="Gradient" id="Gradient_842kq"]
 interpolation_mode = 1
@@ -213,17 +524,25 @@ as_normal_map = true
 bump_strength = 1.0
 noise = SubResource("FastNoiseLite_dtqry")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_osars"]
-albedo_texture = ExtResource("20_0syyy")
-metallic = 1.0
-metallic_texture = ExtResource("21_tvmks")
-roughness_texture = ExtResource("22_758q5")
-detail_enabled = true
-detail_mask = ExtResource("21_d5v6x")
-detail_blend_mode = 3
-detail_albedo = SubResource("NoiseTexture2D_vdgww")
-detail_normal = SubResource("NoiseTexture2D_hiytb")
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnys1"]
+render_priority = 0
+shader = SubResource("Shader_7ts18")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("20_0syyy")
+shader_parameter/texture_metallic = ExtResource("21_tvmks")
+shader_parameter/texture_roughness = ExtResource("22_758q5")
+shader_parameter/texture_detail_albedo = SubResource("NoiseTexture2D_vdgww")
+shader_parameter/texture_detail_normal = SubResource("NoiseTexture2D_hiytb")
+shader_parameter/texture_detail_mask = ExtResource("21_d5v6x")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3sdgy"]
 transparency = 1
@@ -236,6 +555,7 @@ bottom_radius = 0.0
 radial_segments = 8
 
 [sub_resource type="Animation" id="Animation_o8lpw"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
@@ -541,6 +861,9 @@ animation = &"pinkerton_anims/pinkerton_flinch"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oyciw"]
 animation = &"pinkerton_anims/pinkerton_idle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8e0s5"]
+animation = &"pinkerton_anims/pinkerton_jump"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_imbdi"]
 animation = &"pinkerton_anims/pinkerton_move"
 
@@ -591,6 +914,16 @@ xfade_time = 0.25
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mr23i"]
 xfade_time = 0.1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gw055"]
+xfade_time = 0.05
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oewr8"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xmef0"]
+xfade_time = 0.2
+switch_mode = 1
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l00kp"]
 states/Start/position = Vector2(148, 100.889)
 states/attacking/node = SubResource("AnimationNodeAnimation_nfb3s")
@@ -601,25 +934,28 @@ states/flinching/node = SubResource("AnimationNodeAnimation_8bms8")
 states/flinching/position = Vector2(598.261, 224.617)
 states/idle/node = SubResource("AnimationNodeAnimation_oyciw")
 states/idle/position = Vector2(306.716, 100.047)
+states/jumping/node = SubResource("AnimationNodeAnimation_8e0s5")
+states/jumping/position = Vector2(771.346, 100.074)
 states/moving/node = SubResource("AnimationNodeAnimation_imbdi")
 states/moving/position = Vector2(597.334, 101.139)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2prg3"), "idle", "moving", SubResource("AnimationNodeStateMachineTransition_7oomp"), "moving", "idle", SubResource("AnimationNodeStateMachineTransition_dbccw"), "moving", "attacking", SubResource("AnimationNodeStateMachineTransition_4xupg"), "idle", "attacking", SubResource("AnimationNodeStateMachineTransition_majfp"), "attacking", "moving", SubResource("AnimationNodeStateMachineTransition_2nn25"), "attacking", "idle", SubResource("AnimationNodeStateMachineTransition_w5vit"), "attacking", "dead", SubResource("AnimationNodeStateMachineTransition_se8tw"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_bj5l4"), "moving", "dead", SubResource("AnimationNodeStateMachineTransition_x017w"), "idle", "flinching", SubResource("AnimationNodeStateMachineTransition_goefx"), "attacking", "flinching", SubResource("AnimationNodeStateMachineTransition_3fks7"), "moving", "flinching", SubResource("AnimationNodeStateMachineTransition_stoq6"), "flinching", "moving", SubResource("AnimationNodeStateMachineTransition_wpkvg"), "flinching", "dead", SubResource("AnimationNodeStateMachineTransition_mr23i")]
-graph_offset = Vector2(-80, 6)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2prg3"), "idle", "moving", SubResource("AnimationNodeStateMachineTransition_7oomp"), "moving", "idle", SubResource("AnimationNodeStateMachineTransition_dbccw"), "moving", "attacking", SubResource("AnimationNodeStateMachineTransition_4xupg"), "idle", "attacking", SubResource("AnimationNodeStateMachineTransition_majfp"), "attacking", "moving", SubResource("AnimationNodeStateMachineTransition_2nn25"), "attacking", "idle", SubResource("AnimationNodeStateMachineTransition_w5vit"), "attacking", "dead", SubResource("AnimationNodeStateMachineTransition_se8tw"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_bj5l4"), "moving", "dead", SubResource("AnimationNodeStateMachineTransition_x017w"), "idle", "flinching", SubResource("AnimationNodeStateMachineTransition_goefx"), "attacking", "flinching", SubResource("AnimationNodeStateMachineTransition_3fks7"), "moving", "flinching", SubResource("AnimationNodeStateMachineTransition_stoq6"), "flinching", "moving", SubResource("AnimationNodeStateMachineTransition_wpkvg"), "flinching", "dead", SubResource("AnimationNodeStateMachineTransition_mr23i"), "moving", "jumping", SubResource("AnimationNodeStateMachineTransition_gw055"), "jumping", "moving", SubResource("AnimationNodeStateMachineTransition_oewr8"), "jumping", "flinching", SubResource("AnimationNodeStateMachineTransition_xmef0")]
+graph_offset = Vector2(-98, -5)
 
 [node name="Pinkerton" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 23
-script = ExtResource("1_1yhno")
+script = ExtResource("1_4o8wq")
 speed = 5.0
+jump_height = 2.0
 wake_up_time = 0.0
 sight_line_sweep_speed = 10.0
-detection_stream = SubResource("AudioStreamRandomizer_hdxer")
+detection_stream = SubResource("AudioStreamRandomizer_oao7a")
 bullet = ExtResource("14_0v8ti")
 volley = 5
 spread = 5.0
 flinch_chance = 0.25
 flinch_time = 0.35
-death_stream = SubResource("AudioStreamRandomizer_a1m1h")
+death_stream = SubResource("AudioStreamRandomizer_36k8d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_bp4ct")
@@ -648,11 +984,11 @@ bones/20/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/21/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.151912, -0.70768, 0.690008, 0.939844, -0.319532, -0.120801, 0.305968, 0.630149, 0.71365, -0.0941592, 0.335863, 0.157678)
+transform = Transform3D(-0.120489, -0.330487, 0.936088, 0.951386, -0.307691, 0.0138274, 0.283456, 0.892247, 0.351494, -0.0292332, 0.332379, 0.205225)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_cxecq")
+material_override = SubResource("ShaderMaterial_bkory")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="1"]
 transform = Transform3D(0.771988, 0.557152, -0.305968, 0.274462, -0.726349, -0.630149, -0.573329, 0.402491, -0.713649, 0.145451, -0.0821093, -0.00993064)
@@ -687,25 +1023,25 @@ shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.227868, -0.707681, 1.03501, 1.40977, -0.319532, -0.181201, 0.458952, 0.630149, 1.07047, -0.129544, 0.319886, 0.189187)
+transform = Transform3D(-0.180733, -0.330487, 1.40413, 1.42708, -0.307691, 0.0207407, 0.425183, 0.892247, 0.527241, -0.045758, 0.316994, 0.249839)
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D/Cylinder_001" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_cxecq")
+material_override = SubResource("ShaderMaterial_bkory")
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 1.49012e-08, -3.57628e-07, 5.96046e-08, -1, 1.19263e-08, -3.57628e-07, -1.19264e-08, -1, -0.4, -1.22, -0.0500002)
+transform = Transform3D(0.986643, 0.128382, 0.100271, -0.159617, 0.884848, 0.437684, -0.0325339, -0.447842, 0.893521, -0.230804, 0.396013, 0.0645152)
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D/Shotgun" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_u47u4")
+material_override = SubResource("ShaderMaterial_xpgsl")
 
 [node name="MuzzleFlash" type="MeshInstance3D" parent="Pinkerton/Armature/Skeleton3D/Shotgun/Shotgun" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.675, -0.135)
 visible = false
 layers = 2
 mesh = ExtResource("3_np25i")
-surface_material_override/0 = SubResource("StandardMaterial3D_udm4r")
+surface_material_override/0 = SubResource("ShaderMaterial_n85vr")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Pinkerton/Armature/Skeleton3D/Shotgun/Shotgun/MuzzleFlash"]
 layers = 2
@@ -716,15 +1052,15 @@ omni_range = 10.0
 transform = Transform3D(-1.95578e-08, -1, 7.45058e-09, -3.72529e-08, 2.23517e-08, 1, -1, 2.04891e-08, -3.72529e-08, 0, 0.675, -0.135)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 1.49012e-08, -3.57628e-07, 5.96046e-08, -1, 1.19263e-08, -3.57628e-07, -1.19264e-08, -1, -0.4, -1.22, -0.0500002)
+transform = Transform3D(0.986643, 0.128382, 0.100271, -0.159617, 0.884848, 0.437684, -0.0325339, -0.447842, 0.893521, -0.230804, 0.396013, 0.0645152)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D/Pump" index="0"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_y7l6u")
+material_override = SubResource("ShaderMaterial_ebqrs")
 
 [node name="Body" parent="Pinkerton/Armature/Skeleton3D" index="4"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_osars")
+material_override = SubResource("ShaderMaterial_dnys1")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 1.5
@@ -768,5 +1104,7 @@ gib_threshold = 90.0
 damage_sys = ExtResource("31_7r0oy")
 gibs = ExtResource("32_l26si")
 loot = Array[PackedScene]([ExtResource("3_5ywnf"), ExtResource("7_d0her"), ExtResource("8_slj13")])
+
+[node name="StairStepper" parent="." instance=ExtResource("37_sxmhw")]
 
 [editable path="Pinkerton"]

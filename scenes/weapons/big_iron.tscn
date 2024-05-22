@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bfxuay7qxu7lj"]
+[gd_scene load_steps=36 format=3 uid="uid://bfxuay7qxu7lj"]
 
 [ext_resource type="ArrayMesh" uid="uid://vfuqffuqwocv" path="res://models/weapons/big_iron.obj" id="1_ampqd"]
 [ext_resource type="Texture2D" uid="uid://c23vayn4doala" path="res://textures/weapons/big_iron/big_iron_detail_mask.png" id="2_6oara"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://br5tgbkka8rp7" path="res://textures/weapons/big_iron/big_iron_roughness.png" id="4_g758g"]
 [ext_resource type="Script" path="res://scripts/weapons/scope.gd" id="4_p5y4d"]
 [ext_resource type="PackedScene" uid="uid://cehwd234g5us7" path="res://scenes/bullets/player/hitscan/big_iron_bullet.tscn" id="6_lqm6f"]
+[ext_resource type="Material" uid="uid://dq3a5fxspauox" path="res://materials/muzzle_flash_yellow.tres" id="7_vw85u"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="8_ibv0x"]
 [ext_resource type="AudioStream" uid="uid://cs34y7mvho53h" path="res://audio/streams/weapons/firing/boomstick_fire.wav" id="9_i8lc1"]
 
@@ -32,21 +33,22 @@ uniform vec3 uv2_offset;
 
 global uniform float viewmodel_fov;
 
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	
+
 	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
 	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
 	// modify projection matrix
 	PROJECTION_MATRIX[1][1] = -onetanfov;
 	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-	
+
 	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	//POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
 	POSITION.z = mix(POSITION.z, 0, 0.99);
 }
-
 
 void fragment() {
 	vec2 base_uv = UV;
@@ -102,6 +104,7 @@ uniform vec3 uv2_offset;
 
 global uniform float viewmodel_fov;
 
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
@@ -113,10 +116,10 @@ void vertex() {
 	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
 
 	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	//POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
 	POSITION.z = mix(POSITION.z, 0, 0.99);
 }
-
 
 void fragment() {
 	vec2 base_uv = UV;
@@ -214,103 +217,6 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-
-[sub_resource type="Shader" id="Shader_yf35i"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
-
-shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
-uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
-uniform float point_size : hint_range(0,128);
-uniform float roughness : hint_range(0,1);
-uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
-uniform float specular;
-uniform float metallic;
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
-global uniform float viewmodel_fov;
-
-
-void vertex() {
-	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	
-	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
-	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
-	// modify projection matrix
-	PROJECTION_MATRIX[1][1] = -onetanfov;
-	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-	
-	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
-	POSITION.z = mix(POSITION.z, 0, 0.99);
-}
-
-
-void fragment() {
-	vec2 base_uv = UV;
-	vec4 albedo_tex = texture(texture_albedo,base_uv);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
-	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
-	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
-	SPECULAR = specular;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2txc"]
-render_priority = 0
-shader = SubResource("Shader_yf35i")
-shader_parameter/albedo = Color(1, 1, 0, 1)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_32yj2"]
-animation = &"big_iron_deploy"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_th2b6"]
-animation = &"big_iron_fire"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3yhfp"]
-animation = &"big_iron_idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g8bpy"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xcnjc"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_owka3"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_75ikx"]
-states/deploy/node = SubResource("AnimationNodeAnimation_32yj2")
-states/deploy/position = Vector2(382.815, 174)
-states/firing/node = SubResource("AnimationNodeAnimation_th2b6")
-states/firing/position = Vector2(545.333, 100.222)
-states/idle/node = SubResource("AnimationNodeAnimation_3yhfp")
-states/idle/position = Vector2(383.259, 100.667)
-transitions = ["deploy", "idle", SubResource("AnimationNodeStateMachineTransition_g8bpy"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_xcnjc"), "Start", "deploy", SubResource("AnimationNodeStateMachineTransition_owka3")]
-graph_offset = Vector2(-8, 39)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_kip30"]
-radius = 16.0
 
 [sub_resource type="Animation" id="Animation_4yi83"]
 length = 0.001
@@ -467,11 +373,44 @@ _data = {
 "big_iron_idle": SubResource("Animation_3l6t5")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_32yj2"]
+animation = &"big_iron_deploy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_th2b6"]
+animation = &"big_iron_fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3yhfp"]
+animation = &"big_iron_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g8bpy"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xcnjc"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_owka3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_75ikx"]
+states/deploy/node = SubResource("AnimationNodeAnimation_32yj2")
+states/deploy/position = Vector2(382.815, 174)
+states/firing/node = SubResource("AnimationNodeAnimation_th2b6")
+states/firing/position = Vector2(545.333, 100.222)
+states/idle/node = SubResource("AnimationNodeAnimation_3yhfp")
+states/idle/position = Vector2(383.259, 100.667)
+transitions = ["deploy", "idle", SubResource("AnimationNodeStateMachineTransition_g8bpy"), "firing", "idle", SubResource("AnimationNodeStateMachineTransition_xcnjc"), "Start", "deploy", SubResource("AnimationNodeStateMachineTransition_owka3")]
+graph_offset = Vector2(-8, 39)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kip30"]
+radius = 16.0
+
 [node name="BigIron" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.5, -0.35)
 
 [node name="BigIron" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00829176, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00317302, 0)
 layers = 4
 cast_shadow = 0
 mesh = ExtResource("1_ampqd")
@@ -480,11 +419,11 @@ surface_material_override/1 = SubResource("ShaderMaterial_laww8")
 surface_material_override/2 = SubResource("ShaderMaterial_a7mqv")
 surface_material_override/3 = SubResource("ShaderMaterial_flgpq")
 script = ExtResource("2_o12ys")
-category = 3
 bullet = ExtResource("6_lqm6f")
 shot_cooldown = 1.25
 ammo_type = "big_iron_bullets"
 anti_clip_distance = 1.5
+category = 3
 
 [node name="Spawner" type="Marker3D" parent="BigIron"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0774074, 1.65)
@@ -493,7 +432,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0774074, 1.65)
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 4.23193e-06, -0.000249945, 0.000486732)
 visible = false
 layers = 4
-material_override = SubResource("ShaderMaterial_d2txc")
+material_override = ExtResource("7_vw85u")
 cast_shadow = 0
 mesh = ExtResource("3_7l0wc")
 
@@ -506,9 +445,11 @@ omni_range = 10.0
 omni_shadow_mode = 0
 
 [node name="AnimationTree" type="AnimationTree" parent="BigIron"]
+libraries = {
+"": SubResource("AnimationLibrary_c7bdy")
+}
 tree_root = SubResource("AnimationNodeStateMachine_75ikx")
 anim_player = NodePath("../../AnimationPlayer")
-active = true
 
 [node name="Scope" type="Node3D" parent="BigIron"]
 script = ExtResource("4_p5y4d")

@@ -1,8 +1,54 @@
-[gd_scene load_steps=21 format=3 uid="uid://c5pbs8t6p7ogl"]
+[gd_scene load_steps=24 format=3 uid="uid://c5pbs8t6p7ogl"]
 
 [ext_resource type="ArrayMesh" uid="uid://bssx7wfjh7rbq" path="res://models/gib.obj" id="1_v6f6j"]
 [ext_resource type="Script" path="res://scripts/effects/particle_lifetime.gd" id="2_08tqy"]
 [ext_resource type="AudioStream" uid="uid://cf47ey2v3phbu" path="res://audio/streams/effects/mutilation.wav" id="3_ir11u"]
+
+[sub_resource type="Shader" id="Shader_nt862"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float alpha_hash_scale;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_normal : hint_roughness_normal,filter_nearest,repeat_enable;
+uniform float normal_scale : hint_range(-16,16);
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+	ALPHA *= albedo.a * albedo_tex.a;
+	ALPHA_HASH_SCALE = alpha_hash_scale;
+}
+"
 
 [sub_resource type="Gradient" id="Gradient_ut1tc"]
 interpolation_mode = 1
@@ -29,16 +75,23 @@ seamless_blend_skirt = 0.25
 as_normal_map = true
 noise = SubResource("FastNoiseLite_4pqdw")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ba1bl"]
-transparency = 3
-alpha_hash_scale = 1.0
-alpha_antialiasing_mode = 0
-albedo_texture = SubResource("NoiseTexture2D_0j46b")
-roughness = 0.5
-normal_enabled = true
-normal_scale = 2.0
-normal_texture = SubResource("NoiseTexture2D_ju8tl")
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bf3jp"]
+render_priority = 0
+shader = SubResource("Shader_nt862")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/alpha_hash_scale = 1.0
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.5
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 2.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_0j46b")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_ju8tl")
 
 [sub_resource type="Gradient" id="Gradient_1m3vq"]
 offsets = PackedFloat32Array(0.8, 0.9)
@@ -58,6 +111,59 @@ collision_friction = 0.25
 collision_bounce = 0.5
 sub_emitter_mode = 1
 sub_emitter_frequency = 4.0
+
+[sub_resource type="Shader" id="Shader_40uw1"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxb1c"]
+render_priority = 0
+shader = SubResource("Shader_40uw1")
+shader_parameter/albedo = Color(1, 0, 0, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_romqw"]
 emission_shape = 1
@@ -145,7 +251,8 @@ stream_0/weight = 1.0
 
 [node name="GibsSys" type="GPUParticles3D"]
 layers = 2
-material_override = SubResource("StandardMaterial3D_ba1bl")
+material_override = SubResource("ShaderMaterial_bf3jp")
+emitting = false
 sub_emitter = NodePath("BloodSys")
 lifetime = 15.0
 one_shot = true
@@ -158,6 +265,7 @@ script = ExtResource("2_08tqy")
 
 [node name="BloodSys" type="GPUParticles3D" parent="."]
 layers = 2
+material_override = SubResource("ShaderMaterial_nxb1c")
 emitting = false
 amount = 1024
 lifetime = 3.0
@@ -174,10 +282,10 @@ material = SubResource("FogMaterial_uwmev")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../FogVolume")
-autoplay = "anim"
 libraries = {
 "": SubResource("AnimationLibrary_523pv")
 }
+autoplay = "anim"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_awnvj")

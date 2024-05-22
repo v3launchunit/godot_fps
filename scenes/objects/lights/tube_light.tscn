@@ -1,8 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://teto5bopi0w8"]
+[gd_scene load_steps=22 format=3 uid="uid://teto5bopi0w8"]
 
+[ext_resource type="Shader" path="res://shaders/spatial/unlit_mix_psx.gdshader" id="1_buyse"]
 [ext_resource type="Material" uid="uid://c42r6gnwbsttx" path="res://materials/effects/fancy_halo.tres" id="1_tg5by"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="2_v2qg2"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="3_s1nd8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_be0y6"]
+render_priority = 0
+shader = ExtResource("1_buyse")
+shader_parameter/albedo = Color(3.75, 3.38, 3.08, 1)
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq0ji"]
 shading_mode = 0
@@ -131,6 +139,7 @@ transitions = ["Start", "on", SubResource("AnimationNodeStateMachineTransition_4
 
 [node name="TubeLight" type="MeshInstance3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_be0y6")
 visibility_range_end = 25.0
 visibility_range_end_margin = 5.0
 mesh = SubResource("CylinderMesh_nuthf")

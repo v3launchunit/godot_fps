@@ -2,13 +2,9 @@
 
 [ext_resource type="ArrayMesh" uid="uid://dnda4sjlmlawu" path="res://models/bullets/nail.obj" id="1_ae5t7"]
 [ext_resource type="Script" path="res://scripts/bullets/lodged_nail.gd" id="1_eyuqr"]
-[ext_resource type="PackedScene" uid="uid://r5omla7tiysx" path="res://scenes/effects/nail_explosion.tscn" id="2_663ij"]
-[ext_resource type="PackedScene" uid="uid://fn1fivb2ndvo" path="res://scenes/effects/bullet_impact_yellow.tscn" id="2_un06c"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xnbio"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
-metallic = 1.0
-roughness = 0.25
+[ext_resource type="PackedScene" uid="uid://r5omla7tiysx" path="res://scenes/effects/explosions/nail_explosion.tscn" id="2_663ij"]
+[ext_resource type="PackedScene" uid="uid://fn1fivb2ndvo" path="res://scenes/effects/impacts/bullet_impact_yellow.tscn" id="2_un06c"]
+[ext_resource type="Material" uid="uid://fl33v7w3rbk" path="res://materials/bullet_metal.tres" id="3_wek4n"]
 
 [node name="LodgedNail" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
@@ -18,7 +14,7 @@ explosion = ExtResource("2_663ij")
 [node name="Nail" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125)
 layers = 2
-material_override = SubResource("StandardMaterial3D_xnbio")
+material_override = ExtResource("3_wek4n")
 mesh = ExtResource("1_ae5t7")
 
 [node name="BulletImpact" parent="." instance=ExtResource("2_un06c")]

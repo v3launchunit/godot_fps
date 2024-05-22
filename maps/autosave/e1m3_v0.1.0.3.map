@@ -5,6 +5,7 @@
 "classname" "worldspawn"
 "_tb_textures" "textures/terrain/trench_broom"
 "_tb_def" "builtin:Qodot.fgd"
+"_tb_layer_omit_from_export" "1"
 // brush 0
 {
 ( -432 32 0 ) ( -432 -32 0 ) ( -432 -32 -16 ) terrain/trench_broom/big_cobble_stone 0 0 0 1 1
@@ -43,12 +44,12 @@
 }
 // brush 4
 {
-( -64 -64 0 ) ( -64 -63 0 ) ( -64 -64 1 ) terrain/trench_broom/bricks 0 0 0 1 1
-( -64 -272 0 ) ( -64 -272 1 ) ( -63 -272 0 ) terrain/trench_broom/bricks 0 0 0 1 1
-( -64 -64 0 ) ( -63 -64 0 ) ( -64 -63 0 ) terrain/trench_broom/bricks 0 0 0 1 1
-( -48 -48 128 ) ( -48 -47 128 ) ( -47 -48 128 ) terrain/trench_broom/bricks 0 0 0 1 1
-( -48 -48 96 ) ( -47 -48 96 ) ( -48 -48 97 ) terrain/trench_broom/bricks 0 0 0 1 1
-( -48 -48 96 ) ( -48 -48 97 ) ( -48 -47 96 ) terrain/trench_broom/bricks 0 0 0 1 1
+( -64 -48 128 ) ( -64 -320 128 ) ( -64 -320 0 ) terrain/trench_broom/bricks 0 0 0 1 1
+( -64 -320 128 ) ( -48 -320 128 ) ( -48 -320 0 ) terrain/trench_broom/bricks 0 0 0 1 1
+( -48 -320 0 ) ( -48 -48 0 ) ( -64 -48 0 ) terrain/trench_broom/bricks 0 0 0 1 1
+( -64 -48 128 ) ( -48 -48 128 ) ( -48 -320 128 ) terrain/trench_broom/bricks 0 0 0 1 1
+( -48 -48 0 ) ( -48 -48 128 ) ( -64 -48 128 ) terrain/trench_broom/bricks 0 0 0 1 1
+( -48 -320 128 ) ( -48 -48 128 ) ( -48 -48 0 ) terrain/trench_broom/bricks 0 0 0 1 1
 }
 // brush 5
 {
@@ -62,12 +63,12 @@
 }
 // brush 6
 {
-( -432 -32 0 ) ( -432 -272 0 ) ( -432 -272 -16 ) terrain/trench_broom/dirt 0 0 0 1 1
-( -48.57142857142753 -272 0 ) ( -48.571428571427475 -272 -16 ) ( -432 -272 -16 ) terrain/trench_broom/dirt 0 0 0 1 1
-( -48.571428571427475 -272 -16 ) ( 96 -32 -16 ) ( -432 -32 -16 ) terrain/trench_broom/dirt 0 0 0 1 1
-( -432 -32 0 ) ( 96 -32 0 ) ( -48.57142857142753 -272 0 ) terrain/trench_broom/dirt 0 0 0 1 1
+( -432 -32 0 ) ( -432 -336 0 ) ( -432 -336 -16 ) terrain/trench_broom/dirt 0 0 0 1 1
+( -432 -336 0 ) ( -48.57142857143481 -336 0 ) ( -48.57142857143481 -336 -16 ) terrain/trench_broom/dirt 0 0 0 1 1
+( -48.57142857143481 -336 -16 ) ( 96 -32 -16 ) ( -432 -32 -16 ) terrain/trench_broom/dirt 0 0 0 1 1
+( -432 -32 0 ) ( 96 -32 0 ) ( -48.57142857143481 -336 0 ) terrain/trench_broom/dirt 0 0 0 1 1
 ( 96 -32 -16 ) ( 96 -32 0 ) ( -432 -32 0 ) terrain/trench_broom/dirt 0 0 0 1 1
-( 96 -32 -16 ) ( -48.571428571427475 -272 -16 ) ( -48.57142857142753 -272 0 ) terrain/trench_broom/dirt 0 0 0 1 1
+( -48.57142857143481 -336 0 ) ( 96 -32 0 ) ( 96 -32 -16 ) terrain/trench_broom/dirt 0 0 0 1 1
 }
 // brush 7
 {
@@ -86,6 +87,15 @@
 ( -48 144 0 ) ( -48 145 0 ) ( -47 144 0 ) terrain/trench_broom/dirt 0 0 0 1 1
 ( -48 144 0 ) ( -47 144 0 ) ( -48 144 1 ) terrain/trench_broom/dirt 0 0 0 1 1
 ( 64 144 0 ) ( 64 144 1 ) ( 64 145 0 ) terrain/trench_broom/dirt 0 0 0 1 1
+}
+// brush 9
+{
+( -432 -336 0 ) ( -432 -335 0 ) ( -432 -336 1 ) terrain/trench_broom/bricks 0 0 0 1 1
+( -208 -336 0 ) ( -208 -336 1 ) ( -207 -336 0 ) terrain/trench_broom/bricks 0 0 0 1 1
+( -208 -336 0 ) ( -207 -336 0 ) ( -208 -335 0 ) terrain/trench_broom/bricks 0 0 0 1 1
+( -48 -288 128 ) ( -48 -287 128 ) ( -47 -288 128 ) terrain/trench_broom/bricks 0 0 0 1 1
+( -48 -320 128 ) ( -47 -320 128 ) ( -48 -320 129 ) terrain/trench_broom/bricks 0 0 0 1 1
+( -48 -288 128 ) ( -48 -288 129 ) ( -48 -287 128 ) terrain/trench_broom/bricks 0 0 0 1 1
 }
 }
 // entity 1

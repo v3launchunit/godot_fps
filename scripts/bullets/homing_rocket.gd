@@ -1,10 +1,12 @@
+class_name HomingRocket
 extends Bullet
 
 ## The layer(s) that the rocket will scan while looking for targets.
 @export_flags_3d_physics var target_layers: int = 4
 @export_range(0.1, 35, 0.1, "or_greater") var turning_speed: float = 2.5
 
-var target: Node3D = null
+@export var target: Node3D
+
 var target_scan_attempts = 0
 
 @onready var scan_area: Area3D = $Area3D
@@ -23,13 +25,12 @@ func _physics_process(delta: float) -> void:
 		scan_shape.radius = target_scan_attempts + 1
 		target_scan_attempts += 1
 	else:
-		scan_area.look_at(target.global_position - scan_area.global_position)
-		global_rotation = lerp(
-				global_rotation,
-				scan_area.global_rotation,
-				min(delta * turning_speed, 1)
-		)
-		scan_area.look_at(target.global_position - scan_area.global_position)
+		scan_area.look_at(target.global_position)
+		var a = Quaternion(global_basis)
+		var b = Quaternion(scan_area.global_basis)
+		a = a.slerp(b, min(delta * turning_speed, 1.0))
+		global_basis = Basis(a)
+		scan_area.look_at(target.global_position)
 
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
@@ -42,4 +43,4 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 func _on_area_body_entered(body: Node3D) -> void:
 	if body is EnemyBase and target == null:
 		target = body
-		print("target found: %s" % target)
+		#print("target found: %s" % target)
