@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=3 format=3 uid="uid://dqwqqvs3kuly8"]
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=7 format=3 uid="uid://dqwqqvs3kuly8"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="1_8tcrl"]
 [ext_resource type="Resource" uid="uid://ckf8g1b6feib0" path="res://trench_broom/entity_defs/point/deco/lighting/lamp_point_class.tres" id="1_fujtp"]
+[ext_resource type="Resource" uid="uid://dcm1fqc8yfrmr" path="res://trench_broom/entity_defs/point/deco/chair_point_class.tres" id="1_p5nvn"]
+[ext_resource type="Resource" uid="uid://bi3m3k5votvpc" path="res://trench_broom/entity_defs/point/deco/crate_point_class.tres" id="2_8ctc5"]
+[ext_resource type="Resource" uid="uid://mli1u4dhjl3p" path="res://trench_broom/entity_defs/point/deco/table_point_class.tres" id="4_mwdok"]
+[ext_resource type="Resource" uid="uid://bvqf0cid8sgqm" path="res://trench_broom/entity_defs/point/deco/bed_wooden_point_class.tres" id="5_c4ceb"]
 
 [resource]
 script = ExtResource("1_8tcrl")
@@ -9,4 +13,4 @@ export_file = false
 target_folder = "C:/Users/lengl/Desktop/Miscellaneous Apps/TrenchBroom/games/VolumetricsTest"
 fgd_name = "Points"
 base_fgd_files = Array[Resource]([])
-entity_definitions = Array[Resource]([ExtResource("1_fujtp")])
+entity_definitions = Array[Resource]([ExtResource("1_p5nvn"), ExtResource("2_8ctc5"), ExtResource("1_fujtp"), ExtResource("4_mwdok"), ExtResource("5_c4ceb")])

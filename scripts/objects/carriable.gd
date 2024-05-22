@@ -1,4 +1,9 @@
-class_name Carriable extends RigidBody3D
+class_name Carriable
+extends RigidBody3D
+
+
+signal grabbed(what: Carriable)
+signal released
 
 @export var hold_max_distance_squared: float = 9.0
 @export var throw_speed: float = 1.0
@@ -7,8 +12,6 @@ class_name Carriable extends RigidBody3D
 
 var holder: Player = null
 
-signal grabbed(what: Carriable)
-signal released
 
 func _ready() -> void:
 	pass

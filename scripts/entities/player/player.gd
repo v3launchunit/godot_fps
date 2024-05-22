@@ -216,8 +216,8 @@ func apply_knockback(amount: Vector3) -> void:
 func _toggle_crouch(to: bool) -> void:
 	var hitbox: CollisionShape3D = $PlayerHitbox as CollisionShape3D
 	var crouchbox: CollisionShape3D = $PlayerCrouchHitbox as CollisionShape3D
-	if to and is_on_floor():
-		translate(Vector3(0, -1, 0))
+	if is_on_floor():
+		translate(Vector3(0, -1 if to else 1, 0))
 		slide_vel = walk_vel
 	crouching = to
 	hitbox.disabled = to

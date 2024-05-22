@@ -45,6 +45,10 @@ Weapons:
 			Primary: Super Shot
 			Secondary: Sawblade Launcher
 				Hold to spin blade w/o launching (a la ultrakill sawed-on)(?)
+			Alt Secondary: Harpoon Gun
+				Reel in foes
+				Harpoon persists through weapon switch
+				Only one harpoon at a time
 
 	Slot 3 (Automatics):
 		AKM:
@@ -304,6 +308,11 @@ Enemies:
 				Detecting Player:
 				Dying:
 				Vocal Effects:
+
+		Whaler:
+			Tough
+			Slow
+			Ranged (harpoon cannon)
 
 		Hammer:
 			Medium

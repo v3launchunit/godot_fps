@@ -26,8 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://6qn0vyox3ttw" path="res://scenes/objects/lights/lamp_tb.tscn" id="24_b7bt4"]
 [ext_resource type="Script" path="res://scripts/terrain/brush_status.gd" id="25_5dd26"]
 [ext_resource type="PackedScene" uid="uid://c0kvfvxi487l1" path="res://scenes/objects/lights/street_lamp.tscn" id="25_wbmk3"]
-[ext_resource type="PackedScene" uid="uid://bxdu412yk2ut8" path="res://scenes/objects/crate.tscn" id="26_8mliw"]
 [ext_resource type="PackedScene" uid="uid://cc7snvg1qg4i4" path="res://scenes/entities/military/pinkerton.tscn" id="27_fteib"]
+[ext_resource type="PackedScene" uid="uid://bxdu412yk2ut8" path="res://scenes/objects/crate_wooden.tscn" id="27_oqcrq"]
 [ext_resource type="PackedScene" uid="uid://dl7fuv4wdxtjx" path="res://scenes/pickups/ammo/shell_pickup.tscn" id="28_globp"]
 [ext_resource type="PackedScene" uid="uid://cy8hwffqmck3s" path="res://scenes/entities/military/rocketeer.tscn" id="28_sgbvx"]
 [ext_resource type="PackedScene" uid="uid://lt47oncbceb2" path="res://scenes/pickups/weapons/akm_pickup.tscn" id="29_rd0bs"]
@@ -47,7 +47,7 @@
 [ext_resource type="Material" uid="uid://c4hv23ws8v5oc" path="res://materials/terrain/trench_broom_std/bricks_brown.tres" id="43_dhmx1"]
 [ext_resource type="Material" uid="uid://bocds2tb574aw" path="res://materials/terrain/trench_broom_std/bricks_stone.tres" id="44_xuna8"]
 [ext_resource type="Material" uid="uid://d30jjdowuphyo" path="res://materials/terrain/trench_broom_std/checker_board.tres" id="45_duxiw"]
-[ext_resource type="Material" uid="uid://dqemvrb4pcd2g" path="res://materials/terrain/trench_broom_std/concrete.tres" id="46_j3das"]
+[ext_resource type="Material" uid="uid://dqemvrb4pcd2g" path="res://materials/terrain/trench_broom/concrete.tres" id="46_j3das"]
 [ext_resource type="Material" uid="uid://dh6h4bfv6pod2" path="res://materials/terrain/trench_broom_std/key_metal_blue.tres" id="47_8ukn2"]
 [ext_resource type="Material" uid="uid://bde5vbq7ns88s" path="res://materials/terrain/trench_broom_psx/drywall.tres" id="48_5xvpa"]
 [ext_resource type="Material" uid="uid://c462jt0mdmhmv" path="res://materials/terrain/trench_broom_psx/lava_flowing.tres" id="49_nww2r"]
@@ -1814,34 +1814,34 @@ material = SubResource("FogMaterial_swvkd")
 
 [node name="Objects" type="Node" parent="Things"]
 
-[node name="Crate" parent="Things/Objects" instance=ExtResource("26_8mliw")]
+[node name="Crate" parent="Things/Objects" instance=ExtResource("27_oqcrq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.23517e-08, 0)
 
-[node name="Crate2" parent="Things/Objects" instance=ExtResource("26_8mliw")]
+[node name="Crate2" parent="Things/Objects" instance=ExtResource("27_oqcrq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 1, 0)
 
-[node name="Crate5" parent="Things/Objects" instance=ExtResource("26_8mliw")]
+[node name="Crate5" parent="Things/Objects" instance=ExtResource("27_oqcrq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.7, 1, -1)
 
-[node name="Crate7" parent="Things/Objects" instance=ExtResource("26_8mliw")]
+[node name="Crate7" parent="Things/Objects" instance=ExtResource("27_oqcrq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3, 2, -0.7)
 
-[node name="Crate3" parent="Things/Objects" instance=ExtResource("26_8mliw")]
+[node name="Crate3" parent="Things/Objects" instance=ExtResource("27_oqcrq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -1.5)
 
-[node name="Crate4" parent="Things/Objects" instance=ExtResource("26_8mliw")]
+[node name="Crate4" parent="Things/Objects" instance=ExtResource("27_oqcrq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0.2)
 
-[node name="Crate8" parent="Things/Objects" instance=ExtResource("26_8mliw")]
+[node name="Crate8" parent="Things/Objects" instance=ExtResource("27_oqcrq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 1.2)
 
-[node name="Crate9" parent="Things/Objects" instance=ExtResource("26_8mliw")]
+[node name="Crate9" parent="Things/Objects" instance=ExtResource("27_oqcrq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 0, 1)
 
-[node name="Crate10" parent="Things/Objects" instance=ExtResource("26_8mliw")]
+[node name="Crate10" parent="Things/Objects" instance=ExtResource("27_oqcrq")]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 9.27071, 1.35355, 1)
 
-[node name="Crate6" parent="Things/Objects" instance=ExtResource("26_8mliw")]
+[node name="Crate6" parent="Things/Objects" instance=ExtResource("27_oqcrq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1, 0, -2.2)
 
 [node name="Entities" type="Node" parent="Things"]

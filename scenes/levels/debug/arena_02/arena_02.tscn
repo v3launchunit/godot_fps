@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://c63k27ek72d3d" path="res://scenes/entities/player.tscn" id="1_wyjec"]
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="2_cndpx"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="3_sd01b"]
-[ext_resource type="Material" uid="uid://dqemvrb4pcd2g" path="res://materials/terrain/trench_broom/concrete.tres" id="4_ib06n"]
-[ext_resource type="Material" uid="uid://t1hv3tspvh88" path="res://materials/terrain/trench_broom/planks.tres" id="5_hycqg"]
-[ext_resource type="Material" uid="uid://bdhdwkh72dfij" path="res://materials/terrain/trench_broom/bricks.tres" id="6_v123g"]
-[ext_resource type="Material" uid="uid://qt3bjecsm0qb" path="res://materials/terrain/trench_broom/shutter_door.tres" id="7_be6qs"]
-[ext_resource type="Material" uid="uid://cxyb8wsuh6ejk" path="res://materials/terrain/trench_broom/log.tres" id="8_25ulc"]
+[ext_resource type="Material" uid="uid://dqemvrb4pcd2g" path="res://materials/terrain/trench_broom_std/concrete.tres" id="4_ib06n"]
+[ext_resource type="Material" uid="uid://t1hv3tspvh88" path="res://materials/terrain/trench_broom_std/planks.tres" id="5_hycqg"]
+[ext_resource type="Material" uid="uid://bdhdwkh72dfij" path="res://materials/terrain/trench_broom_std/bricks.tres" id="6_v123g"]
+[ext_resource type="Material" uid="uid://qt3bjecsm0qb" path="res://materials/terrain/trench_broom_std/shutter_door.tres" id="7_be6qs"]
+[ext_resource type="Material" uid="uid://cxyb8wsuh6ejk" path="res://materials/terrain/trench_broom_std/log.tres" id="8_25ulc"]
 [ext_resource type="Texture2D" uid="uid://cu58hb7h0r68v" path="res://textures/effects/look_up_tables/1d_lut_16_color.png" id="11_bmuth"]
 [ext_resource type="Texture2D" uid="uid://dybaimi1b3b85" path="res://textures/effects/glow/lens_dirt/lens_dirt_0.png" id="12_2i51l"]
 [ext_resource type="Script" path="res://scripts/effects/env_settings_hook.gd" id="13_xdykh"]
@@ -203,21 +203,21 @@ colors = PackedColorArray(0.1, 0.1, 0.1, 1, 0.6, 0.6, 0.6, 1)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_88bnx"]
 noise_type = 2
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5cpvw"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m7pvq"]
 invert = true
 seamless = true
 color_ramp = SubResource("Gradient_n5680")
 noise = SubResource("FastNoiseLite_88bnx")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_udxt1"]
-panorama = SubResource("NoiseTexture2D_5cpvw")
+panorama = SubResource("NoiseTexture2D_m7pvq")
 
-[sub_resource type="Sky" id="Sky_ietmo"]
+[sub_resource type="Sky" id="Sky_h2s1y"]
 sky_material = SubResource("PanoramaSkyMaterial_udxt1")
 
 [sub_resource type="Environment" id="Environment_30cir"]
 background_mode = 2
-sky = SubResource("Sky_ietmo")
+sky = SubResource("Sky_h2s1y")
 glow_blend_mode = 0
 glow_map = ExtResource("12_2i51l")
 volumetric_fog_enabled = true

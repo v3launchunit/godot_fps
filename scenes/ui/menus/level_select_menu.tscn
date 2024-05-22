@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/ui/level_select_button.gd" id="3_4djrb"]
 [ext_resource type="Theme" uid="uid://dwof7m2ye3tjh" path="res://scenes/default_theme.tres" id="3_30jf0"]
 [ext_resource type="PackedScene" uid="uid://ddybwy4hdo2q3" path="res://scenes/levels/debug/test_level/test_level.tscn" id="4_c2yb4"]
-[ext_resource type="PackedScene" uid="uid://3bt45n8rxvq5" path="res://scenes/levels/campaign/episode_1/e1m3_v1/e1m3_v1.tscn" id="4_p4d27"]
+[ext_resource type="PackedScene" uid="uid://c73ftt2ccark1" path="res://scenes/levels/campaign/episode_1/e1m3_v2/e1m3_v2.tscn" id="5_ke8hl"]
 [ext_resource type="PackedScene" uid="uid://dhyysoapiaxew" path="res://scenes/levels/campaign/episode_1/e1m5_v1/e1m5_v1.tscn" id="5_x1faw"]
 [ext_resource type="PackedScene" uid="uid://cor0l0jkjwbo5" path="res://scenes/levels/campaign/episode_1/e1m6_v1/e1m6_v1.tscn" id="6_4jomd"]
 [ext_resource type="PackedScene" uid="uid://qvrf467m8cbk" path="res://scenes/levels/debug/level_04/level_04.tscn" id="9_tniqv"]
@@ -114,7 +114,7 @@ layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "E1M3"
 script = ExtResource("3_4djrb")
-_scene = ExtResource("4_p4d27")
+_scene = ExtResource("5_ke8hl")
 
 [node name="M4" type="Button" parent="SettingsPanel/LevelSelect/E1"]
 layout_mode = 2
@@ -126,6 +126,7 @@ script = ExtResource("3_4djrb")
 [node name="M5" type="Button" parent="SettingsPanel/LevelSelect/E1"]
 layout_mode = 2
 theme = ExtResource("3_30jf0")
+disabled = true
 text = "E1M5"
 script = ExtResource("3_4djrb")
 _scene = ExtResource("5_x1faw")

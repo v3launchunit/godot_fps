@@ -31,7 +31,7 @@ func _ready() -> void:
 	audio_player = AudioStreamPlayer3D.new()
 	audio_player.bus = "World"
 	audio_player.doppler_tracking = AudioStreamPlayer3D.DOPPLER_TRACKING_PHYSICS_STEP
-	audio_player.stream = load(properties.get("sound_file"))
+	audio_player.stream = load(properties.get("open_sound_path"))
 	add_child(audio_player)
 	#audio_player.position = properties.get("sound_pos") #* 0.0625
 	audio_player.position = get_child(1).shape.points[0]

@@ -4,13 +4,12 @@ extends Node
 ## settings, etc. It also handles saving and loading user settings to and from
 ## the disc and a few other scene-independent things.
 
+
 enum Difficulty {
 	EASY,
 	NORMAL,
 	HARD,
-	NIGHTMARE,
 }
-
 
 # ---------------------------------------------------------------------------- #
 # --------------------------------- CONSTANTS -------------------------------- #
@@ -44,11 +43,12 @@ const C_PLAYER_MIN_HEIGHT: float = -1000.0
 # --------------------------------- SETTINGS --------------------------------- #
 # ---------------------------------------------------------------------------- #
 
+# ---------- Visual settings ---------- #
 ## The screen's resolution is divided by this. Does not affect UI.
 var s_stretch_scale: int = 2
 ## The screen's resolution is divided by this. Only affects UI.
 var s_ui_scale: float = 1.0
-## Self-explanatory.
+## Scale multiplier for the ui crosshairs. 1.0 is 1:1 pixel-perfect with the output resolution.
 var s_crosshair_size: float = 1.0
 
 ## The base vertical Field of View for the player's camera.
@@ -58,31 +58,33 @@ var s_fov_desired: float = 120
 var s_viewmodel_fov: float = 90
 
 var s_vertex_snap: int = 2
-var s_affine_warp: bool = false
+var s_affine_warp: bool = true
 
+## Toggles the mesh-based halos present on light sources and important objects.
+var s_flares_enabled: bool = true
 ## Toggles the procedural halos created by the "glow" post-processing effect.
 var s_glow_enabled: bool = false
-## Toggles the mesh-based halos present on various light sources and
-## bright objects.
-var s_flares_enabled: bool = true
 ## Toggles a procedural cross-shaped lens flare post-processing effect. I worked
 ## very hard on it.
-var s_cross_glow_enabled: bool = false
+var s_cross_glow_enabled: bool = true
 var s_volumetric_fog_enabled: bool = true
 
 ## The sensitivity multiplier applied to mouse movement with regards to the
 ## first-person camera.
 var s_camera_sensitivity: float = 12.0
 
+# ---------- Audio settings ---------- #
 ## Self-explanatory.
-var s_master_volume: float = 87.0
+var s_master_volume: float = 70.0
 ## Self-explanatory.
 var s_sound_volume: float = 100.0
 ## Self-explanatory.
 var s_music_volume: float = 100.0
 
+# ---------- Gameplay settings ---------- #
 ## Self-explanatory.
 var s_difficulty := Difficulty.NORMAL
+var s_nightmare_mode_active: bool = false
 ## Whether crouching is a toggle or a hold.
 var s_toggle_crouch: bool = false
 

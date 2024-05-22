@@ -56,6 +56,7 @@ func _ready() -> void:
 	bloom_check.button_pressed = Globals.s_glow_enabled
 	#cbloom_check.set_pressed_no_signal(Globals.s_cross_glow_enabled)
 	cbloom_check.button_pressed = Globals.s_cross_glow_enabled
+	volumetric_fog_check.button_pressed = Globals.s_volumetric_fog_enabled
 	affine_warp_check.button_pressed = Globals.s_affine_warp
 
 
@@ -145,6 +146,10 @@ func _on_snap_slider_value_changed(value: float) -> void:
 			snap_label.text = "Extreme"
 			ProjectSettings.set_setting("vertex_snap", 0.9375)
 			RenderingServer.global_shader_parameter_set("vertex_snap", 0.9375)
+		6:
+			snap_label.text = "Instant Modern Art"
+			ProjectSettings.set_setting("vertex_snap", 0.96875)
+			RenderingServer.global_shader_parameter_set("vertex_snap", 0.96875)
 
 
 func _on_affine_warp_check_toggled(toggled_on: bool) -> void:
