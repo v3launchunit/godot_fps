@@ -122,6 +122,14 @@ func _process(_delta) -> void:
 	if Input.is_action_just_pressed("quick_restart"):
 		get_tree().reload_current_scene()
 
+	if Input.is_action_just_pressed("quick_save"):
+		Globals.save_game(Globals.C_QUICKSAVE_PATH)
+
+	if Input.is_action_just_pressed("quick_load"):
+		var q: PackedScene = load(Globals.C_QUICKSAVE_PATH)
+		if q != null:
+			get_tree().change_scene_to_packed(q)
+
 
 func _physics_process(delta: float) -> void:
 	# Check if my camera rotation is valid

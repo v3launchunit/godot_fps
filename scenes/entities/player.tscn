@@ -33,7 +33,7 @@
 [ext_resource type="Script" path="res://scripts/entities/player/player_status.gd" id="28_ee1uu"]
 [ext_resource type="AudioStream" uid="uid://c4letg1n03lmd" path="res://audio/streams/voices/player/damage_placeholder.wav" id="32_2hkf1"]
 [ext_resource type="Shader" path="res://shaders/spatial/cross_bloom_mesh.gdshader" id="33_60325"]
-[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="34_0co5b"]
+[ext_resource type="PackedScene" path="res://scenes/entities/stair_stepper.tscn" id="34_0co5b"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ww5sc"]
 random_pitch = 1.15

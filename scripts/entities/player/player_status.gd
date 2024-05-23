@@ -1,4 +1,5 @@
-class_name PlayerStatus extends Status
+class_name PlayerStatus
+extends Status
 
 signal key_acquired(key: int)
 
@@ -8,8 +9,8 @@ signal key_acquired(key: int)
 @export_range(0, 1, 0.01) var armor_absorption := 0.5
 @export var injury_stream: AudioStream
 
-var armor: float
-var held_keys: Array[bool] = [false, false, false]
+@export var armor: float
+@export var held_keys: Array[bool] = [false, false, false]
 
 @onready var stream_player := get_parent().get_node("AudioStreamPlayer") as AudioStreamPlayer
 @onready var hud := get_parent().find_child("HUD") as HudHandler

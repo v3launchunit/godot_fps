@@ -1,5 +1,7 @@
 extends WeaponBase
 
+signal ready_to_save
+
 @export_category("Rifle")
 
 ## The time, in seconds, that the player must wait after loading a charge into
@@ -55,6 +57,11 @@ func _fire() -> void:
 	volley = 1
 #	spread = 0
 	_label.text = "+0"#"1" if manager.has_ammo(ammo_type, ammo_cost, true) else "0"
+
+
+func _pre_save() -> void:
+	_label.reparent(self, false)
+	emit_signal("ready_to_save")
 
 
 func _charge() -> void:

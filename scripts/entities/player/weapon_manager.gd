@@ -16,15 +16,16 @@ const ZOOM_SPEED: float = 10.0
 
 @export var anti_clip_speed: float = 7.5
 
-var anti_clip_collisions: int = 0
-var current_weapon_pos: float
+#@export var anti_clip_collisions: int = 0
+#@export var current_weapon_pos: float
 
-var prior_category: int = 0
-var prior_index: int = 0
+@export_group("Save Data")
+@export var prior_category: int = 0
+@export var prior_index: int = 0
 
-var target_fov: float = Globals.s_fov_desired
-var prior_fov: float = Globals.s_fov_desired
-var prior_zoom: float = 1.0
+@export var target_fov: float = Globals.s_fov_desired
+@export var prior_fov: float = Globals.s_fov_desired
+@export var prior_zoom: float = 1.0
 
 @onready var ammo_amounts: Dictionary = ammo_types.duplicate() # Created right before _ready
 @onready var anti_clip_box: Area3D = $ViewmodelAntiClip
@@ -43,11 +44,11 @@ func _ready():
 #	weapons[current_weapon].deploy
 #	switched_weapons.connect(find_child("HUD")._on_player_cam_switched_weapons)
 	switched_weapons.emit(current_category, current_index[current_category], true)
-	current_weapon_pos = get_node(
-			weapons[current_category][current_index[current_category]]
-	).position.z
-	anti_clip_box.body_entered.connect(on_viewmodel_anti_clip_body_entered)
-	anti_clip_box.body_exited.connect(on_viewmodel_anti_clip_body_exited)
+	#current_weapon_pos = get_node(
+			#weapons[current_category][current_index[current_category]]
+	#).position.z
+	#anti_clip_box.body_entered.connect(on_viewmodel_anti_clip_body_entered)
+	#anti_clip_box.body_exited.connect(on_viewmodel_anti_clip_body_exited)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -89,19 +90,19 @@ func _process(delta):
 		for key in ammo_amounts:
 			ammo_amounts[key] = ammo_types[key]
 
-	get_selected_weapon_node().position.z = move_toward(
-			get_selected_weapon_node().position.z,
-			get_selected_weapon_node().get_child(0).anti_clip_distance
-					if anti_clip_collisions > 0
-					else current_weapon_pos,
-			delta * anti_clip_speed)
+	#get_selected_weapon_node().position.z = move_toward(
+			#get_selected_weapon_node().position.z,
+			#get_selected_weapon_node().get_child(0).anti_clip_distance
+					#if anti_clip_collisions > 0
+					#else current_weapon_pos,
+			#delta * anti_clip_speed)
 
 
 func _next_weapon():
 	prior_category = current_category
 	prior_index = current_index[current_category]
 
-	get_selected_weapon_node().position.z = current_weapon_pos
+	#get_selected_weapon_node().position.z = current_weapon_pos
 	current_index[current_category] += 1
 	while (
 			current_index[current_category] < weapons[current_category].size() and
@@ -121,12 +122,13 @@ func _next_weapon():
 		current_index[current_category] = 0
 		while current_category > 0 and get_selected_weapon_path() == ^"Axe":
 			current_index[current_category] += 1
-#			if current_index[current_category] >= weapons[current_category].size():
-#				current_index[current_category] -= 1
-#				current_category += 1
+			if current_index[current_category] >= weapons[current_category].size():
+				current_index[current_category] -= 1
+				current_category = (current_category + 1) % weapons.size()
+				current_index[current_category] = 0
 	print("%s\n%s\n%s\n" % [current_category, current_index, get_selected_weapon_path()])
 	switched_weapons.emit(current_category, current_index[current_category], false)
-	current_weapon_pos = get_selected_weapon_node().position.z
+	#current_weapon_pos = get_selected_weapon_node().position.z
 	rummage_stream_player.play()
 
 
@@ -134,7 +136,7 @@ func _previous_weapon():
 	prior_category = current_category
 	prior_index = current_index[current_category]
 
-	get_selected_weapon_node().position.z = current_weapon_pos
+	#get_selected_weapon_node().position.z = current_weapon_pos
 	current_index[current_category] -= 1
 	while (
 			current_index[current_category] >= 0 and
@@ -159,7 +161,7 @@ func _previous_weapon():
 				current_category -= 1
 
 	switched_weapons.emit(current_category, current_index[current_category], false)
-	current_weapon_pos = get_selected_weapon_node().position.z
+	#current_weapon_pos = get_selected_weapon_node().position.z
 	rummage_stream_player.play()
 
 
@@ -167,11 +169,11 @@ func _select_weapon(category: int, index: int) -> void:
 	prior_category = current_category
 	prior_index = current_index[current_category]
 
-	get_selected_weapon_node().position.z = current_weapon_pos
+	#get_selected_weapon_node().position.z = current_weapon_pos
 	current_category = category
 	current_index[category] = index
 	switched_weapons.emit(category, index, true)
-	current_weapon_pos = get_selected_weapon_node().position.z
+	#current_weapon_pos = get_selected_weapon_node().position.z
 	rummage_stream_player.play()
 
 
@@ -180,7 +182,7 @@ func _select_category(category: int) -> void:
 		return
 	prior_category = current_category
 	prior_index = current_index[current_category]
-	get_selected_weapon_node().position.z = current_weapon_pos
+	#get_selected_weapon_node().position.z = current_weapon_pos
 	if current_category == category:
 		current_index[category] += 1
 		if current_index[category] >= weapons[category].size():
@@ -199,7 +201,7 @@ func _select_category(category: int) -> void:
 			if current_index[category] >= weapons[category].size():
 				current_index[category] = 0
 	switched_weapons.emit(category, current_index[category], false)
-	current_weapon_pos = get_selected_weapon_node().position.z
+	#current_weapon_pos = get_selected_weapon_node().position.z
 	rummage_stream_player.play()
 
 
@@ -267,11 +269,11 @@ func scope_changed(amount: float):
 	find_parent("Player").camera_zoom_sens = 1 / amount
 
 
-func on_viewmodel_anti_clip_body_entered(_body: Node3D):
-	anti_clip_collisions += 1
-	print("new body entered")
-
-
-func on_viewmodel_anti_clip_body_exited(_body: Node3D):
-	anti_clip_collisions -= 1
-	print("new body exited")
+#func on_viewmodel_anti_clip_body_entered(_body: Node3D):
+	#anti_clip_collisions += 1
+	#print("new body entered")
+#
+#
+#func on_viewmodel_anti_clip_body_exited(_body: Node3D):
+	#anti_clip_collisions -= 1
+	#print("new body exited")

@@ -23,7 +23,8 @@ class_name Bullet extends RigidBody3D
 ## contacts.
 @export_range(0.0, 100.0, 0.1, "or_greater") var knockback_force: float = 1.0
 
-var invoker: Node3D
+@export_group("Save Data")
+@export var invoker: Node3D
 
 #@onready var explosion_scene: PackedScene = load(explosion)
 

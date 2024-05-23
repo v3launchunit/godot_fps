@@ -32,9 +32,10 @@ enum DamageType {
 ## How far up the tree this node should affect its parents.
 @export var ripple_distance: int = 1
 
-var health: float
-var is_dead: bool = false
-var target_parent: Node
+@export_group("Save Data")
+@export var health: float
+@export var is_dead: bool = false
+@export var target_parent: Node
 #var overheal_decay_rate: float = 1 # hp/second
 
 #@onready var gibs_scene: PackedScene = load(gibs)

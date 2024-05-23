@@ -39,6 +39,9 @@ const C_FLARE_RE_EVAL_DISTANCE_SQUARED: float = 4.0
 const C_HITSCAN_MIN_LENGTH: float = 0.125
 const C_PLAYER_MIN_HEIGHT: float = -1000.0
 
+## The filepath that user quicksaves live in.
+const C_QUICKSAVE_PATH: String = "user://saves/auto/quicksave.scn"
+
 # ---------------------------------------------------------------------------- #
 # --------------------------------- SETTINGS --------------------------------- #
 # ---------------------------------------------------------------------------- #
@@ -160,6 +163,18 @@ func _on_settings_changed() -> void:
 	config.save("user://settings.cfg") # Write to file.
 
 
+func save_game(to: String) -> void:
+	var scene := PackedScene.new()
+	var world = get_tree().current_scene
+	for node: Node in get_all_children(world):
+		if node.has_method("pre_save"):
+			node.pre_save
+			await node.ready_to_save
+		node.owner = world
+	scene.pack(world)
+	ResourceSaver.save(scene, to)
+
+
 ## returns from incremented or decremented by 1 towards to
 ## (eg. intstep(1,5) returns 2)
 func intstep(from: int, to: int) -> int:
@@ -169,3 +184,14 @@ func intstep(from: int, to: int) -> int:
 		return from + 1
 	else:
 		return from
+
+
+func get_all_children(node) -> Array:
+	var nodes : Array = []
+	for N in node.get_children():
+		if N.get_child_count() > 0:
+			nodes.append(N)
+			nodes.append_array(get_all_children(N))
+		else:
+			nodes.append(N)
+	return nodes
