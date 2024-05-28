@@ -7,12 +7,14 @@ signal ready_to_save
 ## The time, in seconds, that the player must wait after loading a charge into
 ## the weapon before they may operate it again.
 @export var _charge_delay: float = 1.0
-
-@onready var _label: Label = $Label
+@export var _label: Label
 
 
 func _ready() -> void:
-	_label.reparent(find_parent("Player").find_child("HUD"), false)
+	if _label == null:
+		_label = get_tree().get_first_node_in_group("hunting_rifle_label")
+	else:
+		_label.reparent(find_parent("Player").find_child("HUD"), false)
 	super()
 
 

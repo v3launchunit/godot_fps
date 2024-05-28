@@ -134,7 +134,7 @@ size = Vector3(0.5, 0.5, 1)
 render_priority = 0
 shader = ExtResource("33_60325")
 shader_parameter/intensity = 4.0
-shader_parameter/threshold = 1.0
+shader_parameter/threshold = 0.9
 shader_parameter/spread = 8
 shader_parameter/scale = 0.0
 
@@ -157,7 +157,7 @@ func _on_globals_settings_changed() -> void:
 	visible = Globals.s_cross_glow_enabled
 "
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["players"]]
 editor_description = "The player character."
 collision_layer = 2
 collision_mask = 5

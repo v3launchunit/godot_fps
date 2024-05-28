@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cy8hwffqmck3s"]
+[gd_scene load_steps=57 format=3 uid="uid://dv3fvlvmanmbf"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemy_attack_pattern.gd" id="1_amqno"]
 [ext_resource type="PackedScene" uid="uid://dtybrk353o1i5" path="res://scenes/bullets/enemy/rockets/enemy_fast_rocket.tscn" id="2_tab8w"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cobrnuaq2l63n" path="res://textures/entities/enemies/rocketeer/rocketeer_roughness.png" id="6_i5ae8"]
 [ext_resource type="Texture2D" uid="uid://clgl6xiya7ukn" path="res://textures/entities/enemies/rocketeer/rocketeer_detail_mask.png" id="7_28bj8"]
 [ext_resource type="PackedScene" uid="uid://coopugxxes4xq" path="res://scenes/pickups/ammo/grenade_pickup.tscn" id="8_krnfx"]
-[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="9_vr1y5"]
+[ext_resource type="PackedScene" path="res://scenes/entities/stair_stepper.tscn" id="9_vr1y5"]
 [ext_resource type="AnimationLibrary" uid="uid://c2ie0ye0ecnev" path="res://scenes/entities/military/rocketeer_anims.res" id="10_7nbok"]
 [ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://scenes/pickups/health/health_pack_pickup.tscn" id="12_fn6s3"]
 
@@ -448,6 +448,7 @@ collision_layer = 4
 collision_mask = 87
 script = ExtResource("1_amqno")
 patterns = Array[ExtResource("2_tv63j")]([SubResource("Resource_07esl"), SubResource("Resource_bb3lr")])
+species = &"rocketeers"
 speed = 5.0
 detection_stream = SubResource("AudioStreamGenerator_5fauj")
 attack_interval = 4.0
@@ -482,13 +483,13 @@ bones/18/rotation = Quaternion(0.00780262, 9.06806e-08, 1.6966e-08, 0.99997)
 bones/18/scale = Vector3(1, 1, 1)
 
 [node name="rpg" parent="Rocketeer/Armature/Skeleton3D" index="0"]
-transform = Transform3D(3.98478, -0.304914, -0.169016, 0.318536, 3.97249, 0.343348, 0.14168, -0.3555, 3.98165, 3.15752, 4.96373, 9.51991)
+transform = Transform3D(3.98478, -0.304914, -0.169016, 0.325137, 3.95011, 0.539331, 0.125796, -0.551017, 3.95987, 3.15752, 5.48521, 9.50527)
 
 [node name="rpg" parent="Rocketeer/Armature/Skeleton3D/rpg" index="0"]
 material_override = SubResource("ShaderMaterial_am0uh")
 
 [node name="rocket" parent="Rocketeer/Armature/Skeleton3D" index="1"]
-transform = Transform3D(3.98478, -0.304914, -0.169016, 0.318536, 3.97249, 0.343348, 0.14168, -0.3555, 3.98165, 3.33133, 5.95187, 2.40982)
+transform = Transform3D(3.98478, -0.304914, -0.169016, 0.325137, 3.95011, 0.539331, 0.125796, -0.551017, 3.95987, 3.33133, 6.12143, 2.3551)
 
 [node name="rocket" parent="Rocketeer/Armature/Skeleton3D/rocket" index="0"]
 material_override = SubResource("ShaderMaterial_am0uh")
@@ -496,7 +497,7 @@ material_override = SubResource("ShaderMaterial_am0uh")
 [node name="Spawner" type="Marker3D" parent="Rocketeer/Armature/Skeleton3D/rocket/rocket" index="0"]
 
 [node name="Backpack" parent="Rocketeer/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.913695, -0.406401, 0, 0.406401, 0.913695, 0, 5.41856, -0.826071)
+transform = Transform3D(1, 0, 0, 0, 0.932629, -0.360836, 0, 0.360836, 0.932629, 0, 5.42916, -0.850549)
 
 [node name="Backpack" parent="Rocketeer/Armature/Skeleton3D/Backpack" index="0"]
 material_override = SubResource("ShaderMaterial_flj7k")

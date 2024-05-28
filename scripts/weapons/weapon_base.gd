@@ -49,10 +49,11 @@ signal hud_connected(category: int, index: int, ammo_type: String, alt_ammo_type
 ## which weapons are selected.
 @export var index: int = 0
 
+@export_group("Save Data")
 ## Holdover from before I knew what a "process mode" was. Will probably stick
 ## around forever.
-var active: bool = true
-var cooldown_timer: float = 0.0 # seconds
+@export var active: bool = true
+@export var cooldown_timer: float = 0.0 # seconds
 ## Set to 1.0 when a bullet is instantiated (i.e. only applied to the first
 ## bullet in a given volley), and decays back to 0.0 over the course of one
 ## second. The spread of any given bullet is multiplied by this. [br] In

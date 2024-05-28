@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="12_vljf1"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="13_unmri"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="14_jjv6v"]
-[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="16_v2wu4"]
+[ext_resource type="PackedScene" path="res://scenes/entities/stair_stepper.tscn" id="16_v2wu4"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cyl10"]
 random_pitch = 1.15
@@ -373,6 +373,7 @@ graph_offset = Vector2(-154, -17)
 collision_layer = 4
 collision_mask = 23
 script = ExtResource("1_hhhfd")
+species = &"zombies"
 speed = 5.0
 knockback_multiplier = 0.8
 sight_line_sweep_speed = 10.0
@@ -414,7 +415,7 @@ bones/17/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/18/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder_002" parent="zombie/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.676752, -0.0130179, -0.736096, 0.193155, 0.967958, 0.160464, 0.710421, -0.250775, 0.657582, -0.344427, -0.888419, 0.220094)
+transform = Transform3D(0.674616, -0.00772488, -0.738128, 0.190503, 0.967894, 0.163981, 0.713163, -0.25124, 0.654429, -0.348806, -0.881588, 0.213192)
 
 [node name="Spawner" type="Marker3D" parent="zombie/Armature/Skeleton3D/Cylinder_002/Cylinder_002" index="0"]
 transform = Transform3D(0.761305, 0.0456351, -0.646786, -0.0627901, 0.99802, -0.00349065, 0.645346, 0.0432692, 0.762663, 0, 0, 0)

@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dhw68mcg5ahye" path="res://textures/entities/enemies/canary/canary_roughness.png" id="13_ks6xw"]
 [ext_resource type="PackedScene" uid="uid://cqctw8dd0ar4n" path="res://scenes/effects/damage/damage_sys.tscn" id="18_8bnw6"]
 [ext_resource type="PackedScene" uid="uid://c5pbs8t6p7ogl" path="res://scenes/effects/gibs/gibs.tscn" id="20_2d2y6"]
-[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="23_cbwd2"]
+[ext_resource type="PackedScene" path="res://scenes/entities/stair_stepper.tscn" id="23_cbwd2"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cyl10"]
 random_pitch = 1.15
@@ -674,6 +674,7 @@ graph_offset = Vector2(-165, -24)
 collision_layer = 4
 collision_mask = 23
 script = ExtResource("1_xpg4m")
+species = &"canaries"
 speed = 6.0
 knockback_multiplier = 0.0
 sight_line_sweep_speed = 10.0
@@ -722,28 +723,28 @@ bones/21/rotation = Quaternion(0.0370042, -0.0100011, 0.259029, 0.965109)
 bones/22/rotation = Quaternion(-0.081984, -0.00699863, -0.086983, 0.992806)
 
 [node name="Cylinder_001" parent="Canary/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1.23001, -0.565528, -0.13221, -0.824613, -0.735356, -0.594416, 0.238938, 0.373404, -1.37084, -0.102392, 0.106994, 0.333159)
+transform = Transform3D(1.22996, -0.56557, -0.132237, -0.833324, -0.749248, -0.540817, 0.206791, 0.344614, -1.39285, -0.102417, 0.102972, 0.315549)
 
 [node name="Cylinder_001" parent="Canary/Armature/Skeleton3D/Cylinder_001" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_06smx")
 
 [node name="Cylinder_002" parent="Canary/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1.22943, 0.56649, 0.128262, 0.824461, -0.735426, -0.594433, -0.242412, 0.371805, -1.3712, 0.103415, 0.106981, 0.332868)
+transform = Transform3D(1.22948, 0.566448, 0.128235, 0.833171, -0.749318, -0.540834, -0.210266, 0.343015, -1.39322, 0.10339, 0.102959, 0.315258)
 
 [node name="Cylinder_002" parent="Canary/Armature/Skeleton3D/Cylinder_002" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_06smx")
 
 [node name="Helmet" parent="Canary/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.999999, 0.00138186, 0.000299915, -6.19718e-05, 0.25473, -0.967012, -0.00141267, 0.967011, 0.25473, 0.000754984, 0.410146, 0.492303)
+transform = Transform3D(0.999999, 0.00139245, 0.000246117, -6.19728e-05, 0.217049, -0.976161, -0.00141266, 0.97616, 0.217049, 0.000745895, 0.39972, 0.486327)
 
 [node name="Helmet" parent="Canary/Armature/Skeleton3D/Helmet" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_lb10m")
 
 [node name="Cylinder" parent="Canary/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.999999, 0.000535317, -0.00130879, -6.19718e-05, -0.908088, -0.41878, -0.00141267, 0.41878, -0.908087, 0.000786239, 0.16878, 0.525017)
+transform = Transform3D(0.999999, 0.000484174, -0.00132856, -6.19728e-05, -0.92364, -0.38326, -0.00141266, 0.38326, -0.92364, 0.000763829, 0.157268, 0.509659)
 
 [node name="Cylinder" parent="Canary/Armature/Skeleton3D/Cylinder" index="0"]
 layers = 2
@@ -757,7 +758,7 @@ shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="Pickaxe" parent="Canary/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.148796, -0.0165842, -0.00920081, -0.0138782, 0.144809, -0.0365741, 0.0129261, -0.0354293, -0.145182, -0.266179, -0.62538, 0.441623)
+transform = Transform3D(-0.149111, -0.0157182, -0.00433056, -0.0142235, 0.144887, -0.0361322, 0.00796918, -0.0355075, -0.145519, -0.275301, -0.621271, 0.425821)
 
 [node name="Pickaxe" parent="Canary/Armature/Skeleton3D/Pickaxe" index="0"]
 layers = 2

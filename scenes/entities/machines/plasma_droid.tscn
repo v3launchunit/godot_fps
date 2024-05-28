@@ -19,7 +19,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://cu6kaw3wmnu2i" path="res://scenes/entities/machines/plasma_droid_anims.res" id="8_hkuiw"]
 [ext_resource type="Shader" path="res://shaders/spatial/unlit_add_psx.gdshader" id="11_o6law"]
 [ext_resource type="Shader" path="res://shaders/spatial/unlit_mix_psx.gdshader" id="12_djo4k"]
-[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="18_7c8tp"]
+[ext_resource type="PackedScene" path="res://scenes/entities/stair_stepper.tscn" id="18_7c8tp"]
 
 [sub_resource type="Resource" id="Resource_ba0li"]
 script = ExtResource("3_3f3op")
@@ -448,6 +448,7 @@ collision_layer = 4
 collision_mask = 23
 script = ExtResource("1_jd6vl")
 patterns = Array[ExtResource("3_3f3op")]([SubResource("Resource_ba0li"), SubResource("Resource_wk1ps")])
+species = &"plasma_droids"
 speed = 5.0
 knockback_multiplier = 0.0
 wake_up_time = 0.0

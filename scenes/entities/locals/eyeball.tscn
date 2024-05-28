@@ -654,6 +654,7 @@ graph_offset = Vector2(-51, 6)
 collision_layer = 4
 collision_mask = 23
 script = ExtResource("1_pxyj5")
+species = &"eyeballs"
 turning_speed = 3.0
 acceleration = 10.0
 knockback_multiplier = 3.0

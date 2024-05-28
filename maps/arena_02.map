@@ -65,7 +65,7 @@
 ( -192 -64 96 ) ( -192 64 32 ) ( -320 64 32 ) terrain/trench_broom/planks 0 0 0 1 1
 ( -320 64 48 ) ( -192 64 48 ) ( -192 -64 112 ) terrain/trench_broom/planks 0 0 0 1 1
 ( -192 64 32 ) ( -192 64 48 ) ( -320 64 48 ) terrain/trench_broom/planks 0 0 0 1 1
-( -192 -64 112 ) ( -192 64 48 ) ( -192 64 32 ) terrain/trench_broom/planks 0 0 0 1 1
+( -192 -64 112 ) ( -192 64 48 ) ( -192 64 32 ) terrain/trench_broom/planks 0 0 -90 1 1
 }
 // brush 7
 {

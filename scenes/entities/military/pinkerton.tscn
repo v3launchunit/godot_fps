@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://bw7v4h5hychul" path="res://textures/entities/enemies/pinkerton/pinkerton_roughness.png" id="22_758q5"]
 [ext_resource type="PackedScene" uid="uid://cqctw8dd0ar4n" path="res://scenes/effects/damage/damage_sys.tscn" id="31_7r0oy"]
 [ext_resource type="PackedScene" uid="uid://c5pbs8t6p7ogl" path="res://scenes/effects/gibs/gibs.tscn" id="32_l26si"]
-[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="37_sxmhw"]
+[ext_resource type="PackedScene" path="res://scenes/entities/stair_stepper.tscn" id="37_sxmhw"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oao7a"]
 random_pitch = 1.15
@@ -945,6 +945,7 @@ graph_offset = Vector2(-98, -5)
 collision_layer = 4
 collision_mask = 23
 script = ExtResource("1_4o8wq")
+species = &"pinkertons"
 speed = 5.0
 jump_height = 2.0
 wake_up_time = 0.0
@@ -984,7 +985,7 @@ bones/20/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/21/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.120489, -0.330487, 0.936088, 0.951386, -0.307691, 0.0138274, 0.283456, 0.892247, 0.351494, -0.0292332, 0.332379, 0.205225)
+transform = Transform3D(-0.157294, -0.984093, 0.0825762, 0.980887, -0.165383, -0.102511, 0.114537, 0.0648737, 0.991298, -0.167903, 0.352387, 0.0876706)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="0"]
 layers = 2
@@ -1023,14 +1024,14 @@ shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.180733, -0.330487, 1.40413, 1.42708, -0.307691, 0.0207407, 0.425183, 0.892247, 0.527241, -0.045758, 0.316994, 0.249839)
+transform = Transform3D(-0.235941, -0.984094, 0.123865, 1.47133, -0.165383, -0.153767, 0.171806, 0.0648737, 1.48695, -0.217109, 0.344117, 0.0909144)
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D/Cylinder_001" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_bkory")
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.986643, 0.128382, 0.100271, -0.159617, 0.884848, 0.437684, -0.0325339, -0.447842, 0.893521, -0.230804, 0.396013, 0.0645152)
+transform = Transform3D(0.986642, 0.128888, 0.0996239, -0.159735, 0.885465, 0.436391, -0.0319678, -0.446475, 0.894225, -0.230812, 0.396016, 0.0643365)
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D/Shotgun" index="0"]
 layers = 2
@@ -1052,7 +1053,7 @@ omni_range = 10.0
 transform = Transform3D(-1.95578e-08, -1, 7.45058e-09, -3.72529e-08, 2.23517e-08, 1, -1, 2.04891e-08, -3.72529e-08, 0, 0.675, -0.135)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.986643, 0.128382, 0.100271, -0.159617, 0.884848, 0.437684, -0.0325339, -0.447842, 0.893521, -0.230804, 0.396013, 0.0645152)
+transform = Transform3D(0.986642, 0.128888, 0.0996239, -0.159735, 0.885465, 0.436391, -0.0319678, -0.446475, 0.894225, -0.230812, 0.396016, 0.0643365)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D/Pump" index="0"]
 layers = 2

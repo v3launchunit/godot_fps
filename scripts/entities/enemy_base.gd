@@ -25,6 +25,8 @@ enum State {
 
 @export_category("EnemyBase")
 
+@export var species: StringName
+
 @export_group("Movement")
 ## The base movement speed of this enemy.
 @export_range(1, 35, 0.1, "or_greater") var speed: float = 10.0
@@ -43,6 +45,8 @@ enum State {
 @export var wanderer: bool = false
 
 @export_group("Detection")
+@export var hunts_player: bool = true
+@export var hunts_species: Array[StringName] = []
 ## If enabled, prevents sight-based detection.
 @export var blind: bool = false
 ## If enabled, prevents sound-based detection.
@@ -59,6 +63,11 @@ enum State {
 #@export var enemies: Array[String] = ["Player"]
 ## The sound that plays when this enemy first detects a target while idle.
 @export var detection_stream: AudioStream
+
+@export_group("Pathing")
+@export var proximity_coefficient: float = 1
+@export var line_of_sight_value: float = 10
+@export var old_dest_bias: float = 5
 
 @export_group("Combat")
 ## The minimum time, in seconds, that this enemy must spend moving before
@@ -97,23 +106,22 @@ enum State {
 ## The sound that plays when this enemy dies.
 @export var death_stream: AudioStream
 
+@export_group("Save Data")
+@export var current_state: State = State.AMBUSHING
+@export var current_destination: Vector3
+@export var current_dest_score: float
+@export var wander_idling: bool = false
+@export var wander_idle_timer: float = 0.0
+@export var jumping: bool = false
+@export var walk_vel := Vector3.ZERO # Walking velocity
+@export var safe_walk_vel := Vector3.ZERO
+@export var grav_vel := Vector3.ZERO # Gravity velocity
+@export var jump_vel := Vector3.ZERO # Jumping velocity
+@export var knockback_vel := Vector3.ZERO # Knockback velocity
+@export var state_timer: float = 0.0 # How long I've been in my current state, in seconds
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-var current_state: State = State.AMBUSHING
-var current_destination: Vector3
-
-var wander_idling: bool = false
-var wander_idle_timer: float = 0.0
-
-var jumping: bool = false
-
-var walk_vel := Vector3.ZERO # Walking velocity
-var safe_walk_vel := Vector3.ZERO
-var grav_vel := Vector3.ZERO # Gravity velocity
-var jump_vel := Vector3.ZERO # Jumping velocity
-var knockback_vel := Vector3.ZERO # Knockback velocity
-
-var state_timer: float = 0.0 # How long I've been in my current state, in seconds
 
 @onready var nav_agent: NavigationAgent3D = find_child("NavigationAgent3D")
 @onready var sight_line: RayCast3D = find_child("SightLine")
@@ -135,15 +143,15 @@ func _ready() -> void:
 	status.injured.connect(_on_status_injured)
 	status.died.connect(_on_status_died)
 	nav_agent.velocity_computed.connect(_on_navigation_agent_3d_velocity_computed)
+	add_to_group(species)
 
 
-func _process(delta: float) -> void:
-	state_timer += delta
+#func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	state_timer += delta
 	velocity = _jump(delta) + _gravity(delta) + _knockback(delta)
-
 	match current_state:
 		State.AMBUSHING:
 			if state_timer >= wake_up_time:
@@ -173,6 +181,8 @@ func _physics_process(delta: float) -> void:
 
 	if check_target_validity() and current_targets[-1].get_node("Status").health <= 0:
 		current_targets.pop_back()
+		if current_targets.is_empty():
+			change_state(State.IDLE)
 
 	move_and_slide()
 
@@ -182,7 +192,6 @@ func _physics_process(delta: float) -> void:
 func change_state(to: State):
 	if current_state == State.DEAD or to == current_state:
 		return
-
 	match current_state:
 		State.AMBUSHING:
 			pass
@@ -200,7 +209,6 @@ func change_state(to: State):
 			pass
 		State.DEAD:
 			pass
-
 	match to:
 		State.AMBUSHING:
 			pass
@@ -268,7 +276,7 @@ func _wander(delta) -> void:
 		walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
 		if nav_agent.is_target_reached():
 			state_machine.travel("idle", true)
-			wander_idle_timer = randf_range(0.0, 30.0)
+			wander_idle_timer = randf_range(0.0, 15.0)
 		if nav_agent.avoidance_enabled:
 			nav_agent.set_velocity(walk_vel)
 		else:
@@ -278,19 +286,30 @@ func _wander(delta) -> void:
 
 
 func _scan(_delta) -> void:
-	sight_line.rotation.y = sin(
-			state_timer * sight_line_sweep_speed
-			+ randf() / sight_line_sweep_angle * 2
-	) * sight_line_sweep_angle / 2
-
-	if (
-			not blind
-			and sight_line.is_colliding()
-			and sight_line.get_collider() is Player
-	):
-		detect_target(sight_line.get_collider())
+	if blind:
+		return
+	#sight_line.rotation.y = sin(
+			#state_timer * sight_line_sweep_speed
+			#+ randf() / sight_line_sweep_angle * 2
+	#) * sight_line_sweep_angle / 2
+	var target_pool: Array[Node] = []
+	if hunts_player:
+		target_pool.append(get_tree().get_first_node_in_group("players"))
+	for prey in hunts_species:
+		target_pool.append_array(get_tree().get_nodes_in_group(prey))
+	var target: Node3D = target_pool.pick_random() as Node3D
+	if global_basis.z.normalized().dot((global_position - target.global_position).normalized()) < 0.5:
+		return
+	var space_state = get_world_3d().direct_space_state
+	var query := PhysicsRayQueryParameters3D.create(
+			global_position,
+			target.global_position,
+			collision_mask,
+	)
+	var hit: Dictionary = space_state.intersect_ray(query)
+	if (hit and hit["collider"] == target):
+		detect_target(target)
 		change_state(State.PURSUING)
-
 	#nav_agent.set_velocity(Vector3.ZERO)
 
 
@@ -314,11 +333,14 @@ func _investigate(delta) -> void:
 
 func _pursue(delta) -> void:
 	if not check_target_validity(): # Make sure I actually have a target first
-		change_state(State.IDLE) # Can't pursue a target that doesn't exist
+		#change_state(State.IDLE) # Can't pursue a target that doesn't exist
 		return
 
+	current_destination = current_targets[-1].global_position
+	#current_destination = get_current_destination()
+
 	if check_path_staleness(): # Make sure my target is still where I think it is
-		nav_agent.target_position = current_targets[-1].global_position
+		nav_agent.target_position = current_destination
 
 	# Casually approach target
 	var next_pos: Vector3 = nav_agent.get_next_path_position()
@@ -357,8 +379,57 @@ func check_path_staleness() -> bool:
 	return (
 			randf() < Globals.C_PATH_RE_EVAL_CHANCE
 			and nav_agent.target_position.distance_squared_to(
-			current_targets[-1].global_position) > path_re_eval_distance_squared
+			current_destination) > path_re_eval_distance_squared
 		)
+
+
+func get_current_destination() -> Vector3:
+	var destination: Vector3
+	match randi_range(0, 3):
+		0: # Current target's exact position
+			destination = current_targets[-1].global_position
+		1: # Current target's exact position
+			destination = current_targets[-1].global_position + Vector3(
+					randf_range(-10.0, 10.0),
+					randf_range(-10.0, 10.0),
+					randf_range(-10.0, 10.0),
+			)
+		2: # Random position near current destination
+			destination = current_destination + Vector3(
+					randf_range(-10.0, 10.0),
+					randf_range(-10.0, 10.0),
+					randf_range(-10.0, 10.0),
+			)
+		3: # Completely random position
+			destination = Vector3(
+					randf_range(-1000.0, 1000.0),
+					randf_range(-1000.0, 1000.0),
+					randf_range(-1000.0, 1000.0),
+			)
+	var new_dest_score = rank_point(destination)
+	if new_dest_score > current_dest_score + old_dest_bias:
+		current_dest_score = new_dest_score
+		return destination
+	else:
+		return current_destination
+
+
+func rank_point(point: Vector3) -> float:
+	var score: float = 0.0
+	if not is_equal_approx(proximity_coefficient, 0.0):
+		score += point.distance_squared_to(
+				current_targets[-1].global_position) * proximity_coefficient
+	if not blind and not is_equal_approx(line_of_sight_value, 0.0):
+		var space_state = get_world_3d().direct_space_state
+		var query := PhysicsRayQueryParameters3D.create(
+				point,
+				current_targets[-1].global_position,
+				collision_mask,
+		)
+		var hit: Dictionary = space_state.intersect_ray(query)
+		if hit and hit.get("collider") == current_targets[-1]:
+			score += line_of_sight_value
+	return score
 
 
 func check_attack_readiness() -> bool:
@@ -383,7 +454,6 @@ func can_see_target() -> bool:
 			collision_mask,
 	)
 	var hit: Dictionary = space_state.intersect_ray(query)
-
 	return not hit.is_empty() and hit.collider == current_targets[-1]
 
 
@@ -424,7 +494,6 @@ func do_attack() -> void:
 		spawner.global_rotation = spawner_base_rotation
 		spawner.rotate_z(deg_to_rad(randf_range(-spread/2, spread/2)))
 		spawner.rotate_y(deg_to_rad(randf_range(-spread/4, spread/4)))
-
 		var instance = bullet.instantiate()
 		spawner.add_child(instance)
 		instance.reparent(get_tree().root)
@@ -434,9 +503,7 @@ func do_attack() -> void:
 		if instance is Hitscan:
 			instance.query_origin = global_position
 			instance.exceptions.append(self)
-
 		instance.invoker = self
-
 #	global_rotation = spawner_base_rotation
 	spawner.global_rotation = spawner_base_rotation
 	change_state(State.POST_ATTACKING)

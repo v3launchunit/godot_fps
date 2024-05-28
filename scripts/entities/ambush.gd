@@ -25,7 +25,8 @@ class_name AmbushPoint3D extends Marker3D
 
 
 func _ready() -> void:
-	trigger.body_entered.connect(_on_trigger_body_entered)
+	if trigger != null && ambusher != null:
+		trigger.body_entered.connect(_on_trigger_body_entered)
 
 
 func _on_trigger_body_entered(_body: Node3D) -> void:
@@ -43,12 +44,9 @@ func _on_trigger_body_entered(_body: Node3D) -> void:
 
 func _get_configuration_warnings():
 	var warnings = []
-
 	if ambusher == null:
 		warnings.append("This ambush does not have an ambusher set.")
-
 	if trigger == null:
 		warnings.append("This ambush does not have a trigger set.")
-
 	# Returning an empty array means "no warning".
 	return warnings

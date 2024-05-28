@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c5pbs8t6p7ogl" path="res://scenes/effects/gibs/gibs.tscn" id="16_deg2e"]
 [ext_resource type="PackedScene" uid="uid://b3bisp7cspupn" path="res://models/entities/vortigaunt.glb" id="19_2vrj2"]
 [ext_resource type="AnimationLibrary" uid="uid://c6ax6eregbrwp" path="res://scenes/entities/locals/vortigaunt_anims.res" id="20_hkyne"]
-[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="21_lwbg8"]
+[ext_resource type="PackedScene" path="res://scenes/entities/stair_stepper.tscn" id="21_lwbg8"]
 [ext_resource type="Script" path="res://scripts/entities/status.gd" id="30_tfc0g"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="32_jp1h1"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="33_wc5bg"]
@@ -529,6 +529,7 @@ graph_offset = Vector2(-104, 51)
 collision_layer = 4
 collision_mask = 23
 script = ExtResource("1_mc1rn")
+species = &"tarantulas"
 speed = 6.5
 knockback_multiplier = 0.5
 wake_up_time = 1.5
@@ -565,7 +566,7 @@ bones/17/rotation = Quaternion(0.5, 0.5, 0.5, -0.5)
 bones/18/rotation = Quaternion(-0.707107, -2.66925e-08, 2.66925e-08, 0.707107)
 
 [node name="HeadTrailObj" parent="Vortigaunt/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, 1.22349e-08, -7.53945e-08, -7.40522e-08, -0.086575, -0.996245, -1.87162e-08, 0.996245, -0.0865749, 1.13092e-07, 3.26375, 1.01986)
+transform = Transform3D(1, 1.22349e-08, -7.53945e-08, -7.38325e-08, -0.0980076, -0.995186, -1.95652e-08, 0.995186, -0.0980076, 1.13092e-07, 3.22741, 1.03847)
 
 [node name="HeadTrailObj" parent="Vortigaunt/Armature/Skeleton3D/HeadTrailObj" index="0"]
 transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0, 0, 0)

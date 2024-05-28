@@ -51,7 +51,6 @@ func do_attack() -> void:
 	var spawner_r_base_rotation = spawner_right.global_rotation
 	for v in volley:
 		var s = spawner_right if 2 % (v + 1) == 0 else spawner_left
-
 		s.global_rotation = (
 				spawner_r_base_rotation if 2 % (v + 1) == 0
 				else spawner_l_base_rotation

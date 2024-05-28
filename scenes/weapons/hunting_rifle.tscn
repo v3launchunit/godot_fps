@@ -319,9 +319,10 @@ radius = 16.0
 [node name="HuntingRifle" type="Node3D"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.125, 0, -0.15, -0.35)
 
-[node name="hunting_rifle" parent="." instance=ExtResource("1_2vytj")]
+[node name="hunting_rifle" parent="." node_paths=PackedStringArray("_label") instance=ExtResource("1_2vytj")]
 script = ExtResource("2_rovkw")
 _charge_delay = 0.75
+_label = NodePath("Label")
 bullet = ExtResource("3_m5odq")
 shot_cooldown = 1.2
 ammo_type = "big_iron_bullets"
@@ -378,7 +379,7 @@ script = ExtResource("6_tkwec")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hunting_rifle/AlertRadius"]
 shape = SubResource("SphereShape3D_tgx3e")
 
-[node name="Label" type="Label" parent="hunting_rifle"]
+[node name="Label" type="Label" parent="hunting_rifle" groups=["hunting_rifle_label"]]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
