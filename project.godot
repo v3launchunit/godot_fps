@@ -38,6 +38,11 @@ window/vsync/vsync_mode=0
 
 project/assembly_name="VolumetricsTest"
 
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/qodot/plugin.cfg")
