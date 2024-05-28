@@ -47,6 +47,10 @@ func build_def_text() -> String:
 		meta_props['base'] = base_str
 
 	for prop in meta_props:
+		if self is QodotFGDSolidClass:
+			if prop == "size" or prop == "model":
+				continue
+		
 		var value = meta_props[prop]
 		res += " " + prop + "("
 
@@ -84,7 +88,17 @@ func build_def_text() -> String:
 
 		var prop_val = null
 		var prop_type := ""
-		var prop_description: String = class_property_descriptions[prop] if prop in class_property_descriptions else ""
+		var prop_description: String
+		if prop in class_property_descriptions:
+			# Optional default value for Choices can be set up as [String, int]
+			if value is Dictionary and class_property_descriptions[prop] is Array:
+				var prop_arr: Array = class_property_descriptions[prop]
+				if prop_arr.size() > 1 and prop_arr[1] is int:
+					prop_description = "\"" + prop_arr[0] + "\" : " + str(prop_arr[1])
+			else:
+				prop_description = "\"" + class_property_descriptions[prop] + "\""
+		else:
+			prop_description = ""
 
 		if value is int:
 			prop_type = "integer"
@@ -135,9 +149,9 @@ func build_def_text() -> String:
 			res += ")"
 
 			if not value is Array:
-				res += " : \""
-				res += prop_description
-				res += "\" "
+				if not value is Dictionary or prop_description != "":
+					res += " : "
+					res += prop_description
 
 			if value is Dictionary or value is Array:
 				res += " = "
