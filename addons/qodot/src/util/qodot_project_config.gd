@@ -54,7 +54,7 @@ func _set(property: StringName, value: Variant):
 	var config = _get_config_property(property)
 	if config == null and not config is Dictionary: return
 	settings_dict[PROPERTY.keys()[config['qodot_type']]] = value
-	
+
 func _get_default_value(type):
 	match type:
 		TYPE_STRING: return ''
@@ -68,7 +68,7 @@ func _get_default_value(type):
 
 func _get_config_property(name: StringName) -> Variant:
 	for config in CONFIG_PROPERTIES:
-		if config['name'] == name: 
+		if config['name'] == name:
 			return config
 	return null
 

@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=12 format=3 uid="uid://u66jm0qyquk8"]
+[gd_resource type="ShaderMaterial" load_steps=12 format=3 uid="uid://b35jmadc7ijlh"]
 
 [ext_resource type="Shader" path="res://shaders/spatial/terrain/fluid.gdshader" id="1_n10a2"]
 

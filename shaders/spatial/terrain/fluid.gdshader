@@ -39,7 +39,7 @@ void fragment() {
 	vec2 flow_uv = flowing ? vec2(
 			base_uv.x,
 			base_uv.y + TIME * flow_speed
-	) : (base_uv + sin(TIME) * flow_speed);
+	) : (base_uv + vec2(TIME, sin(TIME)) * flow_speed);
 	vec2 disp_uv = base_uv + ((texture(
 			texture_displacement,
 			flow_uv

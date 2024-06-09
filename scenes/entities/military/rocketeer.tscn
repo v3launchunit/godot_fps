@@ -200,7 +200,7 @@ shader = SubResource("Shader_ubbct")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 1.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
@@ -483,13 +483,13 @@ bones/18/rotation = Quaternion(0.00780262, 9.06806e-08, 1.6966e-08, 0.99997)
 bones/18/scale = Vector3(1, 1, 1)
 
 [node name="rpg" parent="Rocketeer/Armature/Skeleton3D" index="0"]
-transform = Transform3D(3.98478, -0.304914, -0.169016, 0.325137, 3.95011, 0.539331, 0.125796, -0.551017, 3.95987, 3.15752, 5.48521, 9.50527)
+transform = Transform3D(3.98478, -0.304914, -0.169016, 0.325688, 3.94765, 0.556772, 0.124362, -0.568415, 3.95745, 3.15752, 5.53078, 9.50284)
 
 [node name="rpg" parent="Rocketeer/Armature/Skeleton3D/rpg" index="0"]
 material_override = SubResource("ShaderMaterial_am0uh")
 
 [node name="rocket" parent="Rocketeer/Armature/Skeleton3D" index="1"]
-transform = Transform3D(3.98478, -0.304914, -0.169016, 0.325137, 3.95011, 0.539331, 0.125796, -0.551017, 3.95987, 3.33133, 6.12143, 2.3551)
+transform = Transform3D(3.98478, -0.304914, -0.169016, 0.325688, 3.94765, 0.556772, 0.124362, -0.568415, 3.95745, 3.33133, 6.13549, 2.34993)
 
 [node name="rocket" parent="Rocketeer/Armature/Skeleton3D/rocket" index="0"]
 material_override = SubResource("ShaderMaterial_am0uh")
@@ -497,7 +497,7 @@ material_override = SubResource("ShaderMaterial_am0uh")
 [node name="Spawner" type="Marker3D" parent="Rocketeer/Armature/Skeleton3D/rocket/rocket" index="0"]
 
 [node name="Backpack" parent="Rocketeer/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.932629, -0.360836, 0, 0.360836, 0.932629, 0, 5.42916, -0.850549)
+transform = Transform3D(1, 0, 0, 0, 0.93421, -0.356724, 0, 0.356724, 0.93421, 0, 5.4291, -0.852635)
 
 [node name="Backpack" parent="Rocketeer/Armature/Skeleton3D/Backpack" index="0"]
 material_override = SubResource("ShaderMaterial_flj7k")

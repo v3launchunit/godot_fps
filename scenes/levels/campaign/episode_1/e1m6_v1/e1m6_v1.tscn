@@ -1,6 +1,6 @@
 [gd_scene load_steps=418 format=3 uid="uid://cor0l0jkjwbo5"]
 
-[ext_resource type="Texture2D" uid="uid://cu58hb7h0r68v" path="res://textures/effects/look_up_tables/1d_lut_16_color.png" id="1_0duhq"]
+[ext_resource type="Texture2D" uid="uid://cu58hb7h0r68v" path="res://textures/effects/look_up_tables/1d/1d_lut_16_color.png" id="1_0duhq"]
 [ext_resource type="PackedScene" uid="uid://c63k27ek72d3d" path="res://scenes/entities/player.tscn" id="1_4nxt7"]
 [ext_resource type="Texture2D" uid="uid://dybaimi1b3b85" path="res://textures/effects/glow/lens_dirt/lens_dirt_0.png" id="2_er53p"]
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="2_x1551"]
@@ -59,7 +59,7 @@
 [ext_resource type="PackedScene" uid="uid://68ll8lt6xqyd" path="res://scenes/entities/locals/eepy_lizard.tscn" id="52_a6omo"]
 [ext_resource type="PackedScene" uid="uid://pr3j5d4ifvrt" path="res://scenes/entities/machines/plasma_droid.tscn" id="55_bykpp"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="56_lpnno"]
-[ext_resource type="PackedScene" uid="uid://ce7jor6ru8srq" path="res://scenes/objects/door_shutter_2x3.tscn" id="58_j4jxm"]
+[ext_resource type="PackedScene" path="res://scenes/objects/door_shutter_2x3.tscn" id="58_j4jxm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2jtk7"]
 

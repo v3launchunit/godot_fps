@@ -43,9 +43,9 @@ void vertex() {
 	PROJECTION_MATRIX[1][1] = -onetanfov;
 	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
 
-	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
 	//POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
 	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
 	POSITION.z = mix(POSITION.z, 0, 0.99);
 }
 
@@ -167,7 +167,7 @@ graph_offset = Vector2(-136, 58)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.35)
 
 [node name="Axe" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.499978, -0.866038, 0, 0.866038, 0.499978, 0, 0, 0, 1, -0.15, 0.00653733, 0)
+transform = Transform3D(0.499978, -0.866038, 0, 0.866038, 0.499978, 0, 0, 0, 1, -0.15, 1.78105e-06, 0)
 layers = 4
 material_override = SubResource("ShaderMaterial_h7uo5")
 cast_shadow = 0

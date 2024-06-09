@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyh67pqghsn3n"]
+[gd_scene load_steps=8 format=3 uid="uid://cyh67pqghsn3n"]
 
 [ext_resource type="Theme" uid="uid://dwof7m2ye3tjh" path="res://scenes/default_theme.tres" id="1_4kk41"]
 [ext_resource type="Script" path="res://scripts/ui/game_menu.gd" id="1_fh5b1"]
 [ext_resource type="Texture2D" uid="uid://cmq3arf61ax4f" path="res://textures/ui/menu_panel.png" id="1_yt0u8"]
 [ext_resource type="PackedScene" uid="uid://ccwu3rknnn1jt" path="res://scenes/ui/menus/settings/settings_menu.tscn" id="4_l61q4"]
 [ext_resource type="PackedScene" uid="uid://c58frru7780pf" path="res://scenes/ui/menus/level_select_menu.tscn" id="5_cbdtm"]
+[ext_resource type="AudioStream" uid="uid://bmlxxe8maevqb" path="res://audio/streams/click.wav" id="6_ts66u"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_31jvl"]
+random_pitch = 1.15
+random_volume_offset_db = 0.15
+streams_count = 1
+stream_0/stream = ExtResource("6_ts66u")
+stream_0/weight = 1.0
 
 [node name="Menu" type="Control"]
 process_mode = 3
@@ -117,6 +125,9 @@ layout_mode = 1
 [node name="Settings" parent="." instance=ExtResource("4_l61q4")]
 visible = false
 layout_mode = 1
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_31jvl")
 
 [connection signal="menu_closed" from="." to="LevelSelect" method="_on_menu_closed"]
 [connection signal="menu_closed" from="." to="Settings" method="_on_menu_closed"]

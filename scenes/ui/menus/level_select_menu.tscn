@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c58frru7780pf"]
+[gd_scene load_steps=12 format=3 uid="uid://c58frru7780pf"]
 
 [ext_resource type="Script" path="res://scripts/ui/level_select_menu.gd" id="1_kus5n"]
 [ext_resource type="Texture2D" uid="uid://cmq3arf61ax4f" path="res://textures/ui/menu_panel.png" id="2_nwilm"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dhyysoapiaxew" path="res://scenes/levels/campaign/episode_1/e1m5_v1/e1m5_v1.tscn" id="5_x1faw"]
 [ext_resource type="PackedScene" uid="uid://cor0l0jkjwbo5" path="res://scenes/levels/campaign/episode_1/e1m6_v1/e1m6_v1.tscn" id="6_4jomd"]
 [ext_resource type="PackedScene" uid="uid://qvrf467m8cbk" path="res://scenes/levels/debug/level_04/level_04.tscn" id="9_tniqv"]
+[ext_resource type="PackedScene" uid="uid://dw8h4q7ndiu8q" path="res://scenes/levels/debug/unsorted_b/unsorted_b.tscn" id="10_ssjer"]
+[ext_resource type="PackedScene" uid="uid://dunww0aa03inb" path="res://scenes/levels/debug/unsorted_c/unsorted_c.tscn" id="11_740x7"]
 
 [node name="LevelSelect" type="Control"]
 process_mode = 4
@@ -386,5 +388,19 @@ theme = ExtResource("3_30jf0")
 text = "U1"
 script = ExtResource("3_4djrb")
 _scene = ExtResource("9_tniqv")
+
+[node name="Unsorted2" type="Button" parent="SettingsPanel/LevelSelect/Other"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+text = "U2"
+script = ExtResource("3_4djrb")
+_scene = ExtResource("10_ssjer")
+
+[node name="Unsorted3" type="Button" parent="SettingsPanel/LevelSelect/Other"]
+layout_mode = 2
+theme = ExtResource("3_30jf0")
+text = "U3"
+script = ExtResource("3_4djrb")
+_scene = ExtResource("11_740x7")
 
 [connection signal="pressed" from="Back" to="." method="_on_back_button_pressed"]

@@ -6,7 +6,8 @@
 [resource]
 script = ExtResource("1_5vbsc")
 scene_file = ExtResource("1_prkio")
-classname = ""
+apply_rotation_on_map_build = true
+classname = "armor_bonus_pickup"
 description = ""
 qodot_internal = false
 base_classes = Array[Resource]([])

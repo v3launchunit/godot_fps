@@ -6,7 +6,8 @@
 [resource]
 script = ExtResource("2_0prmq")
 scene_file = ExtResource("1_qwaio")
-classname = ""
+apply_rotation_on_map_build = true
+classname = "ammo_shell_box_pickup"
 description = ""
 qodot_internal = false
 base_classes = Array[Resource]([])

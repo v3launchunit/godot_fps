@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_wbr6u")
-classname = ""
+apply_rotation_on_map_build = true
+classname = "ammo_shell_pickup"
 description = ""
 qodot_internal = false
 base_classes = Array[Resource]([])

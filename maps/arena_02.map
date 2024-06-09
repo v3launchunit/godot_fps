@@ -318,3 +318,35 @@
 ( 176 192 512 ) ( 176 192 496 ) ( 176 -192 512 ) special/skip 0 0 0 1 1
 }
 }
+// entity 1
+{
+"classname" "triggerable_ambush"
+"origin" "128 -128 128"
+"group" "a"
+}
+// entity 2
+{
+"classname" "area_trigger"
+"group" "a"
+// brush 0
+{
+( -320 -192 112 ) ( -320 -191 112 ) ( -320 -192 113 ) special/trigger 0 0 0 1 1
+( -320 -192 112 ) ( -320 -192 113 ) ( -319 -192 112 ) special/trigger 0 0 0 1 1
+( -320 -192 112 ) ( -319 -192 112 ) ( -320 -191 112 ) special/trigger 0 0 0 1 1
+( -192 -64 192 ) ( -192 -63 192 ) ( -191 -64 192 ) special/trigger 0 0 0 1 1
+( -192 -64 192 ) ( -191 -64 192 ) ( -192 -64 193 ) special/trigger 0 0 0 1 1
+( -192 -64 192 ) ( -192 -64 193 ) ( -192 -63 192 ) special/trigger 0 0 0 1 1
+}
+}
+// entity 3
+{
+"classname" "triggerable_ambush"
+"origin" "128 -64 128"
+"group" "a"
+}
+// entity 4
+{
+"classname" "triggerable_ambush"
+"origin" "128 0 128"
+"group" "a"
+}

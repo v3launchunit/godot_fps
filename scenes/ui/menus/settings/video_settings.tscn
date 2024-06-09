@@ -370,6 +370,75 @@ theme = ExtResource("1_8amvi")
 button_pressed = true
 text = "Volumetric Fog"
 
+[node name="Palette" type="HFlowContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="PaletteCheck" type="CheckButton" parent="Palette"]
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Toggles volumetric fog."
+theme = ExtResource("1_8amvi")
+button_pressed = true
+text = "Palette"
+
+[node name="PaletteSelect" type="OptionButton" parent="Palette"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_8amvi")
+
+[node name="ColorDepth" type="Control" parent="Palette"]
+custom_minimum_size = Vector2(256, 68)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "The intensity of the Playstation-esque vertex snapping effect."
+theme = ExtResource("1_8amvi")
+
+[node name="Label" type="Label" parent="Palette/ColorDepth"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme = ExtResource("1_8amvi")
+text = "Color Depth"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="DepthSlider" type="HSlider" parent="Palette/ColorDepth"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -8.0
+offset_right = -4.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "The vertical field of view, in degrees."
+theme = ExtResource("1_8amvi")
+min_value = 1.0
+max_value = 255.0
+value = 2.0
+
+[node name="DepthLabel" type="Label" parent="Palette/ColorDepth"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_8amvi")
+text = "16"
+horizontal_alignment = 1
+uppercase = true
+
 [connection signal="pressed" from="Resolution/ResolutionApplyButton" to="." method="_on_resolution_apply_button_pressed"]
 [connection signal="drag_ended" from="ScaleFactor/ScaleSlider" to="." method="_on_scale_slider_drag_ended"]
 [connection signal="value_changed" from="ScaleFactor/ScaleSlider" to="." method="_on_scale_slider_value_changed"]
@@ -383,3 +452,5 @@ text = "Volumetric Fog"
 [connection signal="toggled" from="Effects/BloomCheck" to="." method="_on_bloom_check_toggled"]
 [connection signal="toggled" from="Effects/CBloomCheck" to="." method="_on_c_bloom_check_toggled"]
 [connection signal="toggled" from="Effects/VolumetricFogCheck" to="." method="_on_volumetric_fog_check_toggled"]
+[connection signal="toggled" from="Palette/PaletteCheck" to="." method="_on_palette_check_toggled"]
+[connection signal="value_changed" from="Palette/ColorDepth/DepthSlider" to="." method="_on_depth_slider_value_changed"]

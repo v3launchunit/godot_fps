@@ -40,6 +40,7 @@ project/assembly_name="VolumetricsTest"
 
 [editor]
 
+export/convert_text_resources_to_binary=false
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
@@ -255,6 +256,7 @@ textures/decals/filter=2
 textures/light_projectors/filter=2
 environment/glow/upscale_mode=0
 global_illumination/sdfgi/frames_to_update_lights=4
+viewport/hdr_2d=true
 occlusion_culling/use_occlusion_culling=true
 environment/defaults/default_environment="res://scenes/default_environment.tres"
 reflections/main_scene="res://scenes/levels/e1m5_v1.tscn"

@@ -97,7 +97,31 @@ func rapid_damage(amount: float) -> void:
 
 
 func rapid_damage_typed(amount: float, type: DamageType) -> void:
-	damage_typed(amount, type)
+	health -= amount * base_damage_factor * damage_multipliers[type]
+#	print(health)
+	#if damage_sys != null:
+		#var instance := damage_sys.instantiate()
+		#target_parent.add_child(instance)
+	if health <= -gib_threshold:
+		if not is_dead:
+			kill()
+
+		target_parent.queue_free()
+		var i: Node3D
+		if gibs != null:
+			print("gibbed")
+			i = gibs.instantiate() as Node3D
+			target_parent.add_child(i)
+			i.translate(gibs_offset)
+			i.reparent(get_tree().current_scene)
+			gibs = null
+		return
+	if is_dead:
+		return
+	if health <= 0:
+		kill()
+		return
+	injured.emit()
 
 
 func heal(amount: float, can_overheal: bool = false, heal_armor: bool = false) -> bool:

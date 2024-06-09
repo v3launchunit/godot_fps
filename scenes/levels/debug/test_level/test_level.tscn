@@ -1,7 +1,7 @@
-[gd_scene load_steps=230 format=3 uid="uid://ddybwy4hdo2q3"]
+[gd_scene load_steps=232 format=3 uid="uid://ddybwy4hdo2q3"]
 
 [ext_resource type="PackedScene" uid="uid://c63k27ek72d3d" path="res://scenes/entities/player.tscn" id="1_npqeh"]
-[ext_resource type="Texture2D" uid="uid://cu58hb7h0r68v" path="res://textures/effects/look_up_tables/1d_lut_16_color.png" id="2_pf8j8"]
+[ext_resource type="Texture2D" uid="uid://cu58hb7h0r68v" path="res://textures/effects/look_up_tables/1d/1d_lut_16_color.png" id="2_6e4xq"]
 [ext_resource type="Texture2D" uid="uid://dybaimi1b3b85" path="res://textures/effects/glow/lens_dirt/lens_dirt_0.png" id="3_in5hi"]
 [ext_resource type="Shader" path="res://shaders/skybox/overcast.gdshader" id="4_0mynj"]
 [ext_resource type="Script" path="res://scripts/effects/env_settings_hook.gd" id="5_ivhkg"]
@@ -13,18 +13,18 @@
 [ext_resource type="Material" uid="uid://j3w61nhxr063" path="res://materials/terrain/trench_broom/metal.tres" id="11_guo1l"]
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="12_0e1yk"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="13_8o8d6"]
-[ext_resource type="Material" uid="uid://bdhdwkh72dfij" path="res://materials/terrain/trench_broom/bricks.tres" id="14_ymqo3"]
+[ext_resource type="Material" uid="uid://bdhdwkh72dfij" path="res://materials/terrain/trench_broom_std/bricks.tres" id="14_ymqo3"]
 [ext_resource type="Material" uid="uid://t1hv3tspvh88" path="res://materials/terrain/trench_broom_std/planks.tres" id="15_8i2j2"]
 [ext_resource type="Material" uid="uid://cxyb8wsuh6ejk" path="res://materials/terrain/trench_broom_std/log.tres" id="16_iy6q8"]
 [ext_resource type="Material" uid="uid://qvw6kqouxvuf" path="res://materials/terrain/trench_broom_std/log_end.tres" id="17_qfa62"]
-[ext_resource type="Material" uid="uid://do2cbn6keg5jn" path="res://materials/terrain/trench_broom/glass.tres" id="18_tqlrl"]
+[ext_resource type="Material" uid="uid://do2cbn6keg5jn" path="res://materials/terrain/trench_broom_std/glass.tres" id="18_tqlrl"]
 [ext_resource type="Material" uid="uid://cb4c2yxg51cwb" path="res://materials/terrain/trench_broom_std/rock.tres" id="19_chnr4"]
 [ext_resource type="Material" uid="uid://cj1r6jgxrihlc" path="res://materials/terrain/trench_broom_std/big_cobble_stone.tres" id="20_40bd6"]
 [ext_resource type="Material" uid="uid://byeqdr6er6cvv" path="res://materials/terrain/trench_broom_std/dirt.tres" id="21_7bk7e"]
 [ext_resource type="Material" uid="uid://dfvigt0ajuo2y" path="res://materials/terrain/trench_broom_std/lava.tres" id="22_ngymy"]
 [ext_resource type="Material" uid="uid://u66jm0qyquk8" path="res://materials/terrain/trench_broom_std/lava_flowing.tres" id="23_7ptf7"]
-[ext_resource type="PackedScene" path="res://scenes/objects/lights/lamp_tb.tscn" id="24_b7bt4"]
-[ext_resource type="Script" path="res://scripts/terrain/brush_status.gd" id="25_5dd26"]
+[ext_resource type="PackedScene" uid="uid://bowd2xtj7q4vd" path="res://scenes/objects/lights/lamp_tb.tscn" id="24_b7bt4"]
+[ext_resource type="Script" path="res://scripts/trench_broom/brush_status.gd" id="25_tjyph"]
 [ext_resource type="PackedScene" uid="uid://c0kvfvxi487l1" path="res://scenes/objects/lights/street_lamp.tscn" id="25_wbmk3"]
 [ext_resource type="PackedScene" uid="uid://cc7snvg1qg4i4" path="res://scenes/entities/military/pinkerton.tscn" id="27_fteib"]
 [ext_resource type="PackedScene" path="res://scenes/objects/crate_wooden.tscn" id="27_oqcrq"]
@@ -44,10 +44,10 @@
 [ext_resource type="Shader" path="res://shaders/spatial/psx_test.gdshader" id="40_8dl3b"]
 [ext_resource type="PackedScene" uid="uid://7e6nf0ho2ltr" path="res://scenes/objects/teleporter.tscn" id="41_dkm3o"]
 [ext_resource type="Material" uid="uid://biw3k00jqqq3l" path="res://materials/terrain/trench_broom/water.tres" id="42_m623u"]
-[ext_resource type="Material" uid="uid://c4hv23ws8v5oc" path="res://materials/terrain/trench_broom/bricks_brown.tres" id="43_dhmx1"]
+[ext_resource type="Material" uid="uid://c4hv23ws8v5oc" path="res://materials/terrain/trench_broom_std/bricks_brown.tres" id="43_dhmx1"]
 [ext_resource type="Material" uid="uid://bocds2tb574aw" path="res://materials/terrain/trench_broom_std/bricks_stone.tres" id="44_xuna8"]
 [ext_resource type="Material" uid="uid://d30jjdowuphyo" path="res://materials/terrain/trench_broom_std/checker_board.tres" id="45_duxiw"]
-[ext_resource type="Material" uid="uid://dqemvrb4pcd2g" path="res://materials/terrain/trench_broom/concrete.tres" id="46_j3das"]
+[ext_resource type="Material" uid="uid://dqemvrb4pcd2g" path="res://materials/terrain/trench_broom_std/concrete.tres" id="46_j3das"]
 [ext_resource type="Material" uid="uid://dh6h4bfv6pod2" path="res://materials/terrain/trench_broom_std/key_metal_blue.tres" id="47_8ukn2"]
 [ext_resource type="Material" uid="uid://bde5vbq7ns88s" path="res://materials/terrain/trench_broom_psx/drywall.tres" id="48_5xvpa"]
 [ext_resource type="Material" uid="uid://c462jt0mdmhmv" path="res://materials/terrain/trench_broom_psx/lava_flowing.tres" id="49_nww2r"]
@@ -112,7 +112,7 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 volumetric_fog_ambient_inject = 0.25
 volumetric_fog_temporal_reprojection_enabled = false
-adjustment_color_correction = ExtResource("2_pf8j8")
+adjustment_color_correction = ExtResource("2_6e4xq")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ecv47"]
 vertices = PackedVector3Array(8.75, 0.25, -34.25, 9.5, -0.5, -34.25, 9, 0, -36.75, -9.75, 0, -37, -8.75, 0, -37, -8.75, 0, -56.75, -9.75, 0, -58, 8.75, 0.25, -34.25, 9, 0, -36.75, 8.75, 0, -56.75, 9.5, 0, -58, -9.75, 0, -58, -8.75, 0, -56.75, 8.75, 0, -56.75, 9.5, 0, -37, 9.5, 0, -58, 8.75, 0, -56.75, 9, 0, -36.75, -8.75, 9, -57, -8.75, 9, -33, 8.5, 9, -33, 8.5, 9, -57, -0.125, 10, -57, -1.5625, 9.75, -33, 1.98676, 9.75, -34.5209, -2.519, 9.75, -43.5131, 1.98628, 9.75, -40.5104, 1.98555, 9.75, -49.5196, -2.51972, 9.75, -52.5223, -5.5, 0, -50.75, -5.75, 0, -54.75, -6.5, 0, -54.75, -6.5, 0, -37, 2.25, 0, -47.25, 2.25, 0, -50.75, -5.5, 0, -50.75, 6.25, 0, -37, 6.25, 0, -47.25, 5.5, 0.25, -47.25, 6.25, 0, -37, 5.5, 0.25, -47.25, 3.25, 0.25, -47.25, 6.25, 0, -37, 3.25, 0.25, -47.25, 2.25, 0, -47.25, -6.5, 0, -37, 6.25, 0, -37, 2.25, 0, -47.25, -5.5, 0, -50.75, 3, 2.5, -52, 3.25, 0.25, -47.25, 5.5, 0.25, -47.25, 5.5, 2.5, -54, 5.5, 2.25, -51.3, -4.5, 5, -33, -2.5, 5, -33, -2.5, 5, -51.75, -4.75, 5, -54, 3, 2.5, -52, 5.5, 2.5, -54, -4.75, 5, -54, -2.5, 5, -51.75, 2.57143, 2.5, -54, -1.82143, 4.75, -54, -4.5, 0, -53.75, -4.5, 0, -52, -2.75, 0, -52, -2.75, 0, -53.75, -1.5, 0, -53.75, -1.5, 0, -52, 2.25, 0, -52, 2.25, 0, -53.75, 3.5, 0, -53.75, 3.5, 0, -52, 5.25, 0, -52, 5.25, 0, -53.75, 0.5, 1, -36, 0.75, 1, -35, 1.5, 1, -34.75, 6.5, 1, -34.75, 6.5, 1, -36, -6.25, 1, -34.75, -6.25, 1, -27.5, -0.5, 1, -27.5, -0.5, 1, -34.75, 9.5, -0.5, -34.25, 8.75, 0.25, -34.25, 8.25, 0.75, -32.75, 9, 0, -25.5, 9.5, -0.5, -25.5, 0.75, 1, -24, 0.25, 1.25, -24, 0.25, 1, -21, 6, 1, -21, 6, 1, -21, 9, 0, -24.75, 9, 0, -25.5, 8.25, 0.75, -32.75, 0.75, 1, -32.75, 0.75, 1, -24, 7.5, 1, -22.875, 7, 1, -32.75, 6.49023, 1, -25.5162, 7.97524, 0.75, -25.5053, -7.75, 1, -20.5, -6.25, 1.25, -20.5, -6.25, 1, -21, -6.5, 1.25, -24, -7.5, 1, -24, 0.25, 1, -21, 0.25, 1.25, -24, -0.25, 1.25, -24, -7.5, 1, -24, -7.75, 1, -32.75, -7.75, 1, -20.5, -2.5, 5, -33, -4.5, 5, -33, -6.5, 5, -32.75, -6.5, 1.25, -24, -0.25, 1.25, -24, -0.25, 5, -32.75, -6.5, 5, -31.2917, -0.25, 5, -31.2917, -6.25, 1, -21, 0.25, 1, -21, -0.25, 1.25, -24, -6.5, 1.25, -24, 12.5, 1, -28, 12.5, 1, -25, 15.5, 1, -25, 15.5, 1, -28, 11.75, 0, -23.75, 11.5, 0, -24.5, 9, 0, -24.75, 11.75, 0, -21, 14.75, 0, -21, 14.5, 0, -23.75, 11.75, 0, -23.75, 11.5, 0, -19.5, 11.75, 0, -21, 11.75, 0, -23.75, 9, 0, -24.75, 6, 1, -21, 6, 1.5, -20, 7.375, 1, -19.875, 8.75, 0, -19.75, 7.5, 1, -22.875, 8.01001, 0.75, -21.014, 9.475, 0, -22.525, -2, 1.25, -16, -2, 1.25, -16.25, -2.5, 1.5, -16.5, -3.5, 1.25, -15.75, -6, 0.25, -12, -5.75, 0.75, -12.75, -4.25, 1.75, -18.75, -9.25, 0, -20.25, -24.5, 0, -24.5, -24.5, 0, -12, -8, 1, -19.875, -8.49466, 0.5, -18.0174, -10.0245, 0, -16.4855, -6.25, 1.25, -20, -6.25, 1.25, -20.5, -7.75, 1, -20.5, -6.25, 1.25, -20, -7.75, 1, -20.5, -8, 1, -20, -4.25, 1.75, -18.75, -4.25, 1.75, -18.75, -4.5, 1.75, -20, -6.25, 1.25, -20, -2.5, 1.5, -18.25, 0, 1.75, -18.5, 0, 1.75, -18.75, -4.25, 1.75, -18.75, -4.25, 1.75, -18.75, -8, 1, -20, -9.25, 0, -20.25, -8, 1, -19.875, -3.5, 1.25, -15.75, -2.5, 1.5, -16.5, -2.5, 1.5, -18.25, -4.25, 1.75, -18.75, -5.75, 0.75, -12.75, -4, 1, -12.75, -3.25, 1, -14, -3.5, 1.25, -15.75, -4.25, 1.75, -18.75, -9.25, 0, -20.25, -9.25, 0, -24.5, -24.5, 0, -24.5, 16.25, 0, -23.75, 14.5, 0, -23.75, 14.75, 0, -21, 16.75, 0, -20.75, 16.75, 0, -20.75, 16.75, 0, -17.75, 24.5, 0, -17.5, 16.75, 0, -24.5, 16.25, 0, -23.75, 16.75, 0, -20.75, 24.5, 0, -17.5, 24.5, 0, -24.5, 2.75, 1.5, -16.75, 2, 1.25, -16.25, 2, 1.25, -16, 3.75, 1.25, -15.75, 6, 1.5, -20, 4.25, 1.75, -18.75, 3.75, 1.25, -15.75, 5.75, 0.75, -12.75, 11.5, 0, -16, 11.5, 0, -19.5, 8.75, 0, -19.75, 7.375, 1, -19.875, 8.01001, 0.75, -18.014, 9.49503, 0, -18.003, 9.48507, 0, -16.5091, 3.75, 1, -14.25, 3, 1, -13.75, 3.5, 1, -12.5, 5.75, 0.75, -12.75, 6, 1.5, -20, 4.75, 1.75, -20, 4.25, 1.75, -18.75, 3.75, 1.25, -15.75, 3.75, 1, -14.25, 5.75, 0.75, -12.75, 2.75, 1.5, -18.25, 2.75, 1.5, -16.75, 3.75, 1.25, -15.75, 4.25, 1.75, -18.75, 0, 1.75, -18.75, 0, 1.75, -18.5, 2.75, 1.5, -18.25, 4.25, 1.75, -18.75, 6, 0.5, -12.25, 12, 0, -15.75, 11.5, 0, -16, 5.75, 0.75, -12.75, 12.5, 1, -20, 12.5, 1, -17, 15.5, 1, -17, 15.5, 1, -20, 12, 0, -15.75, 6, 0.5, -12.25, 5.75, 0, -11.5, 16.25, 0, -15.75, 24.5, 0, -17.5, 16.75, 0, -17.75, 16.75, 0, -16.25, 24.5, 0, -17.5, 16.75, 0, -16.25, 16.25, 0, -15.75, 5.75, 0, -11.5, 4.25, 0, 6.75, 4.75, 0, 7.5, 24.5, 0, 7.5, 24.5, 0, -17.5, 16.25, 0, -15.75, 5.75, 0, -11.5, 4.5, 0, -11.5, 4.25, 0, 6.75, 1.5, 1.25, -15.75, 2, 1.25, -16, 2, 1.25, -16.25, -2, 1.25, -16.25, -2, 1.25, -16, -1.25, 1.25, -15.5, 4.5, 0, -11.5, 3.5, 0.25, -11.75, -3.75, 0, -11.5, -3.25, 1, -14, -4, 1, -12.75, -3.5, 1, -12.5, -2, 1, -13.75, -7.75, 0, 6.5, 3.5, 0, 6.75, 4.25, 0, 6.75, 4.5, 0, -11.5, -3.75, 0, -11.5, -7.75, 0, 1.25, 3.5, 0.25, -11.75, 3.5, 1, -12.5, 3, 1, -13.75, 3.25, 1, -12.75, -1.25, 1, -14.25, -2, 1, -13.75, -3.5, 1, -12.5, 3.5, 0.25, -11.75, 3, 1, -13.75, 1.5, 1, -14, -1.25, 1, -14.25, -3.5, 1, -12.5, -3.75, 0, -11.5, 3.25, 1, -12.75, -5.5, 0, -11.5, -8.25, 0, 1, -7.75, 0, 1.25, -3.75, 0, -11.5, -7.75, 0, 6.5, 3.25, 0, 7.25, 3.5, 0, 6.75, 1.5, 1, -14, 1.5, 1.25, -15.75, -1.25, 1.25, -15.5, -1.25, 1, -14.25, -8.25, 0, 1, -5.5, 0, -11.5, -6, 0.25, -12, -10, 0, 1.25, -10, 0, 1.25, -6, 0.25, -12, -24.5, 0, -12, -24.5, 0, 5, -24.5, 0, 5, -10, 0, 5, -10, 0, 1.25, -12, 19, -12, -12, 19, 12, 12, 19, 12, 12, 19, -12, -10, 0, 7, -10, 0, 5, -24.5, 0, 5, -9, 0, 7.25, -10, 0, 7, -24.5, 0, 5, -24.5, 0, 24.5, -9, 0, 24.5, 3.25, 0, 8, 3.25, 0, 7.25, -7.75, 0, 6.5, -8.25, 0, 7.25, 3.25, 0, 8, -8.25, 0, 7.25, -9, 0, 7.25, -9, 0, 24.5, 4, 0, 24.5, 4, 0, 8.25, 4.5, 0, 8.25, 4, 0, 8.25, 4, 0, 24.5, 4.75, 0, 7.5, 4.5, 0, 8.25, 4, 0, 24.5, 24.5, 0, 24.5, 24.5, 0, 7.5)
@@ -494,6 +494,63 @@ points = PackedVector3Array(2, 0, 14, 0, 0, 16, 0, -4, 16, 2, -4, 14, 4, -4, 16,
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6tekm"]
 points = PackedVector3Array(0, 0, 12, 0, -4, 12, 2, -4, 14, 2, 0, 14, 0, 0, 16, 0, -4, 16)
+
+[sub_resource type="Shader" id="Shader_143fe"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+instance uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
+void vertex() {
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_17fub"]
+render_priority = 0
+shader = SubResource("Shader_143fe")
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_m4t82"]
 _surfaces = [{
@@ -1681,6 +1738,8 @@ shape = SubResource("ConvexPolygonShape3D_6tekm")
 
 [node name="entity_1_lamp" parent="ParticleCollider/NavMesh/QodotMap" instance=ExtResource("24_b7bt4")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 28.5, 8, 0)
+material_override = SubResource("ShaderMaterial_17fub")
+instance_shader_parameters/albedo = Color(3, 2.02353, 1.04706, 3)
 properties = {
 "classname": "lamp",
 "color": Vector3(255, 172, 89),
@@ -1691,6 +1750,8 @@ properties = {
 
 [node name="entity_2_lamp" parent="ParticleCollider/NavMesh/QodotMap" instance=ExtResource("24_b7bt4")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -1.5, 3, 0)
+material_override = SubResource("ShaderMaterial_17fub")
+instance_shader_parameters/albedo = Color(3, 2.02353, 1.04706, 3)
 properties = {
 "classname": "lamp",
 "color": Vector3(255, 172, 89),
@@ -1700,7 +1761,7 @@ properties = {
 }
 
 [node name="entity_3_destructible" type="StaticBody3D" parent="ParticleCollider/NavMesh/QodotMap"]
-script = ExtResource("25_5dd26")
+script = ExtResource("25_tjyph")
 properties = {
 "classname": "destructible",
 "damage_sys_path": "res://scenes/effects/damage/metal_damage_sys.tscn",

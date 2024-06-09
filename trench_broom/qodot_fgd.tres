@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=4 format=3 uid="uid://btfl67xo1ub7r"]
+
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="1_2u6rc"]
+[ext_resource type="Resource" uid="uid://dqwqqvs3kuly8" path="res://trench_broom/custom_points.tres" id="2_7bkgk"]
+[ext_resource type="Resource" uid="uid://cf65fgfrygrvo" path="res://trench_broom/custom_solids.tres" id="3_g4yew"]
+
+[resource]
+script = ExtResource("1_2u6rc")
+export_file = false
+target_folder = "C:\\Users\\lengl\\AppData\\Roaming\\TrenchBroom\\games\\VolumetricsTest"
+fgd_name = "VolumetricsTest"
+base_fgd_files = Array[Resource]([ExtResource("2_7bkgk"), ExtResource("3_g4yew")])
+entity_definitions = Array[Resource]([])

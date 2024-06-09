@@ -16,14 +16,15 @@ bool is_above_threshold(vec3 in_col) {
 
 void vertex() {
 	POSITION = vec4(VERTEX, 1.0);
+	POSITION.z = mix(POSITION.z, 0, 0.99);
 }
 
 void fragment() {
 	vec3 col = max(texture(screen_texture, SCREEN_UV).xyz - threshold, 0);
 
 	for (int i = 1; i < spread; i++) {
-		float x_dist = float(i) * (scale + 1.0) / float(screen_size.x);
-		float y_dist = float(i) * (scale + 1.0) / float(screen_size.y);
+		float x_dist = float(i) * pow(2, scale) / float(screen_size.x);
+		float y_dist = float(i) * pow(2, scale) / float(screen_size.y);
 		vec3 col_up_left = clamp(textureLod(screen_texture, SCREEN_UV + vec2(-x_dist, y_dist), scale).xyz - threshold, vec3(0), vec3(8));
 		vec3 col_up_right = clamp(textureLod(screen_texture, SCREEN_UV + vec2(x_dist, y_dist), scale).xyz - threshold, vec3(0), vec3(8));
 		vec3 col_down_left = clamp(textureLod(screen_texture, SCREEN_UV + vec2(-x_dist, -y_dist), scale).xyz - threshold, vec3(0), vec3(8));

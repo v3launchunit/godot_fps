@@ -162,9 +162,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = 25.0
+offset_top = 24.0
 offset_right = -16.0
-offset_bottom = -15.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_j7o5h")
@@ -177,13 +177,14 @@ layout_mode = 2
 [node name="AudioScroll" type="ScrollContainer" parent="SettingsPanel"]
 process_mode = 4
 visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = 24.0
+offset_top = 25.0
 offset_right = -16.0
-offset_bottom = -16.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_j7o5h")
@@ -196,19 +197,32 @@ layout_mode = 2
 [node name="GameplayScroll" type="ScrollContainer" parent="SettingsPanel"]
 process_mode = 4
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 25.0
+offset_right = -16.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Gameplay" parent="SettingsPanel/GameplayScroll" instance=ExtResource("6_q7uba")]
 layout_mode = 2
 
 [node name="InputScroll" type="ScrollContainer" parent="SettingsPanel"]
 process_mode = 4
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 25.0
+offset_right = -16.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Input" parent="SettingsPanel/InputScroll" instance=ExtResource("7_c282q")]
 layout_mode = 2
@@ -216,9 +230,16 @@ layout_mode = 2
 [node name="AccessibilityScroll" type="ScrollContainer" parent="SettingsPanel"]
 process_mode = 4
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 25.0
+offset_right = -16.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Accessibility" parent="SettingsPanel/AccessibilityScroll" instance=ExtResource("8_e5s2f")]
 layout_mode = 2
@@ -226,9 +247,16 @@ layout_mode = 2
 [node name="OtherScroll" type="ScrollContainer" parent="SettingsPanel"]
 process_mode = 4
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 25.0
+offset_right = -16.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Other" parent="SettingsPanel/OtherScroll" instance=ExtResource("9_nyk5b")]
 layout_mode = 2

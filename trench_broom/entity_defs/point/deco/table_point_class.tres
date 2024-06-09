@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_3qnhv"]
 [ext_resource type="PackedScene" uid="uid://dvn5p4bun8kju" path="res://scenes/objects/furniture/table_wooden.tscn" id="1_un2mj"]
-[ext_resource type="Script" path="res://scripts/terrain/obj_tb.gd" id="3_n0ptk"]
+[ext_resource type="Script" path="res://scripts/trench_broom/obj_tb.gd" id="3_n0ptk"]
 
 [resource]
 script = ExtResource("1_3qnhv")
 scene_file = ExtResource("1_un2mj")
 script_class = ExtResource("3_n0ptk")
-classname = "table"
+apply_rotation_on_map_build = true
+classname = "deco_table_wooden"
 description = ""
 qodot_internal = false
 base_classes = Array[Resource]([])

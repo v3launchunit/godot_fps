@@ -107,7 +107,7 @@ texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
-[sub_resource type="Image" id="Image_ssh62"]
+[sub_resource type="Image" id="Image_n5wha"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -117,7 +117,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_kusdk"]
-image = SubResource("Image_ssh62")
+image = SubResource("Image_n5wha")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k4pab"]
 texture = ExtResource("7_715w6")
@@ -248,6 +248,7 @@ LineEdit/icons/clear = ExtResource("4_isjef")
 LineEdit/styles/focus = SubResource("StyleBoxTexture_833s7")
 LineEdit/styles/normal = SubResource("StyleBoxTexture_1ndcv")
 LineEdit/styles/read_only = SubResource("StyleBoxTexture_ifq2b")
+OptionButton/icons/arrow = ExtResource("19_erfer")
 TooltipLabel/base_type = &"Label"
 TooltipLabel/colors/font_color = Color(1, 1, 1, 1)
 TooltipLabel/colors/font_shadow_color = Color(0, 0, 0, 0)

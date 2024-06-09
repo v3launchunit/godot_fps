@@ -1,13 +1,21 @@
 [gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://dg1cf7dvcvmmd"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_7x68b"]
-[ext_resource type="Script" path="res://scripts/terrain/brush_status.gd" id="2_o365u"]
+[ext_resource type="Script" path="res://scripts/trench_broom/brush_status.gd" id="2_o365u"]
 
 [resource]
 script = ExtResource("1_7x68b")
 spawn_type = 2
 build_visuals = true
+use_in_baked_light = true
+shadow_casting_setting = 1
+build_occlusion = false
+render_layers = 1
 collision_shape_type = 1
+collision_layer = 1
+collision_mask = 1
+collision_priority = 1.0
+collision_shape_margin = 0.04
 script_class = ExtResource("2_o365u")
 classname = "destructible"
 description = "Can be destroyed by the player."

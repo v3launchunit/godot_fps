@@ -433,10 +433,22 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+offset_left = -129.0
+offset_bottom = 46.0
 grow_horizontal = 0
 text = "FPS: 60.00/60.00
 TPS: 60.00/60.00"
 label_settings = SubResource("LabelSettings_7whak")
 script = SubResource("GDScript_suxms")
+
+[node name="Statistics" type="Label" parent="."]
+process_priority = 1
+process_physics_priority = 1
+visible = false
+layout_mode = 1
+offset_right = 129.0
+offset_bottom = 46.0
+text = "00:00:00:00
+0/4 Secrets"
+label_settings = SubResource("LabelSettings_7whak")
+uppercase = true

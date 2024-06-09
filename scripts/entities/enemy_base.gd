@@ -286,18 +286,18 @@ func _wander(delta) -> void:
 
 
 func _scan(_delta) -> void:
-	if blind:
+	if blind or randi_range(0, 12) != 0:
 		return
 	#sight_line.rotation.y = sin(
 			#state_timer * sight_line_sweep_speed
 			#+ randf() / sight_line_sweep_angle * 2
 	#) * sight_line_sweep_angle / 2
-	var target_pool: Array[Node] = []
-	if hunts_player:
-		target_pool.append(get_tree().get_first_node_in_group("players"))
-	for prey in hunts_species:
-		target_pool.append_array(get_tree().get_nodes_in_group(prey))
-	var target: Node3D = target_pool.pick_random() as Node3D
+	#var target_pool: Array[Node] = []
+	#if hunts_player:
+		#target_pool.append(get_tree().get_first_node_in_group("players"))
+	#for prey in hunts_species:
+		#target_pool.append_array(get_tree().get_nodes_in_group(prey))
+	var target: Node3D = get_tree().get_first_node_in_group("players") as Node3D
 	if global_basis.z.normalized().dot((global_position - target.global_position).normalized()) < 0.5:
 		return
 	var space_state = get_world_3d().direct_space_state

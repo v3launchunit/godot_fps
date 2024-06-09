@@ -6,7 +6,8 @@
 [resource]
 script = ExtResource("1_a6q31")
 scene_file = ExtResource("1_jc0xs")
-classname = ""
+apply_rotation_on_map_build = true
+classname = "enemy_pinkerton"
 description = ""
 qodot_internal = false
 base_classes = Array[Resource]([])

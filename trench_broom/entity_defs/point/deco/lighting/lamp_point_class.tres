@@ -1,19 +1,20 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=4 format=3 uid="uid://ckf8g1b6feib0"]
 
-[ext_resource type="PackedScene" uid="uid://6qn0vyox3ttw" path="res://scenes/objects/lights/lamp_tb.tscn" id="1_0wngc"]
+[ext_resource type="PackedScene" uid="uid://bowd2xtj7q4vd" path="res://scenes/objects/lights/lamp_tb.tscn" id="1_0wngc"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_vkipw"]
-[ext_resource type="Script" path="res://scripts/terrain/lamp_tb.gd" id="3_m7vy5"]
+[ext_resource type="Script" path="res://scripts/trench_broom/lamp_tb.gd" id="3_m7vy5"]
 
 [resource]
 script = ExtResource("1_vkipw")
 scene_file = ExtResource("1_0wngc")
 script_class = ExtResource("3_m7vy5")
-classname = "lamp"
+apply_rotation_on_map_build = true
+classname = "light_lamp"
 description = ""
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"color": Vector3(255, 172, 89),
+"_color": Vector3(255, 172, 89),
 "energy": 3.0,
 "range": 15.0
 }

@@ -15,6 +15,8 @@ extends VBoxContainer
 @onready var _music_preview: AudioStreamPlayer = find_child("MusicPreview") as AudioStreamPlayer
 @onready var _music_bus: int = AudioServer.get_bus_index("Music")
 
+@onready var _press_sound: AudioStreamPlayer = get_node("/root/GameMenu/ButtonPress")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,6 +48,7 @@ static func percent_to_decibels(input: float) -> float:
 
 
 func _on_master_slider_value_changed(value: float) -> void:
+	_press_sound.play()
 	Globals.s_master_volume = value
 	_master_label.text = "%s" % value
 	AudioServer.set_bus_volume_db(_master_bus, percent_to_decibels(value))
@@ -53,6 +56,7 @@ func _on_master_slider_value_changed(value: float) -> void:
 
 
 func _on_sound_slider_value_changed(value: float) -> void:
+	_press_sound.play()
 	Globals.s_sound_volume = value
 	_sound_label.text = "%s" % value
 	AudioServer.set_bus_volume_db(_sound_bus,percent_to_decibels(value))
@@ -60,6 +64,7 @@ func _on_sound_slider_value_changed(value: float) -> void:
 
 
 func _on_music_slider_value_changed(value: float) -> void:
+	_press_sound.play()
 	Globals.s_music_volume = value
 	_music_label.text = "%s" % value
 	AudioServer.set_bus_volume_db(_music_bus, percent_to_decibels(value))

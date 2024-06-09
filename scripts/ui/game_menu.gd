@@ -4,6 +4,7 @@ var _active_menus: int = 0
 
 @onready var _level_select_menu: Control = $LevelSelect
 @onready var _settings_menu: Control = $Settings
+@onready var _press_sound: AudioStreamPlayer = $ButtonPress
 #@onready var player: Player = get_tree().root.find_child("Player")
 
 signal menu_closed(menu_layer: int)
@@ -31,6 +32,7 @@ func close_top_menu() -> void:
 
 
 func _on_campaign_button_pressed() -> void:
+	_press_sound.play()
 	_level_select_menu.process_mode = Node.PROCESS_MODE_ALWAYS
 	_level_select_menu.show()
 	_active_menus = 2
@@ -45,10 +47,12 @@ func _on_save_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
+	_press_sound.play()
 	_settings_menu.process_mode = Node.PROCESS_MODE_ALWAYS
 	_settings_menu.show()
 	_active_menus = 2
 
 
 func _on_quit_button_pressed() -> void:
+	_press_sound.play()
 	get_tree().quit()

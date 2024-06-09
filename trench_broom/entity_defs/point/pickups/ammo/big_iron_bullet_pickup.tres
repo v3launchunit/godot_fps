@@ -6,7 +6,8 @@
 [resource]
 script = ExtResource("2_w3g0a")
 scene_file = ExtResource("1_sja85")
-classname = ""
+apply_rotation_on_map_build = true
+classname = "ammo_big_iron_bullet_pickup"
 description = ""
 qodot_internal = false
 base_classes = Array[Resource]([])

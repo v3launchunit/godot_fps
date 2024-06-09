@@ -1,4 +1,7 @@
-class_name AreaHazard extends Area3D
+class_name AreaHazard
+extends Area3D
+
+@export var properties: Dictionary
 
 @export var dps: float = 1.0
 @export var player_dps_override: float = 1.0
@@ -7,7 +10,10 @@ class_name AreaHazard extends Area3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if properties:
+		dps = properties["dps"]
+		player_dps_override = properties["player_dps"]
+		damage_type = Status.DamageType[properties["damage_type"]]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

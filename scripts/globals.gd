@@ -51,7 +51,8 @@ const C_QUICKSAVE_PATH: String = "user://saves/auto/quicksave.scn"
 var s_stretch_scale: int = 2
 ## The screen's resolution is divided by this. Only affects UI.
 var s_ui_scale: float = 1.0
-## Scale multiplier for the ui crosshairs. 1.0 is 1:1 pixel-perfect with the output resolution.
+## Scale multiplier for the ui crosshairs. 1.0 is 1:1 pixel-perfect with the
+## output resolution.
 var s_crosshair_size: float = 1.0
 
 ## The base vertical Field of View for the player's camera.
@@ -71,6 +72,9 @@ var s_glow_enabled: bool = false
 ## very hard on it.
 var s_cross_glow_enabled: bool = true
 var s_volumetric_fog_enabled: bool = true
+var s_palette_compress_enabled: bool = true
+var s_color_depth: float = 16
+var s_current_palette: String = "neutral"
 
 ## The sensitivity multiplier applied to mouse movement with regards to the
 ## first-person camera.
@@ -87,9 +91,13 @@ var s_music_volume: float = 100.0
 # ---------- Gameplay settings ---------- #
 ## Self-explanatory.
 var s_difficulty := Difficulty.NORMAL
+## Nightmare mode is handled separately because it affects gameplay differently
+## from the regular difficulty slider.
 var s_nightmare_mode_active: bool = false
 ## Whether crouching is a toggle or a hold.
 var s_toggle_crouch: bool = false
+
+var names: ConfigFile = ConfigFile.new()
 
 ## Tells scripts to check to see if the game's settings have been changed and
 ## to update any values they need to.
@@ -98,6 +106,8 @@ signal settings_changed
 
 func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	if names.load("res://names.cfg"):
+		printerr("could not load names.cfg")
 	_load_config()
 
 
@@ -112,7 +122,7 @@ func _ready() -> void:
 
 ## Reads the current configuration settings from disq and loads them into memory.
 func _load_config() -> void:
-	var config = ConfigFile.new()
+	var config := ConfigFile.new()
 	# Read from file and remember whether it was successful.
 	var err: Error = config.load("user://settings.cfg")
 
@@ -175,6 +185,19 @@ func save_game(to: String) -> void:
 	ResourceSaver.save(scene, to)
 
 
+func parse_names(section: String, key: String) -> Variant:
+	return names.get_value(section, key)
+
+
+func get_lut(name: String) -> ImageTexture3D:
+	var img := ImageTexture3D.new()
+	var lut_path: String = names.get_value("Palettes", name, "user palette")
+	if (lut_path == "user palette"):
+		lut_path = "user://palettes/%s" % [name]
+	img.create(Image.FORMAT_RGB8, 64, 64, 64, false, [load(lut_path)])
+	return img
+
+
 ## returns from incremented or decremented by 1 towards to
 ## (eg. intstep(1,5) returns 2)
 func intstep(from: int, to: int) -> int:
@@ -186,6 +209,8 @@ func intstep(from: int, to: int) -> int:
 		return from
 
 
+## returns an array containing all of that node's descendents, not just
+## immediate children.
 func get_all_children(node) -> Array:
 	var nodes : Array = []
 	for N in node.get_children():

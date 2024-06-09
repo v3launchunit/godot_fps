@@ -11,6 +11,9 @@ enum SubMenus {
 
 var current_sub_menu: SubMenus = SubMenus.VIDEO
 
+@onready var _press_sound: AudioStreamPlayer = get_parent().get_node(
+		^"ButtonPress") as AudioStreamPlayer
+
 
 func _on_video_button_pressed() -> void:
 	_select_sub_menu(SubMenus.VIDEO)
@@ -37,6 +40,7 @@ func _on_other_button_pressed() -> void:
 
 
 func _select_sub_menu(sub_menu: SubMenus) -> void:
+	_press_sound.play()
 	$SettingsPanel.get_child(current_sub_menu).process_mode = PROCESS_MODE_DISABLED
 	$SettingsPanel.get_child(current_sub_menu).hide()
 	current_sub_menu = sub_menu

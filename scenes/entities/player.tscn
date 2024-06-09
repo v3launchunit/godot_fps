@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://c63k27ek72d3d"]
+[gd_scene load_steps=57 format=3 uid="uid://c63k27ek72d3d"]
 
 [ext_resource type="Script" path="res://scripts/entities/player/player.gd" id="1_30yaf"]
 [ext_resource type="AudioStream" uid="uid://c7enblvm4yyws" path="res://audio/streams/voices/player/hups/hup_1.wav" id="2_ltik2"]
@@ -29,8 +29,11 @@
 [ext_resource type="Script" path="res://scripts/entities/player/weapon_manager.gd" id="21_ffg7x"]
 [ext_resource type="Script" path="res://scripts/entities/player/game_container.gd" id="22_xo3e0"]
 [ext_resource type="Script" path="res://scripts/entities/player/flashlight.gd" id="25_we7ax"]
+[ext_resource type="CompressedTexture3D" uid="uid://b163qkrvdrxoj" path="res://textures/effects/look_up_tables/3d/neutral.png" id="26_ccr8y"]
 [ext_resource type="Shader" path="res://shaders/canvas/post_process/cross_bloom.gdshader" id="26_rpeim"]
+[ext_resource type="Shader" path="res://shaders/canvas/post_process/palette_compress.gdshader" id="26_ta410"]
 [ext_resource type="Script" path="res://scripts/entities/player/player_status.gd" id="28_ee1uu"]
+[ext_resource type="Shader" path="res://shaders/canvas/post_process/distortions.gdshader" id="29_5qtfo"]
 [ext_resource type="AudioStream" uid="uid://c4letg1n03lmd" path="res://audio/streams/voices/player/damage_placeholder.wav" id="32_2hkf1"]
 [ext_resource type="Shader" path="res://shaders/spatial/cross_bloom_mesh.gdshader" id="33_60325"]
 [ext_resource type="PackedScene" path="res://scenes/entities/stair_stepper.tscn" id="34_0co5b"]
@@ -101,17 +104,62 @@ streams_count = 1
 stream_0/stream = ExtResource("32_2hkf1")
 stream_0/weight = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jhb1"]
+shader = ExtResource("26_ta410")
+shader_parameter/mode_is_palette = true
+shader_parameter/color_depth = 16.0
+shader_parameter/palette = ExtResource("26_ccr8y")
+
+[sub_resource type="GDScript" id="GDScript_kfsde"]
+script/source = "extends ColorRect
+
+
+func _ready() -> void:
+	Globals.settings_changed.connect(_on_globals_settings_changed)
+	_on_globals_settings_changed()
+
+
+func _on_globals_settings_changed() -> void:
+	#visible = Globals.s_palette_compress_enabled
+	material.set_shader_parameter(
+			\"palette\",
+			Globals.get_lut(Globals.s_current_palette),
+	)
+	material.set_shader_parameter(
+			\"color_depth\",
+			Globals.s_color_depth
+	)
+	#material.set_shader_parameter(
+			#\"palette_depth\",
+			#Globals.s_color_depth
+	#)
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_w15yn"]
+seed = 475
+frequency = 0.0195
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_brdks"]
+seamless = true
+noise = SubResource("FastNoiseLite_w15yn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_frklb"]
+shader = ExtResource("29_5qtfo")
+shader_parameter/temperature = 1.0
+shader_parameter/heat_scale_max = 8.0
+shader_parameter/heat_speed = 0.1
+shader_parameter/heat_noise = SubResource("NoiseTexture2D_brdks")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7t8ki"]
 shader = ExtResource("26_rpeim")
 shader_parameter/intensity = 1.0
 shader_parameter/threshold = 0.9
-shader_parameter/spread = 12
+shader_parameter/spread = 8
 
 [sub_resource type="GDScript" id="GDScript_rb3tb"]
 script/source = "extends ColorRect
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Globals.settings_changed.connect(_on_globals_settings_changed)
 	_on_globals_settings_changed()
@@ -215,17 +263,23 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CrossBloom" type="ColorRect" parent="Control"]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Control"]
 visible = false
-material = SubResource("ShaderMaterial_7t8ki")
+copy_mode = 2
+
+[node name="PaletteCompress" type="ColorRect" parent="Control"]
+visible = false
+material = SubResource("ShaderMaterial_1jhb1")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = SubResource("GDScript_rb3tb")
+script = SubResource("GDScript_kfsde")
 
 [node name="HUD" parent="Control" instance=ExtResource("6_tw0uv")]
 layout_mode = 1
@@ -245,10 +299,34 @@ script = ExtResource("22_xo3e0")
 
 [node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
 handle_input_locally = false
+use_hdr_2d = true
 canvas_item_default_texture_filter = 0
 audio_listener_enable_3d = true
 size = Vector2i(683, 384)
 render_target_update_mode = 4
+
+[node name="Distortions" type="ColorRect" parent="Control/SubViewportContainer/SubViewport"]
+visible = false
+material = SubResource("ShaderMaterial_frklb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Control/SubViewportContainer/SubViewport"]
+visible = false
+copy_mode = 2
+
+[node name="CrossBloom" type="ColorRect" parent="Control/SubViewportContainer/SubViewport"]
+material = SubResource("ShaderMaterial_7t8ki")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = SubResource("GDScript_rb3tb")
 
 [node name="PlayerSync" type="Node3D" parent="Control/SubViewportContainer/SubViewport"]
 
@@ -321,6 +399,7 @@ shape = SubResource("BoxShape3D_jf2a8")
 
 [node name="CrossBloom" type="MeshInstance3D" parent="Control/SubViewportContainer/SubViewport/PlayerSync/PlayerCam"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1)
+visible = false
 layers = 4
 material_override = SubResource("ShaderMaterial_65bbo")
 cast_shadow = 0
