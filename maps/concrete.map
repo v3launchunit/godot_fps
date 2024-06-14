@@ -5,6 +5,24 @@
 "mapversion" "220"
 "classname" "worldspawn"
 "_tb_textures" "textures;textures\special;textures\terrain\trench_broom"
+// brush 0
+{
+( -1232 -432 -320 ) ( -1232 -432 544 ) ( -1392 -736 544 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -736 -320 ) ( -1392 -736 -320 ) ( -1392 -736 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -736 -320 ) ( -1216 -432 -320 ) ( -1232 -432 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1232 -432 544 ) ( -1216 -432 544 ) ( -1376 -736 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1216 -432 -320 ) ( -1216 -432 544 ) ( -1232 -432 544 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -736 544 ) ( -1216 -432 544 ) ( -1216 -432 -320 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 1
+{
+( -1488 -736 -336 ) ( -1488 -735 -336 ) ( -1488 -736 -335 ) special/void [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -752 -736 -336 ) ( -752 -736 -335 ) ( -751 -736 -336 ) special/void [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -752 -736 -336 ) ( -751 -736 -336 ) ( -752 -735 -336 ) special/void [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -528 -128 -320 ) ( -528 -127 -320 ) ( -527 -128 -320 ) special/void [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -528 960 -320 ) ( -527 960 -320 ) ( -528 960 -319 ) special/void [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -448 -128 -320 ) ( -448 -128 -319 ) ( -448 -127 -320 ) special/void [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
 }
 // entity 1
 {
@@ -95,7 +113,7 @@
 // entity 3
 {
 "classname" "interactable_door"
-"open_pos" "0 3.1 0"
+"open_pos" "0 2.5 0"
 "_tb_group" "1"
 // brush 0
 {
@@ -286,7 +304,8 @@
 // entity 9
 {
 "classname" "interactable_door"
-"open_pos" "0 3 0"
+"open_pos" "0 3.5 0"
+"required_key" "0"
 "_tb_group" "2"
 // brush 0
 {
@@ -301,7 +320,8 @@
 // entity 10
 {
 "classname" "interactable_door"
-"open_pos" "0 3 0"
+"open_pos" "0 3.5 0"
+"required_key" "1"
 "_tb_group" "2"
 // brush 0
 {
@@ -316,7 +336,7 @@
 // entity 11
 {
 "classname" "interactable_door"
-"open_pos" "0 3 0"
+"open_pos" "0 3.5 0"
 "_tb_group" "2"
 // brush 0
 {
@@ -403,6 +423,12 @@
 }
 // entity 14
 {
+"classname" "ammo_grenade_pickup"
+"origin" "-192 0 -8"
+"_tb_group" "2"
+}
+// entity 15
+{
 "classname" "func_group"
 "_tb_type" "_tb_group"
 "_tb_name" "Tube"
@@ -411,7 +437,7 @@
 // brush 0
 {
 ( -272 -288 -16 ) ( -272 -287 -16 ) ( -272 -288 -15 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -288 -272 -16 ) ( -288 -272 -15 ) ( -287 -272 -16 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 -400 -16 ) ( -288 -400 -15 ) ( -287 -400 -16 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -288 -288 -16 ) ( -287 -288 -16 ) ( -288 -287 -16 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -256 -144 48 ) ( -256 -143 48 ) ( -255 -144 48 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -256 -144 48 ) ( -255 -144 48 ) ( -256 -144 49 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
@@ -420,7 +446,7 @@
 // brush 1
 {
 ( -192 -272 -16 ) ( -192 -271 -16 ) ( -192 -272 -15 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -208 -272 -16 ) ( -208 -272 -15 ) ( -207 -272 -16 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -208 -400 -16 ) ( -208 -400 -15 ) ( -207 -400 -16 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -208 -272 -16 ) ( -207 -272 -16 ) ( -208 -271 -16 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -176 -128 48 ) ( -176 -127 48 ) ( -175 -128 48 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -176 -144 48 ) ( -175 -144 48 ) ( -176 -144 49 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
@@ -429,7 +455,7 @@
 // brush 2
 {
 ( -272 -272 48 ) ( -272 -271 48 ) ( -272 -272 49 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -256 -272 48 ) ( -256 -272 49 ) ( -255 -272 48 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -256 -400 48 ) ( -256 -400 49 ) ( -255 -400 48 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -256 -272 48 ) ( -255 -272 48 ) ( -256 -271 48 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -192 -144 64 ) ( -192 -143 64 ) ( -191 -144 64 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -192 -144 64 ) ( -191 -144 64 ) ( -192 -144 65 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
@@ -438,14 +464,14 @@
 // brush 3
 {
 ( -272 -272 -32 ) ( -272 -271 -32 ) ( -272 -272 -31 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -256 -272 -32 ) ( -256 -272 -31 ) ( -255 -272 -32 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -256 -400 -32 ) ( -256 -400 -31 ) ( -255 -400 -32 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -256 -272 -32 ) ( -255 -272 -32 ) ( -256 -271 -32 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -192 -144 -16 ) ( -192 -143 -16 ) ( -191 -144 -16 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -192 -144 -16 ) ( -191 -144 -16 ) ( -192 -144 -15 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -176 -144 -16 ) ( -176 -144 -15 ) ( -176 -143 -16 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 15
+// entity 16
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -455,17 +481,17 @@
 "_tb_transformation" "-1.8369701987210297e-16 1 0 -192.00000000000006 -1 -1.8369701987210297e-16 0 -192 0 0 1 0 0 0 0 1"
 // brush 0
 {
-( -288 208 -32 ) ( -288 208 -31 ) ( -288 207 -32 ) terrain/trench_broom/checker_board [ 0 1.0000000000000002 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
-( 0 144 -16 ) ( 0 144 -15 ) ( 1 144 -16 ) terrain/trench_broom/checker_board [ -1.0000000000000002 0 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
-( -288 208 -144 ) ( -288 207 -144 ) ( -287 208 -144 ) terrain/trench_broom/checker_board [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( 0 144 -16 ) ( 1 144 -16 ) ( 0 143 -16 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -288 208 -32 ) ( -287 208 -32 ) ( -288 208 -31 ) terrain/trench_broom/checker_board [ 1.0000000000000002 0 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
-( 32 144 -16 ) ( 32 143 -16 ) ( 32 144 -15 ) terrain/trench_broom/checker_board [ 0 -1.0000000000000002 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+( -288 208 -32 ) ( -288 208 -31 ) ( -288 207 -32 ) terrain/trench_broom/rock [ 0 1.0000000000000002 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+( 0 144 -16 ) ( 0 144 -15 ) ( 1 144 -16 ) terrain/trench_broom/rock [ -1.0000000000000002 0 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+( -288 208 -144 ) ( -288 207 -144 ) ( -287 208 -144 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 0 144 -16 ) ( 1 144 -16 ) ( 0 143 -16 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 208 -32 ) ( -287 208 -32 ) ( -288 208 -31 ) terrain/trench_broom/rock [ 1.0000000000000002 0 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+( 32 144 -16 ) ( 32 143 -16 ) ( 32 144 -15 ) terrain/trench_broom/rock [ 0 -1.0000000000000002 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
 }
 // brush 1
 {
 ( -288 208 -160 ) ( -288 208 -159 ) ( -288 207 -160 ) terrain/trench_broom/concrete [ 0 1.0000000000000002 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
-( 0 144 -144 ) ( 0 144 -143 ) ( 1 144 -144 ) terrain/trench_broom/concrete [ -1.0000000000000002 0 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+( 0 192 -144 ) ( 0 192 -143 ) ( 1 192 -144 ) terrain/trench_broom/concrete [ -1.0000000000000002 0 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
 ( -288 208 -160 ) ( -288 207 -160 ) ( -287 208 -160 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( 0 144 -144 ) ( 1 144 -144 ) ( 0 143 -144 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -288 528 -160 ) ( -287 528 -160 ) ( -288 528 -159 ) terrain/trench_broom/concrete [ 1.0000000000000002 0 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
@@ -473,55 +499,163 @@
 }
 // brush 2
 {
-( -304 144 -160 ) ( -304 145 -160 ) ( -304 144 -159 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -304 144 -160 ) ( -304 144 -159 ) ( -303 144 -160 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -304 144 -160 ) ( -303 144 -160 ) ( -304 145 -160 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -288 496 96 ) ( -288 497 96 ) ( -287 496 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -288 528 96 ) ( -287 528 96 ) ( -288 528 97 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -288 496 96 ) ( -288 496 97 ) ( -288 497 96 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-}
-// brush 3
-{
 ( -48 128 -160 ) ( -48 129 -160 ) ( -48 128 -159 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -48 128 -160 ) ( -48 128 -159 ) ( -47 128 -160 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -48 128 -160 ) ( -47 128 -160 ) ( -48 129 -160 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -48 128 -32 ) ( -47 128 -32 ) ( -48 129 -32 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( 0 144 96 ) ( 0 145 96 ) ( 1 144 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( 0 144 96 ) ( 1 144 96 ) ( 0 144 97 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( 32 144 96 ) ( 32 144 97 ) ( 32 145 96 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
+// brush 3
+{
+( -288 144 208 ) ( -288 145 208 ) ( -288 144 209 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 144 208 ) ( -288 144 209 ) ( -287 144 208 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 144 208 ) ( -287 144 208 ) ( -288 145 208 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -96 528 224 ) ( -96 529 224 ) ( -95 528 224 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -96 528 224 ) ( -95 528 224 ) ( -96 528 225 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 32 528 224 ) ( 32 528 225 ) ( 32 529 224 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
 // brush 4
 {
-( 32 128 -160 ) ( 32 129 -160 ) ( 32 128 -159 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( 32 128 -160 ) ( 32 128 -159 ) ( 33 128 -160 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( 32 128 -160 ) ( 33 128 -160 ) ( 32 129 -160 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( 48 528 96 ) ( 48 529 96 ) ( 49 528 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( 48 528 112 ) ( 49 528 112 ) ( 48 528 113 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( 48 528 112 ) ( 48 528 113 ) ( 48 529 112 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 128 96 ) ( -304 129 96 ) ( -304 128 97 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 128 96 ) ( -304 128 97 ) ( -303 128 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 128 96 ) ( -303 128 96 ) ( -304 129 96 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 32 144 224 ) ( 32 145 224 ) ( 33 144 224 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 32 144 112 ) ( 33 144 112 ) ( 32 144 113 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 32 144 112 ) ( 32 144 113 ) ( 32 145 112 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 // brush 5
 {
-( -304 528 -160 ) ( -304 529 -160 ) ( -304 528 -159 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -304 528 -160 ) ( -304 528 -159 ) ( -303 528 -160 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -304 528 -160 ) ( -303 528 -160 ) ( -304 529 -160 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( 48 544 96 ) ( 48 545 96 ) ( 49 544 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( 48 544 96 ) ( 49 544 96 ) ( 48 544 97 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( 48 544 96 ) ( 48 544 97 ) ( 48 545 96 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 32 128 -160 ) ( 32 129 -160 ) ( 32 128 -159 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 32 192 -160 ) ( 32 192 -159 ) ( 33 192 -160 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 32 128 -160 ) ( 33 128 -160 ) ( 32 129 -160 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 32 256 -16 ) ( 32 320 -16 ) ( 160 320 -16 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 48 528 112 ) ( 49 528 112 ) ( 48 528 113 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 48 528 112 ) ( 48 528 113 ) ( 48 529 112 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 // brush 6
 {
-( -288 144 80 ) ( -288 145 80 ) ( -288 144 81 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -288 144 80 ) ( -288 144 81 ) ( -287 144 80 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -288 144 80 ) ( -287 144 80 ) ( -288 145 80 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -96 528 96 ) ( -96 529 96 ) ( -95 528 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -96 528 96 ) ( -95 528 96 ) ( -96 528 97 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( 32 528 96 ) ( 32 528 97 ) ( 32 529 96 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 528 -160 ) ( -304 529 -160 ) ( -304 528 -159 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 528 -160 ) ( -304 528 -159 ) ( -303 528 -160 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 528 -160 ) ( -303 528 -160 ) ( -304 529 -160 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 32 256 -16 ) ( 32 320 -16 ) ( 160 320 -16 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 48 544 96 ) ( 49 544 96 ) ( 48 544 97 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 48 544 96 ) ( 48 544 97 ) ( 48 545 96 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 7
+{
+( -304 144 -160 ) ( -304 145 -160 ) ( -304 144 -159 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 192 -160 ) ( -304 192 -159 ) ( -303 192 -160 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 144 -160 ) ( -303 144 -160 ) ( -304 145 -160 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 32 256 -16 ) ( 32 320 -16 ) ( 160 320 -16 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 528 96 ) ( -287 528 96 ) ( -288 528 97 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 496 96 ) ( -288 496 97 ) ( -288 497 96 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 8
+{
+( 32 128 -160 ) ( 32 129 -160 ) ( 32 128 -159 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 32 128 -160 ) ( 32 128 -159 ) ( 33 128 -160 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 32 256 -16 ) ( 160 320 -16 ) ( 32 320 -16 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 48 528 224 ) ( 48 529 224 ) ( 49 528 224 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 48 528 112 ) ( 49 528 112 ) ( 48 528 113 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 48 528 112 ) ( 48 528 113 ) ( 48 529 112 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 9
+{
+( -304 528 -160 ) ( -304 529 -160 ) ( -304 528 -159 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 528 -160 ) ( -304 528 -159 ) ( -303 528 -160 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 32 256 -16 ) ( 160 320 -16 ) ( 32 320 -16 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 48 544 224 ) ( 48 545 224 ) ( 49 544 224 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 48 544 96 ) ( 49 544 96 ) ( 48 544 97 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 48 544 96 ) ( 48 544 97 ) ( 48 545 96 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 10
+{
+( -144 256 -80 ) ( -144 257 -80 ) ( -144 256 -79 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -144 280 0 ) ( -120 256 128 ) ( -120 256 0 ) terrain/trench_broom/rock [ 0.7071067811865476 -0.7071067811865476 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -120 336 0 ) ( -144 312 128 ) ( -144 312 0 ) terrain/trench_broom/rock [ -0.7071067811865476 -0.7071067811865476 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -144 256 -80 ) ( -144 256 -79 ) ( -143 256 -80 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -144 256 -144 ) ( -143 256 -144 ) ( -144 257 -144 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -64 336 0 ) ( -64 337 0 ) ( -63 336 0 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -64 336 -64 ) ( -63 336 -64 ) ( -64 336 -63 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -88 256 0 ) ( -64 280 128 ) ( -64 280 0 ) terrain/trench_broom/rock [ 0.7071067811865476 0.7071067811865476 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -64 312 0 ) ( -88 336 128 ) ( -88 336 0 ) terrain/trench_broom/rock [ -0.7071067811865476 0.7071067811865476 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -64 336 -64 ) ( -64 336 -63 ) ( -64 337 -64 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 11
+{
+( -168 448 0 ) ( -168 424 0 ) ( -168 424 -144 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -152 472 -144 ) ( -152 472 0 ) ( -168 448 0 ) terrain/trench_broom/rock [ -0.7071067811865476 -0.7071067811865476 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -168 424 0 ) ( -144 408 0 ) ( -144 408 -144 ) terrain/trench_broom/rock [ 0.7071067811865476 -0.7071067811865476 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -144 408 0 ) ( -120 408 0 ) ( -120 408 -144 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -104 432 -144 ) ( -104 456 -144 ) ( -128 472 -144 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -128 472 32 ) ( -104 456 32 ) ( -104 432 32 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -128 472 -144 ) ( -128 472 0 ) ( -152 472 0 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -128 472 0 ) ( -128 472 -144 ) ( -104 456 -144 ) terrain/trench_broom/rock [ -0.7071067811865476 0.7071067811865476 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -120 408 0 ) ( -104 432 0 ) ( -104 432 -144 ) terrain/trench_broom/rock [ 0.7071067811865476 0.7071067811865476 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -104 432 0 ) ( -104 456 0 ) ( -104 456 -144 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 12
+{
+( -288 480 80 ) ( -288 400 80 ) ( -288 400 64 ) terrain/trench_broom/checker_board [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -256 400 48 ) ( -256 480 48 ) ( -288 480 64 ) terrain/trench_broom/checker_board [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 400 80 ) ( -256 400 64 ) ( -256 400 48 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -256 480 48 ) ( -256 480 64 ) ( -288 480 80 ) terrain/trench_broom/checker_board [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 480 80 ) ( -256 480 64 ) ( -256 400 64 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -256 400 64 ) ( -256 480 64 ) ( -256 480 48 ) terrain/trench_broom/checker_board [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 13
+{
+( -304 528 224 ) ( -304 464 224 ) ( -304 528 -16 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 464 -16 ) ( -304 464 -16 ) ( -288 464 224 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 528 -16 ) ( -304 464 -16 ) ( -288 528 -16 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 528 224 ) ( -288 464 224 ) ( -304 528 224 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 528 -16 ) ( -288 528 -16 ) ( -304 528 224 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 528 -16 ) ( -288 464 -16 ) ( -288 528 224 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 14
+{
+( -304 144 -16 ) ( -304 416 -16 ) ( -304 144 224 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 144 224 ) ( -288 144 224 ) ( -304 144 -16 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 144 -16 ) ( -288 416 -16 ) ( -304 144 -16 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 144 224 ) ( -304 416 224 ) ( -288 144 224 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 416 224 ) ( -304 416 -16 ) ( -288 416 224 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 144 224 ) ( -288 416 224 ) ( -288 144 -16 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 15
+{
+( -304 416 224 ) ( -304 416 144 ) ( -304 464 224 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 416 224 ) ( -288 416 144 ) ( -304 416 224 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 464 144 ) ( -304 416 144 ) ( -288 464 144 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 464 224 ) ( -288 416 224 ) ( -304 464 224 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 464 224 ) ( -304 464 144 ) ( -288 464 224 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 464 224 ) ( -288 464 144 ) ( -288 416 224 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 16
+{
+( -304 464 -16 ) ( -304 464 80 ) ( -304 416 -16 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 416 -16 ) ( -304 416 80 ) ( -288 416 -16 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 464 -16 ) ( -304 416 -16 ) ( -288 464 -16 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 416 80 ) ( -304 416 80 ) ( -288 464 80 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 464 -16 ) ( -288 464 80 ) ( -304 464 -16 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 416 -16 ) ( -288 416 80 ) ( -288 464 -16 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 17
+{
+( -256 400 48 ) ( -256 401 48 ) ( -256 400 49 ) terrain/trench_broom/checker_board [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -256 400 48 ) ( -256 400 49 ) ( -255 400 48 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -256 400 48 ) ( -255 400 48 ) ( -256 401 48 ) terrain/trench_broom/checker_board [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -208 480 64 ) ( -208 481 64 ) ( -207 480 64 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -208 480 64 ) ( -207 480 64 ) ( -208 480 65 ) terrain/trench_broom/checker_board [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -208 480 64 ) ( -208 480 65 ) ( -208 481 64 ) terrain/trench_broom/checker_board [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 16
+// entity 17
 {
 "classname" "area_hazard"
 "dps" "60"
 "player_dps" "30"
+"damage_type" "FIRE"
 "_tb_group" "6"
 // brush 0
 {
@@ -532,4 +666,1555 @@
 ( 0 528 -80 ) ( 1 528 -80 ) ( 0 528 -79 ) terrain/trench_broom/lava [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( 32 496 -80 ) ( 32 496 -79 ) ( 32 497 -80 ) terrain/trench_broom/lava [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
+}
+// entity 18
+{
+"classname" "light"
+"origin" "-40 280 -72"
+"_color" "255 128 0"
+"_tb_group" "6"
+}
+// entity 19
+{
+"classname" "light"
+"origin" "-216 280 -72"
+"_color" "255 128 0"
+"_tb_group" "6"
+}
+// entity 20
+{
+"classname" "light"
+"origin" "-40 456 -72"
+"_color" "255 128 0"
+"_tb_group" "6"
+}
+// entity 21
+{
+"classname" "light"
+"origin" "-216 456 -72"
+"_color" "255 128 0"
+"_tb_group" "6"
+}
+// entity 22
+{
+"classname" "light"
+"origin" "-120 368 -72"
+"_color" "255 128 0"
+"_tb_group" "6"
+}
+// entity 23
+{
+"classname" "deco_world_effect"
+"origin" "-264 408 -88"
+"effect" "lava_sparks"
+"_tb_group" "6"
+}
+// entity 24
+{
+"classname" "deco_world_effect"
+"origin" "-40 504 -88"
+"effect" "lava_sparks"
+"_tb_group" "6"
+}
+// entity 25
+{
+"classname" "deco_world_effect"
+"origin" "-24 328 -88"
+"effect" "lava_sparks"
+"_tb_group" "6"
+}
+// entity 26
+{
+"classname" "deco_world_effect"
+"origin" "-184 504 -88"
+"effect" "lava_sparks"
+"_tb_group" "6"
+}
+// entity 27
+{
+"classname" "deco_world_effect"
+"origin" "-200 360 -88"
+"effect" "lava_sparks"
+"_tb_group" "6"
+}
+// entity 28
+{
+"classname" "deco_world_effect"
+"origin" "-232 248 -88"
+"effect" "lava_sparks"
+"_tb_group" "6"
+}
+// entity 29
+{
+"classname" "deco_world_effect"
+"origin" "-8 248 -88"
+"effect" "lava_sparks"
+"_tb_group" "6"
+}
+// entity 30
+{
+"classname" "deco_world_effect"
+"origin" "-56 392 -88"
+"effect" "lava_sparks"
+"_tb_group" "6"
+}
+// entity 31
+{
+"classname" "deco_world_effect"
+"origin" "8 424 -88"
+"effect" "lava_sparks"
+"_tb_group" "6"
+}
+// entity 32
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "First"
+"_tb_id" "7"
+"_tb_linked_group_id" "{c93200e7-05d1-43e1-9862-e3a1aa308166}"
+// brush 0
+{
+( -592 -96 -16 ) ( -624 -96 -32 ) ( -624 96 -32 ) terrain/trench_broom/concrete [ 0 -1.0000000000000002 0 0 ] [ 1.0000000000000002 0 0 96 ] 0 1 1
+( -592 -96 -16 ) ( -336 -96 -16 ) ( -336 -96 -32 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 -96 -32 ) ( -336 96 -32 ) ( -624 96 -32 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -592 96 -16 ) ( -336 96 -16 ) ( -336 -96 -16 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -336 96 -32 ) ( -336 96 -16 ) ( -592 96 -16 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 -96 -16 ) ( -336 96 -16 ) ( -336 96 -32 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 1
+{
+( -592 96 96 ) ( -624 96 -32 ) ( -624 112 -32 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -592 96 96 ) ( -336 96 96 ) ( -336 96 -32 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 96 -32 ) ( -336 112 -32 ) ( -624 112 -32 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -592 112 96 ) ( -336 112 96 ) ( -336 96 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -336 112 -32 ) ( -336 112 96 ) ( -592 112 96 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 96 96 ) ( -336 112 96 ) ( -336 112 -32 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 2
+{
+( -592 -112 96 ) ( -624 -112 -32 ) ( -624 -96 -32 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -592 -112 96 ) ( -336 -112 96 ) ( -336 -112 -32 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 -112 -32 ) ( -336 -96 -32 ) ( -624 -96 -32 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -592 -96 96 ) ( -336 -96 96 ) ( -336 -112 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -336 -96 -32 ) ( -336 -96 96 ) ( -592 -96 96 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 -112 96 ) ( -336 -96 96 ) ( -336 -96 -32 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 3
+{
+( -592 -32 80 ) ( -592 -31 80 ) ( -592 -32 81 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 -96 80 ) ( -528 -96 81 ) ( -527 -96 80 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 -32 80 ) ( -527 -32 80 ) ( -528 -31 80 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -336 96 96 ) ( -336 97 96 ) ( -335 96 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -336 96 96 ) ( -335 96 96 ) ( -336 96 97 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 96 96 ) ( -336 96 97 ) ( -336 97 96 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 4
+{
+( -544 112 -192 ) ( -576 -112 -192 ) ( -576 -112 -208 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -576 -112 -192 ) ( -528 -112 -192 ) ( -528 -112 -208 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 -112 -320 ) ( -528 112 -320 ) ( -544 112 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -544 112 -48 ) ( -528 112 -48 ) ( -528 -112 -48 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -528 112 -208 ) ( -528 112 -192 ) ( -544 112 -192 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 -112 -192 ) ( -528 112 -192 ) ( -528 112 -208 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 5
+{
+( -576 -112 -208 ) ( -464 -368 -208 ) ( -464 -368 -336 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -464 -368 -208 ) ( -448 -368 -208 ) ( -448 -368 -336 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -464 -368 -320 ) ( -448 -368 -320 ) ( -560 -112 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 -112 -48 ) ( -448 -368 -48 ) ( -464 -368 -48 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 -112 -208 ) ( -576 -112 -208 ) ( -576 -112 -336 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -448 -368 -336 ) ( -448 -368 -208 ) ( -560 -112 -208 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 6
+{
+( -544 112 -336 ) ( -544 113 -336 ) ( -544 112 -335 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -544 112 -336 ) ( -544 112 -335 ) ( -543 112 -336 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -544 112 -320 ) ( -543 112 -320 ) ( -544 113 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -528 368 -48 ) ( -528 369 -48 ) ( -527 368 -48 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -528 368 -208 ) ( -527 368 -208 ) ( -528 368 -207 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 368 -208 ) ( -528 368 -207 ) ( -528 369 -208 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 7
+{
+( -704 960 544 ) ( -640 480 544 ) ( -640 480 -320 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -640 480 544 ) ( -624 480 544 ) ( -624 480 -320 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -640 480 -320 ) ( -624 480 -320 ) ( -688 960 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -688 960 544 ) ( -624 480 544 ) ( -640 480 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -688 960 544 ) ( -704 960 544 ) ( -704 960 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -624 480 -320 ) ( -624 480 544 ) ( -688 960 544 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 33
+{
+"classname" "light_lamppost"
+"origin" "-560 -64 -8"
+"_tb_group" "7"
+}
+// entity 34
+{
+"classname" "light_lamppost"
+"origin" "-560 64 -8"
+"_tb_group" "7"
+}
+// entity 35
+{
+"classname" "enemy_canary"
+"origin" "-520 -40 -8"
+"_tb_group" "7"
+}
+// entity 36
+{
+"classname" "enemy_canary"
+"origin" "-520 40 -8"
+"_tb_group" "7"
+}
+// entity 37
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "Cliff"
+"_tb_id" "9"
+"_tb_linked_group_id" "{3c35f4df-6af8-4b84-a7c3-59ed42fa1c62}"
+"_tb_group" "7"
+// brush 0
+{
+( -592 -480 -96 ) ( -590.8571428571429 -479 -96 ) ( -592 -480 -95 ) terrain/trench_broom/rock [ 1.0000000000000002 0 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+( -592 -480 -96 ) ( -592 -480 -95 ) ( -591 -480 -96 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -592 -480 -320 ) ( -591 -480 -320 ) ( -590.8571428571429 -479 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -448 -368 256 ) ( -446.8571428571429 -367 256 ) ( -447 -368 256 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -448 -368 -80 ) ( -447 -368 -80 ) ( -448 -368 -79 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -448 -368 -80 ) ( -448 -368 -79 ) ( -446.8571428571429 -367 -80 ) terrain/trench_broom/rock [ -1.0000000000000002 0 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+}
+// brush 1
+{
+( -727.4368175738184 -491.4292673058075 -48 ) ( -791.4368175738184 266.9707326941885 -48 ) ( -791.4368175738184 266.9707326941885 -32 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -720 224 -32 ) ( -768 112 96 ) ( -768 112 -32 ) terrain/trench_broom/rock [ -0.3939192985791677 -0.9191450300180579 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -592 -480 -32 ) ( -720 -320 -32 ) ( -720 -320 96 ) terrain/trench_broom/rock [ 0.6246950475544243 -0.7808688094430304 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -544 368 -48 ) ( -544 368 -32 ) ( -656 278.399999999996 -32 ) terrain/trench_broom/rock [ -0.7808688094430304 -0.6246950475544243 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -448 -368 -48 ) ( -448 368 -48 ) ( -544 368 -48 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -544 368 -32 ) ( -448 368 -32 ) ( -448 -368 -32 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -448 368 -48 ) ( -448 368 -32 ) ( -544 368 -32 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -592 -480 -32 ) ( -448 -368 -32 ) ( -448 -368 -48 ) terrain/trench_broom/rock [ -1.0000000000000002 0 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+( -448 -368 -32 ) ( -448 368 -32 ) ( -448 368 -48 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 2
+{
+( -544 368 -96 ) ( -544.8571428571429 369 -96 ) ( -544 368 -95 ) terrain/trench_broom/rock [ 0 1.0000000000000002 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+( -544 368 -96 ) ( -544 368 -95 ) ( -543 368 -96 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -544 368 -320 ) ( -543 368 -320 ) ( -544.8571428571429 369 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -624 480 256 ) ( -624.8571428571429 481 256 ) ( -623 480 256 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -624 480 -80 ) ( -623 480 -80 ) ( -624 480 -79 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -624 480 -80 ) ( -624 480 -79 ) ( -624.8571428571429 481 -80 ) terrain/trench_broom/rock [ 0 -1.0000000000000002 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+}
+// brush 3
+{
+( -544 112 112 ) ( -576 -112 112 ) ( -576 -112 96 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -576 -112 112 ) ( -528 -112 112 ) ( -528 -112 96 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 -112 96 ) ( -528 112 96 ) ( -544 112 96 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -544 112 256 ) ( -528 112 256 ) ( -528 -112 256 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -528 112 96 ) ( -528 112 112 ) ( -544 112 112 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 -112 112 ) ( -528 112 112 ) ( -528 112 96 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 4
+{
+( -576 -112 96 ) ( -464 -368 96 ) ( -464 -368 -32 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -464 -368 96 ) ( -448 -368 96 ) ( -448 -368 -32 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -464 -368 -32 ) ( -448 -368 -32 ) ( -560 -112 -32 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 -112 256 ) ( -448 -368 256 ) ( -464 -368 256 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 -112 96 ) ( -576 -112 96 ) ( -576 -112 -32 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -448 -368 -32 ) ( -448 -368 96 ) ( -560 -112 96 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 5
+{
+( -544 112 -32 ) ( -544 113 -32 ) ( -544 112 -31 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -544 112 -32 ) ( -544 112 -31 ) ( -543 112 -32 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -544 112 -32 ) ( -543 112 -32 ) ( -544 113 -32 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -528 368 256 ) ( -528 369 256 ) ( -527 368 256 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -528 368 96 ) ( -527 368 96 ) ( -528 368 97 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 368 96 ) ( -528 368 97 ) ( -528 369 96 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 6
+{
+( -528 -736 -320 ) ( -528.25 -735 -320 ) ( -528 -736 -319 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 -736 -320 ) ( -528 -736 -319 ) ( -527 -736 -320 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 -736 -320 ) ( -527 -736 -320 ) ( -528.25 -735 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -576 -480 256 ) ( -576.25 -479 256 ) ( -575 -480 256 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -576 -480 -304 ) ( -575 -480 -304 ) ( -576 -480 -303 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -576 -480 -304 ) ( -576 -480 -303 ) ( -576.25 -479 -304 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 38
+{
+"classname" "enemy_lizard"
+"origin" "-688 -168 -24"
+"angle" "45"
+"_tb_group" "9"
+}
+// entity 39
+{
+"classname" "enemy_lizard"
+"origin" "-568 -288 -24"
+"angle" "120"
+"_tb_group" "9"
+}
+// entity 40
+{
+"classname" "enemy_eyeball"
+"origin" "-704 212.686 -24"
+"angle" "315"
+"_tb_group" "9"
+}
+// entity 41
+{
+"classname" "key_green"
+"origin" "-696 -264 -24"
+"_tb_group" "9"
+}
+// entity 42
+{
+"classname" "light"
+"origin" "-696 -264 8"
+"_color" "0 255 0"
+"light" "200"
+"_tb_group" "9"
+}
+// entity 43
+{
+"classname" "enemy_eyeball"
+"origin" "-635.942 178.343 8"
+"angle" "255"
+"_tb_group" "9"
+}
+// entity 44
+{
+"classname" "light_torch"
+"origin" "-544 -184 40"
+"angle" "30"
+"_tb_group" "9"
+}
+// entity 45
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "Lab"
+"_tb_id" "8"
+"_tb_linked_group_id" "{34956690-5ed3-4796-82b0-11cbe05177d9}"
+// brush 0
+{
+( -272 -400 64 ) ( -272 -399 64 ) ( -272 -400 65 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 -400 64 ) ( -288 -400 65 ) ( -287 -400 64 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 -400 64 ) ( -287 -400 64 ) ( -288 -399 64 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -16 -384 96 ) ( -16 -383 96 ) ( -15 -384 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -16 -384 80 ) ( -15 -384 80 ) ( -16 -384 81 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 0 -384 80 ) ( 0 -384 81 ) ( 0 -383 80 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 1
+{
+( -272 -560 80 ) ( -272 -559 80 ) ( -272 -560 81 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -272 -656 80 ) ( -272 -656 81 ) ( -271 -656 80 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -272 -560 80 ) ( -271 -560 80 ) ( -272 -559 80 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -64 -400 96 ) ( -64 -399 96 ) ( -63 -400 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -64 -400 96 ) ( -63 -400 96 ) ( -64 -400 97 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -16 -400 96 ) ( -16 -400 97 ) ( -16 -399 96 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 2
+{
+( -16 -672 -32 ) ( -16 -671 -32 ) ( -16 -672 -31 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -16 -656 -32 ) ( -16 -656 -31 ) ( -15 -656 -32 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -16 -672 -32 ) ( -15 -672 -32 ) ( -16 -671 -32 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 0 -400 96 ) ( 0 -399 96 ) ( 1 -400 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 0 -400 64 ) ( 1 -400 64 ) ( 0 -400 65 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 0 -400 64 ) ( 0 -400 65 ) ( 0 -399 64 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 3
+{
+( -288 -672 -32 ) ( -288 -671 -32 ) ( -288 -672 -31 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -176 -672 -32 ) ( -176 -672 -31 ) ( -175 -672 -32 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -176 -672 -32 ) ( -175 -672 -32 ) ( -176 -671 -32 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 0 -656 96 ) ( 0 -655 96 ) ( 1 -656 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 0 -656 64 ) ( 1 -656 64 ) ( 0 -656 65 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 0 -656 64 ) ( 0 -656 65 ) ( 0 -655 64 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 4
+{
+( -176 -400 -32 ) ( -176 -399 -32 ) ( -176 -400 -31 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -176 -400 -32 ) ( -176 -400 -31 ) ( -175 -400 -32 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -176 -400 -32 ) ( -175 -400 -32 ) ( -176 -399 -32 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 0 -384 64 ) ( 0 -383 64 ) ( 1 -384 64 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 0 -384 64 ) ( 1 -384 64 ) ( 0 -384 65 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 0 -384 64 ) ( 0 -384 65 ) ( 0 -383 64 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 5
+{
+( -272 -464 -32 ) ( -272 -463 -32 ) ( -272 -464 -31 ) terrain/trench_broom/checker_board [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -272 -656 -32 ) ( -272 -656 -31 ) ( -271 -656 -32 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -272 -464 -32 ) ( -271 -464 -32 ) ( -272 -463 -32 ) terrain/trench_broom/checker_board [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -48 -400 -16 ) ( -48 -399 -16 ) ( -47 -400 -16 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -48 -400 -16 ) ( -47 -400 -16 ) ( -48 -400 -15 ) terrain/trench_broom/checker_board [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -16 -400 -16 ) ( -16 -400 -15 ) ( -16 -399 -16 ) terrain/trench_broom/checker_board [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 6
+{
+( -288 -656 -32 ) ( -288 -655 -32 ) ( -288 -656 -31 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 -656 -32 ) ( -288 -656 -31 ) ( -287 -656 -32 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 -656 -32 ) ( -287 -656 -32 ) ( -288 -655 -32 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -272 -384 96 ) ( -272 -383 96 ) ( -271 -384 96 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -272 -384 64 ) ( -271 -384 64 ) ( -272 -384 65 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -272 -384 64 ) ( -272 -384 65 ) ( -272 -383 64 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 7
+{
+( -32 -592 -16 ) ( -32 -591 -16 ) ( -32 -592 -15 ) terrain/trench_broom/planks [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -32 -592 -16 ) ( -32 -592 -15 ) ( -31 -592 -16 ) terrain/trench_broom/planks [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -32 -592 -16 ) ( -31 -592 -16 ) ( -32 -591 -16 ) terrain/trench_broom/planks [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -16 -400 0 ) ( -16 -399 0 ) ( -15 -400 0 ) terrain/trench_broom/planks [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -16 -400 0 ) ( -15 -400 0 ) ( -16 -400 1 ) terrain/trench_broom/planks [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -16 -400 0 ) ( -16 -400 1 ) ( -16 -399 0 ) terrain/trench_broom/planks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 8
+{
+( -32 -656 -16 ) ( -32 -655 -16 ) ( -32 -656 -15 ) terrain/trench_broom/metal [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -32 -656 -16 ) ( -32 -656 -15 ) ( -31 -656 -16 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -32 -656 -16 ) ( -31 -656 -16 ) ( -32 -655 -16 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -16 -592 0 ) ( -16 -591 0 ) ( -15 -592 0 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -16 -592 0 ) ( -15 -592 0 ) ( -16 -592 1 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -16 -592 0 ) ( -16 -592 1 ) ( -16 -591 0 ) terrain/trench_broom/metal [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 46
+{
+"classname" "light_tube"
+"origin" "-144 -592 80"
+"_tb_group" "8"
+}
+// entity 47
+{
+"classname" "light_tube"
+"origin" "-144 -464 80"
+"_tb_group" "8"
+}
+// entity 48
+{
+"classname" "key_red"
+"origin" "-72 -616 -8"
+"_tb_group" "8"
+}
+// entity 49
+{
+"classname" "weapon_akm"
+"origin" "-24 -632 8"
+"_tb_group" "8"
+}
+// entity 50
+{
+"classname" "armor_bonus_pickup"
+"origin" "-24 -584 8"
+"_tb_group" "8"
+}
+// entity 51
+{
+"classname" "armor_bonus_pickup"
+"origin" "-24 -568 8"
+"_tb_group" "8"
+}
+// entity 52
+{
+"classname" "armor_bonus_pickup"
+"origin" "-24 -552 8"
+"_tb_group" "8"
+}
+// entity 53
+{
+"classname" "ammo_shell_box_pickup"
+"origin" "-56 -424 -8"
+"_tb_group" "8"
+}
+// entity 54
+{
+"classname" "triggerable_ambush"
+"origin" "-168 -456 0"
+"angle" "315"
+"group" "red"
+"_tb_group" "8"
+}
+// entity 55
+{
+"classname" "triggerable_ambush"
+"origin" "-216 -504 0"
+"angle" "315"
+"group" "red"
+"_tb_group" "8"
+}
+// entity 56
+{
+"classname" "area_trigger"
+"group" "red"
+"_tb_group" "8"
+// brush 0
+{
+( -96 -624 -16 ) ( -96 -623 -16 ) ( -96 -624 -15 ) special/trigger [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -80 -656 -16 ) ( -80 -656 -15 ) ( -79 -656 -16 ) special/trigger [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -80 -624 -16 ) ( -79 -624 -16 ) ( -80 -623 -16 ) special/trigger [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -64 -600 80 ) ( -64 -599 80 ) ( -63 -600 80 ) special/trigger [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -64 -592 -8 ) ( -63 -592 -8 ) ( -64 -592 -7 ) special/trigger [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -16 -600 -8 ) ( -16 -600 -7 ) ( -16 -599 -8 ) special/trigger [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 57
+{
+"classname" "triggerable_ambush"
+"origin" "-104 -456 0"
+"angle" "270"
+"group" "red"
+"ambusher" "canary"
+"_tb_group" "8"
+}
+// entity 58
+{
+"classname" "triggerable_ambush"
+"origin" "-248 -568 0"
+"angle" "270"
+"group" "red"
+"ambusher" "canary"
+"_tb_group" "8"
+}
+// entity 59
+{
+"classname" "deco_table_wooden"
+"origin" "-248 -640 -8"
+"angle" "0"
+"_tb_group" "8"
+}
+// entity 60
+{
+"classname" "deco_table_wooden"
+"origin" "-184 -640 -8"
+"angle" "0"
+"_tb_group" "8"
+}
+// entity 61
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "Upstairs"
+"_tb_id" "10"
+"_tb_linked_group_id" "{d50b5d37-4e06-43ef-8211-a4e3b15cbf94}"
+// brush 0
+{
+( -384 400 80 ) ( -384 112 224 ) ( -384 112 208 ) terrain/trench_broom/checker_board [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 16 224 ) ( -304 16 224 ) ( -304 16 208 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 112 208 ) ( -304 400 64 ) ( -384 400 64 ) terrain/trench_broom/checker_board [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -384 400 80 ) ( -304 400 80 ) ( -304 112 224 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 400 64 ) ( -304 400 80 ) ( -384 400 80 ) terrain/trench_broom/checker_board [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 112 224 ) ( -304 400 80 ) ( -304 400 64 ) terrain/trench_broom/checker_board [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 1
+{
+( -384 400 64 ) ( -384 401 64 ) ( -384 400 65 ) terrain/trench_broom/checker_board [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -368 400 64 ) ( -368 400 65 ) ( -367 400 64 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -368 400 64 ) ( -367 400 64 ) ( -368 401 64 ) terrain/trench_broom/checker_board [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 480 80 ) ( -304 481 80 ) ( -303 480 80 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 480 80 ) ( -303 480 80 ) ( -304 480 81 ) terrain/trench_broom/checker_board [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 480 80 ) ( -304 480 81 ) ( -304 481 80 ) terrain/trench_broom/checker_board [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 2
+{
+( -400 400 64 ) ( -400 401 64 ) ( -400 400 65 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -400 400 64 ) ( -400 400 65 ) ( -399 400 64 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -400 400 64 ) ( -399 400 64 ) ( -400 401 64 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -384 480 176 ) ( -384 481 176 ) ( -383 480 176 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -384 480 176 ) ( -383 480 176 ) ( -384 480 177 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 480 176 ) ( -384 480 177 ) ( -384 481 176 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 3
+{
+( -384 400 160 ) ( -384 401 160 ) ( -384 400 161 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 400 160 ) ( -384 400 161 ) ( -383 400 160 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 400 160 ) ( -383 400 160 ) ( -384 401 160 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 480 176 ) ( -304 481 176 ) ( -303 480 176 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 480 176 ) ( -303 480 176 ) ( -304 480 177 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 480 176 ) ( -304 480 177 ) ( -304 481 176 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 4
+{
+( -384 400 176 ) ( -384 304 224 ) ( -384 304 208 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 16 224 ) ( -304 16 224 ) ( -304 16 208 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 304 208 ) ( -304 400 160 ) ( -384 400 160 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -384 400 176 ) ( -304 400 176 ) ( -304 304 224 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 400 160 ) ( -304 400 176 ) ( -384 400 176 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 304 224 ) ( -304 400 176 ) ( -304 400 160 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 5
+{
+( -400 400 176 ) ( -400 304 224 ) ( -400 304 112 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -400 16 224 ) ( -384 16 224 ) ( -384 16 112 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 304 112 ) ( -384 400 64 ) ( -400 400 64 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -400 400 176 ) ( -384 400 176 ) ( -384 304 224 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -384 400 64 ) ( -384 400 176 ) ( -400 400 176 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 304 224 ) ( -384 400 176 ) ( -384 400 64 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 6
+{
+( -304 112 96 ) ( -304 113 96 ) ( -304 112 97 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 80 224 ) ( -176 112 208 ) ( -304 112 208 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -0.894427190999916 0.447213595499958 0 ] 0 1 1
+( -288 128 224 ) ( -288 129 224 ) ( -287 128 224 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 128 224 ) ( -287 128 224 ) ( -288 128 225 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 128 224 ) ( -288 128 225 ) ( -288 129 224 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 7
+{
+( -304 112 224 ) ( -304 113 224 ) ( -304 112 225 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 16 224 ) ( -304 16 225 ) ( -303 16 224 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 80 224 ) ( -288 48 240 ) ( -160 48 240 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -0.894427190999916 0.447213595499958 0 ] 0 1 1
+( -304 112 224 ) ( -303 112 224 ) ( -304 113 224 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 112 320 ) ( -288 144 304 ) ( -160 144 304 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -0.894427190999916 0.447213595499958 0 ] 0 1 1
+( -288 304 320 ) ( -288 304 321 ) ( -288 305 320 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 8
+{
+( -384 -64 256 ) ( -384 -63 256 ) ( -384 -64 257 ) terrain/trench_broom/checker_board [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 -224 256 ) ( -384 -224 257 ) ( -383 -224 256 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 -64 256 ) ( -383 -64 256 ) ( -384 -63 256 ) terrain/trench_broom/checker_board [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 16 272 ) ( -304 17 272 ) ( -303 16 272 ) terrain/trench_broom/checker_board [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 16 272 ) ( -303 16 272 ) ( -304 16 273 ) terrain/trench_broom/checker_board [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 16 272 ) ( -304 16 273 ) ( -304 17 272 ) terrain/trench_broom/checker_board [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 9
+{
+( -400 -240 256 ) ( -400 -239 256 ) ( -400 -240 257 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -400 -224 256 ) ( -400 -224 257 ) ( -399 -224 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -400 -240 256 ) ( -399 -240 256 ) ( -400 -239 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -384 16 368 ) ( -384 17 368 ) ( -383 16 368 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -384 16 368 ) ( -383 16 368 ) ( -384 16 369 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 16 368 ) ( -384 16 369 ) ( -384 17 368 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 10
+{
+( -304 -240 256 ) ( -304 -239 256 ) ( -304 -240 257 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 -224 256 ) ( -304 -224 257 ) ( -303 -224 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 -240 256 ) ( -303 -240 256 ) ( -304 -239 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 16 368 ) ( -288 17 368 ) ( -287 16 368 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 16 368 ) ( -287 16 368 ) ( -288 16 369 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 16 368 ) ( -288 16 369 ) ( -288 17 368 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 11
+{
+( -384 -240 352 ) ( -384 -239 352 ) ( -384 -240 353 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 -224 352 ) ( -384 -224 353 ) ( -383 -224 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 -240 352 ) ( -383 -240 352 ) ( -384 -239 352 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 16 368 ) ( -304 17 368 ) ( -303 16 368 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 16 368 ) ( -303 16 368 ) ( -304 16 369 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 16 368 ) ( -304 16 369 ) ( -304 17 368 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 12
+{
+( -400 480 64 ) ( -400 481 64 ) ( -400 480 65 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -400 480 64 ) ( -400 480 65 ) ( -399 480 64 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -400 480 64 ) ( -399 480 64 ) ( -400 481 64 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 496 176 ) ( -304 497 176 ) ( -303 496 176 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -304 496 160 ) ( -303 496 160 ) ( -304 496 161 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 496 160 ) ( -304 496 161 ) ( -304 497 160 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 62
+{
+"classname" "light_lamp"
+"origin" "-344 -24 352"
+"_tb_group" "10"
+}
+// entity 63
+{
+"classname" "light_lamp"
+"origin" "-344 440 160"
+"_tb_group" "10"
+}
+// entity 64
+{
+"classname" "light_lamp"
+"origin" "-344 208 256"
+"_tb_group" "10"
+}
+// entity 65
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "BridgeStart"
+"_tb_id" "11"
+"_tb_linked_group_id" "{e9ccf968-b7df-4098-bb03-dd67ecbcffd6}"
+// brush 0
+{
+( -496 -320 352 ) ( -536 -240 352 ) ( -536 -240 368 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -496 -320 368 ) ( -288 -320 368 ) ( -288 -320 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 -320 352 ) ( -288 -240 352 ) ( -536 -240 352 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -536 -240 368 ) ( -288 -240 368 ) ( -288 -320 368 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 -224 352 ) ( -288 -224 368 ) ( -536 -224 368 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 -320 368 ) ( -288 -240 368 ) ( -288 -240 352 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 1
+{
+( -536 -240 256 ) ( -544 -224 256 ) ( -544 -224 368 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -536 -240 368 ) ( -400 -240 368 ) ( -400 -240 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -400 -240 272 ) ( -400 -224 272 ) ( -544 -224 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -544 -224 352 ) ( -400 -224 352 ) ( -400 -240 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -400 -224 256 ) ( -400 -224 368 ) ( -544 -224 368 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 -240 368 ) ( -384 -224 368 ) ( -384 -224 256 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 2
+{
+( -496 -320 256 ) ( -504 -304 256 ) ( -504 -304 352 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -496 -320 352 ) ( -288 -320 352 ) ( -288 -320 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 -320 272 ) ( -288 -304 272 ) ( -504 -304 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -504 -304 352 ) ( -288 -304 352 ) ( -288 -320 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 -304 256 ) ( -288 -304 352 ) ( -504 -304 352 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 -320 352 ) ( -288 -304 352 ) ( -288 -304 256 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 3
+{
+( -304 -304 272 ) ( -304 -303 272 ) ( -304 -304 273 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 -304 272 ) ( -304 -304 273 ) ( -303 -304 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -304 -304 272 ) ( -303 -304 272 ) ( -304 -303 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 -240 352 ) ( -288 -239 352 ) ( -287 -240 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 -224 352 ) ( -287 -224 352 ) ( -288 -224 353 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 -240 352 ) ( -288 -240 353 ) ( -288 -239 352 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 4
+{
+( -496 -304 272 ) ( -496 -288 272 ) ( -496 -288 400 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -624 -320 256 ) ( -624 -320 257 ) ( -623 -320 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -624 -304 256 ) ( -623 -304 256 ) ( -624 -303 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 -240 272 ) ( -288 -239 272 ) ( -287 -240 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 -224 272 ) ( -287 -224 272 ) ( -288 -224 273 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -288 -240 272 ) ( -288 -240 273 ) ( -288 -239 272 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 66
+{
+"classname" "light_lamp"
+"origin" "-344 -272 352"
+"_tb_group" "11"
+}
+// entity 67
+{
+"classname" "interactable_door"
+"open_pos" "0 4.5 0"
+"_tb_group" "11"
+// brush 0
+{
+( -488 -288 272 ) ( -488 -287 272 ) ( -488 -288 273 ) terrain/trench_broom/shutter_door [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -496 -304 272 ) ( -496 -304 273 ) ( -495 -304 272 ) terrain/trench_broom/shutter_door [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -496 -288 272 ) ( -495 -288 272 ) ( -496 -287 272 ) terrain/trench_broom/shutter_door [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -480 -240 352 ) ( -480 -239 352 ) ( -479 -240 352 ) terrain/trench_broom/shutter_door [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -480 -240 288 ) ( -479 -240 288 ) ( -480 -240 289 ) terrain/trench_broom/shutter_door [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -480 -240 288 ) ( -480 -240 289 ) ( -480 -239 288 ) terrain/trench_broom/shutter_door [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 68
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "UpperCliff"
+"_tb_id" "12"
+"_tb_linked_group_id" "{e138fda0-a8d4-41e3-b15d-4bf681b73c8c}"
+// brush 0
+{
+( -576 -112 384 ) ( -464 -368 384 ) ( -464 -368 256 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -527 -224 384 ) ( -527 -224 400 ) ( -399 -224 400 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -464 -368 256 ) ( -448 -368 256 ) ( -560 -112 256 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -492 -304 368 ) ( -506 -272 368 ) ( -378 -272 368 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 -112 384 ) ( -576 -112 384 ) ( -576 -112 256 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -448 -368 256 ) ( -448 -368 384 ) ( -560 -112 384 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 1
+{
+( -576 -112 384 ) ( -464 -368 384 ) ( -464 -368 256 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -464 -368 384 ) ( -448 -368 384 ) ( -448 -368 256 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -464 -368 256 ) ( -448 -368 256 ) ( -560 -112 256 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -492 -304 368 ) ( -506 -272 368 ) ( -378 -272 368 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -485 -320 368 ) ( -485 -320 352 ) ( -357 -320 352 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -448 -368 256 ) ( -448 -368 384 ) ( -560 -112 384 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 2
+{
+( -576 -112 384 ) ( -464 -368 384 ) ( -464 -368 256 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -464 -368 384 ) ( -448 -368 384 ) ( -448 -368 256 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -492 -304 368 ) ( -378 -272 368 ) ( -506 -272 368 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 -112 544 ) ( -448 -368 544 ) ( -464 -368 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -485 -320 368 ) ( -485 -320 352 ) ( -357 -320 352 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -448 -368 256 ) ( -448 -368 384 ) ( -560 -112 384 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 3
+{
+( -576 -112 384 ) ( -464 -368 384 ) ( -464 -368 256 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -527 -224 384 ) ( -527 -224 400 ) ( -399 -224 400 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -492 -304 368 ) ( -378 -272 368 ) ( -506 -272 368 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 -112 544 ) ( -448 -368 544 ) ( -464 -368 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 -112 384 ) ( -576 -112 384 ) ( -576 -112 256 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -448 -368 256 ) ( -448 -368 384 ) ( -560 -112 384 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 4
+{
+( -576 -112 384 ) ( -464 -368 384 ) ( -464 -368 256 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -485 -320 368 ) ( -357 -320 352 ) ( -485 -320 352 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -492 -304 368 ) ( -378 -272 368 ) ( -506 -272 368 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 -112 544 ) ( -448 -368 544 ) ( -464 -368 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -527 -224 384 ) ( -399 -224 400 ) ( -527 -224 400 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -448 -368 256 ) ( -448 -368 384 ) ( -560 -112 384 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 5
+{
+( -528 -736 256 ) ( -528.25 -735 256 ) ( -528 -736 257 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 -736 256 ) ( -528 -736 257 ) ( -527 -736 256 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 -736 256 ) ( -527 -736 256 ) ( -528.25 -735 256 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -576 -480 544 ) ( -576.25 -479 544 ) ( -575 -480 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -576 -480 272 ) ( -575 -480 272 ) ( -576 -480 273 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -576 -480 272 ) ( -576 -480 273 ) ( -576.25 -479 272 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 6
+{
+( -592 -480 480 ) ( -590.8571428571429 -479 480 ) ( -592 -480 481 ) terrain/trench_broom/rock [ 1.0000000000000002 0 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+( -592 -480 480 ) ( -592 -480 481 ) ( -591 -480 480 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -592 -480 256 ) ( -591 -480 256 ) ( -590.8571428571429 -479 256 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -448 -368 544 ) ( -446.8571428571429 -367 544 ) ( -447 -368 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -448 -368 496 ) ( -447 -368 496 ) ( -448 -368 497 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -448 -368 496 ) ( -448 -368 497 ) ( -446.8571428571429 -367 496 ) terrain/trench_broom/rock [ -1.0000000000000002 0 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+}
+// brush 7
+{
+( -544 112 272 ) ( -576 -112 272 ) ( -576 -112 256 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -576 -112 272 ) ( -528 -112 272 ) ( -528 -112 256 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 -112 256 ) ( -528 112 256 ) ( -544 112 256 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -544 112 544 ) ( -528 112 544 ) ( -528 -112 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -528 112 256 ) ( -528 112 272 ) ( -544 112 272 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 -112 272 ) ( -528 112 272 ) ( -528 112 256 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 8
+{
+( -544 112 256 ) ( -544 113 256 ) ( -544 112 257 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -544 112 256 ) ( -544 112 257 ) ( -543 112 256 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -544 112 256 ) ( -543 112 256 ) ( -544 113 256 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -528 368 544 ) ( -528 369 544 ) ( -527 368 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -528 368 384 ) ( -527 368 384 ) ( -528 368 385 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -528 368 384 ) ( -528 368 385 ) ( -528 369 384 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 9
+{
+( -544 368 480 ) ( -544.8571428571429 369 480 ) ( -544 368 481 ) terrain/trench_broom/rock [ 0 1.0000000000000002 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+( -544 368 480 ) ( -544 368 481 ) ( -543 368 480 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -544 368 256 ) ( -543 368 256 ) ( -544.8571428571429 369 256 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -624 480 544 ) ( -624.8571428571429 481 544 ) ( -623 480 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -624 480 496 ) ( -623 480 496 ) ( -624 480 497 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -624 480 496 ) ( -624 480 497 ) ( -624.8571428571429 481 496 ) terrain/trench_broom/rock [ 0 -1.0000000000000002 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+}
+}
+// entity 69
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "Bridge"
+"_tb_id" "20"
+"_tb_linked_group_id" "{326826eb-ab6c-4ce2-9d78-5dfd14a7b82d}"
+// brush 0
+{
+( -1216 -304 256 ) ( -1216 -303 256 ) ( -1216 -304 257 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -624 -320 256 ) ( -624 -320 257 ) ( -623 -320 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -624 -304 256 ) ( -623 -304 256 ) ( -624 -303 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 -240 272 ) ( -288 -239 272 ) ( -287 -240 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -288 -224 272 ) ( -287 -224 272 ) ( -288 -224 273 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -496 -304 272 ) ( -496 -288 400 ) ( -496 -288 272 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 1
+{
+( -1216 -232 294 ) ( -1216 -234 292 ) ( -1216 -232 290 ) terrain/trench_broom/metal [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -536 -234 292 ) ( -536 -232 290 ) ( -1216 -232 290 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1216 -232 294 ) ( -536 -232 294 ) ( -536 -234 292 ) terrain/trench_broom/metal [ 1.0000000000000002 0 0 0 ] [ 0 0 1.0000000000000002 0 ] 0 1 1
+( -536 -232 290 ) ( -536 -230 292 ) ( -1216 -230 292 ) terrain/trench_broom/metal [ -1.0000000000000002 0 0 0 ] [ 0 0 1.0000000000000002 -8 ] 0 1 1
+( -536 -232 294 ) ( -1216 -232 294 ) ( -1216 -230 292 ) terrain/trench_broom/metal [ -1.0000000000000002 0 0 0 ] [ 0 -1.0000000000000002 0 -8 ] 0 1 1
+( -536 -232 294 ) ( -536 -230 292 ) ( -536 -232 290 ) terrain/trench_broom/metal [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 2
+{
+( -1216 -312 294 ) ( -1216 -314 292 ) ( -1216 -312 290 ) terrain/trench_broom/metal [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -496 -314 292 ) ( -496 -312 290 ) ( -1216 -312 290 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1216 -312 294 ) ( -496 -312 294 ) ( -496 -314 292 ) terrain/trench_broom/metal [ 1.0000000000000002 0 0 0 ] [ 0 0 1.0000000000000002 0 ] 0 1 1
+( -496 -312 290 ) ( -496 -310 292 ) ( -1216 -310 292 ) terrain/trench_broom/metal [ -1.0000000000000002 0 0 0 ] [ 0 0 1.0000000000000002 8 ] 0 1 1
+( -496 -312 294 ) ( -1216 -312 294 ) ( -1216 -310 292 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -496 -312 294 ) ( -496 -310 292 ) ( -496 -312 290 ) terrain/trench_broom/metal [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 3
+{
+( -1216 -312 282 ) ( -1216 -314 280 ) ( -1216 -312 278 ) terrain/trench_broom/metal [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -496 -314 280 ) ( -496 -312 278 ) ( -1216 -312 278 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1216 -312 282 ) ( -496 -312 282 ) ( -496 -314 280 ) terrain/trench_broom/metal [ 1.0000000000000002 0 0 0 ] [ 0 0 1.0000000000000002 12 ] 0 1 1
+( -496 -312 278 ) ( -496 -310 280 ) ( -1216 -310 280 ) terrain/trench_broom/metal [ -1.0000000000000002 0 0 0 ] [ 0 0 1.0000000000000002 4 ] 0 1 1
+( -1216 -310 280 ) ( -496 -310 280 ) ( -496 -312 282 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -496 -312 282 ) ( -496 -310 280 ) ( -496 -312 278 ) terrain/trench_broom/metal [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 4
+{
+( -1216 -232 282 ) ( -1216 -234 280 ) ( -1216 -232 278 ) terrain/trench_broom/metal [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -536 -234 280 ) ( -536 -232 278 ) ( -1216 -232 278 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1216 -232 282 ) ( -536 -232 282 ) ( -536 -234 280 ) terrain/trench_broom/metal [ 1.0000000000000002 0 0 0 ] [ 0 0 1.0000000000000002 -4 ] 0 1 1
+( -536 -232 278 ) ( -536 -230 280 ) ( -1216 -230 280 ) terrain/trench_broom/metal [ -1.0000000000000002 0 0 0 ] [ 0 0 1.0000000000000002 -12 ] 0 1 1
+( -1216 -230 280 ) ( -536 -230 280 ) ( -536 -232 282 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -536 -232 282 ) ( -536 -230 280 ) ( -536 -232 278 ) terrain/trench_broom/metal [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 70
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "LampPost"
+"_tb_id" "16"
+"_tb_linked_group_id" "{605ebc0b-b375-4f31-9716-feff4f14a4a1}"
+"_tb_transformation" "1 0 0 -160 0 1 0 80 0 0 1 0 0 0 0 1"
+"_tb_group" "20"
+// brush 0
+{
+( -864 -234 272 ) ( -866 -232 272 ) ( -866 -232 328 ) terrain/trench_broom/metal [ 2 0 0 0 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -864 -230 272 ) ( -864 -230 328 ) ( -866 -232 328 ) terrain/trench_broom/metal [ 0 -2 0 -8 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -864 -234 272 ) ( -862 -232 272 ) ( -864 -230 272 ) terrain/trench_broom/metal [ -2 0 0 0 ] [ 0 -2 0 -8 ] 0 1 1
+( -864 -230 312 ) ( -862 -232 312 ) ( -864 -234 312 ) terrain/trench_broom/metal [ 2 0 0 0 ] [ 0 -2 0 -8 ] 0 1 1
+( -864 -234 328 ) ( -862 -232 328 ) ( -862 -232 272 ) terrain/trench_broom/metal [ 0 2 0 8 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -862 -232 272 ) ( -862 -232 328 ) ( -864 -230 328 ) terrain/trench_broom/metal [ -2 0 0 0 ] [ 0 0 -1 0 ] 35.36325 1 1
+}
+}
+// entity 71
+{
+"classname" "light_lamp"
+"origin" "-864 -232 312"
+"_color" "128 192 255"
+"_tb_group" "16"
+}
+// entity 72
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "LampPost"
+"_tb_id" "17"
+"_tb_linked_group_id" "{605ebc0b-b375-4f31-9716-feff4f14a4a1}"
+"_tb_transformation" "1 0 0 -160 0 1 0 0 0 0 1 0 0 0 0 1"
+"_tb_group" "20"
+// brush 0
+{
+( -864 -314 272 ) ( -866 -312 272 ) ( -866 -312 328 ) terrain/trench_broom/metal [ 2 0 0 0 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -864 -310 272 ) ( -864 -310 328 ) ( -866 -312 328 ) terrain/trench_broom/metal [ 0 -2 0 -8 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -864 -314 272 ) ( -862 -312 272 ) ( -864 -310 272 ) terrain/trench_broom/metal [ -2 0 0 0 ] [ 0 -2 0 -8 ] 0 1 1
+( -864 -310 312 ) ( -862 -312 312 ) ( -864 -314 312 ) terrain/trench_broom/metal [ 2 0 0 0 ] [ 0 -2 0 -8 ] 0 1 1
+( -864 -314 328 ) ( -862 -312 328 ) ( -862 -312 272 ) terrain/trench_broom/metal [ 0 2 0 8 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -862 -312 272 ) ( -862 -312 328 ) ( -864 -310 328 ) terrain/trench_broom/metal [ -2 0 0 0 ] [ 0 0 -1 0 ] 35.36325 1 1
+}
+}
+// entity 73
+{
+"classname" "light_lamp"
+"origin" "-864 -312 312"
+"_color" "128 192 255"
+"_tb_group" "17"
+}
+// entity 74
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "LampPost"
+"_tb_id" "15"
+"_tb_linked_group_id" "{605ebc0b-b375-4f31-9716-feff4f14a4a1}"
+"_tb_transformation" "1 0 0 32 0 1 0 0 0 0 1 0 0 0 0 1"
+"_tb_group" "20"
+// brush 0
+{
+( -672 -314 272 ) ( -674 -312 272 ) ( -674 -312 328 ) terrain/trench_broom/metal [ 2 0 0 0 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -672 -310 272 ) ( -672 -310 328 ) ( -674 -312 328 ) terrain/trench_broom/metal [ 0 -2 0 -8 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -672 -314 272 ) ( -670 -312 272 ) ( -672 -310 272 ) terrain/trench_broom/metal [ -2 0 0 0 ] [ 0 -2 0 -8 ] 0 1 1
+( -672 -310 312 ) ( -670 -312 312 ) ( -672 -314 312 ) terrain/trench_broom/metal [ 2 0 0 0 ] [ 0 -2 0 -8 ] 0 1 1
+( -672 -314 328 ) ( -670 -312 328 ) ( -670 -312 272 ) terrain/trench_broom/metal [ 0 2 0 8 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -670 -312 272 ) ( -670 -312 328 ) ( -672 -310 328 ) terrain/trench_broom/metal [ -2 0 0 0 ] [ 0 0 -1 0 ] 35.36325 1 1
+}
+}
+// entity 75
+{
+"classname" "light_lamp"
+"origin" "-672 -312 312"
+"_color" "128 192 255"
+"_tb_group" "15"
+}
+// entity 76
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "LampPost"
+"_tb_id" "18"
+"_tb_linked_group_id" "{605ebc0b-b375-4f31-9716-feff4f14a4a1}"
+"_tb_transformation" "1 0 0 -352 0 1 0 0 0 0 1 0 0 0 0 1"
+"_tb_group" "20"
+// brush 0
+{
+( -1056 -314 272 ) ( -1058 -312 272 ) ( -1058 -312 328 ) terrain/trench_broom/metal [ 2 0 0 0 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -1056 -310 272 ) ( -1056 -310 328 ) ( -1058 -312 328 ) terrain/trench_broom/metal [ 0 -2 0 -8 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -1056 -314 272 ) ( -1054 -312 272 ) ( -1056 -310 272 ) terrain/trench_broom/metal [ -2 0 0 0 ] [ 0 -2 0 -8 ] 0 1 1
+( -1056 -310 312 ) ( -1054 -312 312 ) ( -1056 -314 312 ) terrain/trench_broom/metal [ 2 0 0 0 ] [ 0 -2 0 -8 ] 0 1 1
+( -1056 -314 328 ) ( -1054 -312 328 ) ( -1054 -312 272 ) terrain/trench_broom/metal [ 0 2 0 8 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -1054 -312 272 ) ( -1054 -312 328 ) ( -1056 -310 328 ) terrain/trench_broom/metal [ -2 0 0 0 ] [ 0 0 -1 0 ] 35.36325 1 1
+}
+}
+// entity 77
+{
+"classname" "light_lamp"
+"origin" "-1056 -312 312"
+"_color" "128 192 255"
+"_tb_group" "18"
+}
+// entity 78
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "LampPost"
+"_tb_id" "13"
+"_tb_linked_group_id" "{605ebc0b-b375-4f31-9716-feff4f14a4a1}"
+"_tb_transformation" "1 0 0 32 0 1 0 80 0 0 1 0 0 0 0 1"
+"_tb_group" "20"
+// brush 0
+{
+( -672 -234 272 ) ( -674 -232 272 ) ( -674 -232 328 ) terrain/trench_broom/metal [ 2 0 0 0 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -672 -230 272 ) ( -672 -230 328 ) ( -674 -232 328 ) terrain/trench_broom/metal [ 0 -2 0 -8 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -672 -234 272 ) ( -670 -232 272 ) ( -672 -230 272 ) terrain/trench_broom/metal [ -2 0 0 0 ] [ 0 -2 0 -8 ] 0 1 1
+( -672 -230 312 ) ( -670 -232 312 ) ( -672 -234 312 ) terrain/trench_broom/metal [ 2 0 0 0 ] [ 0 -2 0 -8 ] 0 1 1
+( -672 -234 328 ) ( -670 -232 328 ) ( -670 -232 272 ) terrain/trench_broom/metal [ 0 2 0 8 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -670 -232 272 ) ( -670 -232 328 ) ( -672 -230 328 ) terrain/trench_broom/metal [ -2 0 0 0 ] [ 0 0 -1 0 ] 35.36325 1 1
+}
+}
+// entity 79
+{
+"classname" "light_lamp"
+"origin" "-672 -232 312"
+"_color" "128 192 255"
+"_tb_group" "13"
+}
+// entity 80
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "LampPost"
+"_tb_id" "19"
+"_tb_linked_group_id" "{605ebc0b-b375-4f31-9716-feff4f14a4a1}"
+"_tb_transformation" "1 0 0 -352 0 1 0 80 0 0 1 0 0 0 0 1"
+"_tb_group" "20"
+// brush 0
+{
+( -1056 -234 272 ) ( -1058 -232 272 ) ( -1058 -232 328 ) terrain/trench_broom/metal [ 2 0 0 0 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -1056 -230 272 ) ( -1056 -230 328 ) ( -1058 -232 328 ) terrain/trench_broom/metal [ 0 -2 0 -8 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -1056 -234 272 ) ( -1054 -232 272 ) ( -1056 -230 272 ) terrain/trench_broom/metal [ -2 0 0 0 ] [ 0 -2 0 -8 ] 0 1 1
+( -1056 -230 312 ) ( -1054 -232 312 ) ( -1056 -234 312 ) terrain/trench_broom/metal [ 2 0 0 0 ] [ 0 -2 0 -8 ] 0 1 1
+( -1056 -234 328 ) ( -1054 -232 328 ) ( -1054 -232 272 ) terrain/trench_broom/metal [ 0 2 0 8 ] [ 0 0 -1 0 ] 35.36325 1 1
+( -1054 -232 272 ) ( -1054 -232 328 ) ( -1056 -230 328 ) terrain/trench_broom/metal [ -2 0 0 0 ] [ 0 0 -1 0 ] 35.36325 1 1
+}
+}
+// entity 81
+{
+"classname" "light_lamp"
+"origin" "-1056 -232 312"
+"_color" "128 192 255"
+"_tb_group" "19"
+}
+// entity 82
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "BridgeEnd"
+"_tb_id" "21"
+"_tb_linked_group_id" "{96bad966-8585-44f2-93e6-f9349f34ae21}"
+// brush 0
+{
+( -1232 -296 328 ) ( -1232 -295 328 ) ( -1232 -296 329 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -296 328 ) ( -1232 -296 329 ) ( -1231 -296 328 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -296 336 ) ( -1231 -296 336 ) ( -1232 -295 336 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1216 -248 352 ) ( -1216 -247 352 ) ( -1215 -248 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1216 -248 352 ) ( -1215 -248 352 ) ( -1216 -248 353 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1216 -248 352 ) ( -1216 -248 353 ) ( -1216 -247 352 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 1
+{
+( -1232 -264 336 ) ( -1232 -264 337 ) ( -1232 -265 336 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -264 336 ) ( -1232 -248 320 ) ( -1360 -248 320 ) terrain/trench_broom/concrete [ -1.0000000000000002 0 0 0 ] [ 0 0.7071067811865477 -0.7071067811865477 0 ] 0 1 1
+( -1232 -264 336 ) ( -1232 -265 336 ) ( -1233 -264 336 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1216 -248 320 ) ( -1216 -248 321 ) ( -1217 -248 320 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1216 -248 320 ) ( -1216 -249 320 ) ( -1216 -248 321 ) terrain/trench_broom/concrete [ -0 1 0 0 ] [ -0 0 -1 0 ] 0 1 1
+}
+// brush 2
+{
+( -1232 -240 272 ) ( -1232 -239 272 ) ( -1232 -240 273 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -248 272 ) ( -1232 -248 273 ) ( -1231 -248 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -240 272 ) ( -1231 -240 272 ) ( -1232 -239 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1216 -192 352 ) ( -1216 -191 352 ) ( -1215 -192 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1216 -192 352 ) ( -1215 -192 352 ) ( -1216 -192 353 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1216 -192 352 ) ( -1216 -192 353 ) ( -1216 -191 352 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 3
+{
+( -1232 -352 272 ) ( -1232 -351 272 ) ( -1232 -352 273 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -352 272 ) ( -1232 -352 273 ) ( -1231 -352 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -352 272 ) ( -1231 -352 272 ) ( -1232 -351 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1216 -304 352 ) ( -1216 -303 352 ) ( -1215 -304 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1216 -296 352 ) ( -1215 -296 352 ) ( -1216 -296 353 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1216 -304 352 ) ( -1216 -304 353 ) ( -1216 -303 352 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 4
+{
+( -1392 -352 352 ) ( -1392 -351 352 ) ( -1392 -352 353 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -352 352 ) ( -1376 -352 353 ) ( -1375 -352 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -352 352 ) ( -1375 -352 352 ) ( -1376 -351 352 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1216 -192 368 ) ( -1216 -191 368 ) ( -1215 -192 368 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1216 -192 368 ) ( -1215 -192 368 ) ( -1216 -192 369 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1216 -192 368 ) ( -1216 -192 369 ) ( -1216 -191 368 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 5
+{
+( -1232 -296 320 ) ( -1232 -295 320 ) ( -1232 -296 321 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -296 320 ) ( -1232 -296 321 ) ( -1231 -296 320 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1216 -280 336 ) ( -1216 -279 336 ) ( -1215 -280 336 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1216 -280 336 ) ( -1216 -296 320 ) ( -1088 -296 320 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -0.7071067811865476 -0.7071067811865476 0 ] 0 1 1
+( -1216 -280 336 ) ( -1216 -280 337 ) ( -1216 -279 336 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 6
+{
+( -1392 -352 272 ) ( -1392 -351 272 ) ( -1392 -352 273 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1360 -352 272 ) ( -1360 -352 273 ) ( -1359 -352 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1360 -352 272 ) ( -1359 -352 272 ) ( -1360 -351 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1232 -336 352 ) ( -1232 -335 352 ) ( -1231 -336 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1232 -336 288 ) ( -1231 -336 288 ) ( -1232 -336 289 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -336 288 ) ( -1232 -336 289 ) ( -1232 -335 288 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 7
+{
+( -1392 -288 256 ) ( -1392 -287 256 ) ( -1392 -288 257 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1264 -352 256 ) ( -1264 -352 257 ) ( -1263 -352 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1264 -288 256 ) ( -1263 -288 256 ) ( -1264 -287 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1216 -192 272 ) ( -1216 -191 272 ) ( -1215 -192 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1216 -192 272 ) ( -1215 -192 272 ) ( -1216 -192 273 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1216 -192 272 ) ( -1216 -192 273 ) ( -1216 -191 272 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 8
+{
+( -1392 -336 272 ) ( -1392 -335 272 ) ( -1392 -336 273 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1392 -336 272 ) ( -1392 -336 273 ) ( -1391 -336 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1392 -336 272 ) ( -1391 -336 272 ) ( -1392 -335 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 -208 352 ) ( -1376 -207 352 ) ( -1375 -208 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 -208 352 ) ( -1375 -208 352 ) ( -1376 -208 353 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -208 352 ) ( -1376 -208 353 ) ( -1376 -207 352 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 9
+{
+( -1328 -192 352 ) ( -1328 -208 352 ) ( -1328 -192 272 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -208 272 ) ( -1328 -208 272 ) ( -1232 -208 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -192 272 ) ( -1328 -192 272 ) ( -1232 -208 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1232 -208 352 ) ( -1328 -208 352 ) ( -1232 -192 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1232 -192 352 ) ( -1328 -192 352 ) ( -1232 -192 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -208 352 ) ( -1232 -192 352 ) ( -1232 -208 272 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 10
+{
+( -1392 -208 272 ) ( -1392 -192 272 ) ( -1392 -208 352 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1392 -208 352 ) ( -1360 -208 352 ) ( -1392 -208 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1392 -208 272 ) ( -1360 -208 272 ) ( -1392 -192 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1392 -192 352 ) ( -1360 -192 352 ) ( -1392 -208 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1392 -192 272 ) ( -1360 -192 272 ) ( -1392 -192 352 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1360 -208 272 ) ( -1360 -208 352 ) ( -1360 -192 272 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 11
+{
+( -1360 -208 352 ) ( -1360 -208 320 ) ( -1360 -192 352 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1328 -208 352 ) ( -1328 -208 320 ) ( -1360 -208 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1328 -208 320 ) ( -1328 -192 320 ) ( -1360 -208 320 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1328 -208 352 ) ( -1360 -208 352 ) ( -1328 -192 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1360 -192 352 ) ( -1360 -192 320 ) ( -1328 -192 352 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1328 -192 352 ) ( -1328 -192 320 ) ( -1328 -208 352 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 83
+{
+"classname" "interactable_door"
+"open_pos" "0 2.5 0"
+"_tb_group" "21"
+// brush 0
+{
+( -1228 -296 272 ) ( -1228 -295 272 ) ( -1228 -296 273 ) terrain/trench_broom/shutter_door [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1228 -296 272 ) ( -1228 -296 273 ) ( -1227 -296 272 ) terrain/trench_broom/shutter_door [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1228 -296 272 ) ( -1227 -296 272 ) ( -1228 -295 272 ) terrain/trench_broom/shutter_door [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1220 -248 336 ) ( -1220 -247 336 ) ( -1219 -248 336 ) terrain/trench_broom/shutter_door [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1220 -248 336 ) ( -1219 -248 336 ) ( -1220 -248 337 ) terrain/trench_broom/shutter_door [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1220 -248 336 ) ( -1220 -248 337 ) ( -1220 -247 336 ) terrain/trench_broom/shutter_door [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 84
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "Tube"
+"_tb_id" "22"
+"_tb_linked_group_id" "{7ad28984-2594-40b2-adbd-c90c6f5066b0}"
+// brush 0
+{
+( -1312 -192 256 ) ( -1312 -191 256 ) ( -1312 -192 257 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1312 -192 256 ) ( -1312 -192 257 ) ( -1311 -192 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1312 -192 256 ) ( -1311 -192 256 ) ( -1312 -191 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1296 -96 336 ) ( -1296 -95 336 ) ( -1295 -96 336 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1296 48 336 ) ( -1295 48 336 ) ( -1296 48 337 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1296 -96 336 ) ( -1296 -96 337 ) ( -1296 -95 336 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 1
+{
+( -1376 -192 256 ) ( -1376 -191 256 ) ( -1376 -192 257 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -192 256 ) ( -1376 -192 257 ) ( -1375 -192 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -192 256 ) ( -1375 -192 256 ) ( -1376 -191 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1312 -96 272 ) ( -1312 -95 272 ) ( -1311 -96 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1312 48 272 ) ( -1311 48 272 ) ( -1312 48 273 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1312 -96 272 ) ( -1312 -96 273 ) ( -1312 -95 272 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 2
+{
+( -1376 -192 336 ) ( -1376 -191 336 ) ( -1376 -192 337 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -192 336 ) ( -1376 -192 337 ) ( -1375 -192 336 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -192 336 ) ( -1375 -192 336 ) ( -1376 -191 336 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1296 -80 352 ) ( -1296 -79 352 ) ( -1295 -80 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1296 48 352 ) ( -1295 48 352 ) ( -1296 48 353 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1296 -80 352 ) ( -1296 -80 353 ) ( -1296 -79 352 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 3
+{
+( -1392 -192 272 ) ( -1392 -191 272 ) ( -1392 -192 273 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1392 -192 272 ) ( -1392 -192 273 ) ( -1391 -192 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1392 -192 256 ) ( -1391 -192 256 ) ( -1392 -191 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 -80 352 ) ( -1376 -79 352 ) ( -1375 -80 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 48 352 ) ( -1375 48 352 ) ( -1376 48 353 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -80 352 ) ( -1376 -80 353 ) ( -1376 -79 352 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 85
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "Overlook"
+"_tb_id" "23"
+"_tb_linked_group_id" "{de41b229-297b-433d-aacd-d5188b85347b}"
+// brush 0
+{
+( -1328 48 256 ) ( -1328 49 256 ) ( -1328 48 257 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1296 48 256 ) ( -1296 48 257 ) ( -1295 48 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1296 48 256 ) ( -1295 48 256 ) ( -1296 49 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1264 64 384 ) ( -1264 65 384 ) ( -1263 64 384 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1264 64 352 ) ( -1263 64 352 ) ( -1264 64 353 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1264 64 352 ) ( -1264 64 353 ) ( -1264 65 352 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 1
+{
+( -1276 64 288 ) ( -1276 65 288 ) ( -1276 64 289 ) terrain/trench_broom/glass [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1276 64 288 ) ( -1276 64 289 ) ( -1275 64 288 ) terrain/trench_broom/glass [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1276 64 288 ) ( -1275 64 288 ) ( -1276 65 288 ) terrain/trench_broom/glass [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1268 256 320 ) ( -1268 257 320 ) ( -1267 256 320 ) terrain/trench_broom/glass [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1268 448 320 ) ( -1267 448 320 ) ( -1268 448 321 ) terrain/trench_broom/glass [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1268 256 320 ) ( -1268 256 321 ) ( -1268 257 320 ) terrain/trench_broom/glass [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 2
+{
+( -1280 64 320 ) ( -1280 65 320 ) ( -1280 64 321 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1280 64 320 ) ( -1280 64 321 ) ( -1279 64 320 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1280 64 320 ) ( -1279 64 320 ) ( -1280 65 320 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1264 256 336 ) ( -1264 257 336 ) ( -1263 256 336 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1264 448 336 ) ( -1263 448 336 ) ( -1264 448 337 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1264 256 336 ) ( -1264 256 337 ) ( -1264 257 336 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 3
+{
+( -1488 64 256 ) ( -1488 65 256 ) ( -1488 64 257 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1408 64 256 ) ( -1408 64 257 ) ( -1407 64 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1408 64 256 ) ( -1407 64 256 ) ( -1408 65 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1280 80 272 ) ( -1280 81 272 ) ( -1279 80 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1280 448 272 ) ( -1279 448 272 ) ( -1280 448 273 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1264 80 272 ) ( -1264 80 273 ) ( -1264 81 272 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 4
+{
+( -1280 64 272 ) ( -1280 65 272 ) ( -1280 64 273 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1280 64 272 ) ( -1280 64 273 ) ( -1279 64 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1280 64 272 ) ( -1279 64 272 ) ( -1280 65 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1264 256 288 ) ( -1264 257 288 ) ( -1263 256 288 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1264 448 288 ) ( -1263 448 288 ) ( -1264 448 289 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1264 256 288 ) ( -1264 256 289 ) ( -1264 257 288 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 5
+{
+( -1360 48 352 ) ( -1360 49 352 ) ( -1360 48 353 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1392 48 352 ) ( -1392 48 353 ) ( -1391 48 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1392 48 320 ) ( -1391 48 320 ) ( -1392 49 320 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1296 64 384 ) ( -1296 65 384 ) ( -1295 64 384 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1296 64 368 ) ( -1295 64 368 ) ( -1296 64 369 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1328 64 368 ) ( -1328 64 369 ) ( -1328 65 368 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 6
+{
+( -1276 64 336 ) ( -1276 65 336 ) ( -1276 64 337 ) terrain/trench_broom/glass [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1276 64 336 ) ( -1276 64 337 ) ( -1275 64 336 ) terrain/trench_broom/glass [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1276 64 336 ) ( -1275 64 336 ) ( -1276 65 336 ) terrain/trench_broom/glass [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1268 256 368 ) ( -1268 257 368 ) ( -1267 256 368 ) terrain/trench_broom/glass [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1268 448 368 ) ( -1267 448 368 ) ( -1268 448 369 ) terrain/trench_broom/glass [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1268 256 368 ) ( -1268 256 369 ) ( -1268 257 368 ) terrain/trench_broom/glass [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 7
+{
+( -1280 64 368 ) ( -1280 65 368 ) ( -1280 64 369 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1280 64 368 ) ( -1280 64 369 ) ( -1279 64 368 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1280 64 368 ) ( -1279 64 368 ) ( -1280 65 368 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1264 256 384 ) ( -1264 257 384 ) ( -1263 256 384 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1264 448 384 ) ( -1263 448 384 ) ( -1264 448 385 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1264 256 384 ) ( -1264 256 385 ) ( -1264 257 384 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 8
+{
+( -1488 448 256 ) ( -1488 449 256 ) ( -1488 448 257 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1488 448 256 ) ( -1488 448 257 ) ( -1487 448 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1488 448 256 ) ( -1487 448 256 ) ( -1488 449 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1264 464 384 ) ( -1264 465 384 ) ( -1263 464 384 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1264 464 368 ) ( -1263 464 368 ) ( -1264 464 369 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1264 464 368 ) ( -1264 464 369 ) ( -1264 465 368 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 9
+{
+( -1488 48 256 ) ( -1488 49 256 ) ( -1488 48 257 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1424 48 256 ) ( -1424 48 257 ) ( -1423 48 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1424 48 256 ) ( -1423 48 256 ) ( -1424 49 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1392 64 384 ) ( -1392 65 384 ) ( -1391 64 384 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1392 64 368 ) ( -1391 64 368 ) ( -1392 64 369 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1360 64 368 ) ( -1360 64 369 ) ( -1360 65 368 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 10
+{
+( -1488 96 384 ) ( -1488 97 384 ) ( -1488 96 385 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1488 48 384 ) ( -1488 48 385 ) ( -1487 48 384 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1488 96 384 ) ( -1487 96 384 ) ( -1488 97 384 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1264 464 400 ) ( -1264 465 400 ) ( -1263 464 400 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1264 464 400 ) ( -1263 464 400 ) ( -1264 464 401 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1264 464 400 ) ( -1264 464 401 ) ( -1264 465 400 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 11
+{
+( -1360 48 240 ) ( -1360 49 240 ) ( -1360 48 241 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1392 48 240 ) ( -1392 48 241 ) ( -1391 48 240 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1392 48 256 ) ( -1391 48 256 ) ( -1392 49 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1296 64 272 ) ( -1296 65 272 ) ( -1295 64 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1296 64 256 ) ( -1295 64 256 ) ( -1296 64 257 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1328 64 256 ) ( -1328 64 257 ) ( -1328 65 256 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 12
+{
+( -1488 448 384 ) ( -1488 400 384 ) ( -1488 448 272 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1472 400 272 ) ( -1488 400 272 ) ( -1472 400 384 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1488 448 272 ) ( -1488 400 272 ) ( -1472 448 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1472 448 384 ) ( -1472 400 384 ) ( -1488 448 384 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 448 272 ) ( -1472 448 272 ) ( -1488 448 384 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1472 448 272 ) ( -1472 400 272 ) ( -1472 448 384 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 13
+{
+( -1488 64 272 ) ( -1488 368 272 ) ( -1488 64 384 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1488 64 384 ) ( -1472 64 384 ) ( -1488 64 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1472 64 272 ) ( -1472 368 272 ) ( -1488 64 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 64 384 ) ( -1488 368 384 ) ( -1472 64 384 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 368 384 ) ( -1488 368 272 ) ( -1472 368 384 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1472 64 384 ) ( -1472 368 384 ) ( -1472 64 272 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 14
+{
+( -1488 368 384 ) ( -1488 368 320 ) ( -1488 400 384 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1472 368 384 ) ( -1472 368 320 ) ( -1488 368 384 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1488 400 320 ) ( -1488 368 320 ) ( -1472 400 320 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1472 400 384 ) ( -1472 368 384 ) ( -1488 400 384 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 400 384 ) ( -1488 400 320 ) ( -1472 400 384 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1472 400 384 ) ( -1472 400 320 ) ( -1472 368 384 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 86
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "Cliff"
+"_tb_id" "25"
+"_tb_linked_group_id" "{b6b38afc-72e0-4586-a9bd-7b16036b51d0}"
+// brush 0
+{
+( -1232 -432 -448 ) ( -1232.1333333333328 -431 -448 ) ( -1232 -432 -447 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -432 -448 ) ( -1232 -432 -447 ) ( -1231 -432 -448 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -432 -320 ) ( -1231 -432 -320 ) ( -1232.1333333333328 -431 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1248 -192 256 ) ( -1248.1333333333328 -191 256 ) ( -1247 -192 256 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1248 -192 80 ) ( -1247 -192 80 ) ( -1248 -192 81 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1248 -192 80 ) ( -1248 -192 81 ) ( -1248.1333333333328 -191 80 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 1
+{
+( -1232 -432 -160 ) ( -1232.1333333333328 -431 -160 ) ( -1232 -432 -159 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -432 -160 ) ( -1232 -432 -159 ) ( -1231 -432 -160 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -432 368 ) ( -1231 -432 368 ) ( -1232.1333333333328 -431 368 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1248 -192 544 ) ( -1248.1333333333328 -191 544 ) ( -1247 -192 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1248 -192 368 ) ( -1247 -192 368 ) ( -1248 -192 369 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1248 -192 368 ) ( -1248 -192 369 ) ( -1248.1333333333328 -191 368 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 2
+{
+( -1264 -192 -160 ) ( -1264.1333333333328 -191 -160 ) ( -1264 -192 -159 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1264 -192 -160 ) ( -1264 -192 -159 ) ( -1263 -192 -160 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1264 -192 -320 ) ( -1263 -192 -320 ) ( -1264.1333333333328 -191 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1280 48 544 ) ( -1280.1333333333328 49 544 ) ( -1279 48 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1280 48 368 ) ( -1279 48 368 ) ( -1280 48 369 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1280 48 368 ) ( -1280 48 369 ) ( -1280.1333333333328 49 368 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 3
+{
+( -1296 48 240 ) ( -1296 49 240 ) ( -1296 48 241 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1296 48 240 ) ( -1296 48 241 ) ( -1295 48 240 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1296 48 -320 ) ( -1295 48 -320 ) ( -1296 49 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1280 368 256 ) ( -1280 369 256 ) ( -1279 368 256 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1280 464 256 ) ( -1279 464 256 ) ( -1280 464 257 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1280 368 256 ) ( -1280 368 257 ) ( -1280 369 256 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 4
+{
+( -1232 -432 -240 ) ( -1232.1333333333328 -431 -240 ) ( -1232 -432 -239 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -432 -240 ) ( -1232 -432 -239 ) ( -1231 -432 -240 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1232 -432 256 ) ( -1231 -432 256 ) ( -1232.1333333333328 -431 256 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1248 -192 368 ) ( -1248.1333333333328 -191 368 ) ( -1247 -192 368 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1248 -352 288 ) ( -1247 -352 288 ) ( -1248 -352 289 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1248 -192 288 ) ( -1248 -192 289 ) ( -1248.1333333333328 -191 288 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 5
+{
+( -1296 48 400 ) ( -1296 49 400 ) ( -1296 48 401 ) terrain/trench_broom/rock [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1296 48 400 ) ( -1296 48 401 ) ( -1295 48 400 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1296 48 400 ) ( -1295 48 400 ) ( -1296 49 400 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1280 464 544 ) ( -1280 465 544 ) ( -1279 464 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1280 464 512 ) ( -1279 464 512 ) ( -1280 464 513 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1280 464 512 ) ( -1280 464 513 ) ( -1280 465 512 ) terrain/trench_broom/rock [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 6
+{
+( -1488 960 544 ) ( -1296 464 544 ) ( -1296 464 -320 ) terrain/trench_broom/rock [ 0 1.0000000000000002 0 96 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+( -1296 464 544 ) ( -1280 464 544 ) ( -1280 464 -320 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1296 464 -320 ) ( -1280 464 -320 ) ( -1472 960 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1472 960 544 ) ( -1280 464 544 ) ( -1296 464 544 ) terrain/trench_broom/rock [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1472 960 544 ) ( -1488 960 544 ) ( -1488 960 -320 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1280 464 -320 ) ( -1280 464 544 ) ( -1472 960 544 ) terrain/trench_broom/rock [ 0 -1.0000000000000002 0 -96 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+}
+}
+// entity 87
+{
+"classname" "area_hazard"
+"dps" "10000000"
+"player_dps" "10000000"
+// brush 0
+{
+( -1488 -736 -272 ) ( -1488 -735 -272 ) ( -1488 -736 -271 ) special/voidfog [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -752 -736 -272 ) ( -752 -736 -271 ) ( -751 -736 -272 ) special/voidfog [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -752 -736 -320 ) ( -751 -736 -320 ) ( -752 -735 -320 ) special/voidfog [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -528 -128 -256 ) ( -528 -127 -256 ) ( -527 -128 -256 ) special/voidfog [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -528 960 -256 ) ( -527 960 -256 ) ( -528 960 -255 ) special/voidfog [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -448 -128 -256 ) ( -448 -128 -255 ) ( -448 -127 -256 ) special/voidfog [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 88
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "Exit"
+"_tb_id" "26"
+"_tb_linked_group_id" "{d9b69af8-1e9c-403a-a220-8e02402e69ca}"
+// brush 0
+{
+( -1600 336 352 ) ( -1600 337 352 ) ( -1600 336 353 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1584 336 352 ) ( -1584 336 353 ) ( -1583 336 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1584 336 352 ) ( -1583 336 352 ) ( -1584 337 352 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 432 368 ) ( -1488 433 368 ) ( -1487 432 368 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 432 368 ) ( -1487 432 368 ) ( -1488 432 369 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1488 432 368 ) ( -1488 432 369 ) ( -1488 433 368 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 1
+{
+( -1600 368 256 ) ( -1600 369 256 ) ( -1600 368 257 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1520 320 256 ) ( -1520 320 257 ) ( -1519 320 256 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1520 368 256 ) ( -1519 368 256 ) ( -1520 369 256 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 448 272 ) ( -1488 449 272 ) ( -1487 448 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 448 272 ) ( -1487 448 272 ) ( -1488 448 273 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1488 448 272 ) ( -1488 448 273 ) ( -1488 449 272 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 2
+{
+( -1600 320 272 ) ( -1600 321 272 ) ( -1600 320 273 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1584 320 272 ) ( -1584 320 273 ) ( -1583 320 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1584 320 272 ) ( -1583 320 272 ) ( -1584 321 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 336 368 ) ( -1488 337 368 ) ( -1487 336 368 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 336 368 ) ( -1487 336 368 ) ( -1488 336 369 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1488 336 368 ) ( -1488 336 369 ) ( -1488 337 368 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 3
+{
+( -1600 432 272 ) ( -1600 433 272 ) ( -1600 432 273 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1568 432 272 ) ( -1568 432 273 ) ( -1567 432 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1568 432 272 ) ( -1567 432 272 ) ( -1568 433 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 448 368 ) ( -1488 449 368 ) ( -1487 448 368 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 448 288 ) ( -1487 448 288 ) ( -1488 448 289 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1488 448 288 ) ( -1488 448 289 ) ( -1488 449 288 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 4
+{
+( -1600 400 272 ) ( -1600 401 272 ) ( -1600 400 273 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1600 400 272 ) ( -1600 400 273 ) ( -1599 400 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1600 400 272 ) ( -1599 400 272 ) ( -1600 401 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1584 432 352 ) ( -1584 433 352 ) ( -1583 432 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1584 432 288 ) ( -1583 432 288 ) ( -1584 432 289 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1584 432 288 ) ( -1584 432 289 ) ( -1584 433 288 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 5
+{
+( -1600 336 272 ) ( -1600 337 272 ) ( -1600 336 273 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1600 336 272 ) ( -1600 336 273 ) ( -1599 336 272 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1600 336 272 ) ( -1599 336 272 ) ( -1600 337 272 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1584 368 352 ) ( -1584 369 352 ) ( -1583 368 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1584 368 352 ) ( -1583 368 352 ) ( -1584 368 353 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1584 368 352 ) ( -1584 368 353 ) ( -1584 369 352 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 6
+{
+( -1600 368 320 ) ( -1600 369 320 ) ( -1600 368 321 ) terrain/trench_broom/concrete [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1616 368 320 ) ( -1616 368 321 ) ( -1615 368 320 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1616 368 320 ) ( -1615 368 320 ) ( -1616 369 320 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1584 400 352 ) ( -1584 401 352 ) ( -1583 400 352 ) terrain/trench_broom/concrete [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1584 400 352 ) ( -1583 400 352 ) ( -1584 400 353 ) terrain/trench_broom/concrete [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1584 400 352 ) ( -1584 400 353 ) ( -1584 401 352 ) terrain/trench_broom/concrete [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 7
+{
+( -1596 368 272 ) ( -1596 369 272 ) ( -1596 368 273 ) terrain/trench_broom/shutter_door [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1596 368 272 ) ( -1596 368 273 ) ( -1595 368 272 ) terrain/trench_broom/shutter_door [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1596 368 272 ) ( -1595 368 272 ) ( -1596 369 272 ) terrain/trench_broom/shutter_door [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1588 400 320 ) ( -1588 401 320 ) ( -1587 400 320 ) terrain/trench_broom/shutter_door [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1588 400 320 ) ( -1587 400 320 ) ( -1588 400 321 ) terrain/trench_broom/shutter_door [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1588 400 320 ) ( -1588 400 321 ) ( -1588 401 320 ) terrain/trench_broom/shutter_door [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 89
+{
+"classname" "light_lamp"
+"origin" "-1376 144 384"
+}
+// entity 90
+{
+"classname" "light_lamp"
+"origin" "-1376 368 384"
+}
+// entity 91
+{
+"classname" "light_lamp"
+"origin" "-1376 256 384"
+}
+// entity 92
+{
+"classname" "light_lamp"
+"origin" "-1536 384 352"
 }

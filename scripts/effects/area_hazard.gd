@@ -20,4 +20,4 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	for body in get_overlapping_bodies():
 		if body.has_node("Status"):
-			body.get_node("Status").rapid_damage_typed(dps * delta, damage_type)
+			body.get_node("Status").rapid_damage_typed(dps, damage_type, delta)

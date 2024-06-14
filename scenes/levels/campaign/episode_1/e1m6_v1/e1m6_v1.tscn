@@ -9,11 +9,11 @@
 [ext_resource type="Material" uid="uid://dqemvrb4pcd2g" path="res://materials/terrain/trench_broom_std/concrete.tres" id="9_ivqh6"]
 [ext_resource type="PackedScene" uid="uid://cbaxllkky8gfe" path="res://scenes/objects/lights/lamp.tscn" id="9_xvj7o"]
 [ext_resource type="CompressedTexture3D" uid="uid://dqeqbhvhjipxd" path="res://scenes/levels/campaign/episode_1/e1m6_v1/e1m6_v1.GPUParticlesCollisionSDF3D_data.exr" id="10_6sokn"]
-[ext_resource type="Material" uid="uid://d30jjdowuphyo" path="res://materials/terrain/trench_broom_std/checker_board.tres" id="10_h5mtv"]
+[ext_resource type="Material" uid="uid://d30jjdowuphyo" path="res://materials/terrain/trench_broom/checker_board.tres" id="10_h5mtv"]
 [ext_resource type="PackedScene" uid="uid://teto5bopi0w8" path="res://scenes/objects/lights/tube_light.tscn" id="11_7dhtj"]
 [ext_resource type="Material" uid="uid://dfqxdumc3t17u" path="res://materials/terrain/trench_broom_std/drywall.tres" id="11_kretk"]
 [ext_resource type="Material" uid="uid://cb4c2yxg51cwb" path="res://materials/terrain/trench_broom_std/rock.tres" id="12_x6m1u"]
-[ext_resource type="Material" uid="uid://c6o23twmkg77m" path="res://materials/terrain/trench_broom_std/key_metal_green.tres" id="13_cpsem"]
+[ext_resource type="Material" uid="uid://c6o23twmkg77m" path="res://materials/terrain/trench_broom/key_metal_green.tres" id="13_cpsem"]
 [ext_resource type="Material" uid="uid://qt3bjecsm0qb" path="res://materials/terrain/trench_broom_std/shutter_door.tres" id="14_wmccl"]
 [ext_resource type="Material" uid="uid://dh6h4bfv6pod2" path="res://materials/terrain/trench_broom_std/key_metal_blue.tres" id="15_s5mr1"]
 [ext_resource type="Material" uid="uid://bpiuncp6wk4t2" path="res://materials/terrain/trench_broom_std/key_metal_red.tres" id="16_hh6wh"]
@@ -59,7 +59,7 @@
 [ext_resource type="PackedScene" uid="uid://68ll8lt6xqyd" path="res://scenes/entities/locals/eepy_lizard.tscn" id="52_a6omo"]
 [ext_resource type="PackedScene" uid="uid://pr3j5d4ifvrt" path="res://scenes/entities/machines/plasma_droid.tscn" id="55_bykpp"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="56_lpnno"]
-[ext_resource type="PackedScene" path="res://scenes/objects/door_shutter_2x3.tscn" id="58_j4jxm"]
+[ext_resource type="PackedScene" uid="uid://ce7jor6ru8srq" path="res://scenes/objects/door_shutter_2x3.tscn" id="58_j4jxm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2jtk7"]
 

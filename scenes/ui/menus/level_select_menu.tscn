@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://dwof7m2ye3tjh" path="res://scenes/default_theme.tres" id="3_30jf0"]
 [ext_resource type="PackedScene" uid="uid://ddybwy4hdo2q3" path="res://scenes/levels/debug/test_level/test_level.tscn" id="4_c2yb4"]
 [ext_resource type="PackedScene" uid="uid://c73ftt2ccark1" path="res://scenes/levels/campaign/episode_1/e1m3_v2/e1m3_v2.tscn" id="5_ke8hl"]
-[ext_resource type="PackedScene" uid="uid://dhyysoapiaxew" path="res://scenes/levels/campaign/episode_1/e1m5_v1/e1m5_v1.tscn" id="5_x1faw"]
+[ext_resource type="PackedScene" uid="uid://rhhoyltya62d" path="res://scenes/levels/unsorted/concrete/concrete.tscn" id="6_4cx11"]
 [ext_resource type="PackedScene" uid="uid://cor0l0jkjwbo5" path="res://scenes/levels/campaign/episode_1/e1m6_v1/e1m6_v1.tscn" id="6_4jomd"]
 [ext_resource type="PackedScene" uid="uid://qvrf467m8cbk" path="res://scenes/levels/debug/level_04/level_04.tscn" id="9_tniqv"]
 [ext_resource type="PackedScene" uid="uid://dw8h4q7ndiu8q" path="res://scenes/levels/debug/unsorted_b/unsorted_b.tscn" id="10_ssjer"]
@@ -101,8 +101,10 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme = ExtResource("3_30jf0")
 disabled = true
-text = "E1M1"
+text = "E1M1 -- IN THE FLESH?"
 script = ExtResource("3_4djrb")
+level_name = "intro"
+always_open = true
 
 [node name="M2" type="Button" parent="SettingsPanel/LevelSelect/E1"]
 layout_mode = 2
@@ -110,13 +112,15 @@ theme = ExtResource("3_30jf0")
 disabled = true
 text = "E1M2"
 script = ExtResource("3_4djrb")
+level_name = "e1m2"
 
 [node name="M3" type="Button" parent="SettingsPanel/LevelSelect/E1"]
 layout_mode = 2
 theme = ExtResource("3_30jf0")
-text = "E1M3"
+text = "E1M3 -- SIXTEEN TONS"
 script = ExtResource("3_4djrb")
 _scene = ExtResource("5_ke8hl")
+level_name = "e1m3"
 
 [node name="M4" type="Button" parent="SettingsPanel/LevelSelect/E1"]
 layout_mode = 2
@@ -124,14 +128,15 @@ theme = ExtResource("3_30jf0")
 disabled = true
 text = "E1M4"
 script = ExtResource("3_4djrb")
+level_name = "e1m4"
 
 [node name="M5" type="Button" parent="SettingsPanel/LevelSelect/E1"]
 layout_mode = 2
 theme = ExtResource("3_30jf0")
-disabled = true
 text = "E1M5"
 script = ExtResource("3_4djrb")
-_scene = ExtResource("5_x1faw")
+_scene = ExtResource("6_4cx11")
+level_name = "e1m5"
 
 [node name="M6" type="Button" parent="SettingsPanel/LevelSelect/E1"]
 layout_mode = 2
@@ -139,6 +144,7 @@ theme = ExtResource("3_30jf0")
 text = "E1M6"
 script = ExtResource("3_4djrb")
 _scene = ExtResource("6_4jomd")
+level_name = "e1m6"
 
 [node name="M7" type="Button" parent="SettingsPanel/LevelSelect/E1"]
 layout_mode = 2
@@ -146,6 +152,7 @@ theme = ExtResource("3_30jf0")
 disabled = true
 text = "E1M7"
 script = ExtResource("3_4djrb")
+level_name = "e1m7"
 
 [node name="M8" type="Button" parent="SettingsPanel/LevelSelect/E1"]
 layout_mode = 2
@@ -153,15 +160,17 @@ theme = ExtResource("3_30jf0")
 disabled = true
 text = "E1M8"
 script = ExtResource("3_4djrb")
+level_name = "e1_boss"
 
 [node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E1"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 10
 theme = ExtResource("3_30jf0")
 disabled = true
 text = "E1MS"
 script = ExtResource("3_4djrb")
+level_name = "e1_secret"
+is_secret = true
 
 [node name="E2" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
 layout_mode = 2
@@ -222,15 +231,16 @@ theme = ExtResource("3_30jf0")
 disabled = true
 text = "E2M8"
 script = ExtResource("3_4djrb")
+level_name = "e2_boss"
 
 [node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E2"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 10
 theme = ExtResource("3_30jf0")
 disabled = true
 text = "E2MS"
 script = ExtResource("3_4djrb")
+is_secret = true
 
 [node name="E3" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
 layout_mode = 2
@@ -291,15 +301,17 @@ theme = ExtResource("3_30jf0")
 disabled = true
 text = "E3M8"
 script = ExtResource("3_4djrb")
+level_name = "e3_boss"
 
 [node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E3"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 10
 theme = ExtResource("3_30jf0")
 disabled = true
 text = "E3MS"
 script = ExtResource("3_4djrb")
+level_name = "e3_secret"
+is_secret = true
 
 [node name="E4" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
 visible = false
@@ -310,15 +322,17 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme = ExtResource("3_30jf0")
 disabled = true
-text = "E4M1"
+text = "E4M1 -- IN THE FLESH"
 script = ExtResource("3_4djrb")
+level_name = "e4m1"
 
 [node name="M2" type="Button" parent="SettingsPanel/LevelSelect/E4"]
 layout_mode = 2
 theme = ExtResource("3_30jf0")
 disabled = true
-text = "E4M2"
+text = "E4M2 -- SILENT SPRING"
 script = ExtResource("3_4djrb")
+level_name = "e4m2"
 
 [node name="M3" type="Button" parent="SettingsPanel/LevelSelect/E4"]
 layout_mode = 2
@@ -326,6 +340,7 @@ theme = ExtResource("3_30jf0")
 disabled = true
 text = "E4M3"
 script = ExtResource("3_4djrb")
+level_name = "e4m3"
 
 [node name="M4" type="Button" parent="SettingsPanel/LevelSelect/E4"]
 layout_mode = 2
@@ -333,6 +348,7 @@ theme = ExtResource("3_30jf0")
 disabled = true
 text = "E4M4"
 script = ExtResource("3_4djrb")
+level_name = "e4m4"
 
 [node name="M5" type="Button" parent="SettingsPanel/LevelSelect/E4"]
 layout_mode = 2
@@ -340,6 +356,7 @@ theme = ExtResource("3_30jf0")
 disabled = true
 text = "E4M5"
 script = ExtResource("3_4djrb")
+level_name = "e4m5"
 
 [node name="M6" type="Button" parent="SettingsPanel/LevelSelect/E4"]
 layout_mode = 2
@@ -347,6 +364,7 @@ theme = ExtResource("3_30jf0")
 disabled = true
 text = "E4M6"
 script = ExtResource("3_4djrb")
+level_name = "e4m6"
 
 [node name="M7" type="Button" parent="SettingsPanel/LevelSelect/E4"]
 layout_mode = 2
@@ -354,22 +372,25 @@ theme = ExtResource("3_30jf0")
 disabled = true
 text = "E4M7"
 script = ExtResource("3_4djrb")
+level_name = "e4m7"
 
 [node name="M8" type="Button" parent="SettingsPanel/LevelSelect/E4"]
 layout_mode = 2
 theme = ExtResource("3_30jf0")
 disabled = true
-text = "E4M8"
+text = "E4M8 -- WELCOME"
 script = ExtResource("3_4djrb")
+level_name = "finale"
 
 [node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E4"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 10
 theme = ExtResource("3_30jf0")
 disabled = true
-text = "E4MS"
+text = "E4MS -- ECHOES"
 script = ExtResource("3_4djrb")
+level_name = "e4_secret"
+is_secret = true
 
 [node name="Other" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
 layout_mode = 2
@@ -381,6 +402,8 @@ theme = ExtResource("3_30jf0")
 text = "TEST LEVEL"
 script = ExtResource("3_4djrb")
 _scene = ExtResource("4_c2yb4")
+level_name = "t1"
+always_open = true
 
 [node name="Unsorted1" type="Button" parent="SettingsPanel/LevelSelect/Other"]
 layout_mode = 2
@@ -388,6 +411,8 @@ theme = ExtResource("3_30jf0")
 text = "U1"
 script = ExtResource("3_4djrb")
 _scene = ExtResource("9_tniqv")
+level_name = "u1"
+always_open = true
 
 [node name="Unsorted2" type="Button" parent="SettingsPanel/LevelSelect/Other"]
 layout_mode = 2
@@ -395,6 +420,8 @@ theme = ExtResource("3_30jf0")
 text = "U2"
 script = ExtResource("3_4djrb")
 _scene = ExtResource("10_ssjer")
+level_name = "u2"
+always_open = true
 
 [node name="Unsorted3" type="Button" parent="SettingsPanel/LevelSelect/Other"]
 layout_mode = 2
@@ -402,5 +429,7 @@ theme = ExtResource("3_30jf0")
 text = "U3"
 script = ExtResource("3_4djrb")
 _scene = ExtResource("11_740x7")
+level_name = "u3"
+always_open = true
 
 [connection signal="pressed" from="Back" to="." method="_on_back_button_pressed"]

@@ -15,6 +15,7 @@ bool is_above_threshold(vec3 in_col) {
 
 void fragment() {
 	vec3 col = max(texture(screen_texture, SCREEN_UV).xyz - threshold, 0);
+	float inv_spread = 1.0/float(spread);
 
 	for (int i = 1; i < spread; i++) {
 		float x_dist = float(i) * SCREEN_PIXEL_SIZE.x; // float(screen_size.x);
@@ -24,7 +25,7 @@ void fragment() {
 		vec3 col_down_left = max(texture(screen_texture, SCREEN_UV + vec2(-x_dist, -y_dist)).xyz - threshold, 0);
 		vec3 col_down_right = max(texture(screen_texture, SCREEN_UV + vec2(x_dist, -y_dist)).xyz - threshold, 0);
 
-		float str = mix(0.25 / float(spread), 0.0, float(i)/float(spread));
+		float str = mix(0.25 * inv_spread, 0.0, float(i) * inv_spread);
 
 		col += col_up_left * str;// / (float(i) * 4.0);
 		col += col_up_right * str;// / (float(i) * 4.0);

@@ -17,7 +17,7 @@
 [ext_resource type="Material" uid="uid://bpiuncp6wk4t2" path="res://materials/terrain/trench_broom_std/key_metal_red.tres" id="14_da0ur"]
 [ext_resource type="PackedScene" uid="uid://cbaxllkky8gfe" path="res://scenes/objects/lights/lamp.tscn" id="14_gwmd0"]
 [ext_resource type="ArrayOccluder3D" uid="uid://bmluxbae2rj4d" path="res://scenes/levels/debug/level_04/level_04.occ" id="15_j1qkv"]
-[ext_resource type="Material" uid="uid://c6o23twmkg77m" path="res://materials/terrain/trench_broom_std/key_metal_green.tres" id="15_twj34"]
+[ext_resource type="Material" uid="uid://c6o23twmkg77m" path="res://materials/terrain/trench_broom/key_metal_green.tres" id="15_twj34"]
 [ext_resource type="Material" uid="uid://dh6h4bfv6pod2" path="res://materials/terrain/trench_broom_std/key_metal_blue.tres" id="16_vwpau"]
 [ext_resource type="PackedScene" uid="uid://dxyhvyy821swt" path="res://scenes/pickups/weapons/hunting_rifle_pickup.tscn" id="17_r5nr2"]
 [ext_resource type="Script" path="res://scripts/trench_broom/brush_door.gd" id="17_wh8jn"]

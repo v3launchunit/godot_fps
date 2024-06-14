@@ -213,6 +213,7 @@ layout_mode = 2
 
 [node name="InputScroll" type="ScrollContainer" parent="SettingsPanel"]
 process_mode = 4
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

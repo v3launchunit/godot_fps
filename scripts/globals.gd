@@ -1,8 +1,14 @@
 extends Node
 
+## General scene-independent values and functions.
+##
 ## This script is meant to hold various constants, global variables, user
 ## settings, etc. It also handles saving and loading user settings to and from
 ## the disc and a few other scene-independent things.
+
+## Tells scripts to check to see if the game's settings have been changed and
+## to update any values they need to.
+signal settings_changed
 
 
 enum Difficulty {
@@ -98,17 +104,16 @@ var s_nightmare_mode_active: bool = false
 var s_toggle_crouch: bool = false
 
 var names: ConfigFile = ConfigFile.new()
-
-## Tells scripts to check to see if the game's settings have been changed and
-## to update any values they need to.
-signal settings_changed
+var persistent: ConfigFile = ConfigFile.new()
 
 
 func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	if names.load("res://names.cfg"):
 		printerr("could not load names.cfg")
+	_setup_user()
 	_load_config()
+	persistent.load("user://saves/persistent.cfg")
 
 
 func _ready() -> void:
@@ -150,6 +155,13 @@ func _load_config() -> void:
 	s_music_volume = config.get_value("audio", "music_volume", s_music_volume)
 
 
+func _setup_user() -> void:
+	if not DirAccess.dir_exists_absolute("user://saves/auto"):
+		DirAccess.make_dir_recursive_absolute("user://saves/auto")
+	if not DirAccess.dir_exists_absolute("user://saves/user"):
+		DirAccess.make_dir_recursive_absolute("user://saves/user")
+
+
 ## Save the current configuration settings to disq.
 func _on_settings_changed() -> void:
 	var config = ConfigFile.new()
@@ -182,11 +194,19 @@ func save_game(to: String) -> void:
 			await node.ready_to_save
 		node.owner = world
 	scene.pack(world)
-	ResourceSaver.save(scene, to)
+	push_error(ResourceSaver.save(scene, to))
 
 
 func parse_names(section: String, key: String) -> Variant:
 	return names.get_value(section, key)
+
+
+func level_revealed(name: String) -> bool:
+	return persistent.get_value("progress", "%s_revealed" % name, false)
+
+
+func level_cleared(name: String) -> bool:
+	return persistent.get_value("progress", "%s_cleared" % name, false)
 
 
 func get_lut(name: String) -> ImageTexture3D:

@@ -31,9 +31,10 @@ var alt_ammo_display: int = 0.0
 
 @onready var keys: Array[Node] = $KeysContainer.get_children()
 @onready var weapons: Array[Node] = $WeaponsContainer2D.get_children()
-@onready var crosshairs: TextureRect = find_child("Crosshairs") as TextureRect
-@onready var event_container: VBoxContainer = $EventContainer as VBoxContainer
-@onready var alert: Label = $Alert as Label
+@onready var crosshairs := find_child("Crosshairs") as TextureRect
+@onready var event_container := $EventContainer as VBoxContainer
+@onready var alert := $Alert as Label
+@onready var heat_flash := $HeatFlash as Control
 
 
 func _ready() -> void:
@@ -94,6 +95,11 @@ func _process(delta: float) -> void:
 		if alert_timer <= 0.0:
 			alert.hide()
 
+	if heat_flash.visible:
+		heat_flash.modulate.a = move_toward(heat_flash.modulate.a, 0.0, delta * 0.25)
+		if heat_flash.modulate.a <= 0.0:
+			heat_flash.visible = false
+
 	if Input.is_action_just_pressed("quick_exit"):
 		get_tree().quit()
 
@@ -107,6 +113,12 @@ func flash_with_sound(color: Color, sound: AudioStream) -> void:
 	flash(color)
 	stream_player.stream = sound
 	stream_player.play()
+
+
+func rapid_flash(type: Status.DamageType, delta: float):
+	if type == Status.DamageType.FIRE:
+		heat_flash.visible = true
+		heat_flash.modulate.a = move_toward(heat_flash.modulate.a, 1.0, delta * 2.5)
 
 
 func log_event(event_text: String) -> void:
@@ -131,6 +143,8 @@ func _on_weapon_hud_connected(
 	) -> void:
 	current_ammo = ammo_type
 	current_alt_ammo = alt_ammo_type
+	if crosshairs == null:
+		await ready
 	crosshairs.texture.region.position = Vector2(index * 32, category * 32)
 	weapons[last_category].self_modulate = Color(0.5, 0.5, 0.5)
 	weapons[category].visible = true

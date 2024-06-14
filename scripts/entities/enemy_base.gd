@@ -162,8 +162,8 @@ func _physics_process(delta: float) -> void:
 				if not current_targets.is_empty():
 					detect_target(current_targets[-1])
 		State.IDLE:
-			if wanderer:
-				_wander(delta)
+			#if wanderer:
+				#_wander(delta)
 			_scan(delta)
 		State.SEARCHING:
 			_investigate(delta)
@@ -259,11 +259,7 @@ func _wander(delta) -> void:
 	if wander_idle_timer < Globals.C_EPSILON:
 		if wander_idling:
 			wander_idling = false
-			current_destination = global_position + Vector3(
-					randf_range(-15.0, 15.0),
-					0,
-					randf_range(-15.0, 15.0)
-			)
+			#current_destination =
 			nav_agent.target_position = current_destination
 			state_machine.travel("moving", true)
 		var next_pos: Vector3 = nav_agent.get_next_path_position()

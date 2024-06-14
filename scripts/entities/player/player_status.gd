@@ -62,9 +62,10 @@ func damage_typed(amount: float, type: DamageType) -> float: # returns damage de
 	return amount # return value is amount of damage recieved, for piercers
 
 
-func rapid_damage_typed(amount: float, type: DamageType) -> void:
-	health -= amount * base_damage_factor * damage_multipliers[type] * (1 - armor_absorption)
-	armor  -= amount * base_damage_factor * damage_multipliers[type] * armor_absorption
+func rapid_damage_typed(amount: float, type: DamageType, delta: float) -> void:
+	health -= amount * delta * base_damage_factor * damage_multipliers[type] * (1 - armor_absorption)
+	armor  -= amount * delta * base_damage_factor * damage_multipliers[type] * armor_absorption
+	hud.rapid_flash(type, delta)
 	if armor <= 0:
 		health += armor # armor will be negative
 		armor = 0

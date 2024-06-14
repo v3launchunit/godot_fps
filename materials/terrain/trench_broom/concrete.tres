@@ -15,15 +15,15 @@ frequency = 0.05
 cellular_jitter = 0.995
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b8r0m"]
-width = 128
-height = 128
+width = 256
+height = 256
 generate_mipmaps = false
 color_ramp = SubResource("Gradient_uli5b")
 noise = SubResource("FastNoiseLite_3c4ji")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jd1rg"]
-width = 128
-height = 128
+width = 256
+height = 256
 generate_mipmaps = false
 as_normal_map = true
 bump_strength = 4.0

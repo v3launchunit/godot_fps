@@ -13,6 +13,7 @@ qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
 "_color": Vector3(255, 128, 0),
+"angle": 0.0,
 "energy": 1.0,
 "pitch_angle": 45.0,
 "range": 10.0

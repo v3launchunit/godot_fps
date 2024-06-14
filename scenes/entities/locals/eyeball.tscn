@@ -655,9 +655,11 @@ collision_layer = 4
 collision_mask = 23
 script = ExtResource("1_pxyj5")
 species = &"eyeballs"
+speed = 5.0
 turning_speed = 3.0
 acceleration = 10.0
 knockback_multiplier = 3.0
+deaf = true
 sight_line_sweep_angle = 0.785398
 sight_line_sweep_speed = 30.0
 detection_stream = SubResource("AudioStreamGenerator_xh0sx")
@@ -769,6 +771,7 @@ doppler_tracking = 2
 
 [node name="Status" type="Node" parent="."]
 script = ExtResource("3_67ny2")
+max_health = 50.0
 gib_threshold = 0.0
 damage_sys = ExtResource("5_gpi87")
 gibs = ExtResource("7_wi7ca")

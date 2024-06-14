@@ -11,8 +11,8 @@ uniform sampler2D screen: hint_screen_texture, filter_nearest;
 void fragment() {
 	COLOR = texture(
 			screen,
-			UV + (
-					texture(heat_noise, UV + TIME * vec2(0.0, heat_speed)).rg
+			SCREEN_UV + (
+					texture(heat_noise, SCREEN_UV + TIME * vec2(0.0, heat_speed)).rg
 					- vec2(0.5)
 			)
 			* SCREEN_PIXEL_SIZE

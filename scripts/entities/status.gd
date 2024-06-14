@@ -92,12 +92,12 @@ func damage_typed(amount: float, type: DamageType) -> float:
 	return amount # return value is amount of damage recieved, for piercers
 
 
-func rapid_damage(amount: float) -> void:
-	rapid_damage_typed(amount, DamageType.GENERIC)
+func rapid_damage(amount: float, delta: float) -> void:
+	rapid_damage_typed(amount, DamageType.GENERIC, delta)
 
 
-func rapid_damage_typed(amount: float, type: DamageType) -> void:
-	health -= amount * base_damage_factor * damage_multipliers[type]
+func rapid_damage_typed(amount: float, type: DamageType, delta: float) -> void:
+	health -= amount * delta * base_damage_factor * damage_multipliers[type]
 #	print(health)
 	#if damage_sys != null:
 		#var instance := damage_sys.instantiate()

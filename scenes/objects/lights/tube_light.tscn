@@ -1,16 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://teto5bopi0w8"]
+[gd_scene load_steps=20 format=3 uid="uid://teto5bopi0w8"]
 
-[ext_resource type="Shader" path="res://shaders/spatial/unlit_mix_psx.gdshader" id="1_buyse"]
 [ext_resource type="Material" uid="uid://c42r6gnwbsttx" path="res://materials/effects/fancy_halo.tres" id="1_tg5by"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="2_v2qg2"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="3_s1nd8"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_be0y6"]
-render_priority = 0
-shader = ExtResource("1_buyse")
-shader_parameter/albedo = Color(3.75, 3.38, 3.08, 1)
-shader_parameter/uv1_scale = null
-shader_parameter/uv1_offset = null
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq0ji"]
 shading_mode = 0
@@ -137,15 +129,17 @@ states/on/node = SubResource("AnimationNodeAnimation_n5q0r")
 states/on/position = Vector2(402.667, 99.3333)
 transitions = ["Start", "on", SubResource("AnimationNodeStateMachineTransition_4ngb6"), "on", "off", SubResource("AnimationNodeStateMachineTransition_00byd"), "off", "on", SubResource("AnimationNodeStateMachineTransition_262vw")]
 
-[node name="TubeLight" type="MeshInstance3D"]
+[node name="TubeLight" type="Node3D"]
+
+[node name="TubeLight" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-material_override = SubResource("ShaderMaterial_be0y6")
+cast_shadow = 0
 visibility_range_end = 25.0
 visibility_range_end_margin = 5.0
 mesh = SubResource("CylinderMesh_nuthf")
 skeleton = NodePath("OmniLight3D")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="TubeLight"]
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -0.125, 0.25, 0)
 light_color = Color(1, 0.901961, 0.815686, 1)
 light_energy = 1.875
@@ -154,7 +148,7 @@ shadow_enabled = true
 distance_fade_enabled = true
 omni_range = 18.75
 
-[node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
+[node name="LensFlare" type="MeshInstance3D" parent="TubeLight/OmniLight3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0, 0)
 layers = 2
 material_override = ExtResource("1_tg5by")
@@ -168,7 +162,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_q1qd4")
 script = ExtResource("3_s1nd8")
 color = Color(1, 0.901961, 0.815686, 1)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+[node name="OmniLight3D2" type="OmniLight3D" parent="TubeLight"]
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -0.125, -0.25, 0)
 light_color = Color(1, 0.901961, 0.815686, 1)
 light_energy = 1.875
@@ -177,7 +171,7 @@ shadow_enabled = true
 distance_fade_enabled = true
 omni_range = 18.75
 
-[node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D2"]
+[node name="LensFlare" type="MeshInstance3D" parent="TubeLight/OmniLight3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0, 0)
 layers = 2
 material_override = ExtResource("1_tg5by")
@@ -191,14 +185,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_q1qd4")
 script = ExtResource("3_s1nd8")
 color = Color(1, 0.901961, 0.815686, 1)
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="TubeLight"]
 libraries = {
 "": SubResource("AnimationLibrary_rjy61")
 }
 tree_root = SubResource("AnimationNodeStateMachine_tsrdu")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TubeLight"]
 libraries = {
 "": SubResource("AnimationLibrary_rjy61")
 }
