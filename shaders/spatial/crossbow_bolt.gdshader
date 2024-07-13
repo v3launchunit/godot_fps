@@ -8,7 +8,7 @@ uniform sampler2D dance_tex: hint_default_white;
 uniform vec3 col: source_color;
 uniform sampler2D tex: hint_default_white;
 
-#include "includes/psx_inc.gdshaderinc"
+#include "res://shaders/includes/psx_inc.gdshaderinc"
 
 void vertex() {
 	//VERTEX.xz += vec2( // cos(TIME * cos(VERTEX.y * E) + tan(VERTEX.y * E)) +

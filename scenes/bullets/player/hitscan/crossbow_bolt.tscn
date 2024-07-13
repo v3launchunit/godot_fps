@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://u6obomqkbr77"]
+[gd_scene load_steps=24 format=3 uid="uid://u6obomqkbr77"]
 
 [ext_resource type="Script" path="res://scripts/bullets/lightning_scan.gd" id="1_3mdio"]
 [ext_resource type="ArrayMesh" uid="uid://cfjlieto7r0xy" path="res://models/bullets/hitscan_bullet.obj" id="2_co20h"]
@@ -144,9 +144,21 @@ func _process(delta: float) -> void:
 	pass
 "
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f8cgg"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mdolw"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_f8cgg")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ljq51"]
 render_priority = 0
 shader = ExtResource("5_c1ccc")
+shader_parameter/scale = 1.0
+shader_parameter/dance_rate = 1.0
+shader_parameter/col = Color(1, 1, 1, 1)
+shader_parameter/dance_tex = SubResource("NoiseTexture2D_mdolw")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_jh1jo"]
 resource_local_to_scene = true

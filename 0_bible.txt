@@ -466,7 +466,7 @@ Campaign:
 				Lizard
 				*Eyeball
 		E1M5 (""):
-			A cliffside lookout facility, patrolled by Pinkertons and Enforcers.
+			Evil factory/processing plant.
 			Weapons:
 				AKM
 				Boomstick
@@ -479,7 +479,7 @@ Campaign:
 				Eyeball
 				Tarantula
 				*Enforcer
-		E1M6 (""):
+		E1M6 ("Let There Be More Light"):
 			A secret laboratory, buried deep within the earth and harboring
 			all manner of strange and terrible OSHA violations.
 			Weapons:
@@ -497,7 +497,7 @@ Campaign:
 				Enforcer
 				*PlasmaDroid (as miniboss)
 		E1M7 (""):
-			Evil factory/processing plant.
+
 			Weapons:
 				AKM
 				Boomstick
@@ -528,9 +528,11 @@ Campaign:
 
 	E2:
 		Eldritch otherworld outskirts, lots of Locals
-		Neuron-type keyes
+		Gemkey-type keys
 		E2M1 ("Brave New World"):
-		E2M2 (""):
+		E2M2 ("Goodbye Blue Sky"):
+			Underhang-type platforming across the bottom of a chain of floating
+			islands. Introduces choppers.
 		E2M3 (""):
 		E2M4 (""):
 		E2M5 (""):
@@ -552,7 +554,7 @@ Campaign:
 
 	E3:
 		Eldritch otherworld industrial zone, lots of Locals and Military
-		Gemkey-type keys
+		Neuron-type keys
 		E3M1 (""):
 		E3M2 (""):
 		E3M3 (""):
@@ -577,8 +579,8 @@ Campaign:
 		and Machines
 		Keycard-type keys
 		E4M1 ("In the Flesh"):
-			Reprise of E1M1, with more dangerous enemies and a much more
-			industrial aesthetic.
+			Reprise of E1M1, twisted into a nightmarish industrial hellscape
+			crawling with far more dangerous foes.
 			Weapons:
 				*Syringe
 			Enemies:

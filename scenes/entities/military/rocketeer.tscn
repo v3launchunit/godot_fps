@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cobrnuaq2l63n" path="res://textures/entities/enemies/rocketeer/rocketeer_roughness.png" id="6_i5ae8"]
 [ext_resource type="Texture2D" uid="uid://clgl6xiya7ukn" path="res://textures/entities/enemies/rocketeer/rocketeer_detail_mask.png" id="7_28bj8"]
 [ext_resource type="PackedScene" uid="uid://coopugxxes4xq" path="res://scenes/pickups/ammo/grenade_pickup.tscn" id="8_krnfx"]
-[ext_resource type="PackedScene" path="res://scenes/entities/stair_stepper.tscn" id="9_vr1y5"]
+[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="9_vr1y5"]
 [ext_resource type="AnimationLibrary" uid="uid://c2ie0ye0ecnev" path="res://scenes/entities/military/rocketeer_anims.res" id="10_7nbok"]
 [ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://scenes/pickups/health/health_pack_pickup.tscn" id="12_fn6s3"]
 
@@ -483,13 +483,13 @@ bones/18/rotation = Quaternion(0.00780262, 9.06806e-08, 1.6966e-08, 0.99997)
 bones/18/scale = Vector3(1, 1, 1)
 
 [node name="rpg" parent="Rocketeer/Armature/Skeleton3D" index="0"]
-transform = Transform3D(3.98478, -0.304914, -0.169016, 0.325688, 3.94765, 0.556772, 0.124362, -0.568415, 3.95745, 3.15752, 5.53078, 9.50284)
+transform = Transform3D(3.98478, -0.304914, -0.169016, 0.327172, 3.94047, 0.604721, 0.120403, -0.616245, 3.95041, 3.15752, 5.65536, 9.49519)
 
 [node name="rpg" parent="Rocketeer/Armature/Skeleton3D/rpg" index="0"]
 material_override = SubResource("ShaderMaterial_am0uh")
 
 [node name="rocket" parent="Rocketeer/Armature/Skeleton3D" index="1"]
-transform = Transform3D(3.98478, -0.304914, -0.169016, 0.325688, 3.94765, 0.556772, 0.124362, -0.568415, 3.95745, 3.33133, 6.13549, 2.34993)
+transform = Transform3D(3.98478, -0.304914, -0.169016, 0.327172, 3.94047, 0.604721, 0.120403, -0.616245, 3.95041, 3.33133, 6.17329, 2.33547)
 
 [node name="rocket" parent="Rocketeer/Armature/Skeleton3D/rocket" index="0"]
 material_override = SubResource("ShaderMaterial_am0uh")
@@ -497,7 +497,7 @@ material_override = SubResource("ShaderMaterial_am0uh")
 [node name="Spawner" type="Marker3D" parent="Rocketeer/Armature/Skeleton3D/rocket/rocket" index="0"]
 
 [node name="Backpack" parent="Rocketeer/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.93421, -0.356724, 0, 0.356724, 0.93421, 0, 5.4291, -0.852635)
+transform = Transform3D(1, 0, 0, 0, 0.938467, -0.345369, 0, 0.345369, 0.938467, 0, 5.42812, -0.85829)
 
 [node name="Backpack" parent="Rocketeer/Armature/Skeleton3D/Backpack" index="0"]
 material_override = SubResource("ShaderMaterial_flj7k")
@@ -528,6 +528,8 @@ gib_threshold = 0.0
 damage_sys = ExtResource("4_31foi")
 gibs = ExtResource("5_xapab")
 loot = Array[PackedScene]([ExtResource("12_fn6s3"), ExtResource("8_krnfx")])
+is_enemy = true
+score = 1
 
 [node name="StairStepper" parent="." instance=ExtResource("9_vr1y5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -539,11 +541,34 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ext3k"),
-"rocketeer_anims": ExtResource("10_7nbok")
-}
 tree_root = SubResource("AnimationNodeStateMachine_f30pq")
 anim_player = NodePath("../AnimationPlayer")
+parameters/current_length = 2.0
+parameters/current_position = 1.75648
+parameters/current_delta = 0.0166667
+parameters/End/current_length = null
+parameters/End/current_position = null
+parameters/End/current_delta = null
+parameters/Start/current_length = 0.0
+parameters/Start/current_position = 0.0
+parameters/Start/current_delta = 0.0
+parameters/ambush/current_length = 1.0
+parameters/ambush/current_position = 0.253797
+parameters/ambush/current_delta = 0.01728
+parameters/attacking/current_length = null
+parameters/attacking/current_position = null
+parameters/attacking/current_delta = null
+parameters/dead/current_length = null
+parameters/dead/current_position = null
+parameters/dead/current_delta = null
+parameters/flinching/current_length = null
+parameters/flinching/current_position = null
+parameters/flinching/current_delta = null
+parameters/idle/current_length = 2.0
+parameters/idle/current_position = 1.75648
+parameters/idle/current_delta = 0.0166667
+parameters/moving/current_length = null
+parameters/moving/current_position = null
+parameters/moving/current_delta = null
 
 [editable path="Rocketeer"]

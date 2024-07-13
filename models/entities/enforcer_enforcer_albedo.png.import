@@ -2,28 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw5bja55vnb22"
-path.s3tc="res://.godot/imported/enforcer_enforcer_albedo.png-0bbecbe715828cba5dbb4b3e2684137e.s3tc.ctex"
+uid="uid://bptb6yqp03his"
+path="res://.godot/imported/enforcer_enforcer_albedo.png-0bbecbe715828cba5dbb4b3e2684137e.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
-generator_parameters={}
 
 [deps]
 
 source_file="res://models/entities/enforcer_enforcer_albedo.png"
-dest_files=["res://.godot/imported/enforcer_enforcer_albedo.png-0bbecbe715828cba5dbb4b3e2684137e.s3tc.ctex"]
+dest_files=["res://.godot/imported/enforcer_enforcer_albedo.png-0bbecbe715828cba5dbb4b3e2684137e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

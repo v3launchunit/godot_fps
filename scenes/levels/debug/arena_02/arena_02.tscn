@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c63k27ek72d3d" path="res://scenes/entities/player.tscn" id="1_wyjec"]
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="2_cndpx"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="3_sd01b"]
-[ext_resource type="Material" uid="uid://dqemvrb4pcd2g" path="res://materials/terrain/trench_broom_std/concrete.tres" id="4_ljykf"]
+[ext_resource type="Material" uid="uid://dqemvrb4pcd2g" path="res://materials/terrain/trench_broom/concrete.tres" id="4_ljykf"]
 [ext_resource type="Material" uid="uid://t1hv3tspvh88" path="res://materials/terrain/trench_broom_std/planks.tres" id="5_trqrh"]
 [ext_resource type="Material" uid="uid://bdhdwkh72dfij" path="res://materials/terrain/trench_broom_std/bricks.tres" id="6_x10m2"]
 [ext_resource type="Material" uid="uid://qt3bjecsm0qb" path="res://materials/terrain/trench_broom_std/shutter_door.tres" id="7_ycowt"]

@@ -28,8 +28,8 @@ func do_export_file():
 				file_obj.close()
 @export_global_dir var target_folder : String # (String, DIR, GLOBAL)
 @export var fgd_name: String = "Qodot"
-@export var base_fgd_files: Array[Resource] = [] # (Array, Resource)
-@export var entity_definitions: Array[Resource] = [ # (Array, Resource)
+@export var base_fgd_files: Array[QodotFGDFile] = [] # (Array, Resource)
+@export var entity_definitions: Array[QodotFGDClass] = [ # (Array, Resource)
 ]
 
 func build_class_text() -> String:
@@ -42,7 +42,7 @@ func build_class_text() -> String:
 	for ent in entities:
 		if ent.qodot_internal:
 			continue
-		
+
 		var ent_text = ent.build_def_text()
 		res += ent_text
 		if ent != entities[-1]:

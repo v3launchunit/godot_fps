@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_1kcle"]
 [ext_resource type="PackedScene" uid="uid://dco7xp2cwuyge" path="res://scenes/effects/explosions/explosion.tscn" id="2_pnu70"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_trail.gd" id="3_01yl2"]
-[ext_resource type="Shader" path="res://shaders/spatial/unlit_mix_psx.gdshader" id="3_ybdin"]
+[ext_resource type="Shader" path="res://shaders/spatial/psx_ul_mix.gdshader" id="3_ybdin"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="4_3b6p7"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="5_ceuba"]
 [ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="6_tyl6o"]

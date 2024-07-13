@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=28 format=3 uid="uid://dqwqqvs3kuly8"]
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=29 format=3 uid="uid://dqwqqvs3kuly8"]
 
 [ext_resource type="Resource" uid="uid://djh4xmcjq1gkp" path="res://trench_broom/entity_defs/point/deco_points.tres" id="1_5e18t"]
 [ext_resource type="Resource" uid="uid://dmuqa22l0pi3q" path="res://trench_broom/entity_defs/point/enemy_points.tres" id="1_5ikmf"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="1_8tcrl"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_class.gd" id="4_rgavo"]
 [ext_resource type="Resource" uid="uid://ccal45feqxrqc" path="res://trench_broom/entity_defs/point/pickups/ammo/akm_mag_pickup.tres" id="7_avmew"]
 [ext_resource type="Resource" uid="uid://cwlykad1jml6c" path="res://trench_broom/entity_defs/point/pickups/ammo/big_cell_pickup.tres" id="8_2wn6t"]
 [ext_resource type="Resource" uid="uid://bpbbcudos8b7r" path="res://trench_broom/entity_defs/point/pickups/ammo/big_iron_bullet_pickup.tres" id="9_0t6de"]
@@ -33,5 +34,5 @@ script = ExtResource("1_8tcrl")
 export_file = false
 target_folder = "C:\\Users\\lengl\\AppData\\Roaming\\TrenchBroom\\games\\VolumetricsTest"
 fgd_name = "Points"
-base_fgd_files = Array[Resource]([ExtResource("1_5e18t"), ExtResource("1_5ikmf")])
-entity_definitions = Array[Resource]([ExtResource("7_avmew"), ExtResource("8_2wn6t"), ExtResource("9_0t6de"), ExtResource("10_g6bn1"), ExtResource("11_4nueg"), ExtResource("12_drp46"), ExtResource("13_v3c6l"), ExtResource("14_0wxo4"), ExtResource("15_r6s1g"), ExtResource("16_uribh"), ExtResource("17_whrj4"), ExtResource("18_drjam"), ExtResource("19_p7mln"), ExtResource("20_0ajm1"), ExtResource("21_7vww4"), ExtResource("22_yk7g5"), ExtResource("23_h5xhw"), ExtResource("24_fn2vq"), ExtResource("25_v8mmy"), ExtResource("26_0s800"), ExtResource("27_obo8m"), ExtResource("28_4027m"), ExtResource("29_jll6y"), ExtResource("26_edmks")])
+base_fgd_files = Array[ExtResource("1_8tcrl")]([ExtResource("1_5e18t"), ExtResource("1_5ikmf")])
+entity_definitions = Array[ExtResource("4_rgavo")]([ExtResource("7_avmew"), ExtResource("8_2wn6t"), ExtResource("9_0t6de"), ExtResource("10_g6bn1"), ExtResource("11_4nueg"), ExtResource("12_drp46"), ExtResource("13_v3c6l"), ExtResource("14_0wxo4"), ExtResource("15_r6s1g"), ExtResource("16_uribh"), ExtResource("17_whrj4"), ExtResource("18_drjam"), ExtResource("19_p7mln"), ExtResource("20_0ajm1"), ExtResource("21_7vww4"), ExtResource("22_yk7g5"), ExtResource("23_h5xhw"), ExtResource("24_fn2vq"), ExtResource("25_v8mmy"), ExtResource("26_0s800"), ExtResource("27_obo8m"), ExtResource("28_4027m"), ExtResource("29_jll6y"), ExtResource("26_edmks")])

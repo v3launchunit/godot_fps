@@ -35,47 +35,31 @@
 [ext_resource type="Texture2D" uid="uid://bw7v4h5hychul" path="res://textures/entities/enemies/pinkerton/pinkerton_roughness.png" id="22_758q5"]
 [ext_resource type="PackedScene" uid="uid://cqctw8dd0ar4n" path="res://scenes/effects/damage/damage_sys.tscn" id="31_7r0oy"]
 [ext_resource type="PackedScene" uid="uid://c5pbs8t6p7ogl" path="res://scenes/effects/gibs/gibs.tscn" id="32_l26si"]
-[ext_resource type="PackedScene" path="res://scenes/entities/stair_stepper.tscn" id="37_sxmhw"]
+[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="37_sxmhw"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oao7a"]
 random_pitch = 1.15
 streams_count = 12
 stream_0/stream = ExtResource("2_sxcfu")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("3_5es6a")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("6_1u6d5")
-stream_2/weight = 1.0
 stream_3/stream = ExtResource("7_6sm5o")
-stream_3/weight = 1.0
 stream_4/stream = ExtResource("8_phrdl")
-stream_4/weight = 1.0
 stream_5/stream = ExtResource("9_fw5ta")
-stream_5/weight = 1.0
 stream_6/stream = ExtResource("10_cnalv")
-stream_6/weight = 1.0
 stream_7/stream = ExtResource("11_q5fbb")
-stream_7/weight = 1.0
 stream_8/stream = ExtResource("12_tfmbw")
-stream_8/weight = 1.0
 stream_9/stream = ExtResource("13_0jqmp")
-stream_9/weight = 1.0
 stream_10/stream = ExtResource("4_mrwr3")
-stream_10/weight = 1.0
 stream_11/stream = ExtResource("5_e5dnl")
-stream_11/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vgyku"]
 random_pitch = 1.15
 streams_count = 4
 stream_0/stream = ExtResource("15_kxmnn")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("16_vn7a5")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("17_n4f4t")
-stream_2/weight = 1.0
 stream_3/stream = ExtResource("18_ac1r7")
-stream_3/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_36k8d"]
 playback_mode = 1
@@ -985,7 +969,7 @@ bones/20/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/21/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.157294, -0.984093, 0.0825762, 0.980887, -0.165383, -0.102511, 0.114537, 0.0648737, 0.991298, -0.167903, 0.352387, 0.0876706)
+transform = Transform3D(-0.112828, -0.270124, 0.956192, 0.921161, -0.389179, -0.00124894, 0.372467, 0.880666, 0.292738, -0.0183556, 0.307071, 0.251452)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="0"]
 layers = 2
@@ -1024,14 +1008,14 @@ shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.235941, -0.984094, 0.123865, 1.47133, -0.165383, -0.153767, 0.171806, 0.0648737, 1.48695, -0.217109, 0.344117, 0.0909144)
+transform = Transform3D(-0.169241, -0.270124, 1.43429, 1.38174, -0.389179, -0.00187375, 0.558701, 0.880666, 0.439107, -0.0318622, 0.287612, 0.295487)
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D/Cylinder_001" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_bkory")
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.986642, 0.128888, 0.0996239, -0.159735, 0.885465, 0.436391, -0.0319678, -0.446475, 0.894225, -0.230812, 0.396016, 0.0643365)
+transform = Transform3D(0.98662, 0.11181, 0.118658, -0.155363, 0.865433, 0.476328, -0.0494318, -0.488389, 0.871225, -0.231181, 0.394621, 0.0696408)
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D/Shotgun" index="0"]
 layers = 2
@@ -1053,7 +1037,7 @@ omni_range = 10.0
 transform = Transform3D(-1.95578e-08, -1, 7.45058e-09, -3.72529e-08, 2.23517e-08, 1, -1, 2.04891e-08, -3.72529e-08, 0, 0.675, -0.135)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.986642, 0.128888, 0.0996239, -0.159735, 0.885465, 0.436391, -0.0319678, -0.446475, 0.894225, -0.230812, 0.396016, 0.0643365)
+transform = Transform3D(0.98662, 0.11181, 0.118658, -0.155363, 0.865433, 0.476328, -0.0494318, -0.488389, 0.871225, -0.231181, 0.394621, 0.0696408)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D/Pump" index="0"]
 layers = 2
@@ -1087,12 +1071,35 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_rb0vb"),
-"pinkerton_anims": ExtResource("5_bdfiq")
-}
 tree_root = SubResource("AnimationNodeStateMachine_l00kp")
 anim_player = NodePath("../AnimationPlayer")
+parameters/current_length = 3.2
+parameters/current_position = 1.83026
+parameters/current_delta = 0.0166667
+parameters/End/current_length = null
+parameters/End/current_position = null
+parameters/End/current_delta = null
+parameters/Start/current_length = 0.0
+parameters/Start/current_position = 0.0
+parameters/Start/current_delta = 0.0
+parameters/attacking/current_length = null
+parameters/attacking/current_position = null
+parameters/attacking/current_delta = null
+parameters/dead/current_length = 1.0
+parameters/dead/current_position = 1.0
+parameters/dead/current_delta = 0.0
+parameters/flinching/current_length = null
+parameters/flinching/current_position = null
+parameters/flinching/current_delta = null
+parameters/idle/current_length = 3.2
+parameters/idle/current_position = 1.83026
+parameters/idle/current_delta = 0.0166667
+parameters/jumping/current_length = null
+parameters/jumping/current_position = null
+parameters/jumping/current_delta = null
+parameters/moving/current_length = 1.0
+parameters/moving/current_position = 0.701644
+parameters/moving/current_delta = 0.0166667
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 bus = &"Enemies"
@@ -1105,6 +1112,8 @@ gib_threshold = 90.0
 damage_sys = ExtResource("31_7r0oy")
 gibs = ExtResource("32_l26si")
 loot = Array[PackedScene]([ExtResource("3_5ywnf"), ExtResource("7_d0her"), ExtResource("8_slj13")])
+is_enemy = true
+score = 1
 
 [node name="StairStepper" parent="." instance=ExtResource("37_sxmhw")]
 

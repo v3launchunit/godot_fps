@@ -1,6 +1,7 @@
-class_name WeaponAltFire extends WeaponBase
+class_name WeaponAltFire
+extends WeaponBase
 
-@export_category("AltFire")
+#@export_category("AltFire")
 
 @export_group("Secondary Fire", "alt_")
 ## The bullet shot by the secondary fire.
@@ -21,7 +22,7 @@ class_name WeaponAltFire extends WeaponBase
 @export var alt_ammo_cost: int = 1
 
 ## Where the secondary fire's bullets are fired from.
-@onready var alt_spawner: Node3D = find_child("AltSpawner")
+@onready var alt_spawner := find_child("AltSpawner") as Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -84,16 +85,7 @@ func _fire_alt():
 #		else:
 		global_rotation = base_rotation
 		alt_spawner.global_rotation = manager.global_rotation
-		rotate_y(deg_to_rad(randf_range(-spread/2, spread/2) * refire_penalty))
-		rotate_x(deg_to_rad(randf_range(-spread/4, spread/4) * refire_penalty))
-		refire_penalty = 1.0
-
-		var instance = alt_bullet.instantiate()
-		alt_spawner.add_child(instance)
-		if instance is Hitscan:
-			instance.query_origin = manager.global_position
-		instance.reparent(get_tree().current_scene)
-		instance.invoker = manager.find_parent("Player")
+		emit_bullet(alt_bullet)
 
 	global_rotation = base_rotation
 	alt_spawner.global_rotation = spawner_base_rotation

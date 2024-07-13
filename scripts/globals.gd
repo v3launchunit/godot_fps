@@ -21,6 +21,8 @@ enum Difficulty {
 # --------------------------------- CONSTANTS -------------------------------- #
 # ---------------------------------------------------------------------------- #
 
+## The current build number.
+const C_VERSION: String = "0.1.0.0"
 ## Error value for float equality comparisons (direct usage of == is generally
 ## discouraged because of floating-point precision errors resulting in numbers
 ## potentially being slightly off).
@@ -53,6 +55,8 @@ const C_QUICKSAVE_PATH: String = "user://saves/auto/quicksave.scn"
 # ---------------------------------------------------------------------------- #
 
 # ---------- Visual settings ---------- #
+## The screen's base resolution.
+var s_resolution: Vector2i
 ## The screen's resolution is divided by this. Does not affect UI.
 var s_stretch_scale: int = 2
 ## The screen's resolution is divided by this. Only affects UI.
@@ -136,6 +140,7 @@ func _load_config() -> void:
 	if err:
 		return
 
+	s_resolution = config.get_value("video", "resolution", get_window().size)
 	s_stretch_scale = config.get_value("video", "stretch_scale", s_stretch_scale)
 	s_ui_scale = config.get_value("video", "ui_scale", s_ui_scale)
 	s_crosshair_size = config.get_value("video", "crosshair_size", s_crosshair_size)
@@ -162,10 +167,15 @@ func _setup_user() -> void:
 		DirAccess.make_dir_recursive_absolute("user://saves/user")
 
 
+func update_resolution() -> void:
+	s_resolution
+
+
 ## Save the current configuration settings to disq.
 func _on_settings_changed() -> void:
 	var config = ConfigFile.new()
 
+	config.set_value("video", "resolution", s_resolution)
 	config.set_value("video", "stretch_scale", s_stretch_scale)
 	config.set_value("video", "ui_scale", s_ui_scale)
 	config.set_value("video", "crosshair_size", s_crosshair_size)
@@ -181,6 +191,8 @@ func _on_settings_changed() -> void:
 	config.set_value("audio", "master_volume", s_master_volume)
 	config.set_value("audio", "sound_volume", s_sound_volume)
 	config.set_value("audio", "music_volume", s_music_volume)
+	
+	config.set_value("meta", "version", C_VERSION)
 
 	config.save("user://settings.cfg") # Write to file.
 

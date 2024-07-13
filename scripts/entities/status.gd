@@ -11,8 +11,6 @@ enum DamageType {
 	ELECTRIC,
 }
 
-@export_category("Status")
-
 ## The amount of health this node will have when initialized, and the maximum
 ## amount of health it can be healed to (besides bonus health).
 @export var max_health: float = 100.0
@@ -31,6 +29,9 @@ enum DamageType {
 @export var loot: Array[PackedScene] = []
 ## How far up the tree this node should affect its parents.
 @export var ripple_distance: int = 1
+
+@export var is_enemy: bool = false
+@export_range(0, 10, 1, "or_greater", "or_less") var score: int = 0
 
 @export_group("Save Data")
 @export var health: float
@@ -134,7 +135,10 @@ func heal(amount: float, can_overheal: bool = false, heal_armor: bool = false) -
 func kill():
 	is_dead = true
 	died.emit()
-#	print("this thing is fucking dead!")
+	var l := get_tree().current_scene as Level
+	if is_enemy:
+		l.kills += 1
+	l.score += score
 	if not loot.is_empty():
 		var loot_spawn: RigidBody3D = loot.pick_random().instantiate()
 		target_parent.add_child(loot_spawn)

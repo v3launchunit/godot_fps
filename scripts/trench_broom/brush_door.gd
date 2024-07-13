@@ -24,9 +24,9 @@ func _ready() -> void:
 			center.y = point.y
 		#center.z += point.z
 	#center.x /= get_child(1).shape.points.size()
-	center.x = global_position.x
+	center.x = position.x
 	center.y += 0.5 - properties.get("open_pos").y
-	center.z = global_position.z
+	center.z = position.z
 	#center.z /= get_child(1).shape.points.size()
 
 	if properties.get("group") != "none":
@@ -41,7 +41,7 @@ func _ready() -> void:
 	audio_player.stream = load(Globals.parse_names("sounds", properties.get("open_sound")))
 	add_child(audio_player)
 	#audio_player.position = properties.get("sound_pos") #* 0.0625
-	audio_player.position = get_child(1).shape.points[0]
+	#audio_player.position = get_child(1).shape.points[0]
 
 	nav_link = NavigationLink3D.new()
 	nav_link.start_position = center + properties.get("nav_link_offset")

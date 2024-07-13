@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://7e6nf0ho2ltr"]
 
 [ext_resource type="Script" path="res://scripts/objects/teleporter.gd" id="1_1hc1g"]
-[ext_resource type="Shader" path="res://shaders/spatial/unlit_mix_psx.gdshader" id="2_7084i"]
+[ext_resource type="Shader" path="res://shaders/spatial/psx_ul_mix.gdshader" id="2_7084i"]
 [ext_resource type="AudioStream" uid="uid://dsucttfyc1d1t" path="res://audio/streams/effects/teleport.wav" id="2_tq5s8"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_360gk"]

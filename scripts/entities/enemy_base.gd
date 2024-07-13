@@ -23,9 +23,9 @@ enum State {
 	DEAD,
 }
 
-@export_category("EnemyBase")
-
 @export var species: StringName
+
+@export var properties: Dictionary = {}
 
 @export_group("Movement")
 ## The base movement speed of this enemy.
@@ -124,6 +124,8 @@ enum State {
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var nav_agent: NavigationAgent3D = find_child("NavigationAgent3D")
+@onready var nav_region := get_tree().current_scene.find_child(
+		"NavigationRegion3D") as NavigationRegion3D
 @onready var sight_line: RayCast3D = find_child("SightLine")
 @onready var status: Status = find_child("Status")
 
@@ -146,7 +148,8 @@ func _ready() -> void:
 	add_to_group(species)
 
 
-#func _process(delta: float) -> void:
+func _process(delta: float) -> void:
+	($AnimationTree as AnimationTree).active = is_visible_in_tree()
 
 
 func _physics_process(delta: float) -> void:
@@ -162,8 +165,8 @@ func _physics_process(delta: float) -> void:
 				if not current_targets.is_empty():
 					detect_target(current_targets[-1])
 		State.IDLE:
-			#if wanderer:
-				#_wander(delta)
+			if wanderer:
+				_wander(delta)
 			_scan(delta)
 		State.SEARCHING:
 			_investigate(delta)
@@ -259,7 +262,11 @@ func _wander(delta) -> void:
 	if wander_idle_timer < Globals.C_EPSILON:
 		if wander_idling:
 			wander_idling = false
-			#current_destination =
+			current_destination = NavigationServer3D.region_get_random_point(
+					nav_region.get_rid(),
+					nav_agent.navigation_layers,
+					false
+			)
 			nav_agent.target_position = current_destination
 			state_machine.travel("moving", true)
 		var next_pos: Vector3 = nav_agent.get_next_path_position()
@@ -270,7 +277,7 @@ func _wander(delta) -> void:
 				delta * turning_speed
 		)
 		walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
-		if nav_agent.is_target_reached():
+		if nav_agent.is_target_reached() or randi_range(0, 60) == 0:
 			state_machine.travel("idle", true)
 			wander_idle_timer = randf_range(0.0, 15.0)
 		if nav_agent.avoidance_enabled:
@@ -353,8 +360,8 @@ func _pursue(delta) -> void:
 	else:
 		velocity += walk_vel
 
-	if jump_height > 0 and should_jump():
-		_do_jump()
+	#if jump_height > 0 and should_jump():
+		#_do_jump()
 
 	# Decide if it's time to attack my target
 	if check_attack_readiness():
@@ -381,26 +388,14 @@ func check_path_staleness() -> bool:
 
 func get_current_destination() -> Vector3:
 	var destination: Vector3
-	match randi_range(0, 3):
+	match randi_range(0, 1):
 		0: # Current target's exact position
 			destination = current_targets[-1].global_position
-		1: # Current target's exact position
-			destination = current_targets[-1].global_position + Vector3(
-					randf_range(-10.0, 10.0),
-					randf_range(-10.0, 10.0),
-					randf_range(-10.0, 10.0),
-			)
-		2: # Random position near current destination
-			destination = current_destination + Vector3(
-					randf_range(-10.0, 10.0),
-					randf_range(-10.0, 10.0),
-					randf_range(-10.0, 10.0),
-			)
-		3: # Completely random position
-			destination = Vector3(
-					randf_range(-1000.0, 1000.0),
-					randf_range(-1000.0, 1000.0),
-					randf_range(-1000.0, 1000.0),
+		1: # Completely random position
+			destination = NavigationServer3D.region_get_random_point(
+					nav_region.get_rid(),
+					nav_agent.navigation_layers,
+					false
 			)
 	var new_dest_score = rank_point(destination)
 	if new_dest_score > current_dest_score + old_dest_bias:

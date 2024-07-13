@@ -1,103 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://bs3eibrb48t0m"]
+[gd_scene load_steps=26 format=3 uid="uid://bs3eibrb48t0m"]
 
 [ext_resource type="PackedScene" uid="uid://babited41kti5" path="res://models/weapons/rpg.glb" id="1_70x0w"]
-[ext_resource type="Script" path="res://scripts/weapons/weapon_alt_fire.gd" id="2_105pf"]
+[ext_resource type="Script" path="res://models/weapons/weapon_rpg.gd" id="2_535cm"]
 [ext_resource type="Script" path="res://scripts/weapons/alert_area.gd" id="2_v1et6"]
 [ext_resource type="AnimationLibrary" uid="uid://c1poci1it3ds0" path="res://scenes/weapons/rpg_anims.res" id="3_ktpeh"]
-[ext_resource type="PackedScene" uid="uid://c356m28y5sg6h" path="res://scenes/bullets/player/projectile/mini_rocket.tscn" id="3_wurbf"]
-[ext_resource type="PackedScene" uid="uid://d1cpxon0he540" path="res://scenes/bullets/player/projectile/rocket.tscn" id="4_1m7jv"]
-
-[sub_resource type="Shader" id="Shader_re30t"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
-
-shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
-uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
-uniform float point_size : hint_range(0,128);
-uniform float roughness : hint_range(0,1);
-uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
-uniform float specular;
-uniform float metallic;
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
-global uniform float viewmodel_fov;
-
-#include \"res://shaders/includes/psx_inc.gdshaderinc\"
-
-void vertex() {
-	UV=UV*uv1_scale.xy+uv1_offset.xy;
-
-	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
-	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
-	// modify projection matrix
-	PROJECTION_MATRIX[1][1] = -onetanfov;
-	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-
-	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
-	//POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
-	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
-	POSITION.z = mix(POSITION.z, 0, 0.99);
-}
-
-void fragment() {
-	vec2 base_uv = UV;
-	vec4 albedo_tex = texture(texture_albedo,base_uv);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
-	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
-	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
-	SPECULAR = specular;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_survf"]
-render_priority = 0
-shader = SubResource("Shader_re30t")
-shader_parameter/albedo = Color(0.501961, 0.501961, 0.501961, 1)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 0.25
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 1.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-
-[sub_resource type="Animation" id="Animation_subme"]
-length = 0.001
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("rpg")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("rpg/tube/rocket:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_g633s"]
-_data = {
-"RESET": SubResource("Animation_subme")
-}
+[ext_resource type="Material" uid="uid://digscwwl48m5g" path="res://scenes/weapons/rpg_mat_2.tres" id="4_0tpv3"]
+[ext_resource type="Material" uid="uid://bf74i5chaorag" path="res://scenes/weapons/rpg_mat_1.tres" id="5_mmwam"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h4pr3"]
 animation = &"rpg_anims/rpg_fire_alt"
@@ -171,28 +79,53 @@ graph_offset = Vector2(101, -32)
 [sub_resource type="SphereShape3D" id="SphereShape3D_uogw3"]
 radius = 16.0
 
+[sub_resource type="Animation" id="Animation_subme"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rpg")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rpg/tube/rocket:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g633s"]
+_data = {
+"RESET": SubResource("Animation_subme")
+}
+
 [node name="RPG" type="Node3D"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.75, -0.175, 0)
 
 [node name="rpg" parent="." instance=ExtResource("1_70x0w")]
-script = ExtResource("2_105pf")
-alt_bullet = ExtResource("3_wurbf")
+script = ExtResource("2_535cm")
 alt_volley = 5
 alt_spread = 10.0
 alt_ammo_type = "grenades"
 alt_ammo_cost = 5
-bullet = ExtResource("4_1m7jv")
 ammo_type = "rockets"
 category = 4
 
 [node name="tube" parent="rpg" index="0"]
 layers = 4
-material_override = SubResource("ShaderMaterial_survf")
+material_override = ExtResource("5_mmwam")
 cast_shadow = 0
 
 [node name="pod" parent="rpg/tube" index="0"]
 layers = 4
-material_override = SubResource("ShaderMaterial_survf")
+material_override = ExtResource("5_mmwam")
 cast_shadow = 0
 
 [node name="AltSpawner" type="Marker3D" parent="rpg/tube/pod" index="0"]
@@ -200,7 +133,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.75)
 
 [node name="rocket" parent="rpg/tube" index="1"]
 layers = 4
-material_override = SubResource("ShaderMaterial_survf")
+material_override = ExtResource("4_0tpv3")
 cast_shadow = 0
 
 [node name="Spawner" type="Marker3D" parent="rpg/tube/rocket" index="0"]
@@ -208,12 +141,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="AnimationTree" type="AnimationTree" parent="rpg"]
 root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_g633s"),
-"rpg_anims": ExtResource("3_ktpeh")
-}
 tree_root = SubResource("AnimationNodeStateMachine_n72uv")
 anim_player = NodePath("../../AnimationPlayer")
+parameters/current_length = 1.5
+parameters/current_position = 0.124284
+parameters/current_delta = 0.0257052
+parameters/End/current_length = null
+parameters/End/current_position = null
+parameters/End/current_delta = null
+parameters/Start/current_length = 0.0
+parameters/Start/current_position = 0.0
+parameters/Start/current_delta = 0.0
+parameters/alt_firing/current_length = null
+parameters/alt_firing/current_position = null
+parameters/alt_firing/current_delta = null
+parameters/deploy/current_length = 1.0
+parameters/deploy/current_position = 1.0
+parameters/deploy/current_delta = 0.0234203
+parameters/empty/current_length = null
+parameters/empty/current_position = null
+parameters/empty/current_delta = null
+parameters/firing/current_length = null
+parameters/firing/current_position = null
+parameters/firing/current_delta = null
+parameters/idle/current_length = 1.5
+parameters/idle/current_position = 0.124284
+parameters/idle/current_delta = 0.0257052
+parameters/reloading/current_length = null
+parameters/reloading/current_position = null
+parameters/reloading/current_delta = null
 
 [node name="AlertRadius" type="Area3D" parent="rpg"]
 collision_layer = 2

@@ -80,6 +80,7 @@ var holding = null
 @onready var interact_scan := find_child("Interact") as RayCast3D
 @onready var clearance_scan := $ClearanceCast as ShapeCast3D
 @onready var stream_player := $AudioStreamPlayer as AudioStreamPlayer
+@onready var slam_wind_sys := find_child("SlamWindSys") as GPUParticles3D
 
 func _ready() -> void:
 	capture_mouse()
@@ -129,6 +130,8 @@ func _process(_delta) -> void:
 		var q: PackedScene = load(Globals.C_QUICKSAVE_PATH)
 		if q != null:
 			get_tree().change_scene_to_packed(q)
+
+	slam_wind_sys.visible = slamming
 
 
 func _physics_process(delta: float) -> void:
@@ -304,6 +307,7 @@ func _gravity(delta: float) -> Vector3:
 	if slamming:
 		if is_on_floor():
 			slamming = false
+			# TODO implement shockwave
 		else:
 			grav_vel = Vector3(0, -slam_speed, 0)
 	else:
@@ -350,4 +354,3 @@ func _knockback(delta: float) -> Vector3:
 func _on_carriable_grabbed(what: Carriable) -> void:
 	camera.switched_weapons.emit(-1, -1)
 	holding = what
-

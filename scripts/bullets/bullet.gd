@@ -66,7 +66,7 @@ func _on_body_entered(body: Node) -> void:
 				if status is PlayerStatus
 				else 1.0
 		))
-		if body is EnemyBase and invoker != null and invoker != body:
+		if body.has_method("detect_target") and invoker != null and invoker != body:
 			body.detect_target(invoker)
 			body.apply_knockback(
 					knockback_force * (

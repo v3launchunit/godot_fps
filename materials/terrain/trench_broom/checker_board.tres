@@ -18,8 +18,8 @@ fractal_type = 2
 fractal_octaves = 3
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5vrw4"]
-width = 128
-height = 128
+width = 256
+height = 256
 seamless = true
 seamless_blend_skirt = 0.25
 as_normal_map = true
@@ -27,11 +27,10 @@ bump_strength = 4.0
 noise = SubResource("FastNoiseLite_wvn4v")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_inmhs"]
-width = 128
-height = 128
+width = 256
+height = 256
 seamless = true
 seamless_blend_skirt = 0.25
-as_normal_map = true
 bump_strength = 4.0
 noise = SubResource("FastNoiseLite_wvn4v")
 
@@ -40,6 +39,7 @@ albedo_texture = ExtResource("1_rhs6c")
 roughness = 0.1
 roughness_texture = SubResource("NoiseTexture2D_inmhs")
 normal_enabled = true
+normal_scale = 2.0
 normal_texture = ExtResource("2_7r3xf")
 detail_enabled = true
 detail_mask = SubResource("GradientTexture1D_f35go")
@@ -47,4 +47,4 @@ detail_albedo = ExtResource("1_rhs6c")
 detail_normal = SubResource("NoiseTexture2D_5vrw4")
 uv1_scale = Vector3(0.0078125, 0.0078125, 0.0078125)
 uv1_world_triplanar = true
-texture_filter = 2
+texture_filter = 0

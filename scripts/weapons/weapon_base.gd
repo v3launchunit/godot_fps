@@ -1,9 +1,10 @@
-class_name WeaponBase extends Node3D
+class_name WeaponBase
+extends Node3D
 
 #signal recoiled(amount: Vector3)
 signal hud_connected(category: int, index: int, ammo_type: String, alt_ammo_type: String)
 
-@export_category("Weapon")
+#@export_category("Weapon")
 
 @export_group("Primary Fire")
 ## The scene that is instantiated when this weapon is fired.
@@ -65,11 +66,12 @@ var hud: Control
 
 ## This node's global position is used to determine where the weapon's
 ## projectile(s) will be fired from.
-@onready var spawner: Node3D = find_child("Spawner")
-@onready var state_machine = $AnimationTree.get("parameters/playback")
-@onready var manager: WeaponManager = get_parent().get_parent()
-@onready var eject_sys: GPUParticles3D = find_child("ShellEject")
-@onready var player: Player = find_parent("Player") as Player
+@onready var spawner := find_child("Spawner") as Node3D
+@onready var state_machine := find_child("AnimationTree").get(
+		"parameters/playback") as AnimationNodeStateMachinePlayback
+@onready var manager := get_parent().get_parent() as WeaponManager
+@onready var eject_sys := find_child("ShellEject") as GPUParticles3D
+@onready var player := find_parent("Player") as Player
 #@onready var alert_area: Area3D = get_node_or_null("AlertRadius")
 
 # Called when the node enters the scene tree for the first time.
@@ -129,27 +131,13 @@ func _holster() -> void:
 
 func _fire() -> void:
 	var base_rotation = rotation
-	var spawner_base_rotation = spawner.rotation
+	var spawner_base_rotation = spawner.global_rotation
 	for v in volley:
-#		if manager.find_child("RayCast3D").is_colliding():
-#			spawner.look_at(manager.find_child("RayCast3D").get_collision_point())
-#			spawner.rotate_y(PI)
-#		else:
 		rotation = base_rotation
-		spawner.global_rotation = manager.global_rotation
-		rotate_y(deg_to_rad(randf_range(-spread/2, spread/2) * refire_penalty))
-		rotate_x(deg_to_rad(randf_range(-spread/4, spread/4) * refire_penalty))
-		refire_penalty = 1.0
-
-		var instance = bullet.instantiate()
-		spawner.add_child(instance)
-		if instance is Hitscan:
-			instance.query_origin = manager.global_position
-		instance.reparent(get_tree().current_scene)
-		instance.invoker = manager.find_parent("Player")
+		emit_bullet(bullet)
 
 	rotation = base_rotation
-	spawner.rotation = spawner_base_rotation
+	spawner.global_rotation = spawner_base_rotation
 
 	if abs(recoil) > Globals.C_EPSILON:
 #		recoiled.emit(Vector3.BACK * recoil)
@@ -164,3 +152,22 @@ func _fire() -> void:
 				Color.WHITE, Color.WHITE, 0)
 	state_machine.start("firing", true)
 	#instance.AddCollisionExceptionWith(get_parent().get_parent())
+
+
+func emit_bullet(what: PackedScene) -> Node:
+#	if manager.find_child("RayCast3D").is_colliding():
+#		spawner.look_at(manager.find_child("RayCast3D").get_collision_point())
+#		spawner.rotate_y(PI)
+#	else:
+	spawner.global_rotation = manager.global_rotation
+	rotate_y(deg_to_rad(randf_range(-spread/2, spread/2) * refire_penalty))
+	rotate_x(deg_to_rad(randf_range(-spread/4, spread/4) * refire_penalty))
+	refire_penalty = 1.0
+
+	var instance = what.instantiate()
+	spawner.add_child(instance)
+	if instance is Hitscan:
+		instance.query_origin = manager.global_position
+	instance.reparent(get_tree().current_scene)
+	instance.invoker = manager.find_parent("Player")
+	return instance

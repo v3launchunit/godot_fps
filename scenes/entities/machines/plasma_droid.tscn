@@ -17,9 +17,9 @@
 [ext_resource type="ArrayMesh" uid="uid://bq2ld7p1te64i" path="res://models/weapons/muzzle_flash_plasma.obj" id="5_8e7tr"]
 [ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://scenes/pickups/health/health_pack_pickup.tscn" id="6_o1v1h"]
 [ext_resource type="AnimationLibrary" uid="uid://cu6kaw3wmnu2i" path="res://scenes/entities/machines/plasma_droid_anims.res" id="8_hkuiw"]
-[ext_resource type="Shader" path="res://shaders/spatial/unlit_add_psx.gdshader" id="11_o6law"]
-[ext_resource type="Shader" path="res://shaders/spatial/unlit_mix_psx.gdshader" id="12_djo4k"]
-[ext_resource type="PackedScene" path="res://scenes/entities/stair_stepper.tscn" id="18_7c8tp"]
+[ext_resource type="Shader" path="res://shaders/spatial/psx_ul_add.gdshader" id="11_o6law"]
+[ext_resource type="Shader" path="res://shaders/spatial/psx_ul_mix.gdshader" id="12_djo4k"]
+[ext_resource type="PackedScene" uid="uid://ca7vdrxtn7qj3" path="res://scenes/entities/stair_stepper.tscn" id="18_7c8tp"]
 
 [sub_resource type="Resource" id="Resource_ba0li"]
 script = ExtResource("3_3f3op")
@@ -54,7 +54,6 @@ random_pitch = 1.15
 random_volume_offset_db = 1.5
 streams_count = 1
 stream_0/stream = ExtResource("2_cqd0j")
-stream_0/weight = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xqi1h"]
 height = 3.0
@@ -576,12 +575,32 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_4knrq"),
-"plasma_droid_anims": ExtResource("8_hkuiw")
-}
 tree_root = SubResource("AnimationNodeStateMachine_nc82m")
 anim_player = NodePath("../AnimationPlayer")
+parameters/current_length = 3.0
+parameters/current_position = 0.631291
+parameters/current_delta = 0.0166667
+parameters/End/current_length = null
+parameters/End/current_position = null
+parameters/End/current_delta = null
+parameters/Start/current_length = 0.0
+parameters/Start/current_position = 0.0
+parameters/Start/current_delta = 0.0
+parameters/ambush/current_length = 0.001
+parameters/ambush/current_position = 0.001
+parameters/ambush/current_delta = 0.0
+parameters/attacking/current_length = null
+parameters/attacking/current_position = null
+parameters/attacking/current_delta = null
+parameters/bullet_attacking/current_length = null
+parameters/bullet_attacking/current_position = null
+parameters/bullet_attacking/current_delta = null
+parameters/idle/current_length = 3.0
+parameters/idle/current_position = 0.631291
+parameters/idle/current_delta = 0.0166667
+parameters/moving/current_length = null
+parameters/moving/current_position = null
+parameters/moving/current_delta = null
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 volume_db = 3.0
@@ -596,6 +615,8 @@ gib_threshold = 0.0
 damage_sys = ExtResource("3_bt5p4")
 gibs = ExtResource("3_rukio")
 loot = Array[PackedScene]([ExtResource("5_4ag46"), ExtResource("6_o1v1h")])
+is_enemy = true
+score = 1
 
 [node name="StairStepper" parent="." instance=ExtResource("18_7c8tp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

@@ -32,9 +32,9 @@ extends Resource
 ## Textures matching these patterns will be hidden from Trenchbroom.
 @export var texture_exclusion_patterns: Array[String] = ["*_ao", "*_emission", "*_heightmap", "*_metallic", "*_normal", "*_orm", "*_roughness", "*_sss", "*_albedo"]
 
-## FGD resource to include with this game. If using multiple FGD resources, this should be the master FGD that contains them in the `base_fgd_files` resource array. 
+## FGD resource to include with this game. If using multiple FGD resources, this should be the master FGD that contains them in the `base_fgd_files` resource array.
 ## Use only one FGD resource. Using multiple FGDs in this array does not work as intended but is left as an array for backwards compatibility.
-@export var fgd_files : Array[Resource] = [preload("res://addons/qodot/game_definitions/fgd/qodot_fgd.tres")]
+@export var fgd_files : Array[QodotFGDFile] = [preload("res://addons/qodot/game_definitions/fgd/qodot_fgd.tres")]
 
 ## Scale expression that modifies the default display scale of entities in Trenchbroom. See the [**Trenchbroom Documentation**](https://trenchbroom.github.io/manual/latest/#game_configuration_files_entities) for more information.
 @export var entity_scale: String = "1"
@@ -46,7 +46,7 @@ extends Resource
 @export_category("Editor hint tags")
 
 ## Container for TrenchbroomTag resources that apply to brush entities.
-@export var brush_tags : Array[Resource] = []
+@export var brush_tags : Array[TrenchBroomTag] = []
 
 ## Container for TrenchbroomTag resources that apply to textures.
 @export var face_tags : Array[Resource] = []
@@ -85,7 +85,7 @@ var _base_text: String = """{
 			%s
 		]
 	},
-	"faceattribs": { 
+	"faceattribs": {
 		"defaults": {
 			%s
 		},
@@ -122,13 +122,13 @@ func build_class_text() -> String:
 			map_formats_str += " },\n\t\t"
 		else:
 			map_formats_str += " }"
-	
+
 	var texture_exclusion_patterns_str := ""
 	for tex_pattern in texture_exclusion_patterns:
 		texture_exclusion_patterns_str += "\"" + tex_pattern + "\""
 		if tex_pattern != texture_exclusion_patterns[-1]:
 			texture_exclusion_patterns_str += ", "
-	
+
 	var fgd_filename_str : String = "\"" + fgd_files[0].fgd_name + ".fgd\""
 
 	var brush_tags_str = parse_tags(brush_tags)
@@ -198,12 +198,12 @@ func do_export_file() -> void:
 	if folder.is_empty():
 		print("Skipping export: No TrenchBroom games folder")
 		return
-	
+
 	# Make sure FGD file is set
 	if !fgd_files.size() or not fgd_files[0] is QodotFGDFile:
 		print("Skipping export: No FGD file")
 		return
-	
+
 	# Create config folder name by combining games folder with the game name as a directory
 	var config_folder = folder + "/" + game_name
 	var config_dir := DirAccess.open(config_folder)
@@ -215,14 +215,14 @@ func do_export_file() -> void:
 			return
 		config_dir = DirAccess.open(config_folder)
 	print("Exporting TrenchBroom Game Config Folder to ", config_folder)
-	
+
 	# Icon
 	var icon_path : String = config_folder + "/icon.png"
 	print("Exporting icon to ", icon_path)
 	var export_icon : Image = icon.get_image()
 	export_icon.resize(32, 32, Image.INTERPOLATE_LANCZOS)
 	export_icon.save_png(icon_path)
-	
+
 	# .cfg
 	var export_config_file: Dictionary = {}
 	export_config_file.game_name = game_name
@@ -231,7 +231,7 @@ func do_export_file() -> void:
 	var file = FileAccess.open(export_config_file.target_file, FileAccess.WRITE)
 	file.store_string(build_class_text())
 	file = null # Official way to close files in GDscript 2
-	
+
 	# FGD
 	var export_fgd : QodotFGDFile = fgd_files[0].duplicate()
 	export_fgd.target_folder = config_folder
