@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=10 format=3 uid="uid://dmuqa22l0pi3q"]
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=9 format=3 uid="uid://dmuqa22l0pi3q"]
 
 [ext_resource type="Resource" uid="uid://cx7iw2027nyv7" path="res://trench_broom/entity_defs/point/enemies/pinkerton.tres" id="1_g6eob"]
 [ext_resource type="Resource" uid="uid://doihcea8tl120" path="res://trench_broom/entity_defs/point/enemies/canary.tres" id="2_4s2j3"]
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_class.gd" id="2_wg24i"]
 [ext_resource type="Resource" uid="uid://duo3aqyymektv" path="res://trench_broom/entity_defs/point/enemies/lizard.tres" id="3_llva7"]
 [ext_resource type="Resource" uid="uid://dee6vmksuogq4" path="res://trench_broom/entity_defs/point/enemies/eepy_lizard.tres" id="4_g1gvf"]
 [ext_resource type="Resource" uid="uid://clthu8ys2m5fs" path="res://trench_broom/entity_defs/point/enemies/eyeball.tres" id="5_shtgq"]
@@ -15,5 +14,5 @@ script = ExtResource("7_babxd")
 export_file = false
 target_folder = ""
 fgd_name = "Qodot"
-base_fgd_files = Array[ExtResource("7_babxd")]([])
-entity_definitions = Array[ExtResource("2_wg24i")]([ExtResource("1_g6eob"), ExtResource("2_4s2j3"), ExtResource("3_llva7"), ExtResource("4_g1gvf"), ExtResource("5_shtgq"), ExtResource("6_4uw4v"), ExtResource("7_3ehue")])
+base_fgd_files = Array[Resource]([])
+entity_definitions = Array[Resource]([ExtResource("1_g6eob"), ExtResource("2_4s2j3"), ExtResource("3_llva7"), ExtResource("4_g1gvf"), ExtResource("5_shtgq"), ExtResource("6_4uw4v"), ExtResource("7_3ehue")])

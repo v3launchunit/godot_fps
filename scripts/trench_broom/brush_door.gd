@@ -3,20 +3,25 @@
 class_name BrushDoor
 extends AnimatableBody3D
 
+
 @export var properties: Dictionary
-@export var configured: bool = false
+
+@export_group("Save Data")
+@export var open: bool = false
+@export var start_pos := Vector3.INF
 
 var center := Vector3.UP * 1000.0
-var open: bool = false
 var audio_player: AudioStreamPlayer3D
 var nav_link: NavigationLink3D
 
-@onready var start_pos: Vector3 = global_position
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#if Engine.is_editor_hint():
 		#return
+
+	if start_pos == Vector3.INF:
+		start_pos = global_position
 
 	for point: Vector3 in get_child(1).shape.points:
 		#center.x += point.x
@@ -53,11 +58,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if nav_link != null:
 		nav_link.enabled = open
-	#if Engine.is_editor_hint() and not configured:
-		#get_child(0).layers = 2
-		##get_child(0).set_layer_mask_value(1, false)
-		##get_child(0).set_layer_mask_value(2, true)
-		#return
 	global_position = global_position.lerp(
 			start_pos + properties.get("open_pos") if open else start_pos,
 			delta * properties.get("open_speed")
@@ -66,6 +66,22 @@ func _physics_process(delta: float) -> void:
 
 func on_triggered(by: Node3D) -> void:
 	toggle(by)
+
+
+func get_tooltip() -> String:
+	return (
+			"" # in motion
+			if (open and not properties.get("closeable")) or (
+					global_position.distance_squared_to(
+							start_pos + properties.get("open_pos") 
+							if open 
+							else start_pos
+					) > 0.1
+			)
+			else properties["tooltip_open"] # opened
+			if open
+			else properties["tooltip_closed"] # closed but not locked
+	)
 
 
 func interact(body: Node3D) -> void:

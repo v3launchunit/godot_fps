@@ -1,6 +1,6 @@
-class_name Pickup extends RigidBody3D
+class_name Pickup 
+extends RigidBody3D
 
-@export_category("Pickup")
 
 @export var flash_color: Color = Color.GREEN
 @export var pickup_sound: AudioStream
@@ -25,7 +25,10 @@ func interact(_body: Node3D) -> void:
 
 
 func picked_up(body: Node) -> void:
-	var hud := body.find_child("HUD")
+	if body is not Player:
+		return
+	
+	var hud := (body as Player).hud
 	if pickup_sound != null:
 		hud.flash_with_sound(flash_color, pickup_sound)
 	else:

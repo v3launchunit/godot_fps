@@ -13,36 +13,35 @@ var last_category: int = 1
 
 var alert_timer: float = 0.0
 
-var player: Player
-var status: PlayerStatus
-var manager: WeaponManager
-
 var health_display: int = 0.0
 var armor_display: int = 0.0
 var main_ammo_display: int = 0.0
 var alt_ammo_display: int = 0.0
 
-@onready var health_counter: Label = find_child("HealthCounter") as Label
-@onready var ammo_counter: Label = find_child("AmmoCounter") as Label
-@onready var flash_rect: TextureRect = find_child("Flash") as TextureRect
-@onready var blood_rect: TextureRect = find_child("Blood") as TextureRect
-@onready var stream_player: AudioStreamPlayer = find_child(
-		"AudioStreamPlayer") as AudioStreamPlayer
+@onready var player := find_parent("Player") as Player
+@onready var status := player.find_child("Status") as PlayerStatus
+@onready var manager := player.find_child("PlayerCam") as WeaponManager
+
+@onready var health_counter := find_child("HealthCounter") as Label
+@onready var ammo_counter := find_child("AmmoCounter") as Label
+@onready var flash_rect := find_child("Flash") as TextureRect
+@onready var blood_rect := find_child("Blood") as TextureRect
+@onready var stream_player := find_child("AudioStreamPlayer") as AudioStreamPlayer
 
 @onready var keys: Array[Node] = $KeysContainer.get_children()
 @onready var weapons: Array[Node] = $WeaponsContainer2D.get_children()
 @onready var crosshairs := find_child("Crosshairs") as TextureRect
 @onready var event_container := $EventContainer as VBoxContainer
 @onready var alert := $Alert as Label
+@onready var tooltip := $Tooltip as Label
 @onready var heat_flash := $HeatFlash as Control
 
 
 func _ready() -> void:
 	flash_rect.visible = false
-	player = find_parent("Player") as Player
-	status = player.find_child("Status") as PlayerStatus
+	alert.visible = false
+	tooltip.visible = false
 	status.connect("key_acquired", _on_key_acquired)
-	manager = player.find_child("PlayerCam") as WeaponManager
 #	pause_menu.reparent(get_tree().root)
 #	get_tree().root.move_child(pause_menu, -1)
 

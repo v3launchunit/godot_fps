@@ -9,8 +9,11 @@ extends Node3D
 @export var time: float = 0.0
 @export var physics_time: float = 0.0
 @export var kills: int = 0
-@export var secrets: int = 0
+@export var foes: int = 0 ## total number of tallied foes in the level.
+@export var found_secrets: int = 0
+@export var secrets: int = 0 ## total number of secrets in the level.
 @export var score: int = 0
+@export var loaded_from_savegame: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

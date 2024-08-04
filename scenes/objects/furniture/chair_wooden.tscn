@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://crih0rgk10al6" path="res://textures/weapons/pump_shotgun/shotgun_detail_mask.png" id="1_bfdwv"]
 [ext_resource type="ArrayMesh" uid="uid://ogv7qwoxjkgc" path="res://models/objects/chair.obj" id="2_e163t"]
-[ext_resource type="Script" path="res://scripts/entities/status.gd" id="3_5wb7k"]
+[ext_resource type="Script" path="res://entities/status.gd" id="3_5wb7k"]
 [ext_resource type="PackedScene" uid="uid://bynbdpv50o6q2" path="res://scenes/effects/gibs/wood_shards.tscn" id="4_042e2"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="4_karhn"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="5_76q0s"]

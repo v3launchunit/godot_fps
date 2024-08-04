@@ -17,6 +17,10 @@ enum Difficulty {
 	HARD,
 }
 
+enum Lang {
+	ENGLISH,
+}
+
 # ---------------------------------------------------------------------------- #
 # --------------------------------- CONSTANTS -------------------------------- #
 # ---------------------------------------------------------------------------- #
@@ -47,6 +51,8 @@ const C_FLARE_RE_EVAL_DISTANCE_SQUARED: float = 4.0
 const C_HITSCAN_MIN_LENGTH: float = 0.125
 const C_PLAYER_MIN_HEIGHT: float = -1000.0
 
+const C_LIZARD_HOLE_POINT := Vector3(0.0, -1000.0, 0.0)
+
 ## The filepath that user quicksaves live in.
 const C_QUICKSAVE_PATH: String = "user://saves/auto/quicksave.scn"
 
@@ -56,7 +62,7 @@ const C_QUICKSAVE_PATH: String = "user://saves/auto/quicksave.scn"
 
 # ---------- Visual settings ---------- #
 ## The screen's base resolution.
-var s_resolution: Vector2i
+var s_resolution := Vector2i(1920, 1080)
 ## The screen's resolution is divided by this. Does not affect UI.
 var s_stretch_scale: int = 2
 ## The screen's resolution is divided by this. Only affects UI.
@@ -107,14 +113,25 @@ var s_nightmare_mode_active: bool = false
 ## Whether crouching is a toggle or a hold.
 var s_toggle_crouch: bool = false
 
-var names: ConfigFile = ConfigFile.new()
-var persistent: ConfigFile = ConfigFile.new()
+# ---------- Accessibility settings ---------- #
+var s_lang := Lang.ENGLISH
+
+# ---------------------------------------------------------------------------- #
+# ---------------------------------- OTHER ----------------------------------- #
+# ---------------------------------------------------------------------------- #
+
+var names := ConfigFile.new()
+var text := ConfigFile.new()
+var persistent := ConfigFile.new()
+var fun := randi_range(0, 1000)
 
 
 func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	if names.load("res://names.cfg"):
 		printerr("could not load names.cfg")
+	if names.load("res://text_%s.cfg"):
+		printerr("could not load text_%s.cfg")
 	_setup_user()
 	_load_config()
 	persistent.load("user://saves/persistent.cfg")
@@ -140,7 +157,7 @@ func _load_config() -> void:
 	if err:
 		return
 
-	s_resolution = config.get_value("video", "resolution", get_window().size)
+	s_resolution = config.get_value("video", "resolution", s_resolution)
 	s_stretch_scale = config.get_value("video", "stretch_scale", s_stretch_scale)
 	s_ui_scale = config.get_value("video", "ui_scale", s_ui_scale)
 	s_crosshair_size = config.get_value("video", "crosshair_size", s_crosshair_size)
@@ -200,6 +217,8 @@ func _on_settings_changed() -> void:
 func save_game(to: String) -> void:
 	var scene := PackedScene.new()
 	var world = get_tree().current_scene
+	if world is Level:
+		(world as Level).loaded_from_savegame = true
 	for node: Node in get_all_children(world):
 		if node.has_method("pre_save"):
 			node.pre_save
@@ -211,6 +230,10 @@ func save_game(to: String) -> void:
 
 func parse_names(section: String, key: String) -> Variant:
 	return names.get_value(section, key)
+
+
+func parse_text(section: String, key: String) -> Variant:
+	return text.get_value(section, key)
 
 
 func level_revealed(name: String) -> bool:

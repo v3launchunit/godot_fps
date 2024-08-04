@@ -10,8 +10,8 @@ noise_type = 2
 frequency = 0.25
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0b87q"]
-width = 128
-height = 128
+width = 256
+height = 256
 invert = true
 generate_mipmaps = false
 seamless = true
@@ -21,8 +21,8 @@ color_ramp = SubResource("Gradient_xv8gv")
 noise = SubResource("FastNoiseLite_ocbel")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5jj0l"]
-width = 128
-height = 128
+width = 256
+height = 256
 invert = true
 generate_mipmaps = false
 seamless = true
@@ -37,8 +37,8 @@ offsets = PackedFloat32Array(0.6, 1)
 colors = PackedColorArray(0.75, 0.75, 0.75, 1, 0.5, 0.5, 0.5, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vx4ie"]
-width = 128
-height = 128
+width = 256
+height = 256
 invert = true
 generate_mipmaps = false
 seamless = true
@@ -53,4 +53,4 @@ roughness_texture = SubResource("NoiseTexture2D_vx4ie")
 normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_5jj0l")
 uv1_scale = Vector3(0.0078125, 0.0078125, 0.0078125)
-texture_filter = 2
+texture_filter = 0

@@ -1,6 +1,5 @@
 extends Pickup
 
-@export_category("BackpackPickup")
 
 @export var ammo_amount_overrides: Dictionary = {"rockets": 3}
 

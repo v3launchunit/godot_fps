@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=26 format=3 uid="uid://dyecxfl8r46aq"]
 
-[ext_resource type="Texture2D" uid="uid://6y7chuih264f" path="res://textures/effects/halo.png" id="1_xki41"]
+[ext_resource type="Texture2D" uid="uid://6y7chuih264f" path="res://textures/effects/halos/halo.png" id="1_xki41"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_0xdif"]
 operator = 2

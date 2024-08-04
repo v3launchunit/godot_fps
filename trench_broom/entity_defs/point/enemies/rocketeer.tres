@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://b8ve57w085oy6"]
 
-[ext_resource type="PackedScene" uid="uid://dv3fvlvmanmbf" path="res://scenes/entities/military/rocketeer.tscn" id="1_2ck10"]
+[ext_resource type="PackedScene" path="res://entities/enemies/military/rocketeer.tscn" id="1_2ck10"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_nxcy8"]
 
 [resource]

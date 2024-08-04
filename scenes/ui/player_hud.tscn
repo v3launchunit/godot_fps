@@ -458,7 +458,27 @@ theme_override_constants/separation = 0
 alignment = 2
 
 [node name="Alert" type="Label" parent="."]
-visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -113.5
+offset_right = 256.0
+offset_bottom = -9.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "lorem ipsum"
+label_settings = SubResource("LabelSettings_ithsr")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+uppercase = true
+max_lines_visible = 4
+
+[node name="Tooltip" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -471,7 +491,7 @@ offset_right = 256.0
 offset_bottom = 114.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "lorem ipsum"
+text = "dolor sit amet"
 label_settings = SubResource("LabelSettings_ithsr")
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -485,26 +505,58 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -129.0
-offset_bottom = 46.0
+offset_left = -133.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 50.0
 grow_horizontal = 0
 text = "FPS: 60.00/60.00
 TPS: 60.00/60.00"
 label_settings = SubResource("LabelSettings_7whak")
 script = SubResource("GDScript_suxms")
 
+[node name="ColorRect" type="ColorRect" parent="Diagnostics"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.25098)
+
 [node name="Statistics" type="Label" parent="."]
 process_priority = 1
 process_physics_priority = 1
 layout_mode = 1
-offset_right = 129.0
-offset_bottom = 46.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 133.0
+offset_bottom = 142.0
 text = "WHATEVER
 00:00:00.000
 00:00:00.000
-0 Kills
+00/00 Kills
 0/4 Secrets
 000,000,000,000"
 label_settings = SubResource("LabelSettings_7whak")
 uppercase = true
 script = ExtResource("10_pfwyh")
+
+[node name="ColorRect" type="ColorRect" parent="Statistics"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.25098)

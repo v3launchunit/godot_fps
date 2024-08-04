@@ -1,6 +1,5 @@
 extends Pickup
 
-@export_category("HealthPickup")
 
 @export var heal_amount: int = 20
 @export var can_overheal: bool = false
@@ -13,7 +12,7 @@ func _process(_delta: float) -> void:
 
 
 func interact(body: Node3D) -> void:
-	if body.name == "Player" and body.find_child("Status").heal(
+	if body is Player and (body as Player).status.heal(
 			heal_amount,
 			can_overheal,
 			is_armor_pickup

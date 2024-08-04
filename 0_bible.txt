@@ -43,12 +43,12 @@ Weapons:
 				Maybe allow charging velocity(?)
 		Boomstick:
 			Primary: Super Shot
-			Secondary: Sawblade Launcher
-				Hold to spin blade w/o launching (a la ultrakill sawed-on)(?)
-			Alt Secondary: Harpoon Gun
+			Secondary: Harpoon Gun
 				Reel in foes
 				Harpoon persists through weapon switch
 				Only one harpoon at a time
+			Alt Secondary: Sawblade Launcher
+				Hold to spin blade w/o launching (a la ultrakill sawed-on)(?)
 
 	Slot 3 (Automatics):
 		AKM:
@@ -193,28 +193,30 @@ Enemies:
 			Teleporter
 			Melee Only (teeth)
 
-		Spider:
+		Wolf Spider:
 			Weak
 			Fast
-			Passive to player
+			Neutral to player
 			Eats Eyeballs
-			Ranged (grappling web)
-			Melee (fangs)
+			Ranged (grappling harpoon)
+			Melee (lunge, fangs)
 
 
 	Military:
 		Infight with: Locals
 
-		Hound:
+		Hound Spider:
 			Weak
 			Fast
-			Melee Only (lunge, teeth)
+			Ranged (grappling harpoon)
+			Melee (lunge, fangs)
 
-		Hell Hound:
+		Hell Hound Spider:
 			Weak
 			Fast
-			Alert nearby Hell Hounds upon spotting player
-			Melee Only (lunge, teeth)
+			Alert nearby Hell Hound Spiders upon spotting player
+			Ranged (grappling harpoon)
+			Melee (lunge, fangs)
 
 		Pinkerton:
 			Weak
@@ -466,7 +468,7 @@ Campaign:
 				Lizard
 				*Eyeball
 		E1M5 (""):
-			Evil factory/processing plant.
+			Mine tunnel maze.
 			Weapons:
 				AKM
 				Boomstick
@@ -497,7 +499,7 @@ Campaign:
 				Enforcer
 				*PlasmaDroid (as miniboss)
 		E1M7 (""):
-
+			Evil Factory Level/Power Plant.
 			Weapons:
 				AKM
 				Boomstick
@@ -621,6 +623,15 @@ Juicy Lore Bits:
 		Crows:
 			Sapient
 			Only fully organic creatures (aside from maybe bones*)
+
+
+Achievements & Shit:
+	tastes like soylent green:
+		eat a corpse
+	average roguelike pc:
+		eat one hundred (100) corpses
+	the tubifex monster from carrion gives me gender envy:
+		eat ten thousand (10000) corpses
 
 
 Credits:

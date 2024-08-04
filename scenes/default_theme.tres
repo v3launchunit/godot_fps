@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=52 format=3 uid="uid://dwof7m2ye3tjh"]
+[gd_resource type="Theme" load_steps=53 format=3 uid="uid://dwof7m2ye3tjh"]
 
 [ext_resource type="Texture2D" uid="uid://b58io17r5p4d8" path="res://textures/ui/button.png" id="1_oglcn"]
 [ext_resource type="Texture2D" uid="uid://cgjc0g2mfb3u3" path="res://textures/ui/button_focus.png" id="2_ptkv8"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://cfj0675x5xljx" path="res://textures/ui/scroll_bar.png" id="25_ukf7r"]
 [ext_resource type="Texture2D" uid="uid://d15r8rs6jnw2b" path="res://textures/ui/scroll_bar_hover.png" id="26_6iypd"]
 [ext_resource type="Texture2D" uid="uid://dkxyj7ds8cjx4" path="res://textures/ui/scroll_bar_focus.png" id="27_tosgo"]
+[ext_resource type="FontFile" uid="uid://c6no16jwfpedn" path="res://textures/ui/IBMPlexMono-Regular.ttf" id="28_clsud"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hsdar"]
 texture = ExtResource("1_oglcn")
@@ -107,7 +108,7 @@ texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
-[sub_resource type="Image" id="Image_m6h2n"]
+[sub_resource type="Image" id="Image_uuatx"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -117,7 +118,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_kusdk"]
-image = SubResource("Image_m6h2n")
+image = SubResource("Image_uuatx")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k4pab"]
 texture = ExtResource("7_715w6")
@@ -203,6 +204,7 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
 [resource]
+default_font = ExtResource("28_clsud")
 BoxContainer/constants/separation = 4
 Button/colors/font_color = Color(0.74902, 0.74902, 0.74902, 1)
 Button/colors/font_disabled_color = Color(0.75, 0.75, 0.75, 0.25098)

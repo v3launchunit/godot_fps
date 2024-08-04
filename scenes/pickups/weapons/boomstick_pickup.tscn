@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://du780rqis8eqo"]
+[gd_scene load_steps=30 format=3 uid="uid://du780rqis8eqo"]
 
 [ext_resource type="Script" path="res://scripts/pickups/weapon_pickup.gd" id="1_dciki"]
 [ext_resource type="AudioStream" uid="uid://dxscywpf2ven0" path="res://audio/streams/pickups/pickup_weapon.wav" id="2_1sh8p"]
+[ext_resource type="PackedScene" uid="uid://crvf6qiekfqex" path="res://weapons/boomstick.tscn" id="2_gquns"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_nlojk"]
-[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="3_o60x8"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halos/halo.tres" id="3_o60x8"]
 [ext_resource type="ArrayMesh" uid="uid://cjx7th4qqdgak" path="res://models/weapons/boomstick.obj" id="3_uposn"]
 [ext_resource type="Texture2D" uid="uid://bbbk8k7whvl1m" path="res://textures/weapons/boomstick/boomstick_detail_mask.png" id="4_lpgj7"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="5_88hh6"]
@@ -258,8 +259,9 @@ _data = {
 collision_layer = 8
 lock_rotation = true
 script = ExtResource("1_dciki")
-weapon = "res://scenes/weapons/boomstick.tscn"
+weapon = ExtResource("2_gquns")
 starting_ammo = 15
+starting_alt_ammo = 5
 flash_color = Color(1, 1, 0, 1)
 pickup_sound = ExtResource("2_1sh8p")
 pickup_text = "Bagged a Boomstick (and 15 shells)"

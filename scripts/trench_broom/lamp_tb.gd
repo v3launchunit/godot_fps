@@ -2,32 +2,40 @@
 
 extends MeshInstance3D
 
+
 ## Trenchbroom Properties
 ## Vector3 color
 ## Float energy
 ## Float range
-@export var properties: Dictionary
+@export var properties: Dictionary:
+	set(to):
+		if properties != to:
+			properties = to
+			update_properties()
+
 
 func _ready() -> void:
 	#if not Engine.is_editor_hint():
 		#return
+	#update_properties()
+	pass
 
+
+func update_properties() -> void:
 	var color: Color
 	if properties.has("_color"):
-		color = Color(
-				properties.get("_color").x / 255,
-				properties.get("_color").y / 255,
-				properties.get("_color").z / 255,
-				1.0,
+		color = Color8(
+				roundi(properties.get("_color").x),
+				roundi(properties.get("_color").y),
+				roundi(properties.get("_color").z),
 		)
 	else:
-		color = Color(
-				properties.get("color").x / 255,
-				properties.get("color").y / 255,
-				properties.get("color").z / 255,
-				1.0,
+		color = Color8(
+				roundi(properties.get("color").x),
+				roundi(properties.get("color").y),
+				roundi(properties.get("color").z),
 		)
-	material_override = mesh.material#.duplicate()
+	material_override = mesh.material.duplicate()
 
 	set_instance_shader_parameter("albedo", color * properties.get("energy"))
 	get_child(0).light_color = color

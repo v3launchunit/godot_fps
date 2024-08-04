@@ -53,7 +53,7 @@ func _on_body_entered(body: Node) -> void:
 		e = explosion.instantiate()
 		add_child(e)
 		e.reparent(body if sticky else get_tree().root.get_child(2))
-		if e is LodgedNail:
+		if e is LodgedNail or e is LodgedHarpoon:
 			e.invoker = invoker
 		for child in e.get_children():
 			if child is AreaDamage:

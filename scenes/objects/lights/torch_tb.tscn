@@ -224,12 +224,14 @@ distance_fade_mode = 1
 
 [node name="Torch" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0)
+layers = 8
 material_override = SubResource("ShaderMaterial_wigho")
 mesh = SubResource("CylinderMesh_3s1hl")
 script = SubResource("GDScript_ognxc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Torch"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+layers = 8
 material_override = SubResource("ShaderMaterial_bdf6a")
 visibility_range_end = 10.0
 visibility_range_end_margin = 5.0
@@ -238,7 +240,7 @@ skeleton = NodePath("../GPUParticles3D")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Torch"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
-layers = 2
+layers = 8
 material_override = SubResource("ShaderMaterial_ardtw")
 cast_shadow = 0
 visibility_range_end_margin = 10.0
@@ -252,7 +254,7 @@ draw_pass_1 = SubResource("BoxMesh_xu4jy")
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="Torch"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
 visible = false
-layers = 2
+layers = 8
 material_override = SubResource("StandardMaterial3D_jvp88")
 cast_shadow = 0
 visibility_range_end_margin = 10.0

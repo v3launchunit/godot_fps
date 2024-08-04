@@ -19,8 +19,8 @@ cellular_distance_function = 1
 cellular_return_type = 6
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4oi8b"]
-width = 128
-height = 128
+width = 256
+height = 256
 seamless = true
 seamless_blend_skirt = 0.25
 color_ramp = SubResource("Gradient_cpigb")
@@ -32,8 +32,8 @@ frequency = 0.025
 fractal_octaves = 1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_58wdo"]
-width = 128
-height = 128
+width = 256
+height = 256
 seamless = true
 seamless_blend_skirt = 0.5
 bump_strength = 101.5
@@ -44,8 +44,8 @@ interpolation_mode = 2
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kgpkh"]
-width = 128
-height = 128
+width = 256
+height = 256
 seamless = true
 seamless_blend_skirt = 0.25
 color_ramp = SubResource("Gradient_fhm3q")
@@ -58,16 +58,16 @@ metadata/_snap_enabled = true
 metadata/_snap_count = 16
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a1gs8"]
-width = 128
-height = 128
+width = 256
+height = 256
 seamless = true
 seamless_blend_skirt = 0.25
 color_ramp = SubResource("Gradient_j0gt1")
 noise = SubResource("FastNoiseLite_yg72i")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sm15b"]
-width = 128
-height = 128
+width = 256
+height = 256
 invert = true
 seamless = true
 seamless_blend_skirt = 0.25

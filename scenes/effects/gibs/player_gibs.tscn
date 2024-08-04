@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://wfllsui4k1if"]
 
-[ext_resource type="Script" path="res://scripts/entities/player/player_gibs.gd" id="1_05c88"]
+[ext_resource type="Script" path="res://entities/player/player_gibs.gd" id="1_05c88"]
 [ext_resource type="Script" path="res://scripts/auto_play.gd" id="1_x8wn6"]
 [ext_resource type="Texture2D" uid="uid://cmq3arf61ax4f" path="res://textures/ui/menu_panel.png" id="2_t0aun"]
-[ext_resource type="Script" path="res://scripts/entities/player/game_container.gd" id="3_0y2ya"]
+[ext_resource type="Script" path="res://entities/player/game_container.gd" id="3_0y2ya"]
 
 [sub_resource type="Animation" id="Animation_5qn3g"]
 resource_name = "anim"

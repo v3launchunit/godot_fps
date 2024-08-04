@@ -2,28 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2605qndhjogb"
-path.s3tc="res://.godot/imported/vortigaunt_vortigaunt_albedo.png-c6a282390c31f5aa147375a45d3a2f1e.s3tc.ctex"
+uid="uid://b04fh2b44jr6a"
+path="res://.godot/imported/vortigaunt_vortigaunt_albedo.png-c6a282390c31f5aa147375a45d3a2f1e.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
-generator_parameters={}
 
 [deps]
 
 source_file="res://models/entities/vortigaunt_vortigaunt_albedo.png"
-dest_files=["res://.godot/imported/vortigaunt_vortigaunt_albedo.png-c6a282390c31f5aa147375a45d3a2f1e.s3tc.ctex"]
+dest_files=["res://.godot/imported/vortigaunt_vortigaunt_albedo.png-c6a282390c31f5aa147375a45d3a2f1e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

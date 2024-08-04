@@ -1,9 +1,8 @@
 extends Pickup
 
-@export_category("WeaponPickup")
 
 ## The weapon that will be recieved upon collecting this pickup.
-@export_file("*.tscn") var weapon: String
+@export var weapon: PackedScene
 ## The amount of ammunition that will be recieved upon collecting this pickup.
 ## The recieved ammo's type is determined automatically based on the primary
 ## ammo of the associated weapon. If the player does not already possess this
@@ -14,8 +13,6 @@ extends Pickup
 ## [WeaponAltFire].
 @export var starting_alt_ammo: int = 0
 
-@onready var weapon_scene: PackedScene = load(weapon)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -23,9 +20,9 @@ func _process(delta: float) -> void:
 
 
 func interact(body: Node3D) -> void:
-	if body.name == "Player":
+	if body is Player:
 		var manager := body.find_child("PlayerCam")
-		var instance := weapon_scene.instantiate()
+		var instance := weapon.instantiate()
 
 		manager.add_child(instance)
 

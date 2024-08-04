@@ -1,6 +1,5 @@
 extends Pickup
 
-@export_category("AmmoPickup")
 
 @export var ammo_type: String = "none"
 @export var ammo_amount: int = 1

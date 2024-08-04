@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/pickups/health_pickup.gd" id="1_ykcg1"]
 [ext_resource type="AudioStream" uid="uid://cr8v5feyxtf4l" path="res://audio/streams/pickups/pickup_health.wav" id="2_1y7vh"]
 [ext_resource type="Texture2D" uid="uid://kqlvg0qggfjq" path="res://textures/objects/health_pack/health_pack.png" id="3_1cnl6"]
-[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="3_bygk2"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halos/halo.tres" id="3_bygk2"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_wu50x"]
 [ext_resource type="Texture2D" uid="uid://ct7ds556f38rr" path="res://textures/objects/health_pack/health_pack_emissions.png" id="4_q78tt"]
 [ext_resource type="Texture2D" uid="uid://blyf0pk53kvke" path="res://textures/objects/health_pack/health_pack_heights.png" id="5_8s5is"]
@@ -162,7 +162,7 @@ collision_layer = 8
 lock_rotation = true
 script = ExtResource("1_ykcg1")
 pickup_sound = ExtResource("2_1y7vh")
-pickup_text = "+20 health"
+pickup_text = "+20% health"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_uc2sx")

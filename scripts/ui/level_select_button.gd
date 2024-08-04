@@ -10,7 +10,11 @@ extends Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if _scene == null or not (always_open or Globals.level_revealed(level_name)):
+	if _scene == null or not (
+			always_open 
+			or Globals.level_revealed(level_name)
+			or OS.has_feature("editor")
+	):
 		disabled = true
 		if is_secret:
 			visible = false
@@ -34,4 +38,4 @@ func _on_pressed() -> void:
 	_press_sound.play()
 	get_tree().change_scene_to_packed(_scene)
 	GameMenu.close_top_menu()
-	#GameMenu.close_top_menu()
+	GameMenu.close_top_menu()

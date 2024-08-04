@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cqfw5pys7s4yh"]
 
 [ext_resource type="Material" uid="uid://c42r6gnwbsttx" path="res://materials/effects/fancy_halo.tres" id="1_r4vco"]
-[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="2_vebmo"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halos/halo.tres" id="2_vebmo"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="3_p8rkr"]
 [ext_resource type="Shader" path="res://shaders/spatial/psx_ul_mix.gdshader" id="4_6my5t"]
 
@@ -121,11 +121,13 @@ radius = 0.125
 [node name="Node3D" type="Node3D"]
 
 [node name="Post" type="MeshInstance3D" parent="."]
+layers = 8
 material_override = SubResource("ShaderMaterial_1iokr")
 mesh = SubResource("CylinderMesh_hb1r1")
 
 [node name="Bulb" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+layers = 8
 material_override = SubResource("ShaderMaterial_efxxv")
 mesh = SubResource("SphereMesh_h8sxc")
 skeleton = NodePath("OmniLight3D")
@@ -150,6 +152,7 @@ color = Color(0.501961, 0.752941, 1, 1)
 
 [node name="Cap" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825, 0)
+layers = 8
 material_override = SubResource("ShaderMaterial_1iokr")
 mesh = SubResource("CylinderMesh_7s1br")
 

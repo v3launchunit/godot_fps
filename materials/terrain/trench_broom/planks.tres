@@ -11,8 +11,8 @@ colors = PackedColorArray(0.278431, 0.172549, 0.0470588, 1, 0.341176, 0.207843, 
 frequency = 0.1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ypjrv"]
-width = 8
-height = 128
+width = 16
+height = 256
 generate_mipmaps = false
 seamless = true
 seamless_blend_skirt = 0.25

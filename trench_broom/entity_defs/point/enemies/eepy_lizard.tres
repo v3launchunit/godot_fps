@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://dee6vmksuogq4"]
 
-[ext_resource type="PackedScene" uid="uid://68ll8lt6xqyd" path="res://scenes/entities/locals/eepy_lizard.tscn" id="1_x3b5q"]
+[ext_resource type="PackedScene" path="res://entities/enemies/locals/eepy_lizard.tscn" id="1_x3b5q"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_swu1a"]
 
 [resource]

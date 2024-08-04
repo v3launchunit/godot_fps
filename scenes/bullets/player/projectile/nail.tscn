@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_e5fcg"]
 [ext_resource type="PackedScene" uid="uid://ew75cbfb63v5" path="res://scenes/bullets/player/special/lodged_nail.tscn" id="2_anp6i"]
 [ext_resource type="ArrayMesh" uid="uid://dnda4sjlmlawu" path="res://models/bullets/nail.obj" id="2_ia8ek"]
-[ext_resource type="Material" uid="uid://fl33v7w3rbk" path="res://materials/bullet_metal.tres" id="3_a5dfc"]
+[ext_resource type="Material" uid="uid://by4h3hrepyr2o" path="res://materials/bullet_metal.tres" id="3_a5dfc"]
 [ext_resource type="AudioStream" uid="uid://crtqyq64m3wm1" path="res://audio/streams/ambient/bullet_ambient.wav" id="4_i3kve"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h48e4"]
@@ -16,13 +16,15 @@ input_ray_pickable = false
 gravity_scale = 0.0
 lock_rotation = true
 continuous_cd = true
-max_contacts_reported = 5
 contact_monitor = true
+max_contacts_reported = 5
 script = ExtResource("1_e5fcg")
 speed = 50.0
+player_damage_multiplier = null
 explosion = ExtResource("2_anp6i")
 sticky = true
 piercer = false
+knockback_force = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)

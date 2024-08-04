@@ -11,17 +11,18 @@ signal menu_closed(menu_layer: int)
 
 
 func _process(_delta: float) -> void:
+	if _active_menus <= 0 and not get_tree().root.has_focus():
+		open_pause_menu()
 	if Input.is_action_just_pressed("ui_cancel"):
 		if _active_menus <= 0:
-			get_tree().paused = true
-			show()
-			Player.release_mouse()
-			_active_menus = 1
+			_press_sound.play()
+			open_pause_menu()
 		else:
 			close_top_menu()
 
 
 func close_top_menu() -> void:
+	_press_sound.play()
 	menu_closed.emit(_active_menus)
 	_active_menus -= 1
 	if _active_menus <= 0:
@@ -29,6 +30,13 @@ func close_top_menu() -> void:
 		hide()
 		Player.capture_mouse()
 		_active_menus = 0
+
+
+func open_pause_menu() -> void:
+	get_tree().paused = true
+	show()
+	Player.release_mouse()
+	_active_menus = 1
 
 
 func _on_campaign_button_pressed() -> void:
@@ -56,3 +64,7 @@ func _on_settings_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	_press_sound.play()
 	get_tree().quit()
+
+
+func _on_close_menu_button_pressed() -> void:
+	close_top_menu()

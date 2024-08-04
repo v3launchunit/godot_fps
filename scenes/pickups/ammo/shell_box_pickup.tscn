@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://g7unocdbdokw" path="res://audio/streams/pickups/pickup_ammo.wav" id="2_jodgy"]
 [ext_resource type="Texture2D" uid="uid://d0bquc3skclkb" path="res://textures/objects/shell_box/shell_box.png" id="3_2eqfn"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_7jsya"]
-[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halo.tres" id="3_w7jbw"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halos/halo.tres" id="3_w7jbw"]
 [ext_resource type="Texture2D" uid="uid://cn80mlgjttjp3" path="res://textures/objects/shell_box/shell_box_heights.png" id="4_v3hoq"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="5_8unii"]
 [ext_resource type="Texture2D" uid="uid://b6k5ky260w0ck" path="res://textures/objects/shell_box/shell_box_metallic.png" id="5_fi4vq"]

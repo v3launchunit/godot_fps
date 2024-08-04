@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dobuk1wr32hlg" path="res://textures/terrain/custom_hand/bricks/bricks_albedo.png" id="1_36lo4"]
 [ext_resource type="Texture2D" uid="uid://ca1runwpb3teo" path="res://textures/terrain/custom_hand/bricks/bricks_detail_mask.png" id="2_s6ecd"]
 [ext_resource type="Texture2D" uid="uid://cwfs3yd67cdxg" path="res://textures/terrain/custom_hand/bricks/bricks_heights.png" id="3_xbg2g"]
-[ext_resource type="Texture2D" uid="uid://d0airnxbjud3t" path="res://textures/terrain/custom_hand/bricks/bricks_normals.png" id="4_5q8ut"]
+[ext_resource type="Texture2D" uid="uid://bcoptj5oh0yex" path="res://textures/terrain/custom_hand/bricks/bricks_normals_32.png" id="4_7b0e1"]
 
 [sub_resource type="Gradient" id="Gradient_vc2yx"]
 interpolation_mode = 1
@@ -16,8 +16,8 @@ frequency = 0.1
 offset = Vector3(-68.95, 40.25, 0)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ecvys"]
-width = 128
-height = 128
+width = 256
+height = 256
 invert = true
 generate_mipmaps = false
 seamless = true
@@ -29,7 +29,7 @@ noise = SubResource("FastNoiseLite_3bki3")
 albedo_texture = ExtResource("1_36lo4")
 roughness = 0.75
 normal_enabled = true
-normal_texture = ExtResource("4_5q8ut")
+normal_texture = ExtResource("4_7b0e1")
 heightmap_scale = 1.0
 heightmap_texture = ExtResource("3_xbg2g")
 detail_enabled = true

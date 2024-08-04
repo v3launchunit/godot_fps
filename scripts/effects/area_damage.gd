@@ -1,14 +1,17 @@
 class_name AreaDamage
 extends Area3D
 
-@export_category("AreaDamage")
-
-@export var damage: float = 120
-@export var player_damage_override: float = 30
+@export_group("Damage")
+@export var damage: float = 120.0
+@export var player_damage_override: float = 30.0
 @export var damage_type: Status.DamageType = Status.DamageType.GENERIC
-@export var knockback_force: float = 15
 
-var invoker: Node3D
+@export_group("Knockback")
+@export var knockback_force: float = 15.0
+@export var knockup_force: float = 0.0
+
+@export_group("Save Data")
+@export var invoker: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,6 +33,9 @@ func _on_area_body_entered(body: Node3D) -> void:
 		if body != null and body is EnemyBase and body != invoker:
 			body.detect_target(invoker)
 	if body.has_method("apply_knockback"):
-		body.apply_knockback(knockback_force * (
-				body.global_position - global_position
-		).normalized())
+		body.apply_knockback(
+			knockback_force 
+			* (body.global_position - global_position).normalized()
+			+ knockup_force
+			* Vector3.UP
+	)
