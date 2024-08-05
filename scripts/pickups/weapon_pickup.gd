@@ -12,6 +12,13 @@ extends Pickup
 ## Ditto, but for secondary-fire weapons. Ignored if the weapon is not
 ## [WeaponAltFire].
 @export var starting_alt_ammo: int = 0
+@export var event_string: String = "pickup.weap."
+
+
+func _ready() -> void:
+	if event_string and event_string != "":
+		pickup_text = Globals.parse_text("events", event_string)
+	super()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

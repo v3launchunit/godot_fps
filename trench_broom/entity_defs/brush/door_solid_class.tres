@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://bn8ijfkkxi53l"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_d70qg"]
-[ext_resource type="Script" path="res://scripts/trench_broom/brush_door.gd" id="2_rxnvy"]
+[ext_resource type="Script" path="res://trench_broom/brush_door.gd" id="2_rxnvy"]
 
 [resource]
 script = ExtResource("1_d70qg")
@@ -31,8 +31,8 @@ class_properties = {
 "remote_only": false,
 "required_key": -1,
 "sound_pos": Vector3(0, 0, 0),
-"tooltip_closed": "OPEN",
-"tooltip_open": "CLOSE"
+"tooltip_closed": "open",
+"tooltip_open": "close"
 }
 class_property_descriptions = {}
 meta_properties = {

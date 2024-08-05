@@ -113,6 +113,7 @@ lock_rotation = true
 script = ExtResource("1_0j7bn")
 ammo_type = "akm_bullets"
 ammo_amount = 45
+event_string = "pickup.ammo.akm"
 pickup_sound = ExtResource("2_rvwd2")
 pickup_text = "+45 AKM rounds"
 

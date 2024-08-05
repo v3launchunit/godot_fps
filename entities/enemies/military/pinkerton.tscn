@@ -20,7 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://cvhddpbrl73h7" path="res://audio/streams/voices/pinkerton/detect/kill_her_3.wav" id="11_q5fbb"]
 [ext_resource type="AudioStream" uid="uid://dlc4tyjayi4sv" path="res://audio/streams/voices/pinkerton/detect/stop_her_1.wav" id="12_tfmbw"]
 [ext_resource type="AudioStream" uid="uid://cqcaj4cjjb1ip" path="res://audio/streams/voices/pinkerton/detect/tresspasser_1.wav" id="13_0jqmp"]
-[ext_resource type="PackedScene" uid="uid://blrtnnu61g5s" path="res://scenes/bullets/enemy/enemy_test_bullet.tscn" id="14_0v8ti"]
+[ext_resource type="PackedScene" uid="uid://blrtnnu61g5s" path="res://bullets/enemy/enemy_test_bullet.tscn" id="14_0v8ti"]
 [ext_resource type="AudioStream" uid="uid://b5ay00lvhbvmm" path="res://audio/streams/voices/pinkerton/death/scream_4.wav" id="15_kxmnn"]
 [ext_resource type="AudioStream" uid="uid://db7ebp6630xbh" path="res://audio/streams/voices/pinkerton/death/scream_3.wav" id="16_vn7a5"]
 [ext_resource type="AudioStream" uid="uid://472lwhnuv0ad" path="res://audio/streams/voices/pinkerton/death/scream_2.wav" id="17_n4f4t"]
@@ -927,7 +927,7 @@ graph_offset = Vector2(-98, -5)
 
 [node name="Pinkerton" type="CharacterBody3D"]
 collision_layer = 4
-collision_mask = 23
+collision_mask = 151
 script = ExtResource("1_4o8wq")
 species = &"pinkertons"
 speed = 7.0
@@ -969,7 +969,7 @@ bones/20/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/21/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.151291, -0.988382, -0.0145769, 0.988067, -0.150779, -0.031449, 0.0288857, -0.0191609, 0.999399, -0.172053, 0.363069, 0.0317823)
+transform = Transform3D(-0.129779, -0.41071, 0.902482, 0.928367, -0.370024, -0.0348928, 0.348271, 0.833306, 0.429311, -0.0436887, 0.310292, 0.243793)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="0"]
 layers = 2
@@ -1008,14 +1008,14 @@ shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.226936, -0.988382, -0.0218651, 1.4821, -0.150779, -0.0471738, 0.0433288, -0.0191608, 1.4991, -0.221473, 0.35553, 0.0308242)
+transform = Transform3D(-0.194668, -0.41071, 1.35372, 1.39255, -0.370024, -0.0523396, 0.522407, 0.833306, 0.643967, -0.0642247, 0.29179, 0.28546)
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D/Cylinder_001" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_bkory")
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.986603, 0.14056, 0.0828056, -0.162167, 0.900291, 0.403953, -0.0177695, -0.41197, 0.911024, -0.231422, 0.395232, 0.059724)
+transform = Transform3D(0.986625, 0.113408, 0.117089, -0.155804, 0.867253, 0.472862, -0.0479199, -0.48478, 0.873322, -0.231098, 0.394848, 0.0691998)
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D/Shotgun" index="0"]
 layers = 2
@@ -1037,7 +1037,7 @@ omni_range = 10.0
 transform = Transform3D(-1.95578e-08, -1, 7.45058e-09, -3.72529e-08, 2.23517e-08, 1, -1, 2.04891e-08, -3.72529e-08, 0, 0.675, -0.135)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.986603, 0.14056, 0.0828056, -0.162167, 0.900291, 0.403953, -0.0177695, -0.41197, 0.911024, -0.231422, 0.395232, 0.059724)
+transform = Transform3D(0.986625, 0.113408, 0.117089, -0.155804, 0.867253, 0.472862, -0.0479199, -0.48478, 0.873322, -0.231098, 0.394848, 0.0691998)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D/Pump" index="0"]
 layers = 2
@@ -1074,8 +1074,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_l00kp")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 3.2
-parameters/current_position = 0.00885746
-parameters/current_delta = 0.0166667
+parameters/current_position = 1.91667
+parameters/current_delta = 0.0162173
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -1092,8 +1092,8 @@ parameters/flinching/current_length = null
 parameters/flinching/current_position = null
 parameters/flinching/current_delta = null
 parameters/idle/current_length = 3.2
-parameters/idle/current_position = 0.00885746
-parameters/idle/current_delta = 0.0166667
+parameters/idle/current_position = 1.91667
+parameters/idle/current_delta = 0.0162173
 parameters/jumping/current_length = null
 parameters/jumping/current_position = null
 parameters/jumping/current_delta = null

@@ -164,6 +164,7 @@ script = ExtResource("1_2musx")
 weapon = ExtResource("2_3egwi")
 starting_ammo = 1
 starting_alt_ammo = 5
+event_string = "pickup.weap.rpg"
 flash_color = Color(1, 1, 0, 1)
 pickup_sound = ExtResource("2_fqxmo")
 pickup_text = "Retrieved an RPG (and 5 grenades)"

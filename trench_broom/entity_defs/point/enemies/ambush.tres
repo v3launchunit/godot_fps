@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://cuakno3ky78hu"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_ga18y"]
-[ext_resource type="Script" path="res://entities/ambush.gd" id="2_ntrmh"]
+[ext_resource type="Script" path="res://entities/enemies/ambush.gd" id="2_ntrmh"]
 
 [resource]
 script = ExtResource("1_ga18y")

@@ -130,7 +130,7 @@ func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	if names.load("res://names.cfg"):
 		printerr("could not load names.cfg")
-	if names.load("res://text_%s.cfg"):
+	if text.load("res://text/text_%s.cfg" % get_lang_name(s_lang)):
 		printerr("could not load text_%s.cfg")
 	_setup_user()
 	_load_config()
@@ -144,6 +144,14 @@ func _ready() -> void:
 
 #func _physics_process(delta: float) -> void:
 	#Engine.time_scale = smoothstep(Engine.time_scale, 1.0, delta / Engine.time_scale)
+
+
+func get_lang_name(lang: Lang) -> String:
+	match lang:
+		Lang.ENGLISH:
+			return "eng"
+		_:
+			return "eng"
 
 
 ## Reads the current configuration settings from disq and loads them into memory.
@@ -232,8 +240,9 @@ func parse_names(section: String, key: String) -> Variant:
 	return names.get_value(section, key)
 
 
-func parse_text(section: String, key: String) -> Variant:
-	return text.get_value(section, key)
+func parse_text(section: String, key: String) -> String:
+	print(text.get_value(section, key))
+	return text.get_value(section, key) as String
 
 
 func level_revealed(name: String) -> bool:

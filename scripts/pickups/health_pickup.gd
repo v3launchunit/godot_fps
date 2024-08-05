@@ -4,6 +4,13 @@ extends Pickup
 @export var heal_amount: int = 20
 @export var can_overheal: bool = false
 @export var is_armor_pickup: bool = false
+@export var event_string: String = "pickup.health.gen"
+
+
+func _ready() -> void:
+	if event_string and event_string != "":
+		pickup_text = Globals.parse_text("events", event_string) % heal_amount
+	super()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

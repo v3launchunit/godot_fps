@@ -74,6 +74,7 @@ script = ExtResource("1_evxcs")
 heal_amount = 1
 can_overheal = true
 is_armor_pickup = true
+event_string = "pickup.armor.gen"
 flash_color = Color(0, 0, 1, 1)
 pickup_sound = ExtResource("2_lqt4n")
 pickup_text = "+1 bonus armor"

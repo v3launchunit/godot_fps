@@ -135,6 +135,7 @@ lock_rotation = true
 script = ExtResource("1_po7tn")
 weapon = ExtResource("2_4el3i")
 starting_ammo = 20
+event_string = "pickup.weap.plasma"
 flash_color = Color(1, 1, 0, 1)
 pickup_sound = ExtResource("2_d0qa4")
 pickup_text = "Pilfered a Plasma Cannon (and 20% cell charge)"

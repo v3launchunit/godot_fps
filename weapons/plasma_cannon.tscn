@@ -4,10 +4,10 @@
 [ext_resource type="Material" uid="uid://bqaqpwu7ya4e1" path="res://weapons/crossbow_mat_1.tres" id="1_xwh1k"]
 [ext_resource type="Script" path="res://weapons/weapon_alt_fire.gd" id="2_ehb67"]
 [ext_resource type="ArrayMesh" uid="uid://bq2ld7p1te64i" path="res://models/weapons/muzzle_flash_plasma.obj" id="3_8rdg8"]
-[ext_resource type="PackedScene" uid="uid://cowh82u84k27w" path="res://scenes/bullets/player/projectile/plasma_rocket.tscn" id="3_d0hrl"]
+[ext_resource type="PackedScene" uid="uid://cowh82u84k27w" path="res://bullets/player/projectile/plasma_rocket.tscn" id="3_d0hrl"]
 [ext_resource type="Script" path="res://weapons/alert_area.gd" id="4_0bwio"]
 [ext_resource type="AnimationLibrary" uid="uid://c3tiox0a0fs23" path="res://weapons/plasma_cannon_anims.res" id="4_bijp4"]
-[ext_resource type="PackedScene" uid="uid://ddrh730si0u6x" path="res://scenes/bullets/player/projectile/plasma_bullet.tscn" id="4_swy3p"]
+[ext_resource type="PackedScene" uid="uid://ddrh730si0u6x" path="res://bullets/player/projectile/plasma_bullet.tscn" id="4_swy3p"]
 [ext_resource type="Material" uid="uid://brwrc6gopu51x" path="res://materials/muzzle_flash_plasma.tres" id="7_ln5p4"]
 
 [sub_resource type="Shader" id="Shader_7cvsv"]

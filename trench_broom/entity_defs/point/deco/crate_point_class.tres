@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_8b67u"]
 [ext_resource type="PackedScene" uid="uid://bxdu412yk2ut8" path="res://scenes/objects/crate_wooden.tscn" id="1_j8a6i"]
-[ext_resource type="Script" path="res://scripts/trench_broom/obj_tb.gd" id="3_7meb8"]
+[ext_resource type="Script" path="res://trench_broom/obj_tb.gd" id="3_7meb8"]
 
 [resource]
 script = ExtResource("1_8b67u")

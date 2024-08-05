@@ -193,6 +193,7 @@ lock_rotation = true
 script = ExtResource("1_sb0jk")
 heal_amount = 200
 can_overheal = true
+event_string = "pickup.health.heart"
 pickup_sound = ExtResource("2_hobdx")
 pickup_text = "A still-beating heart (+200% bonus health)"
 

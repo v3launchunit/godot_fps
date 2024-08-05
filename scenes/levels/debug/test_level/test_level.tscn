@@ -1,4 +1,4 @@
-[gd_scene load_steps=190 format=4 uid="uid://ddybwy4hdo2q3"]
+[gd_scene load_steps=189 format=4 uid="uid://ddybwy4hdo2q3"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_lifds"]
 [ext_resource type="PackedScene" uid="uid://do61x5km3wthk" path="res://entities/player/player.tscn" id="1_npqeh"]
@@ -14,15 +14,14 @@
 [ext_resource type="Material" uid="uid://j3w61nhxr063" path="res://materials/terrain/trench_broom_std/metal.tres" id="11_guo1l"]
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="12_0e1yk"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="13_8o8d6"]
-[ext_resource type="Material" uid="uid://bdhdwkh72dfij" path="res://materials/terrain/trench_broom/bricks.tres" id="15_v883o"]
-[ext_resource type="Material" uid="uid://cxyb8wsuh6ejk" path="res://materials/terrain/trench_broom/log.tres" id="16_iy6q8"]
-[ext_resource type="Material" uid="uid://j3w61nhxr063" path="res://materials/terrain/trench_broom/metal.tres" id="16_mrdve"]
-[ext_resource type="Material" uid="uid://t1hv3tspvh88" path="res://materials/terrain/trench_broom/planks.tres" id="17_mcu25"]
+[ext_resource type="Material" uid="uid://bdhdwkh72dfij" path="res://materials/terrain/trench_broom_std/bricks.tres" id="15_v883o"]
+[ext_resource type="Material" uid="uid://cxyb8wsuh6ejk" path="res://materials/terrain/trench_broom_std/log.tres" id="16_iy6q8"]
+[ext_resource type="Material" uid="uid://t1hv3tspvh88" path="res://materials/terrain/trench_broom_std/planks.tres" id="17_mcu25"]
 [ext_resource type="Material" uid="uid://do2cbn6keg5jn" path="res://materials/terrain/trench_broom/glass.tres" id="18_tqlrl"]
-[ext_resource type="Material" uid="uid://cb4c2yxg51cwb" path="res://materials/terrain/trench_broom/rock.tres" id="19_chnr4"]
-[ext_resource type="Material" uid="uid://qvw6kqouxvuf" path="res://materials/terrain/trench_broom/log_end.tres" id="19_fxvjy"]
-[ext_resource type="Material" uid="uid://cj1r6jgxrihlc" path="res://materials/terrain/trench_broom/big_cobble_stone.tres" id="21_jcnfx"]
-[ext_resource type="Material" uid="uid://byeqdr6er6cvv" path="res://materials/terrain/trench_broom/dirt.tres" id="22_t7quw"]
+[ext_resource type="Material" uid="uid://cb4c2yxg51cwb" path="res://materials/terrain/trench_broom_std/rock.tres" id="19_chnr4"]
+[ext_resource type="Material" uid="uid://qvw6kqouxvuf" path="res://materials/terrain/trench_broom_std/log_end.tres" id="19_fxvjy"]
+[ext_resource type="Material" uid="uid://cj1r6jgxrihlc" path="res://materials/terrain/trench_broom_std/big_cobble_stone.tres" id="21_jcnfx"]
+[ext_resource type="Material" uid="uid://byeqdr6er6cvv" path="res://materials/terrain/trench_broom_std/dirt.tres" id="22_t7quw"]
 [ext_resource type="Material" uid="uid://chme8kijd3qpu" path="res://materials/terrain/trench_broom/lava.tres" id="24_vok50"]
 [ext_resource type="Material" uid="uid://b35jmadc7ijlh" path="res://materials/terrain/trench_broom/lava_flowing.tres" id="25_464ep"]
 [ext_resource type="PackedScene" uid="uid://c0kvfvxi487l1" path="res://scenes/objects/lights/street_lamp.tscn" id="25_wbmk3"]
@@ -45,7 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://7e6nf0ho2ltr" path="res://scenes/objects/teleporter.tscn" id="41_dkm3o"]
 [ext_resource type="Material" uid="uid://biw3k00jqqq3l" path="res://materials/terrain/trench_broom/water.tres" id="42_m623u"]
 [ext_resource type="Script" path="res://scripts/effects/area_hazard.gd" id="57_iagox"]
-[ext_resource type="PackedScene" uid="uid://bfqcephq1sfd3" path="res://entities/mystery_man.tscn" id="62_kax4q"]
+[ext_resource type="PackedScene" uid="uid://bfqcephq1sfd3" path="res://entities/neutral/mystery_man.tscn" id="62_kax4q"]
 
 [sub_resource type="Gradient" id="Gradient_m4bx2"]
 offsets = PackedFloat32Array(0.25, 1)
@@ -236,7 +235,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 72,
 "index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcAGAAZABoAGAAaABsAHAAdAB4AHAAeAB8AIAAhACIAIAAiACMAJAAlACYAJAAmACcAKAApACoAKAAqACsALAAtAC4ALAAuAC8A"),
-"material": ExtResource("16_mrdve"),
+"material": ExtResource("11_guo1l"),
 "name": "terrain/trench_broom/metal",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

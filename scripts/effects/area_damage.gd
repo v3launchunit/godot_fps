@@ -30,7 +30,7 @@ func _on_area_body_entered(body: Node3D) -> void:
 				if body.find_child("Status") is PlayerStatus
 				else damage
 		)
-		if body != null and body is EnemyBase and body != invoker:
+		if body and invoker and body is EnemyBase and body != invoker:
 			body.detect_target(invoker)
 	if body.has_method("apply_knockback"):
 		body.apply_knockback(

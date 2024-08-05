@@ -114,6 +114,7 @@ lock_rotation = true
 script = ExtResource("1_qg8tj")
 weapon = ExtResource("2_cyypm")
 starting_ammo = 20
+event_string = "pickup.weap.nailgun"
 flash_color = Color(1, 1, 0, 1)
 pickup_sound = ExtResource("2_12kw6")
 pickup_text = "Nabbed a Nailgun (and 20 nails)"

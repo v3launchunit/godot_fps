@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://entities/status.gd" id="5_3hbwc"]
 [ext_resource type="AnimationLibrary" path="res://entities/enemies/locals/canary_anims.res" id="5_7exts"]
 [ext_resource type="AudioStream" uid="uid://ci3c0uultgsgr" path="res://audio/streams/voices/canary/detect_moan_4.wav" id="5_51qrl"]
-[ext_resource type="PackedScene" uid="uid://dj8yo2whvp2w7" path="res://scenes/bullets/enemy/enemy_melee_scan.tscn" id="6_a2d18"]
+[ext_resource type="PackedScene" uid="uid://dj8yo2whvp2w7" path="res://bullets/enemy/enemy_melee_scan.tscn" id="6_a2d18"]
 [ext_resource type="AudioStream" uid="uid://g7tloh7a7rc8" path="res://audio/streams/voices/canary/release_1.wav" id="6_j8oek"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://scenes/pickups/health/health_bonus_pickup.tscn" id="6_yegnx"]
 [ext_resource type="AudioStream" uid="uid://hvj8aonxc7fe" path="res://audio/streams/voices/canary/death_moan_1.wav" id="7_e2r5o"]
@@ -608,7 +608,7 @@ graph_offset = Vector2(-165, -24)
 
 [node name="Canary" type="CharacterBody3D"]
 collision_layer = 4
-collision_mask = 23
+collision_mask = 151
 script = ExtResource("1_xpg4m")
 species = &"canaries"
 speed = 6.0
@@ -659,28 +659,28 @@ bones/21/rotation = Quaternion(0.0370042, -0.0100011, 0.259029, 0.965109)
 bones/22/rotation = Quaternion(-0.081984, -0.00699863, -0.086983, 0.992806)
 
 [node name="Cylinder_001" parent="Canary/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1.22999, -0.565547, -0.132223, -0.828711, -0.741783, -0.570258, 0.224427, 0.360438, -1.38106, -0.102404, 0.105226, 0.325253)
+transform = Transform3D(1.22992, -0.565612, -0.132263, -0.840879, -0.762187, -0.485625, 0.173866, 0.314886, -1.41304, -0.102444, 0.0984641, 0.297164)
 
 [node name="Cylinder_001" parent="Canary/Armature/Skeleton3D/Cylinder_001" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_06smx")
 
 [node name="Cylinder_002" parent="Canary/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1.22945, 0.566471, 0.128249, 0.828558, -0.741853, -0.570275, -0.227902, 0.358839, -1.38143, 0.103404, 0.105213, 0.324962)
+transform = Transform3D(1.22952, 0.566405, 0.128209, 0.840726, -0.762258, -0.485641, -0.177341, 0.313287, -1.41341, 0.103364, 0.0984513, 0.296873)
 
 [node name="Cylinder_002" parent="Canary/Armature/Skeleton3D/Cylinder_002" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_06smx")
 
 [node name="Helmet" parent="Canary/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.999999, 0.0013869, 0.000275612, -6.1964e-05, 0.237716, -0.971335, -0.00141265, 0.971334, 0.237716, 0.000751012, 0.405534, 0.489694)
+transform = Transform3D(0.999999, 0.00140104, 0.000191175, -6.19663e-05, 0.178498, -0.98394, -0.00141265, 0.983939, 0.178498, 0.000735509, 0.388262, 0.479478)
 
 [node name="Helmet" parent="Canary/Armature/Skeleton3D/Helmet" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_lb10m")
 
 [node name="Cylinder" parent="Canary/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.999999, 0.000512258, -0.00131797, -6.1964e-05, -0.915299, -0.402775, -0.00141265, 0.402775, -0.915298, 0.000776241, 0.163632, 0.518166)
+transform = Transform3D(0.999999, 0.000431558, -0.00134655, -6.19663e-05, -0.937996, -0.346646, -0.00141265, 0.346646, -0.937995, 0.000739905, 0.14508, 0.493259)
 
 [node name="Cylinder" parent="Canary/Armature/Skeleton3D/Cylinder" index="0"]
 layers = 2
@@ -694,7 +694,7 @@ shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="Pickaxe" parent="Canary/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.148965, -0.0161461, -0.00698309, -0.0140146, 0.144914, -0.0361038, 0.0106326, -0.0352022, -0.145423, -0.270523, -0.623935, 0.433951)
+transform = Transform3D(-0.149236, -0.0151105, 0.000583688, -0.0147962, 0.144719, -0.036572, 0.00312103, -0.0364433, -0.145472, -0.283165, -0.616288, 0.411281)
 
 [node name="Pickaxe" parent="Canary/Armature/Skeleton3D/Pickaxe" index="0"]
 layers = 2
@@ -731,8 +731,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_l00kp")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 2.0
-parameters/current_position = 1.77615
-parameters/current_delta = 0.0166667
+parameters/current_position = 0.480792
+parameters/current_delta = 0.00377354
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -744,7 +744,7 @@ parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0
 parameters/ambush/current_length = 3.0
 parameters/ambush/current_position = 3.0
-parameters/ambush/current_delta = 0.027745
+parameters/ambush/current_delta = 0.0258197
 parameters/attacking/current_length = null
 parameters/attacking/current_position = null
 parameters/attacking/current_delta = null
@@ -755,8 +755,8 @@ parameters/flinching/current_length = null
 parameters/flinching/current_position = null
 parameters/flinching/current_delta = null
 parameters/idle/current_length = 2.0
-parameters/idle/current_position = 1.77615
-parameters/idle/current_delta = 0.0166667
+parameters/idle/current_position = 0.480792
+parameters/idle/current_delta = 0.00377354
 parameters/moving/current_length = null
 parameters/moving/current_position = null
 parameters/moving/current_delta = null

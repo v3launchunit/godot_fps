@@ -262,6 +262,7 @@ script = ExtResource("1_dciki")
 weapon = ExtResource("2_gquns")
 starting_ammo = 15
 starting_alt_ammo = 5
+event_string = "pickup.weap.boomstick"
 flash_color = Color(1, 1, 0, 1)
 pickup_sound = ExtResource("2_1sh8p")
 pickup_text = "Bagged a Boomstick (and 15 shells)"

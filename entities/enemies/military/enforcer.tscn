@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://pl6gbvw5ypaw" path="res://audio/streams/voices/enforcer/stand_down_3.wav" id="8_33fy4"]
 [ext_resource type="AudioStream" uid="uid://4xy833svj2qf" path="res://audio/streams/voices/enforcer/stand_down_4.wav" id="9_ai084"]
 [ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://audio/streams/voices/wilhelm_scream.ogg" id="10_br1vs"]
-[ext_resource type="PackedScene" uid="uid://dj8yo2whvp2w7" path="res://scenes/bullets/enemy/enemy_melee_scan.tscn" id="10_cq4tc"]
+[ext_resource type="PackedScene" uid="uid://dj8yo2whvp2w7" path="res://bullets/enemy/enemy_melee_scan.tscn" id="10_cq4tc"]
 [ext_resource type="AudioStream" uid="uid://beosyr2e7a4bs" path="res://audio/streams/voices/enforcer/death_scream_1.wav" id="10_vf3my"]
 [ext_resource type="AudioStream" uid="uid://76nx7s4kqcca" path="res://audio/streams/voices/enforcer/death_scream_2.wav" id="11_f51gk"]
 [ext_resource type="AudioStream" uid="uid://civr3ltkkqeel" path="res://audio/streams/voices/enforcer/death_scream_3.wav" id="12_d6fki"]
@@ -591,7 +591,7 @@ graph_offset = Vector2(-39, -23)
 [node name="Enforcer" type="CharacterBody3D"]
 process_physics_priority = 1
 collision_layer = 4
-collision_mask = 23
+collision_mask = 151
 script = ExtResource("1_0swba")
 species = &"enforcers"
 speed = 4.0
@@ -646,28 +646,28 @@ bones/20/rotation = Quaternion(0.0380105, -0.00100028, 1.64121e-12, 0.999277)
 bones/21/rotation = Quaternion(-0.0759923, 0.0319968, 0.380962, 0.920907)
 
 [node name="Cylinder_001" parent="enforcer/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1.22972, -0.566009, -0.130236, -0.432181, -0.27669, -1.37512, 0.742298, 0.77658, -0.58487, -0.102904, 0.157066, 0.652732)
+transform = Transform3D(1.22972, -0.566009, -0.130236, -0.41591, -0.25971, -1.38754, 0.751535, 0.782422, -0.55478, -0.102904, 0.168129, 0.644428)
 
 [node name="Cylinder_001" parent="enforcer/Armature/Skeleton3D/Cylinder_001" index="0"]
 layers = 2
 material_override = SubResource("StandardMaterial3D_1216o")
 
 [node name="Cylinder_002" parent="enforcer/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1.22972, 0.566009, 0.130236, 0.43218, -0.27669, -1.37512, -0.742298, 0.77658, -0.58487, 0.102904, 0.157065, 0.652732)
+transform = Transform3D(1.22972, 0.566009, 0.130236, 0.41591, -0.25971, -1.38754, -0.751535, 0.782422, -0.55478, 0.102904, 0.168129, 0.644428)
 
 [node name="Cylinder_002" parent="enforcer/Armature/Skeleton3D/Cylinder_002" index="0"]
 layers = 2
 material_override = SubResource("StandardMaterial3D_1216o")
 
 [node name="Cylinder" parent="enforcer/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.434277, 0.685674, 0.58417, 0.516291, 0.720893, -0.462339, -0.738138, 0.100818, -0.667074, -0.466314, 0.605614, 0.241977)
+transform = Transform3D(-0.437005, 0.694696, 0.571335, 0.52169, 0.713205, -0.468165, -0.732711, 0.0934697, -0.674091, -0.462369, 0.617165, 0.241721)
 
 [node name="Cylinder" parent="enforcer/Armature/Skeleton3D/Cylinder" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_k4l46")
 
 [node name="Cube" parent="enforcer/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.0216686, -0.135871, 0.990489, 0.999755, 0.00733651, -0.0208649, -0.0044318, 0.990699, 0.135996, -0.0197769, -0.371337, 0.967361)
+transform = Transform3D(0.000848708, -0.158625, 0.987338, 0.999986, -0.00504008, -0.00166931, 0.00524101, 0.987326, 0.158619, -0.0230889, -0.370522, 0.956786)
 
 [node name="Cube" parent="enforcer/Armature/Skeleton3D/Cube" index="0"]
 layers = 2
@@ -713,8 +713,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_tocqs")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 2.0
-parameters/current_position = 0.506169
-parameters/current_delta = 0.0166667
+parameters/current_position = 0.0397184
+parameters/current_delta = 0.00833333
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -723,7 +723,7 @@ parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0
 parameters/ambush/current_length = 1.0
 parameters/ambush/current_position = 1.0
-parameters/ambush/current_delta = 0.0179863
+parameters/ambush/current_delta = 0.0210489
 parameters/attacking/current_length = null
 parameters/attacking/current_position = null
 parameters/attacking/current_delta = null
@@ -734,8 +734,8 @@ parameters/flinching/current_length = null
 parameters/flinching/current_position = null
 parameters/flinching/current_delta = null
 parameters/idle/current_length = 2.0
-parameters/idle/current_position = 0.506169
-parameters/idle/current_delta = 0.0166667
+parameters/idle/current_position = 0.0397184
+parameters/idle/current_delta = 0.00833333
 parameters/moving/current_length = null
 parameters/moving/current_position = null
 parameters/moving/current_delta = null

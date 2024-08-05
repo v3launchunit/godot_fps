@@ -218,6 +218,7 @@ lock_rotation = true
 script = ExtResource("1_bxpsa")
 weapon = ExtResource("2_xvbkw")
 starting_ammo = 45
+event_string = "pickup.weap.akm"
 flash_color = Color(1, 1, 0, 1)
 pickup_sound = ExtResource("2_dmkcn")
 pickup_text = "Acquired an AKM (and 45 rounds)"

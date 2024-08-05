@@ -49,6 +49,23 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/astarflood/plugin.cfg", "res://addons/qodot/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://bullets/enemy/": "red",
+"res://bullets/player/": "green",
+"res://entities/enemies/": "red",
+"res://entities/neutral/": "yellow",
+"res://entities/player/": "green",
+"res://materials/": "gray",
+"res://models/": "gray",
+"res://scenes/": "gray",
+"res://scripts/": "gray",
+"res://shaders/": "gray",
+"res://text/": "blue",
+"res://textures/": "gray"
+}
+
 [filesystem]
 
 import/blender/enabled=false

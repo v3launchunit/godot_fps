@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 	health_counter.text = "%03d/%03d%%" % [armor_display, health_display]
 	if status.health < 50:
 		blood_rect.visible = true
-		blood_rect.modulate.a = clamp(1 - (status.health / 50), 0, 2)
+		blood_rect.modulate.a = clamp(1.0 - (status.health / 50.0), 0.0, 1.0)
 	else:
 		blood_rect.visible = false
 
@@ -124,7 +124,7 @@ func log_event(event_text: String) -> void:
 	var event: Label = event_item.instantiate() as Label
 	event.text = event_text
 	event_container.add_child(event)
-	event_container.move_child(event, 0)
+	#event_container.move_child(event, 0)
 
 
 func set_alert(alert_text: String) -> void:

@@ -16,6 +16,7 @@ stream_0/stream = ExtResource("6_ts66u")
 
 [node name="Menu" type="Control"]
 process_mode = 3
+visible = false
 top_level = true
 z_index = 1
 texture_filter = 1

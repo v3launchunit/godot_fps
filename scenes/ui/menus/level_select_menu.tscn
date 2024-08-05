@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c58frru7780pf"]
+[gd_scene load_steps=15 format=3 uid="uid://c58frru7780pf"]
 
 [ext_resource type="Script" path="res://scripts/ui/level_select_menu.gd" id="1_kus5n"]
 [ext_resource type="Texture2D" uid="uid://cmq3arf61ax4f" path="res://textures/ui/menu_panel.png" id="2_nwilm"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cor0l0jkjwbo5" path="res://scenes/levels/campaign/episode_1/e1m6_v1/e1m6_v1.tscn" id="6_4jomd"]
 [ext_resource type="PackedScene" uid="uid://ddkc86a3xy4gk" path="res://scenes/levels/campaign/episode_1/e1m5_v2/e1m5_v2.tscn" id="7_bkujf"]
 [ext_resource type="PackedScene" uid="uid://d21bgjfm2c1uj" path="res://scenes/levels/campaign/episode_2/underhang_v01/underhang_v01.tscn" id="8_fsg8k"]
+[ext_resource type="PackedScene" uid="uid://ds1np4ykpd4of" path="res://scenes/levels/campaign/episode_1/e1m7_v1/e1m7_v1.tscn" id="9_nlaye"]
 [ext_resource type="PackedScene" uid="uid://qvrf467m8cbk" path="res://scenes/levels/debug/level_04/level_04.tscn" id="9_tniqv"]
 [ext_resource type="PackedScene" uid="uid://dw8h4q7ndiu8q" path="res://scenes/levels/debug/unsorted_b/unsorted_b.tscn" id="10_ssjer"]
 [ext_resource type="PackedScene" uid="uid://dunww0aa03inb" path="res://scenes/levels/debug/unsorted_c/unsorted_c.tscn" id="11_740x7"]
@@ -151,6 +152,7 @@ layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "E1M7"
 script = ExtResource("3_4djrb")
+_scene = ExtResource("9_nlaye")
 level_name = "e1m7"
 
 [node name="M8" type="Button" parent="SettingsPanel/LevelSelect/E1"]
@@ -376,7 +378,7 @@ theme = ExtResource("3_30jf0")
 text = "EPISODE FIVE
 ECHOES"
 script = ExtResource("3_4djrb")
-level_name = "e4_secret"
+level_name = "e5"
 is_secret = true
 
 [node name="Other" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]

@@ -110,8 +110,9 @@ enum State {
 ## The sound that plays when this enemy dies.
 @export var death_stream: AudioStream
 @export var edible: bool = true
+@export var eat_tooltip: String = "eat.corpse"
 @export var corpse_food_value: float = 10.0
-@export var eat_text: String = "+10% HEALTH"
+@export var eat_text: String = "pickup.health.gen"
 @export var eat_flash_color := Color.GREEN
 
 @export_group("Save Data")
@@ -572,7 +573,7 @@ func apply_knockback(amount: Vector3) -> void:
 	if amount.y < 0:
 		jump_vel = Vector3.ZERO
 		grav_vel = Vector3.ZERO
-#		jumping = false
+		#jumping = false
 	knockback_vel += amount * knockback_multiplier
 
 
@@ -606,7 +607,9 @@ func _to_fleeing() -> void:
 
 
 func get_tooltip() -> String:
-	return "DEVOUR" if edible and current_state == State.DEAD else ""
+	return Globals.parse_text(
+			"tooltips", eat_tooltip
+	) if edible and current_state == State.DEAD else ""
 
 
 func interact(body: Node3D) -> void:
@@ -616,7 +619,10 @@ func interact(body: Node3D) -> void:
 		status.gibify()
 		(body as Player).hud.flash(eat_flash_color)
 		if eat_text != null and eat_text != "":
-			(body as Player).hud.log_event(eat_text)
+			(body as Player).hud.log_event(Globals.parse_text(
+					"events", 
+					eat_text
+			) % corpse_food_value)
 
 
 func _on_status_injured() -> void:

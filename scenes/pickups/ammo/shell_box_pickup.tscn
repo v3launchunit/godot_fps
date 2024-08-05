@@ -157,6 +157,7 @@ lock_rotation = true
 script = ExtResource("1_ve4na")
 ammo_type = "shells"
 ammo_amount = 15
+event_string = "pickup.ammo.shells"
 pickup_sound = ExtResource("2_jodgy")
 pickup_text = "+15 shotgun shells"
 

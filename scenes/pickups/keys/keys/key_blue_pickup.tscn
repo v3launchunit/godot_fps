@@ -153,6 +153,7 @@ collision_layer = 8
 lock_rotation = true
 script = ExtResource("1_b3iuf")
 key_type = 2
+event_string = "pickup.key.blue"
 flash_color = Color(0, 0, 1, 1)
 pickup_sound = ExtResource("2_t4ios")
 pickup_text = "Found the Blue Key"

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://weapons/scope.gd" id="4_uav1m"]
 [ext_resource type="Material" uid="uid://nv0jkcw45ofc" path="res://materials/weapon_metal.tres" id="5_616k3"]
 [ext_resource type="AnimationLibrary" uid="uid://dvna0xeatmq0y" path="res://weapons/anims.res" id="5_q7x1e"]
-[ext_resource type="PackedScene" uid="uid://cwytbvgvgmk00" path="res://scenes/bullets/player/hitscan/akm_bullet.tscn" id="6_15eot"]
+[ext_resource type="PackedScene" uid="uid://cwytbvgvgmk00" path="res://bullets/player/hitscan/akm_bullet.tscn" id="6_15eot"]
 [ext_resource type="AnimationLibrary" uid="uid://pyw3ltt10q24" path="res://weapons/akm_anims.res" id="6_w4nrh"]
 [ext_resource type="Material" uid="uid://dq3a5fxspauox" path="res://materials/muzzle_flash_yellow.tres" id="7_uc8ir"]
 [ext_resource type="Script" path="res://weapons/alert_area.gd" id="8_ehvva"]

@@ -92,6 +92,7 @@ lock_rotation = true
 script = ExtResource("1_e3b4u")
 ammo_type = "cells"
 ammo_amount = 10
+event_string = "pickup.ammo.cells"
 flash_color = Color(0, 1, 1, 1)
 pickup_sound = ExtResource("2_s562n")
 pickup_text = "+10% cell charge"

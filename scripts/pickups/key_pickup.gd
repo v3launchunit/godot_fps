@@ -2,6 +2,13 @@ extends Pickup
 
 
 @export_enum("Red:0", "Green:1", "Blue:2") var key_type: int = 0
+@export var event_string: String = "pickup.key."
+
+
+func _ready() -> void:
+	if event_string and event_string != "":
+		pickup_text = Globals.parse_text("events", event_string)
+	super()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

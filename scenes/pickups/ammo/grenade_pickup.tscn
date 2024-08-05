@@ -79,6 +79,7 @@ collision_layer = 8
 lock_rotation = true
 script = ExtResource("1_ovutx")
 ammo_type = "grenades"
+event_string = "pickup.ammo.grenades"
 pickup_sound = ExtResource("2_75gpn")
 pickup_text = "+1 Shotgun grenades"
 
