@@ -25,6 +25,7 @@ buses/default_bus_layout="res://audio/default_bus_layout.tres"
 
 Globals="*res://scripts/globals.gd"
 GameMenu="*res://scenes/ui/menus/game_menu.tscn"
+Screenwipe="res://scenes/ui/screenwipe.tscn"
 
 [display]
 
@@ -307,7 +308,7 @@ viewmodel_fov={
 }
 vertex_snap={
 "type": "float",
-"value": 0.75
+"value": 0.5
 }
 affine_warp={
 "type": "bool",

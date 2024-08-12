@@ -14,11 +14,14 @@ extends Node3D
 @export var secrets: int = 0 ## total number of secrets in the level.
 @export var score: int = 0
 @export var loaded_from_savegame: bool = false
+@export var fun: int = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if level_version == "PENDING":
 		level_version = Globals.C_VERSION
+	if fun == -1:
+		fun = Globals.fun
 
 
 func _process(delta: float) -> void:

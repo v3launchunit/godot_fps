@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=9 format=3 uid="uid://dmuqa22l0pi3q"]
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=11 format=3 uid="uid://dmuqa22l0pi3q"]
 
-[ext_resource type="Resource" uid="uid://cx7iw2027nyv7" path="res://trench_broom/entity_defs/point/enemies/pinkerton.tres" id="1_g6eob"]
-[ext_resource type="Resource" uid="uid://doihcea8tl120" path="res://trench_broom/entity_defs/point/enemies/canary.tres" id="2_4s2j3"]
-[ext_resource type="Resource" uid="uid://duo3aqyymektv" path="res://trench_broom/entity_defs/point/enemies/lizard.tres" id="3_llva7"]
-[ext_resource type="Resource" uid="uid://dee6vmksuogq4" path="res://trench_broom/entity_defs/point/enemies/eepy_lizard.tres" id="4_g1gvf"]
-[ext_resource type="Resource" uid="uid://clthu8ys2m5fs" path="res://trench_broom/entity_defs/point/enemies/eyeball.tres" id="5_shtgq"]
-[ext_resource type="Resource" uid="uid://b8ve57w085oy6" path="res://trench_broom/entity_defs/point/enemies/rocketeer.tres" id="6_4uw4v"]
-[ext_resource type="Resource" uid="uid://cpswem1b4n1od" path="res://trench_broom/entity_defs/point/enemies/enforcer_point_class.tres" id="7_3ehue"]
+[ext_resource type="Resource" uid="uid://cx7iw2027nyv7" path="res://trench_broom/entity_defs/point/enemies/military/pinkerton_point_class.tres" id="1_0ntlw"]
+[ext_resource type="Resource" uid="uid://doihcea8tl120" path="res://trench_broom/entity_defs/point/enemies/locals/canary.tres" id="2_3vb17"]
+[ext_resource type="Resource" uid="uid://duo3aqyymektv" path="res://trench_broom/entity_defs/point/enemies/locals/lizard.tres" id="3_g3ypu"]
+[ext_resource type="Resource" uid="uid://dee6vmksuogq4" path="res://trench_broom/entity_defs/point/enemies/locals/eepy_lizard.tres" id="4_vnsqv"]
+[ext_resource type="Resource" uid="uid://clthu8ys2m5fs" path="res://trench_broom/entity_defs/point/enemies/locals/eyeball.tres" id="5_3hy4w"]
+[ext_resource type="Resource" uid="uid://b8ve57w085oy6" path="res://trench_broom/entity_defs/point/enemies/military/rocketeer_point_class.tres" id="6_toxrm"]
+[ext_resource type="Resource" uid="uid://cpswem1b4n1od" path="res://trench_broom/entity_defs/point/enemies/military/enforcer_point_class.tres" id="7_8cfbd"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="7_babxd"]
+[ext_resource type="Resource" uid="uid://c0jkjipdbnb3o" path="res://trench_broom/entity_defs/point/enemies/military/soldier_point_class.tres" id="8_aserw"]
+[ext_resource type="Resource" uid="uid://6ygqtmr5bgdf" path="res://trench_broom/entity_defs/point/enemies/machines/plasmabot_point_class.tres" id="9_hfgma"]
 
 [resource]
 script = ExtResource("7_babxd")
@@ -15,4 +17,4 @@ export_file = false
 target_folder = ""
 fgd_name = "Qodot"
 base_fgd_files = Array[Resource]([])
-entity_definitions = Array[Resource]([ExtResource("1_g6eob"), ExtResource("2_4s2j3"), ExtResource("3_llva7"), ExtResource("4_g1gvf"), ExtResource("5_shtgq"), ExtResource("6_4uw4v"), ExtResource("7_3ehue")])
+entity_definitions = Array[Resource]([ExtResource("1_0ntlw"), ExtResource("2_3vb17"), ExtResource("3_g3ypu"), ExtResource("4_vnsqv"), ExtResource("5_3hy4w"), ExtResource("6_toxrm"), ExtResource("7_8cfbd"), ExtResource("8_aserw"), ExtResource("9_hfgma")])

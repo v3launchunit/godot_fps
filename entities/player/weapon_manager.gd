@@ -129,7 +129,7 @@ func _next_weapon():
 				current_index[current_category] -= 1
 				current_category = (current_category + 1) % weapons.size()
 				current_index[current_category] = 0
-	print("%s\n%s\n%s\n" % [current_category, current_index, get_selected_weapon_path()])
+	#print("%s\n%s\n%s\n" % [current_category, current_index, get_selected_weapon_path()])
 	switched_weapons.emit(current_category, current_index[current_category], false)
 	#current_weapon_pos = get_selected_weapon_node().position.z
 	rummage_stream_player.play()

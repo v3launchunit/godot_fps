@@ -123,7 +123,7 @@ var s_lang := Lang.ENGLISH
 var names := ConfigFile.new()
 var text := ConfigFile.new()
 var persistent := ConfigFile.new()
-var fun := randi_range(0, 1000)
+var fun := randi_range(0, 999)
 
 
 func _init() -> void:
@@ -236,13 +236,23 @@ func save_game(to: String) -> void:
 	push_error(ResourceSaver.save(scene, to))
 
 
+func open_level(level: PackedScene) -> void:
+	#var screen_image := get_tree().root.get_texture()
+	get_tree().change_scene_to_packed(level)
+	#print(get_tree().current_scene)
+	#if get_tree().current_scene is Level and (get_tree().current_scene as Level).fun != -1:
+		#fun = (get_tree().current_scene as Level).fun
+	GameMenu.close_top_menu()
+	GameMenu.close_top_menu()
+
+
 func parse_names(section: String, key: String) -> Variant:
 	return names.get_value(section, key)
 
 
 func parse_text(section: String, key: String) -> String:
-	print(text.get_value(section, key))
-	return text.get_value(section, key) as String
+	#print(text.get_value(section, key))
+	return text.get_value(section, key, "MISSING: %s:%s" % [section, key]) as String
 
 
 func level_revealed(name: String) -> bool:

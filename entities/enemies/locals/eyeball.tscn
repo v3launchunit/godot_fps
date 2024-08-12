@@ -1,7 +1,7 @@
 [gd_scene load_steps=68 format=4 uid="uid://dmgxmmtshe4dh"]
 
 [ext_resource type="Script" path="res://entities/enemies/enemy_flying.gd" id="1_pxyj5"]
-[ext_resource type="PackedScene" uid="uid://bosuaqplx64vr" path="res://bullets/enemy/enemy_blood_bullet.tscn" id="2_2wk7d"]
+[ext_resource type="PackedScene" uid="uid://bosuaqplx64vr" path="res://bullets/enemy/enemy_bullet_blood.tscn" id="2_2wk7d"]
 [ext_resource type="PackedScene" uid="uid://cr0slxppts0pq" path="res://models/entities/eyeball.glb" id="2_3mulw"]
 [ext_resource type="Script" path="res://entities/status.gd" id="3_67ny2"]
 [ext_resource type="AnimationLibrary" path="res://entities/enemies/locals/eyeball_anims.res" id="3_h6fvy"]

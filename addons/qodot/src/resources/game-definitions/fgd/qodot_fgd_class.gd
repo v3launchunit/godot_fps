@@ -164,4 +164,3 @@ func build_def_text() -> String:
 	res += "]" + QodotUtil.newline()
 
 	return res
-

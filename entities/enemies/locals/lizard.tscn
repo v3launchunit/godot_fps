@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cqctw8dd0ar4n" path="res://scenes/effects/damage/damage_sys.tscn" id="4_mhmdq"]
 [ext_resource type="AudioStream" uid="uid://bfaxlqoxr3aed" path="res://audio/streams/voices/lizard/death_roar.wav" id="4_wjf2y"]
 [ext_resource type="AudioStream" uid="uid://dc1es3ux857yw" path="res://audio/streams/voices/wilhelm_scream.ogg" id="5_4ak67"]
-[ext_resource type="PackedScene" uid="uid://bosuaqplx64vr" path="res://bullets/enemy/enemy_blood_bullet.tscn" id="5_535y2"]
+[ext_resource type="PackedScene" uid="uid://bosuaqplx64vr" path="res://bullets/enemy/enemy_bullet_blood.tscn" id="5_535y2"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://scenes/pickups/armor/armor_bonus_pickup.tscn" id="5_igm48"]
 [ext_resource type="Shader" path="res://shaders/spatial/psx_ul_mix.gdshader" id="9_0mr8g"]
 [ext_resource type="PackedScene" uid="uid://c5pbs8t6p7ogl" path="res://scenes/effects/gibs/gibs.tscn" id="11_p5oxo"]

@@ -10,6 +10,7 @@
 [node name="Hitscan" type="Node3D"]
 script = ExtResource("1_1qytt")
 explosion = ExtResource("2_p2rk8")
+piercer = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)

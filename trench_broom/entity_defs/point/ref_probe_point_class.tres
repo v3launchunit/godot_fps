@@ -1,22 +1,22 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://jhjvqfjqlc70"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_8gsqu"]
-[ext_resource type="Script" path="res://trench_broom/tb_ref_probe.gd" id="2_m33to"]
+[ext_resource type="Script" path="res://trench_broom/entity_defs/point/tb_ref_probe.gd" id="2_b5w4k"]
 
 [resource]
 script = ExtResource("1_8gsqu")
-script_class = ExtResource("2_m33to")
+script_class = ExtResource("2_b5w4k")
 apply_rotation_on_map_build = true
 classname = "area_ref_probe"
 description = ""
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"box_project": true,
-"interior": true,
+"box_project": 1,
+"interior": 1,
 "max_distance": 64.0,
 "origin_offset": Vector3(0, 0, 0),
-"reflect_shadows": true,
+"reflect_shadows": 1,
 "size": Vector3(20, 20, 20)
 }
 class_property_descriptions = {}

@@ -5,7 +5,7 @@ render_mode blend_add;
 uniform float intensity : hint_range(0.0, 16.0, 0.1) = 1.0;
 uniform float threshold : hint_range(0.0, 4.0, 0.01) = 0.9;
 uniform int spread : hint_range(0, 128, 1) = 8;
-uniform sampler2D screen_texture : hint_screen_texture, repeat_enable, filter_linear_mipmap;
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_linear_mipmap;
 
 global uniform ivec2 screen_size;
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=8 format=3 uid="uid://cf65fgfrygrvo"]
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=9 format=3 uid="uid://cf65fgfrygrvo"]
 
 [ext_resource type="Resource" uid="uid://dg1cf7dvcvmmd" path="res://trench_broom/entity_defs/brush/destructible_solid_class.tres" id="2_j7210"]
 [ext_resource type="Resource" uid="uid://bn8ijfkkxi53l" path="res://trench_broom/entity_defs/brush/door_solid_class.tres" id="3_xs02u"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://dohpgbq4rdnbv" path="res://trench_broom/entity_defs/brush/hazard_solid_class.tres" id="5_fmbsu"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="5_pp68m"]
 [ext_resource type="Resource" uid="uid://dy4jp1bmuu1hf" path="res://trench_broom/entity_defs/brush/transparent_solid_class.tres" id="6_jow6o"]
+[ext_resource type="Resource" uid="uid://c5eeqik1wdgat" path="res://trench_broom/entity_defs/brush/secret_solid_class.tres" id="7_ma6rk"]
 
 [resource]
 script = ExtResource("5_pp68m")
@@ -14,4 +15,4 @@ export_file = false
 target_folder = "C:\\Users\\lengl\\AppData\\Roaming\\TrenchBroom\\games\\VolumetricsTest"
 fgd_name = "Solids"
 base_fgd_files = Array[Resource]([])
-entity_definitions = Array[Resource]([ExtResource("2_j7210"), ExtResource("3_xs02u"), ExtResource("4_aut6p"), ExtResource("4_wku2g"), ExtResource("5_fmbsu"), ExtResource("6_jow6o")])
+entity_definitions = Array[Resource]([ExtResource("2_j7210"), ExtResource("3_xs02u"), ExtResource("4_aut6p"), ExtResource("4_wku2g"), ExtResource("5_fmbsu"), ExtResource("6_jow6o"), ExtResource("7_ma6rk")])

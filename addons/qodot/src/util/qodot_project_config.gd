@@ -29,6 +29,7 @@ const CONFIG_PROPERTIES: Array[Dictionary] = [
 		"name": "trenchbroom_models_folder",
 		"usage": PROPERTY_USAGE_EDITOR,
 		"type": TYPE_STRING,
+		"hint": PROPERTY_HINT_GLOBAL_DIR,
 		"qodot_type": PROPERTY.TRENCHBROOM_MODELS_FOLDER
 	}
 ]

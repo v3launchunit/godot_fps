@@ -1,6 +1,5 @@
 class_name Bullet extends RigidBody3D
 
-@export_category("ProjectileBullet")
 
 ## The speed with which this bullet travels.
 @export_range(0.0, 100.0, 0.1, "or_greater") var speed: float = 10

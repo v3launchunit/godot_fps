@@ -1,8 +1,9 @@
 extends Node3D
 
-@onready var low_cast: ShapeCast3D = $LowCast as ShapeCast3D
-@onready var high_cast: ShapeCast3D = $HighCast as ShapeCast3D
-@onready var body: CharacterBody3D = get_parent_node_3d() as CharacterBody3D
+@onready var low_cast := $LowCast as ShapeCast3D
+@onready var high_cast := $HighCast as ShapeCast3D
+@onready var snap_cast := $SnapCast as ShapeCast3D
+@onready var body := get_parent_node_3d() as CharacterBody3D
 #@onready var step_cast: ShapeCast3D = $StepCast as ShapeCast3D
 
 
@@ -29,8 +30,9 @@ func _physics_process(delta: float) -> void:
 			#and low_cast.get_collision_normal(0).angle_to(Vector3.UP) >= body.floor_max_angle
 	):
 		body.translate(Vector3(0.0, 0.55, 0.0))
+		await get_tree().process_frame
 		body.apply_floor_snap()
-				#(step_cast.global_position
-				#- step_cast.get_collision_point(0))
+		#body.translate(
+				#(snap_cast.global_position - snap_cast.get_collision_point(0))
 				#* Vector3.UP
 		#)

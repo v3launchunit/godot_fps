@@ -1,3 +1,4 @@
+class_name EnemyAttackPattern
 extends EnemyBase
 
 enum PatternSelectionMode {

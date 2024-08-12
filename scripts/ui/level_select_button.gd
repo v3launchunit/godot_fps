@@ -36,6 +36,4 @@ func check_unlocked() -> void:
 
 func _on_pressed() -> void:
 	_press_sound.play()
-	get_tree().change_scene_to_packed(_scene)
-	GameMenu.close_top_menu()
-	GameMenu.close_top_menu()
+	Globals.open_level(_scene)

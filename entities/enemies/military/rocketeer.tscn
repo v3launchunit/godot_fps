@@ -545,7 +545,7 @@ patterns = Array[ExtResource("2_tv63j")]([SubResource("Resource_07esl"), SubReso
 species = &"rocketeers"
 speed = 5.0
 detection_stream = SubResource("AudioStreamGenerator_5fauj")
-attack_interval = 4.0
+attack_interval = 2.0
 attack_range = 128.0
 death_stream = SubResource("AudioStreamGenerator_aqjtk")
 
@@ -577,13 +577,13 @@ bones/18/rotation = Quaternion(0.00780262, 9.06806e-08, 1.6966e-08, 0.99997)
 bones/18/scale = Vector3(1, 1, 1)
 
 [node name="rpg" parent="Rocketeer/Armature/Skeleton3D" index="0"]
-transform = Transform3D(3.98478, -0.304914, -0.169016, 0.320883, 3.96592, 0.410525, 0.136282, -0.422521, 3.97529, 3.15752, 5.14441, 9.51751)
+transform = Transform3D(3.98478, -0.304914, -0.169016, 0.316846, 3.9764, 0.296452, 0.14542, -0.308712, 3.98542, 3.15752, 4.83642, 9.51998)
 
 [node name="rpg" parent="Rocketeer/Armature/Skeleton3D/rpg" index="0"]
 material_override = SubResource("ShaderMaterial_am0uh")
 
 [node name="rocket" parent="Rocketeer/Armature/Skeleton3D" index="1"]
-transform = Transform3D(3.98478, -0.304914, -0.169016, 0.320883, 3.96592, 0.410525, 0.136282, -0.422521, 3.97529, 3.33133, 6.01236, 2.39175)
+transform = Transform3D(3.98478, -0.304914, -0.169016, 0.316846, 3.9764, 0.296452, 0.14542, -0.308712, 3.98542, 3.33133, 5.90818, 2.42201)
 
 [node name="rocket" parent="Rocketeer/Armature/Skeleton3D/rocket" index="0"]
 material_override = SubResource("ShaderMaterial_am0uh")
@@ -591,7 +591,7 @@ material_override = SubResource("ShaderMaterial_am0uh")
 [node name="Spawner" type="Marker3D" parent="Rocketeer/Armature/Skeleton3D/rocket/rocket" index="0"]
 
 [node name="Backpack" parent="Rocketeer/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.920426, -0.390916, 0, 0.390916, 0.920426, 0, 5.4245, -0.834676)
+transform = Transform3D(1, 0, 0, 0, 0.908848, -0.417128, 0, 0.417128, 0.908848, 0, 5.41301, -0.819933)
 
 [node name="Backpack" parent="Rocketeer/Armature/Skeleton3D/Backpack" index="0"]
 material_override = SubResource("ShaderMaterial_flj7k")
@@ -600,7 +600,7 @@ material_override = SubResource("ShaderMaterial_flj7k")
 material_override = SubResource("ShaderMaterial_b0yry")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Rocketeer/Armature/Skeleton3D" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999398, 0.034699, 0, -0.034699, 0.999398, 0, 7.40395, 2.17892)
+transform = Transform3D(1, 0, 0, 0, 0.999982, 0.00604889, 0, -0.00604889, 0.999982, 0, 7.30529, 2.24915)
 bone_name = "Head"
 bone_idx = 3
 
@@ -652,6 +652,7 @@ max_speed = 100.0
 
 [node name="SightLine" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
 target_position = Vector3(0, 0, -16)
 collision_mask = 3
 
@@ -683,8 +684,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_f30pq")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 2.0
-parameters/current_position = 0.862739
-parameters/current_delta = 0.014355
+parameters/current_position = 0.321755
+parameters/current_delta = 0.00555556
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -692,8 +693,8 @@ parameters/Start/current_length = 0.0
 parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0
 parameters/ambush/current_length = 1.0
-parameters/ambush/current_position = 0.288455
-parameters/ambush/current_delta = 0.041813
+parameters/ambush/current_position = 0.254703
+parameters/ambush/current_delta = 0.0166667
 parameters/attacking/current_length = 2.0
 parameters/attacking/current_position = 2.0
 parameters/attacking/current_delta = 0.0
@@ -704,8 +705,8 @@ parameters/flinching/current_length = 1.0
 parameters/flinching/current_position = 1.0
 parameters/flinching/current_delta = 0.0
 parameters/idle/current_length = 2.0
-parameters/idle/current_position = 0.862739
-parameters/idle/current_delta = 0.014355
+parameters/idle/current_position = 0.321755
+parameters/idle/current_delta = 0.00555556
 parameters/moving/current_length = 2.0
 parameters/moving/current_position = 1.71977
 parameters/moving/current_delta = 0.0166667

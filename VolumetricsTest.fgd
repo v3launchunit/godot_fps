@@ -1,0 +1,272 @@
+@BaseClass = enemy[
+	detect_mode(integer) : "controls the methods by which this enemy can detect the player." : -1
+	tripwire_group(string) : "if set to a value besides 'none', will cause this enemy to wake up when the specified group is activated." : "none"
+]
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = light_lamp[
+	_color(string) :  : "255 172 89"
+	energy(float) :  : "3"
+	range(float) :  : "15"
+]
+
+@PointClass color(128 192 255) size(-8 -8 -8, 8 8 8) = light_lamppost[
+	_color(string) :  : "255 172 89"
+	energy(float) :  : "3"
+	range(float) :  : "15"
+]
+
+@PointClass color(255 128 0) size(-8 -8 -8, 8 8 8) = light_torch[
+	_color(string) :  : "255 128 0"
+	energy(float) :  : "1"
+	pitch_angle(float) :  : "45"
+	range(float) :  : "10"
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = light_tube[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = deco_bed_wooden[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = deco_chair_wooden[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = deco_crate_wooden[
+]
+
+@PointClass color(204 204 204) size(-24 -16 -8, 24 16 8) = deco_table_wooden[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = deco_chain[
+]
+
+@PointClass color(204 204 0) size(-8 -8 -8, 8 8 8) = light_point[
+	_color(string) :  : "255 255 255"
+	energy(float) :  : "3"
+	range(float) :  : "15"
+]
+@PointClass color(204 204 204) size(-8 -8 -16, 8 8 16) base(enemy) = pinkerton[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -16, 8 8 16) base(enemy) = canary[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) base(enemy) = lizard[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) base(enemy) = eepy_lizard[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) base(enemy) = eyeball[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -24, 8 8 24) base(enemy) = rocketeer[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -16, 8 8 16) base(enemy) = enforcer[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -16, 8 8 16) base(enemy) = soldier[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -24, 8 8 24) base(enemy) = plasma_droid[
+]
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = ammo_akm_mag_pickup[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = ammo_big_cell_pickup[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = ammo_big_iron_bullet_pickup[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = ammo_grenade_pickup[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = ammo_nail_box_pickup[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = ammo_nail_pickup[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = ammo_shell_box_pickup[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = ammo_shell_pickup[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = armor_bonus_pickup[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = health_bonus_pickup[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = health_pack_pickup[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = powerup_heart[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = weapon_akm[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = weapon_big_iron[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = weapon_boomstick[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = weapon_crossbow[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = weapon_hunting_rifle[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = weapon_nailgun[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = weapon_plasma_cannon[
+]
+
+@PointClass color(204 0 0) size(-8 -8 -8, 8 8 8) = key_red[
+]
+
+@PointClass color(0 204 0) size(-8 -8 -8, 8 8 8) = key_green[
+]
+
+@PointClass color(0 0 204) size(-8 -8 -8, 8 8 8) = key_blue[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = triggerable_ambush[
+	ambusher(string) :  : "pink"
+	group(string) :  : "none"
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = deco_world_effect[
+	effect(string) :  : ""
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = hole_lizard[
+]
+
+@PointClass color(204 204 204) size(-8 -8 -8, 8 8 8) = area_ref_probe[
+	max_distance(float) :  : "64"
+	origin_offset(string) :  : "0 0 0"
+	size(string) :  : "20 20 20"
+]
+@SolidClass color(204 204 204) = wall_destructible : "Can be destroyed by the player." [
+	damage_sys_path(string) :  : "res://scenes/effects/damage/metal_damage_sys.tscn"
+	gibs_path(string) :  : "res://scenes/effects/gibs/metal_shards.tscn"
+	health(float) :  : "10"
+]
+
+@SolidClass color(204 204 204) = interactable_door : "Brush-based door." [
+	group(string) :  : "none"
+	nav_link_offset(string) :  : "0 0 1.5"
+	open_pos(string) :  : "0 2.5 0"
+	open_sound(string) :  : "metal_open"
+	open_speed(float) :  : "3"
+	required_key(integer) :  : -1
+	sound_pos(string) :  : "0 0 0"
+	tooltip_closed(string) :  : "open"
+	tooltip_open(string) :  : "close"
+	closeable(integer) :  : 0
+]
+
+@SolidClass color(204 204 204) = area_water : "Water" [
+]
+
+@SolidClass color(204 204 204) = area_trigger[
+	group(string) :  : "none"
+	max_trips(integer) :  : 0
+]
+
+@SolidClass color(204 204 204) = area_hazard[
+	damage_type(string) :  : "GENERIC"
+	dps(float) :  : "5"
+	player_dps(float) :  : "5"
+]
+
+@SolidClass color(204 204 204) = wall_no_occlude[
+]
+@BaseClass = Target : "Performs actions (signal callbacks, methods) on entities with a matching 'targetname'." [
+	target(string) : "Name of entity (targetname) to target." : ""
+]
+
+@BaseClass = Targetname : "Subscribes to actions (signal callbacks, reciever methods) performed by other entities with a matching 'target'." [
+	targetname(string) : "Name of target to subscribe to." : ""
+]
+
+@BaseClass color(255 255 40) = Light[
+	_color(color255) : "Light color" : "255 255 255"
+	delay(choices) : "Attenuation" = [
+		1 : "Inverse distance falloff"
+		2 : "Inverse distance squared"
+		5 : "Inverse distance squared B"
+		0 : "Linear falloff (Default)"
+		4 : "Local minlight"
+		3 : "No falloff"
+	]
+	light(integer) : "Brightness" : 300
+	mangle(string) : "Spotlight angle" : "0.00499999988824 0 0"
+	wait(integer) : "Fade distance multiplier" : 1
+]
+
+@SolidClass = worldspawn : "World Entity" [
+]
+
+@SolidClass = group : "Brush Group" [
+]
+
+@SolidClass = illusionary : "Non-colliding Brush" [
+]
+
+@SolidClass = physics : "Physics Brush" [
+	mass(float) :  : "1"
+	velocity(string) :  : "0 0 0"
+]
+
+@PointClass size(-8 -8 -8, 8 8 8) base(Targetname, Target) = signal : "Name of signal to call target." [
+	signal_name(string) : "Name of signal to call on target." : ""
+]
+
+@PointClass size(-8 -8 -8, 8 8 8) base(Targetname, Target) = receiver : "Calls methods on target." [
+	receiver_name(string) :  : ""
+]
+
+@PointClass size(-8 -8 -8, 8 8 8) base(Light) = light : "Invisible light source" [
+	angle(float) : "Rotation Angle" : "0"
+]
+
+@SolidClass = button : "Interactive button brush." [
+	axis(string) : "Direction of movement when pressed." : "0 -1 0"
+	depth(float) : "How far to move along the axis when pressed." : "0.8"
+	press_signal_delay(float) : "Seconds after press() is called, before emitting is own pressed signal." : "0"
+	release_delay(float) : "Seconds after a physics body exits, before calling release()" : "0"
+	release_signal_delay(float) : "Seconds after release() is called, before emitting is own released signal." : "0"
+	speed(float) : "Delta multiplier for a lerp weight to move the button to its desired position." : "8"
+	target(string) :  : ""
+	trigger_signal_delay(float) : "Seconds after press() is called, before emitting the trigger signal." : "0"
+]
+
+@SolidClass = func_detail : "Detail Brush" [
+]
+
+@SolidClass = mover : "Moving brush." [
+	rotation(string) :  : "0 0 0"
+	scale(string) :  : "1 1 1"
+	speed(float) :  : "1"
+	translation(string) :  : "0 0 0"
+	targetname(string) :  : ""
+]
+
+@SolidClass = rotate : "Rotating Brush" [
+	axis(string) : "Rotation Axis" : "0 1 0"
+	speed(float) : "Rotation Speed" : "360"
+]
+
+@SolidClass = trigger : "Trigger Volume" [
+	target(string) :  : ""
+]
+
+@SolidClass = wall : "Basic entity brush." [
+]

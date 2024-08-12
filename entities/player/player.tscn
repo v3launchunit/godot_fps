@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://do61x5km3wthk"]
+[gd_scene load_steps=58 format=3 uid="uid://do61x5km3wthk"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_oc1sr"]
 [ext_resource type="PackedScene" uid="uid://cnhiimq1hl1lc" path="res://scenes/effects/explosions/slam_wave.tscn" id="2_8vg7n"]
@@ -21,7 +21,6 @@
 [ext_resource type="AudioStream" uid="uid://ccqxt72tfs7xh" path="res://audio/streams/voices/player/hups/hup_8.wav" id="19_pqa85"]
 [ext_resource type="AudioStream" uid="uid://cxjgdawg2i02r" path="res://audio/streams/voices/player/hups/hup_9.wav" id="20_d3qcc"]
 [ext_resource type="AudioStream" uid="uid://chxa831hh5rn7" path="res://audio/streams/voices/player/hups/hup_10.wav" id="21_eej2s"]
-[ext_resource type="AudioStream" uid="uid://cnkffwaw5gt4l" path="res://audio/streams/effects/impact/ground_slam_impact.wav" id="22_4jgje"]
 [ext_resource type="Script" path="res://entities/player/player_status.gd" id="22_pxs5m"]
 [ext_resource type="AudioStream" uid="uid://c4letg1n03lmd" path="res://audio/streams/voices/player/damage_placeholder.wav" id="23_y5wvn"]
 [ext_resource type="PackedScene" uid="uid://wfllsui4k1if" path="res://scenes/effects/gibs/player_gibs.tscn" id="24_222pa"]
@@ -35,7 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://c0bhiisq4qel1" path="res://textures/flashlight_projector.png" id="32_tgokv"]
 [ext_resource type="Script" path="res://entities/player/flashlight.gd" id="33_aknmp"]
 [ext_resource type="Shader" path="res://shaders/spatial/cross_bloom_mesh.gdshader" id="34_bevih"]
-[ext_resource type="PackedScene" uid="uid://bjpo451a0eupa" path="res://weapons/axe.tscn" id="35_uif20"]
+[ext_resource type="PackedScene" uid="uid://bjpo451a0eupa" path="res://weapons/axe/axe.tscn" id="35_uif20"]
 [ext_resource type="PackedScene" uid="uid://bimc4ufk5hicg" path="res://weapons/pump_shotgun.tscn" id="36_ytmbf"]
 [ext_resource type="AudioStream" uid="uid://crtqyq64m3wm1" path="res://audio/streams/ambient/bullet_ambient.wav" id="37_0ygxn"]
 [ext_resource type="PackedScene" uid="uid://dh4rwigqkk6va" path="res://scenes/ui/player_hud.tscn" id="37_wd13u"]
@@ -66,11 +65,6 @@ stream_14/stream = ExtResource("10_4agbg")
 stream_15/stream = ExtResource("11_26icp")
 stream_16/stream = ExtResource("12_2o1ae")
 stream_17/stream = ExtResource("13_builo")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5buyj"]
-random_pitch = 1.25
-streams_count = 1
-stream_0/stream = ExtResource("22_4jgje")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2aq05"]
 radius = 0.49
@@ -212,7 +206,6 @@ slam_wave_scene = ExtResource("2_8vg7n")
 strafe_sway = 0.05
 interact_stream = SubResource("AudioStreamRandomizer_ww5sc")
 jump_stream = SubResource("AudioStreamRandomizer_yxu58")
-slam_land_stream = SubResource("AudioStreamRandomizer_5buyj")
 
 [node name="PlayerHitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_2aq05")

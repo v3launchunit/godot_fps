@@ -20,7 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://cvhddpbrl73h7" path="res://audio/streams/voices/pinkerton/detect/kill_her_3.wav" id="11_q5fbb"]
 [ext_resource type="AudioStream" uid="uid://dlc4tyjayi4sv" path="res://audio/streams/voices/pinkerton/detect/stop_her_1.wav" id="12_tfmbw"]
 [ext_resource type="AudioStream" uid="uid://cqcaj4cjjb1ip" path="res://audio/streams/voices/pinkerton/detect/tresspasser_1.wav" id="13_0jqmp"]
-[ext_resource type="PackedScene" uid="uid://blrtnnu61g5s" path="res://bullets/enemy/enemy_test_bullet.tscn" id="14_0v8ti"]
+[ext_resource type="PackedScene" uid="uid://blrtnnu61g5s" path="res://bullets/enemy/enemy_bullet_gen.tscn" id="14_0v8ti"]
 [ext_resource type="AudioStream" uid="uid://b5ay00lvhbvmm" path="res://audio/streams/voices/pinkerton/death/scream_4.wav" id="15_kxmnn"]
 [ext_resource type="AudioStream" uid="uid://db7ebp6630xbh" path="res://audio/streams/voices/pinkerton/death/scream_3.wav" id="16_vn7a5"]
 [ext_resource type="AudioStream" uid="uid://472lwhnuv0ad" path="res://audio/streams/voices/pinkerton/death/scream_2.wav" id="17_n4f4t"]
@@ -128,12 +128,12 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 [sub_resource type="Gradient" id="Gradient_rrp2w"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_28pn6"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tscw8"]
 gradient = SubResource("Gradient_rrp2w")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xg1er"]
 gravity = Vector3(0, 0, 0)
-color_ramp = SubResource("GradientTexture1D_28pn6")
+color_ramp = SubResource("GradientTexture1D_tscw8")
 
 [sub_resource type="Shader" id="Shader_2gaha"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
@@ -176,7 +176,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uadv6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e614k"]
 render_priority = 0
 shader = SubResource("Shader_2gaha")
 shader_parameter/albedo = Color(1, 0, 0, 1)
@@ -191,7 +191,7 @@ shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_sc0xe"]
-material = SubResource("ShaderMaterial_uadv6")
+material = SubResource("ShaderMaterial_e614k")
 radius = 0.06
 height = 0.05
 radial_segments = 4
@@ -923,11 +923,11 @@ states/jumping/position = Vector2(771.346, 100.074)
 states/moving/node = SubResource("AnimationNodeAnimation_imbdi")
 states/moving/position = Vector2(597.334, 101.139)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2prg3"), "idle", "moving", SubResource("AnimationNodeStateMachineTransition_7oomp"), "moving", "idle", SubResource("AnimationNodeStateMachineTransition_dbccw"), "moving", "attacking", SubResource("AnimationNodeStateMachineTransition_4xupg"), "idle", "attacking", SubResource("AnimationNodeStateMachineTransition_majfp"), "attacking", "moving", SubResource("AnimationNodeStateMachineTransition_2nn25"), "attacking", "idle", SubResource("AnimationNodeStateMachineTransition_w5vit"), "attacking", "dead", SubResource("AnimationNodeStateMachineTransition_se8tw"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_bj5l4"), "moving", "dead", SubResource("AnimationNodeStateMachineTransition_x017w"), "idle", "flinching", SubResource("AnimationNodeStateMachineTransition_goefx"), "attacking", "flinching", SubResource("AnimationNodeStateMachineTransition_3fks7"), "moving", "flinching", SubResource("AnimationNodeStateMachineTransition_stoq6"), "flinching", "moving", SubResource("AnimationNodeStateMachineTransition_wpkvg"), "flinching", "dead", SubResource("AnimationNodeStateMachineTransition_mr23i"), "moving", "jumping", SubResource("AnimationNodeStateMachineTransition_gw055"), "jumping", "moving", SubResource("AnimationNodeStateMachineTransition_oewr8"), "jumping", "flinching", SubResource("AnimationNodeStateMachineTransition_xmef0")]
-graph_offset = Vector2(-98, -5)
+graph_offset = Vector2(-326, -22)
 
 [node name="Pinkerton" type="CharacterBody3D"]
 collision_layer = 4
-collision_mask = 151
+collision_mask = 407
 script = ExtResource("1_4o8wq")
 species = &"pinkertons"
 speed = 7.0
@@ -969,7 +969,7 @@ bones/20/rotation = Quaternion(0.0383765, 1.93266e-07, 3.40483e-09, 0.999263)
 bones/21/rotation = Quaternion(-0.0824806, -6.65001e-08, -1.41612e-08, 0.996593)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.129779, -0.41071, 0.902482, 0.928367, -0.370024, -0.0348928, 0.348271, 0.833306, 0.429311, -0.0436887, 0.310292, 0.243793)
+transform = Transform3D(-0.151912, -0.70768, 0.690008, 0.939552, -0.320132, -0.12148, 0.306863, 0.629845, 0.713534, -0.0941591, 0.268446, 0.279224)
 
 [node name="Cylinder" parent="Pinkerton/Armature/Skeleton3D/Cylinder" index="0"]
 layers = 2
@@ -1008,14 +1008,14 @@ shadow_enabled = true
 distance_fade_enabled = true
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.194668, -0.41071, 1.35372, 1.39255, -0.370024, -0.0523396, 0.522407, 0.833306, 0.643967, -0.0642247, 0.29179, 0.28546)
+transform = Transform3D(-0.227867, -0.70768, 1.03501, 1.40933, -0.320132, -0.18222, 0.460294, 0.629845, 1.0703, -0.129544, 0.252439, 0.310717)
 
 [node name="Cylinder_001" parent="Pinkerton/Armature/Skeleton3D/Cylinder_001" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_bkory")
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.986625, 0.113408, 0.117089, -0.155804, 0.867253, 0.472862, -0.0479199, -0.48478, 0.873322, -0.231098, 0.394848, 0.0691998)
+transform = Transform3D(0.1018, 0.973533, 0.204623, 0.442495, 0.13991, -0.88579, -0.890974, 0.180718, -0.41654, 0.379658, -0.487157, 0.338637)
 
 [node name="Shotgun" parent="Pinkerton/Armature/Skeleton3D/Shotgun" index="0"]
 layers = 2
@@ -1037,7 +1037,7 @@ omni_range = 10.0
 transform = Transform3D(-1.95578e-08, -1, 7.45058e-09, -3.72529e-08, 2.23517e-08, 1, -1, 2.04891e-08, -3.72529e-08, 0, 0.675, -0.135)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.986625, 0.113408, 0.117089, -0.155804, 0.867253, 0.472862, -0.0479199, -0.48478, 0.873322, -0.231098, 0.394848, 0.0691998)
+transform = Transform3D(0.1018, 0.973533, 0.204623, 0.442495, 0.13991, -0.88579, -0.890974, 0.180718, -0.41654, 0.379658, -0.487157, 0.338637)
 
 [node name="Pump" parent="Pinkerton/Armature/Skeleton3D/Pump" index="0"]
 layers = 2
@@ -1074,8 +1074,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_l00kp")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 3.2
-parameters/current_position = 1.91667
-parameters/current_delta = 0.0162173
+parameters/current_position = 1.54819
+parameters/current_delta = 0.0152778
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -1092,8 +1092,8 @@ parameters/flinching/current_length = null
 parameters/flinching/current_position = null
 parameters/flinching/current_delta = null
 parameters/idle/current_length = 3.2
-parameters/idle/current_position = 1.91667
-parameters/idle/current_delta = 0.0162173
+parameters/idle/current_position = 1.54819
+parameters/idle/current_delta = 0.0152778
 parameters/jumping/current_length = null
 parameters/jumping/current_position = null
 parameters/jumping/current_delta = null
@@ -1102,6 +1102,11 @@ parameters/moving/current_position = 0.386477
 parameters/moving/current_delta = 0.0166667
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+bus = &"Enemies"
+doppler_tracking = 2
+
+[node name="BreathingStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+max_polyphony = 4
 bus = &"Enemies"
 doppler_tracking = 2
 

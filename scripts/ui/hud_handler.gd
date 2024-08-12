@@ -12,6 +12,7 @@ var current_alt_ammo: String = "none"
 var last_category: int = 1
 
 var alert_timer: float = 0.0
+var rapid_damage_timer: float = 0.0
 
 var health_display: int = 0.0
 var armor_display: int = 0.0
@@ -27,6 +28,7 @@ var alt_ammo_display: int = 0.0
 @onready var flash_rect := find_child("Flash") as TextureRect
 @onready var blood_rect := find_child("Blood") as TextureRect
 @onready var stream_player := find_child("AudioStreamPlayer") as AudioStreamPlayer
+@onready var rapid_damage_player := $RapidDamagePlayer as AudioStreamPlayer
 
 @onready var keys: Array[Node] = $KeysContainer.get_children()
 @onready var weapons: Array[Node] = $WeaponsContainer2D.get_children()
@@ -93,7 +95,12 @@ func _process(delta: float) -> void:
 			alert.modulate.a = alert_timer
 		if alert_timer <= 0.0:
 			alert.hide()
-
+	
+	if rapid_damage_player.playing:
+		rapid_damage_timer -= delta
+		if rapid_damage_timer < 0.0:
+			rapid_damage_player.stop()
+	
 	if heat_flash.visible:
 		heat_flash.modulate.a = move_toward(heat_flash.modulate.a, 0.0, delta * 0.25)
 		if heat_flash.modulate.a <= 0.0:
@@ -115,6 +122,8 @@ func flash_with_sound(color: Color, sound: AudioStream) -> void:
 
 
 func rapid_flash(type: Status.DamageType, delta: float):
+	rapid_damage_player.playing = true
+	rapid_damage_timer = 0.25
 	if type == Status.DamageType.FIRE:
 		heat_flash.visible = true
 		heat_flash.modulate.a = move_toward(heat_flash.modulate.a, 1.0, delta * 2.5)
@@ -127,11 +136,11 @@ func log_event(event_text: String) -> void:
 	#event_container.move_child(event, 0)
 
 
-func set_alert(alert_text: String) -> void:
+func set_alert(alert_text: String, duration: float = alert_duration) -> void:
 	alert.text = alert_text
 	alert.modulate.a = 1.0
 	alert.show()
-	alert_timer = alert_duration
+	alert_timer = duration
 
 
 func _on_weapon_hud_connected(

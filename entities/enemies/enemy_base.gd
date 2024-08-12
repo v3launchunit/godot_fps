@@ -43,7 +43,7 @@ enum State {
 @export var knockback_drag: float = 10.0
 ## Self-explanatory.
 @export_range(0.0, 3.0, 0.1, "or_greater") var jump_height: float = 0.0
-@export var target_pos_offset: Vector3 = Vector3.ZERO
+#@export var target_pos_offset: Vector3 = Vector3.ZERO
 @export var wanderer: bool = false
 
 @export_group("Detection")
@@ -67,6 +67,7 @@ enum State {
 @export var detection_stream: AudioStream
 
 @export_group("Pathing")
+@export var player_target_offset := Vector3.ZERO
 @export var proximity_coefficient: float = 1
 @export var line_of_sight_value: float = 10
 @export var old_dest_bias: float = 5
@@ -151,6 +152,42 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready() -> void:
+	if "detect_mode" in properties and properties["detect_mode"] > 0:
+		match properties["detect_mode"]:
+			# 0: 00
+				# blind = <don't override>
+				# deaf = <don't override>
+			1: # 01
+				blind = false
+				# deaf = <don't override>
+			2: # 02
+				blind = true
+				# deaf = <don't override>
+			3: # 10
+				# blind = <don't override>
+				deaf = false
+			4: # 11
+				blind = false
+				deaf = false
+			5: # 12
+				blind = true
+				deaf = false
+			6: # 20
+				# blind = <don't override>
+				deaf = true
+			7: # 21
+				blind = false
+				deaf = true
+			8: # 22
+				blind = true
+				deaf = true
+
+	if "tripwire_group" in properties and properties["tripwire_group"] != "none":
+		for member in get_tree().get_nodes_in_group(properties["tripwire_group"]):
+			if member.has_signal("interacted"):
+				member.interacted.connect(detect_target)
+		add_to_group(properties["tripwire_group"], true)
+	
 	match current_state:
 		State.AMBUSHING:
 			state_machine.start("ambush", true)
@@ -284,7 +321,7 @@ func change_state(to: State):
 	state_timer = 0
 
 
-func detect_target(target: PhysicsBody3D) -> void:
+func detect_target(target: Node3D) -> void:
 	if not (
 			current_state == State.AMBUSHING
 			or current_state == State.FLINCHING
@@ -379,7 +416,11 @@ func _pursue(delta) -> void:
 		#change_state(State.IDLE) # Can't pursue a target that doesn't exist
 		return
 
-	current_destination = current_targets[-1].global_position
+	current_destination = (
+			current_targets[-1].global_position 
+			+ player_target_offset 
+			* current_targets[-1].global_basis.z.normalized()
+	)
 	#current_destination = get_current_destination()
 
 	if check_path_staleness(): # Make sure my target is still where I think it is
@@ -400,18 +441,9 @@ func _pursue(delta) -> void:
 	else:
 		velocity += walk_vel
 
-	#if jump_height > 0 and should_jump():
-		#_do_jump()
-
 	# Decide if it's time to attack my target
 	if check_attack_readiness():
 		_begin_attack()
-
-	# Scrapped conditionals to try and make enemies breach obstacles
-	# (might reimplement later idk)
-#
-#			or (sight_line.get_collider().global_position.distance_to(global_position) < 2
-#			and sight_line.get_collider().find_child("Status") != null)
 
 
 func check_target_validity() -> bool:
@@ -422,7 +454,7 @@ func check_path_staleness() -> bool:
 	return (
 			randf() < Globals.C_PATH_RE_EVAL_CHANCE
 			and nav_agent.target_position.distance_squared_to(
-			current_destination) > path_re_eval_distance_squared
+					current_destination) > path_re_eval_distance_squared
 		)
 
 

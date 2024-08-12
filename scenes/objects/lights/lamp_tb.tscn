@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://bowd2xtj7q4vd"]
 
 [ext_resource type="Material" uid="uid://c42r6gnwbsttx" path="res://materials/effects/fancy_halo.tres" id="1_pccel"]
-[ext_resource type="Script" path="res://trench_broom/lamp_tb.gd" id="1_q36ot"]
+[ext_resource type="Script" path="res://trench_broom/entity_defs/point/deco/lighting/lamp_tb.gd" id="1_q36ot"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halos/halo.tres" id="2_skdhx"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="3_g4i26"]
 
@@ -202,7 +202,7 @@ distance_fade_enabled = true
 omni_range = 15.0
 
 [node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 layers = 2
 material_override = ExtResource("1_pccel")
 cast_shadow = 0

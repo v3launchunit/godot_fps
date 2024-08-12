@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://weapons/weapon_alt_fire.gd" id="2_rkwad"]
 [ext_resource type="ArrayMesh" uid="uid://crk83yrjbvbg6" path="res://models/weapons/muzzle_flash.obj" id="3_8b28n"]
 [ext_resource type="AnimationLibrary" uid="uid://byhlw1uu73dbf" path="res://weapons/shotgun_anims.res" id="5_eekxh"]
-[ext_resource type="PackedScene" uid="uid://rchnjnxfhuga" path="res://bullets/player/projectile/grenade.tscn" id="6_kwhqf"]
+[ext_resource type="PackedScene" uid="uid://rchnjnxfhuga" path="res://bullets/enemy/enemy_grenade.tscn" id="6_kwhqf"]
 [ext_resource type="PackedScene" uid="uid://d4mp4mj8p46h1" path="res://bullets/player/hitscan/hitscan_bullet.tscn" id="7_pot81"]
 [ext_resource type="Material" uid="uid://dq3a5fxspauox" path="res://materials/muzzle_flash_yellow.tres" id="8_scexd"]
 [ext_resource type="Texture2D" uid="uid://dbnasmfycrfat" path="res://textures/objects/shotgun_shell/shotgun_shell.png" id="8_xoaa3"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=30 format=3 uid="uid://dqwqqvs3kuly8"]
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=31 format=3 uid="uid://dqwqqvs3kuly8"]
 
 [ext_resource type="Resource" uid="uid://djh4xmcjq1gkp" path="res://trench_broom/entity_defs/point/deco_points.tres" id="1_5e18t"]
 [ext_resource type="Resource" uid="uid://dmuqa22l0pi3q" path="res://trench_broom/entity_defs/point/enemy_points.tres" id="1_5ikmf"]
@@ -23,12 +23,13 @@
 [ext_resource type="Resource" uid="uid://cfdenuuabttu4" path="res://trench_broom/entity_defs/point/pickups/weapons/nailgun_pickup.tres" id="24_fn2vq"]
 [ext_resource type="Resource" uid="uid://030ipvqb3o5d" path="res://trench_broom/entity_defs/point/pickups/weapons/plasma_cannon_pickup.tres" id="25_v8mmy"]
 [ext_resource type="Resource" uid="uid://cb5yftls6mfan" path="res://trench_broom/entity_defs/point/pickups/keys/key_red.tres" id="26_0s800"]
-[ext_resource type="Resource" uid="uid://dupc1c6lbvytv" path="res://trench_broom/entity_defs/point/world_effect_point_class.tres" id="26_edmks"]
+[ext_resource type="Resource" uid="uid://dupc1c6lbvytv" path="res://trench_broom/entity_defs/point/deco/world_effect_point_class.tres" id="26_edmks"]
 [ext_resource type="Resource" uid="uid://ch671s1gv2bg2" path="res://trench_broom/entity_defs/point/pickups/keys/key_green.tres" id="27_obo8m"]
 [ext_resource type="Resource" uid="uid://81a8rrwv6130" path="res://trench_broom/entity_defs/point/pickups/keys/key_blue.tres" id="28_4027m"]
 [ext_resource type="Resource" uid="uid://jhjvqfjqlc70" path="res://trench_broom/entity_defs/point/ref_probe_point_class.tres" id="28_t303l"]
-[ext_resource type="Resource" uid="uid://cuakno3ky78hu" path="res://trench_broom/entity_defs/point/enemies/ambush.tres" id="29_jll6y"]
+[ext_resource type="Resource" uid="uid://cuakno3ky78hu" path="res://trench_broom/entity_defs/point/enemies/ambush_point_class.tres" id="29_jll6y"]
 [ext_resource type="Resource" uid="uid://36pc3505m2sm" path="res://trench_broom/entity_defs/point/enemies/lizard_hole_point_class.tres" id="29_mcxue"]
+[ext_resource type="Resource" uid="uid://bhr8gru0x7ndf" path="res://trench_broom/entity_defs/point/interactable/lever_point_class.tres" id="29_nardm"]
 
 [resource]
 script = ExtResource("1_8tcrl")
@@ -36,4 +37,4 @@ export_file = false
 target_folder = "C:\\Users\\lengl\\AppData\\Roaming\\TrenchBroom\\games\\VolumetricsTest"
 fgd_name = "Points"
 base_fgd_files = Array[Resource]([ExtResource("1_5e18t"), ExtResource("1_5ikmf")])
-entity_definitions = Array[Resource]([ExtResource("7_avmew"), ExtResource("8_2wn6t"), ExtResource("9_0t6de"), ExtResource("10_g6bn1"), ExtResource("11_4nueg"), ExtResource("12_drp46"), ExtResource("13_v3c6l"), ExtResource("14_0wxo4"), ExtResource("15_r6s1g"), ExtResource("16_uribh"), ExtResource("17_whrj4"), ExtResource("18_drjam"), ExtResource("19_p7mln"), ExtResource("20_0ajm1"), ExtResource("21_7vww4"), ExtResource("22_yk7g5"), ExtResource("23_h5xhw"), ExtResource("24_fn2vq"), ExtResource("25_v8mmy"), ExtResource("26_0s800"), ExtResource("27_obo8m"), ExtResource("28_4027m"), ExtResource("29_jll6y"), ExtResource("26_edmks"), ExtResource("29_mcxue"), ExtResource("28_t303l")])
+entity_definitions = Array[Resource]([ExtResource("7_avmew"), ExtResource("8_2wn6t"), ExtResource("9_0t6de"), ExtResource("10_g6bn1"), ExtResource("11_4nueg"), ExtResource("12_drp46"), ExtResource("13_v3c6l"), ExtResource("14_0wxo4"), ExtResource("15_r6s1g"), ExtResource("16_uribh"), ExtResource("17_whrj4"), ExtResource("18_drjam"), ExtResource("19_p7mln"), ExtResource("20_0ajm1"), ExtResource("21_7vww4"), ExtResource("22_yk7g5"), ExtResource("23_h5xhw"), ExtResource("24_fn2vq"), ExtResource("25_v8mmy"), ExtResource("26_0s800"), ExtResource("27_obo8m"), ExtResource("28_4027m"), ExtResource("29_jll6y"), ExtResource("26_edmks"), ExtResource("29_mcxue"), ExtResource("28_t303l"), ExtResource("29_nardm")])

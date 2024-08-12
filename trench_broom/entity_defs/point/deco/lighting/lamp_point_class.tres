@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bowd2xtj7q4vd" path="res://scenes/objects/lights/lamp_tb.tscn" id="1_0wngc"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_vkipw"]
-[ext_resource type="Script" path="res://trench_broom/lamp_tb.gd" id="3_m7vy5"]
+[ext_resource type="Script" path="res://trench_broom/entity_defs/point/deco/lighting/lamp_tb.gd" id="3_m7vy5"]
 
 [resource]
 script = ExtResource("1_vkipw")

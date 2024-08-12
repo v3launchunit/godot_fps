@@ -46,34 +46,35 @@ class_name Player extends CharacterBody3D
 @export var interact_stream: AudioStream
 ## The audio stream that plays when the player jumps.
 @export var jump_stream: AudioStream
-@export var slam_land_stream: AudioStream
+#@export var slam_land_stream: AudioStream
 
+@export_group("Save Data")
+@export var jumping: bool = false
+@export var crouching: bool = false
+@export var slamming: bool = false
 
-var jumping: bool = false
-var crouching: bool = false
-var slamming: bool = false
+@export var jumps: int = 1
+@export var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+@export var move_dir: Vector2 ## Input direction for movement.
+@export var look_dir: Vector2 ## Input direction for look/aim.
+
+@export var walk_vel: Vector3 ## The current walking velocity vector.
+@export var slide_vel: Vector3 ## The current sliding velocity vector.
+@export var grav_vel: Vector3 ## The current gravity velocity vector.
+@export var jump_vel: Vector3 ## The current jumping velocity vector.
+@export var knockback_vel: Vector3 ## The current knockback velocity vector.
+
+@export var camera_zoom_sens: float = 1.0
+@export var reorienting: bool = false
+@export var sway_timer: float = PI/2
+
+@export var cam_recoil_pos: float = 0.0
+@export var cam_recoil_vel: float = 0.0
+
+@export var holding = null
+
 static var mouse_captured: bool = false
-
-var jumps: int = 1
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-var move_dir: Vector2 ## Input direction for movement.
-var look_dir: Vector2 ## Input direction for look/aim.
-
-var walk_vel: Vector3 ## The current walking velocity vector.
-var slide_vel: Vector3 ## The current sliding velocity vector.
-var grav_vel: Vector3 ## The current gravity velocity vector.
-var jump_vel: Vector3 ## The current jumping velocity vector.
-var knockback_vel: Vector3 ## The current knockback velocity vector.
-
-var camera_zoom_sens: float = 1.0
-var reorienting: bool = false
-var sway_timer: float = PI/2
-
-var cam_recoil_pos: float = 0.0
-var cam_recoil_vel: float = 0.0
-
-var holding = null
 
 @onready var camera := find_child("PlayerCam") as WeaponManager
 @onready var camera_sync := find_child("PlayerSync") as Node3D
@@ -99,13 +100,15 @@ func _process(_delta) -> void:
 		stream_player.play()
 		jumping = true
 
-	if crouching and ((
-			Globals.s_toggle_crouch
-			and Input.is_action_just_pressed("crouch")
-	) or not (
-			Globals.s_toggle_crouch
-			or Input.is_action_pressed("crouch")
-	)) and not clearance_scan.is_colliding():
+	if crouching and (
+			(
+					Globals.s_toggle_crouch
+					and Input.is_action_just_pressed("crouch")
+			) or not (
+					Globals.s_toggle_crouch
+					or Input.is_action_pressed("crouch")
+			)
+	) and not clearance_scan.is_colliding():
 		_toggle_crouch(false)
 
 	if interact_scan.is_colliding():
@@ -338,9 +341,12 @@ func _gravity(delta: float) -> Vector3:
 			var slam_wave := slam_wave_scene.instantiate()
 			add_child(slam_wave)
 			slam_wave.reparent(get_tree().current_scene)
-			(slam_wave as AreaDamage).invoker = self
-			stream_player.stream = slam_land_stream
-			stream_player.play()
+			# this feels really dirty but i can't think of a better way to do it
+			# that doesn't require sacrificing performance to find_child()
+			(slam_wave.get_child(0) as AreaDamage).invoker = self
+			(slam_wave.get_child(0).get_child(1) as AreaDamage).invoker = self
+			#stream_player.stream = slam_land_stream
+			#stream_player.play()
 		else:
 			grav_vel = Vector3(0, -slam_speed, 0)
 	else:
