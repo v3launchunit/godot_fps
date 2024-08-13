@@ -1240,39 +1240,137 @@
 }
 // brush 27
 {
-( -1376 -288 192 ) ( -1376 -304 192 ) ( -1376 -288 -192 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1408 -288 -192 ) ( -1408 -288 -176 ) ( -1408 -304 -192 ) special/skip [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1408 -304 -192 ) ( -1408 -304 -176 ) ( -1376 -304 -192 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -288 -192 ) ( -1408 -288 -192 ) ( -1376 -304 -192 ) special/skip [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1408 -288 -176 ) ( -1376 -288 -176 ) ( -1408 -304 -176 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 -288 -192 ) ( -1376 -288 -176 ) ( -1408 -288 -192 ) special/skip [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -304 -192 ) ( -1376 -304 -176 ) ( -1376 -288 -192 ) special/skip [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 28
+{
+( -736 -128 -160 ) ( -768 -144 -32 ) ( -768 -144 -160 ) terrain/trench_broom/bricks [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1024 -288 -176 ) ( -1024 -288 -175 ) ( -1023 -288 -176 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1024 -288 -176 ) ( -1023 -288 -176 ) ( -1024 -287 -176 ) special/skip [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -736 -128 176 ) ( -736 -127 176 ) ( -735 -128 176 ) special/skip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -736 -128 -160 ) ( -736 -128 -159 ) ( -736 -127 -160 ) special/skip [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 29
+{
+( -1472 -304 -192 ) ( -1472 -304 -176 ) ( -1472 -320 -192 ) special/skip [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1408 -560 -192 ) ( -1408 -560 -176 ) ( -1376 -560 -192 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -304 -192 ) ( -1408 -304 -192 ) ( -1376 -320 -192 ) special/skip [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1408 -304 -176 ) ( -1376 -304 -176 ) ( -1408 -320 -176 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 -304 -192 ) ( -1376 -304 -176 ) ( -1408 -304 -192 ) special/skip [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1312 -320 -192 ) ( -1312 -320 -176 ) ( -1312 -304 -192 ) special/skip [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 30
+{
+( -1312 -304 -160 ) ( -1312 -176 -144 ) ( -1312 -304 -144 ) special/skip [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -736 -304 -192 ) ( -1376 -304 -192 ) ( -736 -304 192 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -736 -288 -192 ) ( -1376 -288 -192 ) ( -736 -304 -192 ) special/skip [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -736 -304 192 ) ( -1376 -304 192 ) ( -736 -288 192 ) special/skip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -736 -288 192 ) ( -1376 -288 192 ) ( -736 -288 -192 ) terrain/trench_broom/bricks [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -736 -304 192 ) ( -736 -288 192 ) ( -736 -304 -192 ) special/skip [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
-// brush 28
+// brush 31
+{
+( -1376 -288 192 ) ( -1376 -304 192 ) ( -1376 -288 -192 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -736 -304 -192 ) ( -1376 -304 -192 ) ( -736 -304 192 ) terrain/trench_broom/bricks [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -736 -288 -192 ) ( -1376 -288 -192 ) ( -736 -304 -192 ) special/skip [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 -304 -96 ) ( -1392 -304 -96 ) ( -1392 -176 -96 ) special/skip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -736 -288 192 ) ( -1376 -288 192 ) ( -736 -288 -192 ) terrain/trench_broom/bricks [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1312 -304 -160 ) ( -1312 -304 -144 ) ( -1312 -176 -144 ) special/skip [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 32
 {
 ( -1472 -304 -192 ) ( -1472 -288 -192 ) ( -1472 -304 192 ) special/skip [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -1472 -304 192 ) ( -1408 -304 192 ) ( -1472 -304 -192 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1472 -304 192 ) ( -1408 -304 192 ) ( -1472 -304 -192 ) terrain/trench_broom/bricks [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -1472 -304 -192 ) ( -1408 -304 -192 ) ( -1472 -288 -192 ) special/skip [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -1472 -288 192 ) ( -1408 -288 192 ) ( -1472 -304 192 ) special/skip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 -304 -96 ) ( -1392 -304 -96 ) ( -1392 -176 -96 ) special/skip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -1472 -288 -192 ) ( -1408 -288 -192 ) ( -1472 -288 192 ) terrain/trench_broom/bricks [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -1408 -304 -192 ) ( -1408 -304 192 ) ( -1408 -288 -192 ) terrain/trench_broom/bricks [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
-// brush 29
+// brush 33
 {
-( -1408 -304 192 ) ( -1408 -304 -128 ) ( -1408 -288 192 ) terrain/trench_broom/bricks [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -1376 -304 192 ) ( -1376 -304 -128 ) ( -1408 -304 192 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1408 -304 192 ) ( -1408 -304 -128 ) ( -1408 -288 192 ) special/skip [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -304 192 ) ( -1376 -304 -128 ) ( -1408 -304 192 ) terrain/trench_broom/bricks [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -1376 -304 -128 ) ( -1376 -288 -128 ) ( -1408 -304 -128 ) terrain/trench_broom/bricks [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -1376 -304 192 ) ( -1408 -304 192 ) ( -1376 -288 192 ) special/skip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 -304 -96 ) ( -1392 -304 -96 ) ( -1392 -176 -96 ) special/skip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -1408 -288 192 ) ( -1408 -288 -128 ) ( -1376 -288 192 ) terrain/trench_broom/bricks [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -1376 -288 192 ) ( -1376 -288 -128 ) ( -1376 -304 192 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -288 192 ) ( -1376 -288 -128 ) ( -1376 -304 192 ) special/skip [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
-// brush 30
+// brush 34
 {
-( -1408 -288 -192 ) ( -1408 -288 -176 ) ( -1408 -304 -192 ) terrain/trench_broom/bricks [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -1408 -304 -192 ) ( -1408 -304 -176 ) ( -1376 -304 -192 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -1376 -288 -192 ) ( -1408 -288 -192 ) ( -1376 -304 -192 ) special/skip [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -1408 -288 -176 ) ( -1376 -288 -176 ) ( -1408 -304 -176 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -1376 -288 -192 ) ( -1376 -288 -176 ) ( -1408 -288 -192 ) terrain/trench_broom/bricks [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -1376 -304 -192 ) ( -1376 -304 -176 ) ( -1376 -288 -192 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1472 -304 -192 ) ( -1472 -288 -192 ) ( -1472 -304 192 ) special/skip [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1472 -304 192 ) ( -1408 -304 192 ) ( -1472 -304 -192 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -304 -96 ) ( -1392 -176 -96 ) ( -1392 -304 -96 ) special/skip [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1472 -288 192 ) ( -1408 -288 192 ) ( -1472 -304 192 ) special/skip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1472 -288 -192 ) ( -1408 -288 -192 ) ( -1472 -288 192 ) terrain/trench_broom/bricks [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1312 -304 -192 ) ( -1312 -304 192 ) ( -1312 -288 -192 ) special/skip [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 35
+{
+( -1488 -592 -192 ) ( -1488 -304 -192 ) ( -1488 -592 192 ) special/skip [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1488 -560 192 ) ( -1472 -560 192 ) ( -1488 -560 -192 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1472 -592 -192 ) ( -1472 -304 -192 ) ( -1488 -592 -192 ) special/skip [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 -592 -80 ) ( -1488 -304 -80 ) ( -1472 -592 -80 ) special/skip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1488 -304 192 ) ( -1488 -304 -192 ) ( -1472 -304 192 ) terrain/trench_broom/bricks [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1472 -592 192 ) ( -1472 -304 192 ) ( -1472 -592 -192 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 36
+{
+( -1312 -592 192 ) ( -1312 -592 -192 ) ( -1312 -304 192 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1296 -560 192 ) ( -1296 -560 -192 ) ( -1312 -560 192 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1312 -592 -192 ) ( -1296 -592 -192 ) ( -1312 -304 -192 ) special/skip [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1296 -592 -80 ) ( -1312 -592 -80 ) ( -1296 -304 -80 ) special/skip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1296 -304 192 ) ( -1312 -304 192 ) ( -1296 -304 -192 ) terrain/trench_broom/bricks [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1296 -592 -192 ) ( -1296 -592 192 ) ( -1296 -304 -192 ) special/skip [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 37
+{
+( -1472 -304 -80 ) ( -1472 -320 -80 ) ( -1472 -304 -96 ) special/skip [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1408 -560 -80 ) ( -1376 -560 -80 ) ( -1408 -560 -96 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1408 -304 -96 ) ( -1408 -320 -96 ) ( -1376 -304 -96 ) terrain/trench_broom/rock [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 -304 -80 ) ( -1376 -320 -80 ) ( -1408 -304 -80 ) special/skip [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 -304 -80 ) ( -1408 -304 -80 ) ( -1376 -304 -96 ) special/skip [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1312 -320 -80 ) ( -1312 -304 -80 ) ( -1312 -320 -96 ) special/skip [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 38
+{
+( -1376 -544 -96 ) ( -1376 -560 -96 ) ( -1376 -544 -176 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1312 -560 -176 ) ( -1376 -560 -176 ) ( -1312 -560 -96 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1312 -544 -176 ) ( -1376 -544 -176 ) ( -1312 -560 -176 ) terrain/trench_broom/bricks [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1312 -560 -96 ) ( -1376 -560 -96 ) ( -1312 -544 -96 ) special/skip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1312 -544 -96 ) ( -1376 -544 -96 ) ( -1312 -544 -176 ) terrain/trench_broom/bricks [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1312 -560 -96 ) ( -1312 -544 -96 ) ( -1312 -560 -176 ) special/skip [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 39
+{
+( -1472 -560 -176 ) ( -1472 -544 -176 ) ( -1472 -560 -96 ) special/skip [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1472 -560 -96 ) ( -1408 -560 -96 ) ( -1472 -560 -176 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1472 -560 -176 ) ( -1408 -560 -176 ) ( -1472 -544 -176 ) terrain/trench_broom/bricks [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1472 -544 -96 ) ( -1408 -544 -96 ) ( -1472 -560 -96 ) special/skip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1472 -544 -176 ) ( -1408 -544 -176 ) ( -1472 -544 -96 ) terrain/trench_broom/bricks [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1408 -560 -176 ) ( -1408 -560 -96 ) ( -1408 -544 -176 ) terrain/trench_broom/bricks [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 40
+{
+( -1408 -560 -96 ) ( -1408 -560 -128 ) ( -1408 -544 -96 ) terrain/trench_broom/bricks [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -560 -96 ) ( -1376 -560 -128 ) ( -1408 -560 -96 ) special/skip [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -560 -128 ) ( -1376 -544 -128 ) ( -1408 -560 -128 ) terrain/trench_broom/bricks [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 -560 -96 ) ( -1408 -560 -96 ) ( -1376 -544 -96 ) special/skip [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1408 -544 -96 ) ( -1408 -544 -128 ) ( -1376 -544 -96 ) terrain/trench_broom/bricks [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -544 -96 ) ( -1376 -544 -128 ) ( -1376 -560 -96 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 41
+{
+( -1408 -556 -176 ) ( -1408 -555 -176 ) ( -1408 -556 -175 ) terrain/trench_broom/shutter_door [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1408 -556 -176 ) ( -1408 -556 -175 ) ( -1407 -556 -176 ) terrain/trench_broom/shutter_door [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1408 -556 -176 ) ( -1407 -556 -176 ) ( -1408 -555 -176 ) terrain/trench_broom/shutter_door [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 -548 -128 ) ( -1376 -547 -128 ) ( -1375 -548 -128 ) terrain/trench_broom/shutter_door [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1376 -548 -128 ) ( -1375 -548 -128 ) ( -1376 -548 -127 ) terrain/trench_broom/shutter_door [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1376 -548 -128 ) ( -1376 -548 -127 ) ( -1376 -547 -128 ) terrain/trench_broom/shutter_door [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
 // entity 39
@@ -1678,7 +1776,7 @@
 // brush 7
 {
 ( -512 528 -176 ) ( -512 529 -176 ) ( -512 528 -175 ) terrain/trench_broom/metal [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -512 528 -176 ) ( -512 528 -175 ) ( -511 528 -176 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -512 544 -176 ) ( -512 544 -175 ) ( -511 544 -176 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -512 528 -176 ) ( -511 528 -176 ) ( -512 529 -176 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -496 560 -32 ) ( -496 561 -32 ) ( -495 560 -32 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -496 560 -48 ) ( -495 560 -48 ) ( -496 560 -47 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
@@ -1690,13 +1788,13 @@
 ( -512 400 -176 ) ( -512 400 -175 ) ( -511 400 -176 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -512 400 -176 ) ( -511 400 -176 ) ( -512 401 -176 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -496 432 -32 ) ( -496 433 -32 ) ( -495 432 -32 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -496 432 -48 ) ( -495 432 -48 ) ( -496 432 -47 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -496 416 -48 ) ( -495 416 -48 ) ( -496 416 -47 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -496 432 -48 ) ( -496 432 -47 ) ( -496 433 -48 ) terrain/trench_broom/metal [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 // brush 9
 {
 ( -400 528 -176 ) ( -400 529 -176 ) ( -400 528 -175 ) terrain/trench_broom/metal [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -400 528 -176 ) ( -400 528 -175 ) ( -399 528 -176 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -400 544 -176 ) ( -400 544 -175 ) ( -399 544 -176 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -400 528 -176 ) ( -399 528 -176 ) ( -400 529 -176 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -384 560 -32 ) ( -384 561 -32 ) ( -383 560 -32 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -384 560 -48 ) ( -383 560 -48 ) ( -384 560 -47 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
@@ -1708,19 +1806,10 @@
 ( -400 400 -176 ) ( -400 400 -175 ) ( -399 400 -176 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -400 400 -176 ) ( -399 400 -176 ) ( -400 401 -176 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
 ( -384 432 -32 ) ( -384 433 -32 ) ( -383 432 -32 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -384 432 -48 ) ( -383 432 -48 ) ( -384 432 -47 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 416 -48 ) ( -383 416 -48 ) ( -384 416 -47 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -384 432 -48 ) ( -384 432 -47 ) ( -384 433 -48 ) terrain/trench_broom/metal [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 // brush 11
-{
-( -576 448 -128 ) ( -576 449 -128 ) ( -576 448 -127 ) terrain/trench_broom/concrete_smooth [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -336 416 -128 ) ( -336 416 -127 ) ( -335 416 -128 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -336 448 -176 ) ( -335 448 -176 ) ( -336 449 -176 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -304 528 -48 ) ( -304 529 -48 ) ( -303 528 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -304 544 -80 ) ( -303 544 -80 ) ( -304 544 -79 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -320 528 -80 ) ( -320 528 -79 ) ( -320 529 -80 ) terrain/trench_broom/concrete_smooth [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-}
-// brush 12
 {
 ( -320 448 -128 ) ( -320 449 -128 ) ( -320 448 -127 ) terrain/trench_broom/concrete_smooth [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -192 448 -128 ) ( -192 448 -127 ) ( -191 448 -128 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
@@ -1732,6 +1821,105 @@
 ( -288 496 -80 ) ( -288 512 -96 ) ( -272 512 -96 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 -0.7071067811865476 0.7071067811865476 0 ] 0 1 1
 ( -160 512 -80 ) ( -159 512 -80 ) ( -160 512 -79 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( -172 528 -80 ) ( -172 528 -79 ) ( -172 529 -80 ) terrain/trench_broom/concrete_smooth [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 12
+{
+( -336 544 -48 ) ( -336 416 -48 ) ( -336 544 -176 ) terrain/trench_broom/concrete_smooth [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -320 416 -176 ) ( -336 416 -176 ) ( -320 416 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -320 544 -176 ) ( -336 544 -176 ) ( -320 416 -176 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -320 416 -48 ) ( -336 416 -48 ) ( -320 544 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -320 544 -48 ) ( -336 544 -48 ) ( -320 544 -176 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -320 416 -48 ) ( -320 544 -48 ) ( -320 416 -176 ) terrain/trench_broom/concrete_smooth [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 13
+{
+( -576 416 -176 ) ( -576 544 -176 ) ( -576 416 -48 ) terrain/trench_broom/concrete_smooth [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -576 416 -48 ) ( -560 416 -48 ) ( -576 416 -176 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -576 416 -176 ) ( -560 416 -176 ) ( -576 544 -176 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -576 544 -48 ) ( -560 544 -48 ) ( -576 416 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -576 544 -176 ) ( -560 544 -176 ) ( -576 544 -48 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -560 416 -176 ) ( -560 416 -48 ) ( -560 544 -176 ) terrain/trench_broom/concrete_smooth [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 14
+{
+( -560 416 -176 ) ( -560 432 -176 ) ( -560 416 -48 ) terrain/trench_broom/concrete_smooth [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 416 -176 ) ( -560 416 -176 ) ( -336 416 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 416 -176 ) ( -336 432 -176 ) ( -560 416 -176 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 416 -48 ) ( -560 432 -48 ) ( -336 416 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 432 -176 ) ( -336 432 -176 ) ( -560 432 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 416 -48 ) ( -336 432 -48 ) ( -336 416 -176 ) terrain/trench_broom/concrete_smooth [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 15
+{
+( -560 432 -48 ) ( -560 432 -64 ) ( -560 528 -48 ) terrain/trench_broom/concrete_smooth [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 432 -48 ) ( -336 432 -64 ) ( -560 432 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 528 -64 ) ( -560 528 -64 ) ( -336 432 -64 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -336 528 -48 ) ( -336 432 -48 ) ( -560 528 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 528 -48 ) ( -560 528 -64 ) ( -336 528 -48 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 528 -48 ) ( -336 528 -64 ) ( -336 432 -48 ) terrain/trench_broom/concrete_smooth [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 16
+{
+( -416 544 -48 ) ( -416 528 -48 ) ( -416 544 -176 ) terrain/trench_broom/concrete_smooth [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 528 -176 ) ( -416 528 -176 ) ( -336 528 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 544 -176 ) ( -416 544 -176 ) ( -336 528 -176 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -336 528 -48 ) ( -416 528 -48 ) ( -336 544 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -336 544 -48 ) ( -416 544 -48 ) ( -336 544 -176 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -336 528 -48 ) ( -336 544 -48 ) ( -336 528 -176 ) terrain/trench_broom/concrete_smooth [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 17
+{
+( -560 528 -176 ) ( -560 544 -176 ) ( -560 528 -48 ) terrain/trench_broom/concrete_smooth [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -560 528 -48 ) ( -480 528 -48 ) ( -560 528 -176 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -560 528 -176 ) ( -480 528 -176 ) ( -560 544 -176 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 544 -48 ) ( -480 544 -48 ) ( -560 528 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -560 544 -176 ) ( -480 544 -176 ) ( -560 544 -48 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -480 528 -176 ) ( -480 528 -48 ) ( -480 544 -176 ) terrain/trench_broom/concrete_smooth [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 18
+{
+( -480 528 -48 ) ( -480 528 -112 ) ( -480 544 -48 ) terrain/trench_broom/concrete_smooth [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -416 528 -48 ) ( -416 528 -112 ) ( -480 528 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -416 528 -112 ) ( -416 544 -112 ) ( -480 528 -112 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -416 528 -48 ) ( -480 528 -48 ) ( -416 544 -48 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -480 544 -48 ) ( -480 544 -112 ) ( -416 544 -48 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -416 544 -48 ) ( -416 544 -112 ) ( -416 528 -48 ) terrain/trench_broom/concrete_smooth [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 19
+{
+( -512 416 -176 ) ( -512 417 -176 ) ( -512 416 -175 ) terrain/trench_broom/metal [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -512 416 -176 ) ( -512 416 -175 ) ( -511 416 -176 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -512 416 -48 ) ( -511 416 -48 ) ( -512 417 -48 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -496 448 -32 ) ( -496 449 -32 ) ( -495 448 -32 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -496 432 -48 ) ( -495 432 -48 ) ( -496 432 -47 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -496 448 -48 ) ( -496 448 -47 ) ( -496 449 -48 ) terrain/trench_broom/metal [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 20
+{
+( -400 416 -176 ) ( -400 417 -176 ) ( -400 416 -175 ) terrain/trench_broom/metal [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -400 416 -176 ) ( -400 416 -175 ) ( -399 416 -176 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -400 416 -48 ) ( -399 416 -48 ) ( -400 417 -48 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -384 448 -32 ) ( -384 449 -32 ) ( -383 448 -32 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -384 432 -48 ) ( -383 432 -48 ) ( -384 432 -47 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 448 -48 ) ( -384 448 -47 ) ( -384 449 -48 ) terrain/trench_broom/metal [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 21
+{
+( -400 528 -176 ) ( -400 529 -176 ) ( -400 528 -175 ) terrain/trench_broom/metal [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -400 528 -176 ) ( -400 528 -175 ) ( -399 528 -176 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -400 528 -48 ) ( -399 528 -48 ) ( -400 529 -48 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -384 560 -32 ) ( -384 561 -32 ) ( -383 560 -32 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -384 544 -48 ) ( -383 544 -48 ) ( -384 544 -47 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -384 560 -48 ) ( -384 560 -47 ) ( -384 561 -48 ) terrain/trench_broom/metal [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 22
+{
+( -512 528 -176 ) ( -512 529 -176 ) ( -512 528 -175 ) terrain/trench_broom/metal [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -512 528 -176 ) ( -512 528 -175 ) ( -511 528 -176 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -512 528 -48 ) ( -511 528 -48 ) ( -512 529 -48 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -496 560 -32 ) ( -496 561 -32 ) ( -495 560 -32 ) terrain/trench_broom/metal [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -496 544 -48 ) ( -495 544 -48 ) ( -496 544 -47 ) terrain/trench_broom/metal [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -496 560 -48 ) ( -496 560 -47 ) ( -496 561 -48 ) terrain/trench_broom/metal [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
 // entity 52
@@ -1766,6 +1954,41 @@
 }
 // entity 57
 {
+"classname" "interactable_door"
+"required_key" "-2"
+"group" "switch"
+"open_pos" "0 -5 0"
+"_tb_group" "8"
+// brush 0
+{
+( -480 528 -176 ) ( -480 529 -176 ) ( -480 528 -175 ) terrain/trench_broom/concrete_smooth [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -432 528 -176 ) ( -432 528 -175 ) ( -431 528 -176 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -432 528 -176 ) ( -431 528 -176 ) ( -432 529 -176 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -416 544 -112 ) ( -416 545 -112 ) ( -415 544 -112 ) terrain/trench_broom/concrete_smooth [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -416 544 -160 ) ( -415 544 -160 ) ( -416 544 -159 ) terrain/trench_broom/concrete_smooth [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -416 544 -160 ) ( -416 544 -159 ) ( -416 545 -160 ) terrain/trench_broom/concrete_smooth [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 58
+{
+"classname" "key_green"
+"origin" "-448 456 -168"
+"_tb_group" "8"
+}
+// entity 59
+{
+"classname" "ammo_big_iron_bullet_pickup"
+"origin" "-488 456 -168"
+"_tb_group" "8"
+}
+// entity 60
+{
+"classname" "ammo_big_iron_bullet_pickup"
+"origin" "-408 456 -168"
+"_tb_group" "8"
+}
+// entity 61
+{
 "classname" "triggerable_ambush"
 "origin" "-616 504 -168"
 "ambusher" "canary"
@@ -1773,7 +1996,7 @@
 "angle" "180"
 "_tb_group" "5"
 }
-// entity 58
+// entity 62
 {
 "classname" "triggerable_ambush"
 "origin" "-616 456 -168"
@@ -1782,7 +2005,7 @@
 "angle" "180"
 "_tb_group" "5"
 }
-// entity 59
+// entity 63
 {
 "classname" "area_trigger"
 "group" "enter"
@@ -1798,13 +2021,13 @@
 ( -640 384 -112 ) ( -640 384 -111 ) ( -640 385 -112 ) special/trigger [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 60
+// entity 64
 {
 "classname" "weapon_big_iron"
 "origin" "-776 408 -168"
 "_tb_group" "5"
 }
-// entity 61
+// entity 65
 {
 "classname" "triggerable_ambush"
 "origin" "-216 424 -160"
@@ -1812,7 +2035,7 @@
 "group" "enter"
 "_tb_group" "5"
 }
-// entity 62
+// entity 66
 {
 "classname" "triggerable_ambush"
 "origin" "-256 424 -160"
@@ -1820,7 +2043,7 @@
 "group" "enter"
 "_tb_group" "5"
 }
-// entity 63
+// entity 67
 {
 "classname" "triggerable_ambush"
 "origin" "-296 424 -160"
@@ -1828,189 +2051,189 @@
 "group" "enter"
 "_tb_group" "5"
 }
-// entity 64
+// entity 68
 {
 "classname" "enemy_plasma_droid"
 "origin" "-296 696 -152"
 "angle" "180"
 "_tb_group" "5"
 }
-// entity 65
+// entity 69
 {
 "classname" "enemy_plasma_droid"
 "origin" "-296 776 -152"
 "angle" "180"
 "_tb_group" "5"
 }
-// entity 66
+// entity 70
 {
 "classname" "weapon_plasma_cannon"
 "origin" "-776 552 -168"
 "_tb_group" "5"
 }
-// entity 67
+// entity 71
 {
 "classname" "ammo_big_cell_pickup"
 "origin" "-776 528 -168"
 "_tb_group" "5"
 }
-// entity 68
+// entity 72
 {
 "classname" "ammo_big_cell_pickup"
 "origin" "-776 576 -168"
 "_tb_group" "5"
 }
-// entity 69
+// entity 73
 {
 "classname" "ammo_shell_box_pickup"
 "origin" "-800 552 -168"
 "_tb_group" "5"
 }
-// entity 70
+// entity 74
 {
 "classname" "ammo_shell_box_pickup"
 "origin" "-752 552 -168"
 "_tb_group" "5"
 }
-// entity 71
+// entity 75
 {
 "classname" "ammo_big_iron_bullet_pickup"
 "origin" "-776 384 -168"
 "_tb_group" "5"
 }
-// entity 72
+// entity 76
 {
 "classname" "ammo_big_iron_bullet_pickup"
 "origin" "-776 360 -168"
 "_tb_group" "5"
 }
-// entity 73
+// entity 77
 {
 "classname" "ammo_big_iron_bullet_pickup"
 "origin" "-776 336 -168"
 "_tb_group" "5"
 }
-// entity 74
+// entity 78
 {
 "classname" "ammo_big_iron_bullet_pickup"
 "origin" "-776 312 -168"
 "_tb_group" "5"
 }
-// entity 75
+// entity 79
 {
 "classname" "ammo_big_iron_bullet_pickup"
 "origin" "-776 288 -168"
 "_tb_group" "5"
 }
-// entity 76
+// entity 80
 {
 "classname" "ammo_akm_mag_pickup"
 "origin" "-376 736 -168"
 "_tb_group" "5"
 }
-// entity 77
+// entity 81
 {
 "classname" "ammo_akm_mag_pickup"
 "origin" "-336 776 -168"
 "_tb_group" "5"
 }
-// entity 78
+// entity 82
 {
 "classname" "ammo_akm_mag_pickup"
 "origin" "-336 696 -168"
 "_tb_group" "5"
 }
-// entity 79
+// entity 83
 {
 "classname" "powerup_heart"
 "origin" "-336 736 -168"
 "_tb_group" "5"
 }
-// entity 80
+// entity 84
 {
 "classname" "ammo_akm_mag_pickup"
 "origin" "-296 736 -168"
 "_tb_group" "5"
 }
-// entity 81
+// entity 85
 {
 "classname" "deco_chain"
 "origin" "-256 576 168"
 "_tb_group" "5"
 }
-// entity 82
+// entity 86
 {
 "classname" "deco_chain"
 "origin" "-256 576 136"
 "_tb_group" "5"
 }
-// entity 83
+// entity 87
 {
 "classname" "deco_chain"
 "origin" "-256 576 104"
 "_tb_group" "5"
 }
-// entity 84
+// entity 88
 {
 "classname" "deco_chain"
 "origin" "-256 576 72"
 "_tb_group" "5"
 }
-// entity 85
+// entity 89
 {
 "classname" "deco_chain"
 "origin" "-256 576 40"
 "_tb_group" "5"
 }
-// entity 86
+// entity 90
 {
 "classname" "deco_chain"
 "origin" "-256 576 8"
 "_tb_group" "5"
 }
-// entity 87
+// entity 91
 {
 "classname" "light_lamp_big"
 "origin" "-256 576 -16"
 "_tb_group" "5"
 }
-// entity 88
+// entity 92
 {
 "classname" "light_lamp_big"
 "origin" "-256 736 16"
 "_tb_group" "5"
 }
-// entity 89
+// entity 93
 {
 "classname" "deco_chain"
 "origin" "-256 736 104"
 "_tb_group" "5"
 }
-// entity 90
+// entity 94
 {
 "classname" "deco_chain"
 "origin" "-256 736 72"
 "_tb_group" "5"
 }
-// entity 91
+// entity 95
 {
 "classname" "deco_chain"
 "origin" "-256 736 136"
 "_tb_group" "5"
 }
-// entity 92
+// entity 96
 {
 "classname" "deco_chain"
 "origin" "-256 736 168"
 "_tb_group" "5"
 }
-// entity 93
+// entity 97
 {
 "classname" "deco_chain"
 "origin" "-256 736 40"
 "_tb_group" "5"
 }
-// entity 94
+// entity 98
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -2064,7 +2287,7 @@
 ( 128 512 -112 ) ( 128 512 -111 ) ( 128 513 -112 ) special/skip [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 95
+// entity 99
 {
 "classname" "light_point"
 "origin" "96 480 -152"
@@ -2073,13 +2296,13 @@
 "range" "5"
 "_tb_group" "9"
 }
-// entity 96
+// entity 100
 {
 "classname" "ammo_big_cell_pickup"
 "origin" "96 496 -168"
 "_tb_group" "9"
 }
-// entity 97
+// entity 101
 {
 "classname" "interactable_door"
 "tooltip_open" ""
@@ -2096,19 +2319,19 @@
 ( 64 560 -160 ) ( 64 560 -159 ) ( 64 561 -160 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 98
+// entity 102
 {
 "classname" "weapon_crossbow"
 "origin" "96 480 -168"
 "_tb_group" "9"
 }
-// entity 99
+// entity 103
 {
 "classname" "ammo_big_cell_pickup"
 "origin" "96 464 -168"
 "_tb_group" "9"
 }
-// entity 100
+// entity 104
 {
 "classname" "area_secret"
 "_tb_group" "9"
@@ -2122,7 +2345,7 @@
 ( 128 496 -128 ) ( 128 496 -127 ) ( 128 497 -128 ) special/trigger [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 101
+// entity 105
 {
 "classname" "area_trigger"
 "group" "secret_01"
@@ -2137,7 +2360,7 @@
 ( 112 496 -152 ) ( 112 496 -151 ) ( 112 497 -152 ) special/trigger [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 102
+// entity 106
 {
 "classname" "triggerable_ambush"
 "origin" "24 392 -152"
@@ -2145,7 +2368,7 @@
 "ambusher" "plasma"
 "_tb_group" "5"
 }
-// entity 103
+// entity 107
 {
 "classname" "triggerable_ambush"
 "origin" "24 584 -152"
@@ -2153,7 +2376,7 @@
 "ambusher" "rocketeer"
 "_tb_group" "5"
 }
-// entity 104
+// entity 108
 {
 "classname" "wall_no_occlude"
 "_tb_group" "5"
@@ -2167,7 +2390,7 @@
 ( -656 688 16 ) ( -656 688 17 ) ( -656 689 16 ) terrain/trench_broom/metal_grate [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 105
+// entity 109
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -2230,14 +2453,14 @@
 ( -128 880 -160 ) ( -128 880 -159 ) ( -128 881 -160 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 106
+// entity 110
 {
 "classname" "enemy_pinkerton"
 "origin" "-8 856 -160"
 "angle" "270"
 "_tb_group" "11"
 }
-// entity 107
+// entity 111
 {
 "classname" "triggerable_ambush"
 "origin" "-40 856 -168"
@@ -2245,14 +2468,14 @@
 "group" "fun.001.300"
 "_tb_group" "11"
 }
-// entity 108
+// entity 112
 {
 "classname" "enemy_pinkerton"
 "origin" "-72 856 -160"
 "angle" "270"
 "_tb_group" "11"
 }
-// entity 109
+// entity 113
 {
 "classname" "interactable_door"
 "nav_link_offset" "1.5 0 0"
@@ -2267,52 +2490,52 @@
 ( -132 656 -176 ) ( -132 656 -175 ) ( -132 657 -176 ) terrain/trench_broom/shutter_door [ 0 -1.0000000000000002 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
 }
 }
-// entity 110
+// entity 114
 {
 "classname" "ammo_grenade_pickup"
 "origin" "0 672 -168"
 "_tb_group" "11"
 }
-// entity 111
+// entity 115
 {
 "classname" "light_lamp"
 "origin" "-40 752 -96"
 "_tb_group" "11"
 }
-// entity 112
+// entity 116
 {
 "classname" "enemy_enforcer"
 "origin" "24 824 -160"
 "angle" "255"
 "_tb_group" "11"
 }
-// entity 113
+// entity 117
 {
 "classname" "enemy_enforcer"
 "origin" "-104 824 -160"
 "angle" "285"
 "_tb_group" "11"
 }
-// entity 114
+// entity 118
 {
 "classname" "ammo_grenade_pickup"
 "origin" "24 856 -168"
 "_tb_group" "11"
 }
-// entity 115
+// entity 119
 {
 "classname" "ammo_grenade_pickup"
 "origin" "-104 856 -168"
 "_tb_group" "11"
 }
-// entity 116
+// entity 120
 {
 "classname" "area_ref_probe"
 "origin" "-40 752 -136"
 "size" "17 6.5 12"
 "_tb_group" "11"
 }
-// entity 117
+// entity 121
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -2529,186 +2752,186 @@
 ( -672 768 -128 ) ( -672 768 16 ) ( -672 784 -128 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 118
+// entity 122
 {
 "classname" "enemy_pinkerton"
 "origin" "-800 904 -160"
 "_tb_group" "12"
 }
-// entity 119
+// entity 123
 {
 "classname" "enemy_pinkerton"
 "origin" "-824 808 -160"
 "_tb_group" "12"
 }
-// entity 120
+// entity 124
 {
 "classname" "enemy_pinkerton"
 "origin" "-816 840 -160"
 "_tb_group" "12"
 }
-// entity 121
+// entity 125
 {
 "classname" "enemy_pinkerton"
 "origin" "-808 872 -160"
 "_tb_group" "12"
 }
-// entity 122
+// entity 126
 {
 "classname" "enemy_enforcer"
 "origin" "-712 888 -32"
 "angle" "180"
 "_tb_group" "12"
 }
-// entity 123
+// entity 127
 {
 "classname" "enemy_enforcer"
 "origin" "-712 832 -32"
 "angle" "150"
 "_tb_group" "12"
 }
-// entity 124
+// entity 128
 {
 "classname" "enemy_pinkerton"
 "origin" "-728 808 32"
 "angle" "135"
 "_tb_group" "12"
 }
-// entity 125
+// entity 129
 {
 "classname" "enemy_pinkerton"
 "origin" "-696 824 32"
 "angle" "135"
 "_tb_group" "12"
 }
-// entity 126
+// entity 130
 {
 "classname" "light_lamp"
 "origin" "-752 880 8"
 "_tb_group" "12"
 }
-// entity 127
+// entity 131
 {
 "classname" "light_lamp"
 "origin" "-752 880 -120"
 "_tb_group" "12"
 }
-// entity 128
+// entity 132
 {
 "classname" "light_lamp"
 "origin" "-752 880 -56"
 "_tb_group" "12"
 }
-// entity 129
+// entity 133
 {
 "classname" "light_lamp"
 "origin" "-752 880 72"
 "_tb_group" "12"
 }
-// entity 130
+// entity 134
 {
 "classname" "area_ref_probe"
 "origin" "-752 880 -84"
 "size" "13.75 5 13.75"
 "_tb_group" "12"
 }
-// entity 131
+// entity 135
 {
 "classname" "area_ref_probe"
 "origin" "-752 880 -148"
 "size" "13.75 5 13.75"
 "_tb_group" "12"
 }
-// entity 132
+// entity 136
 {
 "classname" "area_ref_probe"
 "origin" "-752 880 -20"
 "size" "13.75 5 13.75"
 "_tb_group" "12"
 }
-// entity 133
+// entity 137
 {
 "classname" "area_ref_probe"
 "origin" "-752 880 44"
 "size" "13.75 5 13.75"
 "_tb_group" "12"
 }
-// entity 134
+// entity 138
 {
 "classname" "triggerable_ambush"
 "origin" "-688 432 32"
 "group" "building"
 "_tb_group" "5"
 }
-// entity 135
+// entity 139
 {
 "classname" "triggerable_ambush"
 "origin" "-688 400 32"
 "group" "building"
 "_tb_group" "5"
 }
-// entity 136
+// entity 140
 {
 "classname" "triggerable_ambush"
 "origin" "-688 464 32"
 "group" "building"
 "_tb_group" "5"
 }
-// entity 137
+// entity 141
 {
 "classname" "light_lamp_big"
 "origin" "-768 624 80"
 "_tb_group" "5"
 }
-// entity 138
+// entity 142
 {
 "classname" "deco_chain"
 "origin" "-768 624 168"
 "_tb_group" "5"
 }
-// entity 139
+// entity 143
 {
 "classname" "deco_chain"
 "origin" "-768 624 136"
 "_tb_group" "5"
 }
-// entity 140
+// entity 144
 {
 "classname" "deco_chain"
 "origin" "-768 624 104"
 "_tb_group" "5"
 }
-// entity 141
+// entity 145
 {
 "classname" "light_lamp_big"
 "origin" "-608 624 56"
 "_tb_group" "5"
 }
-// entity 142
+// entity 146
 {
 "classname" "deco_chain"
 "origin" "-608 624 80"
 "_tb_group" "5"
 }
-// entity 143
+// entity 147
 {
 "classname" "deco_chain"
 "origin" "-608 624 112"
 "_tb_group" "5"
 }
-// entity 144
+// entity 148
 {
 "classname" "deco_chain"
 "origin" "-608 624 144"
 "_tb_group" "5"
 }
-// entity 145
+// entity 149
 {
 "classname" "deco_chain"
 "origin" "-608 624 176"
 "_tb_group" "5"
 }
-// entity 146
+// entity 150
 {
 "classname" "area_trigger"
 "group" "building"
@@ -2723,7 +2946,7 @@
 ( -656 800 64 ) ( -656 800 65 ) ( -656 801 64 ) special/trigger [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 147
+// entity 151
 {
 "classname" "wall_no_occlude"
 "_tb_group" "5"
@@ -2737,7 +2960,7 @@
 ( -864 768 80 ) ( -864 768 81 ) ( -864 769 80 ) terrain/trench_broom/metal_grate [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 148
+// entity 152
 {
 "classname" "wall_no_occlude"
 "_tb_group" "5"
@@ -2751,7 +2974,7 @@
 ( -864 768 -48 ) ( -864 768 -47 ) ( -864 769 -48 ) terrain/trench_broom/metal_grate [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 149
+// entity 153
 {
 "classname" "wall_no_occlude"
 "_tb_group" "5"
@@ -2765,7 +2988,7 @@
 ( -416 576 32 ) ( -416 576 33 ) ( -416 577 32 ) terrain/trench_broom/metal_grate [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 150
+// entity 154
 {
 "classname" "wall_no_occlude"
 "_tb_group" "5"
@@ -2779,7 +3002,7 @@
 ( -416 456 32 ) ( -416 456 33 ) ( -416 457 32 ) terrain/trench_broom/metal_grate [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 151
+// entity 155
 {
 "classname" "triggerable_ambush"
 "origin" "-440 712 56"
@@ -2787,7 +3010,7 @@
 "ambusher" "rocketeer"
 "_tb_group" "5"
 }
-// entity 152
+// entity 156
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -2840,21 +3063,21 @@
 ( -884 864 132 ) ( -868 848 146 ) ( -868 864 148 ) terrain/trench_broom/concrete_smooth [ 1.0000000000000002 0 0 0 ] [ 0 -1.0000000000000002 0 0 ] 0 1 1
 }
 }
-// entity 153
+// entity 157
 {
 "classname" "light_point"
 "origin" "-896 728 124"
 "_color" "255 128 0"
 "_tb_group" "13"
 }
-// entity 154
+// entity 158
 {
 "classname" "light_point"
 "origin" "-896 808 152"
 "_color" "255 128 0"
 "_tb_group" "13"
 }
-// entity 155
+// entity 159
 {
 "classname" "area_hazard"
 "dps" "60"
@@ -2882,21 +3105,21 @@
 ( -880 848 142 ) ( -880 848 143 ) ( -880 849 142.125 ) terrain/trench_broom/lava_metal_flowing [ 0 -1.0000000000000002 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
 }
 }
-// entity 156
+// entity 160
 {
 "classname" "light_point"
 "origin" "-896 728 68"
 "_color" "255 128 0"
 "_tb_group" "13"
 }
-// entity 157
+// entity 161
 {
 "classname" "light_point"
 "origin" "-896 728 -4"
 "_color" "255 128 0"
 "_tb_group" "13"
 }
-// entity 158
+// entity 162
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -3050,14 +3273,14 @@
 ( -884.3636363636363 621.0909090909091 -32 ) ( -870.4 630.4000000000001 -32 ) ( -884.3636363636363 621.0909090909091 -112 ) terrain/trench_broom/concrete_smooth [ 0.8320502943378437 0.5547001962252291 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 159
+// entity 163
 {
 "classname" "light_point"
 "origin" "-896 688 -40"
 "_color" "255 128 0"
 "_tb_group" "14"
 }
-// entity 160
+// entity 164
 {
 "classname" "area_hazard"
 "damage_type" "FIRE"
@@ -3086,7 +3309,7 @@
 ( -848 752 -80 ) ( -832 688 -80 ) ( -832 688 48 ) terrain/trench_broom/lava [ -0.24253562503633297 0.9701425001453319 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 161
+// entity 165
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -3139,21 +3362,21 @@
 ( -1060 864 132 ) ( -1044 848 146 ) ( -1044 864 148 ) terrain/trench_broom/concrete_smooth [ 1.0000000000000002 0 0 0 ] [ 0 -1.0000000000000002 0 0 ] 0 1 1
 }
 }
-// entity 162
+// entity 166
 {
 "classname" "light_point"
 "origin" "-1072 728 124"
 "_color" "255 128 0"
 "_tb_group" "15"
 }
-// entity 163
+// entity 167
 {
 "classname" "light_point"
 "origin" "-1072 808 152"
 "_color" "255 128 0"
 "_tb_group" "15"
 }
-// entity 164
+// entity 168
 {
 "classname" "area_hazard"
 "dps" "60"
@@ -3181,21 +3404,21 @@
 ( -1056 848 142 ) ( -1056 848 143 ) ( -1056 849 142.125 ) terrain/trench_broom/lava_metal_flowing [ 0 -1.0000000000000002 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
 }
 }
-// entity 165
+// entity 169
 {
 "classname" "light_point"
 "origin" "-1072 728 68"
 "_color" "255 128 0"
 "_tb_group" "15"
 }
-// entity 166
+// entity 170
 {
 "classname" "light_point"
 "origin" "-1072 728 -4"
 "_color" "255 128 0"
 "_tb_group" "15"
 }
-// entity 167
+// entity 171
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -3349,14 +3572,14 @@
 ( -1060.363636363636 621.0909090909091 -32 ) ( -1046.3999999999999 630.4000000000001 -32 ) ( -1060.363636363636 621.0909090909091 -112 ) terrain/trench_broom/concrete_smooth [ 0.8320502943378437 0.5547001962252291 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 168
+// entity 172
 {
 "classname" "light_point"
 "origin" "-1072 688 -40"
 "_color" "255 128 0"
 "_tb_group" "16"
 }
-// entity 169
+// entity 173
 {
 "classname" "area_hazard"
 "damage_type" "FIRE"
@@ -3385,7 +3608,7 @@
 ( -1024 752 -80 ) ( -1008 688 -80 ) ( -1008 688 48 ) terrain/trench_broom/lava_metal [ -0.24253562503633297 0.9701425001453319 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 170
+// entity 174
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -3438,21 +3661,21 @@
 ( -1236 864 132 ) ( -1220 848 146 ) ( -1220 864 148 ) terrain/trench_broom/concrete_smooth [ 1.0000000000000002 0 0 0 ] [ 0 -1.0000000000000002 0 0 ] 0 1 1
 }
 }
-// entity 171
+// entity 175
 {
 "classname" "light_point"
 "origin" "-1248 728 124"
 "_color" "255 128 0"
 "_tb_group" "17"
 }
-// entity 172
+// entity 176
 {
 "classname" "light_point"
 "origin" "-1248 808 152"
 "_color" "255 128 0"
 "_tb_group" "17"
 }
-// entity 173
+// entity 177
 {
 "classname" "area_hazard"
 "dps" "60"
@@ -3480,21 +3703,21 @@
 ( -1232 848 142 ) ( -1232 848 143 ) ( -1232 849 142.125 ) terrain/trench_broom/lava_metal_flowing [ 0 -1.0000000000000002 0 0 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
 }
 }
-// entity 174
+// entity 178
 {
 "classname" "light_point"
 "origin" "-1248 728 68"
 "_color" "255 128 0"
 "_tb_group" "17"
 }
-// entity 175
+// entity 179
 {
 "classname" "light_point"
 "origin" "-1248 728 -4"
 "_color" "255 128 0"
 "_tb_group" "17"
 }
-// entity 176
+// entity 180
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -3648,14 +3871,14 @@
 ( -1236.363636363636 621.0909090909091 -32 ) ( -1222.3999999999999 630.4000000000001 -32 ) ( -1236.363636363636 621.0909090909091 -112 ) terrain/trench_broom/concrete_smooth [ 0.8320502943378437 0.5547001962252291 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 177
+// entity 181
 {
 "classname" "light_point"
 "origin" "-1248 688 -40"
 "_color" "255 128 0"
 "_tb_group" "18"
 }
-// entity 178
+// entity 182
 {
 "classname" "area_hazard"
 "damage_type" "FIRE"
@@ -3684,7 +3907,7 @@
 ( -1200 752 -80 ) ( -1184 688 -80 ) ( -1184 688 48 ) terrain/trench_broom/lava_metal [ -0.24253562503633297 0.9701425001453319 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 179
+// entity 183
 {
 "classname" "triggerable_ambush"
 "origin" "-1448 856 -24"
@@ -3692,7 +3915,7 @@
 "group" "building"
 "_tb_group" "5"
 }
-// entity 180
+// entity 184
 {
 "classname" "triggerable_ambush"
 "origin" "-1448 808 -24"
@@ -3700,7 +3923,7 @@
 "group" "building"
 "_tb_group" "5"
 }
-// entity 181
+// entity 185
 {
 "classname" "triggerable_ambush"
 "origin" "-904 840 -24"
@@ -3708,7 +3931,7 @@
 "angle" "270"
 "_tb_group" "5"
 }
-// entity 182
+// entity 186
 {
 "classname" "triggerable_ambush"
 "origin" "-952 840 -24"
@@ -3716,7 +3939,7 @@
 "angle" "270"
 "_tb_group" "5"
 }
-// entity 183
+// entity 187
 {
 "classname" "triggerable_ambush"
 "origin" "-1048 840 -24"
@@ -3724,7 +3947,7 @@
 "angle" "270"
 "_tb_group" "5"
 }
-// entity 184
+// entity 188
 {
 "classname" "triggerable_ambush"
 "origin" "-1000 840 -24"
@@ -3732,7 +3955,7 @@
 "angle" "270"
 "_tb_group" "5"
 }
-// entity 185
+// entity 189
 {
 "classname" "triggerable_ambush"
 "origin" "-1096 840 -24"
@@ -3740,7 +3963,7 @@
 "angle" "270"
 "_tb_group" "5"
 }
-// entity 186
+// entity 190
 {
 "classname" "area_secret"
 "group" "secret_02"
@@ -3755,79 +3978,79 @@
 ( -864 880 -128 ) ( -864 880 -127 ) ( -864 881 -128 ) special/trigger [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 187
+// entity 191
 {
 "classname" "ammo_shell_box_pickup"
 "origin" "-880 864 -168"
 "_tb_group" "5"
 }
-// entity 188
+// entity 192
 {
 "classname" "ammo_big_cell_pickup"
 "origin" "-880 832 -168"
 "_tb_group" "5"
 }
-// entity 189
+// entity 193
 {
 "classname" "ammo_shell_box_pickup"
 "origin" "-880 800 -168"
 "_tb_group" "5"
 }
-// entity 190
+// entity 194
 {
 "classname" "health_pack_pickup"
 "origin" "-912 864 -168"
 "_tb_group" "5"
 }
-// entity 191
+// entity 195
 {
 "classname" "health_pack_pickup"
 "origin" "-912 832 -168"
 "_tb_group" "5"
 }
-// entity 192
+// entity 196
 {
 "classname" "health_pack_pickup"
 "origin" "-912 800 -168"
 "_tb_group" "5"
 }
-// entity 193
+// entity 197
 {
 "classname" "ammo_akm_mag_pickup"
 "origin" "-944 832 -168"
 "_tb_group" "5"
 }
-// entity 194
+// entity 198
 {
 "classname" "ammo_grenade_pickup"
 "origin" "-944 864 -168"
 "_tb_group" "5"
 }
-// entity 195
+// entity 199
 {
 "classname" "ammo_grenade_pickup"
 "origin" "-944 800 -168"
 "_tb_group" "5"
 }
-// entity 196
+// entity 200
 {
 "classname" "triggerable_ambush"
 "origin" "-1240 792 -160"
 "_tb_group" "5"
 }
-// entity 197
+// entity 201
 {
 "classname" "triggerable_ambush"
 "origin" "-1240 824 -160"
 "_tb_group" "5"
 }
-// entity 198
+// entity 202
 {
 "classname" "triggerable_ambush"
 "origin" "-1240 856 -160"
 "_tb_group" "5"
 }
-// entity 199
+// entity 203
 {
 "classname" "wall_no_occlude"
 "_tb_group" "5"
@@ -3841,7 +4064,7 @@
 ( -224 768 0 ) ( -224 832 0 ) ( -224 832 -4 ) terrain/trench_broom/metal_grate [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 200
+// entity 204
 {
 "classname" "wall_no_occlude"
 "_tb_group" "5"
@@ -3855,7 +4078,7 @@
 ( -480 768 32 ) ( -480 832 32 ) ( -480 832 28 ) terrain/trench_broom/metal_grate [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 201
+// entity 205
 {
 "classname" "triggerable_ambush"
 "origin" "-600 840 -152"
@@ -3864,7 +4087,7 @@
 "group" "secret_02"
 "_tb_group" "5"
 }
-// entity 202
+// entity 206
 {
 "classname" "triggerable_ambush"
 "origin" "-552 840 -152"
@@ -3873,7 +4096,7 @@
 "group" "building"
 "_tb_group" "5"
 }
-// entity 203
+// entity 207
 {
 "classname" "triggerable_ambush"
 "origin" "-504 840 -152"
@@ -3882,7 +4105,7 @@
 "group" "secret_02"
 "_tb_group" "5"
 }
-// entity 204
+// entity 208
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4017,7 +4240,7 @@
 ( -820 32 -80 ) ( -820 32 -79 ) ( -820 33 -80 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 205
+// entity 209
 {
 "classname" "wall_no_occlude"
 "_tb_group" "19"
@@ -4040,7 +4263,7 @@
 ( -736 -36 -44 ) ( -736 -36 -43 ) ( -736 -35 -44 ) terrain/trench_broom/metal_grate [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 206
+// entity 210
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4049,20 +4272,20 @@
 "_tb_linked_group_id" "{de97208b-46ac-42ab-81e1-9d1c207c2321}"
 "_tb_group" "19"
 }
-// entity 207
+// entity 211
 {
 "classname" "key_red"
 "origin" "-1408 0 -32"
 "_tb_group" "26"
 }
-// entity 208
+// entity 212
 {
 "classname" "light_lamp"
 "origin" "-1408 0 0"
 "_color" "255 0 0"
 "_tb_group" "26"
 }
-// entity 209
+// entity 213
 {
 "classname" "interactable_door"
 "required_key" "-2"
@@ -4087,10 +4310,10 @@
 ( -1400 4 -40 ) ( -1400 4 -39 ) ( -1400 5 -40 ) terrain/trench_broom/metal [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 210
+// entity 214
 {
 "classname" "area_trigger"
-"group" "red_key"
+"group" "red"
 "max_trips" "1"
 "_tb_group" "19"
 // brush 0
@@ -4103,7 +4326,7 @@
 ( -1396 -4 -60 ) ( -1396 -4 -59 ) ( -1396 -3 -60 ) special/trigger [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 211
+// entity 215
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4112,49 +4335,49 @@
 "_tb_linked_group_id" "{7d9a5a53-5f64-4607-a3c2-72e192663fd4}"
 "_tb_group" "5"
 }
-// entity 212
+// entity 216
 {
 "classname" "light_lamp_big"
 "origin" "-1280 104 -8"
 "_tb_group" "20"
 }
-// entity 213
+// entity 217
 {
 "classname" "deco_chain"
 "origin" "-1280 104 80"
 "_tb_group" "20"
 }
-// entity 214
+// entity 218
 {
 "classname" "deco_chain"
 "origin" "-1280 104 16"
 "_tb_group" "20"
 }
-// entity 215
+// entity 219
 {
 "classname" "deco_chain"
 "origin" "-1280 104 176"
 "_tb_group" "20"
 }
-// entity 216
+// entity 220
 {
 "classname" "deco_chain"
 "origin" "-1280 104 112"
 "_tb_group" "20"
 }
-// entity 217
+// entity 221
 {
 "classname" "deco_chain"
 "origin" "-1280 104 144"
 "_tb_group" "20"
 }
-// entity 218
+// entity 222
 {
 "classname" "deco_chain"
 "origin" "-1280 104 48"
 "_tb_group" "20"
 }
-// entity 219
+// entity 223
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4164,55 +4387,55 @@
 "_tb_transformation" "1 0 0 0 0 1 0 0 0 0 1 -24 0 0 0 1"
 "_tb_group" "5"
 }
-// entity 220
+// entity 224
 {
 "classname" "light_lamp_big"
 "origin" "-1104 104 -32"
 "_tb_group" "21"
 }
-// entity 221
+// entity 225
 {
 "classname" "deco_chain"
 "origin" "-1104 104 24"
 "_tb_group" "21"
 }
-// entity 222
+// entity 226
 {
 "classname" "deco_chain"
 "origin" "-1104 104 -8"
 "_tb_group" "21"
 }
-// entity 223
+// entity 227
 {
 "classname" "deco_chain"
 "origin" "-1104 104 120"
 "_tb_group" "21"
 }
-// entity 224
+// entity 228
 {
 "classname" "deco_chain"
 "origin" "-1104 104 88"
 "_tb_group" "21"
 }
-// entity 225
+// entity 229
 {
 "classname" "deco_chain"
 "origin" "-1104 104 152"
 "_tb_group" "21"
 }
-// entity 226
+// entity 230
 {
 "classname" "deco_chain"
 "origin" "-1104 104 56"
 "_tb_group" "21"
 }
-// entity 227
+// entity 231
 {
 "classname" "deco_chain"
 "origin" "-1104 104 184"
 "_tb_group" "21"
 }
-// entity 228
+// entity 232
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4222,43 +4445,43 @@
 "_tb_transformation" "1 0 0 0 0 1 0 0 0 0 1 24 0 0 0 1"
 "_tb_group" "5"
 }
-// entity 229
+// entity 233
 {
 "classname" "light_lamp_big"
 "origin" "-928 104 16"
 "_tb_group" "22"
 }
-// entity 230
+// entity 234
 {
 "classname" "deco_chain"
 "origin" "-928 104 168"
 "_tb_group" "22"
 }
-// entity 231
+// entity 235
 {
 "classname" "deco_chain"
 "origin" "-928 104 136"
 "_tb_group" "22"
 }
-// entity 232
+// entity 236
 {
 "classname" "deco_chain"
 "origin" "-928 104 72"
 "_tb_group" "22"
 }
-// entity 233
+// entity 237
 {
 "classname" "deco_chain"
 "origin" "-928 104 104"
 "_tb_group" "22"
 }
-// entity 234
+// entity 238
 {
 "classname" "deco_chain"
 "origin" "-928 104 40"
 "_tb_group" "22"
 }
-// entity 235
+// entity 239
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4267,49 +4490,49 @@
 "_tb_linked_group_id" "{f6b528e7-07d4-4919-ab25-94269eb911b2}"
 "_tb_group" "5"
 }
-// entity 236
+// entity 240
 {
 "classname" "light_lamp_big"
 "origin" "-928 -104 -8"
 "_tb_group" "23"
 }
-// entity 237
+// entity 241
 {
 "classname" "deco_chain"
 "origin" "-928 -104 176"
 "_tb_group" "23"
 }
-// entity 238
+// entity 242
 {
 "classname" "deco_chain"
 "origin" "-928 -104 144"
 "_tb_group" "23"
 }
-// entity 239
+// entity 243
 {
 "classname" "deco_chain"
 "origin" "-928 -104 80"
 "_tb_group" "23"
 }
-// entity 240
+// entity 244
 {
 "classname" "deco_chain"
 "origin" "-928 -104 48"
 "_tb_group" "23"
 }
-// entity 241
+// entity 245
 {
 "classname" "deco_chain"
 "origin" "-928 -104 112"
 "_tb_group" "23"
 }
-// entity 242
+// entity 246
 {
 "classname" "deco_chain"
 "origin" "-928 -104 16"
 "_tb_group" "23"
 }
-// entity 243
+// entity 247
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4319,37 +4542,37 @@
 "_tb_transformation" "1 0 0 0 0 1 0 0 0 0 1 72 0 0 0 1"
 "_tb_group" "5"
 }
-// entity 244
+// entity 248
 {
 "classname" "deco_chain"
 "origin" "-1104 -104 184"
 "_tb_group" "24"
 }
-// entity 245
+// entity 249
 {
 "classname" "deco_chain"
 "origin" "-1104 -104 120"
 "_tb_group" "24"
 }
-// entity 246
+// entity 250
 {
 "classname" "deco_chain"
 "origin" "-1104 -104 88"
 "_tb_group" "24"
 }
-// entity 247
+// entity 251
 {
 "classname" "deco_chain"
 "origin" "-1104 -104 152"
 "_tb_group" "24"
 }
-// entity 248
+// entity 252
 {
 "classname" "light_lamp_big"
 "origin" "-1104 -104 64"
 "_tb_group" "24"
 }
-// entity 249
+// entity 253
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4358,49 +4581,49 @@
 "_tb_linked_group_id" "{4a42e5d8-fca2-48b9-a750-33fb2ccbc0bb}"
 "_tb_group" "5"
 }
-// entity 250
+// entity 254
 {
 "classname" "deco_chain"
 "origin" "-1280 -104 48"
 "_tb_group" "25"
 }
-// entity 251
+// entity 255
 {
 "classname" "deco_chain"
 "origin" "-1280 -104 16"
 "_tb_group" "25"
 }
-// entity 252
+// entity 256
 {
 "classname" "light_lamp_big"
 "origin" "-1280 -104 -8"
 "_tb_group" "25"
 }
-// entity 253
+// entity 257
 {
 "classname" "deco_chain"
 "origin" "-1280 -104 80"
 "_tb_group" "25"
 }
-// entity 254
+// entity 258
 {
 "classname" "deco_chain"
 "origin" "-1280 -104 144"
 "_tb_group" "25"
 }
-// entity 255
+// entity 259
 {
 "classname" "deco_chain"
 "origin" "-1280 -104 176"
 "_tb_group" "25"
 }
-// entity 256
+// entity 260
 {
 "classname" "deco_chain"
 "origin" "-1280 -104 112"
 "_tb_group" "25"
 }
-// entity 257
+// entity 261
 {
 "classname" "interactable_door"
 "required_key" "1"
@@ -4415,7 +4638,7 @@
 ( -1476 16 -12 ) ( -1476 16 -11 ) ( -1476 17 -12 ) terrain/trench_broom/shutter_door [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 258
+// entity 262
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4451,7 +4674,7 @@
 ( -1468 28 -12 ) ( -1468 28 -11 ) ( -1468 29 -12 ) terrain/trench_broom/key_metal_green [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 259
+// entity 263
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4505,7 +4728,7 @@
 ( -1296 -112 -160 ) ( -1296 -112 -159 ) ( -1296 -111 -160 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 260
+// entity 264
 {
 "classname" "area_trigger"
 "group" "blue"
@@ -4520,7 +4743,7 @@
 ( -1440 -200 -168 ) ( -1440 -200 -167 ) ( -1440 -199 -168 ) special/trigger [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 261
+// entity 265
 {
 "classname" "triggerable_ambush"
 "origin" "-1336 -264 -168"
@@ -4529,7 +4752,7 @@
 "group" "blue"
 "_tb_group" "29"
 }
-// entity 262
+// entity 266
 {
 "classname" "triggerable_ambush"
 "origin" "-1336 -208 -168"
@@ -4538,13 +4761,13 @@
 "group" "blue"
 "_tb_group" "29"
 }
-// entity 263
+// entity 267
 {
 "classname" "ammo_grenade_pickup"
 "origin" "-1448 -264 -168"
 "_tb_group" "29"
 }
-// entity 264
+// entity 268
 {
 "classname" "triggerable_ambush"
 "origin" "-1336 -160 -168"
@@ -4553,19 +4776,19 @@
 "group" "blue"
 "_tb_group" "29"
 }
-// entity 265
+// entity 269
 {
 "classname" "key_blue"
 "origin" "-1456 -208 -168"
 "_tb_group" "29"
 }
-// entity 266
+// entity 270
 {
 "classname" "ammo_grenade_pickup"
 "origin" "-1448 -152 -168"
 "_tb_group" "29"
 }
-// entity 267
+// entity 271
 {
 "classname" "interactable_door"
 "required_key" "0"
@@ -4580,7 +4803,7 @@
 ( -1376 -292 -128 ) ( -1376 -292 -127 ) ( -1376 -291 -128 ) terrain/trench_broom/shutter_door [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 268
+// entity 272
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4616,28 +4839,28 @@
 ( -1412 -284 -124 ) ( -1412 -284 -123 ) ( -1412 -283 -124 ) terrain/trench_broom/key_metal_red [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 269
+// entity 273
 {
 "classname" "enemy_rocketeer"
 "origin" "-1160 -264 -152"
 "angle" "90"
 "_tb_group" "5"
 }
-// entity 270
+// entity 274
 {
 "classname" "enemy_rocketeer"
 "origin" "-1256 -264 -152"
 "angle" "90"
 "_tb_group" "5"
 }
-// entity 271
+// entity 275
 {
 "classname" "enemy_rocketeer"
 "origin" "-1208 -264 -152"
 "angle" "90"
 "_tb_group" "5"
 }
-// entity 272
+// entity 276
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -4772,79 +4995,382 @@
 ( -976 512 -80 ) ( -976 512 -79 ) ( -976 513 -80 ) terrain/trench_broom/bricks [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
-// entity 273
+// entity 277
 {
 "classname" "enemy_enforcer"
 "origin" "-984 472 -160"
 "_tb_group" "31"
 }
-// entity 274
+// entity 278
 {
 "classname" "enemy_enforcer"
 "origin" "-984 424 -160"
 "_tb_group" "31"
 }
-// entity 275
+// entity 279
 {
 "classname" "enemy_enforcer"
 "origin" "-984 376 -160"
 "angle" "30"
 "_tb_group" "31"
 }
-// entity 276
+// entity 280
 {
 "classname" "enemy_plasma_droid"
 "origin" "-1144 184 -152"
 "angle" "90"
 "_tb_group" "31"
 }
-// entity 277
+// entity 281
 {
 "classname" "enemy_plasma_droid"
 "origin" "-1032 184 -152"
 "angle" "90"
 "_tb_group" "31"
 }
-// entity 278
+// entity 282
 {
 "classname" "health_pack_pickup"
 "origin" "-1088 184 -168"
 "_tb_group" "31"
 }
-// entity 279
+// entity 283
 {
 "classname" "ammo_grenade_pickup"
 "origin" "-1112 184 -168"
 "_tb_group" "31"
 }
-// entity 280
+// entity 284
 {
 "classname" "ammo_grenade_pickup"
 "origin" "-1064 184 -168"
 "_tb_group" "31"
 }
-// entity 281
+// entity 285
 {
 "classname" "enemy_pinkerton"
 "origin" "-1176 472 -160"
 "_tb_group" "31"
 }
-// entity 282
+// entity 286
 {
 "classname" "enemy_pinkerton"
 "origin" "-1176 440 -160"
 "_tb_group" "31"
 }
-// entity 283
+// entity 287
 {
 "classname" "enemy_pinkerton"
 "origin" "-1176 408 -160"
 "_tb_group" "31"
 }
-// entity 284
+// entity 288
 {
 "classname" "interactable_lever"
 "origin" "-1088 144 -152"
 "angle" "270"
+"group" "switch"
+"pull_alert" "remote.door.open"
 "_tb_group" "31"
+}
+// entity 289
+{
+"classname" "area_ref_probe"
+"origin" "-1120 408 -144"
+"size" "11.5 10 11.5"
+"_tb_group" "31"
+}
+// entity 290
+{
+"classname" "area_ref_probe"
+"origin" "-1088 224 -144"
+"size" "13 10 15"
+"_tb_group" "31"
+}
+// entity 291
+{
+"classname" "light_lamp"
+"origin" "-1088 272 -100"
+"_tb_group" "31"
+}
+// entity 292
+{
+"classname" "light_lamp"
+"origin" "-1088 448 -86"
+"_tb_group" "31"
+}
+// entity 293
+{
+"classname" "enemy_enforcer"
+"origin" "-864 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 294
+{
+"classname" "enemy_enforcer"
+"origin" "-992 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 295
+{
+"classname" "enemy_pinkerton"
+"origin" "-960 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 296
+{
+"classname" "enemy_pinkerton"
+"origin" "-896 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 297
+{
+"classname" "enemy_pinkerton"
+"origin" "-928 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 298
+{
+"classname" "enemy_enforcer"
+"origin" "-1056 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 299
+{
+"classname" "enemy_pinkerton"
+"origin" "-1088 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 300
+{
+"classname" "enemy_pinkerton"
+"origin" "-1120 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 301
+{
+"classname" "enemy_pinkerton"
+"origin" "-1152 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 302
+{
+"classname" "enemy_enforcer"
+"origin" "-1184 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 303
+{
+"classname" "enemy_enforcer"
+"origin" "-1248 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 304
+{
+"classname" "enemy_pinkerton"
+"origin" "-1280 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 305
+{
+"classname" "enemy_pinkerton"
+"origin" "-1312 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 306
+{
+"classname" "enemy_pinkerton"
+"origin" "-1344 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 307
+{
+"classname" "enemy_enforcer"
+"origin" "-1376 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 308
+{
+"classname" "enemy_pinkerton"
+"origin" "-760 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 309
+{
+"classname" "enemy_pinkerton"
+"origin" "-792 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 310
+{
+"classname" "enemy_pinkerton"
+"origin" "-1448 0 -160"
+"angle" "90"
+"_tb_group" "5"
+}
+// entity 311
+{
+"classname" "triggerable_ambush"
+"origin" "-1024 -16 -48"
+"ambusher" "enforcer"
+"group" "blue"
+"_tb_group" "5"
+}
+// entity 312
+{
+"classname" "triggerable_ambush"
+"origin" "-768 0 -40"
+"angle" "180"
+"group" "red"
+"ambusher" "rock"
+"_tb_group" "5"
+}
+// entity 313
+{
+"classname" "triggerable_ambush"
+"origin" "-1024 16 -48"
+"ambusher" "enforcer"
+"group" "blue"
+"_tb_group" "5"
+}
+// entity 314
+{
+"classname" "triggerable_ambush"
+"origin" "-720 624 -160"
+"ambusher" "canary"
+"group" "red"
+"angle" "270"
+"_tb_group" "5"
+}
+// entity 315
+{
+"classname" "triggerable_ambush"
+"origin" "-672 624 -160"
+"ambusher" "canary"
+"group" "red"
+"angle" "270"
+"_tb_group" "5"
+}
+// entity 316
+{
+"classname" "triggerable_ambush"
+"origin" "-624 624 -160"
+"ambusher" "canary"
+"group" "red"
+"angle" "270"
+"_tb_group" "5"
+}
+// entity 317
+{
+"classname" "triggerable_ambush"
+"origin" "-696 688 -152"
+"ambusher" "plasma"
+"group" "red"
+"angle" "270"
+"_tb_group" "5"
+}
+// entity 318
+{
+"classname" "triggerable_ambush"
+"origin" "-648 688 -152"
+"ambusher" "plasma"
+"group" "red"
+"angle" "270"
+"_tb_group" "5"
+}
+// entity 319
+{
+"classname" "triggerable_ambush"
+"origin" "-776 192 -152"
+"ambusher" "rock"
+"group" "blue"
+"angle" "180"
+"_tb_group" "5"
+}
+// entity 320
+{
+"classname" "triggerable_ambush"
+"origin" "-776 240 -152"
+"ambusher" "rock"
+"group" "blue"
+"angle" "180"
+"_tb_group" "5"
+}
+// entity 321
+{
+"classname" "triggerable_ambush"
+"origin" "-776 144 -152"
+"ambusher" "rock"
+"group" "blue"
+"angle" "180"
+"_tb_group" "5"
+}
+// entity 322
+{
+"classname" "triggerable_ambush"
+"origin" "-1088 88 -152"
+"ambusher" "pink"
+"group" "blue"
+"angle" "270"
+"_tb_group" "5"
+}
+// entity 323
+{
+"classname" "triggerable_ambush"
+"origin" "-1040 88 -152"
+"ambusher" "pink"
+"group" "blue"
+"angle" "270"
+"_tb_group" "5"
+}
+// entity 324
+{
+"classname" "triggerable_ambush"
+"origin" "-992 88 -152"
+"ambusher" "pink"
+"group" "blue"
+"angle" "270"
+"_tb_group" "5"
+}
+// entity 325
+{
+"classname" "triggerable_ambush"
+"origin" "-1136 88 -152"
+"ambusher" "pink"
+"group" "blue"
+"angle" "270"
+"_tb_group" "5"
+}
+// entity 326
+{
+"classname" "triggerable_ambush"
+"origin" "-1184 88 -152"
+"ambusher" "pink"
+"group" "blue"
+"angle" "270"
+"_tb_group" "5"
+}
+// entity 327
+{
+"classname" "enemy_pinkerton"
+"origin" "-1392 -512 -160"
+"angle" "90"
+"_tb_group" "5"
 }

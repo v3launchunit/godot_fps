@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bt72j2kw0f6dm"]
+[gd_scene load_steps=22 format=3 uid="uid://bt72j2kw0f6dm"]
 
 [ext_resource type="Script" path="res://scripts/objects/button.gd" id="1_g1dqr"]
 [ext_resource type="PackedScene" uid="uid://dhcc71k270vgk" path="res://models/objects/lever.glb" id="2_eoldm"]
 [ext_resource type="Texture2D" uid="uid://2gj3tv6stgsr" path="res://textures/objects/lever/lever_albedo.png" id="3_82ns7"]
 [ext_resource type="Texture2D" uid="uid://crltgslfg1nou" path="res://textures/objects/lever/lever_emissions.png" id="4_o2sfm"]
 [ext_resource type="Texture2D" uid="uid://c0qe7jq8ss6c4" path="res://textures/objects/lever/lever_normals.png" id="5_eppt4"]
+[ext_resource type="AudioStream" uid="uid://bmlxxe8maevqb" path="res://audio/streams/click.wav" id="6_4k6bl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f8nba"]
 
@@ -81,6 +82,11 @@ _data = {
 "on": SubResource("Animation_m4faq")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ay0js"]
+random_pitch = 1.25
+streams_count = 1
+stream_0/stream = ExtResource("6_4k6bl")
+
 [node name="Lever" type="Area3D" node_paths=PackedStringArray("targets")]
 collision_layer = 8
 collision_mask = 3
@@ -96,13 +102,12 @@ shape = SubResource("SphereShape3D_f8nba")
 material_override = SubResource("StandardMaterial3D_0qsyh")
 
 [node name="Switch" parent="lever" index="1"]
-transform = Transform3D(0.05, 0, 0, 0, -0.0492428, -0.0086688, 0, 0.0086688, -0.0492428, 0, 0, 0.05)
+transform = Transform3D(0.05, 0, 0, 0, 0.0492428, -0.0086688, 0, 0.0086688, 0.0492428, 0, 0, 0.05)
 material_override = SubResource("StandardMaterial3D_fs0u8")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_72fw2")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -110,6 +115,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ay0js")
 bus = &"World"
 
 [editable path="lever"]
