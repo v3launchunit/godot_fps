@@ -1,8 +1,8 @@
 [gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://2giq2sievceh"]
 
-[ext_resource type="Texture2D" uid="uid://bbbk8k7whvl1m" path="res://textures/weapons/boomstick/boomstick_detail_mask.png" id="1_gihbv"]
-[ext_resource type="Texture2D" uid="uid://b84lximnqxpsk" path="res://textures/weapons/boomstick/boomstick_metallic.png" id="2_dhxjq"]
-[ext_resource type="Texture2D" uid="uid://bswjthncpsxna" path="res://textures/weapons/boomstick/boomstick_roughness.png" id="3_21mma"]
+[ext_resource type="Texture2D" uid="uid://bbbk8k7whvl1m" path="res://weapons/boomstick/boomstick_detail_mask.png" id="1_gihbv"]
+[ext_resource type="Texture2D" uid="uid://b84lximnqxpsk" path="res://weapons/boomstick/boomstick_metallic.png" id="2_dhxjq"]
+[ext_resource type="Texture2D" uid="uid://bswjthncpsxna" path="res://weapons/boomstick/boomstick_roughness.png" id="3_21mma"]
 
 [sub_resource type="Shader" id="Shader_u07m6"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.

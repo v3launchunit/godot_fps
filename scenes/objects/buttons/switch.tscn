@@ -152,7 +152,6 @@ mesh = SubResource("BoxMesh_xjvea")
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_72fw2")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

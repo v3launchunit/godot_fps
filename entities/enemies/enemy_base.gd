@@ -452,7 +452,10 @@ func check_target_validity() -> bool:
 
 func check_path_staleness() -> bool:
 	return (
-			randf() < Globals.C_PATH_RE_EVAL_CHANCE
+			(
+					randf() < Globals.C_PATH_RE_EVAL_CHANCE
+					or nav_agent.is_navigation_finished()
+			)
 			and nav_agent.target_position.distance_squared_to(
 					current_destination) > path_re_eval_distance_squared
 		)

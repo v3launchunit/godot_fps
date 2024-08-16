@@ -33,5 +33,10 @@ func interact(body: Node3D) -> void:
 	interacted.emit(body)
 	cd_timer = properties["cooldown"]
 	on = not on
+	if body is Player:
+		body.hud.set_alert(Globals.parse_text(
+				"alerts", 
+				properties["pull_alert" if on else "unpull_alert"]
+		))
 	state_machine.travel("on" if on else "off")
 	sound_player.play()

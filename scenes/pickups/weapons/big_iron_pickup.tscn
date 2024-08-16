@@ -6,10 +6,10 @@
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_4ae8u"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halos/halo.tres" id="3_6os6d"]
 [ext_resource type="ArrayMesh" uid="uid://vfuqffuqwocv" path="res://models/weapons/big_iron.obj" id="3_kw7kd"]
-[ext_resource type="Texture2D" uid="uid://c23vayn4doala" path="res://textures/weapons/big_iron/big_iron_detail_mask.png" id="4_0sada"]
-[ext_resource type="Texture2D" uid="uid://ss8r0up4rgsx" path="res://textures/weapons/big_iron/big_iron_metallic.png" id="5_eeshc"]
+[ext_resource type="Texture2D" uid="uid://c23vayn4doala" path="res://weapons/big_iron/big_iron_detail_mask.png" id="4_0sada"]
+[ext_resource type="Texture2D" uid="uid://ss8r0up4rgsx" path="res://weapons/big_iron/big_iron_metallic.png" id="5_eeshc"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="5_whtei"]
-[ext_resource type="Texture2D" uid="uid://br5tgbkka8rp7" path="res://textures/weapons/big_iron/big_iron_roughness.png" id="6_m57bb"]
+[ext_resource type="Texture2D" uid="uid://br5tgbkka8rp7" path="res://weapons/big_iron/big_iron_roughness.png" id="6_m57bb"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uc2sx"]
 height = 1.0

@@ -1,6 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cqgovoahf1u4"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cqgovoahf1u4"]
 
 [ext_resource type="Shader" path="res://materials/terrain/trench_broom/fireblu.gdshader" id="1_5cola"]
+
+[sub_resource type="Gradient" id="Gradient_so5vp"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rfpwm"]
 noise_type = 2
@@ -8,10 +10,9 @@ frequency = 0.025
 fractal_octaves = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ngxd3"]
-width = 256
-height = 256
 seamless = true
 seamless_blend_skirt = 0.25
+color_ramp = SubResource("Gradient_so5vp")
 noise = SubResource("FastNoiseLite_rfpwm")
 
 [resource]

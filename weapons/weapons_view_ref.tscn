@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bsjlv88juhpn5" path="res://weapons/hunting_rifle/hunting_rifle.tscn" id="6_j2600"]
 [ext_resource type="PackedScene" uid="uid://cprbuapjccc8b" path="res://weapons/nailgun.tscn" id="7_pm6x3"]
 [ext_resource type="PackedScene" uid="uid://gabucpajtywv" path="res://weapons/plasma_cannon.tscn" id="8_ruibv"]
-[ext_resource type="PackedScene" uid="uid://bimc4ufk5hicg" path="res://weapons/pump_shotgun.tscn" id="9_4sx0k"]
-[ext_resource type="PackedScene" uid="uid://bs3eibrb48t0m" path="res://weapons/rpg.tscn" id="10_ex0py"]
+[ext_resource type="PackedScene" uid="uid://bimc4ufk5hicg" path="res://weapons/pump_shotgun/pump_shotgun.tscn" id="9_4sx0k"]
+[ext_resource type="PackedScene" uid="uid://bs3eibrb48t0m" path="res://weapons/rpg/rpg.tscn" id="10_ex0py"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_iu3ba"]
 flip_faces = true

@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dtbvd0e8uaahg"
-path.s3tc="res://.godot/imported/shutter_door_detail_mask.png-fb729158d6764b7ef2651d3fd0c0d928.s3tc.ctex"
+path="res://.godot/imported/shutter_door_detail_mask.png-fb729158d6764b7ef2651d3fd0c0d928.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/objects/shutter_door/shutter_door_detail_mask.png"
-dest_files=["res://.godot/imported/shutter_door_detail_mask.png-fb729158d6764b7ef2651d3fd0c0d928.s3tc.ctex"]
+dest_files=["res://.godot/imported/shutter_door_detail_mask.png-fb729158d6764b7ef2651d3fd0c0d928.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
