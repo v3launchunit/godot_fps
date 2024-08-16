@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/pickups/ammo_pickup.gd" id="1_ovutx"]
 [ext_resource type="AudioStream" uid="uid://g7unocdbdokw" path="res://audio/streams/pickups/pickup_ammo.wav" id="2_75gpn"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_nadlh"]
-[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halos/halo.tres" id="3_vta4w"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://effects/halos/halo.tres" id="3_vta4w"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="5_5s04d"]
 [ext_resource type="Shader" path="res://shaders/spatial/psx_ul_mix.gdshader" id="6_7mnpl"]
 

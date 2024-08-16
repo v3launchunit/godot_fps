@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://bec0kis72kbyx" path="res://trench_broom/entity_defs/base/enemy_base_class.tres" id="1_8lin7"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_gl8tm"]
-[ext_resource type="PackedScene" uid="uid://13po7ktlg4ba" path="res://entities/enemies/military/soldier.tscn" id="2_pr7kq"]
+[ext_resource type="PackedScene" uid="uid://13po7ktlg4ba" path="res://entities/enemies/military/soldier/soldier.tscn" id="2_pr7kq"]
 
 [resource]
 script = ExtResource("2_gl8tm")

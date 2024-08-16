@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b78l63b32udy2"]
 
-[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halos/halo.tres" id="1_aobva"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://effects/halos/halo.tres" id="1_aobva"]
 
 [resource]
 resource_local_to_scene = true

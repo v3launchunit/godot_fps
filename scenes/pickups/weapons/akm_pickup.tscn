@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://dxscywpf2ven0" path="res://audio/streams/pickups/pickup_weapon.wav" id="2_dmkcn"]
 [ext_resource type="ArrayMesh" uid="uid://53jffpg6vhkj" path="res://models/weapons/akm.obj" id="2_l81mn"]
 [ext_resource type="PackedScene" uid="uid://xpo774l18flk" path="res://weapons/akm/akm.tscn" id="2_xvbkw"]
-[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halos/halo.tres" id="3_q1kpb"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://effects/halos/halo.tres" id="3_q1kpb"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="3_x05hk"]
 [ext_resource type="Texture2D" uid="uid://broweqdhl5i4r" path="res://weapons/akm/akm_detail_mask.png" id="4_txauj"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="5_l718t"]

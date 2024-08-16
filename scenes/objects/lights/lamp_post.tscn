@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cqfw5pys7s4yh"]
 
 [ext_resource type="Material" uid="uid://c42r6gnwbsttx" path="res://materials/effects/fancy_halo.tres" id="1_r4vco"]
-[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://textures/effects/halos/halo.tres" id="2_vebmo"]
+[ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://effects/halos/halo.tres" id="2_vebmo"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="3_p8rkr"]
 [ext_resource type="Shader" path="res://shaders/spatial/psx_ul_mix.gdshader" id="4_6my5t"]
 

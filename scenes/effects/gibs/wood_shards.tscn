@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://bynbdpv50o6q2"]
 
-[ext_resource type="Texture2D" uid="uid://bs7borhko72ul" path="res://textures/objects/crate/crate_normals.png" id="1_3va2u"]
+[ext_resource type="Texture2D" uid="uid://bs7borhko72ul" path="res://objects/crate/crate_normals.png" id="1_3va2u"]
 [ext_resource type="Texture2D" uid="uid://crih0rgk10al6" path="res://weapons/pump_shotgun/shotgun_detail_mask.png" id="1_cgk4d"]
 [ext_resource type="Script" path="res://scripts/effects/particle_lifetime.gd" id="2_l7om6"]
 [ext_resource type="AudioStream" uid="uid://bvod4pgw3o7os" path="res://audio/streams/effects/wood/wood_break_1.wav" id="3_ca32t"]

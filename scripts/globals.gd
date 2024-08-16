@@ -247,6 +247,8 @@ func open_level(level: PackedScene) -> void:
 
 
 func parse_names(section: String, key: String) -> Variant:
+	if section == "species":
+		return names.get_value("species_paths", names.get_value("species", key))
 	return names.get_value(section, key)
 
 
