@@ -80,8 +80,11 @@ static var mouse_captured: bool = false
 @onready var camera_sync := find_child("PlayerSync") as Node3D
 @onready var flashlight := find_child("Flashlight") as SpotLight3D
 @onready var status := $Status as PlayerStatus
+@onready var hitbox := $PlayerHitbox as CollisionShape3D
+@onready var crouchbox := $PlayerCrouchHitbox as CollisionShape3D
 @onready var interact_scan := find_child("Interact") as RayCast3D
 @onready var clearance_scan := $ClearanceCast as ShapeCast3D
+@onready var floor_snap_cast := $FloorSnapCast as RayCast3D
 @onready var stream_player := $AudioStreamPlayer as AudioStreamPlayer
 @onready var slam_wind_sys := find_child("SlamWindSys") as GPUParticles3D
 @onready var hud := find_child("HUD") as HudHandler
@@ -128,13 +131,17 @@ func _process(_delta) -> void:
 				and Input.is_action_just_pressed("interact") 
 				and interact_scan.get_collider().has_method("interact")
 		):
+			interact_scan.get_collider().interact(self)
 			stream_player.stream = interact_stream
 			stream_player.play()
-			interact_scan.get_collider().interact(self)
 
 	if Input.is_action_just_pressed("crouch") and not crouching:
 		if not is_on_floor() and not Input.is_action_pressed("jump"):
-			slamming = true
+			if floor_snap_cast.is_colliding():
+				apply_floor_snap()
+				_toggle_crouch(true)
+			else:
+				slamming = true
 		else:
 			_toggle_crouch(true)
 
@@ -248,8 +255,6 @@ func apply_knockback(amount: Vector3) -> void:
 
 
 func _toggle_crouch(to: bool) -> void:
-	var hitbox: CollisionShape3D = $PlayerHitbox as CollisionShape3D
-	var crouchbox: CollisionShape3D = $PlayerCrouchHitbox as CollisionShape3D
 	if is_on_floor():
 		translate(Vector3(0, -1 if to else 1, 0))
 		slide_vel = walk_vel

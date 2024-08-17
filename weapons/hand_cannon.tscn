@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=3 uid="uid://d228rs0mtayv6"]
 
-[ext_resource type="PackedScene" uid="uid://dqh2gybvemj2n" path="res://models/weapons/flare_gun.glb" id="1_osgs8"]
-[ext_resource type="PackedScene" uid="uid://fda5n2lb20ne" path="res://models/weapons/pepperbox.glb" id="2_6xdil"]
+[ext_resource type="PackedScene" uid="uid://dqh2gybvemj2n" path="res://weapons/flare_gun.glb" id="1_osgs8"]
+[ext_resource type="PackedScene" uid="uid://fda5n2lb20ne" path="res://weapons/pepperbox.glb" id="2_6xdil"]
 [ext_resource type="AnimationLibrary" uid="uid://cnk3oj5koucge" path="res://weapons/flare_gun_anims.res" id="2_dl6vv"]
 [ext_resource type="Script" path="res://weapons/weapon_base.gd" id="2_g0fb6"]
 [ext_resource type="AnimationLibrary" uid="uid://btn2oi1jc70ej" path="res://weapons/pepperbox_anims.res" id="4_wqt0h"]

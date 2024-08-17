@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://cva6lk1c0ops7"]
 
-[ext_resource type="PackedScene" uid="uid://du780rqis8eqo" path="res://scenes/pickups/weapons/boomstick_pickup.tscn" id="1_npvx0"]
+[ext_resource type="PackedScene" uid="uid://du780rqis8eqo" path="res://pickups/weapons/boomstick_pickup.tscn" id="1_npvx0"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_6k65t"]
 
 [resource]

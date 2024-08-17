@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dco7xp2cwuyge" path="res://scenes/effects/explosions/explosion.tscn" id="2_i7b7a"]
 [ext_resource type="Shader" path="res://shaders/spatial/psx_ul_mix.gdshader" id="3_ven1m"]
 [ext_resource type="Script" path="res://bullets/bullet_trail.gd" id="4_pfq3o"]
-[ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="5_h4omx"]
+[ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://effects/halos/halo_mat.tres" id="5_h4omx"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="6_lbxxy"]
 [ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="7_nam5y"]
 

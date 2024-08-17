@@ -23,7 +23,7 @@ uniform bool is_terrain_mat = false;
 void vertex() {
 	UV *= uv1_scale.xy + uv1_offset.xy;
 	if (is_terrain_mat) {
-		UV *= 0.0625;
+		//UV *= 0.0625;
 		POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0);
 	} else {
 		POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));

@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=4 uid="uid://dah6eunyfmnqh"]
 
-[ext_resource type="PackedScene" uid="uid://bfpoyydd4y6gc" path="res://models/weapons/crossbow.glb" id="1_cxeg4"]
+[ext_resource type="PackedScene" uid="uid://bfpoyydd4y6gc" path="res://weapons/crossbow/crossbow.glb" id="1_cxeg4"]
 [ext_resource type="AnimationLibrary" uid="uid://doq8kttqg86x7" path="res://weapons/crossbow/crossbow_anims.res" id="2_exmv2"]
 [ext_resource type="Script" path="res://weapons/crossbow/weapon_crossbow.gd" id="2_vadfq"]
 [ext_resource type="Script" path="res://weapons/alert_area.gd" id="3_2m668"]

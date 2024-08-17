@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://bullets/bullet_trail.gd" id="3_c45im"]
 [ext_resource type="AudioStream" uid="uid://bhhnxh2cjbiuq" path="res://audio/streams/ambient/fire_ball_ambient.wav" id="3_ghwt3"]
 [ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="4_hhht4"]
-[ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://materials/effects/halo.tres" id="4_p5pbv"]
+[ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://effects/halos/halo_mat.tres" id="4_p5pbv"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="5_qgig2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6fgvk"]

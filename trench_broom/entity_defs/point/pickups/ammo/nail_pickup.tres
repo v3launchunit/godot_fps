@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://58st0k85wfuv"]
 
-[ext_resource type="PackedScene" uid="uid://joq438puropu" path="res://scenes/pickups/ammo/nail_box_pickup.tscn" id="1_kalqh"]
+[ext_resource type="PackedScene" uid="uid://joq438puropu" path="res://pickups/ammo/nail_box_pickup.tscn" id="1_kalqh"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_ny5fc"]
 
 [resource]

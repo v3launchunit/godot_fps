@@ -7,6 +7,8 @@ height = 0.5
 radius = 0.25
 
 [node name="StairStepper" type="Node3D"]
+process_priority = -1
+process_physics_priority = -1
 script = ExtResource("1_b7ei7")
 
 [node name="LowCast" type="ShapeCast3D" parent="."]

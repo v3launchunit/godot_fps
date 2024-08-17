@@ -223,6 +223,7 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	rotation.x = 0
 	state_timer += delta
 	velocity = _jump(delta) + _gravity(delta) + _knockback(delta)
 	match current_state:
@@ -266,6 +267,7 @@ func _physics_process(delta: float) -> void:
 # In case I need/want to do stuff with state transitions
 # (probably where I'll handle animations & shit)
 func change_state(to: State):
+	rotation.x = 0
 	if current_state == State.DEAD or to == current_state:
 		return
 	match current_state:

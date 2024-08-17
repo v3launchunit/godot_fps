@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://bullets/rocket.gd" id="1_rvxge"]
 [ext_resource type="PackedScene" uid="uid://dco7xp2cwuyge" path="res://scenes/effects/explosions/explosion.tscn" id="2_ltf6b"]
-[ext_resource type="Material" uid="uid://08yqplf2icxd" path="res://materials/effects/fire_halo.tres" id="3_e6ekq"]
+[ext_resource type="Material" uid="uid://08yqplf2icxd" path="res://effects/halos/fire_halo_mat.tres" id="3_e6ekq"]
 [ext_resource type="Script" path="res://bullets/bullet_trail.gd" id="3_ggmmo"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="5_1vb2g"]
 [ext_resource type="AudioStream" uid="uid://bhhnxh2cjbiuq" path="res://audio/streams/ambient/fire_ball_ambient.wav" id="5_20y16"]

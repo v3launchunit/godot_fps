@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://bjpo451a0eupa"]
 
 [ext_resource type="Material" uid="uid://deiwjwa2emqli" path="res://weapons/axe/axe_mat.tres" id="1_qblvp"]
-[ext_resource type="ArrayMesh" uid="uid://cdgo2jvrkn5bc" path="res://models/weapons/axe.obj" id="1_sq7xt"]
+[ext_resource type="ArrayMesh" uid="uid://cdgo2jvrkn5bc" path="res://weapons/axe/axe.obj" id="1_sq7xt"]
 [ext_resource type="AnimationLibrary" uid="uid://b7bfeeqv2plqj" path="res://weapons/axe/axe_anims.res" id="3_t18wh"]
 [ext_resource type="Script" path="res://weapons/weapon_double_barrel.gd" id="5_fkvwm"]
 [ext_resource type="PackedScene" uid="uid://chdnpriqcxbgj" path="res://bullets/player/hitscan/axe_scan.tscn" id="6_jc7bq"]

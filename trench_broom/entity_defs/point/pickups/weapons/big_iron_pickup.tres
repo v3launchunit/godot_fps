@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://dqgf1o52x6olc"]
 
-[ext_resource type="PackedScene" uid="uid://b2ceyvvn2j4nq" path="res://scenes/pickups/weapons/big_iron_pickup.tscn" id="1_kvtjg"]
+[ext_resource type="PackedScene" uid="uid://b2ceyvvn2j4nq" path="res://pickups/weapons/big_iron_pickup.tscn" id="1_kvtjg"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_srd2h"]
 
 [resource]

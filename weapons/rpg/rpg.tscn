@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://bs3eibrb48t0m"]
 
-[ext_resource type="PackedScene" uid="uid://babited41kti5" path="res://models/weapons/rpg.glb" id="1_70x0w"]
-[ext_resource type="Script" path="res://models/weapons/weapon_rpg.gd" id="2_535cm"]
+[ext_resource type="PackedScene" uid="uid://babited41kti5" path="res://weapons/rpg/rpg.glb" id="1_70x0w"]
+[ext_resource type="Script" path="res://weapons/rpg/weapon_rpg.gd" id="2_535cm"]
 [ext_resource type="Script" path="res://weapons/alert_area.gd" id="2_v1et6"]
 [ext_resource type="AnimationLibrary" uid="uid://c1poci1it3ds0" path="res://weapons/rpg/rpg_anims.res" id="3_ktpeh"]
 [ext_resource type="Material" uid="uid://digscwwl48m5g" path="res://weapons/rpg/rpg_mat_2.tres" id="4_0tpv3"]

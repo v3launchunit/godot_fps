@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://bgkhncbn8gt1k"]
 
-[ext_resource type="PackedScene" uid="uid://dxyhvyy821swt" path="res://scenes/pickups/weapons/hunting_rifle_pickup.tscn" id="1_ai4mq"]
+[ext_resource type="PackedScene" uid="uid://dxyhvyy821swt" path="res://pickups/weapons/hunting_rifle_pickup.tscn" id="1_ai4mq"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_500ty"]
 
 [resource]

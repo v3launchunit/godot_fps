@@ -414,3 +414,8 @@ volume_db = 6.0
 
 [node name="HUD" parent="Control" instance=ExtResource("37_wd13u")]
 layout_mode = 1
+
+[node name="FloorSnapCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+target_position = Vector3(0, -1.1, 0)
+collision_mask = 389

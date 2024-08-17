@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://ch671s1gv2bg2"]
 
-[ext_resource type="PackedScene" uid="uid://bu80vkpoj8bpq" path="res://scenes/pickups/keys/keys/key_green_pickup.tscn" id="1_toclm"]
+[ext_resource type="PackedScene" uid="uid://bu80vkpoj8bpq" path="res://pickups/keys/keys/key_green_pickup.tscn" id="1_toclm"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_cr3bg"]
 
 [resource]

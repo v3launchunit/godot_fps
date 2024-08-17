@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://bullets/homing_rocket.gd" id="1_eqwsq"]
 [ext_resource type="PackedScene" uid="uid://dco7xp2cwuyge" path="res://scenes/effects/explosions/explosion.tscn" id="2_1ecth"]
 [ext_resource type="Script" path="res://bullets/bullet_trail.gd" id="3_hjok3"]
-[ext_resource type="Material" uid="uid://08yqplf2icxd" path="res://materials/effects/fire_halo.tres" id="4_adt1c"]
+[ext_resource type="Material" uid="uid://08yqplf2icxd" path="res://effects/halos/fire_halo_mat.tres" id="4_adt1c"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="5_yrbaf"]
 [ext_resource type="AudioStream" uid="uid://bhhnxh2cjbiuq" path="res://audio/streams/ambient/fire_ball_ambient.wav" id="6_4qvob"]
 
