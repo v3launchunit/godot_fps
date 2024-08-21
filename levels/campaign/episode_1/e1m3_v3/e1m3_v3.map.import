@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://bi01njroj8hyk"
+path="res://.godot/imported/e1m3_v3.map-241608493e26346ffb3d323e0357fdeb.tres"
+
+[deps]
+
+source_file="res://levels/campaign/episode_1/e1m3_v3/e1m3_v3.map"
+dest_files=["res://.godot/imported/e1m3_v3.map-241608493e26346ffb3d323e0357fdeb.tres"]
+
+[params]
+

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/pickups/key_pickup.gd" id="1_cmqee"]
 [ext_resource type="AudioStream" uid="uid://df7acgg7nqtsa" path="res://audio/streams/pickups/pickup_key.wav" id="2_v0jph"]
-[ext_resource type="ArrayMesh" uid="uid://bt5wg6uc7tqsy" path="res://pickups/keys/key.obj" id="3_58kqm"]
+[ext_resource type="ArrayMesh" uid="uid://bt5wg6uc7tqsy" path="res://pickups/keys/keys/key.obj" id="3_58kqm"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://effects/halos/halo_tex.tres" id="3_kuvxs"]
-[ext_resource type="Texture2D" uid="uid://bwecd3r2ubm88" path="res://objects/keys/key_detail_mask.png" id="4_w06bj"]
-[ext_resource type="Texture2D" uid="uid://bn6desny3w35f" path="res://objects/keys/key_metallic.png" id="5_nxt40"]
-[ext_resource type="Texture2D" uid="uid://cyf32xnmb5ck7" path="res://objects/keys/key_roughness.png" id="6_8xwq2"]
+[ext_resource type="Texture2D" uid="uid://bwecd3r2ubm88" path="res://pickups/keys/keys/key_detail_mask.png" id="4_w06bj"]
+[ext_resource type="Texture2D" uid="uid://bn6desny3w35f" path="res://pickups/keys/keys/key_metallic.png" id="5_nxt40"]
+[ext_resource type="Texture2D" uid="uid://cyf32xnmb5ck7" path="res://pickups/keys/keys/key_roughness.png" id="6_8xwq2"]
 [ext_resource type="Material" uid="uid://b78l63b32udy2" path="res://effects/halos/halo_mat.tres" id="7_7r1bv"]
 [ext_resource type="Script" path="res://scripts/effects/halo.gd" id="9_ynkch"]
 

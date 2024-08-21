@@ -1,7 +1,7 @@
 class_name Level
 extends Node3D
 
-@export var level_id := Vector2i(1, 1)
+@export var level_key: String = "e1m1"
 @export var level_name: String = "LEVEL"
 
 @export_group("Save Data")

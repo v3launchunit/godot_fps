@@ -74,8 +74,6 @@ class_name Player extends CharacterBody3D
 
 @export var holding = null
 
-static var mouse_captured: bool = false
-
 @onready var camera := find_child("PlayerCam") as WeaponManager
 @onready var camera_sync := find_child("PlayerSync") as Node3D
 @onready var flashlight := find_child("Flashlight") as SpotLight3D
@@ -91,7 +89,7 @@ static var mouse_captured: bool = false
 
 
 func _ready() -> void:
-	capture_mouse()
+	Globals.capture_mouse()
 
 
 func _process(_delta) -> void:
@@ -121,7 +119,7 @@ func _process(_delta) -> void:
 				and interact_scan.get_collider().get_tooltip() != ""
 		):
 			hud.tooltip.visible = true
-			hud.tooltip.text = interact_scan.get_collider().get_tooltip()
+			hud.set_tooltip(interact_scan.get_collider().get_tooltip())
 		else:
 			hud.tooltip.visible = false
 		
@@ -146,7 +144,8 @@ func _process(_delta) -> void:
 			_toggle_crouch(true)
 
 	if Input.is_action_just_pressed("quick_restart"):
-		get_tree().reload_current_scene()
+		#get_tree().reload_current_scene()
+		Globals.open_level_from_key((get_tree().current_scene as Level).level_id)
 
 	if Input.is_action_just_pressed("quick_save"):
 		Globals.save_game(Globals.C_QUICKSAVE_PATH)
@@ -179,7 +178,7 @@ func _physics_process(delta: float) -> void:
 			reorienting = false
 
 	# Handle actually moving
-	if mouse_captured: _handle_joypad_camera_rotation(delta)
+	if Globals.mouse_captured: _handle_joypad_camera_rotation(delta)
 	velocity = (
 			_walk(delta)
 			+ _slide(delta)
@@ -204,18 +203,8 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		look_dir = event.relative * 0.001
-		if mouse_captured:
+		if Globals.mouse_captured:
 			_rotate_camera(camera_zoom_sens)
-
-
-static func capture_mouse() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	mouse_captured = true
-
-
-static func release_mouse() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	mouse_captured = false
 
 
 func _rotate_camera(sens_mod: float = 1.0) -> void:

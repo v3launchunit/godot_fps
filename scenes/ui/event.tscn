@@ -1,16 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://dv0a4feruvg2r"]
 
 [ext_resource type="Script" path="res://scripts/effects/lifetime.gd" id="1_mlvnr"]
+[ext_resource type="Theme" uid="uid://dwof7m2ye3tjh" path="res://scenes/ui/default_theme.tres" id="1_r5ujv"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_21cnm"]
-shadow_size = 0
-shadow_color = Color(0, 0, 0, 0.12549)
-shadow_offset = Vector2(0, 1)
-
-[node name="Event" type="Label"]
+[node name="Event" type="RichTextLabel"]
+offset_right = 77.0
+offset_bottom = 22.0
+theme = ExtResource("1_r5ujv")
 text = "aaaaaaaa"
-label_settings = SubResource("LabelSettings_21cnm")
-uppercase = true
+fit_content = true
 
 [node name="Lifetime" type="Timer" parent="."]
 process_mode = 3

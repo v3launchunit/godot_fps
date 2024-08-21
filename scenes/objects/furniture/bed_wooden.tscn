@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bynbdpv50o6q2" path="res://scenes/effects/gibs/wood_shards.tscn" id="5_5ovua"]
 [ext_resource type="PackedScene" uid="uid://bnsepaqu7j4p4" path="res://pickups/health/health_bonus_pickup.tscn" id="6_clesk"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://pickups/armor/armor_bonus_pickup.tscn" id="7_qnjls"]
-[ext_resource type="PackedScene" uid="uid://dl7fuv4wdxtjx" path="res://pickups/ammo/shell_pickup.tscn" id="8_rhedy"]
+[ext_resource type="PackedScene" uid="uid://dl7fuv4wdxtjx" path="res://pickups/ammo/shotgun_shell/shell_pickup.tscn" id="8_rhedy"]
 [ext_resource type="PackedScene" uid="uid://l50jb3i7j7q7" path="res://pickups/ammo/small_cell_pickup.tscn" id="9_0url4"]
 [ext_resource type="PackedScene" uid="uid://bqors63m1ug05" path="res://pickups/ammo/nail_pickup.tscn" id="10_hsttn"]
 [ext_resource type="PackedScene" uid="uid://wdnyjfhryl0i" path="res://pickups/ammo/big_iron_bullet_pickup.tscn" id="11_1kwjo"]

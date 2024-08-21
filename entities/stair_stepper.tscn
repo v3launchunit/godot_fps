@@ -7,20 +7,24 @@ height = 0.5
 radius = 0.25
 
 [node name="StairStepper" type="Node3D"]
-process_priority = -1
-process_physics_priority = -1
+process_priority = 1
+process_physics_priority = 1
 script = ExtResource("1_b7ei7")
 
 [node name="LowCast" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.715, 0)
 shape = SubResource("CylinderShape3D_421xt")
 target_position = Vector3(0, 0, 0)
+collision_mask = 257
 
 [node name="HighCast" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("CylinderShape3D_421xt")
 target_position = Vector3(0, 0, 0)
+collision_mask = 257
 
 [node name="SnapCast" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.715, 0)
 shape = SubResource("CylinderShape3D_421xt")
+target_position = Vector3(0, -0.5, 0)
+collision_mask = 257

@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://bx6iv4chnue2j"]
+[gd_resource type="ShaderMaterial" load_steps=12 format=3 uid="uid://bx6iv4chnue2j"]
 
 [ext_resource type="Shader" path="res://textures/structural/bricks.gdshader" id="1_cadi2"]
 [ext_resource type="Texture2D" uid="uid://coxdlu0742p08" path="res://textures/structural/bricks_clay/bricks_clay_detail_mask.png" id="2_bckn5"]
@@ -9,6 +9,18 @@
 [ext_resource type="Texture2D" uid="uid://bnjon6ehccyhy" path="res://textures/structural/shared/bricks_flux_noise.tres" id="5_0ujer"]
 [ext_resource type="Texture2D" uid="uid://dcyokaymonunq" path="res://textures/structural/bricks_clay/bricks_clay_flux_palette.png" id="6_840qf"]
 
+[sub_resource type="Gradient" id="Gradient_2adxq"]
+colors = PackedColorArray(0.65, 0.65, 0.65, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d758c"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q5lsm"]
+width = 256
+height = 256
+seamless = true
+color_ramp = SubResource("Gradient_2adxq")
+noise = SubResource("FastNoiseLite_d758c")
+
 [resource]
 render_priority = 0
 shader = ExtResource("1_cadi2")
@@ -16,12 +28,13 @@ shader_parameter/normal_scale = 1.0
 shader_parameter/roughness = 0.75
 shader_parameter/metallic = 0.0
 shader_parameter/uv_base_scale = Vector2(2, 2)
-shader_parameter/uv_tile_scale = Vector2(1, 1)
+shader_parameter/uv_tile_scale = Vector2(1.0015, 1)
 shader_parameter/uv_detail_scale = Vector2(0.0625, 0.0625)
 shader_parameter/uv_flux_scale = Vector2(0.0625, 0.0625)
 shader_parameter/tile_albedo = ExtResource("2_jfabu")
 shader_parameter/tile_normals = ExtResource("3_l1th5")
 shader_parameter/detail_mask = ExtResource("2_bckn5")
+shader_parameter/detail_albedo = SubResource("NoiseTexture2D_q5lsm")
 shader_parameter/detail_normals = ExtResource("3_2oa8w")
 shader_parameter/flux_map = ExtResource("4_0oda6")
 shader_parameter/flux_noise = ExtResource("5_0ujer")

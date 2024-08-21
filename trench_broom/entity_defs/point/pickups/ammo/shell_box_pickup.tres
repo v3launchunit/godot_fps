@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://berl8lv3b8aul"]
 
-[ext_resource type="PackedScene" uid="uid://boxs6v8ktotma" path="res://pickups/ammo/shell_box_pickup.tscn" id="1_7vuuf"]
+[ext_resource type="PackedScene" uid="uid://boxs6v8ktotma" path="res://pickups/ammo/shell_box/shell_box_pickup.tscn" id="1_7vuuf"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_0prmq"]
 
 [resource]

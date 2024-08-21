@@ -32,7 +32,7 @@ void fragment() {
 	color_a *= mix(vec4(1.0), texture(detail_albedo, detail_uv), detail.x);
 	color_n = mix(color_n, texture(detail_normals, detail_uv), detail.y);
 	
-	vec3 flux_pos = texture(flux_map, UV * uv_flux_scale).xyz;
+	vec3 flux_pos = texture(flux_map, tile_uv * uv_flux_scale).xyz;
 	if (abs(flux_pos.z - 1.0) < 0.01) {
 		vec4 color_flux = texture(flux_palette, texture(flux_noise, flux_pos.xy).xy);
 		color_a *= color_flux;

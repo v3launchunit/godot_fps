@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://coopugxxes4xq" path="res://pickups/ammo/grenade_pickup.tscn" id="8_krnfx"]
 [ext_resource type="PackedScene" uid="uid://qy044barx365" path="res://entities/stair_stepper.tscn" id="9_vr1y5"]
 [ext_resource type="AnimationLibrary" uid="uid://bbyb7iljagvs3" path="res://entities/enemies/military/rocketeer/rocketeer_anims.res" id="10_7nbok"]
-[ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://pickups/health/health_pack_pickup.tscn" id="12_fn6s3"]
+[ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://pickups/health/health_pack/health_pack_pickup.tscn" id="12_fn6s3"]
 
 [sub_resource type="Resource" id="Resource_07esl"]
 script = ExtResource("2_tv63j")

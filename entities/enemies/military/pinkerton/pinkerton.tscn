@@ -1,6 +1,6 @@
 [gd_scene load_steps=96 format=3 uid="uid://cbo6wxdi4eryp"]
 
-[ext_resource type="Script" path="res://entities/enemies/enemy_pinkerton.gd" id="1_4o8wq"]
+[ext_resource type="Script" path="res://entities/enemies/military/pinkerton/enemy_pinkerton.gd" id="1_4o8wq"]
 [ext_resource type="Script" path="res://entities/status.gd" id="2_p7cng"]
 [ext_resource type="AudioStream" uid="uid://k1hmkq07use5" path="res://audio/streams/voices/pinkerton/detect/get_her_1.wav" id="2_sxcfu"]
 [ext_resource type="AudioStream" uid="uid://bcbenycltm5pg" path="res://audio/streams/voices/pinkerton/detect/get_her_2.wav" id="3_5es6a"]
@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://bw30qs54ire0" path="res://audio/streams/voices/pinkerton/detect/halt_2.wav" id="7_6sm5o"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://pickups/armor/armor_bonus_pickup.tscn" id="7_d0her"]
 [ext_resource type="AudioStream" uid="uid://cix5xh517bnj4" path="res://audio/streams/voices/pinkerton/detect/intruder_spotted_1.wav" id="8_phrdl"]
-[ext_resource type="PackedScene" uid="uid://dl7fuv4wdxtjx" path="res://pickups/ammo/shell_pickup.tscn" id="8_slj13"]
+[ext_resource type="PackedScene" uid="uid://dl7fuv4wdxtjx" path="res://pickups/ammo/shotgun_shell/shell_pickup.tscn" id="8_slj13"]
 [ext_resource type="AudioStream" uid="uid://fimyb2r1ra54" path="res://audio/streams/voices/pinkerton/detect/kill_her_1.wav" id="9_fw5ta"]
 [ext_resource type="AudioStream" uid="uid://2i1oefv2d7uf" path="res://audio/streams/voices/pinkerton/detect/kill_her_2.wav" id="10_cnalv"]
 [ext_resource type="AudioStream" uid="uid://cvhddpbrl73h7" path="res://audio/streams/voices/pinkerton/detect/kill_her_3.wav" id="11_q5fbb"]

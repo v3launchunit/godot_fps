@@ -10,6 +10,11 @@ var _active_menus: int = 0
 signal menu_closed(menu_layer: int)
 
 
+func _ready() -> void:
+	await get_tree().process_frame
+	get_parent().move_child(self, -1)
+
+
 func _process(_delta: float) -> void:
 	if _active_menus <= 0 and not get_tree().root.has_focus():
 		open_pause_menu()
@@ -28,14 +33,14 @@ func close_top_menu() -> void:
 	if _active_menus <= 0:
 		get_tree().paused = false
 		hide()
-		Player.capture_mouse()
+		Globals.capture_mouse()
 		_active_menus = 0
 
 
 func open_pause_menu() -> void:
 	get_tree().paused = true
 	show()
-	Player.release_mouse()
+	Globals.release_mouse()
 	_active_menus = 1
 
 

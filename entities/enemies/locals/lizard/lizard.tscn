@@ -1,6 +1,6 @@
 [gd_scene load_steps=94 format=3 uid="uid://cm53n4on4fdr6"]
 
-[ext_resource type="Script" path="res://entities/enemies/enemy_lizard.gd" id="1_bhi88"]
+[ext_resource type="Script" path="res://entities/enemies/locals/lizard/enemy_lizard.gd" id="1_bhi88"]
 [ext_resource type="PackedScene" uid="uid://pidxth8qpjjm" path="res://entities/enemies/locals/lizard/lizard.glb" id="1_y8366"]
 [ext_resource type="PackedScene" uid="uid://dj8yo2whvp2w7" path="res://bullets/enemy/enemy_melee_scan.tscn" id="2_cmvbm"]
 [ext_resource type="AudioStream" uid="uid://dccli7qg88gwt" path="res://audio/streams/voices/lizard/detect_roar.wav" id="2_saxi0"]

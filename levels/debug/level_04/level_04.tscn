@@ -23,10 +23,10 @@
 [ext_resource type="Script" path="res://trench_broom/entity_defs/brush/interactable/brush_door.gd" id="17_wh8jn"]
 [ext_resource type="PackedScene" uid="uid://cbo6wxdi4eryp" path="res://entities/enemies/military/pinkerton/pinkerton.tscn" id="18_2pyi6"]
 [ext_resource type="PackedScene" uid="uid://bybrfm1881qnv" path="res://scenes/objects/lights/hanging_lamp.tscn" id="18_4t3np"]
-[ext_resource type="Material" uid="uid://qt3bjecsm0qb" path="res://materials/terrain/trench_broom_std/shutter_door.tres" id="18_t6qjl"]
+[ext_resource type="Material" uid="uid://qt3bjecsm0qb" path="res://textures/shutter_door.tres" id="18_t6qjl"]
 [ext_resource type="PackedScene" uid="uid://pr3j5d4ifvrt" path="res://entities/enemies/machines/plasma_droid/plasma_droid.tscn" id="19_xfjck"]
 [ext_resource type="PackedScene" uid="uid://b2q7xucggusys" path="res://pickups/weapons/plasma_cannon_pickup.tscn" id="21_4f6dg"]
-[ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://pickups/health/health_pack_pickup.tscn" id="21_4mwc0"]
+[ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://pickups/health/health_pack/health_pack_pickup.tscn" id="21_4mwc0"]
 [ext_resource type="PackedScene" uid="uid://d62xcu27rha1" path="res://pickups/keys/keys/key_red_pickup.tscn" id="26_m0oqq"]
 [ext_resource type="PackedScene" uid="uid://b3n8ejiapfh8" path="res://pickups/ammo/large_cell_pickup.tscn" id="27_10dck"]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=3 uid="uid://cspj0yyl285bj"]
 
-[ext_resource type="Script" path="res://trench_broom/entity_defs/point/enemies/lever_tb.gd" id="1_0ajli"]
+[ext_resource type="Script" path="res://trench_broom/entity_defs/point/lever_tb.gd" id="1_0ajli"]
 [ext_resource type="PackedScene" uid="uid://dhcc71k270vgk" path="res://models/objects/lever.glb" id="2_saqbp"]
-[ext_resource type="Texture2D" uid="uid://2gj3tv6stgsr" path="res://objects/lever/lever_albedo.png" id="3_8k4y8"]
-[ext_resource type="Texture2D" uid="uid://crltgslfg1nou" path="res://objects/lever/lever_emissions.png" id="4_oh51b"]
-[ext_resource type="Texture2D" uid="uid://c0qe7jq8ss6c4" path="res://objects/lever/lever_normals.png" id="5_5dtxu"]
+[ext_resource type="Texture2D" uid="uid://2gj3tv6stgsr" path="res://objects/interactable/lever/lever_albedo.png" id="3_8k4y8"]
+[ext_resource type="Texture2D" uid="uid://crltgslfg1nou" path="res://objects/interactable/lever/lever_emissions.png" id="4_oh51b"]
+[ext_resource type="Texture2D" uid="uid://c0qe7jq8ss6c4" path="res://objects/interactable/lever/lever_normals.png" id="5_5dtxu"]
 [ext_resource type="AudioStream" uid="uid://bmlxxe8maevqb" path="res://audio/streams/click.wav" id="6_abudg"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f8nba"]

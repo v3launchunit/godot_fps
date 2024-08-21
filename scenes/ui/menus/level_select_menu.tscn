@@ -1,19 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c58frru7780pf"]
+[gd_scene load_steps=5 format=3 uid="uid://c58frru7780pf"]
 
 [ext_resource type="Script" path="res://scripts/ui/level_select_menu.gd" id="1_kus5n"]
 [ext_resource type="Texture2D" uid="uid://cmq3arf61ax4f" path="res://ui/menu_panel.png" id="2_nwilm"]
 [ext_resource type="Script" path="res://scripts/ui/level_select_button.gd" id="3_4djrb"]
-[ext_resource type="Theme" uid="uid://dwof7m2ye3tjh" path="res://scenes/default_theme.tres" id="3_30jf0"]
-[ext_resource type="PackedScene" uid="uid://ddybwy4hdo2q3" path="res://levels/debug/test_level/test_level.tscn" id="4_c2yb4"]
-[ext_resource type="PackedScene" uid="uid://c73ftt2ccark1" path="res://levels/campaign/episode_1/e1m3_v2/e1m3_v2.tscn" id="5_ke8hl"]
-[ext_resource type="PackedScene" uid="uid://rhhoyltya62d" path="res://levels/unsorted/concrete/concrete.tscn" id="6_4cx11"]
-[ext_resource type="PackedScene" uid="uid://cor0l0jkjwbo5" path="res://levels/campaign/episode_1/e1m6_v1/e1m6_v1.tscn" id="6_4jomd"]
-[ext_resource type="PackedScene" uid="uid://ddkc86a3xy4gk" path="res://levels/campaign/episode_1/e1m5_v2/e1m5_v2.tscn" id="7_bkujf"]
-[ext_resource type="PackedScene" uid="uid://d21bgjfm2c1uj" path="res://levels/campaign/episode_2/underhang_v01/underhang_v01.tscn" id="8_fsg8k"]
-[ext_resource type="PackedScene" uid="uid://ds1np4ykpd4of" path="res://levels/campaign/episode_1/e1m7_v1/e1m7_v1.tscn" id="9_nlaye"]
-[ext_resource type="PackedScene" uid="uid://qvrf467m8cbk" path="res://levels/debug/level_04/level_04.tscn" id="9_tniqv"]
-[ext_resource type="PackedScene" uid="uid://dw8h4q7ndiu8q" path="res://levels/debug/unsorted_b/unsorted_b.tscn" id="10_ssjer"]
-[ext_resource type="PackedScene" uid="uid://dunww0aa03inb" path="res://levels/debug/unsorted_c/unsorted_c.tscn" id="11_740x7"]
+[ext_resource type="Theme" uid="uid://dwof7m2ye3tjh" path="res://scenes/ui/default_theme.tres" id="3_30jf0"]
 
 [node name="LevelSelect" type="Control"]
 process_mode = 4
@@ -120,7 +110,6 @@ layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "E1M3 -- SIXTEEN TONS"
 script = ExtResource("3_4djrb")
-_scene = ExtResource("5_ke8hl")
 level_name = "e1m3"
 
 [node name="M4" type="Button" parent="SettingsPanel/LevelSelect/E1"]
@@ -128,7 +117,6 @@ layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "E1M4"
 script = ExtResource("3_4djrb")
-_scene = ExtResource("6_4cx11")
 level_name = "e1m4"
 
 [node name="M5" type="Button" parent="SettingsPanel/LevelSelect/E1"]
@@ -136,7 +124,6 @@ layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "E1M5"
 script = ExtResource("3_4djrb")
-_scene = ExtResource("7_bkujf")
 level_name = "e1m5"
 
 [node name="M6" type="Button" parent="SettingsPanel/LevelSelect/E1"]
@@ -144,7 +131,6 @@ layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "E1M6"
 script = ExtResource("3_4djrb")
-_scene = ExtResource("6_4jomd")
 level_name = "e1m6"
 
 [node name="M7" type="Button" parent="SettingsPanel/LevelSelect/E1"]
@@ -152,7 +138,6 @@ layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "E1M7"
 script = ExtResource("3_4djrb")
-_scene = ExtResource("9_nlaye")
 level_name = "e1m7"
 
 [node name="M8" type="Button" parent="SettingsPanel/LevelSelect/E1"]
@@ -186,7 +171,6 @@ layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "E2M2"
 script = ExtResource("3_4djrb")
-_scene = ExtResource("8_fsg8k")
 level_name = "e2m2"
 
 [node name="M3" type="Button" parent="SettingsPanel/LevelSelect/E2"]
@@ -224,7 +208,7 @@ layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "E2M8"
 script = ExtResource("3_4djrb")
-level_name = "e2_boss"
+level_name = "e2m8"
 
 [node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E2"]
 layout_mode = 2
@@ -232,6 +216,7 @@ size_flags_vertical = 10
 theme = ExtResource("3_30jf0")
 text = "E2MS"
 script = ExtResource("3_4djrb")
+level_name = "e2ms"
 is_secret = true
 
 [node name="E3" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
@@ -273,19 +258,21 @@ layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "E3M6"
 script = ExtResource("3_4djrb")
+level_name = "e3m6"
 
 [node name="M7" type="Button" parent="SettingsPanel/LevelSelect/E3"]
 layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "E3M7"
 script = ExtResource("3_4djrb")
+level_name = "e3m7"
 
 [node name="M8" type="Button" parent="SettingsPanel/LevelSelect/E3"]
 layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "E3M8"
 script = ExtResource("3_4djrb")
-level_name = "e3_boss"
+level_name = "e3m8"
 
 [node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E3"]
 layout_mode = 2
@@ -293,7 +280,7 @@ size_flags_vertical = 10
 theme = ExtResource("3_30jf0")
 text = "E3MS"
 script = ExtResource("3_4djrb")
-level_name = "e3_secret"
+level_name = "e3ms"
 is_secret = true
 
 [node name="E4" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
@@ -355,7 +342,7 @@ layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "E4M8 -- WELCOME"
 script = ExtResource("3_4djrb")
-level_name = "finale"
+level_name = "e4m8"
 
 [node name="MS" type="Button" parent="SettingsPanel/LevelSelect/E4"]
 layout_mode = 2
@@ -363,7 +350,7 @@ size_flags_vertical = 10
 theme = ExtResource("3_30jf0")
 text = "E4MS -- ECHOES"
 script = ExtResource("3_4djrb")
-level_name = "e4_secret"
+level_name = "e4ms"
 is_secret = true
 
 [node name="E5" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
@@ -378,7 +365,7 @@ theme = ExtResource("3_30jf0")
 text = "EPISODE FIVE
 ECHOES"
 script = ExtResource("3_4djrb")
-level_name = "e5"
+level_name = "e5ms"
 is_secret = true
 
 [node name="Other" type="VBoxContainer" parent="SettingsPanel/LevelSelect"]
@@ -390,35 +377,31 @@ layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "TEST LEVEL"
 script = ExtResource("3_4djrb")
-_scene = ExtResource("4_c2yb4")
-level_name = "t1"
-always_open = true
+level_name = "edm1"
+is_debug = true
 
 [node name="Unsorted1" type="Button" parent="SettingsPanel/LevelSelect/Other"]
 layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "U1"
 script = ExtResource("3_4djrb")
-_scene = ExtResource("9_tniqv")
-level_name = "u1"
-always_open = true
+level_name = "edu1"
+is_debug = true
 
 [node name="Unsorted2" type="Button" parent="SettingsPanel/LevelSelect/Other"]
 layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "U2"
 script = ExtResource("3_4djrb")
-_scene = ExtResource("10_ssjer")
-level_name = "u2"
-always_open = true
+level_name = "edu2"
+is_debug = true
 
 [node name="Unsorted3" type="Button" parent="SettingsPanel/LevelSelect/Other"]
 layout_mode = 2
 theme = ExtResource("3_30jf0")
 text = "U3"
 script = ExtResource("3_4djrb")
-_scene = ExtResource("11_740x7")
-level_name = "u3"
-always_open = true
+level_name = "edu3"
+is_debug = true
 
 [connection signal="pressed" from="Back" to="." method="_on_back_button_pressed"]

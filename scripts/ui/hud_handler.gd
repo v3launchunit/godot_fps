@@ -34,8 +34,8 @@ var alt_ammo_display: int = 0.0
 @onready var weapons: Array[Node] = $WeaponsContainer2D.get_children()
 @onready var crosshairs := find_child("Crosshairs") as TextureRect
 @onready var event_container := $EventContainer as VBoxContainer
-@onready var alert := $Alert as Label
-@onready var tooltip := $Tooltip as Label
+@onready var alert := find_child("Alert") as RichTextLabel
+@onready var tooltip := find_child("Tooltip") as RichTextLabel
 @onready var heat_flash := $HeatFlash as Control
 
 
@@ -122,7 +122,8 @@ func flash_with_sound(color: Color, sound: AudioStream) -> void:
 
 
 func rapid_flash(type: Status.DamageType, delta: float):
-	rapid_damage_player.playing = true
+	if not rapid_damage_player.playing:
+		rapid_damage_player.playing = true
 	rapid_damage_timer = 0.25
 	if type == Status.DamageType.FIRE:
 		heat_flash.visible = true
@@ -130,17 +131,21 @@ func rapid_flash(type: Status.DamageType, delta: float):
 
 
 func log_event(event_text: String) -> void:
-	var event: Label = event_item.instantiate() as Label
-	event.text = event_text
+	var event := event_item.instantiate() as RichTextLabel
+	event.text = event_text.to_upper()
 	event_container.add_child(event)
 	#event_container.move_child(event, 0)
 
 
 func set_alert(alert_text: String, duration: float = alert_duration) -> void:
-	alert.text = alert_text
+	alert.text = "[center]%s[/center]" % alert_text
 	alert.modulate.a = 1.0
 	alert.show()
 	alert_timer = duration
+
+
+func set_tooltip(tooltip_text: String) -> void:
+	tooltip.text = "[center]%s[/center]" % tooltip_text
 
 
 func _on_weapon_hud_connected(

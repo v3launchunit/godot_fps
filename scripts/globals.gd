@@ -122,8 +122,11 @@ var s_lang := Lang.ENGLISH
 
 var names := ConfigFile.new()
 var text := ConfigFile.new()
+var campaign := ConfigFile.new()
 var persistent := ConfigFile.new()
 var fun := randi_range(0, 999)
+
+var mouse_captured: bool = false
 
 
 func _init() -> void:
@@ -132,6 +135,8 @@ func _init() -> void:
 		printerr("could not load names.cfg")
 	if text.load("res://text/text_%s.cfg" % get_lang_name(s_lang)):
 		printerr("could not load text_%s.cfg")
+	if campaign.load("res://campaign.cfg"):
+		printerr("could not load campaign.cfg")
 	_setup_user()
 	_load_config()
 	persistent.load("user://saves/persistent.cfg")
@@ -222,6 +227,16 @@ func _on_settings_changed() -> void:
 	config.save("user://settings.cfg") # Write to file.
 
 
+func capture_mouse() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	mouse_captured = true
+
+
+func release_mouse() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	mouse_captured = false
+
+
 func save_game(to: String) -> void:
 	var scene := PackedScene.new()
 	var world = get_tree().current_scene
@@ -236,6 +251,10 @@ func save_game(to: String) -> void:
 	push_error(ResourceSaver.save(scene, to))
 
 
+func open_level_from_key(level_key: String) -> void:
+	open_level(ResourceLoader.load_threaded_get(get_level_path(level_key)))
+
+
 func open_level(level: PackedScene) -> void:
 	#var screen_image := get_tree().root.get_texture()
 	get_tree().change_scene_to_packed(level)
@@ -247,22 +266,33 @@ func open_level(level: PackedScene) -> void:
 
 
 func parse_names(section: String, key: String) -> Variant:
-	if section == "species":
-		return names.get_value("species_paths", names.get_value("species", key))
-	return names.get_value(section, key)
+	if section.ends_with("_paths") or section.ends_with("_aliases"):
+		return names.get_value(section, key)
+	else:
+		return names.get_value(
+				"%s_paths" % section, 
+				names.get_value("%s_aliases" % section, key, key)
+		)
 
 
 func parse_text(section: String, key: String) -> String:
 	#print(text.get_value(section, key))
-	return text.get_value(section, key, "MISSING: %s:%s" % [section, key]) as String
+	return text.get_value(section, key, "MISSING: %s/%s" % [section, key]) as String
 
 
+func get_level_path(level_key: String) -> String:
+	return campaign.get_value(level_key.substr(0,2), level_key.substr(2,2), "")
+
+
+# 0 = hidden
+# 1 = revealed
+# 2 = cleared
 func level_revealed(name: String) -> bool:
-	return persistent.get_value("progress", "%s_revealed" % name, false)
+	return persistent.get_value("progress", "%s_status" % name, 0) > 0
 
 
 func level_cleared(name: String) -> bool:
-	return persistent.get_value("progress", "%s_cleared" % name, false)
+	return persistent.get_value("progress", "%s_status" % name, 0) > 1
 
 
 func get_lut(name: String) -> ImageTexture3D:

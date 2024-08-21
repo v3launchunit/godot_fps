@@ -11,8 +11,8 @@
 [resource]
 script = ExtResource("3_8vw40")
 export_file = false
-trenchbroom_games_folder = "C:/Users/lengl/OneDrive/Desktop/Loose-Progams/TrenchBroom/games"
-game_name = "VolumetricsTest"
+trenchbroom_games_folder = ""
+game_name = "Qodot"
 icon = ExtResource("2_jej4n")
 map_formats = Array[Dictionary]([{
 "format": "Valve",

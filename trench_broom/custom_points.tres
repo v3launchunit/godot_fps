@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QodotFGDFile" load_steps=32 format=3 uid="uid://dqwqqvs3kuly8"]
 
 [ext_resource type="Resource" uid="uid://djh4xmcjq1gkp" path="res://trench_broom/entity_defs/point/deco_points.tres" id="1_5e18t"]
-[ext_resource type="Resource" uid="uid://dmuqa22l0pi3q" path="res://trench_broom/entity_defs/point/enemy_points.tres" id="1_5ikmf"]
+[ext_resource type="Resource" uid="uid://dmuqa22l0pi3q" path="res://entities/enemies/enemy_points.tres" id="1_5ikmf"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="1_8tcrl"]
 [ext_resource type="Resource" uid="uid://ccal45feqxrqc" path="res://trench_broom/entity_defs/point/pickups/ammo/akm_mag_pickup.tres" id="7_avmew"]
 [ext_resource type="Resource" uid="uid://cwlykad1jml6c" path="res://trench_broom/entity_defs/point/pickups/ammo/big_cell_pickup.tres" id="8_2wn6t"]
@@ -27,8 +27,8 @@
 [ext_resource type="Resource" uid="uid://ch671s1gv2bg2" path="res://trench_broom/entity_defs/point/pickups/keys/key_green.tres" id="27_obo8m"]
 [ext_resource type="Resource" uid="uid://81a8rrwv6130" path="res://trench_broom/entity_defs/point/pickups/keys/key_blue.tres" id="28_4027m"]
 [ext_resource type="Resource" uid="uid://jhjvqfjqlc70" path="res://trench_broom/entity_defs/point/ref_probe_point_class.tres" id="28_t303l"]
-[ext_resource type="Resource" uid="uid://cuakno3ky78hu" path="res://trench_broom/entity_defs/point/enemies/ambush_point_class.tres" id="29_jll6y"]
-[ext_resource type="Resource" uid="uid://36pc3505m2sm" path="res://trench_broom/entity_defs/point/enemies/lizard_hole_point_class.tres" id="29_mcxue"]
+[ext_resource type="Resource" uid="uid://cuakno3ky78hu" path="res://entities/enemies/ambush_point_class.tres" id="29_jll6y"]
+[ext_resource type="Resource" uid="uid://36pc3505m2sm" path="res://entities/enemies/locals/lizard/lizard_hole_point_class.tres" id="29_mcxue"]
 [ext_resource type="Resource" uid="uid://bhr8gru0x7ndf" path="res://trench_broom/entity_defs/point/interactable/lever_point_class.tres" id="29_nardm"]
 [ext_resource type="Resource" uid="uid://dr4o7aak0dba0" path="res://trench_broom/entity_defs/point/interactable/sequencer_point_class.tres" id="30_uqcsw"]
 
