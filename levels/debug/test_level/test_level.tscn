@@ -288,16 +288,16 @@ _surfaces = [{
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eebkc"]
 points = PackedVector3Array(-0.5, 2, -2, -0.5, -2, -2, 0.5, -2, -2, 0.5, 2, -2, -0.5, 2, 2, -0.5, -2, 2, 0.5, -2, 2, 0.5, 2, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdhfp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ga3g3"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_hjby2"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ippaw"]
 _surfaces = [{
 "aabb": AABB(-4, -1, -8, 8, 2, 16),
 "attribute_data": PackedByteArray("AACAQgAAgMEAAIBCAACAQQAAgMIAAIBBAACAwgAAgMEAAADDAACAwQAAAEMAAIDBAAAAQwAAgEEAAADDAACAQQAAAEMAAIDCAAAAQwAAgEIAAADDAACAQgAAAMMAAIDCAAAAwwAAgMIAAABDAACAwgAAAEMAAIBCAAAAwwAAgEIAAABDAACAwQAAAEMAAIBBAAAAwwAAgEEAAADDAACAwQAAgMIAAIDBAACAQgAAgMEAAIBCAACAQQAAgMIAAIBB"),
 "format": 34359742487,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcA"),
-"material": SubResource("StandardMaterial3D_bdhfp"),
+"material": SubResource("StandardMaterial3D_ga3g3"),
 "name": "__TB_empty",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -305,7 +305,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AACAwAAAgD8AAADBAACAwAAAgL8AAADBAACAQAAAgL8AAADBAACAQAAAgD8AAADBAACAwAAAgD8AAADBAACAwAAAgD8AAABBAACAwAAAgL8AAABBAACAwAAAgL8AAADBAACAQAAAgL8AAADBAACAwAAAgL8AAADBAACAwAAAgL8AAABBAACAQAAAgL8AAABBAACAQAAAgD8AAADBAACAQAAAgD8AAABBAACAwAAAgD8AAABBAACAwAAAgD8AAADBAACAQAAAgD8AAADBAACAQAAAgL8AAADBAACAQAAAgL8AAABBAACAQAAAgD8AAABBAACAwAAAgD8AAABBAACAQAAAgD8AAABBAACAQAAAgL8AAABBAACAwAAAgL8AAABB/////wAA/7//////AAD/v/////8AAP+//////wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD//////38AAP//////fwAA//////9/AAD//////3////9//7//f////3//v/9/////f/+//3////9//7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_cgqkq"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_3opah"]
 _surfaces = [{
 "aabb": AABB(-0.5, -2, -2, 1, 4, 4),
 "attribute_data": PackedByteArray("AACAvgAAIL8AAIC+AAAAvgAAwL4AAAC+AADAvgAAIL8AAGC/AAAgvwAAwL4AACC/AADAvgAAAL4AAGC/AAAAvgAAYD8AAMC+AABgPwAAgL4AAMA+AACAvgAAwD4AAMC+AABgvwAAwL4AAMC+AADAvgAAwL4AAIC+AABgvwAAgL4AAGA/AAAgvwAAYD8AAAC+AADAPgAAAL4AAMA+AAAgvwAAgD4AACC/AADAPgAAIL8AAMA+AAAAvgAAgD4AAAC+"),
@@ -320,7 +320,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAvwAAAEAAAADAAAAAvwAAAMAAAADAAAAAPwAAAMAAAADAAAAAPwAAAEAAAADAAAAAvwAAAEAAAADAAAAAvwAAAEAAAABAAAAAvwAAAMAAAABAAAAAvwAAAMAAAADAAAAAPwAAAMAAAADAAAAAvwAAAMAAAADAAAAAvwAAAMAAAABAAAAAPwAAAMAAAABAAAAAPwAAAEAAAADAAAAAPwAAAEAAAABAAAAAvwAAAEAAAABAAAAAvwAAAEAAAADAAAAAPwAAAEAAAADAAAAAPwAAAMAAAADAAAAAPwAAAMAAAABAAAAAPwAAAEAAAABAAAAAvwAAAEAAAABAAAAAPwAAAEAAAABAAAAAPwAAAMAAAABAAAAAvwAAAMAAAABA/////wAA/7//////AAD/v/////8AAP+//////wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD//////38AAP//////fwAA//////9/AAD//////3////9//7//f////3//v/9/////f/+//3////9//7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_tlk85"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_i7t02"]
 _surfaces = [{
 "aabb": AABB(-0.5, -2, -2, 1, 4, 4),
 "attribute_data": PackedByteArray("AACAvgAAIL8AAIC+AAAAvgAAwL4AAAC+AADAvgAAIL8AAIC+AAAgvwAAgD4AACC/AACAPgAAAL4AAIC+AAAAvgAAgD4AAMC+AACAPgAAgL4AAIC+AACAvgAAgL4AAMC+AACAvgAAwL4AAIA+AADAvgAAgD4AAIC+AACAvgAAgL4AAIA+AAAgvwAAgD4AAAC+AACAvgAAAL4AAIC+AAAgvwAAgD4AACC/AADAPgAAIL8AAMA+AAAAvgAAgD4AAAC+"),
@@ -335,7 +335,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAvwAAAEAAAADAAAAAvwAAAMAAAADAAAAAPwAAAMAAAADAAAAAPwAAAEAAAADAAAAAvwAAAEAAAADAAAAAvwAAAEAAAABAAAAAvwAAAMAAAABAAAAAvwAAAMAAAADAAAAAPwAAAMAAAADAAAAAvwAAAMAAAADAAAAAvwAAAMAAAABAAAAAPwAAAMAAAABAAAAAPwAAAEAAAADAAAAAPwAAAEAAAABAAAAAvwAAAEAAAABAAAAAvwAAAEAAAADAAAAAPwAAAEAAAADAAAAAPwAAAMAAAADAAAAAPwAAAMAAAABAAAAAPwAAAEAAAABAAAAAvwAAAEAAAABAAAAAPwAAAEAAAABAAAAAPwAAAMAAAABAAAAAvwAAAMAAAABA/////wAA/7//////AAD/v/////8AAP+//////wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD//////38AAP//////fwAA//////9/AAD//////3////9//7//f////3//v/9/////f/+//3////9//7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_2ebip"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_h4vag"]
 _surfaces = [{
 "aabb": AABB(-0.5, -2, -2, 1, 4, 4),
 "attribute_data": PackedByteArray("AACAvgAAIL8AAIC+AAAAvgAAwL4AAAC+AADAvgAAIL8AAMA+AAAgvwAAYD8AACC/AABgPwAAAL4AAMA+AAAAvgAAwL4AAMC+AADAvgAAgL4AAGC/AACAvgAAYL8AAMC+AADAPgAAwL4AAGA/AADAvgAAYD8AAIC+AADAPgAAgL4AAMC+AAAgvwAAwL4AAAC+AABgvwAAAL4AAGC/AAAgvwAAgD4AACC/AADAPgAAIL8AAMA+AAAAvgAAgD4AAAC+"),
@@ -1120,7 +1120,7 @@ properties = {
 [node name="entity_0_mesh_instance" type="MeshInstance3D" parent="ParticleCollider/NavMesh/QodotMap2/entity_0_worldspawn"]
 cast_shadow = 2
 gi_mode = 0
-mesh = SubResource("ArrayMesh_hjby2")
+mesh = SubResource("ArrayMesh_ippaw")
 
 [node name="entity_1_interactable_door" type="Node3D" parent="ParticleCollider/NavMesh/QodotMap2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, -5)
@@ -1133,7 +1133,7 @@ properties = {
 [node name="entity_1_mesh_instance" type="MeshInstance3D" parent="ParticleCollider/NavMesh/QodotMap2/entity_1_interactable_door"]
 cast_shadow = 2
 gi_mode = 0
-mesh = SubResource("ArrayMesh_cgqkq")
+mesh = SubResource("ArrayMesh_3opah")
 
 [node name="entity_2_interactable_door" type="Node3D" parent="ParticleCollider/NavMesh/QodotMap2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, 0)
@@ -1146,7 +1146,7 @@ properties = {
 [node name="entity_2_mesh_instance" type="MeshInstance3D" parent="ParticleCollider/NavMesh/QodotMap2/entity_2_interactable_door"]
 cast_shadow = 2
 gi_mode = 0
-mesh = SubResource("ArrayMesh_tlk85")
+mesh = SubResource("ArrayMesh_i7t02")
 
 [node name="entity_3_interactable_door" type="Node3D" parent="ParticleCollider/NavMesh/QodotMap2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, 5)
@@ -1159,7 +1159,7 @@ properties = {
 [node name="entity_3_mesh_instance" type="MeshInstance3D" parent="ParticleCollider/NavMesh/QodotMap2/entity_3_interactable_door"]
 cast_shadow = 2
 gi_mode = 0
-mesh = SubResource("ArrayMesh_2ebip")
+mesh = SubResource("ArrayMesh_h4vag")
 
 [node name="StreetLamp" parent="ParticleCollider/NavMesh" instance=ExtResource("25_wbmk3")]
 

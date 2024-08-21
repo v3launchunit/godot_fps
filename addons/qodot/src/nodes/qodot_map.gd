@@ -375,7 +375,7 @@ func build_materials() -> Dictionary:
 
 ## Collect entity definitions from [member entity_fgd], as a dictionary from Trenchbroom classnames to entity definitions
 func fetch_entity_definitions() -> Dictionary:
-	return entity_fgd.get_entity_definitions()
+	return entity_fgd.grab_entity_definitions()
 
 ## Hand the Qodot C# core the entity definitions
 func set_qodot_entity_definitions() -> void:

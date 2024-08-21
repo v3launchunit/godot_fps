@@ -62,44 +62,34 @@ func get_fgd_classes() -> Array:
 		res.append(cur_ent_def)
 	return res
 
-func get_entity_definitions() -> Dictionary:
+func grab_entity_definitions() -> Dictionary:
 	var res : Dictionary = {}
-
 	for base_fgd: QodotFGDFile in base_fgd_files:
-		var fgd_res = base_fgd.get_entity_definitions()
+		var fgd_res = base_fgd.grab_entity_definitions()
 		for key in fgd_res:
 			res[key] = fgd_res[key]
-
 	for ent in get_fgd_classes():
 		if ent is QodotFGDPointClass or ent is QodotFGDSolidClass:
 			var entity_def = ent.duplicate()
 			var meta_properties := {}
 			var class_properties := {}
 			var class_property_descriptions := {}
-
 			for base_class in _generate_base_class_list(entity_def):
 				for meta_property in base_class.meta_properties:
 					meta_properties[meta_property] = base_class.meta_properties[meta_property]
-
 				for class_property in base_class.class_properties:
 					class_properties[class_property] = base_class.class_properties[class_property]
-
 				for class_property_desc in base_class.class_property_descriptions:
 					class_property_descriptions[class_property_desc] = base_class.class_property_descriptions[class_property_desc]
-
 			for meta_property in entity_def.meta_properties:
 				meta_properties[meta_property] = entity_def.meta_properties[meta_property]
-
 			for class_property in entity_def.class_properties:
 				class_properties[class_property] = entity_def.class_properties[class_property]
-
 			for class_property_desc in entity_def.class_property_descriptions:
 				class_property_descriptions[class_property_desc] = entity_def.class_property_descriptions[class_property_desc]
-
 			entity_def.meta_properties = meta_properties
 			entity_def.class_properties = class_properties
 			entity_def.class_property_descriptions = class_property_descriptions
-
 			res[ent.classname] = entity_def
 	return res
 
