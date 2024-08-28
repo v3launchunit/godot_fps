@@ -20,7 +20,7 @@
 [ext_resource type="Material" uid="uid://c6o23twmkg77m" path="res://textures/key_metal_green.tres" id="15_twj34"]
 [ext_resource type="Material" uid="uid://dh6h4bfv6pod2" path="res://textures/key_metal_blue.tres" id="16_vwpau"]
 [ext_resource type="PackedScene" uid="uid://dxyhvyy821swt" path="res://pickups/weapons/hunting_rifle_pickup.tscn" id="17_r5nr2"]
-[ext_resource type="Script" path="res://trench_broom/entity_defs/brush/interactable/brush_door.gd" id="17_wh8jn"]
+[ext_resource type="Script" path="res://trench_broom/qodot_fgd/entity_defs/brush/interactable/brush_door.gd" id="17_wh8jn"]
 [ext_resource type="PackedScene" uid="uid://cbo6wxdi4eryp" path="res://entities/enemies/military/pinkerton/pinkerton.tscn" id="18_2pyi6"]
 [ext_resource type="PackedScene" uid="uid://bybrfm1881qnv" path="res://scenes/objects/lights/hanging_lamp.tscn" id="18_4t3np"]
 [ext_resource type="Material" uid="uid://qt3bjecsm0qb" path="res://textures/shutter_door.tres" id="18_t6qjl"]

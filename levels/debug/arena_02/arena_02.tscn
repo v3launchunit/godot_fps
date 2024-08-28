@@ -9,9 +9,9 @@
 [ext_resource type="Material" uid="uid://qt3bjecsm0qb" path="res://textures/shutter_door.tres" id="7_ycowt"]
 [ext_resource type="Material" uid="uid://cxyb8wsuh6ejk" path="res://textures/natural/log.tres" id="8_aypj8"]
 [ext_resource type="Script" path="res://entities/enemies/ambush.gd" id="9_efmtb"]
-[ext_resource type="Script" path="res://trench_broom/entity_defs/brush/area/area_trigger.gd" id="10_xupl2"]
+[ext_resource type="Script" path="res://trench_broom/qodot_fgd/entity_defs/brush/area/area_trigger.gd" id="10_xupl2"]
 [ext_resource type="Texture2D" uid="uid://cu58hb7h0r68v" path="res://effects/look_up_tables/1d/1d_lut_16_color.png" id="11_bmuth"]
-[ext_resource type="Script" path="res://trench_broom/entity_defs/brush/interactable/brush_door.gd" id="11_ma80w"]
+[ext_resource type="Script" path="res://trench_broom/qodot_fgd/entity_defs/brush/interactable/brush_door.gd" id="11_ma80w"]
 [ext_resource type="Texture2D" uid="uid://dybaimi1b3b85" path="res://effects/glow/lens_dirt/lens_dirt_0.png" id="12_2i51l"]
 [ext_resource type="Script" path="res://scripts/effects/env_settings_hook.gd" id="13_xdykh"]
 

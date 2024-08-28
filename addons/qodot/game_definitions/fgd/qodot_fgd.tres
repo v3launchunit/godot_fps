@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDFile" load_steps=20 format=3 uid="uid://c36hv0o6g0udo"]
 
-[ext_resource type="Resource" uid="uid://btfl67xo1ub7r" path="res://trench_broom/qodot_fgd.tres" id="1_5xjsl"]
+[ext_resource type="Resource" uid="uid://btfl67xo1ub7r" path="res://trench_broom/qodot_fgd/qodot_fgd.tres" id="1_5xjsl"]
 [ext_resource type="Resource" uid="uid://dgm276g7bw8q5" path="res://addons/qodot/game_definitions/fgd/base_classes/target_base_class.tres" id="1_7p7ey"]
 [ext_resource type="Resource" uid="uid://cw4s1hnxqetee" path="res://addons/qodot/game_definitions/fgd/solid_classes/func_group_solid_class.tres" id="2"]
 [ext_resource type="Resource" uid="uid://ccdjpf5j25aua" path="res://addons/qodot/game_definitions/fgd/base_classes/targetname_base_class.tres" id="2_sd1vq"]

@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://djru6dnc2lnrv" path="res://audio/streams/voices/pinkerton/detect/tresspasser_2.wav" id="4_mrwr3"]
 [ext_resource type="AnimationLibrary" uid="uid://mefh5huwoprg" path="res://entities/enemies/military/pinkerton/pinkerton_anims.res" id="5_bdfiq"]
 [ext_resource type="AudioStream" uid="uid://bty85t0ut8oro" path="res://audio/streams/voices/pinkerton/detect/tresspasser_3.wav" id="5_e5dnl"]
-[ext_resource type="PackedScene" uid="uid://sgwxe7sgcert" path="res://entities/enemies/military/pinkerton/pinkerton.glb" id="5_v6q8l"]
+[ext_resource type="PackedScene" uid="uid://sgwxe7sgcert" path="res://trench_broom/models/enemy_pinkerton.glb" id="5_v6q8l"]
 [ext_resource type="AudioStream" uid="uid://cd7ytakwg5sgo" path="res://audio/streams/voices/pinkerton/detect/halt_1.wav" id="6_1u6d5"]
 [ext_resource type="AudioStream" uid="uid://bw30qs54ire0" path="res://audio/streams/voices/pinkerton/detect/halt_2.wav" id="7_6sm5o"]
 [ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://pickups/armor/armor_bonus_pickup.tscn" id="7_d0her"]

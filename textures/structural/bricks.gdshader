@@ -26,18 +26,18 @@ void fragment() {
 	vec2 tile_uv = UV * uv_tile_scale;
 	vec4 color_a = texture(tile_albedo, tile_uv);
 	vec4 color_n = texture(tile_normals, tile_uv);
-	
+
 	vec2 detail_uv = UV * uv_detail_scale;
 	vec2 detail = texture(detail_mask, tile_uv).xy;
 	color_a *= mix(vec4(1.0), texture(detail_albedo, detail_uv), detail.x);
 	color_n = mix(color_n, texture(detail_normals, detail_uv), detail.y);
-	
+
 	vec3 flux_pos = texture(flux_map, tile_uv * uv_flux_scale).xyz;
 	if (abs(flux_pos.z - 1.0) < 0.01) {
 		vec4 color_flux = texture(flux_palette, texture(flux_noise, flux_pos.xy).xy);
 		color_a *= color_flux;
 	}
-	
+
 	ALBEDO = color_a.rgb;
 	NORMAL_MAP = color_n.rgb;
 	NORMAL_MAP_DEPTH = normal_scale;
