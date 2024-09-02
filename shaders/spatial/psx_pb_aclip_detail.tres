@@ -18,6 +18,8 @@ uniform float metallic = 0.0;
 uniform float specular = 0.5;
 uniform sampler2D metallic_tex : hint_default_white,filter_nearest,repeat_enable;
 uniform vec4 metallic_channel = vec4(1.0, 0.0, 0.0, 0.0);
+uniform vec3 emission_col : source_color = vec3(0.0);
+uniform sampler2D emission_tex : hint_default_black, filter_nearest, repeat_enable;
 uniform vec3 uv1_scale = vec3(1.0);
 uniform vec3 uv1_offset = vec3(0.0);
 uniform vec3 uv2_scale = vec3(1.0);

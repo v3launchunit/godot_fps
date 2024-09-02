@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="FuncGodotFGDPointClass" load_steps=3 format=3 uid="uid://d3pkeo7awx12u"]
 
-[ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://pickups/health/health_pack/health_pack_pickup.tscn" id="1_dg1u3"]
+[ext_resource type="PackedScene" uid="uid://b5msw3470sol" path="res://pickups/keys/keys/key_blue_pickup.tscn" id="1_3k77n"]
 [ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="2_1lnqm"]
 
 [resource]
 script = ExtResource("2_1lnqm")
-scene_file = ExtResource("1_dg1u3")
+scene_file = ExtResource("1_3k77n")
 apply_rotation_on_map_build = true
-classname = "health_pack_pickup"
+classname = "key_blue"
 description = ""
 func_godot_internal = false
 base_classes = Array[Resource]([])

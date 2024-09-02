@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="FuncGodotFGDPointClass" load_steps=3 format=3 uid="uid://paamtx4yvqhf"]
 
-[ext_resource type="PackedScene" uid="uid://b3n8ejiapfh8" path="res://pickups/ammo/large_cell_pickup.tscn" id="1_vujog"]
+[ext_resource type="PackedScene" uid="uid://wdnyjfhryl0i" path="res://pickups/ammo/big_iron_bullet_pickup.tscn" id="1_l3t5p"]
 [ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="2_8wq67"]
 
 [resource]
 script = ExtResource("2_8wq67")
-scene_file = ExtResource("1_vujog")
+scene_file = ExtResource("1_l3t5p")
 apply_rotation_on_map_build = true
-classname = "ammo_big_cell_pickup"
+classname = "ammo_big_iron_bullet_pickup"
 description = ""
 func_godot_internal = false
 base_classes = Array[Resource]([])

@@ -74,6 +74,10 @@ class_name Player extends CharacterBody3D
 
 @export var holding = null
 
+#var listening_for_cheats: bool = false
+var cam_y_offset: float = 0.0
+var crouch_speed: float = 15.0
+
 @onready var camera := find_child("PlayerCam") as WeaponManager
 @onready var camera_sync := find_child("PlayerSync") as Node3D
 @onready var flashlight := find_child("Flashlight") as SpotLight3D
@@ -156,6 +160,9 @@ func _process(_delta) -> void:
 			get_tree().change_scene_to_packed(q)
 
 	slam_wind_sys.visible = slamming
+	
+	#if Input.is_key_label_pressed(KEY_V):
+		#listening_for_cheats = true
 
 
 func _physics_process(delta: float) -> void:
@@ -190,6 +197,8 @@ func _physics_process(delta: float) -> void:
 	cam_recoil_pos = smoothstep(camera_sync.rotation.x + cam_recoil_vel * delta, 0, delta)
 	cam_recoil_vel = lerpf(cam_recoil_vel, 0, delta)
 	camera_sync.global_transform = global_transform
+	camera_sync.position.y += cam_y_offset
+	cam_y_offset = lerpf(cam_y_offset, 0.0, delta * crouch_speed)
 	camera_sync.rotation.x = cam_recoil_pos
 
 	velocity = velocity.clamp(-max_speed, max_speed)
@@ -246,6 +255,7 @@ func apply_knockback(amount: Vector3) -> void:
 func _toggle_crouch(to: bool) -> void:
 	if is_on_floor():
 		translate(Vector3(0, -1 if to else 1, 0))
+		cam_y_offset += 1 if to else -1
 		slide_vel = walk_vel
 	crouching = to
 	hitbox.disabled = to

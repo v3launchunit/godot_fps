@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="FuncGodotFGDPointClass" load_steps=3 format=3 uid="uid://d1g35e1i86odr"]
 
-[ext_resource type="PackedScene" uid="uid://joq438puropu" path="res://pickups/ammo/nail_box_pickup.tscn" id="1_i5mko"]
+[ext_resource type="PackedScene" uid="uid://bqors63m1ug05" path="res://pickups/ammo/nail_pickup.tscn" id="1_ddur4"]
 [ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="2_2kc1u"]
 
 [resource]
 script = ExtResource("2_2kc1u")
-scene_file = ExtResource("1_i5mko")
+scene_file = ExtResource("1_ddur4")
 apply_rotation_on_map_build = true
-classname = "ammo_nail_box_pickup"
+classname = "ammo_nail_pickup"
 description = ""
 func_godot_internal = false
 base_classes = Array[Resource]([])

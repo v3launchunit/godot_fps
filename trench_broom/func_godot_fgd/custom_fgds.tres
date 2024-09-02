@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=57 format=3 uid="uid://couiu1ixyhdhl"]
+[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=58 format=3 uid="uid://couiu1ixyhdhl"]
 
 [ext_resource type="Resource" uid="uid://63fs8fd3x07r" path="res://trench_broom/func_godot_fgd/base/enemy_base_class.tres" id="1_64a4o"]
 [ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="1_hr81g"]
@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://dr3mtn4mgi05u" path="res://trench_broom/func_godot_fgd/point/enemy/enemy_enforcer_point_class.tres" id="9_w3ym8"]
 [ext_resource type="Resource" uid="uid://bkhb7g2ty8hdv" path="res://trench_broom/func_godot_fgd/point/enemy/enemy_eyeball_point_class.tres" id="10_34vqq"]
 [ext_resource type="Resource" uid="uid://bx4ve40wsnl60" path="res://trench_broom/func_godot_fgd/point/enemy/enemy_lizard_point_class.tres" id="11_oy7ou"]
-[ext_resource type="Resource" uid="uid://cvxkyiwtkkmrb" path="res://trench_broom/func_godot_fgd/point/enemy/enemy_pinkerton_model_point_class.tres" id="12_lu4d4"]
+[ext_resource type="Resource" uid="uid://640ywd2wirny" path="res://trench_broom/func_godot_fgd/point/enemy/enemy_pinkerton_point_class.tres" id="12_26dbq"]
 [ext_resource type="Resource" uid="uid://b5o55ufd0yf4n" path="res://trench_broom/func_godot_fgd/point/enemy/enemy_rocketeer_point_class.tres" id="13_l1s4y"]
 [ext_resource type="Resource" uid="uid://dx2fbqe0t3ym5" path="res://trench_broom/func_godot_fgd/point/enemy/enemy_soldier_point_class.tres" id="14_uk77c"]
 [ext_resource type="Resource" uid="uid://e6k5k6k0nfso" path="res://trench_broom/func_godot_fgd/point/enemy/triggerable_ambush.tres" id="15_isdnk"]
@@ -56,6 +56,7 @@
 [ext_resource type="Resource" uid="uid://cgcgwkuvxo6s0" path="res://trench_broom/func_godot_fgd/solid/interactable_door_solid_class.tres" id="53_6204s"]
 [ext_resource type="Resource" uid="uid://b2rwaly40q0sm" path="res://trench_broom/func_godot_fgd/solid/wall_no_occlude_solid_class.tres" id="54_dv4kf"]
 [ext_resource type="Resource" uid="uid://dci6qgy1nbcwm" path="res://trench_broom/func_godot_fgd/point/enemy/enemy_plasma_droid_point_class.tres" id="55_5lt5x"]
+[ext_resource type="Resource" uid="uid://cyb0j886ldtha" path="res://trench_broom/func_godot_fgd/point/deco/deco_fake_window_point_class.tres" id="56_uduy5"]
 
 [resource]
 script = ExtResource("1_hr81g")
@@ -63,4 +64,4 @@ export_file = false
 target_map_editor = 1
 fgd_name = "FuncGodot"
 base_fgd_files = Array[Resource]([])
-entity_definitions = Array[Resource]([ExtResource("1_64a4o"), ExtResource("2_ajexr"), ExtResource("3_e82fy"), ExtResource("4_5rne3"), ExtResource("5_jenoa"), ExtResource("6_ogvqn"), ExtResource("7_i2ygj"), ExtResource("8_icd4s"), ExtResource("9_w3ym8"), ExtResource("10_34vqq"), ExtResource("11_oy7ou"), ExtResource("12_lu4d4"), ExtResource("13_l1s4y"), ExtResource("14_uk77c"), ExtResource("15_isdnk"), ExtResource("16_1bf4g"), ExtResource("17_p1d0s"), ExtResource("18_m7fbq"), ExtResource("19_401gc"), ExtResource("20_aq4ll"), ExtResource("21_e7fq4"), ExtResource("22_707mn"), ExtResource("23_50i0x"), ExtResource("24_m1qa7"), ExtResource("25_15iqa"), ExtResource("26_sg4gq"), ExtResource("27_y18xt"), ExtResource("28_701xx"), ExtResource("29_vnjhq"), ExtResource("30_dy7gj"), ExtResource("31_5ri82"), ExtResource("32_pqjlj"), ExtResource("33_b0aqj"), ExtResource("34_w0stk"), ExtResource("35_lugmq"), ExtResource("36_g2wwk"), ExtResource("37_o56qw"), ExtResource("38_fvud3"), ExtResource("39_x5lco"), ExtResource("40_sjcng"), ExtResource("41_6mrwv"), ExtResource("42_3ad1t"), ExtResource("43_iosn2"), ExtResource("44_15lob"), ExtResource("45_o0c0h"), ExtResource("46_1bpbh"), ExtResource("47_vy80l"), ExtResource("40_3ti3i"), ExtResource("49_sk043"), ExtResource("50_lwfai"), ExtResource("51_u4xrf"), ExtResource("52_bacru"), ExtResource("53_6204s"), ExtResource("54_dv4kf"), ExtResource("55_5lt5x"), ExtResource("18_m7fbq")])
+entity_definitions = Array[Resource]([ExtResource("1_64a4o"), ExtResource("2_ajexr"), ExtResource("3_e82fy"), ExtResource("4_5rne3"), ExtResource("5_jenoa"), ExtResource("6_ogvqn"), ExtResource("7_i2ygj"), ExtResource("8_icd4s"), ExtResource("9_w3ym8"), ExtResource("10_34vqq"), ExtResource("11_oy7ou"), ExtResource("12_26dbq"), ExtResource("13_l1s4y"), ExtResource("14_uk77c"), ExtResource("15_isdnk"), ExtResource("16_1bf4g"), ExtResource("17_p1d0s"), ExtResource("18_m7fbq"), ExtResource("19_401gc"), ExtResource("20_aq4ll"), ExtResource("21_e7fq4"), ExtResource("22_707mn"), ExtResource("23_50i0x"), ExtResource("24_m1qa7"), ExtResource("25_15iqa"), ExtResource("26_sg4gq"), ExtResource("27_y18xt"), ExtResource("28_701xx"), ExtResource("29_vnjhq"), ExtResource("30_dy7gj"), ExtResource("31_5ri82"), ExtResource("32_pqjlj"), ExtResource("33_b0aqj"), ExtResource("34_w0stk"), ExtResource("35_lugmq"), ExtResource("36_g2wwk"), ExtResource("37_o56qw"), ExtResource("38_fvud3"), ExtResource("39_x5lco"), ExtResource("40_sjcng"), ExtResource("41_6mrwv"), ExtResource("42_3ad1t"), ExtResource("43_iosn2"), ExtResource("44_15lob"), ExtResource("45_o0c0h"), ExtResource("46_1bpbh"), ExtResource("47_vy80l"), ExtResource("40_3ti3i"), ExtResource("49_sk043"), ExtResource("50_lwfai"), ExtResource("51_u4xrf"), ExtResource("52_bacru"), ExtResource("53_6204s"), ExtResource("54_dv4kf"), ExtResource("55_5lt5x"), ExtResource("56_uduy5")])

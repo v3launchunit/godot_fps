@@ -7,7 +7,7 @@
 script = ExtResource("2_31ps2")
 scene_file = ExtResource("1_ahdti")
 apply_rotation_on_map_build = true
-classname = "weapon_hunting_rifle"
+classname = "weapon_nailgun"
 description = ""
 func_godot_internal = false
 base_classes = Array[Resource]([])

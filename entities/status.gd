@@ -90,6 +90,8 @@ func rapid_damage(amount: float, delta: float) -> void:
 
 
 func rapid_damage_typed(amount: float, type: DamageType, delta: float) -> void:
+	if is_dead and type == DamageType.TOXIC:
+		return # toxic clouds shouldn't gib
 	health -= amount * delta * base_damage_factor * damage_multipliers[type]
 #	print(health)
 	#if damage_sys != null:

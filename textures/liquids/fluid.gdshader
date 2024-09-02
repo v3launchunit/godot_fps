@@ -19,10 +19,10 @@ uniform vec3 uv1_scale;
 uniform vec3 uv1_offset;
 uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
-uniform float scroll_speed : hint_range(0.0, 1.0, 0.01);
+uniform float scroll_speed : hint_range(0.0, 1.0, 0.001);
 
 uniform bool flowing;
-uniform float flow_speed : hint_range(0.0, 1.0, 0.01);
+uniform float flow_speed : hint_range(-1.0, 1.0, 0.001);
 
 uniform sampler2D texture_displacement : hint_default_white,filter_nearest_mipmap,repeat_enable;
 uniform float intensity : hint_range(0.0, 1.0, 0.01);

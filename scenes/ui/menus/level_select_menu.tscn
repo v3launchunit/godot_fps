@@ -169,7 +169,7 @@ script = ExtResource("3_4djrb")
 [node name="M2" type="Button" parent="SettingsPanel/LevelSelect/E2"]
 layout_mode = 2
 theme = ExtResource("3_30jf0")
-text = "E2M2"
+text = "E2M2 -- GOODBYE BLUE SKY"
 script = ExtResource("3_4djrb")
 level_name = "e2m2"
 

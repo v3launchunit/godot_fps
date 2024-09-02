@@ -65,8 +65,8 @@ void fragment() {
 frequency = 0.025
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_25xhu"]
-width = 128
-height = 128
+width = 256
+height = 256
 generate_mipmaps = false
 seamless = true
 seamless_blend_skirt = 0.225

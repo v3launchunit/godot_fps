@@ -261,9 +261,8 @@ func open_level(level: PackedScene) -> void:
 	#print(get_tree().current_scene)
 	#if get_tree().current_scene is Level and (get_tree().current_scene as Level).fun != -1:
 		#fun = (get_tree().current_scene as Level).fun
-	GameMenu.close_top_menu()
-	GameMenu.close_top_menu()
-
+	while GameMenu._active_menus > 0:
+		GameMenu.close_top_menu()
 
 func parse_names(section: String, key: String) -> Variant:
 	if section.ends_with("_paths") or section.ends_with("_aliases"):

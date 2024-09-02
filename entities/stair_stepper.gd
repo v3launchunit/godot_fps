@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	low_cast.target_position = (
 			body.velocity.normalized()
 			* body.transform.basis
@@ -30,8 +30,10 @@ func _physics_process(delta: float) -> void:
 			#and low_cast.get_collision_normal(0).angle_to(Vector3.UP) >= body.floor_max_angle
 	):
 		body.translate(Vector3(0.0, 0.55, 0.0))
+		if body is Player:
+			body.cam_y_offset -= 0.55
 		await get_tree().process_frame
-		body.apply_floor_snap()
+		#body.apply_floor_snap()
 		#body.translate(
 				#(snap_cast.global_position - snap_cast.get_collision_point(0))
 				#* Vector3.UP
