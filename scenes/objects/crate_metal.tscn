@@ -1,0 +1,102 @@
+[gd_scene load_steps=26 format=3 uid="uid://obwsnaybs6vi"]
+
+[ext_resource type="Texture2D" uid="uid://nvwephov841h" path="res://objects/crate/crate_heights.png" id="1_0gime"]
+[ext_resource type="Shader" path="res://shaders/spatial/psx_pb_aclip.gdshader" id="1_5qfev"]
+[ext_resource type="Texture2D" uid="uid://bs7borhko72ul" path="res://objects/crate/crate_normals.png" id="2_iswhg"]
+[ext_resource type="Texture2D" uid="uid://cvgf42nsiic4w" path="res://objects/deco/crate_metal/crate_metal_albedo.png" id="2_qkith"]
+[ext_resource type="Script" path="res://entities/status.gd" id="3_8eiwp"]
+[ext_resource type="Texture2D" uid="uid://bjj6o8lwityam" path="res://objects/deco/crate_metal/crate_metal_normals.png" id="3_gsimm"]
+[ext_resource type="PackedScene" uid="uid://boxs6v8ktotma" path="res://pickups/ammo/shell_box/shell_box_pickup.tscn" id="6_j7tdp"]
+[ext_resource type="PackedScene" uid="uid://cu70msbgu2ysm" path="res://scenes/effects/damage/metal_damage_sys.tscn" id="7_2yq6e"]
+[ext_resource type="PackedScene" uid="uid://d2oe770gjlkup" path="res://pickups/ammo/akm_mag_pickup.tscn" id="7_7ahh6"]
+[ext_resource type="PackedScene" uid="uid://bfctj0w1fkgwy" path="res://scenes/effects/gibs/metal_shards.tscn" id="8_h0fav"]
+[ext_resource type="PackedScene" uid="uid://coopugxxes4xq" path="res://pickups/ammo/grenade_pickup.tscn" id="8_vt0ck"]
+[ext_resource type="PackedScene" uid="uid://wdnyjfhryl0i" path="res://pickups/ammo/big_iron_bullet_pickup.tscn" id="9_r1r3h"]
+[ext_resource type="PackedScene" uid="uid://cxe1gjgdpac7q" path="res://pickups/health/health_pack/health_pack_pickup.tscn" id="10_udsg6"]
+[ext_resource type="PackedScene" uid="uid://b3n8ejiapfh8" path="res://pickups/ammo/large_cell_pickup.tscn" id="11_gc2ou"]
+[ext_resource type="PackedScene" uid="uid://b8i1fe0bwht3k" path="res://pickups/armor/armor_bonus_pickup.tscn" id="12_l5dvr"]
+[ext_resource type="PackedScene" uid="uid://joq438puropu" path="res://pickups/ammo/nail_box_pickup.tscn" id="13_cc7wi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_17vxe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4oeff"]
+render_priority = 0
+shader = ExtResource("1_5qfev")
+shader_parameter/albedo_col = Color(1, 1, 1, 1)
+shader_parameter/alpha_clip_threshold = 0.5
+shader_parameter/normal_scale = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic = 1.0
+shader_parameter/specular = 0.5
+shader_parameter/metallic_channel = Vector4(1, 0, 0, 0)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/is_terrain_mat = false
+shader_parameter/albedo_tex = ExtResource("2_qkith")
+shader_parameter/normal_tex = ExtResource("3_gsimm")
+
+[sub_resource type="Gradient" id="Gradient_6ane3"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.7)
+colors = PackedColorArray(0.27864, 0.171009, 0.0479525, 1, 0.341176, 0.207843, 0.0784314, 1, 0.44578, 0.298009, 0.150174, 1, 0.417342, 0.31476, 0.146004, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lictq"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_da70s"]
+width = 3
+height = 64
+seamless = true
+seamless_blend_skirt = 0.25
+color_ramp = SubResource("Gradient_6ane3")
+noise = SubResource("FastNoiseLite_lictq")
+
+[sub_resource type="Gradient" id="Gradient_3jaum"]
+offsets = PackedFloat32Array(0.5)
+colors = PackedColorArray(0.341176, 0.207843, 0.0784314, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_urdv3"]
+gradient = SubResource("Gradient_3jaum")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4s5fk"]
+albedo_texture = SubResource("NoiseTexture2D_da70s")
+roughness = 0.75
+normal_enabled = true
+normal_texture = ExtResource("2_iswhg")
+heightmap_enabled = true
+heightmap_scale = 3.25
+heightmap_texture = ExtResource("1_0gime")
+detail_enabled = true
+detail_mask = ExtResource("1_0gime")
+detail_albedo = SubResource("GradientTexture2D_urdv3")
+detail_normal = ExtResource("2_iswhg")
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_w78nq"]
+material = SubResource("StandardMaterial3D_4s5fk")
+
+[node name="Crate" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_17vxe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
+material_override = SubResource("ShaderMaterial_4oeff")
+mesh = SubResource("BoxMesh_w78nq")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+process_mode = 4
+visible = false
+radius = 1.0
+
+[node name="Status" type="Node" parent="."]
+script = ExtResource("3_8eiwp")
+max_health = 2500.0
+gib_threshold = 0.0
+damage_multipliers = Array[float]([1.0, 1.0, 0.5, 0.0, 1.0])
+damage_sys = ExtResource("7_2yq6e")
+gibs = ExtResource("8_h0fav")
+loot = Array[PackedScene]([ExtResource("6_j7tdp"), ExtResource("7_7ahh6"), ExtResource("8_vt0ck"), ExtResource("9_r1r3h"), ExtResource("10_udsg6"), ExtResource("11_gc2ou"), ExtResource("12_l5dvr"), ExtResource("13_cc7wi")])

@@ -51,6 +51,11 @@ const C_FLARE_RE_EVAL_DISTANCE_SQUARED: float = 4.0
 const C_HITSCAN_MIN_LENGTH: float = 0.125
 const C_PLAYER_MIN_HEIGHT: float = -1000.0
 
+## The maximum amount of time an enemy can spend between wanderings.
+const C_MAX_WANDER_IDLE_TIME : float = 1.0 
+## The maximum amount of time an enemy can spend wandering at a time.
+const C_MAX_WANDER_MOVE_TIME : float = 1.0
+
 const C_LIZARD_HOLE_POINT := Vector3(0.0, -1000.0, 0.0)
 
 ## The filepath that user quicksaves live in.
@@ -184,6 +189,8 @@ func _load_config() -> void:
 			s_cross_glow_enabled)
 	s_volumetric_fog_enabled = config.get_value("video", "volumetric_fog_enabled",
 			s_volumetric_fog_enabled)
+	s_palette_compress_enabled = config.get_value("video", "palette_compress_enabled",
+			s_palette_compress_enabled)
 
 	s_master_volume = config.get_value("audio", "master_volume", s_master_volume)
 	s_sound_volume = config.get_value("audio", "sound_volume", s_sound_volume)
@@ -217,6 +224,7 @@ func _on_settings_changed() -> void:
 	config.set_value("video", "glow_enabled", s_glow_enabled)
 	config.set_value("video", "cross_glow_enabled", s_cross_glow_enabled)
 	config.set_value("video", "volumetric_fog_enabled", s_volumetric_fog_enabled)
+	config.set_value("video", "palette_compress_enabled", s_palette_compress_enabled)
 
 	config.set_value("audio", "master_volume", s_master_volume)
 	config.set_value("audio", "sound_volume", s_sound_volume)

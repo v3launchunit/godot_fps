@@ -30,7 +30,7 @@
 [ext_resource type="Material" uid="uid://c4hv23ws8v5oc" path="res://materials/terrain/trench_broom_std/bricks_brown.tres" id="22_uuvd4"]
 [ext_resource type="PackedScene" uid="uid://comxjm2yao5ny" path="res://entities/enemies/military/enforcer/enforcer.tscn" id="23_ojrk5"]
 [ext_resource type="Script" path="res://scripts/objects/button.gd" id="24_1sda0"]
-[ext_resource type="AudioStream" uid="uid://ckncf1p1v8lhi" path="res://audio/streams/effects/metal_door_move.wav" id="25_o0cco"]
+[ext_resource type="AudioStream" uid="uid://ckncf1p1v8lhi" path="res://audio/streams/effects/door_move_metal.wav" id="25_o0cco"]
 [ext_resource type="PackedScene" uid="uid://coe0vc85neefj" path="res://entities/enemies/locals/canary/canary.tscn" id="26_c57je"]
 [ext_resource type="PackedScene" uid="uid://cbo6wxdi4eryp" path="res://entities/enemies/military/pinkerton/pinkerton.tscn" id="27_gc3pa"]
 [ext_resource type="PackedScene" uid="uid://b5msw3470sol" path="res://pickups/keys/keys/key_blue_pickup.tscn" id="27_k2ohw"]

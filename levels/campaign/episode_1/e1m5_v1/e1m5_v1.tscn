@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://d62xcu27rha1" path="res://pickups/keys/keys/key_red_pickup.tscn" id="21_ocn41"]
 [ext_resource type="Script" path="res://scripts/objects/button.gd" id="22_qyvr8"]
 [ext_resource type="Script" path="res://entities/enemies/ambush.gd" id="23_4m72k"]
-[ext_resource type="AudioStream" uid="uid://ckncf1p1v8lhi" path="res://audio/streams/effects/metal_door_move.wav" id="23_jl2p8"]
+[ext_resource type="AudioStream" uid="uid://ckncf1p1v8lhi" path="res://audio/streams/effects/door_move_metal.wav" id="23_jl2p8"]
 [ext_resource type="PackedScene" uid="uid://cbo6wxdi4eryp" path="res://entities/enemies/military/pinkerton/pinkerton.tscn" id="24_drp33"]
 [ext_resource type="PackedScene" uid="uid://comxjm2yao5ny" path="res://entities/enemies/military/enforcer/enforcer.tscn" id="24_ytnxh"]
 [ext_resource type="PackedScene" uid="uid://ce2yor24rivr3" path="res://pickups/weapons/nailgun_pickup.tscn" id="25_goiis"]

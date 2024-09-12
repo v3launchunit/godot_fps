@@ -12,6 +12,12 @@ enum DamageType {
 	ELECTRIC,
 }
 
+enum GibMode {
+	BLOCK_GIB,
+	ALLOW_GIB,
+	FORCE_GIB
+}
+
 
 ## The amount of health this node will have when initialized, and the maximum
 ## amount of health it can be healed to (besides bonus health).
@@ -21,6 +27,9 @@ enum DamageType {
 @export var gib_threshold: float = 50.0
 @export var base_damage_factor: float = 1.0
 @export var damage_multipliers: Array[float] = [1.0, 1.0, 1.0, 1.0, 1.0]
+@export var burn_prone: bool = false ## if set to true, any attack will ignite
+@export var burn_rate: float = 4.0
+@export var burn_sys: GPUParticles3D
 ## The scene that instantiates whenever this node takes damage.
 @export var damage_sys: PackedScene
 ## The scene that instantiates if this node's parent is reduced to gibs.
@@ -32,6 +41,7 @@ enum DamageType {
 ## How far up the tree this node should affect its parents.
 @export var ripple_distance: int = 1
 
+@export_group("Scoring")
 @export var is_enemy: bool = false
 @export_range(0, 10, 1, "or_greater", "or_less") var score: int = 0
 
@@ -39,13 +49,18 @@ enum DamageType {
 @export var health: float
 @export var is_dead: bool = false
 @export var target_parent: Node
+@export var burning: bool = false:
+	set(to):
+		if burn_sys != null:
+			burning = to
+			burn_sys.emitting = to
 #var overheal_decay_rate: float = 1 # hp/second
 
 #@onready var gibs_scene: PackedScene = load(gibs)
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	health = max_health
 	target_parent = get_parent()
 	for i in (ripple_distance - 1):
@@ -55,55 +70,65 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+func _physics_process(delta: float) -> void:
+	if burning:
+		rapid_damage_typed(burn_rate, DamageType.FIRE, delta, GibMode.FORCE_GIB)
 #	if health > max_health:
 #		health -= overheal_decay_rate * delta
 #		if health < max_health:
 #			health = max_health
 
 
-func damage(amount: float) -> float:
-	return damage_typed(amount, DamageType.GENERIC)
+func damage(amount: float, gib_mode: GibMode = GibMode.ALLOW_GIB) -> float:
+	return damage_typed(amount, DamageType.GENERIC, gib_mode)
 
 
-func damage_typed(amount: float, type: DamageType) -> float:
+func damage_typed(amount: float, type: DamageType, gib_mode: GibMode = GibMode.ALLOW_GIB) -> float:
+	if is_dead and (type == DamageType.TOXIC or gib_mode == GibMode.BLOCK_GIB):
+		return 0 # toxic clouds shouldn't gib
 	health -= amount * base_damage_factor * damage_multipliers[type]
+	if type == DamageType.FIRE or burn_prone:
+		burning = true
 #	print(health)
 	if damage_sys != null:
 		var instance := damage_sys.instantiate()
 		target_parent.add_child(instance)
-	if health <= -gib_threshold:
+	if health <= -gib_threshold and gib_mode != GibMode.BLOCK_GIB:
 		gibify()
 		return 0
 	if is_dead:
 		return 0 # corpses cannot stop piercers
 	if health <= 0:
 		kill()
+		if gib_mode == GibMode.FORCE_GIB:
+			gibify()
 		return maxf(amount + health, 0) # health will be negative
 	injured.emit()
 
 	return amount # return value is amount of damage recieved, for piercers
 
 
-func rapid_damage(amount: float, delta: float) -> void:
-	rapid_damage_typed(amount, DamageType.GENERIC, delta)
+func rapid_damage(amount: float, delta: float, gib_mode: GibMode = GibMode.ALLOW_GIB) -> void:
+	rapid_damage_typed(amount, DamageType.GENERIC, delta, gib_mode)
 
 
-func rapid_damage_typed(amount: float, type: DamageType, delta: float) -> void:
-	if is_dead and type == DamageType.TOXIC:
+func rapid_damage_typed(amount: float, type: DamageType, delta: float, gib_mode: GibMode = GibMode.ALLOW_GIB) -> void:
+	if is_dead and (type == DamageType.TOXIC or gib_mode == GibMode.BLOCK_GIB):
 		return # toxic clouds shouldn't gib
 	health -= amount * delta * base_damage_factor * damage_multipliers[type]
 #	print(health)
 	#if damage_sys != null:
 		#var instance := damage_sys.instantiate()
 		#target_parent.add_child(instance)
-	if health <= -gib_threshold:
+	if health <= -gib_threshold and gib_mode != GibMode.BLOCK_GIB:
 		gibify()
 		return
 	if is_dead:
 		return
 	if health <= 0:
 		kill()
+		if gib_mode == GibMode.FORCE_GIB:
+			gibify()
 		return
 	injured.emit()
 

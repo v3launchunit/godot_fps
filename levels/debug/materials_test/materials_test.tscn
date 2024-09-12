@@ -35,7 +35,7 @@
 [ext_resource type="Material" uid="uid://cb4c2yxg51cwb" path="res://textures/natural/rock.tres" id="27_ojp5r"]
 [ext_resource type="Material" uid="uid://8nrdnhdxtp0t" path="res://textures/structural/metal_grate.tres" id="29_3pv30"]
 [ext_resource type="Material" uid="uid://bqvg2s1888yrr" path="res://textures/structural/bricks_stone_nomortar.tres" id="29_50ugv"]
-[ext_resource type="Texture2D" uid="uid://b2jnqk7ssccf8" path="res://textures/structural/metal_bars.png" id="35_msqcu"]
+[ext_resource type="Texture2D" path="res://textures/structural/metal_bars.png" id="35_msqcu"]
 [ext_resource type="Material" uid="uid://qt3bjecsm0qb" path="res://textures/shutter_door.tres" id="37_8pu73"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aeadg"]

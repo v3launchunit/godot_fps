@@ -335,3 +335,4 @@ func openable() -> bool:
 			)
 			and properties["required_key"] != -2
 	)
+"res://trench_broom/func_godot_fgd/solid/func_door_solid_class.tres"

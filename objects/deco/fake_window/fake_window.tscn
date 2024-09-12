@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cte8nigqju6x4"]
+[gd_scene load_steps=11 format=3 uid="uid://cte8nigqju6x4"]
 
 [ext_resource type="Texture2D" uid="uid://dq8085wgtcel5" path="res://objects/deco/fake_window/fake_window_emissions.png" id="1_c7uu4"]
 [ext_resource type="Script" path="res://objects/deco/fake_window/fake_window.gd" id="1_wq8c4"]
@@ -14,6 +14,7 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_sc
 
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_nearest, repeat_enable;
+uniform sampler2D texture_albedo_b : source_color, filter_nearest, repeat_enable;
 uniform float point_size : hint_range(0.1, 128.0, 0.1);
 
 uniform float roughness : hint_range(0.0, 1.0);
@@ -36,15 +37,19 @@ uniform vec3 uv1_offset;
 uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
 
+#include \"res://shaders/includes/psx_inc.gdshaderinc\"
+
 void vertex() {
 	UV = UV * uv1_scale.xy + uv1_offset.xy;
+	POSITION = map_affine(snap_vertex(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
 }
 
 void fragment() {
 	vec2 base_uv = UV;
 
 	vec4 albedo_tex = texture(texture_albedo, base_uv);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	vec4 albedo_b_tex = texture(texture_albedo_b, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb * albedo_b_tex.rgb;
 
 	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
 	METALLIC = metallic_tex * metallic;
@@ -65,12 +70,28 @@ void fragment() {
 }
 "
 
+[sub_resource type="Gradient" id="Gradient_ehcww"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.375, 0.625)
+colors = PackedColorArray(0.9, 0.9, 0.9, 1, 0.95, 0.95, 0.95, 1, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_buxic"]
+frequency = 0.0915
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xrmkr"]
+width = 128
+height = 128
+color_ramp = SubResource("Gradient_ehcww")
+noise = SubResource("FastNoiseLite_buxic")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lqv7k"]
 render_priority = 0
 shader = SubResource("Shader_35c4e")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/point_size = 1.0
-shader_parameter/roughness = 0.75
+shader_parameter/roughness = 0.25
 shader_parameter/metallic_texture_channel = null
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
@@ -81,6 +102,7 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/texture_albedo = ExtResource("2_awe7g")
+shader_parameter/texture_albedo_b = SubResource("NoiseTexture2D_xrmkr")
 shader_parameter/texture_emission = ExtResource("1_c7uu4")
 shader_parameter/texture_normal = ExtResource("4_258ra")
 
@@ -89,6 +111,7 @@ script = ExtResource("1_wq8c4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.01)
+layers = 8
 material_override = SubResource("ShaderMaterial_lqv7k")
 cast_shadow = 0
 instance_shader_parameters/emission = Color(1, 1, 1, 1)

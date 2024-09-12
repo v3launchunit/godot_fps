@@ -122,6 +122,7 @@ enum State {
 @export var current_dest_score: float
 @export var wander_idling: bool = false
 @export var wander_idle_timer: float = 0.0
+@export var wander_dir: float = 0.0
 @export var jumping: bool = false
 @export var walk_vel := Vector3.ZERO # Walking velocity
 @export var safe_walk_vel := Vector3.ZERO
@@ -132,6 +133,7 @@ enum State {
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var sees_player: bool = false
 
 @onready var nav_agent: NavigationAgent3D = find_child("NavigationAgent3D")
 @onready var nav_region := get_tree().current_scene.find_child(
@@ -323,6 +325,18 @@ func change_state(to: State):
 	state_timer = 0
 
 
+func hear_target(target: Node3D) -> void:
+	var space_state = get_world_3d().direct_space_state
+	var query := PhysicsRayQueryParameters3D.create(
+			global_position,
+			target.global_position,
+			collision_mask,
+	)
+	var hit: Dictionary = space_state.intersect_ray(query)
+	if (hit and hit["collider"] == target):
+		detect_target(target)
+
+
 func detect_target(target: Node3D) -> void:
 	if not (
 			current_state == State.AMBUSHING
@@ -338,33 +352,36 @@ func detect_target(target: Node3D) -> void:
 
 
 func _wander(delta) -> void:
-	if wander_idle_timer < Globals.C_EPSILON:
-		if wander_idling:
+	if wander_idling:
+		if wander_idle_timer < Globals.C_EPSILON:
 			wander_idling = false
-			current_destination = NavigationServer3D.region_get_random_point(
-					nav_region.get_rid(),
-					nav_agent.navigation_layers,
-					false
-			)
-			nav_agent.target_position = current_destination
+			#current_destination = NavigationServer3D.region_get_random_point(
+					#nav_region.get_rid(),
+					#nav_agent.navigation_layers,
+					#false
+			#)
+			#nav_agent.target_position = current_destination
+			wander_dir = randf_range(0, 2 * PI)
 			state_machine.travel("moving", true)
-		var next_pos: Vector3 = nav_agent.get_next_path_position()
-		sight_line.look_at(next_pos)
+			wander_idle_timer = randf_range(0.0, Globals.C_MAX_WANDER_MOVE_TIME)
+		#var next_pos: Vector3 = nav_agent.get_next_path_position()
+		#sight_line.look_at(next_pos)
+	else:
 		global_rotation.y = lerp_angle(
 				global_rotation.y,
-				sight_line.global_rotation.y,
+				wander_dir,
 				delta * turning_speed
 		)
 		walk_vel = walk_vel.move_toward(-speed * transform.basis.z, acceleration * delta)
-		if nav_agent.is_target_reached() or randi_range(0, 60) == 0:
+		if is_on_wall() or wander_idle_timer < Globals.C_EPSILON:
 			state_machine.travel("idle", true)
-			wander_idle_timer = randf_range(0.0, 15.0)
-		if nav_agent.avoidance_enabled:
+			wander_idling = true
+			wander_idle_timer = randf_range(0.0, Globals.C_MAX_WANDER_IDLE_TIME)
+		elif nav_agent.avoidance_enabled:
 			nav_agent.set_velocity(walk_vel)
 		else:
 			velocity += walk_vel
-	else:
-		wander_idle_timer -= delta
+	wander_idle_timer -= delta
 
 
 func _scan(_delta) -> void:
@@ -380,6 +397,8 @@ func _scan(_delta) -> void:
 	#for prey in hunts_species:
 		#target_pool.append_array(get_tree().get_nodes_in_group(prey))
 	var target: Node3D = get_tree().get_first_node_in_group("players") as Node3D
+	if target == null:
+		return
 	if global_basis.z.normalized().dot((global_position - target.global_position).normalized()) < 0.5:
 		return
 	var space_state = get_world_3d().direct_space_state

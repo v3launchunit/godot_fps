@@ -44,7 +44,7 @@ func _process(_delta: float) -> void:
 #			health = max_health
 
 
-func damage_typed(amount: float, type: DamageType) -> float: # returns damage dealt, for piercers
+func damage_typed(amount: float, type: DamageType, gib_mode: GibMode = GibMode.ALLOW_GIB) -> float: # returns damage dealt, for piercers
 	if is_dead:
 		return 0 # corpses cannot stop piercers
 	hud.flash(Color(1, 0, 0, clamp(amount / 10, 0.1, 1)))
@@ -62,7 +62,7 @@ func damage_typed(amount: float, type: DamageType) -> float: # returns damage de
 	return amount # return value is amount of damage recieved, for piercers
 
 
-func rapid_damage_typed(amount: float, type: DamageType, delta: float) -> void:
+func rapid_damage_typed(amount: float, type: DamageType, delta: float, gib_mode: GibMode = GibMode.ALLOW_GIB) -> void:
 	health -= amount * delta * base_damage_factor * damage_multipliers[type] * (1 - armor_absorption)
 	armor  -= amount * delta * base_damage_factor * damage_multipliers[type] * armor_absorption
 	hud.rapid_flash(type, delta)

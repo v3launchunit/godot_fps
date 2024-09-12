@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="2_byp1m"]
 [ext_resource type="CompressedTexture3D" uid="uid://b461pbyhcxcu6" path="res://levels/campaign/episode_1/e1m3_v2/e1m3_v2.GPUParticlesCollisionSDF3D_data.exr" id="2_dhvfv"]
 [ext_resource type="Material" uid="uid://boykh807if2ua" path="res://textures/pathways/street.tres" id="3_ys71p"]
-[ext_resource type="Material" uid="uid://qt3bjecsm0qb" path="res://materials/terrain/trench_broom_std/shutter_door.tres" id="6_45dyc"]
+[ext_resource type="Material" uid="uid://qt3bjecsm0qb" path="res://textures/shutter_door.tres" id="6_45dyc"]
 [ext_resource type="Material" uid="uid://bdhdwkh72dfij" path="res://materials/terrain/trench_broom_std/bricks.tres" id="8_cojf1"]
 [ext_resource type="Material" uid="uid://dqemvrb4pcd2g" path="res://textures/structural/concrete.tres" id="8_mgsgh"]
 [ext_resource type="PackedScene" uid="uid://do61x5km3wthk" path="res://entities/player/player.tscn" id="10_mxcux"]

@@ -44,7 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://7e6nf0ho2ltr" path="res://scenes/objects/teleporter.tscn" id="36_16st2"]
 [ext_resource type="PackedScene" uid="uid://d62xcu27rha1" path="res://pickups/keys/keys/key_red_pickup.tscn" id="37_6eohl"]
 [ext_resource type="Texture2D" uid="uid://hk0k2coukjwc" path="res://effects/halos/halo_tex.tres" id="37_v46es"]
-[ext_resource type="AudioStream" uid="uid://ckncf1p1v8lhi" path="res://audio/streams/effects/metal_door_move.wav" id="38_8fvnb"]
+[ext_resource type="AudioStream" uid="uid://ckncf1p1v8lhi" path="res://audio/streams/effects/door_move_metal.wav" id="38_8fvnb"]
 [ext_resource type="PackedScene" uid="uid://bt72j2kw0f6dm" path="res://scenes/objects/buttons/lever.tscn" id="39_oi315"]
 [ext_resource type="PackedScene" uid="uid://erys0skiq3pe" path="res://scenes/objects/lights/floodlight.tscn" id="40_dil3s"]
 [ext_resource type="PackedScene" uid="uid://bu80vkpoj8bpq" path="res://pickups/keys/keys/key_green_pickup.tscn" id="42_72qlo"]

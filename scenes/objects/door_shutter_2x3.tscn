@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/objects/button.gd" id="1_53hhf"]
 [ext_resource type="Material" uid="uid://b33py6y5v6idy" path="res://materials/objects/door_shutter_2x3.tres" id="2_asvw4"]
-[ext_resource type="AudioStream" uid="uid://ckncf1p1v8lhi" path="res://audio/streams/effects/metal_door_move.wav" id="3_2p1oe"]
+[ext_resource type="AudioStream" uid="uid://ckncf1p1v8lhi" path="res://audio/streams/effects/door_move_metal.wav" id="3_2p1oe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qpqf2"]
 size = Vector3(2, 3, 2)

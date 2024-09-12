@@ -84,10 +84,8 @@ func _physics_process(_delta: float) -> void:
 			mesh.scale.z = result.position.distance_to(global_position)
 			mesh.look_at(global_position)
 		
-		#if result.collider.name == "Shield":
-			#print("hit shield")
-			#exceptions.append(result.collider)
-			#handled = false
+		#if result.collider is RigidBody3D:
+			#(result.collider as RigidBody3D).apply_impulse(global_basis.z, result.position)
 		
 		if result.collider.has_node("Status"):
 			var status: Status = result.collider.find_child("Status")

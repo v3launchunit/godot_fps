@@ -370,25 +370,27 @@ theme = ExtResource("1_8amvi")
 button_pressed = true
 text = "Volumetric Fog"
 
-[node name="Palette" type="HFlowContainer" parent="."]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="PaletteCheck" type="CheckButton" parent="Palette"]
+[node name="PaletteCheck" type="CheckButton" parent="Effects"]
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "Toggles volumetric fog."
 theme = ExtResource("1_8amvi")
 button_pressed = true
-text = "Palette"
+text = "Retro Palette"
+
+[node name="Palette" type="HFlowContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
 
 [node name="PaletteSelect" type="OptionButton" parent="Palette"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("1_8amvi")
 
 [node name="ColorDepth" type="Control" parent="Palette"]
+visible = false
 custom_minimum_size = Vector2(256, 68)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -452,5 +454,5 @@ uppercase = true
 [connection signal="toggled" from="Effects/BloomCheck" to="." method="_on_bloom_check_toggled"]
 [connection signal="toggled" from="Effects/CBloomCheck" to="." method="_on_c_bloom_check_toggled"]
 [connection signal="toggled" from="Effects/VolumetricFogCheck" to="." method="_on_volumetric_fog_check_toggled"]
-[connection signal="toggled" from="Palette/PaletteCheck" to="." method="_on_palette_check_toggled"]
+[connection signal="toggled" from="Effects/PaletteCheck" to="." method="_on_palette_check_toggled"]
 [connection signal="value_changed" from="Palette/ColorDepth/DepthSlider" to="." method="_on_depth_slider_value_changed"]

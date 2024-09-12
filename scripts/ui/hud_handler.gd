@@ -132,7 +132,7 @@ func rapid_flash(type: Status.DamageType, delta: float):
 
 func log_event(event_text: String) -> void:
 	var event := event_item.instantiate() as RichTextLabel
-	event.text = event_text.to_upper()
+	event.text = event_text
 	event_container.add_child(event)
 	#event_container.move_child(event, 0)
 

@@ -48,7 +48,7 @@ shader = SubResource("Shader_vhu6h")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.25
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 1.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
@@ -90,7 +90,6 @@ size = Vector3(0.25, 0.125, 0.5)
 random_pitch = 1.15
 streams_count = 1
 stream_0/stream = ExtResource("2_8mfh6")
-stream_0/weight = 1.0
 
 [node name="MetalShards" type="GPUParticles3D"]
 layers = 2

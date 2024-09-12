@@ -97,6 +97,7 @@ transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, 0, 0)
 layers = 2
 light_color = Color(1, 0.501961, 0, 1)
 shadow_enabled = true
+distance_fade_enabled = true
 
 [node name="LensFlare" type="MeshInstance3D" parent="Area3D/OmniLight3D"]
 layers = 2

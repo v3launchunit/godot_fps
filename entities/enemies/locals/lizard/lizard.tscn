@@ -775,7 +775,7 @@ bones/28/rotation = Quaternion(-0.500011, 0, 0, 0.866019)
 bones/29/rotation = Quaternion(-0.258969, 0, 0, 0.965886)
 
 [node name="Head" type="BoneAttachment3D" parent="lizard/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.966783, -0.255596, 0.000816907, -0.0629508, -0.241205, -0.968431, 0.247724, 0.936211, -0.249283, 8.19804e-10, -0.645026, 3.88974)
+transform = Transform3D(0.998937, 0.0459692, 0.0035428, 0.0153032, -0.258098, -0.965998, -0.0434918, 0.965025, -0.258527, 5.12519e-08, -0.609347, 3.88558)
 bone_name = "Head"
 bone_idx = 6
 
@@ -783,7 +783,7 @@ bone_idx = 6
 transform = Transform3D(1, -2.81099e-15, 0, 0, 7.54979e-08, 1, 3.44266e-21, -1, 7.54979e-08, 0, 0, 0)
 
 [node name="JawLeft" parent="lizard/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.000816907, 0.966783, -0.255596, -0.968431, -0.0629508, -0.241205, -0.249283, 0.247724, 0.936211, -0.127798, -0.765628, 4.35784)
+transform = Transform3D(0.0035428, 0.998937, 0.0459692, -0.965998, 0.0153032, -0.258098, -0.258527, -0.0434918, 0.965025, 0.0229847, -0.738396, 4.3681)
 
 [node name="JawLeft" parent="lizard/Armature/Skeleton3D/JawLeft" index="0"]
 transform = Transform3D(1, -1.42108e-14, 0, -1.25528e-14, 1, -1.42109e-14, 0, 0, 1, 0, 0, 0)
@@ -803,21 +803,21 @@ draw_pass_1 = SubResource("SphereMesh_2vp0u")
 [node name="SpawnerRight" type="Marker3D" parent="lizard/Armature/Skeleton3D/JawLeft/JawLeft/GPUParticles3D"]
 
 [node name="HornLeftBottom" parent="lizard/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.255596, 0.000816968, -0.966784, 0.241205, -0.96843, 0.0629508, -0.936211, -0.249283, -0.247724, 0.789935, -1.55453, 5.41987)
+transform = Transform3D(-0.0459692, 0.00354278, -0.998937, 0.258098, -0.965998, -0.0153032, -0.965025, -0.258527, 0.0434918, 1.26715, -1.44822, 5.10342)
 
 [node name="HornLeftBottom" parent="lizard/Armature/Skeleton3D/HornLeftBottom" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_2qi5o")
 
 [node name="HornLeftTop" parent="lizard/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.000816907, -0.255596, -0.966783, -0.968431, -0.241205, 0.0629508, -0.249283, 0.936211, -0.247724, 0.789118, -0.586098, 5.66916)
+transform = Transform3D(0.0035428, 0.0459692, -0.998937, -0.965998, -0.258098, -0.0153032, -0.258527, 0.965025, 0.0434918, 1.26361, -0.482226, 5.36194)
 
 [node name="HornLeftTop" parent="lizard/Armature/Skeleton3D/HornLeftTop" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_2qi5o")
 
 [node name="JawRight" parent="lizard/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.000816907, -0.966783, -0.255596, 0.968431, 0.0629508, -0.241205, 0.249283, -0.247724, 0.936211, -0.127798, -0.765628, 4.35784)
+transform = Transform3D(-0.0035428, -0.998937, 0.0459692, 0.965998, -0.0153032, -0.258098, 0.258527, 0.0434918, 0.965025, 0.0229847, -0.738396, 4.3681)
 
 [node name="JawRight" parent="lizard/Armature/Skeleton3D/JawRight" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 7.57849e-15, 0, 3.07846e-15, 1, 0, 0, 0)
@@ -837,14 +837,14 @@ draw_pass_1 = SubResource("SphereMesh_42m1i")
 [node name="SpawnerLeft" type="Marker3D" parent="lizard/Armature/Skeleton3D/JawRight/JawRight/GPUParticles3D"]
 
 [node name="HornRightBottom" parent="lizard/Armature/Skeleton3D" index="5"]
-transform = Transform3D(0.255596, -0.000816907, 0.966783, 0.241205, 0.968431, -0.0629508, -0.936211, 0.249283, 0.247724, -1.53035, -1.40345, 4.82534)
+transform = Transform3D(-0.0459692, -0.0035428, 0.998937, 0.258098, 0.965998, 0.0153032, -0.965025, 0.258527, -0.0434918, -1.1303, -1.48495, 5.2078)
 
 [node name="HornRightBottom" parent="lizard/Armature/Skeleton3D/HornRightBottom" index="0"]
 layers = 2
 material_override = SubResource("ShaderMaterial_2qi5o")
 
 [node name="HornRightTop" parent="lizard/Armature/Skeleton3D" index="6"]
-transform = Transform3D(0.000816918, 0.255596, 0.966783, -0.968431, 0.241205, -0.0629508, -0.249283, -0.936211, 0.247724, -1.53116, -0.435017, 5.07462)
+transform = Transform3D(0.0035428, -0.0459692, 0.998937, -0.965998, 0.258098, 0.0153032, -0.258527, -0.965025, -0.0434918, -1.13384, -0.518953, 5.46632)
 
 [node name="HornRightTop" parent="lizard/Armature/Skeleton3D/HornRightTop" index="0"]
 layers = 2
@@ -873,39 +873,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ed5f8")
 anim_player = NodePath("../AnimationPlayer")
-parameters/current_length = 3.0
-parameters/current_position = 1.41455
-parameters/current_delta = 0.0138723
-parameters/End/current_length = null
-parameters/End/current_position = null
-parameters/End/current_delta = null
-parameters/Start/current_length = 0.0
-parameters/Start/current_position = 0.0
-parameters/Start/current_delta = 0.0
-parameters/ambush/current_length = 1.0
-parameters/ambush/current_position = 1.0
-parameters/ambush/current_delta = 0.02457
-parameters/attacking/current_length = null
-parameters/attacking/current_position = null
-parameters/attacking/current_delta = null
-parameters/dead/current_length = null
-parameters/dead/current_position = null
-parameters/dead/current_delta = null
-parameters/escape/current_length = 2.0
-parameters/escape/current_position = 2.0
-parameters/escape/current_delta = 0.0
-parameters/flinching/current_length = null
-parameters/flinching/current_position = null
-parameters/flinching/current_delta = null
-parameters/idle/current_length = 3.0
-parameters/idle/current_position = 1.41455
-parameters/idle/current_delta = 0.0138723
-parameters/meleeing/current_length = null
-parameters/meleeing/current_position = null
-parameters/meleeing/current_delta = null
-parameters/moving/current_length = 1.0
-parameters/moving/current_position = 0.449382
-parameters/moving/current_delta = 0.0166667
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 max_polyphony = 4

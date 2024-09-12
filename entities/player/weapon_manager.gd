@@ -56,10 +56,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#weapon_cam.global_transform = global_transform
-	#weapon_cam.h_offset = h_offset
-	#weapon_cam.v_offset = v_offset
-
 	if prior_fov != Globals.s_fov_desired:
 		prior_fov = Globals.s_fov_desired
 		scope_changed(prior_zoom)
