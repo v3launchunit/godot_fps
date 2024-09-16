@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bltd3oue6dhrs"
-path.s3tc="res://.godot/imported/street_3way_albedo.png-756b2fb1ca7acea3bff3fc98e6eaa5c2.s3tc.ctex"
+uid="uid://d1jingu6vmvfd"
+path="res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/terrain/custom_hand/street/street_3way_albedo.png"
-dest_files=["res://.godot/imported/street_3way_albedo.png-756b2fb1ca7acea3bff3fc98e6eaa5c2.s3tc.ctex"]
+source_file="res://icon.png"
+dest_files=["res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

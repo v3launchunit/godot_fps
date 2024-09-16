@@ -16,12 +16,15 @@ extends Node3D
 @export var loaded_from_savegame: bool = false
 @export var fun: int = -1
 
+func _init() -> void:
+	if fun == -1:
+		fun = Globals.fun
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if level_version == "PENDING":
 		level_version = Globals.C_VERSION
-	if fun == -1:
-		fun = Globals.fun
 
 
 func _process(delta: float) -> void:

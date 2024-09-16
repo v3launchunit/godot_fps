@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=4 uid="uid://dvk8n1nbutav3"]
+
+[ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_gr6w2"]
+[ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_5iieu"]
+[ext_resource type="Material" uid="uid://crvlccbs2jtim" path="res://textures/furnishings/trash.tres" id="3_ecb3y"]
+[ext_resource type="Script" path="res://trench_broom/func_godot_fgd/entities/solid/deco_trash_spawner.gd" id="3_kcdao"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ljumu"]
+_surfaces = [{
+"aabb": AABB(-3.91305, -5.47826, -10.3044, 8, 9, 18),
+"attribute_data": PackedByteArray("BACAPgEAwD4HAIA+AADAPgAAgD7//78+BACAPgIAwD4AAIA+AQDAPgAAgL7w/3+9AACAvv3/f70BAIC+9/9/vXfkzbL+/z++ThThsgAAQL4xDcwyAABAvk4U4bL//z++AACAPv//P74HAIA+AABQv/7/f773/3+9AABgvwAAwD7+/3+++v9/Pf//P7///78+AABgvwAAwD7//3++//8/vgAAgD4AAEC+AACAPgAAAAAAAIA+AACAPv//f74AAIA+//9/vk4U4bL//3++37qrPf7/f74LWki+AACAPghaSL4AAIA+4rqrPQAAgL4AAIC+AACAvgAAgL4AAIC+AACAvv7/fz4AAIC+AABgPwcAgD7//z8/AACAPv7/fz76/389AACAvvv/fz0AAIC+/v9/vf7/fz73/3+9AACAvoiIiL8AAIC+iIiIvQAAgD6IiIi9AACAvgAAQL4AAAAA//8/vgAAgD7+/3+9AACAPvv/fz0="),
+"format": 34359742487,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAAADAAQAAAAEAAUAAAAFAAYAAAAGAAcAAAAHAAgAAAAIAAkAAAAJAAoACwAMAA0ADgAPABAAEQASABMAEQATABQAFQAWABcAFQAXABgAGQAaABsAGQAbABwAHQAeAB8AHQAfACAAHQAgACEAHQAhACIAIwAkACUAIwAlACYAJwAoACkAKgArACwAKgAsAC0A"),
+"material": ExtResource("3_ecb3y"),
+"name": "furnishings/trash",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 46,
+"vertex_data": PackedByteArray("VG96wOtNr8Cf3iTBWm96wOpNr8Cc3iTBTG96wOlNr8Cc3iTBVG96wOxNr8Cc3iTBTG96wOtNr8CV3iTBWsiCQFLIwj9405u+WsiCQFjIwj9g05u+W8iCQFXIwj9o05u+rRayPStkYUBo05u+shayPS1kYUBw05u+RxayPS1kYUBg05u+shayPS1kYUBw05u+TG96wCxkYUBw05u+Wm96wOpNr8Cc3iTBW8iCQFXIwj9o05u+Wm96wOpNr8Cc3iTBWsiCQI7e9L5o05u+TG96wOlNr8Cb3gTBWm96wOpNr8Cc3iTBTG96wCxkYUBw05u+TG96wC1kYUDIQvZAehayPSxkYUDIQvZATG96wC1kYUDIQvZATG96wCxkYUBw05u+shayPS1kYUBw05u+shayPS1kYUBw05u+W8iCQFXIwj9o05u+WsiCQFjIwj/IQvZAehayPSxkYUDIQvZAWsiCQJDe9L7IQvZAWsiCQJLe9L7IQvZAWsiCQJre9L7IQvZAWsiCQI7e9L5o05u+Wm96wOpNr8Cc3iTBTG96wOlNr8Cb3gTBWsiCQI7e9L5o05u+WsiCQJDe9L7IQvZAWsiCQFjIwj/IQvZAW8iCQFXIwj9o05u+TG96wOlNr8Cb3gTBTG96wC1kYUDIQvZAWsiCQJDe9L7IQvZATG96wC1kYUDIQvZAehayPSxkYUDIQvZAWsiCQFjIwj/IQvZAWsiCQJDe9L7IQvZAxM5h5wAA/7/EzmHnAAD/v8TOYecAAP+/xM5h5wAA/7/EzmHnAAD/v8TOYecAAP+/xM5h5wAA/7/EzmHnAAD/v8TOYecAAP+/xM5h5wAA/7/EzmHnAAD/v6C8//8AAP8/oLz//wAA/z+gvP//AAD/P///4rj/f/8////iuP9//z///+K4/3//PwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//3////9//7//f////3//v/9/////f/+//3////9//7+qqlTV/3//v6qqVNX/f/+/qqpU1f9//7+qqlTV/3//vzqxOjH/////OrE6Mf////86sTox/////zqxOjH/////OrE6Mf////86sTox/////////3//////////f/////////9//////////3//////92DwQf///z/3YPBB////P/dg8EH///8//3//f////7//f/9/////v/9//3////+//3//f////78=")
+}]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tw1k6"]
+points = PackedVector3Array(-3.91304, -5.47826, -10.3044, -3.91305, -5.47826, -10.3043, -3.91304, -5.47826, -10.3043, -3.91304, -5.47826, -10.3043, -3.91304, -5.47826, -10.3043, 4.08696, 1.52174, -0.304348, 4.08696, 1.52174, -0.304347, 4.08696, 1.52174, -0.304347, 0.0869573, 3.52174, -0.304347, 0.0869574, 3.52174, -0.304348, 0.0869566, 3.52174, -0.304347, -3.91304, 3.52174, -0.304348, 4.08696, -0.47826, -0.304347, -3.91304, -5.47826, -8.30435, -3.91304, 3.52174, 7.69565, 0.0869569, 3.52174, 7.69565, 4.08696, 1.52174, 7.69565, 4.08696, -0.478261, 7.69565, 4.08696, -0.478261, 7.69565, 4.08696, -0.478261, 7.69565)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vy0qh"]
+_surfaces = [{
+"aabb": AABB(-3.67349, -5.51021, -10.4082, 8.00002, 9, 18),
+"attribute_data": PackedByteArray("9P/fv+j/vz76/9+/BADAPgAA4L/9/78+AADgv/7/vz4BAOC//P+/PgMA4L/+/78+AAAQwOr/f70AABDA8P9/vQAAEMAMAIC9AQAAwPL/P74AAADAAABAvv7//78AAEC+AAAAwAAA0L8AAOC/AADQv/T/378CABDA///XvwwAgL0CABTA6P+/Pv//17/g/389AAAMwP7/vz4CABTA6P+/PgAA2L///z++AACYvwAAQL4AAJi//f8/vv//l78AAEC+AACYvwAAAMD//5e/AADgvwAA2L8AAOC/AADYvwAAAMAAANi/gD3av///179vBP6/AACYv3AE/r8AAJi/gD3avwAAmD8AABDAAACYPwAAEMABAJg/AAAQwP//1z8AABDAAgAUQPT/378AAAxAAADgv///1z/g/389AACYP+j/fz0AAJg/8P9/vf//1z8MAIC9AADgP0REIMAAAOA/iIjAvwAAEECJiMC/AADgPwAAQL4AAABA//8/vgAAEEDw/3+9AAAQQOj/fz0="),
+"format": 34359742487,
+"index_count": 87,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAAADAAQAAAAEAAUAAAAFAAYAAAAGAAcAAAAHAAgAAAAIAAkAAAAJAAoAAAAKAAsADAANAA4ADwAQABEAEgATABQAEgAUABUAEgAVABYAEgAWABcAGAAZABoAGAAaABsAHAAdAB4AHAAeAB8AIAAhACIAIAAiACMAIAAjACQAIAAkACUAJgAnACgAJgAoACkAKgArACwALQAuAC8ALQAvADAA"),
+"material": ExtResource("3_ecb3y"),
+"name": "furnishings/trash",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 49,
+"vertex_data": PackedByteArray("gBprwINTsMDehybBUBprwJ9TsMD2hybBIBprwJhTsMDWhybBIBprwJlTsMDWhybBGBprwJdTsMDOhybBCBprwJlTsMDShybB8HKKQIqxvj8A+9C+8HKKQI2xvj8A+9C+8HKKQKGxvj+A+tC+gC+nPrxYX0AA+9C+AC+nPspYX0DA+tC+gC6nPspYX0AA+9C+AC+nPspYX0DA+tC+IBprwMpYX0DA+tC+gBprwINTsMDehybB8HKKQKGxvj+A+tC+gBprwINTsMDehybB8HKKQLacAr+A+tC+IBprwJlTsMDWhwbBgBprwINTsMDehybBIBprwMpYX0DA+tC+IBprwMpYX0BU8PJAIBprwMhYX0BU8PJAIBprwMpYX0BY8PJAAC+nPspYX0BU8PJAIBprwMpYX0BY8PJAIBprwMpYX0DA+tC+AC+nPspYX0DA+tC+AC+nPspYX0DA+tC+8HKKQKGxvj+A+tC+8HKKQI2xvj9U8PJAAC+nPspYX0BU8PJA8HKKQNOcAr9U8PJA8HKKQL6cAr9U8PJA8HKKQMmcAr9Q8PJA8HKKQLacAr+A+tC+gBprwINTsMDehybBIBprwJlTsMDWhwbB8HKKQLacAr+A+tC+8HKKQL6cAr9U8PJA8HKKQI2xvj9U8PJA8HKKQKGxvj+A+tC+IBprwJlTsMDWhwbBIBprwMpYX0BY8PJA8HKKQL6cAr9U8PJAIBprwMpYX0BY8PJAAC+nPspYX0BU8PJA8HKKQI2xvj9U8PJA8HKKQL6cAr9U8PJAxM5h5wAA/7/EzmHnAAD/v8TOYecAAP+/xM5h5wAA/7/EzmHnAAD/v8TOYecAAP+/xM5h5wAA/7/EzmHnAAD/v8TOYecAAP+/xM5h5wAA/7/EzmHnAAD/v8TOYecAAP+/oLz//wAA/z+gvP//AAD/P6C8//8AAP8////iuP9//z///+K4/3//P///4rj/f/8/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//3////9//7//f////3//v/9/////f/+//3////9//7+qqlTV/3//v6qqVNX/f/+/qqpU1f9//7+qqlTV/3//vzqxOjH/////OrE6Mf////86sTox/////zqxOjH/////OrE6Mf////86sTox/////////3//////////f/////////9//////////3//////92DwQf///z/3YPBB////P/dg8EH///8//3//f////7//f/9/////v/9//3////+//3//f////78=")
+}]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_675ld"]
+points = PackedVector3Array(-3.67349, -5.51019, -10.4082, -3.67348, -5.51021, -10.4082, -3.67347, -5.5102, -10.4082, -3.67347, -5.5102, -10.4082, -3.67347, -5.5102, -10.4082, -3.67346, -5.5102, -10.4082, 4.32653, 1.48979, -0.408165, 4.32653, 1.48979, -0.408165, 4.32653, 1.4898, -0.408161, 0.326534, 3.48979, -0.408165, 0.32653, 3.48979, -0.408163, 0.326527, 3.48979, -0.408165, -3.67347, 3.48979, -0.408163, 4.32653, -0.510204, -0.408161, -3.67347, -5.5102, -8.40816, -3.67347, 3.48979, 7.59184, -3.67347, 3.48979, 7.59184, -3.67347, 3.48979, 7.59184, 0.32653, 3.48979, 7.59184, 4.32653, 1.48979, 7.59184, 4.32653, -0.510205, 7.59184, 4.32653, -0.510204, 7.59184, 4.32653, -0.510205, 7.59184)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="FuncGodotMap" type="Node3D" parent="."]
+script = ExtResource("1_gr6w2")
+local_map_file = "res://maps/trash_test.map"
+map_settings = ExtResource("2_5iieu")
+
+[node name="entity_0_worldspawn" type="StaticBody3D" parent="FuncGodotMap"]
+collision_mask = 0
+
+[node name="entity_1_area_trash_spawner" type="StaticBody3D" parent="FuncGodotMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0869569, -0.521739, -3.69565)
+script = ExtResource("3_kcdao")
+func_godot_properties = {
+"classname": "area_trash_spawner",
+"prop_density": 1.0
+}
+
+[node name="entity_1_mesh_instance" type="MeshInstance3D" parent="FuncGodotMap/entity_1_area_trash_spawner"]
+mesh = SubResource("ArrayMesh_ljumu")
+
+[node name="entity_1_brush_0_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_1_area_trash_spawner"]
+shape = SubResource("ConvexPolygonShape3D_tw1k6")
+
+[node name="entity_2_area_trash_spawner" type="StaticBody3D" parent="FuncGodotMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6735, -0.489794, -26.5918)
+script = ExtResource("3_kcdao")
+func_godot_properties = {
+"classname": "area_trash_spawner",
+"prop_density": 1.0
+}
+
+[node name="entity_2_mesh_instance" type="MeshInstance3D" parent="FuncGodotMap/entity_2_area_trash_spawner"]
+mesh = SubResource("ArrayMesh_vy0qh")
+
+[node name="entity_2_brush_0_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_2_area_trash_spawner"]
+shape = SubResource("ConvexPolygonShape3D_675ld")

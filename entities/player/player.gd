@@ -396,3 +396,12 @@ func _knockback(delta: float) -> Vector3:
 func _on_carriable_grabbed(what: Carriable) -> void:
 	camera.switched_weapons.emit(-1, -1)
 	holding = what
+
+
+func step_check(velocity: Vector3) -> bool:
+	#var test_transform := Transform3D(global_transform)
+	
+	if test_move(global_transform, velocity) and not test_move(global_transform, velocity + 0.5 * Vector3.UP):
+		pass
+	
+	return false

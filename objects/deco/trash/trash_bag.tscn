@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dd1186jg35gq7"]
+[gd_scene load_steps=9 format=3 uid="uid://dd1186jg35gq7"]
 
-[ext_resource type="ArrayMesh" uid="uid://jpl2iads51cn" path="res://objects/deco/trash_bag.obj" id="1_hdouu"]
+[ext_resource type="ArrayMesh" uid="uid://jpl2iads51cn" path="res://objects/deco/trash/trash_bag.obj" id="1_hdouu"]
+[ext_resource type="Script" path="res://entities/status.gd" id="2_coh6s"]
 
 [sub_resource type="Gradient" id="Gradient_sasyv"]
 interpolation_mode = 1
@@ -43,3 +44,7 @@ mesh = ExtResource("1_hdouu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_23xde")
+
+[node name="Status" type="Node" parent="."]
+script = ExtResource("2_coh6s")
+gib_threshold = 0.0

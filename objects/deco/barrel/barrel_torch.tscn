@@ -93,12 +93,12 @@ fixed_size = true
 proximity_fade_distance = 3.0
 distance_fade_mode = 1
 
-[node name="Node3D" type="RigidBody3D"]
+[node name="BarrelTorch" type="RigidBody3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Shape" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_vbuov")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 layers = 2
 material_override = SubResource("ShaderMaterial_dgeoh")
 mesh = SubResource("CylinderMesh_o4fo5")
@@ -111,7 +111,7 @@ damage_multipliers = Array[float]([1.0, 1.0, 0.5, 0.0, 1.0])
 damage_sys = ExtResource("5_fst5o")
 gibs = ExtResource("6_vr42e")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="TorchSys" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 layers = 2
 material_override = SubResource("ShaderMaterial_pwgf8")
@@ -125,7 +125,7 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_lp6cy")
 draw_pass_1 = SubResource("BoxMesh_vsvk6")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 layers = 2
 light_color = Color(1, 0.501961, 0, 1)
@@ -134,7 +134,7 @@ shadow_enabled = true
 distance_fade_enabled = true
 omni_range = 10.0
 
-[node name="LensFlare" type="MeshInstance3D" parent="OmniLight3D"]
+[node name="LensFlare" type="MeshInstance3D" parent="Light"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 layers = 2
 material_override = ExtResource("8_yax0c")

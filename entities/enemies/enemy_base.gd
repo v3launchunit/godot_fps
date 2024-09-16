@@ -220,8 +220,8 @@ func _ready() -> void:
 		level.foes += 1
 
 
-func _process(delta: float) -> void:
-	($AnimationTree as AnimationTree).active = is_visible_in_tree()
+#func _process(delta: float) -> void:
+	#($AnimationTree as AnimationTree).active = is_visible_in_tree()
 
 
 func _physics_process(delta: float) -> void:

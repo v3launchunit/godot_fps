@@ -36,5 +36,5 @@ heightmap_texture = ExtResource("1_0x6dq")
 detail_mask = SubResource("GradientTexture1D_4wpv0")
 detail_blend_mode = 1
 detail_normal = SubResource("NoiseTexture2D_d5sdr")
-uv1_scale = Vector3(0.0625, 0.0625, 0.0625)
+uv1_scale = Vector3(0.125, 0.125, 0.125)
 texture_filter = 0
