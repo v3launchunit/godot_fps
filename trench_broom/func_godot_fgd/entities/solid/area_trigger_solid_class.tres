@@ -23,7 +23,8 @@ description = ""
 func_godot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"group": "none"
+"group": "none",
+"max_trips": 1
 }
 class_property_descriptions = {}
 meta_properties = {

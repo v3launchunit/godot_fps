@@ -12,10 +12,23 @@ description = ""
 func_godot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"ambusher": "pink",
+"ambusher": {
+"canary": "canary",
+"enforcer": "enforcer",
+"eyeball": "eyeball",
+"lizard": "lizard",
+"pinkerton": "pinkerton",
+"plasma droid": "plasma_droid",
+"rocketeer": "rocketeer",
+"sleeping lizard": "eepy_lizard",
+"soldier": "soldier"
+},
 "group": "none"
 }
-class_property_descriptions = {}
+class_property_descriptions = {
+"ambusher": ["The enemy to be spawned.", "pinkerton"],
+"group": "The group that activates this ambush."
+}
 meta_properties = {
 "color": Color(0.8, 0.8, 0.8, 1),
 "size": AABB(-8, -8, -8, 8, 8, 8)

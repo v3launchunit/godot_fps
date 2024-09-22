@@ -1,4 +1,4 @@
-// Game: FuncGodot
+// Game: VolumetricsTest
 // Format: Valve
 // entity 0
 {
@@ -8,7 +8,8 @@
 }
 // entity 1
 {
-"classname" "area_trash_spawner"
+"classname" "deco_trash_spawner"
+"trash_type" "trash"
 // brush 0
 {
 ( -224 -64 -96 ) ( -64 64 16 ) ( -64 0 48 ) furnishings/trash [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
@@ -25,7 +26,7 @@
 }
 // entity 2
 {
-"classname" "area_trash_spawner"
+"classname" "deco_trash_spawner"
 // brush 0
 {
 ( -592 448 -96 ) ( -432 576 16 ) ( -432 512 48 ) furnishings/trash [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1

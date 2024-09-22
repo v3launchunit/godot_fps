@@ -18,14 +18,22 @@ collision_mask = 1
 collision_priority = 1.0
 collision_shape_margin = 0.04
 script_class = ExtResource("2_efpm2")
-classname = "area_trash_spawner"
+classname = "deco_trash_spawner"
 description = ""
 func_godot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"prop_density": 1.0
+"prop_density": 1.0,
+"seed": "",
+"trash_type": {
+"trash": 0
 }
-class_property_descriptions = {}
+}
+class_property_descriptions = {
+"prop_density": "The number of props to instantiate per cubic meter.",
+"seed": "The RNG seed used to generate the trash. Leave blank for non-deterministic prop placement.",
+"trash_type": ["The pool of random trash props to draw from, as defined in names.cfg.", 0]
+}
 meta_properties = {
 "color": Color(0.8, 0.8, 0.8, 1),
 "size": AABB(-8, -8, -8, 8, 8, 8)

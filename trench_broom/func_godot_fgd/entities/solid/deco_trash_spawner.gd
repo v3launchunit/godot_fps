@@ -3,12 +3,14 @@ extends StaticBody3D
 
 
 const TRASH_LIST : Array[String] = [
-		"res://objects/deco/trash/trash_bag.tscn",
+		"res://objects/deco/trash/trash_bag_mesh.tscn",
+		"res://objects/deco/trash/trash_bag_mesh.tscn",
 		"res://objects/deco/trash/trash_pole.tscn",
 		"res://objects/deco/trash/trash_brick.tscn",
 		"res://objects/deco/trash/trash_brick.tscn",
 		"res://objects/deco/trash/trash_brick.tscn",
 		"res://scenes/objects/crate_metal.tscn",
+		"res://objects/deco/trash/trash_chair.tscn",
 ]
 
 @export var func_godot_properties: Dictionary:
@@ -32,6 +34,8 @@ func spawn_trash_props(editor: bool = true) -> void:
 	if editor and not Engine.is_editor_hint():
 		return
 	
+	if func_godot_properties.get("seed", "") != "":
+		seed(hash(func_godot_properties["seed"]))
 	collision_layer = 0b0000_0000_0000_0000_0000_0010_0000_0000
 	
 	var mesh := (get_child(0) as MeshInstance3D).mesh
@@ -39,6 +43,8 @@ func spawn_trash_props(editor: bool = true) -> void:
 	var points := shape.points
 	var bounds := mesh.get_aabb().abs()
 	var volume : float = bounds.get_volume()
+	
+	var pool := get_trash_list(func_godot_properties.get("trash_type", "trash"))
 	
 	var point_query := PhysicsPointQueryParameters3D.new()
 	point_query.collide_with_bodies = true
@@ -58,7 +64,7 @@ func spawn_trash_props(editor: bool = true) -> void:
 		if result == null or result.is_empty():
 			continue
 		
-		var node := (load(TRASH_LIST.pick_random()) as PackedScene).instantiate() as Node3D
+		var node := (load(pool.pick_random()) as PackedScene).instantiate() as Node3D
 		add_child(node)
 		node.set_owner(owner)
 		node.global_position = pos
@@ -69,3 +75,19 @@ func spawn_trash_props(editor: bool = true) -> void:
 		)
 	
 	collision_layer = 0b0000_0000_0000_0000_0000_0000_0000_0001
+	randomize()
+
+
+func get_trash_list(type: int) -> Array[String]:
+	var out : Array[String] = []
+	var section : String = "trash_%s" % type
+	
+	var names := ConfigFile.new()
+	if names.load("res://names.cfg") or not names.has_section(section):
+		#print(TRASH_LIST)
+		return TRASH_LIST
+	
+	for key in names.get_section_keys(section):
+		out.append(names.get_value(section, key))
+	#print(out)
+	return out

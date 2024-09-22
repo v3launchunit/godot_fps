@@ -24,17 +24,17 @@ func_godot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
 "damage_type": {
-"Electric": "\"ELECTRIC\"",
-"Explosion": "\"EXPLOSION\"",
-"Fire": "\"FIRE\"",
-"Generic": "\"GENERIC\"",
-"Toxic": "\"TOXIC\""
+"Electric": "ELECTRIC",
+"Explosion": "EXPLOSION",
+"Fire": "FIRE",
+"Generic": "GENERIC",
+"Toxic": "TOXIC"
 },
 "dps": 5.0,
 "player_dps": 5.0
 }
 class_property_descriptions = {
-"damage_type": ["", "\"GENERIC\""]
+"damage_type": ["", "GENERIC"]
 }
 meta_properties = {
 "color": Color(0.8, 0.8, 0.8, 1),

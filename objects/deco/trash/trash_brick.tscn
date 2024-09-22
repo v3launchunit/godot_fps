@@ -37,4 +37,6 @@ size = Vector3(0.25, 0.25, 0.5)
 
 [node name="TrashBrick" type="MeshInstance3D"]
 material_override = SubResource("ShaderMaterial_3061b")
+visibility_range_end = 50.0
+visibility_range_end_margin = 10.0
 mesh = SubResource("BoxMesh_qcen5")

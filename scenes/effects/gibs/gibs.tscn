@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c5pbs8t6p7ogl"]
+[gd_scene load_steps=26 format=3 uid="uid://c5pbs8t6p7ogl"]
 
 [ext_resource type="ArrayMesh" uid="uid://bssx7wfjh7rbq" path="res://models/gib.obj" id="1_v6f6j"]
 [ext_resource type="Script" path="res://scripts/effects/particle_lifetime.gd" id="2_08tqy"]
@@ -110,7 +110,7 @@ collision_mode = 1
 collision_friction = 0.25
 collision_bounce = 0.5
 sub_emitter_mode = 1
-sub_emitter_frequency = 4.0
+sub_emitter_frequency = 32.0
 
 [sub_resource type="Shader" id="Shader_40uw1"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's StandardMaterial3D.
@@ -148,6 +148,9 @@ void fragment() {
 	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
 	SPECULAR = specular;
+	ALPHA = albedo.a * COLOR.a;
+	ALPHA_SCISSOR_THRESHOLD = 0.5;
+	ALPHA_HASH_SCALE = 0.5;
 }
 "
 
@@ -165,11 +168,22 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
+[sub_resource type="Gradient" id="Gradient_0yrpr"]
+offsets = PackedFloat32Array(0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bgdbn"]
+gradient = SubResource("Gradient_0yrpr")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_romqw"]
 emission_shape = 1
 emission_sphere_radius = 0.35
 direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = -1.0
+initial_velocity_max = 1.0
 gravity = Vector3(0, -0.98, 0)
+color_ramp = SubResource("GradientTexture1D_bgdbn")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pncd7"]
 albedo_color = Color(1, 0, 0, 1)
@@ -247,7 +261,6 @@ _data = {
 random_pitch = 1.15
 streams_count = 1
 stream_0/stream = ExtResource("3_ir11u")
-stream_0/weight = 1.0
 
 [node name="GibsSys" type="GPUParticles3D"]
 layers = 2
@@ -266,9 +279,7 @@ script = ExtResource("2_08tqy")
 [node name="BloodSys" type="GPUParticles3D" parent="."]
 layers = 2
 material_override = SubResource("ShaderMaterial_nxb1c")
-emitting = false
 amount = 1024
-lifetime = 3.0
 fixed_fps = 60
 visibility_aabb = AABB(-8, -28, -8, 16, 32, 16)
 process_material = SubResource("ParticleProcessMaterial_romqw")

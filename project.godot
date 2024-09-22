@@ -71,6 +71,11 @@ folder_colors={
 
 import/blender/enabled=false
 
+[global_group]
+
+players=""
+player_cam=""
+
 [gui]
 
 theme/default_font_antialiasing=0

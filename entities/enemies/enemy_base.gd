@@ -326,13 +326,16 @@ func change_state(to: State):
 
 
 func hear_target(target: Node3D) -> void:
+	print(target.name)
 	var space_state = get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.create(
 			global_position,
 			target.global_position,
 			collision_mask,
 	)
+	query.exclude = [get_rid()]
 	var hit: Dictionary = space_state.intersect_ray(query)
+	#print(hit)
 	if (hit and hit["collider"] == target):
 		detect_target(target)
 
@@ -385,7 +388,7 @@ func _wander(delta) -> void:
 
 
 func _scan(_delta) -> void:
-	if blind or randi_range(0, 12) != 0:
+	if blind or randi_range(0, 5) != 0:
 		return
 	#sight_line.rotation.y = sin(
 			#state_timer * sight_line_sweep_speed
@@ -398,7 +401,10 @@ func _scan(_delta) -> void:
 		#target_pool.append_array(get_tree().get_nodes_in_group(prey))
 	var target: Node3D = get_tree().get_first_node_in_group("players") as Node3D
 	if target == null:
+		print("no player")
 		return
+	
+	# can't see target from behind
 	if global_basis.z.normalized().dot((global_position - target.global_position).normalized()) < 0.5:
 		return
 	var space_state = get_world_3d().direct_space_state
@@ -407,7 +413,9 @@ func _scan(_delta) -> void:
 			target.global_position,
 			collision_mask,
 	)
+	query.exclude = [get_rid()]
 	var hit: Dictionary = space_state.intersect_ray(query)
+	#print(hit)
 	if (hit and hit["collider"] == target):
 		detect_target(target)
 		change_state(State.PURSUING)

@@ -10,4 +10,6 @@ radial_segments = 4
 
 [node name="TrashPole" type="MeshInstance3D"]
 material_override = ExtResource("1_8olh7")
+visibility_range_end = 75.0
+visibility_range_end_margin = 10.0
 mesh = SubResource("CylinderMesh_wx8jg")
